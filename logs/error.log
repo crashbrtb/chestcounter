@@ -1,0 +1,361 @@
+2025-05-18 22:48:00 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-18 22:48:00 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-18 22:48:00 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-18 22:51:12 error: [TypeError] str_replace(): Argument #3 ($subject) must be of type array|string, null given in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Core\functions.php on line 355
+Stack Trace:
+- CORE\src\Core\functions.php:355
+- CORE\src\I18n\I18n.php:80
+- CORE\src\I18n\I18n.php:152
+- CORE\src\I18n\functions.php:87
+- ROOT\vendor\cakephp\authentication\src\Authenticator\UnauthenticatedException.php:42
+- ROOT\vendor\cakephp\authentication\src\Controller\Component\AuthenticationComponent.php:189
+- ROOT\vendor\cakephp\authentication\src\Controller\Component\AuthenticationComponent.php:132
+- CORE\src\Event\EventManager.php:334
+- CORE\src\Event\EventManager.php:312
+- CORE\src\Event\EventDispatcherTrait.php:88
+- CORE\src\Controller\Controller.php:609
+- CORE\src\Controller\ControllerFactory.php:156
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/
+Client IP: 127.0.0.1
+2025-05-18 22:54:04 error: [Error] Call to undefined method App\Application::redirect() in C:\Apache24\htdocs\chestcounter\src\Application.php on line 118
+Stack Trace:
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:136
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:77
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/
+Client IP: 127.0.0.1
+2025-05-18 22:55:38 error: [Error] Call to undefined method App\Application::redirect() in C:\Apache24\htdocs\chestcounter\src\Application.php on line 138
+Stack Trace:
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:136
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:77
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/
+Client IP: 127.0.0.1
+2025-05-18 23:00:28 error: [Error] Class "Cake\Auth\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 43
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-18 23:03:25 error: [Error] Class "Cake\Auth\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 51
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-18 23:04:56 error: [Error] Class "Cake\Utility\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 51
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-18 23:05:39 error: [Error] Class "Cake\Utility\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 51
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-18 23:07:33 error: [Error] Class "Cake\Auth\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 52
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-18 23:14:39 error: [Error] Class "Authentication\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 52
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-18 23:47:33 error: [Error] Class "Cake\Auth\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 52
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:107
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-18 23:48:13 error: [Error] Class "Cake\Utility\DefaultPasswordHasher" not found in C:\Apache24\htdocs\chestcounter\src\Model\Entity\User.php on line 52
+Stack Trace:
+- CORE\src\Datasource\EntityTrait.php:290
+- CORE\src\ORM\Marshaller.php:622
+- CORE\src\ORM\Table.php:3038
+- APP/Controller\UsersController.php:58
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:107
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users/add
+Client IP: 127.0.0.1
+2025-05-19 00:27:55 error: [Cake\Core\Exception\CakeException] Plugin named `Authentication` is already loaded in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Core\PluginCollection.php on line 175
+Stack Trace:
+- CORE\src\Http\BaseApplication.php:146
+- APP/Application.php:58
+- CORE\src\Http\Server.php:123
+- CORE\src\Http\Server.php:85
+- ROOT\webroot\index.php:37
+- [main]:
+
