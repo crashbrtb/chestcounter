@@ -45,10 +45,10 @@ return [
              */
             //'port' => 'non_standard_port_number',
 
-            'username' => 'chestcounter',
-            'password' => 'b9K2d4G7s',
+            'username' => 'counterdkw',
+            'password' => 'count3rDKW@007',
 
-            'database' => 'chestcounter',
+            'database' => 'counterdkw.mysql.dbaas.com.br',
             /*
              * If not using the default 'public' schema with the PostgreSQL driver
              * set it here.
