@@ -48,7 +48,7 @@ return [
             'username' => 'counterdkw',
             'password' => 'count3rDKW@007',
 
-            'database' => 'counterdkw.mysql.dbaas.com.br',
+            'database' => 'counterdkw',
             /*
              * If not using the default 'public' schema with the PostgreSQL driver
              * set it here.
