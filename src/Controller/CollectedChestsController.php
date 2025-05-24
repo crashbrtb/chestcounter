@@ -209,6 +209,16 @@ class CollectedChestsController extends AppController
             'end' => $cycleEnd->format('Y-m-d H:i:s'),
         ];
 
+        // Desativa o sidebar especificamente para esta action
+        $this->set('cakelte_theme', [
+            'sidebar' => [
+                'enable' => false
+            ],
+            'navbar' => [
+                'enable' => true
+            ]
+        ]);
+
         // Passar os dados para a view
         $this->set(compact('playerChestCounts', 'playerTotalChests', 'playerFinalScores', 'cycleOptions', 'currentCycleFormatted', 'selectedCycleOffset', 'minimumChestScore'));
 

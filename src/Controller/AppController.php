@@ -51,7 +51,18 @@ class AppController extends Controller
         // Configuração do CakeLTE
         $this->viewBuilder()
             ->setClassName('CakeLte.CakeLte')
-            ->setLayout('CakeLte.top-nav');
+            ->setLayout('CakeLte.default')
+            ->setTheme('CakeLte');
+
+        // Define as configurações do tema
+        $this->set('cakelte_theme', [
+            'sidebar' => [
+                'enable' => false
+            ],
+            'navbar' => [
+                'enable' => true
+            ]
+        ]);
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.

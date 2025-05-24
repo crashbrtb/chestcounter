@@ -917,3 +917,392 @@ Stack Trace:
 Request URL: /adminlte/dist/js/adminlte.min.js
 Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
 Client IP: 127.0.0.1
+2025-05-24 02:22:08 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:22:45 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:22:54 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:22:57 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:23 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:26 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:35 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:49 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:159
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:24:21 error: [Error] Class "Sidebar" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 15
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:25:31 error: [ParseError] Unmatched ']' in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 22
+Stack Trace:
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1

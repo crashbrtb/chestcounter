@@ -2,29 +2,29 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\RolesUser $rolesUser
- * @var \Cake\Collection\CollectionInterface|string[] $users
- * @var \Cake\Collection\CollectionInterface|string[] $roles
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Roles Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="rolesUsers form content">
-            <?= $this->Form->create($rolesUser) ?>
-            <fieldset>
-                <legend><?= __('Add Roles User') ?></legend>
-                <?php
-                    echo $this->Form->control('user_id', ['options' => $users, 'empty' => true]);
-                    echo $this->Form->control('role_id', ['options' => $roles, 'empty' => true]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+
+<?php
+$this->assign('title', __('Add Roles User'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Roles Users'), 'url' => ['action' => 'index']],
+    ['title' => __('Add')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($rolesUser, ['valueSources' => ['query', 'context']]) ?>
+    <div class="card-body">
+        <?= $this->Form->control('user_id', ['options' => $users, 'empty' => true, 'class' => 'form-control']) ?>
+        <?= $this->Form->control('role_id', ['options' => $roles, 'empty' => true, 'class' => 'form-control']) ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>
