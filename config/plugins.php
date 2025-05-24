@@ -2,4 +2,5 @@
 
 return [
     'Bake' => [],
+    'CakeLte' => [],
 ];

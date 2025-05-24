@@ -58,13 +58,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         $this->addPlugin('Authentication');
         
         // Carrega o CakeLte com configurações
-        if (!$this->plugins()->has('CakeLte')) {
-            $this->addPlugin('CakeLte', [
-                'bootstrap' => true,
-                'routes' => true,
-                'ignoreMissing' => true
-            ]);
-        }
 
         if (PHP_SAPI !== 'cli') {
             FactoryLocator::add(

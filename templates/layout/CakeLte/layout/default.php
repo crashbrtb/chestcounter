@@ -46,13 +46,16 @@
                 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                     <!-- Left navbar links -->
                     <ul class="navbar-nav">
-                        <?php echo $this->element('CakeLte.header/menu') ?>
+                        <?php echo $this->element('CakeLte.header/leftmenu') ?>
                     </ul>
+                    
 
                     <!-- SEARCH FORM -->
-                    <?php echo $this->element('CakeLte.header/search-default') ?>
-                </div>
-
+                 <!-- Right navbar links -->  
+                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
+                    <?php echo $this->element('CakeLte.header/rightmenu') ?>
+                </ul>
+                <?php /*
                 <!-- Right navbar links -->
                 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
                     <!-- Messages Dropdown Menu -->
@@ -73,6 +76,7 @@
                         </a>
                     </li>
                 </ul>
+                */ ?>
             </div>
         </nav>
         <!-- /.navbar -->

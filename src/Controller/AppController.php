@@ -49,20 +49,11 @@ class AppController extends Controller
         $this->Authentication->allowUnauthenticated(['score']);
         
         // Configuração do CakeLTE
-        $this->viewBuilder()
-            ->setClassName('CakeLte.CakeLte')
-            ->setLayout('CakeLte.default')
-            ->setTheme('CakeLte');
+        $this->viewBuilder()->setLayout('CakeLte/layout/default');
+
 
         // Define as configurações do tema
-        $this->set('cakelte_theme', [
-            'sidebar' => [
-                'enable' => false
-            ],
-            'navbar' => [
-                'enable' => true
-            ]
-        ]);
+
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.

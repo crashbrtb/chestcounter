@@ -38,20 +38,13 @@ class AppView extends View
      *
      * @return void
      */
-    public string $layout = 'CakeLte.default';
+    public string $layout = 'CakeLte/layout/default';
     public function initialize(): void
     {
         parent::initialize();
+        $this->addHelper('CakeLte.CakeLte');
         
         // Inicializa o CakeLte com configurações específicas
-        $this->initializeCakeLte([
-            'app-name' => 'ChestCounter',
-            'sidebar' => [
-                'enable' => false
-            ],
-            'navbar' => [
-                'enable' => true
-            ]
-        ]);
+
     }
 }
