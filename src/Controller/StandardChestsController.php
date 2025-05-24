@@ -26,6 +26,14 @@ class StandardChestsController extends AppController
         $this->set(compact('standardChests'));
     }
 
+    public function weights()
+    {
+        $query = $this->StandardChests->find();
+        $standardChests = $this->paginate($query);
+
+        $this->set(compact('standardChests'));
+    }
+
     /**
      * View method
      *

@@ -62,4 +62,12 @@ class AppController extends Controller
         //$this->loadComponent('FormProtection');
     }
 
+    public function changeLanguage($lang = null)
+    {
+        if ($lang && in_array($lang, ['en_US', 'pt_BR'])) {
+            $this->request->getSession()->write('Config.language', $lang);
+            \Cake\I18n\I18n::setLocale($lang);
+        }
+        return $this->redirect($this->referer());
+    }
 }

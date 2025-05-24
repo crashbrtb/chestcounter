@@ -196,11 +196,11 @@ class CollectedChestsController extends AppController
 
         // Gerar as opções para o select box
         $cycleOptions = [];
-        for ($i = 0; $i <= 3; $i++) {
+        for ($i = 0; $i <= 1; $i++) {
             $offset = $currentCycleOffset - $i;
             $start = $referenceDay->addDays($offset * $cycleDuration)->format('Y-m-d');
             $end = $referenceDay->addDays(($offset + 1) * $cycleDuration)->format('Y-m-d');
-            $cycleOptions[$i] = ($i === 0 ? 'Ciclo Atual' : 'Ciclo Anterior ' . $i) . " ($start - $end)";
+            $cycleOptions[$i] = ($i === 0 ?  __('Current Cycle') : __('Previous Cycle') ) . " ($start - $end)";
         }
 
         // Formatar as datas do ciclo atual para exibição
