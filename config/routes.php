@@ -49,6 +49,9 @@ return function (RouteBuilder $routes): void {
      */
     $routes->setRouteClass(DashedRoute::class);
 
+    // Rota personalizada para /score
+    $routes->connect('/score', ['controller' => 'CollectedChests', 'action' => 'score']);
+
     $routes->scope('/', function (RouteBuilder $builder): void {
         /*
          * Here, we are connecting '/' (base path) to a controller called 'Pages',

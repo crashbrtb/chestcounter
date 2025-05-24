@@ -1,3 +1,15 @@
+<?php
+// Desativa o sidebar apenas nesta view
+$this->set('cakelte_theme', [
+    'sidebar' => [
+        'enable' => false
+    ],
+    'navbar' => [
+        'enable' => true
+    ]
+]);
+?>
+
 <h1>Pontuação dos Jogadores</h1>
 
 <?= $this->Form->create(null, ['type' => 'get']) ?>

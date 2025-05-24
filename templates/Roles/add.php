@@ -2,30 +2,31 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Role $role
- * @var \Cake\Collection\CollectionInterface|string[] $users
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Roles'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="roles form content">
-            <?= $this->Form->create($role) ?>
-            <fieldset>
-                <legend><?= __('Add Role') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('description');
-                    echo $this->Form->control('alias');
-                    echo $this->Form->control('users._ids', ['options' => $users]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+
+<?php
+$this->assign('title', __('Add Role'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Roles'), 'url' => ['action' => 'index']],
+    ['title' => __('Add')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($role, ['valueSources' => ['query', 'context']]) ?>
+    <div class="card-body">
+        <?= $this->Form->control('name') ?>
+        <?= $this->Form->control('description') ?>
+        <?= $this->Form->control('alias') ?>
+        <?= $this->Form->control('users._ids', ['options' => $users]) ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>

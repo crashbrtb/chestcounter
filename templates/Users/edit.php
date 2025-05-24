@@ -2,35 +2,39 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
- * @var string[]|\Cake\Collection\CollectionInterface $roles
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
+
+<?php
+$this->assign('title', __('Edit User'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Users'), 'url' => ['action' => 'index']],
+    ['title' => __('View'), 'url' => ['action' => 'view', $user->id]],
+    ['title' => __('Edit')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($user) ?>
+    <div class="card-body">
+        <?= $this->Form->control('name') ?>
+        <?= $this->Form->control('email') ?>
+        <?= $this->Form->control('password') ?>
+        <?= $this->Form->control('roles._ids', ['options' => $roles]) ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="mr-auto">
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $user->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']
+                ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'btn btn-danger']
             ) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="users form content">
-            <?= $this->Form->create($user) ?>
-            <fieldset>
-                <legend><?= __('Edit User') ?></legend>
-                <?php
-                    echo $this->Form->control('name');
-                    echo $this->Form->control('email');
-                    echo $this->Form->control('password');
-                    echo $this->Form->control('roles._ids', ['options' => $roles]);
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'view', $user->id], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>

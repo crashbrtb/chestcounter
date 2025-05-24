@@ -4,25 +4,27 @@
  * @var \App\Model\Entity\StandardChest $standardChest
  */
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('List Standard Chests'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="standardChests form content">
-            <?= $this->Form->create($standardChest) ?>
-            <fieldset>
-                <legend><?= __('Add Standard Chest') ?></legend>
-                <?php
-                    echo $this->Form->control('source');
-                    echo $this->Form->control('score');
-                ?>
-            </fieldset>
-            <?= $this->Form->button(__('Submit')) ?>
-            <?= $this->Form->end() ?>
+
+<?php
+$this->assign('title', __('Add Standard Chest'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List Standard Chests'), 'url' => ['action' => 'index']],
+    ['title' => __('Add')],
+]);
+?>
+
+<div class="card card-primary card-outline">
+    <?= $this->Form->create($standardChest, ['valueSources' => ['query', 'context']]) ?>
+    <div class="card-body">
+        <?= $this->Form->control('source') ?>
+        <?= $this->Form->control('score') ?>
+    </div>
+    <div class="card-footer d-flex">
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
     </div>
+    <?= $this->Form->end() ?>
 </div>
