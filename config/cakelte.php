@@ -1,14 +1,14 @@
 <?php
 return [
     'CakeLte' => [
-        'app-name' => 'DKW<b>Main</b>',
-        'app-logo' => 'CakeLte.cake.icon.svg',
+        'app-name' => '<b>K167 </b> DKW <b>Main</b>',
+        'app-logo' => 'CakeLte.dkw.png',
         'small-text' => true,
         'dark-mode' => false,
         'layout-boxed' => false,
         
         'theme' => [
-            'folder' => 'adminlte',
+            'folder' => 'CakeLte',
             'skin' => 'blue',
         ],
         'footer' => [
