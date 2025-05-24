@@ -144,10 +144,8 @@ class CollectedChestsController extends AppController
         $daysSinceReference = $referenceDay->diffInDays($today);
         $currentCycleOffset = (int) floor($daysSinceReference / $cycleDuration);
         $targetCycleOffset = $currentCycleOffset - $selectedCycleOffset;
-        $cycleStart = $referenceDay->addDays($currentCycleOffset * $cycleDuration);
+        $cycleStart = $referenceDay->addDays($targetCycleOffset * $cycleDuration);
         $cycleEnd = $cycleStart->addDays($cycleDuration)->sub(new \DateInterval('PT1S'));
-
-
 
         // Buscar os baús coletados no ciclo selecionado
         $collectedChestsData = $collectedChestsTable->find()

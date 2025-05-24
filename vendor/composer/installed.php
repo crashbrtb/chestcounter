@@ -3,7 +3,7 @@
         'name' => 'cakephp/app',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'bae7299d6defda04a94aee04d814162b5e586c9e',
+        'reference' => 'b2619a9100386aa458fa1752e5fa8a4f1833cc55',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -22,7 +22,7 @@
         'cakephp/app' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'bae7299d6defda04a94aee04d814162b5e586c9e',
+            'reference' => 'b2619a9100386aa458fa1752e5fa8a4f1833cc55',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -487,8 +487,8 @@
         'psr/container-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^2.0',
-                1 => '^1.0',
+                0 => '^1.0',
+                1 => '^2.0',
             ),
         ),
         'psr/http-client' => array(
@@ -578,8 +578,8 @@
         'psr/log-implementation' => array(
             'dev_requirement' => false,
             'provided' => array(
-                0 => '^3.0',
-                1 => '1.0|2.0|3.0',
+                0 => '1.0|2.0|3.0',
+                1 => '^3.0',
             ),
         ),
         'psr/simple-cache' => array(
