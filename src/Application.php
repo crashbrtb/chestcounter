@@ -56,6 +56,9 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         // Call parent to load bootstrap from files.
         parent::bootstrap();
         $this->addPlugin('Authentication');
+        
+        // Carrega o CakeLte com todas as configurações necessárias
+        $this->addPlugin('CakeLte', ['bootstrap' => true, 'routes' => true]);
 
         if (PHP_SAPI !== 'cli') {
             FactoryLocator::add(

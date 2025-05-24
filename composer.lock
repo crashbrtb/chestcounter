@@ -4,8 +4,93 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f251d3a25c18fc35f8f9f5a4aaf132e0",
+    "content-hash": "c92a3f68bd298a2420132dea43a1715e",
     "packages": [
+        {
+            "name": "almasaeed2010/adminlte",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/ColorlibHQ/AdminLTE.git",
+                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/ColorlibHQ/AdminLTE/zipball/bd4d9c72931f1dd28601b6bfb387554a381ad540",
+                "reference": "bd4d9c72931f1dd28601b6bfb387554a381ad540",
+                "shasum": ""
+            },
+            "type": "library",
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Colorlib"
+                }
+            ],
+            "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 4",
+            "homepage": "https://adminlte.io/",
+            "keywords": [
+                "JS",
+                "admin",
+                "back-end",
+                "css",
+                "less",
+                "responsive",
+                "template",
+                "theme",
+                "web"
+            ],
+            "support": {
+                "issues": "https://github.com/ColorlibHQ/AdminLTE/issues",
+                "source": "https://github.com/ColorlibHQ/AdminLTE/tree/v3.2.0"
+            },
+            "time": "2022-02-07T20:33:09+00:00"
+        },
+        {
+            "name": "arodu/cakelte",
+            "version": "v2.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/arodu/cakelte.git",
+                "reference": "0077bdd47e848122d665f55fa391cad067e8b454"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/arodu/cakelte/zipball/0077bdd47e848122d665f55fa391cad067e8b454",
+                "reference": "0077bdd47e848122d665f55fa391cad067e8b454",
+                "shasum": ""
+            },
+            "require": {
+                "almasaeed2010/adminlte": "^3.2",
+                "cakephp/cakephp": "^5.0",
+                "friendsofcake/bootstrap-ui": "^5.0"
+            },
+            "require-dev": {
+                "cakedc/cakephp-phpstan": "^3.1",
+                "cakephp/cakephp-codesniffer": "^5.0",
+                "phpstan/phpstan": "^1.10",
+                "phpunit/phpunit": "^10.1.0"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "CakeLte\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "CakeLTE: AdminLTE plugin for CakePHP",
+            "support": {
+                "issues": "https://github.com/arodu/cakelte/issues",
+                "source": "https://github.com/arodu/cakelte/tree/v2.0.1"
+            },
+            "time": "2024-03-05T11:41:23+00:00"
+        },
         {
             "name": "cakephp/authentication",
             "version": "3.2.5",
@@ -436,6 +521,62 @@
                 }
             ],
             "time": "2025-01-08T16:17:16+00:00"
+        },
+        {
+            "name": "friendsofcake/bootstrap-ui",
+            "version": "5.1.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfCake/bootstrap-ui.git",
+                "reference": "177e9a4c35ed3a6c673a99ed37886607b9e0c6cf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfCake/bootstrap-ui/zipball/177e9a4c35ed3a6c673a99ed37886607b9e0c6cf",
+                "reference": "177e9a4c35ed3a6c673a99ed37886607b9e0c6cf",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/cakephp": "^5.1.4"
+            },
+            "require-dev": {
+                "cakephp/bake": "^3.0",
+                "cakephp/cakephp-codesniffer": "^5.1",
+                "phpunit/phpunit": "^10.5.5 || ^11.1.3"
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "BootstrapUI\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jad Bitar",
+                    "homepage": "http://jadb.io",
+                    "role": "Author"
+                },
+                {
+                    "name": "Others",
+                    "homepage": "https://github.com/friendsofcake/bootstrap-ui/graphs/contributors"
+                }
+            ],
+            "description": "Bootstrap front-end framework support for CakePHP",
+            "homepage": "http://github.com/friendsofcake/bootstrap-ui",
+            "keywords": [
+                "bootstrap",
+                "cakephp",
+                "front-end"
+            ],
+            "support": {
+                "issues": "http://github.com/friendsofcake/bootstrap-ui/issues",
+                "source": "http://github.com/friendsofcake/bootstrap-ui"
+            },
+            "time": "2025-04-01T16:50:47+00:00"
         },
         {
             "name": "laminas/laminas-diactoros",

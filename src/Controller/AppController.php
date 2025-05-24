@@ -48,6 +48,10 @@ class AppController extends Controller
         $this->loadComponent('Flash');
         $this->Authentication->allowUnauthenticated(['score']);
         
+        // Configuração do CakeLTE
+        $this->viewBuilder()
+            ->setClassName('CakeLte.CakeLte')
+            ->setLayout('CakeLte.top-nav');
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
