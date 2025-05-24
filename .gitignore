@@ -60,3 +60,6 @@ Desktop.ini
 # Arquivos de teste de cobertura
 /coverage/*
 .phpunit.cache/* 
+
+#readme
+README.md
