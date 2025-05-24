@@ -12,9 +12,9 @@ $this->layout = 'CakeLte.login';
 
         <?= $this->Form->create() ?>
 
-        <?= $this->Form->control('username', [
+        <?= $this->Form->control('email', [
             'label' => false,
-            'placeholder' => __('Username'),
+            'placeholder' => __('Email'),
             'append' => '<i class="fas fa-user"></i>',
         ]) ?>
 
@@ -35,27 +35,17 @@ $this->layout = 'CakeLte.login';
 
         <?= $this->Form->end() ?>
 
-        <div class="social-auth-links text-center mb-3">
-            <p>- OR -</p>
-            <?= $this->Html->link(
-                '<i class="fab fa-facebook-f mr-2"></i>' . __('Sign in using Facebook'),
-                '#',
-                ['class' => 'btn btn-block btn-primary', 'escape' => false]
-            ) ?>
-            <?= $this->Html->link(
-                '<i class="fab fa-google mr-2"></i>' . __('Sign in using Google'),
-                '#',
-                ['class' => 'btn btn-block btn-danger', 'escape' => false]
-            ) ?>
-        </div>
         <!-- /.social-auth-links -->
-
+        <?php
+        /*
         <p class="mb-1">
             <?= $this->Html->link(__('I forgot my password'), ['action' => 'recovery']) ?>
         </p>
         <p class="mb-0">
             <?= $this->Html->link(__('Register a new membership'), ['action' => 'register']) ?>
         </p>
+        */
+        ?>
     </div>
     <!-- /.login-card-body -->
 </div>
