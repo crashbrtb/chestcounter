@@ -15,3 +15,40 @@ jobs:
         password: ${{ secrets.PASS }}
         localDir: "."
         remoteDir: "public_html"
+        script: |
+          cd /home/storage/4/ab/f9/k201/public_html
+          echo "Accessing directory /home/storage/4/ab/f9/k201/public_html"
+          echo "Checking git status before pull..."
+          git status
+          echo "Updating repository with main branch..."
+          git fetch origin main
+          git reset --hard origin/main
+          git clean -fdx
+          echo "Repository updated. Checking git status after pull..."
+          git status
+
+          echo "Configuring app_local.php..."
+          if [ -f config/app_local.example.php ]; then
+            cp config/app_local.example.php config/app_local.php
+            echo "Copied app_local.example.php to app_local.php"
+
+            # Substituir placeholders no app_local.php
+            # Usamos # como delimitador para sed para evitar conflitos com caracteres nos secrets
+            sed -i "s#'salt' => env('SECURITY_SALT', '__SALT__'),#'salt' => '${{ secrets.SECURITY_SALT_PROD }}',#g" config/app_local.php
+            sed -i "s#'host' => 'localhost',#'host' => '${{ secrets.DB_HOST_PROD }}',#g" config/app_local.php
+            sed -i "s#'username' => 'my_app',#'username' => '${{ secrets.DB_USER_PROD }}',#g" config/app_local.php
+            sed -i "s#'password' => 'secret',#'password' => '${{ secrets.DB_PASSWORD_PROD }}',#g" config/app_local.php
+            sed -i "s#'database' => 'my_app',#'database' => '${{ secrets.DB_NAME_PROD }}',#g" config/app_local.php
+            
+            # Para a seção de teste, se você também quiser configurá-la com secrets:
+            # sed -i "s#'username' => 'my_app',#'username' => '${{ secrets.DB_TEST_USER_PROD }}',#g" config/app_local.php # Ajuste o pattern se necessário para diferenciar do default
+            # sed -i "s#'password' => 'secret',#'password' => '${{ secrets.DB_TEST_PASSWORD_PROD }}',#g" config/app_local.php # Ajuste o pattern
+            # sed -i "s#'database' => 'test_myapp',#'database' => '${{ secrets.DB_TEST_NAME_PROD }}',#g" config/app_local.php
+
+            echo "app_local.php configured with production secrets."
+          else
+            echo "ERROR: config/app_local.example.php not found!"
+            exit 1
+          fi
+
+          echo "Deploy completed successfully!"
