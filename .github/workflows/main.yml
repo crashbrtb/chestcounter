@@ -42,6 +42,7 @@ jobs:
           SSH_PORT_OPTION=""
           if [ -n "$SSH_PORT_NUMBER" ]; then
             SSH_PORT_OPTION="-p $SSH_PORT_NUMBER"
+
           fi
           
           echo "Starting rsync..."
@@ -114,6 +115,5 @@ jobs:
               echo "WARNING: config/app_local.example.php not found in the deployed files (checked at $TARGET_DIR/config/app_local.example.php)! Cannot create config/app_local.php from example."
               # Se config/app_local.php já existe no servidor e é gerenciado manualmente, isso pode ser OK.
             fi
-
             echo "Post-deployment configuration completed."
             echo "Deploy completed successfully!!"
