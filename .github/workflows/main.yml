@@ -12,8 +12,8 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASS }}
         # port: ${{ secrets.PORT }} # Descomente se sua porta SSH não for a 22
         script: |
           cd /home/storage/4/ab/f9/k201/public_html
