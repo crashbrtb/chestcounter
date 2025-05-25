@@ -18,7 +18,21 @@ class StandardChestsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+    
+        $this->Authentication->allowUnauthenticated(['weights']);
+    }
     public function index()
+    {
+        $query = $this->StandardChests->find();
+        $standardChests = $this->paginate($query);
+
+        $this->set(compact('standardChests'));
+    }
+
+    public function weights()
     {
         $query = $this->StandardChests->find();
         $standardChests = $this->paginate($query);

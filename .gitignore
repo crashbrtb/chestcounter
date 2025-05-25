@@ -1,0 +1,65 @@
+# CakePHP específico
+/config/app_local.php
+/config/.env
+/logs/*
+/tmp/*
+/vendor/*
+/webroot/files/*
+
+# Arquivos do CakePHP que devem ser ignorados
+.php-cs-fixer.cache
+phpunit.xml
+.phpunit.result.cache
+
+# IDE e editores
+.idea/*
+.vscode/*
+nbproject/*
+.project
+.buildpath
+.settings/*
+
+# Sistema Operacional
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Arquivos temporários
+*.swp
+*.swo
+*.bak
+*.tmp
+*~
+
+# Arquivos de dependências
+/composer.lock
+/composer.phar
+
+# Arquivos de ambiente
+.env
+.env.backup
+.env.production
+
+# Diretórios de cache
+/tmp/cache/models/*
+!/tmp/cache/models/empty
+/tmp/cache/persistent/*
+!/tmp/cache/persistent/empty
+/tmp/cache/views/*
+!/tmp/cache/views/empty
+/tmp/sessions/*
+!/tmp/sessions/empty
+/tmp/tests/*
+!/tmp/tests/empty
+
+# Arquivos de log
+/logs/*
+!/logs/empty
+
+# Arquivos de teste de cobertura
+/coverage/*
+.phpunit.cache/* 
+
+#readme
+README.md

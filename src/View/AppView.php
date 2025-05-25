@@ -16,6 +16,7 @@ declare(strict_types=1);
 namespace App\View;
 
 use Cake\View\View;
+use CakeLte\View\CakeLteTrait;
 
 /**
  * Application View
@@ -26,6 +27,8 @@ use Cake\View\View;
  */
 class AppView extends View
 {
+    use CakeLteTrait;
+
     /**
      * Initialization hook method.
      *
@@ -35,7 +38,13 @@ class AppView extends View
      *
      * @return void
      */
+    public string $layout = 'CakeLte/layout/default';
     public function initialize(): void
     {
+        parent::initialize();
+        $this->addHelper('CakeLte.CakeLte');
+        
+        // Inicializa o CakeLte com configurações específicas
+
     }
 }

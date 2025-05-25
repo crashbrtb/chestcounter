@@ -359,3 +359,1703 @@ Stack Trace:
 - ROOT\webroot\index.php:37
 - [main]:
 
+2025-05-24 02:01:45 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/css/adminlte.min.css
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:45 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/plugins/fontawesome-free/css/all.min.css
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:45 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/img/user1-128x128.jpg
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:45 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/plugins/jquery/jquery.min.js
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:45 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/img/user8-128x128.jpg
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:46 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/img/user3-128x128.jpg
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:46 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:46 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/js/adminlte.min.js
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:58 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/plugins/fontawesome-free/css/all.min.css
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:01:59 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/css/adminlte.min.css
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:02 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/css/adminlte.min.css
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:02 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/img/user3-128x128.jpg
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:02 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/img/user1-128x128.jpg
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:02 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/plugins/fontawesome-free/css/all.min.css
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:02 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/img/user8-128x128.jpg
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:03 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/plugins/jquery/jquery.min.js
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:03 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:02:03 error: [Cake\Http\Exception\MissingControllerException] Controller class `Adminlte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Adminlte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /adminlte/dist/js/adminlte.min.js
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score?cycle=0
+Client IP: 127.0.0.1
+2025-05-24 02:22:08 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:22:45 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:22:54 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:22:57 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:23 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:26 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:35 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:23:49 error: [Error] Class "Header" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 14
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:159
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:24:21 error: [Error] Class "Sidebar" not found in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 15
+Stack Trace:
+- CORE\src\Core\Configure\Engine\PhpConfig.php:84
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 02:25:31 error: [ParseError] Unmatched ']' in C:\Apache24\htdocs\chestcounter\config\cakelte.php on line 22
+Stack Trace:
+- CORE\src\Core\Configure.php:339
+- ROOT\vendor\arodu\cakelte\src\View\Helper\CakeLteHelper.php:37
+- CORE\src\View\Helper.php:90
+- CORE\src\View\HelperRegistry.php:157
+- CORE\src\Core\ObjectRegistry.php:115
+- CORE\src\View\View.php:1240
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteTrait.php:25
+- ROOT\vendor\arodu\cakelte\src\View\CakeLteView.php:21
+- CORE\src\View\View.php:367
+- CORE\src\View\ViewBuilder.php:595
+- CORE\src\View\ViewVarsTrait.php:66
+- CORE\src\Controller\Controller.php:710
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/score
+Client IP: 127.0.0.1
+2025-05-24 14:13:43 error: [Error] Call to undefined method App\Application::plugins() in C:\Apache24\htdocs\chestcounter\src\Application.php on line 61
+Stack Trace:
+- CORE\src\Http\Server.php:123
+- CORE\src\Http\Server.php:85
+- ROOT\webroot\index.php:37
+- [main]:
+
+2025-05-24 14:14:39 error: [Cake\Http\Exception\MissingControllerException] Controller class `Cake_lte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Cake_lte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /cake_lte/img/cake.icon.svg
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+2025-05-24 14:14:39 error: [Cake\Http\Exception\MissingControllerException] Controller class `Cake_lte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Cake_lte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /cake_lte/css/style.css
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+2025-05-24 14:14:43 error: [Cake\Http\Exception\MissingControllerException] Controller class `Cake_lte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Cake_lte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /cake_lte/img/cake.icon.svg
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+2025-05-24 14:14:43 error: [Cake\Http\Exception\MissingControllerException] Controller class `Cake_lte` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Cake_lte',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /cake_lte/css/style.css
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+2025-05-24 14:21:00 error: [Cake\View\Exception\MissingHelperException] Helper class `CakeLteHelper` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 134
+Exception Attributes: array (
+  'class' => 'CakeLteHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- CORE\src\Core\ObjectRegistry.php:111
+- CORE\src\View\HelperRegistry.php:74
+- CORE\src\View\HelperRegistry.php:100
+- CORE\src\View\View.php:1106
+- ROOT\templates\layout\CakeLte\layout\default.php:16
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-24 14:21:26 error: [Cake\View\Exception\MissingHelperException] Helper class `CakeLteHelper` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 134
+Exception Attributes: array (
+  'class' => 'CakeLteHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- CORE\src\Core\ObjectRegistry.php:111
+- CORE\src\View\HelperRegistry.php:74
+- CORE\src\View\HelperRegistry.php:100
+- CORE\src\View\View.php:1106
+- ROOT\vendor\arodu\cakelte\templates\layout\default.php:16
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-24 14:21:42 error: [Cake\View\Exception\MissingHelperException] Helper class `CakeLteHelper` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 134
+Exception Attributes: array (
+  'class' => 'CakeLteHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- CORE\src\Core\ObjectRegistry.php:111
+- CORE\src\View\HelperRegistry.php:74
+- CORE\src\View\HelperRegistry.php:100
+- CORE\src\View\View.php:1106
+- ROOT\vendor\arodu\cakelte\templates\layout\default.php:16
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-24 14:26:57 error: [Cake\View\Exception\MissingHelperException] Helper class `CakeLteHelper` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 134
+Exception Attributes: array (
+  'class' => 'CakeLteHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- CORE\src\Core\ObjectRegistry.php:111
+- CORE\src\View\HelperRegistry.php:74
+- CORE\src\View\HelperRegistry.php:100
+- CORE\src\View\View.php:1106
+- ROOT\vendor\arodu\cakelte\templates\layout\default.php:16
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-24 14:27:09 error: [Cake\View\Exception\MissingLayoutException] Layout file `CakeLte/default.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\layout\CakeLte/default.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\layout\CakeLte/default.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1472
+Exception Attributes: array (
+  'file' => 'CakeLte/default.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\layout\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\layout\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:822
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-24 14:27:29 error: [Cake\View\Exception\MissingHelperException] Helper class `CakeLteHelper` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\HelperRegistry.php on line 134
+Exception Attributes: array (
+  'class' => 'CakeLteHelper',
+  'plugin' => NULL,
+)
+Stack Trace:
+- CORE\src\Core\ObjectRegistry.php:111
+- CORE\src\View\HelperRegistry.php:74
+- CORE\src\View\HelperRegistry.php:100
+- CORE\src\View\View.php:1106
+- ROOT\templates\layout\CakeLte\layout\default.php:16
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-24 14:57:09 error: [Cake\Core\Exception\CakeException] Plugin named `CakeLte` is already loaded in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Core\PluginCollection.php on line 175
+Stack Trace:
+- CORE\src\Http\BaseApplication.php:146
+- APP/Application.php:61
+- CORE\src\Http\Server.php:123
+- CORE\src\Http\Server.php:85
+- ROOT\webroot\index.php:37
+- [main]:
+
+2025-05-24 15:03:00 error: [Cake\View\Exception\MissingElementException] Element file `CakeLte.header/leftmenu.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\plugin\CakeLte\element\header/leftmenu.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\arodu\cakelte\templates\element\header/leftmenu.php`
+- `C:\Apache24\htdocs\chestcounter\templates\element\header/leftmenu.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\element\header/leftmenu.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 685
+Exception Attributes: array (
+  'file' => 'header/leftmenu.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\plugin\\CakeLte\\element\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\arodu\\cakelte\\templates\\element\\',
+    2 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\element\\',
+    3 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\element\\',
+  ),
+)
+Stack Trace:
+- ROOT\templates\layout\CakeLte\layout\default.php:49
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /
+Client IP: 127.0.0.1
+2025-05-24 15:03:12 error: [Cake\View\Exception\MissingElementException] Element file `CakeLte.header/rightmenu.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\plugin\CakeLte\element\header/rightmenu.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\arodu\cakelte\templates\element\header/rightmenu.php`
+- `C:\Apache24\htdocs\chestcounter\templates\element\header/rightmenu.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\element\header/rightmenu.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 685
+Exception Attributes: array (
+  'file' => 'header/rightmenu.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\plugin\\CakeLte\\element\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\arodu\\cakelte\\templates\\element\\',
+    2 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\element\\',
+    3 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\element\\',
+  ),
+)
+Stack Trace:
+- ROOT\templates\layout\CakeLte\layout\default.php:56
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /
+Client IP: 127.0.0.1
+2025-05-24 20:08:29 error: [Cake\Http\Exception\MissingControllerException] Controller class `Underconstruction` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Underconstruction',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /underconstruction
+Client IP: 127.0.0.1
+2025-05-24 20:08:33 error: [Cake\Http\Exception\MissingControllerException] Controller class `Underconstruction.php` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Underconstruction.php',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:320
+- CORE\src\Controller\ControllerFactory.php:75
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /underconstruction.php
+Client IP: 127.0.0.1
+2025-05-24 20:08:46 error: [Cake\View\Exception\MissingTemplateException] Template file `Pages\underconstruction.php.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\Pages\underconstruction.php.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Pages\underconstruction.php.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => 'Pages\\underconstruction.php.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- APP/Controller\PagesController.php:65
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /pages/underconstruction.php
+Client IP: 127.0.0.1
+2025-05-24 20:09:33 error: [Cake\View\Exception\MissingTemplateException] Template file `Pages\underconstruction.php.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\Pages\underconstruction.php.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Pages\underconstruction.php.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => 'Pages\\underconstruction.php.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- APP/Controller\PagesController.php:65
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /pages/underconstruction.php
+Client IP: 127.0.0.1
+2025-05-24 20:09:39 error: [Cake\Http\Exception\MissingControllerException] Controller class `Underconstruction.php` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Underconstruction.php',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:320
+- CORE\src\Controller\ControllerFactory.php:75
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:78
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /underconstruction.php
+Client IP: 127.0.0.1
+2025-05-24 20:10:19 error: [Cake\Http\Exception\MissingControllerException] Controller class `Underconstruction` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Underconstruction',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /underconstruction
+Client IP: 127.0.0.1
+2025-05-24 21:59:25 error: [Cake\Http\Exception\MissingControllerException] Controller class `Login` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Login',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /login
+Referer URL: http://127.0.0.1/chestcounter/StandardChests
+Client IP: 127.0.0.1
+2025-05-24 22:41:06 error: [Cake\Http\Exception\MissingControllerException] Controller class `Login` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Login',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /login
+Referer URL: http://127.0.0.1/chestcounter/
+Client IP: 127.0.0.1

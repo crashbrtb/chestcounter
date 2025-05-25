@@ -144,10 +144,8 @@ class CollectedChestsController extends AppController
         $daysSinceReference = $referenceDay->diffInDays($today);
         $currentCycleOffset = (int) floor($daysSinceReference / $cycleDuration);
         $targetCycleOffset = $currentCycleOffset - $selectedCycleOffset;
-        $cycleStart = $referenceDay->addDays($currentCycleOffset * $cycleDuration);
+        $cycleStart = $referenceDay->addDays($targetCycleOffset * $cycleDuration);
         $cycleEnd = $cycleStart->addDays($cycleDuration)->sub(new \DateInterval('PT1S'));
-
-
 
         // Buscar os baús coletados no ciclo selecionado
         $collectedChestsData = $collectedChestsTable->find()
@@ -198,11 +196,11 @@ class CollectedChestsController extends AppController
 
         // Gerar as opções para o select box
         $cycleOptions = [];
-        for ($i = 0; $i <= 3; $i++) {
+        for ($i = 0; $i <= 1; $i++) {
             $offset = $currentCycleOffset - $i;
             $start = $referenceDay->addDays($offset * $cycleDuration)->format('Y-m-d');
             $end = $referenceDay->addDays(($offset + 1) * $cycleDuration)->format('Y-m-d');
-            $cycleOptions[$i] = ($i === 0 ? 'Ciclo Atual' : 'Ciclo Anterior ' . $i) . " ($start - $end)";
+            $cycleOptions[$i] = ($i === 0 ?  __('Current Cycle') : __('Previous Cycle') ) . " ($start - $end)";
         }
 
         // Formatar as datas do ciclo atual para exibição
@@ -210,6 +208,16 @@ class CollectedChestsController extends AppController
             'start' => $cycleStart->format('Y-m-d H:i:s'),
             'end' => $cycleEnd->format('Y-m-d H:i:s'),
         ];
+
+        // Desativa o sidebar especificamente para esta action
+        $this->set('cakelte_theme', [
+            'sidebar' => [
+                'enable' => false
+            ],
+            'navbar' => [
+                'enable' => true
+            ]
+        ]);
 
         // Passar os dados para a view
         $this->set(compact('playerChestCounts', 'playerTotalChests', 'playerFinalScores', 'cycleOptions', 'currentCycleFormatted', 'selectedCycleOffset', 'minimumChestScore'));

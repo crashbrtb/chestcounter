@@ -1,0 +1,851 @@
+# LANGUAGE translation of CakePHP Application
+# Copyright YEAR NAME <EMAIL@ADDRESS>
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"POT-Creation-Date: 2025-05-24 21:39+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Last-Translator: NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <EMAIL@ADDRESS>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: ./src/Controller/CollectedChestsController.php:54
+#: ./src/Controller/CollectedChestsController.php:76
+msgid "The collected chest has been saved."
+msgstr "O baú coletado foi salvo."
+
+#: ./src/Controller/CollectedChestsController.php:58
+#: ./src/Controller/CollectedChestsController.php:80
+msgid "The collected chest could not be saved. Please, try again."
+msgstr "O baú coletado não pôde ser salvo. Por favor, tente novamente."
+
+#: ./src/Controller/CollectedChestsController.php:97
+msgid "The collected chest has been deleted."
+msgstr "O baú coletado foi excluído."
+
+#: ./src/Controller/CollectedChestsController.php:99
+msgid "The collected chest could not be deleted. Please, try again."
+msgstr "O baú coletado não pôde ser excluído. Por favor, tente novamente."
+
+#: ./src/Controller/CollectedChestsController.php:203
+msgid "Current Cycle"
+msgstr "Ciclo Atual"
+
+#: ./src/Controller/CollectedChestsController.php:203
+msgid "Previous Cycle"
+msgstr "Ciclo Anterior"
+
+#: ./src/Controller/ConfigController.php:50
+#: ./src/Controller/ConfigController.php:72
+msgid "The config has been saved."
+msgstr "A configuração foi salva."
+
+#: ./src/Controller/ConfigController.php:54
+#: ./src/Controller/ConfigController.php:76
+msgid "The config could not be saved. Please, try again."
+msgstr "A configuração não pôde ser salva. Por favor, tente novamente."
+
+#: ./src/Controller/ConfigController.php:93
+msgid "The config has been deleted."
+msgstr "A configuração foi excluída."
+
+#: ./src/Controller/ConfigController.php:95
+msgid "The config could not be deleted. Please, try again."
+msgstr "A configuração não pôde ser excluída. Por favor, tente novamente."
+
+#: ./src/Controller/MembersController.php:54
+#: ./src/Controller/MembersController.php:76
+msgid "The member has been saved."
+msgstr "O membro foi salvo."
+
+#: ./src/Controller/MembersController.php:58
+#: ./src/Controller/MembersController.php:80
+msgid "The member could not be saved. Please, try again."
+msgstr "O membro não pôde ser salvo. Por favor, tente novamente."
+
+#: ./src/Controller/MembersController.php:97
+msgid "The member has been deleted."
+msgstr "O membro foi excluído."
+
+#: ./src/Controller/MembersController.php:99
+msgid "The member could not be deleted. Please, try again."
+msgstr "O membro não pôde ser excluído. Por favor, tente novamente."
+
+#: ./src/Controller/MembersController.php:157
+msgid "Tabela Members atualizada com sucesso."
+msgstr "Tabela de Membros atualizada com sucesso."
+
+#: ./src/Controller/RolesController.php:50
+#: ./src/Controller/RolesController.php:73
+msgid "The role has been saved."
+msgstr "A função foi salva."
+
+#: ./src/Controller/RolesController.php:54
+#: ./src/Controller/RolesController.php:77
+msgid "The role could not be saved. Please, try again."
+msgstr "A função não pôde ser salva. Por favor, tente novamente."
+
+#: ./src/Controller/RolesController.php:95
+msgid "The role has been deleted."
+msgstr "A função foi excluída."
+
+#: ./src/Controller/RolesController.php:97
+msgid "The role could not be deleted. Please, try again."
+msgstr "A função não pôde ser excluída. Por favor, tente novamente."
+
+#: ./src/Controller/RolesUsersController.php:51
+#: ./src/Controller/RolesUsersController.php:75
+msgid "The roles user has been saved."
+msgstr "A atribuição de função ao usuário foi salva."
+
+#: ./src/Controller/RolesUsersController.php:55
+#: ./src/Controller/RolesUsersController.php:79
+msgid "The roles user could not be saved. Please, try again."
+msgstr "A atribuição de função ao usuário não pôde ser salva. Por favor, tente novamente."
+
+#: ./src/Controller/RolesUsersController.php:98
+msgid "The roles user has been deleted."
+msgstr "A atribuição de função ao usuário foi excluída."
+
+#: ./src/Controller/RolesUsersController.php:100
+msgid "The roles user could not be deleted. Please, try again."
+msgstr "A atribuição de função ao usuário não pôde ser excluída. Por favor, tente novamente."
+
+#: ./src/Controller/StandardChestsController.php:53
+#: ./src/Controller/StandardChestsController.php:75
+msgid "The standard chest has been saved."
+msgstr "O baú padrão foi salvo."
+
+#: ./src/Controller/StandardChestsController.php:57
+#: ./src/Controller/StandardChestsController.php:79
+msgid "The standard chest could not be saved. Please, try again."
+msgstr "O baú padrão não pôde ser salvo. Por favor, tente novamente."
+
+#: ./src/Controller/StandardChestsController.php:96
+msgid "The standard chest has been deleted."
+msgstr "O baú padrão foi excluído."
+
+#: ./src/Controller/StandardChestsController.php:98
+msgid "The standard chest could not be deleted. Please, try again."
+msgstr "O baú padrão não pôde ser excluído. Por favor, tente novamente."
+
+#: ./src/Controller/UsersController.php:59
+#: ./src/Controller/UsersController.php:82
+msgid "The user has been saved."
+msgstr "O usuário foi salvo."
+
+#: ./src/Controller/UsersController.php:63
+#: ./src/Controller/UsersController.php:86
+msgid "The user could not be saved. Please, try again."
+msgstr "O usuário não pôde ser salvo. Por favor, tente novamente."
+
+#: ./src/Controller/UsersController.php:104
+msgid "The user has been deleted."
+msgstr "O usuário foi excluído."
+
+#: ./src/Controller/UsersController.php:106
+msgid "The user could not be deleted. Please, try again."
+msgstr "O usuário não pôde ser excluído. Por favor, tente novamente."
+
+#: ./src/Controller/UsersController.php:128
+msgid "Invalid email or password"
+msgstr "Email ou senha inválidos"
+
+#: ./templates/CollectedChests/add.php:9
+msgid "Add Collected Chest"
+msgstr "Adicionar Baú Coletado"
+
+#: ./templates/CollectedChests/add.php:11
+#: ./templates/CollectedChests/edit.php:11
+#: ./templates/CollectedChests/index.php:11
+#: ./templates/CollectedChests/view.php:11
+#: ./templates/Config/add.php:11
+#: ./templates/Config/edit.php:11
+#: ./templates/Config/index.php:11
+#: ./templates/Config/view.php:11
+#: ./templates/Errors/add.php:11
+#: ./templates/Errors/edit.php:11
+#: ./templates/Errors/index.php:11
+#: ./templates/Errors/view.php:11
+#: ./templates/Members/add.php:11
+#: ./templates/Members/edit.php:11
+#: ./templates/Members/index.php:11
+#: ./templates/Members/view.php:11
+#: ./templates/RolesUsers/add.php:11
+#: ./templates/RolesUsers/edit.php:11
+#: ./templates/RolesUsers/index.php:11
+#: ./templates/RolesUsers/view.php:11
+#: ./templates/Roles/add.php:11
+#: ./templates/Roles/edit.php:11
+#: ./templates/Roles/index.php:11
+#: ./templates/Roles/view.php:11
+#: ./templates/StandardChests/add.php:11
+#: ./templates/StandardChests/edit.php:11
+#: ./templates/StandardChests/index.php:11
+#: ./templates/StandardChests/view.php:11
+#: ./templates/Users/add.php:11
+#: ./templates/Users/edit.php:11
+#: ./templates/Users/index.php:11
+#: ./templates/Users/view.php:11
+#: ./templates/element/header/menu.php:2
+msgid "Home"
+msgstr "Início"
+
+#: ./templates/CollectedChests/add.php:12
+#: ./templates/CollectedChests/edit.php:12
+#: ./templates/CollectedChests/index.php:12
+#: ./templates/CollectedChests/view.php:12
+msgid "List Collected Chests"
+msgstr "Listar Baús Coletados"
+
+#: ./templates/CollectedChests/add.php:13
+#: ./templates/Config/add.php:13
+#: ./templates/Errors/add.php:13
+#: ./templates/Members/add.php:13
+#: ./templates/RolesUsers/add.php:13
+#: ./templates/Roles/add.php:13
+#: ./templates/StandardChests/add.php:13
+#: ./templates/Users/add.php:13
+msgid "Add"
+msgstr "Adicionar"
+
+#: ./templates/CollectedChests/add.php:28
+#: ./templates/CollectedChests/edit.php:36
+#: ./templates/Config/add.php:26
+#: ./templates/Config/edit.php:34
+#: ./templates/Errors/add.php:24
+#: ./templates/Errors/edit.php:32
+#: ./templates/Members/add.php:27
+#: ./templates/Members/edit.php:35
+#: ./templates/RolesUsers/add.php:25
+#: ./templates/RolesUsers/edit.php:33
+#: ./templates/Roles/add.php:27
+#: ./templates/Roles/edit.php:35
+#: ./templates/StandardChests/add.php:25
+#: ./templates/StandardChests/edit.php:33
+#: ./templates/Users/add.php:27
+#: ./templates/Users/edit.php:35
+msgid "Save"
+msgstr "Salvar"
+
+#: ./templates/CollectedChests/add.php:29
+#: ./templates/CollectedChests/edit.php:37
+#: ./templates/CollectedChests/view.php:59
+#: ./templates/Config/add.php:27
+#: ./templates/Config/edit.php:35
+#: ./templates/Config/view.php:51
+#: ./templates/Errors/add.php:25
+#: ./templates/Errors/edit.php:33
+#: ./templates/Errors/view.php:39
+#: ./templates/Members/add.php:28
+#: ./templates/Members/edit.php:36
+#: ./templates/Members/view.php:55
+#: ./templates/RolesUsers/add.php:26
+#: ./templates/RolesUsers/edit.php:34
+#: ./templates/RolesUsers/view.php:47
+#: ./templates/Roles/add.php:28
+#: ./templates/Roles/edit.php:36
+#: ./templates/Roles/view.php:59
+#: ./templates/StandardChests/add.php:26
+#: ./templates/StandardChests/edit.php:34
+#: ./templates/StandardChests/view.php:47
+#: ./templates/Users/add.php:28
+#: ./templates/Users/edit.php:36
+#: ./templates/Users/view.php:55
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: ./templates/CollectedChests/edit.php:9
+msgid "Edit Collected Chest"
+msgstr "Editar Baú Coletado"
+
+#: ./templates/CollectedChests/edit.php:13
+#: ./templates/CollectedChests/index.php:54
+#: ./templates/CollectedChests/view.php:13
+#: ./templates/Config/edit.php:13
+#: ./templates/Config/index.php:50
+#: ./templates/Config/view.php:13
+#: ./templates/Errors/edit.php:13
+#: ./templates/Errors/index.php:44
+#: ./templates/Errors/view.php:13
+#: ./templates/Members/edit.php:13
+#: ./templates/Members/index.php:52
+#: ./templates/Members/view.php:13
+#: ./templates/RolesUsers/edit.php:13
+#: ./templates/RolesUsers/index.php:48
+#: ./templates/RolesUsers/view.php:13
+#: ./templates/Roles/edit.php:13
+#: ./templates/Roles/index.php:54
+#: ./templates/Roles/view.php:13
+#: ./templates/Roles/view.php:99
+#: ./templates/StandardChests/edit.php:13
+#: ./templates/StandardChests/index.php:48
+#: ./templates/StandardChests/view.php:13
+#: ./templates/Users/edit.php:13
+#: ./templates/Users/index.php:52
+#: ./templates/Users/view.php:13
+#: ./templates/Users/view.php:95
+msgid "View"
+msgstr "Visualizar"
+
+#: ./templates/CollectedChests/edit.php:14
+#: ./templates/CollectedChests/index.php:55
+#: ./templates/CollectedChests/view.php:58
+#: ./templates/Config/edit.php:14
+#: ./templates/Config/index.php:51
+#: ./templates/Config/view.php:50
+#: ./templates/Errors/edit.php:14
+#: ./templates/Errors/index.php:45
+#: ./templates/Errors/view.php:38
+#: ./templates/Members/edit.php:14
+#: ./templates/Members/index.php:53
+#: ./templates/Members/view.php:54
+#: ./templates/RolesUsers/edit.php:14
+#: ./templates/RolesUsers/index.php:49
+#: ./templates/RolesUsers/view.php:46
+#: ./templates/Roles/edit.php:14
+#: ./templates/Roles/index.php:55
+#: ./templates/Roles/view.php:58
+#: ./templates/Roles/view.php:100
+#: ./templates/StandardChests/edit.php:14
+#: ./templates/StandardChests/index.php:49
+#: ./templates/StandardChests/view.php:46
+#: ./templates/Users/edit.php:14
+#: ./templates/Users/index.php:53
+#: ./templates/Users/view.php:54
+#: ./templates/Users/view.php:96
+msgid "Edit"
+msgstr "Editar"
+
+#: ./templates/CollectedChests/edit.php:30
+#: ./templates/CollectedChests/index.php:56
+#: ./templates/CollectedChests/view.php:52
+#: ./templates/Config/edit.php:28
+#: ./templates/Config/index.php:52
+#: ./templates/Config/view.php:44
+#: ./templates/Errors/edit.php:26
+#: ./templates/Errors/index.php:46
+#: ./templates/Errors/view.php:32
+#: ./templates/Members/edit.php:29
+#: ./templates/Members/index.php:54
+#: ./templates/Members/view.php:48
+#: ./templates/RolesUsers/edit.php:27
+#: ./templates/RolesUsers/index.php:50
+#: ./templates/RolesUsers/view.php:40
+#: ./templates/Roles/edit.php:29
+#: ./templates/Roles/index.php:56
+#: ./templates/Roles/view.php:52
+#: ./templates/Roles/view.php:101
+#: ./templates/StandardChests/edit.php:27
+#: ./templates/StandardChests/index.php:50
+#: ./templates/StandardChests/view.php:40
+#: ./templates/Users/edit.php:29
+#: ./templates/Users/index.php:54
+#: ./templates/Users/view.php:48
+#: ./templates/Users/view.php:97
+msgid "Delete"
+msgstr "Excluir"
+
+#: ./templates/CollectedChests/edit.php:32
+#: ./templates/CollectedChests/index.php:56
+#: ./templates/CollectedChests/view.php:54
+#: ./templates/Config/edit.php:30
+#: ./templates/Config/index.php:52
+#: ./templates/Config/view.php:46
+#: ./templates/Errors/edit.php:28
+#: ./templates/Errors/index.php:46
+#: ./templates/Errors/view.php:34
+#: ./templates/Members/edit.php:31
+#: ./templates/Members/index.php:54
+#: ./templates/Members/view.php:50
+#: ./templates/RolesUsers/edit.php:29
+#: ./templates/RolesUsers/index.php:50
+#: ./templates/RolesUsers/view.php:42
+#: ./templates/Roles/edit.php:31
+#: ./templates/Roles/index.php:56
+#: ./templates/Roles/view.php:54
+#: ./templates/Roles/view.php:101
+#: ./templates/StandardChests/edit.php:29
+#: ./templates/StandardChests/index.php:50
+#: ./templates/StandardChests/view.php:42
+#: ./templates/Users/edit.php:31
+#: ./templates/Users/index.php:54
+#: ./templates/Users/view.php:50
+#: ./templates/Users/view.php:97
+msgid "Are you sure you want to delete # {0}?"
+msgstr "Tem certeza que deseja excluir # {0}?"
+
+#: ./templates/CollectedChests/index.php:9
+msgid "Collected Chests"
+msgstr "Baús Coletados"
+
+#: ./templates/CollectedChests/index.php:27
+msgid "New Collected Chest"
+msgstr "Novo Baú Coletado"
+
+#: ./templates/CollectedChests/index.php:41
+#: ./templates/Config/index.php:39
+#: ./templates/Errors/index.php:36
+#: ./templates/Members/index.php:40
+#: ./templates/RolesUsers/index.php:38
+#: ./templates/Roles/index.php:41
+#: ./templates/Roles/view.php:81
+#: ./templates/StandardChests/index.php:38
+#: ./templates/Users/index.php:40
+#: ./templates/Users/view.php:77
+msgid "Actions"
+msgstr "Ações"
+
+#: ./templates/CollectedChests/index.php:66
+#: ./templates/Config/index.php:62
+#: ./templates/Errors/index.php:56
+#: ./templates/Members/index.php:64
+#: ./templates/RolesUsers/index.php:60
+#: ./templates/Roles/index.php:66
+#: ./templates/StandardChests/index.php:60
+#: ./templates/Users/index.php:64
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr "Página {{page}} de {{pages}}, mostrando {{current}} registro(s) de {{count}} no total"
+
+#: ./templates/CollectedChests/score.php:56
+msgid "Players Score"
+msgstr "Pontuação dos Jogadores"
+
+#: ./templates/CollectedChests/score.php:61
+msgid "Filter"
+msgstr "Filtrar"
+
+#: ./templates/CollectedChests/score.php:72
+#: ./templates/CollectedChests/view.php:28
+#: ./templates/Members/view.php:24
+msgid "Player"
+msgstr "Jogador"
+
+#: ./templates/CollectedChests/score.php:73
+msgid "Total Chests"
+msgstr "Total de Baús"
+
+#: ./templates/CollectedChests/score.php:74
+msgid "Final Score"
+msgstr "Pontuação Final"
+
+#: ./templates/CollectedChests/score.php:108
+msgid "No chests collected in this cycle."
+msgstr "Nenhum baú coletado neste ciclo."
+
+#: ./templates/CollectedChests/score.php:124
+msgid "Time remaining until the end of the Current Cycle: "
+msgstr "Tempo restante para o fim do Ciclo Atual: "
+
+#: ./templates/CollectedChests/score.php:126
+msgid "{0} day{1}, "
+msgstr "{0} dia{1}, "
+
+#: ./templates/CollectedChests/score.php:128
+msgid "{0} hour{1}, "
+msgstr "{0} hora{1}, "
+
+#: ./templates/CollectedChests/score.php:129
+msgid "{0} minute{1}, "
+msgstr "{0} minuto{1}, "
+
+#: ./templates/CollectedChests/score.php:130
+msgid "{0} second{1}"
+msgstr "{0} segundo{1}"
+
+#: ./templates/CollectedChests/score.php:133
+msgid "The Current Cycle has already ended."
+msgstr "O Ciclo Atual já terminou."
+
+#: ./templates/CollectedChests/view.php:9
+msgid "Collected Chest"
+msgstr "Baú Coletado"
+
+#: ./templates/CollectedChests/view.php:24
+#: ./templates/Roles/view.php:24
+#: ./templates/Roles/view.php:76
+#: ./templates/Users/view.php:24
+#: ./templates/Users/view.php:72
+msgid "Name"
+msgstr "Nome"
+
+#: ./templates/CollectedChests/view.php:32
+#: ./templates/StandardChests/view.php:24
+msgid "Source"
+msgstr "Origem"
+
+#: ./templates/CollectedChests/view.php:36
+#: ./templates/Config/view.php:36
+#: ./templates/Errors/view.php:24
+#: ./templates/Members/view.php:28
+#: ./templates/RolesUsers/view.php:32
+#: ./templates/Roles/view.php:36
+#: ./templates/Roles/view.php:75
+#: ./templates/StandardChests/view.php:28
+#: ./templates/Users/view.php:32
+#: ./templates/Users/view.php:71
+msgid "Id"
+msgstr "Id"
+
+#: ./templates/CollectedChests/view.php:40
+msgid "Type"
+msgstr "Tipo"
+
+#: ./templates/CollectedChests/view.php:44
+msgid "Collected At"
+msgstr "Coletado Em"
+
+#: ./templates/Config/add.php:9
+msgid "Add Config"
+msgstr "Adicionar Configuração"
+
+#: ./templates/Config/add.php:12
+#: ./templates/Config/edit.php:12
+#: ./templates/Config/index.php:12
+#: ./templates/Config/view.php:12
+msgid "List Config"
+msgstr "Listar Configurações"
+
+#: ./templates/Config/edit.php:9
+msgid "Edit Config"
+msgstr "Editar Configuração"
+
+#: ./templates/Config/index.php:9
+#: ./templates/Config/view.php:9
+msgid "Config"
+msgstr "Configuração"
+
+#: ./templates/Config/index.php:27
+msgid "New Config"
+msgstr "Nova Configuração"
+
+#: ./templates/Config/view.php:24
+msgid "Param"
+msgstr "Parâmetro"
+
+#: ./templates/Config/view.php:28
+msgid "Value"
+msgstr "Valor"
+
+#: ./templates/Config/view.php:32
+#: ./templates/Roles/view.php:28
+#: ./templates/Users/view.php:73
+msgid "Description"
+msgstr "Descrição"
+
+#: ./templates/Errors/add.php:9
+msgid "Add Error"
+msgstr "Adicionar Erro"
+
+#: ./templates/Errors/add.php:12
+#: ./templates/Errors/edit.php:12
+#: ./templates/Errors/index.php:12
+#: ./templates/Errors/view.php:12
+msgid "List Errors"
+msgstr "Listar Erros"
+
+#: ./templates/Errors/edit.php:9
+msgid "Edit Error"
+msgstr "Editar Erro"
+
+#: ./templates/Errors/index.php:9
+msgid "Errors"
+msgstr "Erros"
+
+#: ./templates/Errors/index.php:27
+msgid "New Error"
+msgstr "Novo Erro"
+
+#: ./templates/Errors/view.php:9
+msgid "Error"
+msgstr "Erro"
+
+#: ./templates/Errors/view.php:46
+msgid "Error Value"
+msgstr "Valor do Erro"
+
+#: ./templates/Members/add.php:9
+msgid "Add Member"
+msgstr "Adicionar Membro"
+
+#: ./templates/Members/add.php:12
+#: ./templates/Members/edit.php:12
+#: ./templates/Members/index.php:12
+#: ./templates/Members/view.php:12
+msgid "List Members"
+msgstr "Listar Membros"
+
+#: ./templates/Members/edit.php:9
+msgid "Edit Member"
+msgstr "Editar Membro"
+
+#: ./templates/Members/index.php:9
+msgid "Members"
+msgstr "Membros"
+
+#: ./templates/Members/index.php:27
+msgid "New Member"
+msgstr "Novo Membro"
+
+#: ./templates/Members/view.php:9
+msgid "Member"
+msgstr "Membro"
+
+#: ./templates/Members/view.php:32
+msgid "Active"
+msgstr "Ativo"
+
+#: ./templates/Members/view.php:36
+msgid "Created At"
+msgstr "Criado Em"
+
+#: ./templates/Members/view.php:40
+msgid "Modified At"
+msgstr "Modificado Em"
+
+#: ./templates/RolesUsers/add.php:9
+msgid "Add Roles User"
+msgstr "Adicionar Atribuição de Função"
+
+#: ./templates/RolesUsers/add.php:12
+#: ./templates/RolesUsers/edit.php:12
+#: ./templates/RolesUsers/index.php:12
+#: ./templates/RolesUsers/view.php:12
+msgid "List Roles Users"
+msgstr "Listar Atribuições de Função"
+
+#: ./templates/RolesUsers/edit.php:9
+msgid "Edit Roles User"
+msgstr "Editar Atribuição de Função"
+
+#: ./templates/RolesUsers/index.php:9
+msgid "Roles Users"
+msgstr "Atribuições de Função"
+
+#: ./templates/RolesUsers/index.php:27
+msgid "New Roles User"
+msgstr "Nova Atribuição de Função"
+
+#: ./templates/RolesUsers/view.php:9
+msgid "Roles User"
+msgstr "Atribuição de Função"
+
+#: ./templates/RolesUsers/view.php:24
+#: ./templates/Users/view.php:9
+msgid "User"
+msgstr "Usuário"
+
+#: ./templates/RolesUsers/view.php:28
+#: ./templates/Roles/view.php:9
+msgid "Role"
+msgstr "Função"
+
+#: ./templates/Roles/add.php:9
+msgid "Add Role"
+msgstr "Adicionar Função"
+
+#: ./templates/Roles/add.php:12
+#: ./templates/Roles/edit.php:12
+#: ./templates/Roles/index.php:12
+#: ./templates/Roles/view.php:12
+#: ./templates/Users/view.php:65
+msgid "List Roles"
+msgstr "Listar Funções"
+
+#: ./templates/Roles/edit.php:9
+msgid "Edit Role"
+msgstr "Editar Função"
+
+#: ./templates/Roles/index.php:9
+msgid "Roles"
+msgstr "Funções"
+
+#: ./templates/Roles/index.php:27
+#: ./templates/Users/view.php:64
+msgid "New Role"
+msgstr "Nova Função"
+
+#: ./templates/Roles/view.php:32
+#: ./templates/Users/view.php:74
+msgid "Alias"
+msgstr "Apelido"
+
+#: ./templates/Roles/view.php:40
+#: ./templates/Roles/view.php:79
+#: ./templates/Users/view.php:36
+#: ./templates/Users/view.php:75
+msgid "Created"
+msgstr "Criado"
+
+#: ./templates/Roles/view.php:44
+#: ./templates/Roles/view.php:80
+#: ./templates/Users/view.php:40
+#: ./templates/Users/view.php:76
+msgid "Modified"
+msgstr "Modificado"
+
+#: ./templates/Roles/view.php:66
+msgid "Related Users"
+msgstr "Usuários Relacionados"
+
+#: ./templates/Roles/view.php:68
+#: ./templates/Users/index.php:27
+msgid "New User"
+msgstr "Novo Usuário"
+
+#: ./templates/Roles/view.php:69
+#: ./templates/Users/add.php:12
+#: ./templates/Users/edit.php:12
+#: ./templates/Users/index.php:12
+#: ./templates/Users/view.php:12
+msgid "List Users"
+msgstr "Listar Usuários"
+
+#: ./templates/Roles/view.php:77
+#: ./templates/Users/view.php:28
+msgid "Email"
+msgstr "Email"
+
+#: ./templates/Roles/view.php:78
+#: ./templates/Users/login.php:23
+msgid "Password"
+msgstr "Senha"
+
+#: ./templates/Roles/view.php:86
+msgid "Users record not found!"
+msgstr "Registro de usuários não encontrado!"
+
+#: ./templates/StandardChests/add.php:9
+msgid "Add Standard Chest"
+msgstr "Adicionar Baú Padrão"
+
+#: ./templates/StandardChests/add.php:12
+#: ./templates/StandardChests/edit.php:12
+#: ./templates/StandardChests/index.php:12
+#: ./templates/StandardChests/view.php:12
+msgid "List Standard Chests"
+msgstr "Listar Baús Padrão"
+
+#: ./templates/StandardChests/edit.php:9
+msgid "Edit Standard Chest"
+msgstr "Editar Baú Padrão"
+
+#: ./templates/StandardChests/index.php:9
+msgid "Standard Chests"
+msgstr "Baús Padrão"
+
+#: ./templates/StandardChests/index.php:27
+msgid "New Standard Chest"
+msgstr "Novo Baú Padrão"
+
+#: ./templates/StandardChests/view.php:9
+msgid "Standard Chest"
+msgstr "Baú Padrão"
+
+#: ./templates/StandardChests/view.php:32
+#: ./templates/element/header/menu.php:5
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:2
+msgid "Score"
+msgstr "Pontuação"
+
+#: ./templates/Users/add.php:9
+msgid "Add User"
+msgstr "Adicionar Usuário"
+
+#: ./templates/Users/edit.php:9
+msgid "Edit User"
+msgstr "Editar Usuário"
+
+#: ./templates/Users/index.php:9
+msgid "Users"
+msgstr "Usuários"
+
+#: ./templates/Users/login.php:11
+msgid "Sign in to start your session"
+msgstr "Faça login para iniciar sua sessão"
+
+#: ./templates/Users/login.php:17
+msgid "Username"
+msgstr "Nome de usuário"
+
+#: ./templates/Users/login.php:32
+msgid "Sign In"
+msgstr "Entrar"
+
+#: ./templates/Users/login.php:41
+msgid "Sign in using Facebook"
+msgstr "Entrar usando o Facebook"
+
+#: ./templates/Users/login.php:46
+msgid "Sign in using Google"
+msgstr "Entrar usando o Google"
+
+#: ./templates/Users/login.php:54
+msgid "I forgot my password"
+msgstr "Esqueci minha senha"
+
+#: ./templates/Users/login.php:57
+msgid "Register a new membership"
+msgstr "Registrar uma nova conta"
+
+#: ./templates/Users/view.php:62
+msgid "Related Roles"
+msgstr "Funções Relacionadas"
+
+#: ./templates/Users/view.php:82
+msgid "Roles record not found!"
+msgstr "Registro de funções não encontrado!"
+
+#: ./templates/element/header/menu.php:8
+msgid "Theme"
+msgstr "Tema"
+
+#: ./templates/layout/error.php:36
+msgid "Back"
+msgstr "Voltar"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:5
+msgid "Bank"
+msgstr "Banco"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:8
+msgid "History"
+msgstr "Histórico"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:2
+msgid "Login"
+msgstr "Entrar"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:7
+msgid "Language"
+msgstr "Idioma"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:4
+msgid "MAIN"
+msgstr "PRINCIPAL"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:8
+msgid "Start Pages"
+msgstr "Páginas Iniciais"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:12
+msgid "Active Page"
+msgstr "Página Ativa"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:16
+msgid "Inactive Page"
+msgstr "Página Inativa"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:22
+msgid "Simple Link"
+msgstr "Link Simples"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:23
+msgid "New"
+msgstr "Novo"
+
