@@ -22,28 +22,15 @@ jobs:
           echo "Accessing directory $TARGET_DIR"
           cd "$TARGET_DIR" || exit 1
 
-          # Verificar se é um repositório Git. Se não, clonar.
-          if [ ! -d ".git" ]; then
-            echo "Directory is not a Git repository. Cloning $REPO_URL branch $BRANCH..."
-            # Certifique-se de que o diretório está vazio ou o clone falhará
-            # Você pode querer adicionar `rm -rf ./* ./.[!.]*` aqui com MUITO CUIDADO se souber que pode limpar
-            git clone --branch "$BRANCH" "$REPO_URL" .
-            if [ $? -ne 0 ]; then
-              echo "Failed to clone repository."
-              exit 1
-            fi
-            echo "Repository cloned successfully."
-          else
-            echo "Directory is a Git repository. Updating..."
-            echo "Checking git status before update..."
-            git status
-            
-            echo "Updating repository with $BRANCH branch..."
-            git fetch origin "$BRANCH"
-            git reset --hard "origin/$BRANCH"
-            git clean -fdx # Remove untracked files and directories
-            echo "Repository updated."
-          fi
+          echo "Directory is expected to be a Git repository. Updating..."
+          echo "Checking git status before update..."
+          git status
+          
+          echo "Updating repository with $BRANCH branch..."
+          git fetch origin "$BRANCH"
+          git reset --hard "origin/$BRANCH"
+          git clean -fdx # Remove untracked files and directories
+          echo "Repository updated."
 
           echo "Configuring app_local.php on server..."
           if [ -f config/app_local.example.php ]; then
@@ -59,7 +46,7 @@ jobs:
             
             echo "app_local.php configured with production secrets on server."
           else
-            echo "ERROR: config/app_local.example.php not found on server! This usually means the git clone/pull failed or the file is missing in the repository."
+            echo "ERROR: config/app_local.example.php not found on server! This usually means the git pull failed or the file is missing in the repository."
             # Considerar sair com erro se o arquivo de config for essencial
             # exit 1 
           fi
