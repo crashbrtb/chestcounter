@@ -1,56 +1,119 @@
-name: Deploy via Git (SSH)
-on: push
+name: Deploy to Server using rsync
+
+on:
+  push:
+    branches:
+      - main # Mude para 'master' ou sua branch principal, se necessário
+
 jobs:
   deploy:
-    name: Deploy
+    name: Deploy to Server
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-    - name: Deploy to Server via SSH and Git
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        password: ${{ secrets.PASS }}
-        script: |
-          TARGET_DIR="/home/storage/4/ab/f9/k201/public_html"
-          REPO_URL="https://github.com/crashbrtb/chestcounter.git"
-          BRANCH="main"
+      # --- Opcional: Etapa de Build ---
+      # Se seu projeto precisa ser compilado/buildado (ex: Node.js, React, Java, etc.)
+      # Descomente e ajuste a seção abaixo conforme necessário.
+      # Exemplo para um projeto Node.js:
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: '20' 
+      # - name: Install dependencies and build
+      #   run: |
+      #     npm ci
+      #     npm run build
+      # --- Fim da Etapa de Build Opcional ---
 
-          echo "Accessing directory $TARGET_DIR"
-          cd "$TARGET_DIR" || exit 1
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
-          echo "Directory is expected to be a Git repository. Updating..."
-          echo "Checking git status before update..."
-          git status
-          
-          echo "Updating repository with $BRANCH branch..."
-          git fetch origin "$BRANCH"
-          git reset --hard "origin/$BRANCH"
-          git clean -fdx # Remove untracked files and directories
-          echo "Repository updated."
-
-          echo "Configuring app_local.php on server..."
-          if [ -f config/app_local.example.php ]; then
-            cp config/app_local.example.php config/app_local.php
-            echo "Copied app_local.example.php to app_local.php on server"
-
-            # Substituir placeholders no app_local.php
-            sed -i "s#'salt' => env('SECURITY_SALT', '__SALT__'),#'salt' => '${{ secrets.SECURITY_SALT_PROD }}',#g" config/app_local.php
-            sed -i "s#'host' => 'localhost',#'host' => '${{ secrets.DB_HOST_PROD }}',#g" config/app_local.php
-            sed -i "s#'username' => 'my_app',#'username' => '${{ secrets.DB_USER_PROD }}',#g" config/app_local.php
-            sed -i "s#'password' => 'secret',#'password' => '${{ secrets.DB_PASSWORD_PROD }}',#g" config/app_local.php
-            sed -i "s#'database' => 'my_app',#'database' => '${{ secrets.DB_NAME_PROD }}',#g" config/app_local.php
-            
-            echo "app_local.php configured with production secrets on server."
-          else
-            echo "ERROR: config/app_local.example.php not found on server! This usually means the git pull failed or the file is missing in the repository."
-            # Considerar sair com erro se o arquivo de config for essencial
-            # exit 1 
+      - name: Deploy files via rsync
+        env:
+          SSHPASS: ${{ secrets.PASS }}
+          SSH_USER: ${{ secrets.USER }}
+          SSH_HOST: ${{ secrets.HOST }}
+          REMOTE_PATH: "/home/storage/4/ab/f9/k201/public_html" # Caminho do seu arquivo original
+          # SSH_PORT_NUMBER: ${{ secrets.SSH_PORT_NUMBER }} # Descomente e defina o segredo se usar uma porta diferente da 22
+        run: |
+          # A porta padrão é 22. Se SSH_PORT_NUMBER estiver definido e não for vazio, use-o.
+          SSH_PORT_OPTION=""
+          if [ -n "$SSH_PORT_NUMBER" ]; then
+            SSH_PORT_OPTION="-p $SSH_PORT_NUMBER"
           fi
+          
+          echo "Starting rsync..."
+          # Usar sshpass para fornecer a senha para rsync via SSH
+          # ARGS: -avzr --delete (archive, verbose, compress, recursive, delete no destino arquivos não existentes na origem)
+          # SOURCE: "./" (diretório raiz do checkout; mude para "dist/" ou "build/" se tiver etapa de build)
+          # EXCLUDE: padrões para excluir
+          sshpass -e rsync -avzr --delete \
+            --exclude='.git*' \
+            --exclude='.github*' \
+            --exclude='node_modules/' \
+            -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $SSH_PORT_OPTION" \
+            ./ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.REMOTE_PATH }}/
+          echo "rsync completed."
 
-          echo "Checking git status after update and config..."
-          git status
-          echo "Deploy completed successfully!!"
+      - name: Post-deployment commands (Configure app_local.php)
+        if: success()
+        uses: appleboy/ssh-action@v1.0.3 
+        env:
+          # O REMOTE_PATH já está definido no passo anterior, mas para clareza no script do appleboy/ssh-action, podemos referenciar explicitamente.
+          # Se você preferir, pode usar diretamente ${{ secrets.REMOTE_PATH }} aqui ou uma variável de job/workflow.
+          # No entanto, o script usa TARGET_DIR, que é definido internamente.
+          # A variável de ambiente aqui é para o contexto do script executado pela action.
+          # O script abaixo vai pegar o valor do REMOTE_PATH do seu arquivo original.
+          SECURITY_SALT_PROD: ${{ secrets.SECURITY_SALT_PROD }}
+          DB_HOST_PROD: ${{ secrets.DB_HOST_PROD }}
+          DB_USER_PROD: ${{ secrets.DB_USER_PROD }}
+          DB_PASSWORD_PROD: ${{ secrets.DB_PASSWORD_PROD }}
+          DB_NAME_PROD: ${{ secrets.DB_NAME_PROD }}
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USER }}
+          password: ${{ secrets.PASS }}
+          # port: ${{ secrets.SSH_PORT_NUMBER }} # Descomente se necessário
+          script: |
+            TARGET_DIR="/home/storage/4/ab/f9/k201/public_html" # Definindo o caminho diretamente como no seu script original
+
+            echo "Accessing directory $TARGET_DIR for post-deployment configuration"
+            cd "$TARGET_DIR" || exit 1
+
+            echo "Configuring app_local.php on server..."
+            if [ -f config/app_local.example.php ]; then
+              # Copia o exemplo para app_local.php APENAS se app_local.php não existir.
+              # Se você quiser que ele seja sobrescrito a cada deploy a partir do example, 
+              # remova a condição de existência de config/app_local.php ou gerencie configurações de forma diferente.
+              if [ ! -f config/app_local.php ]; then
+                cp config/app_local.example.php config/app_local.php
+                echo "Copied app_local.example.php to app_local.php on server (app_local.php did not exist)."
+              else
+                echo "app_local.php already exists. Skipping copy from example. Ensure it's correctly configured."
+              fi
+
+              # Apenas tenta substituir se app_local.php existe (seja porque foi copiado ou já estava lá)
+              if [ -f config/app_local.php ]; then
+                # Substituir placeholders no app_local.php
+                # Usando %% como delimitador para sed para evitar conflitos com barras em URLs ou senhas.
+                # As variáveis de ambiente para os segredos (SECURITY_SALT_PROD, etc.) são passadas pelo 'env:' da action.
+                sed -i "s#%%'salt' => env('SECURITY_SALT', '__SALT__'),#%%'salt' => '${SECURITY_SALT_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'host' => 'localhost',#%%'host' => '${DB_HOST_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'username' => 'my_app',#%%'username' => '${DB_USER_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'password' => 'secret',#%%'password' => '${DB_PASSWORD_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'database' => 'my_app',#%%'database' => '${DB_NAME_PROD}',#%%g" config/app_local.php
+                
+                echo "app_local.php placeholders processed with production secrets on server."
+              else
+                echo "ERROR: config/app_local.php not found after potential copy. Cannot apply secrets."
+                exit 1 # Considerar falhar o job se a configuração é crítica
+              fi
+            else
+              echo "WARNING: config/app_local.example.php not found in the deployed files (checked at $TARGET_DIR/config/app_local.example.php)! Cannot create config/app_local.php from example."
+              # Se config/app_local.php já existe no servidor e é gerenciado manualmente, isso pode ser OK.
+            fi
+
+            echo "Post-deployment configuration completed."
+            echo "Deploy completed successfully!!"
