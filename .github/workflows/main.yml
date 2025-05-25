@@ -49,4 +49,4 @@ jobs:
 
           echo "Checking git status after update and config..."
           git status
-          echo "Deploy completed successfully!"
+          echo "Deploy completed successfully!!"
