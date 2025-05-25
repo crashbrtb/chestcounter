@@ -1,16 +1,52 @@
-name: Deploy via ftp
+name: Deploy via Git (SSH)
 on: push
 jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v3
+    - name: Checkout repository
+      uses: actions/checkout@v3
 
-    - name: FTP Deploy Locaweb
-      uses: locaweb/ftp-deploy@1.0.0
+    - name: Deploy to Server via SSH and Git
+      uses: appleboy/ssh-action@master
       with:
-        host: ${{ secrets.HOST }} 
-        user: ${{ secrets.USER }}
-        password: ${{ secrets.PASS }}
-        localDir: "dist"
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USERNAME }}
+        key: ${{ secrets.KEY }}
+        # port: ${{ secrets.PORT }} # Descomente se sua porta SSH não for a 22
+        script: |
+          cd /home/storage/4/ab/f9/k201/public_html
+          echo "Accessing directory /home/storage/4/ab/f9/k201/public_html"
+          
+          echo "Checking git status before update..."
+          git status
+          
+          echo "Updating repository with main branch..."
+          git fetch origin main
+          git reset --hard origin/main
+          git clean -fdx # Remove untracked files and directories
+          echo "Repository updated."
+
+          echo "Configuring app_local.php on server..."
+          if [ -f config/app_local.example.php ]; then
+            cp config/app_local.example.php config/app_local.php
+            echo "Copied app_local.example.php to app_local.php on server"
+
+            # Substituir placeholders no app_local.php
+            sed -i "s#'salt' => env('SECURITY_SALT', '__SALT__'),#'salt' => '${{ secrets.SECURITY_SALT_PROD }}',#g" config/app_local.php
+            sed -i "s#'host' => 'localhost',#'host' => '${{ secrets.DB_HOST_PROD }}',#g" config/app_local.php
+            sed -i "s#'username' => 'my_app',#'username' => '${{ secrets.DB_USER_PROD }}',#g" config/app_local.php
+            sed -i "s#'password' => 'secret',#'password' => '${{ secrets.DB_PASSWORD_PROD }}',#g" config/app_local.php
+            sed -i "s#'database' => 'my_app',#'database' => '${{ secrets.DB_NAME_PROD }}',#g" config/app_local.php
+            
+            echo "app_local.php configured with production secrets on server."
+          else
+            echo "ERROR: config/app_local.example.php not found on server!"
+            # Considerar sair com erro se o arquivo de config for essencial
+            # exit 1 
+          fi
+
+          echo "Checking git status after update and config..."
+          git status
+          echo "Deploy completed successfully!"
