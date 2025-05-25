@@ -13,7 +13,7 @@ jobs:
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USER }}
-        password: ${{ secrets.PAS }}
+        password: ${{ secrets.PASS }}
         script: |
           TARGET_DIR="/home/storage/4/ab/f9/k201/public_html"
           REPO_URL="https://github.com/crashbrtb/chestcounter.git"
