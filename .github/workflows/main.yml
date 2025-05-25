@@ -12,19 +12,23 @@ jobs:
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.KEY }}
-        # port: ${{ secrets.PORT }} # Descomente se sua porta SSH não for a 22
+        username: ${{ secrets.USER }}
+        password: ${{ secrets.PASS }}
         script: |
-          cd /home/storage/4/ab/f9/k201/public_html
-          echo "Accessing directory /home/storage/4/ab/f9/k201/public_html"
-          
+          TARGET_DIR="/home/storage/4/ab/f9/k201/public_html"
+          REPO_URL="https://github.com/crashbrtb/chestcounter.git"
+          BRANCH="main"
+
+          echo "Accessing directory $TARGET_DIR"
+          cd "$TARGET_DIR" || exit 1
+
+          echo "Directory is expected to be a Git repository. Updating..."
           echo "Checking git status before update..."
           git status
           
-          echo "Updating repository with main branch..."
-          git fetch origin main
-          git reset --hard origin/main
+          echo "Updating repository with $BRANCH branch..."
+          git fetch origin "$BRANCH"
+          git reset --hard "origin/$BRANCH"
           git clean -fdx # Remove untracked files and directories
           echo "Repository updated."
 
@@ -42,7 +46,7 @@ jobs:
             
             echo "app_local.php configured with production secrets on server."
           else
-            echo "ERROR: config/app_local.example.php not found on server!"
+            echo "ERROR: config/app_local.example.php not found on server! This usually means the git pull failed or the file is missing in the repository."
             # Considerar sair com erro se o arquivo de config for essencial
             # exit 1 
           fi

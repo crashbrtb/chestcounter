@@ -2059,3 +2059,307 @@ Stack Trace:
 Request URL: /login
 Referer URL: http://127.0.0.1/chestcounter/
 Client IP: 127.0.0.1
+2025-05-25 02:57:15 error: [Cake\Database\Exception\MissingConnectionException] Connection to Mysql could not be established: SQLSTATE[HY000] [1045] Access denied for user 'counterdkw'@'177.102.134.243' (using password: YES) in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 201
+Exception Attributes: array (
+  'driver' => 'Mysql',
+  'reason' => 'SQLSTATE[HY000] [1045] Access denied for user \'counterdkw\'@\'177.102.134.243\' (using password: YES)',
+)
+Stack Trace:
+- CORE\src\Database\Driver\Mysql.php:158
+- CORE\src\Database\Schema\SchemaDialect.php:51
+- CORE\src\Database\Driver\Mysql.php:204
+- CORE\src\Database\Schema\Collection.php:172
+- CORE\src\Database\Schema\Collection.php:151
+- CORE\src\Database\Schema\Collection.php:116
+- CORE\src\Database\Schema\CachedCollection.php:92
+- CORE\src\ORM\Table.php:524
+- CORE\src\ORM\Query\CommonQueryTrait.php:48
+- CORE\src\ORM\Query\SelectQuery.php:202
+- CORE\src\ORM\Query\QueryFactory.php:34
+- CORE\src\ORM\Table.php:1737
+- CORE\src\ORM\Table.php:1274
+- APP/Controller\CollectedChestsController.php:111
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Caused by: [PDOException] SQLSTATE[HY000] [1045] Access denied for user 'counterdkw'@'177.102.134.243' (using password: YES) in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 190
+Stack Trace:
+- CORE\src\Database\Driver.php:190
+- CORE\src\Core\Retry\CommandRetry.php:71
+- CORE\src\Database\Driver.php:199
+- CORE\src\Database\Driver\Mysql.php:158
+- CORE\src\Database\Schema\SchemaDialect.php:51
+- CORE\src\Database\Driver\Mysql.php:204
+- CORE\src\Database\Schema\Collection.php:172
+- CORE\src\Database\Schema\Collection.php:151
+- CORE\src\Database\Schema\Collection.php:116
+- CORE\src\Database\Schema\CachedCollection.php:92
+- CORE\src\ORM\Table.php:524
+- CORE\src\ORM\Query\CommonQueryTrait.php:48
+- CORE\src\ORM\Query\SelectQuery.php:202
+- CORE\src\ORM\Query\QueryFactory.php:34
+- CORE\src\ORM\Table.php:1737
+- CORE\src\ORM\Table.php:1274
+- APP/Controller\CollectedChestsController.php:111
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-25 02:57:16 error: [Cake\Error\FatalErrorException] Fatal Error: Trait "App\View\CakeLteTrait" not found in C:\Apache24\htdocs\chestcounter\src\View\AppView.php on line 28
+Stack Trace:
+- CORE\src\Error\ExceptionTrap.php:278
+- [internal]:??
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-25 02:57:17 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\src\View\AppView.php line=28
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 308
+Cake\Error\Renderer\WebExceptionRenderer->write() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 240
+Cake\Error\ExceptionTrap->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 327
+Cake\Error\ExceptionTrap->handleFatalError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 278
+Cake\Error\ExceptionTrap->handleShutdown() [internal], line ??
+[main]
+
+2025-05-25 02:57:17 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\src\View\AppView.php:28)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 308
+Cake\Error\Renderer\WebExceptionRenderer->write() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 240
+Cake\Error\ExceptionTrap->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 327
+Cake\Error\ExceptionTrap->handleFatalError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 278
+Cake\Error\ExceptionTrap->handleShutdown() [internal], line ??
+[main]
+
+2025-05-25 02:57:17 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\src\View\AppView.php:28)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 308
+Cake\Error\Renderer\WebExceptionRenderer->write() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 240
+Cake\Error\ExceptionTrap->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 327
+Cake\Error\ExceptionTrap->handleFatalError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\ExceptionTrap.php, line 278
+Cake\Error\ExceptionTrap->handleShutdown() [internal], line ??
+[main]
+
+2025-05-25 02:57:37 error: [Cake\Database\Exception\MissingConnectionException] Connection to Mysql could not be established: SQLSTATE[HY000] [1045] Access denied for user 'counterdkw'@'177.102.134.243' (using password: YES) in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 201
+Exception Attributes: array (
+  'driver' => 'Mysql',
+  'reason' => 'SQLSTATE[HY000] [1045] Access denied for user \'counterdkw\'@\'177.102.134.243\' (using password: YES)',
+)
+Stack Trace:
+- CORE\src\Database\Driver\Mysql.php:158
+- CORE\src\Database\Schema\SchemaDialect.php:51
+- CORE\src\Database\Driver\Mysql.php:204
+- CORE\src\Database\Schema\Collection.php:172
+- CORE\src\Database\Schema\Collection.php:151
+- CORE\src\Database\Schema\Collection.php:116
+- CORE\src\Database\Schema\CachedCollection.php:92
+- CORE\src\ORM\Table.php:524
+- CORE\src\ORM\Query\CommonQueryTrait.php:48
+- CORE\src\ORM\Query\SelectQuery.php:202
+- CORE\src\ORM\Query\QueryFactory.php:34
+- CORE\src\ORM\Table.php:1737
+- CORE\src\ORM\Table.php:1274
+- APP/Controller\CollectedChestsController.php:111
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Caused by: [PDOException] SQLSTATE[HY000] [1045] Access denied for user 'counterdkw'@'177.102.134.243' (using password: YES) in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 190
+Stack Trace:
+- CORE\src\Database\Driver.php:190
+- CORE\src\Core\Retry\CommandRetry.php:71
+- CORE\src\Database\Driver.php:199
+- CORE\src\Database\Driver\Mysql.php:158
+- CORE\src\Database\Schema\SchemaDialect.php:51
+- CORE\src\Database\Driver\Mysql.php:204
+- CORE\src\Database\Schema\Collection.php:172
+- CORE\src\Database\Schema\Collection.php:151
+- CORE\src\Database\Schema\Collection.php:116
+- CORE\src\Database\Schema\CachedCollection.php:92
+- CORE\src\ORM\Table.php:524
+- CORE\src\ORM\Query\CommonQueryTrait.php:48
+- CORE\src\ORM\Query\SelectQuery.php:202
+- CORE\src\ORM\Query\QueryFactory.php:34
+- CORE\src\ORM\Table.php:1737
+- CORE\src\ORM\Table.php:1274
+- APP/Controller\CollectedChestsController.php:111
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-25 02:58:13 error: [Cake\Database\Exception\MissingConnectionException] Connection to Mysql could not be established: SQLSTATE[HY000] [1045] Access denied for user 'counterdkw'@'localhost' (using password: YES) in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 201
+Exception Attributes: array (
+  'driver' => 'Mysql',
+  'reason' => 'SQLSTATE[HY000] [1045] Access denied for user \'counterdkw\'@\'localhost\' (using password: YES)',
+)
+Stack Trace:
+- CORE\src\Database\Driver\Mysql.php:158
+- CORE\src\Database\Schema\SchemaDialect.php:51
+- CORE\src\Database\Driver\Mysql.php:204
+- CORE\src\Database\Schema\Collection.php:172
+- CORE\src\Database\Schema\Collection.php:151
+- CORE\src\Database\Schema\Collection.php:116
+- CORE\src\Database\Schema\CachedCollection.php:92
+- CORE\src\ORM\Table.php:524
+- CORE\src\ORM\Query\CommonQueryTrait.php:48
+- CORE\src\ORM\Query\SelectQuery.php:202
+- CORE\src\ORM\Query\QueryFactory.php:34
+- CORE\src\ORM\Table.php:1737
+- CORE\src\ORM\Table.php:1274
+- APP/Controller\CollectedChestsController.php:111
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Caused by: [PDOException] SQLSTATE[HY000] [1045] Access denied for user 'counterdkw'@'localhost' (using password: YES) in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 190
+Stack Trace:
+- CORE\src\Database\Driver.php:190
+- CORE\src\Core\Retry\CommandRetry.php:71
+- CORE\src\Database\Driver.php:199
+- CORE\src\Database\Driver\Mysql.php:158
+- CORE\src\Database\Schema\SchemaDialect.php:51
+- CORE\src\Database\Driver\Mysql.php:204
+- CORE\src\Database\Schema\Collection.php:172
+- CORE\src\Database\Schema\Collection.php:151
+- CORE\src\Database\Schema\Collection.php:116
+- CORE\src\Database\Schema\CachedCollection.php:92
+- CORE\src\ORM\Table.php:524
+- CORE\src\ORM\Query\CommonQueryTrait.php:48
+- CORE\src\ORM\Query\SelectQuery.php:202
+- CORE\src\ORM\Query\QueryFactory.php:34
+- CORE\src\ORM\Table.php:1737
+- CORE\src\ORM\Table.php:1274
+- APP/Controller\CollectedChestsController.php:111
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
