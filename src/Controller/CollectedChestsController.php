@@ -223,4 +223,54 @@ class CollectedChestsController extends AppController
         $this->set(compact('playerChestCounts', 'playerTotalChests', 'playerFinalScores', 'cycleOptions', 'currentCycleFormatted', 'selectedCycleOffset', 'minimumChestScore'));
 
     }
+
+    public function mergePlayers()
+    {
+        $collectedChestsTable = $this->CollectedChests; // Ou TableRegistry::getTableLocator()->get('CollectedChests');
+
+        $uniquePlayersQuery = $collectedChestsTable->find()
+            ->select(['player'])
+            ->distinct(['player'])
+            ->order(['player' => 'ASC']);
+        
+        $playerList = $uniquePlayersQuery->all()->combine('player', 'player')->toArray();
+
+        if ($this->request->is('post')) {
+            $data = $this->request->getData();
+            $correctPlayer = $data['correct_player_name'] ?? null;
+            $incorrectPlayer = $data['incorrect_player_name'] ?? null;
+
+            if (empty($correctPlayer) || empty($incorrectPlayer)) {
+                $this->Flash->error(__('Please select both the correct player name and the incorrect player name.'));
+            } elseif ($correctPlayer === $incorrectPlayer) {
+                $this->Flash->error(__('The correct and incorrect player names cannot be the same.'));
+            } else {
+                try {
+                    $updatedRows = $collectedChestsTable->updateAll(
+                        ['player' => $correctPlayer],
+                        ['player' => $incorrectPlayer]
+                    );
+
+                    if ($updatedRows > 0) {
+                        $this->Flash->success(__('Successfully merged player "{0}" into "{1}". {2} records were updated.', $incorrectPlayer, $correctPlayer, $updatedRows));
+                         // Atualizar a lista de jogadores após a mesclagem
+                        $playerList = $collectedChestsTable->find()
+                                            ->select(['player'])
+                                            ->distinct(['player'])
+                                            ->order(['player' => 'ASC'])
+                                            ->all()
+                                            ->combine('player', 'player')
+                                            ->toArray();
+                    } else {
+                        $this->Flash->warning(__('No records found for player "{0}" to merge into "{1}". No changes were made.', $incorrectPlayer, $correctPlayer));
+                    }
+                } catch (\Exception $e) {
+                    $this->Flash->error(__('An error occurred while merging players: {0}', $e->getMessage()));
+                }
+            }
+        }
+
+        $this->set(compact('playerList'));
+        $this->set('title', __('Merge Player Names')); // Para o título da página
+    }
 }

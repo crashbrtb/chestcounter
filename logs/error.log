@@ -2363,3 +2363,325 @@ Stack Trace:
 
 Request URL: /score
 Client IP: 127.0.0.1
+2025-05-27 02:33:49 error: [Cake\Http\Exception\MissingControllerException] Controller class `Merge_players` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Merge_players',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /merge_players
+Client IP: 127.0.0.1
+2025-05-27 02:33:54 error: [Cake\Http\Exception\MissingControllerException] Controller class `MergePlayers` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'MergePlayers',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /merge-players
+Client IP: 127.0.0.1
+2025-05-27 02:33:59 error: [Cake\Http\Exception\MissingControllerException] Controller class `Mergeplayers` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'Mergeplayers',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /mergeplayers
+Client IP: 127.0.0.1
+2025-05-27 02:34:14 error: [Cake\Http\Exception\MissingControllerException] Controller class `MergePlayers` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'MergePlayers',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /merge-players
+Client IP: 127.0.0.1
+2025-05-27 02:34:38 error: [Error] Call to a member function skipAuthorization() on null in C:\Apache24\htdocs\chestcounter\src\Controller\CollectedChestsController.php on line 229
+Stack Trace:
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collectedChests/merge-players
+Client IP: 127.0.0.1
+2025-05-27 02:34:38 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /collectedChests/merge-players
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-27 02:34:38 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /collectedChests/merge-players
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-27 02:34:38 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /collectedChests/merge-players
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-27 02:36:39 error: [Error] Call to undefined method Cake\ORM\Query\SelectQuery::update() in C:\Apache24\htdocs\chestcounter\src\Controller\CollectedChestsController.php on line 250
+Stack Trace:
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/merge-players
+Referer URL: http://127.0.0.1/chestcounter/collectedChests/merge-players
+Client IP: 127.0.0.1
+2025-05-27 02:39:21 warning: Undefined variable $collectedChestsTable
+Request URL: /collected-chests/merge-players
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/merge-players
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\src\Controller\CollectedChestsController.php, line 248
+App\Controller\CollectedChestsController->mergePlayers() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 505
+Cake\Controller\Controller->invokeAction() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 166
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 162
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-27 02:39:21 error: [Error] Call to a member function query() on null in C:\Apache24\htdocs\chestcounter\src\Controller\CollectedChestsController.php on line 248
+Stack Trace:
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/merge-players
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/merge-players
+Client IP: 127.0.0.1
+2025-05-27 02:39:21 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /collected-chests/merge-players
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/merge-players
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-27 02:39:21 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /collected-chests/merge-players
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/merge-players
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-27 02:39:21 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /collected-chests/merge-players
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/merge-players
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-27 02:40:24 error: [Error] Call to undefined method Cake\ORM\Query\SelectQuery::update() in C:\Apache24\htdocs\chestcounter\src\Controller\CollectedChestsController.php on line 250
+Stack Trace:
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:162
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /collected-chests/merge-players
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/merge-players
+Client IP: 127.0.0.1

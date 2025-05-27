@@ -82,11 +82,29 @@ jobs:
             echo "Accessing directory $TARGET_DIR for post-deployment configuration"
             cd "$TARGET_DIR" || exit 1
 
+            echo "Verifying received secrets (lengths only for security in logs):"
+            echo "SECURITY_SALT_PROD length: ${#SECURITY_SALT_PROD}"
+            echo "DB_HOST_PROD length: ${#DB_HOST_PROD}"
+            echo "DB_USER_PROD length: ${#DB_USER_PROD}"
+            echo "DB_PASSWORD_PROD length: ${#DB_PASSWORD_PROD}"
+            echo "DB_NAME_PROD length: ${#DB_NAME_PROD}"
+
+            # Função para escapar barras invertidas e aspas simples para strings PHP
+            escape_for_php_string() {
+              # 1. Escapa \ para \\
+              # 2. Escapa ' para \\' (a barra que escapa a aspa também precisa ser escapada para o sed)
+              echo "$1" | sed -e 's/\\/\\\\/g' -e "s/'/\\\\'/g"
+            }
+
+            PHP_SECURITY_SALT_PROD=$(escape_for_php_string "${SECURITY_SALT_PROD}")
+            PHP_DB_HOST_PROD=$(escape_for_php_string "${DB_HOST_PROD}")
+            PHP_DB_USER_PROD=$(escape_for_php_string "${DB_USER_PROD}")
+            PHP_DB_PASSWORD_PROD=$(escape_for_php_string "${DB_PASSWORD_PROD}")
+            PHP_DB_NAME_PROD=$(escape_for_php_string "${DB_NAME_PROD}")
+
             echo "Configuring app_local.php on server..."
             if [ -f config/app_local.example.php ]; then
               # Copia o exemplo para app_local.php APENAS se app_local.php não existir.
-              # Se você quiser que ele seja sobrescrito a cada deploy a partir do example, 
-              # remova a condição de existência de config/app_local.php ou gerencie configurações de forma diferente.
               if [ ! -f config/app_local.php ]; then
                 cp config/app_local.example.php config/app_local.php
                 echo "Copied app_local.example.php to app_local.php on server (app_local.php did not exist)."
@@ -96,14 +114,21 @@ jobs:
 
               # Apenas tenta substituir se app_local.php existe (seja porque foi copiado ou já estava lá)
               if [ -f config/app_local.php ]; then
-                # Substituir placeholders no app_local.php
-                # Usando %% como delimitador para sed para evitar conflitos com barras em URLs ou senhas.
-                # As variáveis de ambiente para os segredos (SECURITY_SALT_PROD, etc.) são passadas pelo 'env:' da action.
-                sed -i "s#%%'salt' => env('SECURITY_SALT', '__SALT__'),#%%'salt' => '${SECURITY_SALT_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'host' => 'localhost',#%%'host' => '${DB_HOST_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'username' => 'my_app',#%%'username' => '${DB_USER_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'password' => 'secret',#%%'password' => '${DB_PASSWORD_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'database' => 'my_app',#%%'database' => '${DB_NAME_PROD}',#%%g" config/app_local.php
+                echo "Attempting to update placeholders in config/app_local.php..."
+                # Descomente as linhas abaixo para depurar o conteúdo do arquivo antes e depois do sed (cuidado com segredos nos logs)
+                # echo "--- Content of config/app_local.php BEFORE sed ---"
+                # cat config/app_local.php
+                # echo "----------------------------------------------------"
+
+                sed -i "s#%%'salt' => env('SECURITY_SALT', '__SALT__'),#%%'salt' => '${PHP_SECURITY_SALT_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'host' => 'localhost',#%%'host' => '${PHP_DB_HOST_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'username' => 'my_app',#%%'username' => '${PHP_DB_USER_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'password' => 'secret',#%%'password' => '${PHP_DB_PASSWORD_PROD}',#%%g" config/app_local.php
+                sed -i "s#%%'database' => 'my_app',#%%'database' => '${PHP_DB_NAME_PROD}',#%%g" config/app_local.php
+                
+                # echo "--- Content of config/app_local.php AFTER sed ---"
+                # cat config/app_local.php
+                # echo "--------------------------------------------------"
                 
                 echo "app_local.php placeholders processed with production secrets on server."
               else

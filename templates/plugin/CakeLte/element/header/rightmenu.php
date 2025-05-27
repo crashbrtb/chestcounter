@@ -3,6 +3,30 @@ $identity = $this->request->getAttribute('identity');
 $isLoggedIn = $identity !== null;
 ?>
 
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        <?= __('Admin') ?>
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="langDropdown">
+        <?= $this->Html->link('Members', ['controller' => 'Members', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Users', ['controller' => 'Users', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Roles', ['controller' => 'Roles', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <li class="dropdown-submenu dropdown-hover">
+            <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                <?= __('Chests') ?>
+            </a>
+            <ul aria-labelledby="chestsDropdownMenuLink" class="dropdown-menu border-0 shadow">
+                <li>
+                    <?= $this->Html->link(__('Standard Chests'), ['controller' => 'StandardChests', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link(__('Merge Players'), ['controller' => 'CollectedChests', 'action' => 'mergePlayers'], ['class' => 'dropdown-item']) ?>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</li>
+
 <?php if (!$isLoggedIn): ?>
     <li class="nav-item d-none d-sm-inline-block">
         <?= $this->Html->link(

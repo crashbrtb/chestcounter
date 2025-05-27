@@ -3,7 +3,7 @@
         <?= __('Chests') ?>
     </a>
     <div class="dropdown-menu" aria-labelledby="langDropdown">
-        <?= $this->Html->link('Scoreboard', ['controller' => 'Collectedchests', 'action' => 'score'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Scoreboard', '/score', ['class' => 'dropdown-item']) ?>
         <?= $this->Html->link('Goals', ['controller' => 'StandardChests', 'action' => 'weights'], ['class' => 'dropdown-item']) ?>
         <?= $this->Html->link('History', '/pages/underconstruction', ['class' => 'dropdown-item']) ?>
         
