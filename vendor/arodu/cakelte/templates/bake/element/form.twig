@@ -1,0 +1,86 @@
+{#
+/**
+ * CakePHP(tm) : Rapid Development Framework (http://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (http://cakefoundation.org)
+ * @link          http://cakephp.org CakePHP(tm) Project
+ * @since         2.0.0
+ * @license       http://www.opensource.org/licenses/mit-license.php MIT License
+ */
+#}
+{% set fields = Bake.filterFields(fields, schema, modelObject) %}
+<?php
+$this->assign('title', __('{{ action|humanize }} {{ singularHumanName }}'));
+$this->Breadcrumbs->add([
+    ['title' => __('Home'), 'url' => '/'],
+    ['title' => __('List {{ pluralHumanName }}'), 'url' => ['action' => 'index']],
+{% if 'add' not in action %}
+    ['title' => __('View'), 'url' => ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}]],
+    ['title' => __('Edit')],
+{% else %}
+    ['title' => __('Add')],
+{% endif %}
+]);
+?>
+
+<div class="card card-primary card-outline">
+{% if 'add' not in action %}
+    <?= $this->Form->create(${{ singularVar }}) ?>
+{% else %}
+    <?= $this->Form->create(${{ singularVar }}, ['valueSources' => ['query', 'context']]) ?>
+{% endif %}
+    <div class="card-body">
+{% for field in fields %}
+{%- if field not in primaryKey %}
+{%- if keyFields[field] %}
+{%- set fieldData = Bake.columnData(field, schema) %}
+{%- if fieldData.null %}
+        <?= $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'empty' => true, 'class' => 'form-control']) ?>
+{% else %}
+        <?= $this->Form->control('{{ field }}', ['options' => ${{ keyFields[field] }}, 'class' => 'form-control']) ?>
+{% endif %}
+{%- elseif field not in ['created', 'modified', 'updated'] %}
+{%- set fieldData = Bake.columnData(field, schema) %}
+{%- if fieldData.type in ['date', 'datetime', 'time'] and fieldData.null %}
+        <?= $this->Form->control('{{ field }}', ['empty' => true]) ?>
+{% elseif fieldData.type in ['boolean'] %}
+        <?= $this->Form->control('{{ field }}', ['custom' => true]) ?>
+{% else %}
+        <?= $this->Form->control('{{ field }}') ?>
+{% endif %}
+{%- endif %}
+{%- endif %}
+{%- endfor %}
+
+{%- if associations.BelongsToMany %}
+{%- for assocName, assocData in associations.BelongsToMany %}
+        <?= $this->Form->control('{{ assocData.property }}._ids', ['options' => ${{ assocData.variable }}]) ?>
+{% endfor %}
+{% endif %}
+    </div>
+    <div class="card-footer d-flex">
+{% if 'add' not in action %}
+        <div class="mr-auto">
+            <?= $this->Form->postLink(
+                __('Delete'),
+                ['action' => 'delete', ${{ singularVar }}->{{ primaryKey[0] }}],
+                ['confirm' => __('Are you sure you want to delete # {0}?', ${{ singularVar }}->{{ primaryKey[0] }}), 'class' => 'btn btn-danger']
+            ) ?>
+        </div>
+{% endif %}
+        <div class="ml-auto">
+            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
+{% if 'add' not in action %}
+            <?= $this->Html->link(__('Cancel'), ['action' => 'view', ${{ singularVar }}->{{ primaryKey[0] }}], ['class' => 'btn btn-default']) ?>
+{% else %}
+            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
+{% endif %}
+        </div>
+    </div>
+    <?= $this->Form->end() ?>
+</div>
