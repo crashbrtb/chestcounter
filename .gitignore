@@ -3,8 +3,6 @@
 /config/.env
 /logs/*
 /tmp/*
-/vendor/*
-/webroot/files/*
 
 # Arquivos do CakePHP que devem ser ignorados
 .php-cs-fixer.cache
