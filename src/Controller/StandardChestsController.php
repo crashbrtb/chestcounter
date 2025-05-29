@@ -34,6 +34,16 @@ class StandardChestsController extends AppController
 
     public function weights()
     {
+        // Define os campos pelos quais a paginação pode ordenar
+        // Use os nomes reais das colunas no banco de dados.
+        // Se 'Chests' no template se refere a 'source' na tabela:
+        $this->paginate = [
+            'sortableFields' => [
+                'source', // Para $this->Paginator->sort('Chests') ou $this->Paginator->sort('source')
+                'score'   // Para $this->Paginator->sort('Score') ou $this->Paginator->sort('score')
+            ]
+        ];
+
         $query = $this->StandardChests->find();
         $standardChests = $this->paginate($query);
 

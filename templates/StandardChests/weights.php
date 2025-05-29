@@ -43,8 +43,8 @@ $this->Breadcrumbs->add([
         <table class="table table-hover text-nowrap">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('Chests') ?></th>
-                    <th><?= $this->Paginator->sort('Score') ?></th>
+                    <th><?= $this->Paginator->sort('source', __('Chests')) ?></th>
+                    <th><?= $this->Paginator->sort('score', __('Score')) ?></th>
                 </tr>
             </thead>
             <tbody>
