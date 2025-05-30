@@ -133,3 +133,9 @@ if ($now >= $startOfCurrentCycle && $now <= $endOfCurrentCycle) {
     echo "<p>" . __('The Current Cycle has already ended.') . "</p>";
 }
 ?>
+
+<?php if (isset($lastUpdate)): ?>
+<div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e0e0e0; text-align: center; font-size: 0.9em; color: #666;">
+    <p><?= __('Last update: {0} UTC', $lastUpdate->collected_at->i18nFormat('dd/MM/yyyy HH:mm:ss')) ?></p>
+</div>
+<?php endif; ?>

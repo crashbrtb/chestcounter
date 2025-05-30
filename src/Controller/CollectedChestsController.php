@@ -209,6 +209,11 @@ class CollectedChestsController extends AppController
             'end' => $cycleEnd->format('Y-m-d H:i:s'),
         ];
 
+        // Buscar a data/hora da linha mais recente da tabela CollectedChests
+        $lastUpdate = $collectedChestsTable->find()
+            ->order(['collected_at' => 'DESC'])
+            ->first();
+
         // Desativa o sidebar especificamente para esta action
         $this->set('cakelte_theme', [
             'sidebar' => [
@@ -220,7 +225,7 @@ class CollectedChestsController extends AppController
         ]);
 
         // Passar os dados para a view
-        $this->set(compact('playerChestCounts', 'playerTotalChests', 'playerFinalScores', 'cycleOptions', 'currentCycleFormatted', 'selectedCycleOffset', 'minimumChestScore'));
+        $this->set(compact('playerChestCounts', 'playerTotalChests', 'playerFinalScores', 'cycleOptions', 'currentCycleFormatted', 'selectedCycleOffset', 'minimumChestScore', 'lastUpdate'));
 
     }
 

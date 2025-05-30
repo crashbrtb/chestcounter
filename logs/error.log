@@ -2685,3 +2685,33 @@ Stack Trace:
 Request URL: /collected-chests/merge-players
 Referer URL: http://127.0.0.1/chestcounter/collected-chests/merge-players
 Client IP: 127.0.0.1
+2025-05-30 01:27:06 error: [Error] Call to undefined method App\Model\Entity\CollectedChest::i18nFormat() in C:\Apache24\htdocs\chestcounter\templates\CollectedChests\score.php on line 139
+Stack Trace:
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:785
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1

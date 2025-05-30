@@ -24,6 +24,8 @@ $isLoggedIn = $identity !== null;
                 </li>
             </ul>
         </li>
+        <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+
     </ul>
 </li>
 
