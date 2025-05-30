@@ -19,6 +19,11 @@ $this->Breadcrumbs->add([
     <?= $this->Form->create($member) ?>
     <div class="card-body">
         <?= $this->Form->control('player') ?>
+        <?= $this->Form->control('power') ?>
+        <?= $this->Form->control('guards') ?>
+        <?= $this->Form->control('specialists') ?>
+        <?= $this->Form->control('monsters') ?>
+        <?= $this->Form->control('engineers') ?>
         <?= $this->Form->control('active') ?>
         <?= $this->Form->control('created_at') ?>
         <?= $this->Form->control('modified_at') ?>

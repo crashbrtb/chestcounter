@@ -20,10 +20,15 @@ class MembersFixture extends TestFixture
         $this->records = [
             [
                 'id' => 1,
-                'player' => 1,
+                'player' => 'Lorem ipsum dolor sit amet',
+                'power' => 1,
+                'guards' => 1,
+                'specialists' => 1,
+                'monsters' => 1,
+                'engineers' => 1,
                 'active' => 1,
-                'created_at' => 1740932342,
-                'modified_at' => 1740932342,
+                'created_at' => 1748572455,
+                'modified_at' => 1748572455,
             ],
         ];
         parent::init();

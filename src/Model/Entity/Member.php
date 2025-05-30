@@ -9,7 +9,12 @@ use Cake\ORM\Entity;
  * Member Entity
  *
  * @property int $id
- * @property int $player
+ * @property string $player
+ * @property int $power
+ * @property int $guards
+ * @property int $specialists
+ * @property int $monsters
+ * @property int $engineers
  * @property int $active
  * @property \Cake\I18n\DateTime $created_at
  * @property \Cake\I18n\DateTime $modified_at
@@ -27,6 +32,11 @@ class Member extends Entity
      */
     protected array $_accessible = [
         'player' => true,
+        'power' => true,
+        'guards' => true,
+        'specialists' => true,
+        'monsters' => true,
+        'engineers' => true,
         'active' => true,
         'created_at' => true,
         'modified_at' => true,

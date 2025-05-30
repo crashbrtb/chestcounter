@@ -29,13 +29,13 @@ $this->Breadcrumbs->add([
     </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+        <table class="table table-hover">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('param') ?></th>
                     <th><?= $this->Paginator->sort('value') ?></th>
-                    <th><?= $this->Paginator->sort('description') ?></th>
+                    <th class="text-wrap"><?= $this->Paginator->sort('description') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -45,7 +45,7 @@ $this->Breadcrumbs->add([
                         <td><?= $this->Number->format($config->id) ?></td>
                         <td><?= h($config->param) ?></td>
                         <td><?= h($config->value) ?></td>
-                        <td><?= h($config->description) ?></td>
+                        <td class="text-wrap text-break"><?= h($config->description) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $config->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $config->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
