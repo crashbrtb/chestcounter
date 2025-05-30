@@ -2,10 +2,9 @@
 declare(strict_types=1);
 
 namespace App\Controller;
-use Cake\Controller\Controller;
+
 use Cake\ORM\TableRegistry;
 use Cake\I18n\FrozenTime;
-Use Cake\I18n\DateTime;
 
 /**
  * Members Controller
@@ -102,59 +101,105 @@ class MembersController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function update()
+    /**
+     * Update members from collected chests
+     * Sincroniza players da tabela collectedchests com a tabela members
+     * e atualiza o status active baseado na última atividade (3 semanas)
+     *
+     * @return \Cake\Http\Response|null Redirects to index with flash message
+     */
+    public function updateFromCollectedChests()
     {
         $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
-
-        // Calcula a data de 7 dias atrás
-        $sevenDaysAgo = FrozenTime::now()->subDays(7);
-
-        // Busca jogadores únicos na tabela collected_chests nos últimos 7 dias
-        $collectedPlayers = $collectedChestsTable->find()
+        
+        // Buscar todos os players únicos da tabela collectedchests
+        $allPlayers = $collectedChestsTable->find()
             ->select(['player'])
-            ->where(['collected_at >=' => $sevenDaysAgo])
             ->distinct(['player'])
             ->toArray();
 
-        $collectedPlayerNames = [];
-        foreach ($collectedPlayers as $player) {
-            $collectedPlayerNames[] = $player->player;
+        // Debug: verificar quantos players foram encontrados
+        $playersCount = count($allPlayers);
+        
+        // Debug: mostrar alguns nomes de players para verificar
+        $samplePlayers = array_slice($allPlayers, 0, 3);
+        $samplePlayerNames = [];
+        foreach ($samplePlayers as $player) {
+            $samplePlayerNames[] = $player->player;
         }
         
+        $newMembersCount = 0;
+        $updatedMembersCount = 0;
+        $threeWeeksAgo = FrozenTime::now()->subWeeks(3);
 
-        // Atualiza ou cria membros com base em collected_chests
-        foreach ($collectedPlayerNames as $playerName) {
-            $member = $this->Members->find()->where(['player' => $playerName])->first();
+        foreach ($allPlayers as $playerData) {
+            $playerName = $playerData->player;
+            
+            // Buscar a última atividade deste player específico
+            $lastActivity = $collectedChestsTable->find()
+                ->select(['collected_at'])
+                ->where(['player' => $playerName])
+                ->order(['collected_at' => 'DESC'])
+                ->first();
+            
+            if (!$lastActivity) {
+                continue; // Pular se não encontrar atividade
+            }
+            
+            $lastCollectedAt = $lastActivity->collected_at;
+            
+            // Verificar se o membro já existe
+            $existingMember = $this->Members->find()
+                ->where(['player' => $playerName])
+                ->first();
 
-            if ($member) {
-                // Jogador já existe na tabela members
-                if ($member->active != 1) {
-                    $member->active = 1;
+            if ($existingMember) {
+                // Membro existe - verificar se precisa atualizar o status active
+                $isActive = $lastCollectedAt >= $threeWeeksAgo ? 1 : 0;
+                
+                if ($existingMember->active != $isActive) {
+                    $existingMember->active = $isActive;
+                    
+                    if ($this->Members->save($existingMember)) {
+                        $updatedMembersCount++;
+                    }
                 }
-                $member->modified_at = FrozenTime::now();
-                $this->Members->save($member);
             } else {
-                // Jogador não existe na tabela members, cria um novo
+                // Membro não existe - criar novo registro
                 $newMember = $this->Members->newEmptyEntity();
-                $newMember->player = $playerName;
-                $newMember->active = 1;
-                $newMember->modified_at = FrozenTime::now();
-                var_dump($newMember);
-                $this->Members->save($newMember);
+                $isActive = $lastCollectedAt >= $threeWeeksAgo ? 1 : 0;
+                
+                $newMember = $this->Members->patchEntity($newMember, [
+                    'player' => $playerName,
+                    'active' => $isActive,
+                    'power' => 0,
+                    'guards' => 0,
+                    'specialists' => 0,
+                    'monsters' => 0,
+                    'engineers' => 0
+                ]);
+
+                if ($this->Members->save($newMember)) {
+                    $newMembersCount++;
+                } else {
+                    // Debug: mostrar erros de validação se houver
+                    $errors = $newMember->getErrors();
+                    if (!empty($errors)) {
+                        $this->Flash->error(__('Error saving member {0}: {1}', $playerName, json_encode($errors)));
+                    }
+                }
             }
         }
 
-        // Desativa membros que não estão em collected_chests nos últimos 7 dias
-        $allMembers = $this->Members->find()->toArray();
-        foreach ($allMembers as $member) {
-            if (!in_array($member->player, $collectedPlayerNames)) {
-                $member->active = 0;
-                $member->modified_at = FrozenTime::now();
-                $this->Members->save($member);
-            }
-        }
-
-        $this->Flash->success(__('Tabela Members atualizada com sucesso.'));
-        return $this->redirect(['action' => 'index']); // Ou para onde você quiser redirecionar
+        // Mensagem de feedback com informações de debug
+        $message = __('Update completed. Found {0} players (samples: {1}). {2} new members added, {3} members updated.', 
+                     $playersCount,
+                     implode(', ', $samplePlayerNames),
+                     $newMembersCount, 
+                     $updatedMembersCount);
+        
+        $this->Flash->success($message);
+        
+        return $this->redirect(['action' => 'index']);
     }
 }

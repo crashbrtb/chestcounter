@@ -32,22 +32,26 @@ $this->Breadcrumbs->add([
         <table class="table table-hover text-nowrap">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('player') ?></th>
+                    <th><?= $this->Paginator->sort('power') ?></th>
+                    <th><?= $this->Paginator->sort('guards') ?></th>
+                    <th><?= $this->Paginator->sort('specialists') ?></th>
+                    <th><?= $this->Paginator->sort('monsters') ?></th>
+                    <th><?= $this->Paginator->sort('engineers') ?></th>
                     <th><?= $this->Paginator->sort('active') ?></th>
-                    <th><?= $this->Paginator->sort('created_at') ?></th>
-                    <th><?= $this->Paginator->sort('modified_at') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($members as $member) : ?>
                     <tr>
-                        <td><?= $this->Number->format($member->id) ?></td>
                         <td><?= h($member->player) ?></td>
+                        <td><?= $this->Number->format($member->power) ?></td>
+                        <td><?= $this->Number->format($member->guards) ?></td>
+                        <td><?= $this->Number->format($member->specialists) ?></td>
+                        <td><?= $this->Number->format($member->monsters) ?></td>
+                        <td><?= $this->Number->format($member->engineers) ?></td>
                         <td><?= $this->Number->format($member->active) ?></td>
-                        <td><?= h($member->created_at) ?></td>
-                        <td><?= h($member->modified_at) ?></td>
                         <td class="actions">
                             <?= $this->Html->link(__('View'), ['action' => 'view', $member->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $member->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>

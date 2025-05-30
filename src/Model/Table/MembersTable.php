@@ -38,8 +38,17 @@ class MembersTable extends Table
         parent::initialize($config);
 
         $this->setTable('members');
-        $this->setDisplayField('name');
+        $this->setDisplayField('player');
         $this->setPrimaryKey('id');
+
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'modified_at' => 'always'
+                ]
+            ]
+        ]);
     }
 
     /**
@@ -51,23 +60,37 @@ class MembersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->integer('player')
+            ->scalar('player')
+            ->maxLength('player', 45)
             ->requirePresence('player', 'create')
             ->notEmptyString('player');
+
+        $validator
+            ->integer('power')
+            ->notEmptyString('power');
+
+        $validator
+            ->integer('guards')
+            ->notEmptyString('guards');
+
+        $validator
+            ->integer('specialists')
+            ->notEmptyString('specialists');
+
+        $validator
+            ->integer('monsters')
+            ->notEmptyString('monsters');
+
+        $validator
+            ->integer('engineers')
+            ->notEmptyString('engineers');
 
         $validator
             ->requirePresence('active', 'create')
             ->notEmptyString('active');
 
-        $validator
-            ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmptyDateTime('created_at');
-
-        $validator
-            ->dateTime('modified_at')
-            ->requirePresence('modified_at', 'create')
-            ->notEmptyDateTime('modified_at');
+        // created_at e modified_at são gerenciados pelo TimestampBehavior
+        // não precisam de validação explícita aqui, a menos que haja regras muito específicas.
 
         return $validator;
     }

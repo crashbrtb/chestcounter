@@ -16,7 +16,7 @@ $this->Breadcrumbs->add([
 
 <div class="view card card-primary card-outline">
     <div class="card-header d-sm-flex">
-        <h2 class="card-title"><?= h($member->name) ?></h2>
+        <h2 class="card-title"><?= h($member->player) ?></h2>
     </div>
     <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
@@ -27,6 +27,26 @@ $this->Breadcrumbs->add([
             <tr>
                 <th><?= __('Id') ?></th>
                 <td><?= $this->Number->format($member->id) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Power') ?></th>
+                <td><?= $this->Number->format($member->power) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Guards') ?></th>
+                <td><?= $this->Number->format($member->guards) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Specialists') ?></th>
+                <td><?= $this->Number->format($member->specialists) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Monsters') ?></th>
+                <td><?= $this->Number->format($member->monsters) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Engineers') ?></th>
+                <td><?= $this->Number->format($member->engineers) ?></td>
             </tr>
             <tr>
                 <th><?= __('Active') ?></th>

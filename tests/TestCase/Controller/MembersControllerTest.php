@@ -79,4 +79,15 @@ class MembersControllerTest extends TestCase
     {
         $this->markTestIncomplete('Not implemented yet.');
     }
+
+    /**
+     * Test updateFromCollectedChests method
+     *
+     * @return void
+     * @uses \App\Controller\MembersController::updateFromCollectedChests()
+     */
+    public function testUpdateFromCollectedChests(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
 }
