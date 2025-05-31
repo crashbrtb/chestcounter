@@ -51,7 +51,7 @@ use Authorization\Policy\OrmResolver;
  *
  * @extends \Cake\Http\BaseApplication<\App\Application>
  */
-class Application extends BaseApplication implements AuthenticationServiceProviderInterface, AuthorizationServiceProviderInterface
+class Application extends BaseApplication implements AuthenticationServiceProviderInterface
 {
     /**
      * Load all the application configuration and bootstrap logic.
@@ -63,7 +63,6 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         // Call parent to load bootstrap from files.
         parent::bootstrap();
         $this->addPlugin('Authentication');
-        $this->addPlugin('Authorization');
         
         // Carrega o CakeLte com configurações
 
@@ -110,20 +109,8 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             // https://book.cakephp.org/5/en/security/csrf.html#cross-site-request-forgery-csrf-middleware
             ->add(new CsrfProtectionMiddleware([
                 'httponly' => true,
-            ]))
-            
-            // Authorization Middleware
-            ->add(new AuthorizationMiddleware($this, [
-                'unauthorizedHandler' => [
-                    'className' => 'Authorization.Redirect',
-                    'url' => '/users/login',
-                    'queryParam' => 'redirect',
-                    'exceptions' => [
-                        \Authorization\Exception\MissingIdentityException::class,
-                        \Authorization\Exception\ForbiddenException::class,
-                    ],
-                ],
             ]));
+            
 
         return $middlewareQueue;
     }
@@ -180,9 +167,5 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         return $service;
     }
 
-    public function getAuthorizationService(ServerRequestInterface $request): AuthorizationServiceInterface
-    {
-        $resolver = new OrmResolver();
-        return new AuthorizationService($resolver);
-    }
+
 }

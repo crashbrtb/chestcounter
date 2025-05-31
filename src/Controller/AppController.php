@@ -21,7 +21,7 @@ use Cake\Event\Event;
 use Cake\Event\EventInterface;
 use Cake\Controller\Component\AuthComponent;
 use Authentication\Controller\Component\AuthenticationComponent;
-use Authorization\Controller\Component\AuthorizationComponent;
+
 
 /**
  * Application Controller
@@ -49,7 +49,6 @@ class AppController extends Controller
     {
         parent::initialize();
         $this->loadComponent('Authentication.Authentication');
-        $this->loadComponent('Authorization.Authorization');
         $this->loadComponent('Flash');
         $this->Authentication->allowUnauthenticated(['score','history']);
         
@@ -86,24 +85,13 @@ class AppController extends Controller
         // if ($this->request->getParam('controller') === 'Users' && $this->request->getParam('action') === 'login') {
         //    $this->Authorization->skipAuthorization();
         // }
-        $controller = $this->request->getParam('controller');
-        $action = $this->request->getParam('action');
-        if ($controller === 'Pages' && $action === 'display') {
-            // Você pode ser mais específico aqui se apenas algumas páginas do PagesController::display são públicas
-            // Por exemplo, verificando $this->request->getParam('pass.0') === 'underconstruction'
-            // Mas, para simplificar, se todas as 'PagesController::display' são públicas:
-            $this->Authentication->addUnauthenticatedActions(['display']);
-        }
+
     }
 
     public function beforeRender(EventInterface $event)
     {
         parent::beforeRender($event);
-        if($this->request->getParam('prefix') == 'Admin'){
-            if($this->request->getAttribute('identity') != null && $this->request->getAttribute('identity')->get('role') == 'admin'){
-                $this->viewBuilder()->setLayout('admin');
-            }
-        }
+
     }
 
     public function changeLanguage($lang = null)

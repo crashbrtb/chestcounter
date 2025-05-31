@@ -26,14 +26,7 @@ class PlayerCycleSummariesController extends AppController
         $this->Authentication->allowUnauthenticated(['index']);
     }
     public function index()
-    {
-        // Autorizar com base na TablePolicy. 
-        // A policy canIndex permite todos os usuários logados por padrão.
-        // Se esta action devesse ser pública mesmo para não logados, 
-        // você usaria $this->Authentication->addUnauthenticatedActions(['index']); no AppController
-        // e $this->Authorization->skipAuthorization(); aqui.
-        $this->Authorization->skipAuthorization();
-        
+    {        
 
         // Buscar todos os resumos para identificar os ciclos
         $allSummaries = $this->PlayerCycleSummaries->find()
@@ -103,7 +96,6 @@ class PlayerCycleSummariesController extends AppController
     public function view($id = null)
     {
         $playerCycleSummary = $this->PlayerCycleSummaries->get($id, contain: []);
-        $this->Authorization->authorize($playerCycleSummary); // Verifica PlayerCycleSummaryPolicy::canView()
         $this->set(compact('playerCycleSummary'));
     }
 
@@ -118,7 +110,6 @@ class PlayerCycleSummariesController extends AppController
     {
         $this->request->allowMethod(['post', 'put']);
         $playerCycleSummary = $this->PlayerCycleSummaries->get($id);
-        $this->Authorization->authorize($playerCycleSummary); // Verifica PlayerCycleSummaryPolicy::canMarkFinePaid()
 
         if ($playerCycleSummary->fine_due && !$playerCycleSummary->fine_paid) {
             $playerCycleSummary->fine_paid = true;
@@ -143,7 +134,6 @@ class PlayerCycleSummariesController extends AppController
     public function processCycleSummaries()
     {
         // Autorizar com base na TablePolicy, action 'processCycleSummaries'
-        $this->Authorization->authorize($this->PlayerCycleSummaries, 'processCycleSummaries');
 
         $this->request->allowMethod(['post', 'get']); // Permitir GET para teste manual
         $configsTable = TableRegistry::getTableLocator()->get('Config');

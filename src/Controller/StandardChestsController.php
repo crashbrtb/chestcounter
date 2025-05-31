@@ -34,7 +34,7 @@ class StandardChestsController extends AppController
 
     public function weights()
     {
-        $this->Authorization->skipAuthorization();
+
         // Define os campos pelos quais a paginação pode ordenar
         // Use os nomes reais das colunas no banco de dados.
         // Se 'Chests' no template se refere a 'source' na tabela:

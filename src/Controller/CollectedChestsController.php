@@ -21,7 +21,6 @@ class CollectedChestsController extends AppController
      */
     public function index()
     {
-        $this->Authorization->skipAuthorization();
 
         $query = $this->CollectedChests->find();
         $collectedChests = $this->paginate($query);
@@ -38,7 +37,6 @@ class CollectedChestsController extends AppController
      */
     public function view($id = null)
     {
-        $this->Authorization->authorize($this->CollectedChests->get($id, contain: []));
 
         $collectedChest = $this->CollectedChests->get($id, contain: []);
         $this->set(compact('collectedChest'));
@@ -51,12 +49,10 @@ class CollectedChestsController extends AppController
      */
     public function add()
     {
-        $this->Authorization->authorize($this->CollectedChests->newEmptyEntity(), 'add');
 
         $collectedChest = $this->CollectedChests->newEmptyEntity();
         if ($this->request->is('post')) {
             $collectedChest = $this->CollectedChests->patchEntity($collectedChest, $this->request->getData());
-            $this->Authorization->authorize($collectedChest, 'add');
             if ($this->CollectedChests->save($collectedChest)) {
                 $this->Flash->success(__('The collected chest has been saved.'));
 
@@ -76,12 +72,10 @@ class CollectedChestsController extends AppController
      */
     public function edit($id = null)
     {
-        $this->Authorization->authorize($this->CollectedChests->get($id, contain: []));
 
         $collectedChest = $this->CollectedChests->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $collectedChest = $this->CollectedChests->patchEntity($collectedChest, $this->request->getData());
-            $this->Authorization->authorize($collectedChest);
             if ($this->CollectedChests->save($collectedChest)) {
                 $this->Flash->success(__('The collected chest has been saved.'));
 
@@ -102,7 +96,6 @@ class CollectedChestsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $this->Authorization->authorize($this->CollectedChests->get($id));
         $collectedChest = $this->CollectedChests->get($id);
         if ($this->CollectedChests->delete($collectedChest)) {
             $this->Flash->success(__('The collected chest has been deleted.'));
@@ -114,7 +107,6 @@ class CollectedChestsController extends AppController
     }
     public function score()
     {
-        $this->Authorization->skipAuthorization();
 
         $configsTable = TableRegistry::getTableLocator()->get('Config');
         $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
