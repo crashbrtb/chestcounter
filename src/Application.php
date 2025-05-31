@@ -167,7 +167,15 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         ]);
     
         // Load identifiers
-        $service->loadIdentifier('Authentication.Password', compact('fields'));
+        $service->loadIdentifier('Authentication.Password', [
+            'fields' => $fields,
+            'resolver' => [
+                'className' => 'Authentication.Orm',
+                'userModel' => 'Users', // Confirme se 'Users' é o alias da sua UsersTable
+                'finder' => 'auth', // Ou 'auth' se você tiver um finder customizado na UsersTable
+            ],
+            //'contain' => ['Roles']
+        ]);
     
         return $service;
     }

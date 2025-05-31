@@ -137,7 +137,7 @@ class UsersController extends AppController
         if ($result && $result->isValid()) {
             $this->Authentication->logout();
 
-            return $this->redirect(['controller' => 'Users', 'action' => 'login']);
+            return $this->redirect(['controller' => 'collectedChests', 'action' => 'score']);
         }
     }
 }
