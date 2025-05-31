@@ -8,7 +8,23 @@
 // Obter identidade do usuário e verificar se é admin
 $identity = $this->request->getAttribute('identity');
 $isLoggedIn = $identity !== null;
-$isAdmin = $isLoggedIn && $identity->get('role') === 'admin';
+$isAdmin = false; // Inicia como falso
+
+if ($isLoggedIn) {
+    // Assumindo que a propriedade na entidade User que contém os roles associados é 'roles'
+    // e que a entidade Role tem uma propriedade 'name' para o nome do role.
+    $userAssociatedRoles = $identity->get('roles'); 
+
+    if (!empty($userAssociatedRoles) && (is_array($userAssociatedRoles) || $userAssociatedRoles instanceof \Traversable)) {
+        foreach ($userAssociatedRoles as $roleEntity) {
+            if (is_object($roleEntity) && isset($roleEntity->name) && $roleEntity->name === 'admin') {
+                $isAdmin = true;
+                break; 
+            }
+        }
+    }
+}
+// var_dump($identity->get('roles')); // Removido ou comentado o var_dump anterior
 ?>
 <div class="playerCycleSummaries index content">
     <div class="card">

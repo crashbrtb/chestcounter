@@ -1,7 +1,20 @@
 <?php
 $identity = $this->request->getAttribute('identity');
 $isLoggedIn = $identity !== null;
-$isAdmin = $isLoggedIn && $identity->get('role') === 'admin';
+$isAdmin = false; // Inicia como falso
+if ($isLoggedIn) {
+    // Assumindo que a propriedade na entidade User que contém os roles associados é 'roles'
+    // e que a entidade Role tem uma propriedade 'name' para o nome do role.
+    $userAssociatedRoles = $identity->get('roles'); 
+    if (!empty($userAssociatedRoles) && (is_array($userAssociatedRoles) || $userAssociatedRoles instanceof \Traversable)) {
+        foreach ($userAssociatedRoles as $roleEntity) {
+            if (isset($roleEntity->name) && $roleEntity->name === 'admin') {
+                $isAdmin = true;
+                break; 
+            }
+        }
+    }
+}
 
 if ($isAdmin):
 ?>

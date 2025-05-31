@@ -4136,3 +4136,28 @@ Stack Trace:
 
 Request URL: /history
 Client IP: 127.0.0.1
+2025-05-31 17:55:46 error: [Authorization\Exception\AuthorizationRequiredException] The request to `/roles` did not apply any authorization checks. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php on line 139
+Exception Attributes: array (
+  'url' => '/roles',
+)
+Stack Trace:
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /roles
+Client IP: 127.0.0.1
