@@ -15,6 +15,9 @@ namespace Migrations;
 
 use Phinx\Migration\AbstractMigration as BaseAbstractMigration;
 
+/**
+ * @deprecated 4.5.0 You should use Migrations\BaseMigration for new migrations.
+ */
 class AbstractMigration extends BaseAbstractMigration
 {
     /**
@@ -32,7 +35,7 @@ class AbstractMigration extends BaseAbstractMigration
     /**
      * Hook method to decide if this migration should use transactions
      *
-     * By default if your driver supports transactions, a transaction will be opened
+     * By default, if your driver supports transactions, a transaction will be opened
      * before the migration begins, and commit when the migration completes.
      *
      * @return bool

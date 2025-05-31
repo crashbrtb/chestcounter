@@ -21,6 +21,7 @@ use Cake\Event\Event;
 use Cake\Event\EventInterface;
 use Cake\Controller\Component\AuthComponent;
 use Authentication\Controller\Component\AuthenticationComponent;
+use Authorization\Controller\Component\AuthorizationComponent;
 
 /**
  * Application Controller
@@ -29,6 +30,9 @@ use Authentication\Controller\Component\AuthenticationComponent;
  * will inherit them.
  *
  * @link https://book.cakephp.org/4/en/controllers.html#the-app-controller
+ * @property \Authentication\Controller\Component\AuthenticationComponent $Authentication
+ * @property \Authorization\Controller\Component\AuthorizationComponent $Authorization
+ * @property \Cake\Controller\Component\FlashComponent $Flash
  */
 class AppController extends Controller
 {
@@ -37,7 +41,7 @@ class AppController extends Controller
      *
      * Use this method to add common initialization code like loading components.
      *
-     * e.g. `$this->loadComponent('FormProtection');`
+     * e.g. `$this->loadComponent('Security');`
      *
      * @return void
      */
@@ -45,21 +49,61 @@ class AppController extends Controller
     {
         parent::initialize();
         $this->loadComponent('Authentication.Authentication');
+        $this->loadComponent('Authorization.Authorization');
         $this->loadComponent('Flash');
-        $this->Authentication->allowUnauthenticated(['score']);
+        $this->Authentication->allowUnauthenticated(['score','history']);
         
         // Configuração do CakeLTE
         $this->viewBuilder()->setLayout('CakeLte/layout/default');
 
-
         // Define as configurações do tema
-
 
         /*
          * Enable the following component for recommended CakePHP form protection settings.
          * see https://book.cakephp.org/4/en/controllers/components/form-protection.html
          */
         //$this->loadComponent('FormProtection');
+    }
+
+    /**
+     * beforeFilter callback.
+     *
+     * @param \Cake\Event\EventInterface $event An Event instance.
+     * @return \Cake\Http\Response|null|void
+     */
+    public function beforeFilter(EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // for all controllers in our application, make index and view actions
+        // require a logged in user.whitelist all public actions to allow all users to access them
+        // $this->Authentication->addUnauthenticatedActions([
+        //     'login', 'register', 'forgotPassword', 'resetPassword', // Adicione aqui actions públicas do UsersController
+        //     'display' // Exemplo para PagesController::display
+        // ]);
+
+        // Pular verificação de autorização para actions específicas se necessário
+        // Exemplo: se UsersController::login não precisa de autorização.
+        // if ($this->request->getParam('controller') === 'Users' && $this->request->getParam('action') === 'login') {
+        //    $this->Authorization->skipAuthorization();
+        // }
+        $controller = $this->request->getParam('controller');
+        $action = $this->request->getParam('action');
+        if ($controller === 'Pages' && $action === 'display') {
+            // Você pode ser mais específico aqui se apenas algumas páginas do PagesController::display são públicas
+            // Por exemplo, verificando $this->request->getParam('pass.0') === 'underconstruction'
+            // Mas, para simplificar, se todas as 'PagesController::display' são públicas:
+            $this->Authentication->addUnauthenticatedActions(['display']);
+        }
+    }
+
+    public function beforeRender(EventInterface $event)
+    {
+        parent::beforeRender($event);
+        if($this->request->getParam('prefix') == 'Admin'){
+            if($this->request->getAttribute('identity') != null && $this->request->getAttribute('identity')->get('role') == 'admin'){
+                $this->viewBuilder()->setLayout('admin');
+            }
+        }
     }
 
     public function changeLanguage($lang = null)

@@ -119,7 +119,7 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
                 'Make sure all your migrations have been migrated before baking a diff.');
         }
 
-        if (empty($this->migrationsFiles) && empty($this->migratedItems)) {
+        if (!$this->migrationsFiles && !$this->migratedItems) {
             $this->bakeSnapshot($name, $args, $io);
         }
 
@@ -203,7 +203,7 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
     }
 
     /**
-     * This methods runs the various methods needed to calculate a diff between the current
+     * This method runs the various methods needed to calculate a diff between the current
      * state of the database and the schema dump file.
      *
      * @return void
@@ -274,7 +274,7 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
                     $column['collate'],
                     $column['fixed'],
                     $oldColumn['collate'],
-                    $oldColumn['fixed']
+                    $oldColumn['fixed'],
                 );
 
                 if (
@@ -322,7 +322,7 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
                 $this->templateData[$table]['columns']['remove'] = [];
             }
             $removedColumns = array_diff($oldColumns, $currentColumns);
-            if (!empty($removedColumns)) {
+            if ($removedColumns) {
                 foreach ($removedColumns as $columnName) {
                     $column = $this->dumpSchema[$table]->getColumn($columnName);
                     /** @var int $key */
@@ -440,14 +440,14 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
 
             $removedIndexes = array_diff($oldIndexes, $currentIndexes);
             $parts = [];
-            if (!empty($removedIndexes)) {
+            if ($removedIndexes) {
                 foreach ($removedIndexes as $index) {
                     $parts[$index] = $this->dumpSchema[$table]->getIndex($index);
                 }
             }
             $this->templateData[$table]['indexes']['remove'] = array_merge(
                 $this->templateData[$table]['indexes']['remove'],
-                $parts
+                $parts,
             );
         }
     }
@@ -459,11 +459,11 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
      */
     protected function checkSync(): bool
     {
-        if (empty($this->migrationsFiles) && empty($this->migratedItems)) {
+        if (!$this->migrationsFiles && !$this->migratedItems) {
             return true;
         }
 
-        if (!empty($this->migratedItems)) {
+        if ($this->migratedItems) {
             $lastVersion = $this->migratedItems[0]['version'];
             $lastFile = end($this->migrationsFiles);
 
@@ -513,10 +513,15 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
         $inputArgs = [];
 
         $connectionName = 'default';
-        if (!empty($args->getOption('connection'))) {
+        if ($args->getOption('connection')) {
             $connectionName = $inputArgs['--connection'] = $args->getOption('connection');
         }
-        if (!empty($args->getOption('plugin'))) {
+
+        if ($args->getOption('source')) {
+            $inputArgs['--source'] = $args->getOption('source');
+        }
+
+        if ($args->getOption('plugin')) {
             $inputArgs['--plugin'] = $args->getOption('plugin');
         }
 
@@ -546,7 +551,7 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
     {
         $schema = [];
 
-        if (empty($this->tables)) {
+        if (!$this->tables) {
             return $schema;
         }
 
@@ -585,7 +590,7 @@ class BakeMigrationDiffCommand extends BakeSimpleMigrationCommand
         $parser->setDescription(
             'Create a migration that captures the difference between ' .
             'the migration state is expected to be and what the schema ' .
-            'reflection contains.'
+            'reflection contains.',
         )->addArgument('name', [
             'help' => 'Name of the migration to bake. Can use Plugin.name to bake migration files into plugins.',
             'required' => true,

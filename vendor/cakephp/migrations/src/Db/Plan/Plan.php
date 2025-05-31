@@ -199,7 +199,7 @@ class Plan
             ChangeColumn::class,
             function (RenameColumn $a, ChangeColumn $b) {
                 return $a->getNewName() === $b->getColumnName();
-            }
+            },
         );
         $tableUpdates = [];
         foreach ($this->tableUpdates as $update) {
@@ -208,7 +208,7 @@ class Plan
         $this->tableUpdates = $tableUpdates;
 
         // Dropping indexes used by foreign keys is a conflict, but one we can resolve
-        // if the foreign key is also scheduled to be dropped. If we can find such a a case,
+        // if the foreign key is also scheduled to be dropped. If we can find such a case,
         // we force the execution of the index drop after the foreign key is dropped.
         // Changing constraint properties sometimes require dropping it and then
         // creating it again with the new stuff. Unfortunately, we have already bundled
@@ -219,13 +219,13 @@ class Plan
             AddForeignKey::class,
             function (DropForeignKey $a, AddForeignKey $b) {
                 return $a->getForeignKey()->getColumns() === $b->getForeignKey()->getColumns();
-            }
+            },
         );
         $constraints = [];
         foreach ($this->constraints as $constraint) {
             $constraints = array_merge(
                 $constraints,
-                $splitter($this->remapContraintAndIndexConflicts($constraint))
+                $splitter($this->remapContraintAndIndexConflicts($constraint)),
             );
         }
         $this->constraints = $constraints;
@@ -271,7 +271,7 @@ class Plan
                 [$this->indexes, $dropIndexActions] = $this->forgetDropIndex(
                     $action->getTable(),
                     $action->getForeignKey()->getColumns(),
-                    $this->indexes
+                    $this->indexes,
                 );
                 foreach ($dropIndexActions as $dropIndexAction) {
                     $newAlter->addAction($dropIndexAction);

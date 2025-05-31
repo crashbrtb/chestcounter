@@ -45,6 +45,7 @@ class PagesController extends AppController
      */
     public function display(string ...$path): ?Response
     {
+        $this->Authorization->skipAuthorization();
         if (!$path) {
             return $this->redirect('/');
         }
@@ -60,6 +61,14 @@ class PagesController extends AppController
             $subpage = $path[1];
         }
         $this->set(compact('page', 'subpage'));
+        if (end($path) === 'underconstruction') { // Nome do arquivo/path da página
+            $this->Authorization->skipAuthorization();
+        } else {
+            // Decida o que fazer com outras páginas: pular ou verificar autorização
+            // $this->Authorization->skipAuthorization(); // Se todas as páginas "display" são públicas
+            // ou
+            // $this->Authorization->authorize($this->Pages); // Se precisar de policy para outras páginas
+        }
 
         try {
             return $this->render(implode('/', $path));

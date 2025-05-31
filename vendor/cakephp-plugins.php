@@ -4,6 +4,7 @@ $baseDir = dirname(dirname(__FILE__));
 return [
     'plugins' => [
         'Authentication' => $baseDir . '/vendor/cakephp/authentication/',
+        'Authorization' => $baseDir . '/vendor/cakephp/authorization/',
         'Bake' => $baseDir . '/vendor/cakephp/bake/',
         'BootstrapUI' => $baseDir . '/vendor/friendsofcake/bootstrap-ui/',
         'CakeLte' => $baseDir . '/vendor/arodu/cakelte/',

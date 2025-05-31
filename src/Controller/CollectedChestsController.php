@@ -21,6 +21,8 @@ class CollectedChestsController extends AppController
      */
     public function index()
     {
+        $this->Authorization->skipAuthorization();
+
         $query = $this->CollectedChests->find();
         $collectedChests = $this->paginate($query);
 
@@ -36,6 +38,8 @@ class CollectedChestsController extends AppController
      */
     public function view($id = null)
     {
+        $this->Authorization->authorize($this->CollectedChests->get($id, contain: []));
+
         $collectedChest = $this->CollectedChests->get($id, contain: []);
         $this->set(compact('collectedChest'));
     }
@@ -47,9 +51,12 @@ class CollectedChestsController extends AppController
      */
     public function add()
     {
+        $this->Authorization->authorize($this->CollectedChests->newEmptyEntity(), 'add');
+
         $collectedChest = $this->CollectedChests->newEmptyEntity();
         if ($this->request->is('post')) {
             $collectedChest = $this->CollectedChests->patchEntity($collectedChest, $this->request->getData());
+            $this->Authorization->authorize($collectedChest, 'add');
             if ($this->CollectedChests->save($collectedChest)) {
                 $this->Flash->success(__('The collected chest has been saved.'));
 
@@ -69,9 +76,12 @@ class CollectedChestsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->Authorization->authorize($this->CollectedChests->get($id, contain: []));
+
         $collectedChest = $this->CollectedChests->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $collectedChest = $this->CollectedChests->patchEntity($collectedChest, $this->request->getData());
+            $this->Authorization->authorize($collectedChest);
             if ($this->CollectedChests->save($collectedChest)) {
                 $this->Flash->success(__('The collected chest has been saved.'));
 
@@ -92,6 +102,7 @@ class CollectedChestsController extends AppController
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
+        $this->Authorization->authorize($this->CollectedChests->get($id));
         $collectedChest = $this->CollectedChests->get($id);
         if ($this->CollectedChests->delete($collectedChest)) {
             $this->Flash->success(__('The collected chest has been deleted.'));
@@ -103,6 +114,8 @@ class CollectedChestsController extends AppController
     }
     public function score()
     {
+        $this->Authorization->skipAuthorization();
+
         $configsTable = TableRegistry::getTableLocator()->get('Config');
         $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
         $standardChestsTable = TableRegistry::getTableLocator()->get('StandardChests');
@@ -232,6 +245,7 @@ class CollectedChestsController extends AppController
     public function mergePlayers()
     {
         $collectedChestsTable = $this->CollectedChests; // Ou TableRegistry::getTableLocator()->get('CollectedChests');
+        $membersTable = TableRegistry::getTableLocator()->get('Members'); // Adicionar MembersTable
 
         $uniquePlayersQuery = $collectedChestsTable->find()
             ->select(['player'])
@@ -258,6 +272,20 @@ class CollectedChestsController extends AppController
 
                     if ($updatedRows > 0) {
                         $this->Flash->success(__('Successfully merged player "{0}" into "{1}". {2} records were updated.', $incorrectPlayer, $correctPlayer, $updatedRows));
+                        
+                        // Excluir o jogador incorreto da tabela Members
+                        $incorrectPlayerEntity = $membersTable->find()->where(['player' => $incorrectPlayer])->first();
+                        if ($incorrectPlayerEntity) {
+                            if ($membersTable->delete($incorrectPlayerEntity)) {
+                                $this->Flash->success(__('Player "{0}" was successfully deleted from the members list.', $incorrectPlayer));
+                            } else {
+                                $this->Flash->error(__('Could not delete player "{0}" from the members list.', $incorrectPlayer));
+                            }
+                        } else {
+                            // Opcional: Adicionar uma mensagem se o jogador incorreto não for encontrado na tabela Members
+                            // $this->Flash->info(__('Player "{0}" not found in the members list, no deletion needed.', $incorrectPlayer));
+                        }
+
                          // Atualizar a lista de jogadores após a mesclagem
                         $playerList = $collectedChestsTable->find()
                                             ->select(['player'])

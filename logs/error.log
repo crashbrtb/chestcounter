@@ -3493,3 +3493,646 @@ Stack Trace:
 
 Request URL: /members/updateFromCollectedChests
 Client IP: 127.0.0.1
+2025-05-31 16:04:19 error: [Cake\View\Exception\MissingTemplateException] Template file `PlayerCycleSummaries\index.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\PlayerCycleSummaries\index.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\PlayerCycleSummaries\index.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => 'PlayerCycleSummaries\\index.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /player-cycle-summaries
+Client IP: 127.0.0.1
+2025-05-31 16:05:04 error: [Cake\View\Exception\MissingTemplateException] Template file `PlayerCycleSummaries\index.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\PlayerCycleSummaries\index.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\PlayerCycleSummaries\index.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => 'PlayerCycleSummaries\\index.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /player-cycle-summaries
+Client IP: 127.0.0.1
+2025-05-31 16:18:43 error: [Cake\View\Exception\MissingTemplateException] Template file `PlayerCycleSummaries\view.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\PlayerCycleSummaries\view.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\PlayerCycleSummaries\view.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => 'PlayerCycleSummaries\\view.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /player-cycle-summaries/view/1
+Referer URL: http://127.0.0.1/chestcounter/player-cycle-summaries
+Client IP: 127.0.0.1
+2025-05-31 16:28:01 error: [Authorization\Exception\AuthorizationRequiredException] The request to `/score` did not apply any authorization checks. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php on line 139
+Exception Attributes: array (
+  'url' => '/score',
+)
+Stack Trace:
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/player-cycle-summaries
+Client IP: 127.0.0.1
+2025-05-31 16:28:20 error: [Authorization\Exception\AuthorizationRequiredException] The request to `/standard-chests/weights` did not apply any authorization checks. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php on line 139
+Exception Attributes: array (
+  'url' => '/standard-chests/weights',
+)
+Stack Trace:
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /standard-chests/weights
+Referer URL: http://127.0.0.1/chestcounter/player-cycle-summaries
+Client IP: 127.0.0.1
+2025-05-31 16:32:38 error: [Authorization\Exception\AuthorizationRequiredException] The request to `/score` did not apply any authorization checks. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php on line 139
+Exception Attributes: array (
+  'url' => '/score',
+)
+Stack Trace:
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/collected-chests/score
+Client IP: 127.0.0.1
+2025-05-31 16:36:46 error: [Authorization\Exception\AuthorizationRequiredException] The request to `/standard-chests/weights` did not apply any authorization checks. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php on line 139
+Exception Attributes: array (
+  'url' => '/standard-chests/weights',
+)
+Stack Trace:
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /standard-chests/weights
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+2025-05-31 16:38:05 error: [Authorization\Exception\AuthorizationRequiredException] The request to `/pages/underconstruction` did not apply any authorization checks. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php on line 139
+Exception Attributes: array (
+  'url' => '/pages/underconstruction',
+)
+Stack Trace:
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /pages/underconstruction
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+2025-05-31 16:38:40 error: [Authorization\Exception\AuthorizationRequiredException] The request to `/users/login?redirect=%2Fpages%2Funderconstruction` did not apply any authorization checks. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php on line 139
+Exception Attributes: array (
+  'url' => '/users/login?redirect=%2Fpages%2Funderconstruction',
+)
+Stack Trace:
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/login?redirect=%2Fpages%2Funderconstruction
+Referer URL: http://127.0.0.1/chestcounter/standard-chests/weights
+Client IP: 127.0.0.1
+2025-05-31 16:50:00 error: [ParseError] syntax error, unexpected token "public" in C:\Apache24\htdocs\chestcounter\src\Controller\AppController.php on line 96
+Stack Trace:
+- ROOT\vendor\composer\ClassLoader.php:427
+- APP/Controller\PagesController.php:32
+- ROOT\vendor\composer\ClassLoader.php:576
+- ROOT\vendor\composer\ClassLoader.php:427
+- [internal]:??
+- CORE\src\Core\App.php:162
+- CORE\src\Core\App.php:69
+- CORE\src\Controller\ControllerFactory.php:324
+- CORE\src\Controller\ControllerFactory.php:75
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- ROOT\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php:136
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /pages/underconstruction
+Referer URL: http://127.0.0.1/chestcounter/standard-chests/weights
+Client IP: 127.0.0.1
+2025-05-31 16:50:20 warning: Undefined variable $controller
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\src\Controller\AppController.php, line 89
+App\Controller\AppController->beforeFilter() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventManager.php, line 334
+Cake\Event\EventManager->_callListener() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventManager.php, line 312
+Cake\Event\EventManager->dispatch() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php, line 88
+Cake\Controller\Controller->dispatchEvent() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 604
+Cake\Controller\Controller->startupProcess() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 156
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php, line 136
+Authorization\Middleware\AuthorizationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:20 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:20 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:20 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:24 warning: Undefined variable $controller
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\src\Controller\AppController.php, line 89
+App\Controller\AppController->beforeFilter() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventManager.php, line 334
+Cake\Event\EventManager->_callListener() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventManager.php, line 312
+Cake\Event\EventManager->dispatch() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php, line 88
+Cake\Controller\Controller->dispatchEvent() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 604
+Cake\Controller\Controller->startupProcess() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 156
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php, line 136
+Authorization\Middleware\AuthorizationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:24 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:24 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:24 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /pages/underconstruction
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:28 warning: Undefined variable $controller
+Request URL: /pages/underconstruction
+Referer URL: http://127.0.0.1/chestcounter/standard-chests/weights
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\src\Controller\AppController.php, line 89
+App\Controller\AppController->beforeFilter() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventManager.php, line 334
+Cake\Event\EventManager->_callListener() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventManager.php, line 312
+Cake\Event\EventManager->dispatch() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Event\EventDispatcherTrait.php, line 88
+Cake\Controller\Controller->dispatchEvent() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 604
+Cake\Controller\Controller->startupProcess() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 156
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php, line 136
+Authorization\Middleware\AuthorizationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:28 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /pages/underconstruction
+Referer URL: http://127.0.0.1/chestcounter/standard-chests/weights
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:28 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /pages/underconstruction
+Referer URL: http://127.0.0.1/chestcounter/standard-chests/weights
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:50:28 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /pages/underconstruction
+Referer URL: http://127.0.0.1/chestcounter/standard-chests/weights
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-05-31 16:54:35 error: [ParseError] syntax error, unexpected token "<", expecting "elseif" or "else" or "endif" in C:\Apache24\htdocs\chestcounter\templates\plugin\CakeLte\element\header\rightmenu.php on line 8
+Stack Trace:
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:1690
+- CORE\src\View\View.php:676
+- ROOT\templates\layout\CakeLte\layout\default.php:56
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:837
+- CORE\src\View\View.php:796
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- ROOT\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php:136
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /score
+Client IP: 127.0.0.1
+2025-05-31 17:14:15 error: [Cake\Http\Exception\MissingControllerException] Controller class `History` could not be found. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php on line 335
+Exception Attributes: array (
+  'controller' => 'History',
+  'plugin' => NULL,
+  'prefix' => NULL,
+  '_ext' => NULL,
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:77
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- ROOT\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php:136
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /history
+Client IP: 127.0.0.1
+2025-05-31 17:20:05 error: [ArgumentCountError] Too few arguments to function Authentication\Controller\Component\AuthenticationComponent::addUnauthenticatedActions(), 0 passed in C:\Apache24\htdocs\chestcounter\src\Controller\PlayerCycleSummariesController.php on line 29 and exactly 1 expected in C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Controller\Component\AuthenticationComponent.php on line 215
+Stack Trace:
+- APP/Controller\PlayerCycleSummariesController.php:29
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- ROOT\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php:136
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /history
+Client IP: 127.0.0.1
+2025-05-31 17:20:59 error: [ParseError] syntax error, unexpected token "public" in C:\Apache24\htdocs\chestcounter\src\Controller\PlayerCycleSummariesController.php on line 26
+Stack Trace:
+- ROOT\vendor\composer\ClassLoader.php:427
+- [internal]:??
+- CORE\src\Core\App.php:162
+- CORE\src\Core\App.php:69
+- CORE\src\Controller\ControllerFactory.php:324
+- CORE\src\Controller\ControllerFactory.php:75
+- CORE\src\Http\BaseApplication.php:360
+- CORE\src\Http\Runner.php:86
+- ROOT\vendor\cakephp\authorization\src\Middleware\AuthorizationMiddleware.php:136
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /history
+Client IP: 127.0.0.1

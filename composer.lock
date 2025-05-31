@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c92a3f68bd298a2420132dea43a1715e",
+    "content-hash": "c8c846340d5c3e3aca6e6d52bf8ec8e4",
     "packages": [
         {
             "name": "almasaeed2010/adminlte",
@@ -158,6 +158,71 @@
                 "source": "https://github.com/cakephp/authentication"
             },
             "time": "2025-05-14T14:03:55+00:00"
+        },
+        {
+            "name": "cakephp/authorization",
+            "version": "3.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cakephp/authorization.git",
+                "reference": "ff151d694b592a683350f420dd9e58b7c0a762c4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cakephp/authorization/zipball/ff151d694b592a683350f420dd9e58b7c0a762c4",
+                "reference": "ff151d694b592a683350f420dd9e58b7c0a762c4",
+                "shasum": ""
+            },
+            "require": {
+                "cakephp/http": "^5.1",
+                "php": ">=8.1",
+                "psr/http-client": "^1.0",
+                "psr/http-message": "^1.1 || ^2.0",
+                "psr/http-server-handler": "^1.0",
+                "psr/http-server-middleware": "^1.0"
+            },
+            "require-dev": {
+                "cakephp/authentication": "^3.0",
+                "cakephp/bake": "^3.2",
+                "cakephp/cakephp": "^5.1",
+                "cakephp/cakephp-codesniffer": "^5.1",
+                "phpunit/phpunit": "^10.5.5 || ^11.1.3"
+            },
+            "suggest": {
+                "cakephp/http": "To use \"RequestPolicyInterface\" (Not needed separately if using full CakePHP framework).",
+                "cakephp/orm": "To use \"OrmResolver\" (Not needed separately if using full CakePHP framework)."
+            },
+            "type": "cakephp-plugin",
+            "autoload": {
+                "psr-4": {
+                    "Authorization\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "CakePHP Community",
+                    "homepage": "https://github.com/cakephp/authorization/graphs/contributors"
+                }
+            ],
+            "description": "Authorization abstraction layer plugin for CakePHP",
+            "keywords": [
+                "access",
+                "auth",
+                "authorization",
+                "cakephp"
+            ],
+            "support": {
+                "docs": "https://cakephp.org/authorization/2/en/",
+                "forum": "https://stackoverflow.com/tags/cakephp",
+                "irc": "irc://irc.freenode.org/cakephp",
+                "issues": "https://github.com/cakephp/authorization/issues",
+                "source": "https://github.com/cakephp/authorization"
+            },
+            "time": "2025-01-23T11:43:11+00:00"
         },
         {
             "name": "cakephp/cakephp",
@@ -339,16 +404,16 @@
         },
         {
             "name": "cakephp/migrations",
-            "version": "4.6.0",
+            "version": "4.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/cakephp/migrations.git",
-                "reference": "f48616819ed7188b4168967866a72bbb7695726a"
+                "reference": "a735a6f39e8452727b6281834529d40bc6efe741"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/cakephp/migrations/zipball/f48616819ed7188b4168967866a72bbb7695726a",
-                "reference": "f48616819ed7188b4168967866a72bbb7695726a",
+                "url": "https://api.github.com/repos/cakephp/migrations/zipball/a735a6f39e8452727b6281834529d40bc6efe741",
+                "reference": "a735a6f39e8452727b6281834529d40bc6efe741",
                 "shasum": ""
             },
             "require": {
@@ -358,8 +423,8 @@
                 "robmorgan/phinx": "^0.16.0"
             },
             "require-dev": {
-                "cakephp/bake": "dev-3.next",
-                "cakephp/cakephp": "dev-5.next as 5.1.0",
+                "cakephp/bake": "^3.0",
+                "cakephp/cakephp": "^5.0.11",
                 "cakephp/cakephp-codesniffer": "^5.0",
                 "phpunit/phpunit": "^10.5.5 || ^11.1.3"
             },
@@ -387,6 +452,7 @@
             "homepage": "https://github.com/cakephp/migrations",
             "keywords": [
                 "cakephp",
+                "cli",
                 "migrations"
             ],
             "support": {
@@ -395,7 +461,7 @@
                 "issues": "https://github.com/cakephp/migrations/issues",
                 "source": "https://github.com/cakephp/migrations"
             },
-            "time": "2025-03-01T18:14:11+00:00"
+            "time": "2025-04-20T02:44:53+00:00"
         },
         {
             "name": "cakephp/plugin-installer",
@@ -6037,7 +6103,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "cakephp/migrations": 0
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

@@ -1,8 +1,10 @@
 <?php
 $identity = $this->request->getAttribute('identity');
 $isLoggedIn = $identity !== null;
-?>
+$isAdmin = $isLoggedIn && $identity->get('role') === 'admin';
 
+if ($isAdmin):
+?>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
         <?= __('Admin') ?>
@@ -40,6 +42,9 @@ $isLoggedIn = $identity !== null;
 
     </ul>
 </li>
+<?php
+endif;
+?>
 
 <?php if (!$isLoggedIn): ?>
     <li class="nav-item d-none d-sm-inline-block">

@@ -29,7 +29,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 /**
  * The Migrations class is responsible for handling migrations command
- * within an non-shell application.
+ * within a non-shell application.
  */
 class Migrations
 {
@@ -256,7 +256,7 @@ class Migrations
         if (!($this->manager instanceof CakeManager)) {
             if (!($config instanceof ConfigInterface)) {
                 throw new RuntimeException(
-                    'You need to pass a ConfigInterface object for your first getManager() call'
+                    'You need to pass a ConfigInterface object for your first getManager() call',
                 );
             }
 

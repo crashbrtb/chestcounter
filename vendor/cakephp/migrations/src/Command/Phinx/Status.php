@@ -41,7 +41,7 @@ class Status extends StatusCommand
                 '--format',
                 '-f',
                 InputOption::VALUE_REQUIRED,
-                'The output format: text or json. Defaults to text.'
+                'The output format: text or json. Defaults to text.',
             )
             ->setHelp('prints a list of all migrations, along with their current status')
             ->addOption('--plugin', '-p', InputOption::VALUE_REQUIRED, 'The plugin containing the migrations')
@@ -105,7 +105,7 @@ class Status extends StatusCommand
     {
         $output = $this->getManager()->getOutput();
 
-        if (!empty($migrations)) {
+        if ($migrations) {
             $output->writeln('');
             $output->writeln(' Status  Migration ID    Migration Name ');
             $output->writeln('-----------------------------------------');
@@ -126,7 +126,7 @@ class Status extends StatusCommand
                     $status .
                     sprintf(' %14.0f ', $migration['id']) .
                     $name .
-                    $missingComment
+                    $missingComment,
                 );
             }
 

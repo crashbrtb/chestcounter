@@ -51,7 +51,7 @@ class DropForeignKey extends Action
         $foreignKey->setColumns($columns);
 
         if ($constraint) {
-            $foreignKey->setConstraint($constraint);
+            $foreignKey->setName($constraint);
         }
 
         return new DropForeignKey($table, $foreignKey);

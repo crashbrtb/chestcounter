@@ -3,4 +3,5 @@
 return [
     'Bake' => [],
     'CakeLte' => [],
+    'Migrations' => [],
 ];
