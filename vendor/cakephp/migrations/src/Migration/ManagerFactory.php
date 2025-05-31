@@ -39,7 +39,7 @@ class ManagerFactory
      * - source - The directory in app/config that migrations and seeds should be read from.
      * - plugin - The plugin name that migrations are being run on.
      * - connection - The connection name.
-     * - dry-run - Whether or not dry-run mode should be enabled.
+     * - dry-run - Whether dry-run mode should be enabled.
      *
      * @param array $options The command line options for creating config/manager.
      */
@@ -88,7 +88,16 @@ class ManagerFactory
         $templatePath = dirname(__DIR__) . DS . 'templates' . DS;
         $connectionName = (string)$this->getOption('connection');
 
-        $connectionConfig = ConnectionManager::getConfig($connectionName);
+        if (str_contains($connectionName, '://')) {
+            /** @var array<string, mixed> $connectionConfig */
+            $connectionConfig = ConnectionManager::parseDsn($connectionName);
+            $connectionName = 'tmp';
+            if (!ConnectionManager::getConfig($connectionName)) {
+                ConnectionManager::setConfig($connectionName, $connectionConfig);
+            }
+        } else {
+            $connectionConfig = ConnectionManager::getConfig($connectionName);
+        }
         if (!$connectionConfig) {
             throw new RuntimeException("Could not find connection `{$connectionName}`");
         }

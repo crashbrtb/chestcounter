@@ -17,6 +17,8 @@ use Cake\Database\Query\InsertQuery;
 use Cake\Database\Query\SelectQuery;
 use Cake\Database\Query\UpdateQuery;
 use Cake\Database\Schema\SchemaDialect;
+use Cake\I18n\Date;
+use Cake\I18n\DateTime;
 use Exception;
 use InvalidArgumentException;
 use Migrations\Config\Config;
@@ -135,7 +137,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     ->addColumn(
                         'migration_name',
                         'string',
-                        ['limit' => 100, 'after' => 'version', 'default' => null, 'null' => true]
+                        ['limit' => 100, 'after' => 'version', 'default' => null, 'null' => true],
                     )
                     ->save();
             }
@@ -392,7 +394,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
             throw new InvalidArgumentException(
                 'There was a problem creating the schema table: ' . $exception->getMessage(),
                 (int)$exception->getCode(),
-                $exception
+                $exception,
             );
         }
     }
@@ -513,7 +515,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
         }
 
         $connection = $this->getConnection();
-        if (empty($params)) {
+        if (!$params) {
             $result = $connection->execute($sql);
 
             return $result->rowCount();
@@ -534,7 +536,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
             Query::TYPE_UPDATE => $this->getConnection()->updateQuery(),
             Query::TYPE_DELETE => $this->getConnection()->deleteQuery(),
             default => throw new InvalidArgumentException(
-                'Query type must be one of: `select`, `insert`, `update`, `delete`.'
+                'Query type must be one of: `select`, `insert`, `update`, `delete`.',
             )
         };
     }
@@ -603,9 +605,37 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
      */
     public function insert(TableMetadata $table, array $row): void
     {
+        $sql = $this->generateInsertSql($table, $row);
+
+        if ($this->isDryRunEnabled()) {
+            $this->io->out($sql);
+        } else {
+            $vals = [];
+            foreach ($row as $value) {
+                $placeholder = '?';
+                if ($value instanceof Literal || $value instanceof PhinxLiteral) {
+                    $placeholder = (string)$value;
+                }
+                if ($placeholder === '?') {
+                    $vals[] = $value;
+                }
+            }
+            $this->getConnection()->execute($sql, $vals);
+        }
+    }
+
+    /**
+     * Generates the SQL for an insert.
+     *
+     * @param \Migrations\Db\Table\Table $table The table to insert into
+     * @param array $row The row to insert
+     * @return string
+     */
+    protected function generateInsertSql(TableMetadata $table, array $row): string
+    {
         $sql = sprintf(
             'INSERT INTO %s ',
-            $this->quoteTableName($table->getName())
+            $this->quoteTableName($table->getName()),
         );
         $columns = array_keys($row);
         $sql .= '(' . implode(', ', array_map($this->quoteColumnName(...), $columns)) . ')';
@@ -618,22 +648,20 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
 
         if ($this->isDryRunEnabled()) {
             $sql .= ' VALUES (' . implode(', ', array_map($this->quoteValue(...), $row)) . ');';
-            $this->io->out($sql);
+
+            return $sql;
         } else {
             $values = [];
-            $vals = [];
             foreach ($row as $value) {
                 $placeholder = '?';
                 if ($value instanceof Literal || $value instanceof PhinxLiteral) {
                     $placeholder = (string)$value;
                 }
                 $values[] = $placeholder;
-                if ($placeholder === '?') {
-                    $vals[] = $value;
-                }
             }
             $sql .= ' VALUES (' . implode(',', $values) . ')';
-            $this->getConnection()->execute($sql, $vals);
+
+            return $sql;
         }
     }
 
@@ -684,9 +712,47 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
      */
     public function bulkinsert(TableMetadata $table, array $rows): void
     {
+        $sql = $this->generateBulkInsertSql($table, $rows);
+
+        if ($this->isDryRunEnabled()) {
+            $this->io->out($sql);
+        } else {
+            $vals = [];
+            foreach ($rows as $row) {
+                foreach ($row as $v) {
+                    $placeholder = '?';
+                    if ($v instanceof Literal || $v instanceof PhinxLiteral) {
+                        $placeholder = (string)$v;
+                    }
+                    if ($placeholder == '?') {
+                        if ($v instanceof DateTime) {
+                            $vals[] = $v->toDateTimeString();
+                        } elseif ($v instanceof Date) {
+                            $vals[] = $v->toDateString();
+                        } elseif (is_bool($v)) {
+                            $vals[] = $this->castToBool($v);
+                        } else {
+                            $vals[] = $v;
+                        }
+                    }
+                }
+            }
+            $this->getConnection()->execute($sql, $vals);
+        }
+    }
+
+    /**
+     * Generates the SQL for a bulk insert.
+     *
+     * @param \Migrations\Db\Table\Table $table The table to insert into
+     * @param array $rows The rows to insert
+     * @return string
+     */
+    protected function generateBulkInsertSql(TableMetadata $table, array $rows): string
+    {
         $sql = sprintf(
             'INSERT INTO %s ',
-            $this->quoteTableName($table->getName())
+            $this->quoteTableName($table->getName()),
         );
         $current = current($rows);
         $keys = array_keys($current);
@@ -698,9 +764,9 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                 return '(' . implode(', ', array_map($this->quoteValue(...), $row)) . ')';
             }, $rows);
             $sql .= implode(', ', $values) . ';';
-            $this->io->out($sql);
+
+            return $sql;
         } else {
-            $vals = [];
             $queries = [];
             foreach ($rows as $row) {
                 $values = [];
@@ -710,19 +776,13 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                         $placeholder = (string)$v;
                     }
                     $values[] = $placeholder;
-                    if ($placeholder == '?') {
-                        if (is_bool($v)) {
-                            $vals[] = $this->castToBool($v);
-                        } else {
-                            $vals[] = $v;
-                        }
-                    }
                 }
                 $query = '(' . implode(', ', $values) . ')';
                 $queries[] = $query;
             }
             $sql .= implode(',', $queries);
-            $this->getConnection()->execute($sql, $vals);
+
+            return $sql;
         }
     }
 
@@ -828,9 +888,9 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                 $this->quoteTableName($this->getSchemaTableName()),
                 $this->quoteColumnName('breakpoint'),
                 $this->quoteColumnName('version'),
-                $this->quoteColumnName('start_time')
+                $this->quoteColumnName('start_time'),
             ),
-            $params
+            $params,
         );
 
         return $this;
@@ -847,8 +907,8 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                 $this->quoteTableName($this->getSchemaTableName()),
                 $this->quoteColumnName('breakpoint'),
                 $this->castToBool(false),
-                $this->quoteColumnName('start_time')
-            )
+                $this->quoteColumnName('start_time'),
+            ),
         );
     }
 
@@ -893,7 +953,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                 $this->quoteColumnName('start_time'),
                 $this->quoteColumnName('version'),
             ),
-            $params
+            $params,
         );
 
         return $this;
@@ -1103,7 +1163,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
     /**
      * Returns the instructions to drop the specified index from a database table.
      *
-     * @param string $tableName The name of of the table where the index is
+     * @param string $tableName The name of the table where the index is
      * @param string|string[] $columns Column(s)
      * @return \Migrations\Db\AlterInstructions
      */
@@ -1280,23 +1340,23 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     $instructions->merge($this->getChangeColumnInstructions(
                         $table->getName(),
                         $action->getColumnName(),
-                        $action->getColumn()
+                        $action->getColumn(),
                     ));
                     break;
 
-                case $action instanceof DropForeignKey && !$action->getForeignKey()->getConstraint():
+                case $action instanceof DropForeignKey && !$action->getForeignKey()->getName():
                     /** @var \Migrations\Db\Action\DropForeignKey $action */
                     $instructions->merge($this->getDropForeignKeyByColumnsInstructions(
                         $table->getName(),
-                        $action->getForeignKey()->getColumns()
+                        $action->getForeignKey()->getColumns(),
                     ));
                     break;
 
-                case $action instanceof DropForeignKey && $action->getForeignKey()->getConstraint():
+                case $action instanceof DropForeignKey && $action->getForeignKey()->getName():
                     /** @var \Migrations\Db\Action\DropForeignKey $action */
                     $instructions->merge($this->getDropForeignKeyInstructions(
                         $table->getName(),
-                        (string)$action->getForeignKey()->getConstraint()
+                        (string)$action->getForeignKey()->getName(),
                     ));
                     break;
 
@@ -1304,7 +1364,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     /** @var \Migrations\Db\Action\DropIndex $action */
                     $instructions->merge($this->getDropIndexByNameInstructions(
                         $table->getName(),
-                        (string)$action->getIndex()->getName()
+                        (string)$action->getIndex()->getName(),
                     ));
                     break;
 
@@ -1312,14 +1372,14 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     /** @var \Migrations\Db\Action\DropIndex $action */
                     $instructions->merge($this->getDropIndexByColumnsInstructions(
                         $table->getName(),
-                        (array)$action->getIndex()->getColumns()
+                        (array)$action->getIndex()->getColumns(),
                     ));
                     break;
 
                 case $action instanceof DropTable:
                     /** @var \Migrations\Db\Action\DropTable $action */
                     $instructions->merge($this->getDropTableInstructions(
-                        $table->getName()
+                        $table->getName(),
                     ));
                     break;
 
@@ -1327,7 +1387,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     /** @var \Migrations\Db\Action\RemoveColumn $action */
                     $instructions->merge($this->getDropColumnInstructions(
                         $table->getName(),
-                        (string)$action->getColumn()->getName()
+                        (string)$action->getColumn()->getName(),
                     ));
                     break;
 
@@ -1336,7 +1396,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     $instructions->merge($this->getRenameColumnInstructions(
                         $table->getName(),
                         (string)$action->getColumn()->getName(),
-                        $action->getNewName()
+                        $action->getNewName(),
                     ));
                     break;
 
@@ -1344,7 +1404,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     /** @var \Migrations\Db\Action\RenameTable $action */
                     $instructions->merge($this->getRenameTableInstructions(
                         $table->getName(),
-                        $action->getNewName()
+                        $action->getNewName(),
                     ));
                     break;
 
@@ -1352,7 +1412,7 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     /** @var \Migrations\Db\Action\ChangePrimaryKey $action */
                     $instructions->merge($this->getChangePrimaryKeyInstructions(
                         $table,
-                        $action->getNewColumns()
+                        $action->getNewColumns(),
                     ));
                     break;
 
@@ -1360,13 +1420,13 @@ abstract class AbstractAdapter implements AdapterInterface, DirectActionInterfac
                     /** @var \Migrations\Db\Action\ChangeComment $action */
                     $instructions->merge($this->getChangeCommentInstructions(
                         $table,
-                        $action->getNewComment()
+                        $action->getNewComment(),
                     ));
                     break;
 
                 default:
                     throw new InvalidArgumentException(
-                        sprintf("Don't know how to execute action: '%s'", get_class($action))
+                        sprintf("Don't know how to execute action: '%s'", get_class($action)),
                     );
             }
         }

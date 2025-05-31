@@ -232,6 +232,7 @@ class CollectedChestsController extends AppController
     public function mergePlayers()
     {
         $collectedChestsTable = $this->CollectedChests; // Ou TableRegistry::getTableLocator()->get('CollectedChests');
+        $membersTable = TableRegistry::getTableLocator()->get('Members'); // Adicionar MembersTable
 
         $uniquePlayersQuery = $collectedChestsTable->find()
             ->select(['player'])
@@ -258,6 +259,20 @@ class CollectedChestsController extends AppController
 
                     if ($updatedRows > 0) {
                         $this->Flash->success(__('Successfully merged player "{0}" into "{1}". {2} records were updated.', $incorrectPlayer, $correctPlayer, $updatedRows));
+                        
+                        // Excluir o jogador incorreto da tabela Members
+                        $incorrectPlayerEntity = $membersTable->find()->where(['player' => $incorrectPlayer])->first();
+                        if ($incorrectPlayerEntity) {
+                            if ($membersTable->delete($incorrectPlayerEntity)) {
+                                $this->Flash->success(__('Player "{0}" was successfully deleted from the members list.', $incorrectPlayer));
+                            } else {
+                                $this->Flash->error(__('Could not delete player "{0}" from the members list.', $incorrectPlayer));
+                            }
+                        } else {
+                            // Opcional: Adicionar uma mensagem se o jogador incorreto não for encontrado na tabela Members
+                            // $this->Flash->info(__('Player "{0}" not found in the members list, no deletion needed.', $incorrectPlayer));
+                        }
+
                          // Atualizar a lista de jogadores após a mesclagem
                         $playerList = $collectedChestsTable->find()
                                             ->select(['player'])

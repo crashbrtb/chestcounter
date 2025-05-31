@@ -25,17 +25,12 @@ composer require cakephp/migrations
 You can load the plugin using the shell command:
 
 ```
-bin/cake plugin load Migrations
+bin/cake plugin load Migrations --only-cli
 ```
 
-Or you can manually add the loading statement in the **src/Application.php** file of your application:
-
-```php
-public function bootstrap(): void
-{
-    parent::bootstrap();
-    $this->addPlugin('Migrations');
-}
+If you are using the PendingMigrations middleware, use:
+```
+bin/cake plugin load Migrations
 ```
 
 ### Enabling the builtin backend

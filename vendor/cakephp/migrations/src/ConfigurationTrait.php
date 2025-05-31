@@ -106,7 +106,7 @@ trait ConfigurationTrait
             if (!Configure::read('debug')) {
                 throw new RuntimeException(sprintf(
                     'Migrations path `%s` does not exist and cannot be created because `debug` is disabled.',
-                    $migrationsPath
+                    $migrationsPath,
                 ));
             }
             mkdir($migrationsPath, 0777, true);
@@ -247,7 +247,7 @@ trait ConfigurationTrait
      * Translates driver specific connection flags (PDO attributes) to
      * Phinx compatible adapter options.
      *
-     * Currently Phinx supports of the following flags:
+     * Currently, Phinx supports of the following flags:
      *
      * - *Most* of `PDO::ATTR_*`
      * - `PDO::MYSQL_ATTR_*`

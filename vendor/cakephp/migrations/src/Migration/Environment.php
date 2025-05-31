@@ -109,7 +109,7 @@ class Environment
                             ->getWrapper('record', $adapter);
 
                         // Wrap the adapter with a phinx shim to maintain contain
-                        $migration->setAdapter($adapter);
+                        $migration->setAdapter($recordAdapter);
 
                         $migration->{MigrationInterface::CHANGE}();
                         $recordAdapter->executeInvertedCommands();
@@ -279,7 +279,7 @@ class Environment
         $versions = $this->getVersions();
         $version = 0;
 
-        if (!empty($versions)) {
+        if ($versions) {
             $version = end($versions);
         }
 

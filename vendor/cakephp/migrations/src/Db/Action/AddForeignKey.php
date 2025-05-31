@@ -61,7 +61,7 @@ class AddForeignKey extends Action
            ->setOptions($options);
 
         if ($name !== null) {
-            $fk->setConstraint($name);
+            $fk->setName($name);
         }
 
         return new AddForeignKey($table, $fk);

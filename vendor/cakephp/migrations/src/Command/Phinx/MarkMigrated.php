@@ -62,12 +62,12 @@ class MarkMigrated extends AbstractCommand
             ->addArgument(
                 'version',
                 InputArgument::OPTIONAL,
-                'DEPRECATED: use `bin/cake migrations mark_migrated --target=VERSION --only` instead'
+                'DEPRECATED: use `bin/cake migrations mark_migrated --target=VERSION --only` instead',
             )
             ->setHelp(sprintf(
                 '%sMark migrations as migrated%s',
                 PHP_EOL,
-                PHP_EOL
+                PHP_EOL,
             ))
             ->addOption('plugin', 'p', InputOption::VALUE_REQUIRED, 'The plugin the file should be created for')
             ->addOption('connection', 'c', InputOption::VALUE_REQUIRED, 'The datasource connection to use')
@@ -76,26 +76,26 @@ class MarkMigrated extends AbstractCommand
                 'target',
                 't',
                 InputOption::VALUE_REQUIRED,
-                'It will mark migrations from beginning to the given version'
+                'It will mark migrations from beginning to the given version',
             )
             ->addOption(
                 'exclude',
                 'x',
                 InputOption::VALUE_NONE,
-                'If present it will mark migrations from beginning until the given version, excluding it'
+                'If present it will mark migrations from beginning until the given version, excluding it',
             )
             ->addOption(
                 'only',
                 'o',
                 InputOption::VALUE_NONE,
-                'If present it will only mark the given migration version'
+                'If present it will only mark the given migration version',
             );
     }
 
     /**
      * Mark migrations as migrated
      *
-     * `bin/cake migrations mark_migrated` mark every migrations as migrated
+     * `bin/cake migrations mark_migrated` mark every migration as migrated
      * `bin/cake migrations mark_migrated all` DEPRECATED: the same effect as above
      * `bin/cake migrations mark_migrated --target=VERSION` mark migrations as migrated up to the VERSION param
      * `bin/cake migrations mark_migrated --target=20150417223600 --exclude` mark migrations as migrated up to
@@ -119,7 +119,7 @@ class MarkMigrated extends AbstractCommand
 
         if ($this->invalidOnlyOrExclude()) {
             $output->writeln(
-                '<error>You should use `--exclude` OR `--only` (not both) along with a `--target` !</error>'
+                '<error>You should use `--exclude` OR `--only` (not both) along with a `--target` !</error>',
             );
 
             return BaseCommand::CODE_ERROR;

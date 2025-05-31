@@ -253,7 +253,7 @@ class Table
             $this->getColumns(),
             function ($column) use ($name) {
                 return $column->getName() === $name;
-            }
+            },
         );
 
         return array_pop($columns);
@@ -346,7 +346,7 @@ class Table
             throw new InvalidArgumentException(sprintf(
                 'An invalid column type "%s" was specified for column "%s".',
                 (string)$action->getColumn()->getType(),
-                (string)$action->getColumn()->getName()
+                (string)$action->getColumn()->getName(),
             ));
         }
 
@@ -529,17 +529,17 @@ class Table
         string|array|null $columns = null,
         string|TableValue|null $referencedTable = null,
         string|array $referencedColumns = ['id'],
-        array $options = []
+        array $options = [],
     ) {
         deprecationWarning(
             '4.6.0',
             'Use addForeignKey() instead. Use `BaseMigration::foreignKey()` to get a fluent' .
-                ' interface for building foreign keys.'
+                ' interface for building foreign keys.',
         );
         if (is_string($name)) {
             if ($columns === null || $referencedTable === null) {
                 throw new InvalidArgumentException(
-                    'Columns and referencedTable are required when adding a foreign key with a name'
+                    'Columns and referencedTable are required when adding a foreign key with a name',
                 );
             }
             $action = AddForeignKey::build(
@@ -548,7 +548,7 @@ class Table
                 $referencedTable,
                 $referencedColumns,
                 $options,
-                $name
+                $name,
             );
         } else {
             $action = new AddForeignKey($this->table, $name);
@@ -743,7 +743,7 @@ class Table
             return isset($primaryKey[$columnDef->getName()]);
         })->toArray();
 
-        if (empty($primaryKeyColumns)) {
+        if (!$primaryKeyColumns) {
             return;
         }
 
@@ -755,7 +755,7 @@ class Table
 
         $primaryKey = array_flip($primaryKey);
 
-        if (!empty($primaryKey)) {
+        if ($primaryKey) {
             $options['primary_key'] = $primaryKey;
         } else {
             unset($options['primary_key']);
@@ -784,7 +784,7 @@ class Table
     public function saveData(): void
     {
         $rows = $this->getData();
-        if (empty($rows)) {
+        if (!$rows) {
             return;
         }
 
@@ -839,7 +839,7 @@ class Table
     /**
      * Executes all the pending actions for this table
      *
-     * @param bool $exists Whether or not the table existed prior to executing this method
+     * @param bool $exists Whether the table existed prior to executing this method
      * @return void
      */
     protected function executeActions(bool $exists): void
