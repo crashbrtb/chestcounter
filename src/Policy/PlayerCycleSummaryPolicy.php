@@ -31,7 +31,16 @@ class PlayerCycleSummaryPolicy
     public function canMarkFinePaid(IdentityInterface $user, PlayerCycleSummary $playerCycleSummary)
     {
         // Apenas administradores podem marcar multas como pagas.
-        return $user->get('role') === 'admin';
+        $userAssociatedRoles = $user->get('roles'); // 'roles' deve ser o nome da propriedade na entidade User
+
+        if (!empty($userAssociatedRoles) && (is_array($userAssociatedRoles) || $userAssociatedRoles instanceof \Traversable)) {
+            foreach ($userAssociatedRoles as $roleEntity) {
+                if (is_object($roleEntity) && isset($roleEntity->name) && $roleEntity->name === 'admin') {
+                    return true; // Encontrou o role admin
+                }
+            }
+        }
+        return false; // Não é admin ou não tem roles
     }
 
     // Você pode adicionar aqui policies para `canAdd`, `canEdit`, `canDelete` se precisar dessas actions

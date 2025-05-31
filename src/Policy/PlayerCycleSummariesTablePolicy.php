@@ -33,7 +33,17 @@ class PlayerCycleSummariesTablePolicy
     public function canProcessCycleSummaries(IdentityInterface $user, PlayerCycleSummariesTable $table)
     {
         // Apenas administradores podem processar resumos.
-        // Assumindo que seu objeto IdentityInterface tem um método get() ou uma propriedade para 'role'.
-        return $user->get('role') === 'admin';
+        // Assumindo que a identidade do usuário (IdentityInterface) já tem os roles carregados
+        // como uma coleção de entidades Role, e cada entidade Role tem uma propriedade 'name'.
+        $userAssociatedRoles = $user->get('roles'); // 'roles' deve ser o nome da propriedade na entidade User
+
+        if (!empty($userAssociatedRoles) && (is_array($userAssociatedRoles) || $userAssociatedRoles instanceof \Traversable)) {
+            foreach ($userAssociatedRoles as $roleEntity) {
+                if (is_object($roleEntity) && isset($roleEntity->name) && $roleEntity->name === 'admin') {
+                    return true; // Encontrou o role admin
+                }
+            }
+        }
+        return false; // Não é admin ou não tem roles
     }
 } 
