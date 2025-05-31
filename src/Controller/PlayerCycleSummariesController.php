@@ -5,6 +5,7 @@ namespace App\Controller;
 
 use Cake\ORM\TableRegistry;
 use Cake\I18n\FrozenTime;
+use Cake\Event\EventInterface;
 
 /**
  * PlayerCycleSummaries Controller
@@ -18,13 +19,78 @@ class PlayerCycleSummariesController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+    
+        $this->Authentication->allowUnauthenticated(['index']);
+    }
     public function index()
     {
-        $query = $this->PlayerCycleSummaries->find()
-            ->order(['cycle_start_date' => 'DESC', 'player_name' => 'ASC']);
-        $playerCycleSummaries = $this->paginate($query);
+        // Autorizar com base na TablePolicy. 
+        // A policy canIndex permite todos os usuários logados por padrão.
+        // Se esta action devesse ser pública mesmo para não logados, 
+        // você usaria $this->Authentication->addUnauthenticatedActions(['index']); no AppController
+        // e $this->Authorization->skipAuthorization(); aqui.
+        $this->Authorization->skipAuthorization();
+        
 
-        $this->set(compact('playerCycleSummaries'));
+        // Buscar todos os resumos para identificar os ciclos
+        $allSummaries = $this->PlayerCycleSummaries->find()
+            ->order(['cycle_start_date' => 'DESC', 'player_name' => 'ASC'])
+            ->all();
+
+        $uniqueCycleStartDates = [];
+        if (!$allSummaries->isEmpty()) {
+            // Extrai todas as datas de início, remove duplicatas e garante que são objetos FrozenDate
+            $dates = $allSummaries->extract('cycle_start_date')->toArray();
+            $uniqueDatesStrings = array_unique(array_map(function($date) { return $date->toDateString(); }, $dates));
+            foreach ($uniqueDatesStrings as $dateString) {
+                $uniqueCycleStartDates[] = new \Cake\I18n\FrozenDate($dateString);
+            }
+            // Ordena as datas únicas em ordem descendente
+            usort($uniqueCycleStartDates, function (\Cake\I18n\FrozenDate $a, \Cake\I18n\FrozenDate $b) {
+                return $b <=> $a;
+            });
+        }
+        
+        $numberOfCyclesToShow = 3;
+        $selectedCycleDatesToShow = array_slice($uniqueCycleStartDates, 0, $numberOfCyclesToShow);
+
+        $summariesByCycle = [];
+        $formattedCycleDates = [];
+
+        if (!empty($selectedCycleDatesToShow)) {
+            $filteredSummaries = $allSummaries->filter(function ($summary) use ($selectedCycleDatesToShow) {
+                foreach ($selectedCycleDatesToShow as $date) {
+                    if ($summary->cycle_start_date->equals($date)) {
+                        return true;
+                    }
+                }
+                return false;
+            })->toList();
+
+            foreach ($filteredSummaries as $summary) {
+                $summariesByCycle[$summary->cycle_start_date->toDateString()][] = $summary;
+            }
+
+            foreach ($selectedCycleDatesToShow as $date) {
+                // Encontrar um sumário para pegar a data de término do ciclo para exibição
+                $firstSummaryInCycle = null;
+                if (!empty($summariesByCycle[$date->toDateString()])) {
+                    $firstSummaryInCycle = $summariesByCycle[$date->toDateString()][0];
+                }
+                if ($firstSummaryInCycle) {
+                     $formattedCycleDates[$date->toDateString()] = [
+                        'start' => $firstSummaryInCycle->cycle_start_date,
+                        'end' => $firstSummaryInCycle->cycle_end_date,
+                     ];
+                }
+            }
+        }
+        
+        // A paginação original $this->paginate($query) é removida pois estamos focando nos 3 últimos ciclos.
+        $this->set(compact('summariesByCycle', 'formattedCycleDates'));
     }
 
     /**
@@ -37,6 +103,7 @@ class PlayerCycleSummariesController extends AppController
     public function view($id = null)
     {
         $playerCycleSummary = $this->PlayerCycleSummaries->get($id, contain: []);
+        $this->Authorization->authorize($playerCycleSummary); // Verifica PlayerCycleSummaryPolicy::canView()
         $this->set(compact('playerCycleSummary'));
     }
 
@@ -51,6 +118,8 @@ class PlayerCycleSummariesController extends AppController
     {
         $this->request->allowMethod(['post', 'put']);
         $playerCycleSummary = $this->PlayerCycleSummaries->get($id);
+        $this->Authorization->authorize($playerCycleSummary); // Verifica PlayerCycleSummaryPolicy::canMarkFinePaid()
+
         if ($playerCycleSummary->fine_due && !$playerCycleSummary->fine_paid) {
             $playerCycleSummary->fine_paid = true;
             if ($this->PlayerCycleSummaries->save($playerCycleSummary)) {
@@ -73,6 +142,9 @@ class PlayerCycleSummariesController extends AppController
      */
     public function processCycleSummaries()
     {
+        // Autorizar com base na TablePolicy, action 'processCycleSummaries'
+        $this->Authorization->authorize($this->PlayerCycleSummaries, 'processCycleSummaries');
+
         $this->request->allowMethod(['post', 'get']); // Permitir GET para teste manual
         $configsTable = TableRegistry::getTableLocator()->get('Config');
         $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');

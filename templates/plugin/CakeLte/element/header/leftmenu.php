@@ -5,7 +5,7 @@
     <div class="dropdown-menu" aria-labelledby="langDropdown">
         <?= $this->Html->link('Scoreboard', '/score', ['class' => 'dropdown-item']) ?>
         <?= $this->Html->link('Goals', ['controller' => 'StandardChests', 'action' => 'weights'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('History', '/pages/underconstruction', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('History', '/history', ['class' => 'dropdown-item']) ?>
         
     </div>
 </li>

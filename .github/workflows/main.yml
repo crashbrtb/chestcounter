@@ -58,87 +58,47 @@ jobs:
             ./ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.REMOTE_PATH }}/
           echo "rsync completed."
 
-      - name: Post-deployment commands (Configure app_local.php)
+      - name: Post-deployment commands (Copy app_local.php)
         if: success()
         uses: appleboy/ssh-action@v1.0.3 
-        env:
-          # O REMOTE_PATH já está definido no passo anterior, mas para clareza no script do appleboy/ssh-action, podemos referenciar explicitamente.
-          # Se você preferir, pode usar diretamente ${{ secrets.REMOTE_PATH }} aqui ou uma variável de job/workflow.
-          # No entanto, o script usa TARGET_DIR, que é definido internamente.
-          # A variável de ambiente aqui é para o contexto do script executado pela action.
-          # O script abaixo vai pegar o valor do REMOTE_PATH do seu arquivo original.
-          SECURITY_SALT_PROD: ${{ secrets.SECURITY_SALT_PROD }}
-          DB_HOST_PROD: ${{ secrets.DB_HOST_PROD }}
-          DB_USER_PROD: ${{ secrets.DB_USER_PROD }}
-          DB_PASSWORD_PROD: ${{ secrets.DB_PASSWORD_PROD }}
-          DB_NAME_PROD: ${{ secrets.DB_NAME_PROD }}
         with:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USER }}
           password: ${{ secrets.PASS }}
           # port: ${{ secrets.SSH_PORT_NUMBER }} # Descomente se necessário
           script: |
-            TARGET_DIR="/home/storage/4/ab/f9/k201/public_html" # Definindo o caminho diretamente como no seu script original
+            SOURCE_APP_LOCAL="/home/storage/4/ab/f9/k201/app_local.php"
+            TARGET_CONFIG_DIR="/home/storage/4/ab/f9/k201/public_html/config"
+            TARGET_APP_LOCAL="${TARGET_CONFIG_DIR}/app_local.php"
 
-            echo "Accessing directory $TARGET_DIR for post-deployment configuration"
-            cd "$TARGET_DIR" || exit 1
-
-            echo "Verifying received secrets (lengths only for security in logs):"
-            echo "SECURITY_SALT_PROD length: ${#SECURITY_SALT_PROD}"
-            echo "DB_HOST_PROD length: ${#DB_HOST_PROD}"
-            echo "DB_USER_PROD length: ${#DB_USER_PROD}"
-            echo "DB_PASSWORD_PROD length: ${#DB_PASSWORD_PROD}"
-            echo "DB_NAME_PROD length: ${#DB_NAME_PROD}"
-
-            # Função para escapar barras invertidas e aspas simples para strings PHP
-            escape_for_php_string() {
-              # 1. Escapa \ para \\
-              # 2. Escapa ' para \\' (a barra que escapa a aspa também precisa ser escapada para o sed)
-              echo "$1" | sed -e 's/\\/\\\\/g' -e "s/'/\\\\'/g"
-            }
-
-            PHP_SECURITY_SALT_PROD=$(escape_for_php_string "${SECURITY_SALT_PROD}")
-            PHP_DB_HOST_PROD=$(escape_for_php_string "${DB_HOST_PROD}")
-            PHP_DB_USER_PROD=$(escape_for_php_string "${DB_USER_PROD}")
-            PHP_DB_PASSWORD_PROD=$(escape_for_php_string "${DB_PASSWORD_PROD}")
-            PHP_DB_NAME_PROD=$(escape_for_php_string "${DB_NAME_PROD}")
-
-            echo "Configuring app_local.php on server..."
-            if [ -f config/app_local.example.php ]; then
-              # Copia o exemplo para app_local.php APENAS se app_local.php não existir.
-              if [ ! -f config/app_local.php ]; then
-                cp config/app_local.example.php config/app_local.php
-                echo "Copied app_local.example.php to app_local.php on server (app_local.php did not exist)."
-              else
-                echo "app_local.php already exists. Skipping copy from example. Ensure it's correctly configured."
+            echo "Starting post-deployment: Copying app_local.php..."
+            
+            # Verificar se o diretório de destino da configuração existe
+            if [ ! -d "$TARGET_CONFIG_DIR" ]; then
+              echo "ERROR: Target configuration directory $TARGET_CONFIG_DIR does not exist. Creating it..."
+              mkdir -p "$TARGET_CONFIG_DIR"
+              if [ $? -ne 0 ]; then
+                echo "ERROR: Failed to create target configuration directory $TARGET_CONFIG_DIR."
+                exit 1
               fi
+              echo "Target configuration directory $TARGET_CONFIG_DIR created."
+            fi
 
-              # Apenas tenta substituir se app_local.php existe (seja porque foi copiado ou já estava lá)
-              if [ -f config/app_local.php ]; then
-                echo "Attempting to update placeholders in config/app_local.php..."
-                # Descomente as linhas abaixo para depurar o conteúdo do arquivo antes e depois do sed (cuidado com segredos nos logs)
-                # echo "--- Content of config/app_local.php BEFORE sed ---"
-                # cat config/app_local.php
-                # echo "----------------------------------------------------"
-
-                sed -i "s#%%'salt' => env('SECURITY_SALT', '__SALT__'),#%%'salt' => '${PHP_SECURITY_SALT_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'host' => 'localhost',#%%'host' => '${PHP_DB_HOST_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'username' => 'my_app',#%%'username' => '${PHP_DB_USER_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'password' => 'secret',#%%'password' => '${PHP_DB_PASSWORD_PROD}',#%%g" config/app_local.php
-                sed -i "s#%%'database' => 'my_app',#%%'database' => '${PHP_DB_NAME_PROD}',#%%g" config/app_local.php
-                
-                # echo "--- Content of config/app_local.php AFTER sed ---"
-                # cat config/app_local.php
-                # echo "--------------------------------------------------"
-                
-                echo "app_local.php placeholders processed with production secrets on server."
+            echo "Looking for app_local.php at $SOURCE_APP_LOCAL"
+            if [ -f "$SOURCE_APP_LOCAL" ]; then
+              echo "Found app_local.php at $SOURCE_APP_LOCAL. Copying to $TARGET_APP_LOCAL..."
+              cp "$SOURCE_APP_LOCAL" "$TARGET_APP_LOCAL"
+              if [ $? -eq 0 ]; then
+                echo "Successfully copied app_local.php to $TARGET_APP_LOCAL."
               else
-                echo "ERROR: config/app_local.php not found after potential copy. Cannot apply secrets."
-                exit 1 # Considerar falhar o job se a configuração é crítica
+                echo "ERROR: Failed to copy app_local.php from $SOURCE_APP_LOCAL to $TARGET_APP_LOCAL."
+                exit 1
               fi
             else
-              echo "WARNING: config/app_local.example.php not found in the deployed files (checked at $TARGET_DIR/config/app_local.example.php)! Cannot create config/app_local.php from example."
-              # Se config/app_local.php já existe no servidor e é gerenciado manualmente, isso pode ser OK.
+              echo "WARNING: Source file $SOURCE_APP_LOCAL not found. Cannot copy app_local.php."
+              # Decida se isso deve ser um erro fatal ou apenas um aviso
+              # exit 1 # Descomente para falhar o job se o arquivo for obrigatório
             fi
-            echo "Post-deployment configuration completed."
+            
+            echo "Post-deployment: app_local.php copy process completed."
             echo "Deploy completed successfully!!"
