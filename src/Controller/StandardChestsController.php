@@ -34,6 +34,8 @@ class StandardChestsController extends AppController
 
     public function weights()
     {
+        // Ler o parâmetro 'show_all' da query string. Padrão é '0' (não mostrar todos).
+        $showAllParam = $this->request->getQuery('show_all', '0');
 
         // Define os campos pelos quais a paginação pode ordenar
         // Use os nomes reais das colunas no banco de dados.
@@ -46,9 +48,22 @@ class StandardChestsController extends AppController
         ];
 
         $query = $this->StandardChests->find();
-        $standardChests = $this->paginate($query);
 
-        $this->set(compact('standardChests'));
+        // Aplicar filtro se não for para mostrar todos
+        if ($showAllParam !== '1') {
+            $query->where(['StandardChests.score !=' => 0]);
+        }
+
+        $standardChests = $this->paginate($query);
+        $configsTable = TableRegistry::getTableLocator()->get('Config');
+
+        // Buscar o dia de referência
+        $referencegoalConfig = $configsTable->find()
+            ->where(['param' => 'minimum_chest_score'])
+            ->first();
+
+        // Passar o parâmetro show_all para a view
+        $this->set(compact('standardChests', 'referencegoalConfig', 'showAllParam'));
     }
 
     /**

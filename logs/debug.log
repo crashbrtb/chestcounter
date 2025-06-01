@@ -95,3 +95,37 @@ Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\s
 Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
 [main]
 
+2025-06-01 00:37:26 notice: Since 5.0.0: Calling `findList` finder with options array is deprecated. Use named arguments instead.
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\ORM\Table.php, line: 2627
+You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/cakephp/src/ORM/Table.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Core\functions.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Core\functions.php, line 384
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\ORM\Table.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\ORM\Table.php, line 2695
+Cake\ORM\Table->invokeFinder() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\ORM\Table.php, line 2627
+Cake\ORM\Table->callFinder() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\ORM\Table.php, line 1274
+Cake\ORM\Table->find() C:\Apache24\htdocs\chestcounter\src\Controller\CollectedChestsController.php, line 177
+App\Controller\CollectedChestsController->score() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 505
+Cake\Controller\Controller->invokeAction() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 166
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+

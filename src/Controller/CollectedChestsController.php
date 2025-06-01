@@ -173,6 +173,11 @@ class CollectedChestsController extends AppController
             $chestScores[$row->source] = $row;
         }
 
+        // Buscar os nomes (sources) dos baús que têm pontuação diferente de zero
+        $sourcesWithNonZeroScore = $standardChestsTable->find('list', keyField: 'source', valueField: 'source')
+        ->where(['score !=' => 0])
+        ->toArray();
+
         $playerChestCounts = [];
         $playerFinalScores = [];
 
@@ -230,7 +235,17 @@ class CollectedChestsController extends AppController
         ]);
 
         // Passar os dados para a view
-        $this->set(compact('playerChestCounts', 'playerTotalChests', 'playerFinalScores', 'cycleOptions', 'currentCycleFormatted', 'selectedCycleOffset', 'minimumChestScore', 'lastUpdate'));
+        $this->set(compact(
+            'playerChestCounts', 
+            'playerTotalChests', 
+            'playerFinalScores', 
+            'cycleOptions', 
+            'currentCycleFormatted', 
+            'selectedCycleOffset', 
+            'minimumChestScore', 
+            'lastUpdate',
+            'sourcesWithNonZeroScore' // Adiciona a nova variável
+        ));
 
     }
 
