@@ -31,7 +31,6 @@ use Authentication\Controller\Component\AuthenticationComponent;
  *
  * @link https://book.cakephp.org/4/en/controllers.html#the-app-controller
  * @property \Authentication\Controller\Component\AuthenticationComponent $Authentication
- * @property \Authorization\Controller\Component\AuthorizationComponent $Authorization
  * @property \Cake\Controller\Component\FlashComponent $Flash
  */
 class AppController extends Controller
@@ -80,10 +79,6 @@ class AppController extends Controller
         //     'display' // Exemplo para PagesController::display
         // ]);
 
-        // Pular verificação de autorização para actions específicas se necessário
-        // Exemplo: se UsersController::login não precisa de autorização.
-        // if ($this->request->getParam('controller') === 'Users' && $this->request->getParam('action') === 'login') {
-        //    $this->Authorization->skipAuthorization();
         // }
 
     }

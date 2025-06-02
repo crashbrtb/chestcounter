@@ -101,4 +101,15 @@ jobs:
             fi
             
             echo "Post-deployment: app_local.php copy process completed."
+
+            echo "Setting execute permissions for CakePHP console..."
+            chmod +x /home/storage/4/ab/f9/k201/public_html/bin/cake
+            if [ $? -eq 0 ]; then
+              echo "Successfully set execute permissions for bin/cake."
+            else
+              echo "ERROR: Failed to set execute permissions for bin/cake."
+              # Você pode querer que isso seja um erro fatal dependendo da sua necessidade
+              # exit 1
+            fi
+
             echo "Deploy completed successfully!!"
