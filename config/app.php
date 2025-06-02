@@ -161,7 +161,6 @@ return [
      * - `skipLog` - array - List of exceptions to skip for logging. Exceptions that
      *   extend one of the listed exceptions will also be skipped for logging.
      *   E.g.:
-     *   `'skipLog' => ['Cake\Http\Exception\NotFoundException', 'Cake\Http\Exception\UnauthorizedException']`
      * - `extraFatalErrorMemory` - int - The number of megabytes to increase the memory limit by
      *   when a fatal error is encountered. This allows
      *   breathing room to complete logging or error handling.
