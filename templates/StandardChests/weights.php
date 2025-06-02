@@ -2,16 +2,39 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\StandardChest[]|\Cake\Collection\CollectionInterface $standardChests
+ * @var \App\Model\Entity\Config $referencegoalConfig
+ * @var string $showAll // Espera-se que o controller passe '0' ou '1'
  */
+
+// Define o estado atual e o link/texto do botão
+$showAllParam = $this->request->getQuery('show_all', '0'); // Default é '0' (não mostrar todos)
+
+$buttonLinkParams = $this->request->getQueryParams();
+$buttonText = '';
+// $buttonIcon = ''; // Ícone opcional
+
+if ($showAllParam === '1') {
+    $buttonText = __('Show Only Scored');
+    // $buttonIcon = 'fas fa-filter';
+    // Para voltar ao padrão, removemos o parâmetro ou definimos como 0
+    // Se houver outros parâmetros de paginação/sort, eles são mantidos.
+    unset($buttonLinkParams['show_all']);
+    // Ou, se preferir manter o parâmetro explicitamente:
+    // $buttonLinkParams['show_all'] = '0';
+} else {
+    $buttonText = __('Show All Chests');
+    // $buttonIcon = 'fas fa-list-ul';
+    $buttonLinkParams['show_all'] = '1';
+}
+// Garante que 'page' seja resetado ao mudar o filtro, para evitar ir para uma página inexistente.
+if (isset($buttonLinkParams['page'])) {
+    unset($buttonLinkParams['page']);
+}
+// Tentativa de correção para URL duplicada, assegurando que nenhum prefixo de rota seja aplicado automaticamente:
+$toggleShowAllLink = $this->Url->build(['prefix' => false, 'controller' => 'StandardChests', 'action' => 'weights', '?' => $buttonLinkParams]);
 ?>
 
-<?php
-$this->assign('title', __('Standard Chests'));
-$this->Breadcrumbs->add([
-    ['title' => __('Home'), 'url' => '/'],
-    ['title' => __('List Standard Chests')],
-]);
-?>
+
 
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
@@ -27,10 +50,11 @@ $this->Breadcrumbs->add([
 <div class="card card-primary card-outline">
     <div class="card-header d-flex flex-column flex-md-row">
         <h2 class="card-title">
-            <p class="fun-goal-text">Current goal: 3000 points</p>
+            <p class="fun-goal-text">Current goal: <?= $referencegoalConfig->value ?> points</p>
             <!-- -->
         </h2>
-        <div class="d-flex ml-auto">
+        <div class="d-flex ml-auto align-items-center">
+            <?= $this->Html->link($buttonText, $toggleShowAllLink, ['class' => 'btn btn-info btn-sm mr-2']) ?>
             <?= $this->Paginator->limitControl([], null, [
                 'label' => false,
                 'class' => 'form-control form-control-sm',

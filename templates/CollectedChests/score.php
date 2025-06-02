@@ -1,4 +1,16 @@
 <?php
+/**
+ * @var \App\View\AppView $this
+ * @var array $playerChestCounts
+ * @var array $playerTotalChests
+ * @var array $playerFinalScores
+ * @var array $cycleOptions
+ * @var string $selectedCycleOffset
+ * @var int $minimumChestScore
+ * @var \Cake\I18n\FrozenTime|null $lastUpdate
+ * @var array $currentCycleFormatted
+ * @var string[] $sourcesWithNonZeroScore // Esta variável virá do controller
+ */
 ?>
 <style>
     table {
@@ -73,14 +85,18 @@
                 <th><?= __('Total Chests') ?></th>
                 <th><?= __('Final Score') ?></th>
                 <?php
-                $allSources = [];
-                foreach ($playerChestCounts as $counts) {
-                    $allSources = array_unique(array_merge($allSources, array_keys($counts)));
-                }
-                sort($allSources);
-                foreach ($allSources as $source): ?>
-                    <th><?= h($source) ?></th>
-                <?php endforeach; ?>
+                // $allSources = [];
+                // foreach ($playerChestCounts as $counts) {
+                //     $allSources = array_unique(array_merge($allSources, array_keys($counts)));
+                // }
+                // sort($allSources);
+                // Usar a lista de sources com score != 0 vinda do controller
+                if (isset($sourcesWithNonZeroScore) && !empty($sourcesWithNonZeroScore)) {
+                    sort($sourcesWithNonZeroScore); // Garante uma ordem consistente
+                    foreach ($sourcesWithNonZeroScore as $source): ?>
+                        <th><?= h($source) ?></th>
+                <?php endforeach;
+                } ?>
             </tr>
         </thead>
         <tbody>
@@ -91,15 +107,18 @@
                     <?php
                     // Determina a cor do texto com base na pontuação usando degradê
                     $score = isset($playerFinalScores[$player]) ? $playerFinalScores[$player] : 0;
-                    $percentage = min(max($score / $minimumChestScore, 0), 1); // Calcula a porcentagem entre 0 e 1
+                    $percentage = $minimumChestScore > 0 ? min(max($score / $minimumChestScore, 0), 1) : ($score > 0 ? 1 : 0); // Calcula a porcentagem entre 0 e 1, evita divisão por zero
                     $red = (1 - $percentage) * 255; // Quanto menor a pontuação, mais vermelho
                     $green = $percentage * 255; // Quanto maior a pontuação, mais verde
-                    $color = sprintf('rgb(%d, %d, 0)', $red, $green); // Combina vermelho e verde
+                    $color = sprintf('rgb(%d, %d, 0)', (int)$red, (int)$green); // Combina vermelho e verde
                     ?>
                     <td style="color: <?= $color ?>;"><?= $score ?></td>
-                    <?php foreach ($allSources as $source): ?>
-                        <td><?= isset($counts[$source]) ? $counts[$source] : 0 ?></td>
-                    <?php endforeach; ?>
+                    <?php 
+                    if (isset($sourcesWithNonZeroScore) && !empty($sourcesWithNonZeroScore)) {
+                        foreach ($sourcesWithNonZeroScore as $source): ?>
+                            <td><?= isset($counts[$source]) ? $counts[$source] : 0 ?></td>
+                    <?php endforeach;
+                    } ?>
                 </tr>
             <?php endforeach; ?>
         </tbody>
