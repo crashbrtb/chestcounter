@@ -142,6 +142,29 @@ class CollectedChestsController extends AppController
         }
         $minimumChestScore = (int) $minimumChestScore->value;
 
+        // Buscar a pontuação mínima para Epic Chests
+        $minimumEpicChestScoreConfig = $configsTable->find()
+            ->where(['param' => 'minimum_epic_chest_score'])
+            ->first();
+        if (!$minimumEpicChestScoreConfig || !is_numeric($minimumEpicChestScoreConfig->value)) {
+            // Lidar com o erro, talvez definindo um valor padrão
+            $minimumEpicChestScore = 0; // ou lançar uma exceção
+        } else {
+            $minimumEpicChestScore = (int) $minimumEpicChestScoreConfig->value;
+        }
+
+        // Buscar as cores para o degradê da pontuação
+        $scoreColorsConfig = $configsTable->find('list', [
+            'keyField' => 'param',
+            'valueField' => 'value'
+        ])
+        ->where(['param IN' => [
+            'score_color_start_r', 'score_color_start_g', 'score_color_start_b',
+            'score_color_end_r', 'score_color_end_g', 'score_color_end_b',
+            'score_color_transition_start'
+        ]])
+        ->toArray();
+
         // Determinar o ciclo a ser calculado
         $selectedCycleOffset = $this->request->getQuery('cycle', 0); // 0 para o ciclo atual
 
@@ -242,9 +265,12 @@ class CollectedChestsController extends AppController
             'cycleOptions', 
             'currentCycleFormatted', 
             'selectedCycleOffset', 
-            'minimumChestScore', 
+            'minimumChestScore',
+            'minimumEpicChestScore',
             'lastUpdate',
-            'sourcesWithNonZeroScore' // Adiciona a nova variável
+            'sourcesWithNonZeroScore', // Adiciona a nova variável
+            'chestScores',
+            'scoreColorsConfig'
         ));
 
     }

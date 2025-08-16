@@ -102,6 +102,32 @@ jobs:
             
             echo "Post-deployment: app_local.php copy process completed."
 
+            echo "Copying .htaccess from backup..."
+            # O caminho ~/publichtml deve resolver para /home/storage/4/ab/f9/k201/public_html
+            # com base no seu REMOTE_PATH, mas para ser explícito, usaremos o caminho completo.
+            # Se você tiver certeza que ~ expande para o diretório do usuário SSH_USER, pode usar ~/public_html.
+            # Usando o caminho que você forneceu na query e o REMOTE_PATH como referência:
+            SOURCE_HTACCESS_BACKUP="/home/storage/4/ab/f9/k201/htaccess" # Assumindo que ~ para o usuário SSH é /home/USER
+            # Se o usuário SSH não for 'k201', ajuste o caminho acima ou use um caminho absoluto fixo se souber.
+            # Para maior segurança, vamos usar o caminho completo que você especificou na sua última mensagem para o destino
+            TARGET_HTACCESS_PATH="/home/storage/4/ab/f9/k201/public_html/webroot/.htaccess"
+
+            # Verificando se o backup do .htaccess existe
+            if [ -f "$SOURCE_HTACCESS_BACKUP" ]; then
+              echo "Found .htaccess backup at $SOURCE_HTACCESS_BACKUP. Copying to $TARGET_HTACCESS_PATH..."
+              cp "$SOURCE_HTACCESS_BACKUP" "$TARGET_HTACCESS_PATH"
+              if [ $? -eq 0 ]; then
+                echo "Successfully copied .htaccess to $TARGET_HTACCESS_PATH."
+              else
+                echo "ERROR: Failed to copy .htaccess from $SOURCE_HTACCESS_BACKUP to $TARGET_HTACCESS_PATH."
+                exit 1 # Falhar o deploy se a cópia do .htaccess falhar
+              fi
+            else
+              echo "WARNING: Source .htaccess backup file $SOURCE_HTACCESS_BACKUP not found. Skipping copy."
+              # Decida se isso deve ser um erro fatal ou apenas um aviso
+              # exit 1
+            fi
+
             echo "Setting execute permissions for CakePHP console..."
             chmod +x /home/storage/4/ab/f9/k201/public_html/bin/cake
             if [ $? -eq 0 ]; then
