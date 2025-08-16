@@ -9,7 +9,7 @@ $clanName = $configTable->find()->where(['param' => 'clan_name'])->first()->valu
 return [
     'CakeLte' => [
         'app-name' => '<b>' . $kingdomNumber . ' </b> ' . $clanAcronym . ' <b>' . $clanName . '</b>',
-        'app-logo' => 'CakeLte.dkw.png',
+        'app-logo' => 'CakeLte.logo.png',
         'small-text' => true,
         'dark-mode' => false,
         'layout-boxed' => false,
@@ -20,7 +20,7 @@ return [
         ],
         'footer' => [
             'left' => 'ChestCounter',
-            'right' => 'Versão 1.0'
+            'right' => 'Versão 0.3'
         ],
         'sidebar' => [
             'enable' => false,
