@@ -18,9 +18,9 @@ $this->Breadcrumbs->add([
 <div class="card card-primary card-outline">
     <?= $this->Form->create($config) ?>
     <div class="card-body">
-        <?= $this->Form->control('param') ?>
+        <?= $this->Form->control('param', ['disabled' => true]) ?>
         <?= $this->Form->control('value') ?>
-        <?= $this->Form->control('description') ?>
+        <?= $this->Form->control('description', ['type' => 'textarea', 'id' => 'description-textarea']) ?>
     </div>
     <div class="card-footer d-flex">
         <div class="mr-auto">
@@ -37,3 +37,17 @@ $this->Breadcrumbs->add([
     </div>
     <?= $this->Form->end() ?>
 </div>
+
+<script>
+    const textarea = document.getElementById('description-textarea');
+
+    function autoResize() {
+        textarea.style.height = 'auto';
+        textarea.style.height = textarea.scrollHeight + 'px';
+    }
+
+    textarea.addEventListener('input', autoResize);
+
+    // Initial resize on page load
+    window.addEventListener('load', autoResize);
+</script>

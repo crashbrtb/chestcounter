@@ -84,6 +84,7 @@
                 <th><?= __('Player') ?></th>
                 <th><?= __('Total Chests') ?></th>
                 <th><?= __('Final Score') ?></th>
+                <th><?= __('Epic Crypt Score') ?></th>
                 <?php
                 // $allSources = [];
                 // foreach ($playerChestCounts as $counts) {
@@ -105,14 +106,69 @@
                     <td><?= h($player) ?></td>
                     <td><?= isset($playerTotalChests[$player]) ? $playerTotalChests[$player] : 0 ?></td>
                     <?php
-                    // Determina a cor do texto com base na pontuação usando degradê
                     $score = isset($playerFinalScores[$player]) ? $playerFinalScores[$player] : 0;
-                    $percentage = $minimumChestScore > 0 ? min(max($score / $minimumChestScore, 0), 1) : ($score > 0 ? 1 : 0); // Calcula a porcentagem entre 0 e 1, evita divisão por zero
-                    $red = (1 - $percentage) * 255; // Quanto menor a pontuação, mais vermelho
-                    $green = $percentage * 255; // Quanto maior a pontuação, mais verde
-                    $color = sprintf('rgb(%d, %d, 0)', (int)$red, (int)$green); // Combina vermelho e verde
+                    $percentage = $minimumChestScore > 0 ? min(max($score / $minimumChestScore, 0), 1) : ($score > 0 ? 1 : 0);
+
+                    // Ponto de início da transição (ex: 0.9 para 90%)
+                    $transitionStart = (float)($scoreColorsConfig['score_color_transition_start'] ?? 0.0);
+
+                    // Ajusta a porcentagem para a transição
+                    $adjustedPercentage = 0;
+                    if ($percentage >= $transitionStart) {
+                        if (1.0 - $transitionStart > 0) { // Evita divisão por zero
+                            $adjustedPercentage = ($percentage - $transitionStart) / (1.0 - $transitionStart);
+                        } else {
+                            $adjustedPercentage = 1.0; // Atingiu o máximo
+                        }
+                    }
+                    
+                    // Cores de início (pontuação baixa)
+                    $startR = (int)($scoreColorsConfig['score_color_start_r'] ?? 255);
+                    $startG = (int)($scoreColorsConfig['score_color_start_g'] ?? 0);
+                    $startB = (int)($scoreColorsConfig['score_color_start_b'] ?? 0);
+
+                    // Cores de fim (pontuação alta)
+                    $endR = (int)($scoreColorsConfig['score_color_end_r'] ?? 0);
+                    $endG = (int)($scoreColorsConfig['score_color_end_g'] ?? 255);
+                    $endB = (int)($scoreColorsConfig['score_color_end_b'] ?? 0);
+
+                    // Interpolação linear para cada componente de cor
+                    $r = (int)($startR + ($endR - $startR) * $adjustedPercentage);
+                    $g = (int)($startG + ($endG - $startG) * $adjustedPercentage);
+                    $b = (int)($startB + ($endB - $startB) * $adjustedPercentage);
+
+                    $color = sprintf('rgb(%d, %d, %d)', $r, $g, $b);
                     ?>
                     <td style="color: <?= $color ?>;"><?= $score ?></td>
+
+                    <?php
+                    $epicCryptScore = 0;
+                    foreach ($counts as $source => $count) {
+                        if (stripos($source, 'epic Crypt') !== false) {
+                            if (isset($chestScores[$source])) {
+                                $epicCryptScore += $chestScores[$source]->score * $count;
+                            }
+                        }
+                    }
+
+                    // Aplicar a mesma lógica de cor para a pontuação da Epic Crypt
+                    $epicPercentage = $minimumEpicChestScore > 0 ? min(max($epicCryptScore / $minimumEpicChestScore, 0), 1) : ($epicCryptScore > 0 ? 1 : 0);
+                    $epicAdjustedPercentage = 0;
+                    if ($epicPercentage >= $transitionStart) {
+                        if (1.0 - $transitionStart > 0) {
+                            $epicAdjustedPercentage = ($epicPercentage - $transitionStart) / (1.0 - $transitionStart);
+                        } else {
+                            $epicAdjustedPercentage = 1.0;
+                        }
+                    }
+                    
+                    $epicR = (int)($startR + ($endR - $startR) * $epicAdjustedPercentage);
+                    $epicG = (int)($startG + ($endG - $startG) * $epicAdjustedPercentage);
+                    $epicB = (int)($startB + ($endB - $startB) * $epicAdjustedPercentage);
+                    $epicColor = sprintf('rgb(%d, %d, %d)', $epicR, $epicG, $epicB);
+                    ?>
+                    <td style="color: <?= $epicColor ?>;"><?= $epicCryptScore ?></td>
+
                     <?php 
                     if (isset($sourcesWithNonZeroScore) && !empty($sourcesWithNonZeroScore)) {
                         foreach ($sourcesWithNonZeroScore as $source): ?>
