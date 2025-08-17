@@ -51,6 +51,8 @@ return function (RouteBuilder $routes): void {
 
     // Rota personalizada para /score
     $routes->connect('/score', ['controller' => 'CollectedChests', 'action' => 'score']);
+    $routes->connect('/main', ['controller' => 'CollectedChests', 'action' => 'score']);
+    $routes->connect('/main/score', ['controller' => 'CollectedChests', 'action' => 'score']);
 
     $routes->scope('/', function (RouteBuilder $builder): void {
         /*
