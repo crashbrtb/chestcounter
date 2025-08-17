@@ -50,8 +50,9 @@ $toggleShowAllLink = $this->Url->build(['prefix' => false, 'controller' => 'Stan
 <div class="card card-primary card-outline">
     <div class="card-header d-flex flex-column flex-md-row">
         <h2 class="card-title">
-            <p class="fun-goal-text">Current goal: <?= $referencegoalConfig->value ?> points</p>
-            <!-- -->
+            <p class="fun-goal-text">
+                Current Goal <?= $this->Number->format($referencegoalConfig->value ?? 0) ?> chest points and <?= $this->Number->format($epicGoalConfig->value ?? 0) ?> Epic chest points
+            </p>
         </h2>
         <div class="d-flex ml-auto align-items-center">
             <?= $this->Html->link($buttonText, $toggleShowAllLink, ['class' => 'btn btn-info btn-sm mr-2']) ?>

@@ -63,6 +63,15 @@
         margin-bottom: 10px;
         margin-top: -40px;
     }
+
+    /* Estilo para o texto da meta */
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
+    .fun-goal-text {
+        font-family: 'Comic Neue', cursive;
+        color: #ff6b6b; /* Uma cor divertida, como um vermelho-rosado */
+        font-size: 1.2em; /* Um pouco maior */
+        text-shadow: 1px 1px 1px #ccc; /* Uma leve sombra */
+    }
 </style>
 
 <h1><?= __('Players Score') ?></h1>
@@ -72,6 +81,15 @@
         <?= $this->Form->select('cycle', $cycleOptions, ['default' => $selectedCycleOffset]) ?>
         <?= $this->Form->button(__('Filter')) ?>
     <?= $this->Form->end() ?>
+</div>
+
+<!-- Exibição das Metas -->
+<div class="d-flex justify-content-center mb-3">
+    <div class="text-center">
+        <p class="fun-goal-text">
+            Current Goal <?= $this->Number->format($minimumChestScore ?? 0) ?> chest points and <?= $this->Number->format($minimumEpicChestScore ?? 0) ?> Epic chest points
+        </p>
+    </div>
 </div>
 
 <h5><?= $cycleOptions[$selectedCycleOffset] ?></h5>
