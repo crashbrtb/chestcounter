@@ -209,32 +209,54 @@ class PlayerCycleSummariesController extends AppController
         
         $chestScores = [];
         foreach ($chestScoresResult as $row) {
-            $chestScores[$row->source] = $row->score;
+            $chestScores[$row->source] = $row;
         }
 
-        $playerCycleData = [];
+        // 1. Inicializar um array para manter os dados de resumo de cada jogador.
+        $playerSummaries = [];
 
-        foreach ($collectedChestsData as $data) {
-            $player = $data->player;
-            $source = $data->source;
-            $count = $data->count;
+        // 2. Iterar sobre todos os baús coletados no ciclo.
+        foreach ($collectedChestsData as $chest) {
+            $playerName = $chest->player;
+            $sourceName = $chest->source;
+            $chestCount = $chest->count;
 
-            if (!isset($playerCycleData[$player])) {
-                $playerCycleData[$player] = [
+            // Inicializar o resumo para o jogador se for a primeira vez que o vemos.
+            if (!isset($playerSummaries[$playerName])) {
+                $playerSummaries[$playerName] = [
                     'total_chests' => 0,
                     'total_score' => 0,
+                    'epic_crypt_score' => 0,
                 ];
             }
-            $playerCycleData[$player]['total_chests'] += $count;
-            if (isset($chestScores[$source])) {
-                $playerCycleData[$player]['total_score'] += $chestScores[$source] * $count;
+
+            // 3. Adicionar o número de baús ao total do jogador.
+            $playerSummaries[$playerName]['total_chests'] += $chestCount;
+
+            // 4. Verificar se este tipo de baú tem uma pontuação definida.
+            if (isset($chestScores[$sourceName])) {
+                // Obter a pontuação para este tipo de baú específico.
+                $scorePerChest = $chestScores[$sourceName]->score;
+                
+                // Calcular a pontuação total para este grupo de baús.
+                $scoreForThisGroup = $scorePerChest * $chestCount;
+
+                // 5. Adicionar ao score total geral do jogador.
+                $playerSummaries[$playerName]['total_score'] += $scoreForThisGroup;
+
+                // 6. Verificar se o nome da fonte contém "epic" (insensível a maiúsculas e minúsculas).
+                if (stripos($sourceName, 'epic') !== false) {
+                    // Se contiver, adicionar também ao score épico do jogador.
+                    $playerSummaries[$playerName]['epic_crypt_score'] += $scoreForThisGroup;
+                }
             }
         }
 
         $processedCount = 0;
         $errorCount = 0;
 
-        foreach ($playerCycleData as $playerName => $data) {
+        // 7. Salvar os resumos para cada jogador.
+        foreach ($playerSummaries as $playerName => $data) {
             $goalAchieved = $data['total_score'] >= $minimumRequiredScore;
             $fineDue = !$goalAchieved;
 
@@ -244,17 +266,16 @@ class PlayerCycleSummariesController extends AppController
                 'cycle_end_date' => $cycleEnd->format('Y-m-d'),
                 'total_chests' => $data['total_chests'],
                 'total_score' => $data['total_score'],
+                'epic_crypt_score' => $data['epic_crypt_score'],
                 'goal_achieved' => $goalAchieved,
                 'fine_due' => $fineDue,
-                'fine_paid' => false, // Multa nunca é paga na criação
+                'fine_paid' => false,
             ]);
 
             if ($playerCycleSummariesTable->save($summary)) {
                 $processedCount++;
             } else {
                 $errorCount++;
-                // Log errors if necessary
-                // Log::error('Failed to save summary for player ' . $playerName . ' for cycle ' . $cycleStart->format('Y-m-d'));
             }
         }
 
@@ -270,4 +291,5 @@ class PlayerCycleSummariesController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
 } 

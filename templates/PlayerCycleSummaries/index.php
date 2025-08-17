@@ -72,6 +72,7 @@ if ($isLoggedIn) {
                                                 <th><?= __('Player Name') ?></th>
                                                 <th class="text-center"><?= __('Total Chests') ?></th>
                                                 <th class="text-center"><?= __('Total Score') ?></th>
+                                                <th class="text-center"><?= __('Epic Crypt Score') ?></th>
                                                 <th class="text-center"><?= __('Goal Achieved') ?></th>
                                                 <th class="text-center"><?= __('Fine Status') ?></th> 
                                                 <?php if ($isAdmin): // Mostra coluna Actions apenas para admin ?>
@@ -85,6 +86,7 @@ if ($isLoggedIn) {
                                                 <td><?= h($summary->player_name) ?></td>
                                                 <td class="text-center"><?= $this->Number->format($summary->total_chests) ?></td>
                                                 <td class="text-center"><?= $this->Number->format($summary->total_score) ?></td>
+                                                <td class="text-center"><?= $this->Number->format($summary->epic_crypt_score ?? 0) ?></td>
                                                 <td class="text-center">
                                                     <?= $summary->goal_achieved ? '<span class="badge badge-success">'.__('Yes').'</span>' : '<span class="badge badge-danger">'.__('No').'</span>' ?>
                                                 </td>

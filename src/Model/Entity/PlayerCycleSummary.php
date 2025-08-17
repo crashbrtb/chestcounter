@@ -37,6 +37,7 @@ class PlayerCycleSummary extends Entity
         'cycle_end_date' => true,
         'total_chests' => true,
         'total_score' => true,
+        'epic_crypt_score' => true,
         'goal_achieved' => true,
         'fine_due' => true,
         'fine_paid' => true,

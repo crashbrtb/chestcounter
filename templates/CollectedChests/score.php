@@ -144,7 +144,7 @@
                     <?php
                     $epicCryptScore = 0;
                     foreach ($counts as $source => $count) {
-                        if (stripos($source, 'epic Crypt') !== false) {
+                        if (stripos($source, 'epic') !== false) {
                             if (isset($chestScores[$source])) {
                                 $epicCryptScore += $chestScores[$source]->score * $count;
                             }
