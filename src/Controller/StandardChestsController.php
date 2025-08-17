@@ -62,8 +62,13 @@ class StandardChestsController extends AppController
             ->where(['param' => 'minimum_chest_score'])
             ->first();
 
+        // Buscar a meta de pontuação épica
+        $epicGoalConfig = $configsTable->find()
+            ->where(['param' => 'minimum_epic_chest_score'])
+            ->first();
+
         // Passar o parâmetro show_all para a view
-        $this->set(compact('standardChests', 'referencegoalConfig', 'showAllParam'));
+        $this->set(compact('standardChests', 'referencegoalConfig', 'epicGoalConfig', 'showAllParam'));
     }
 
     /**

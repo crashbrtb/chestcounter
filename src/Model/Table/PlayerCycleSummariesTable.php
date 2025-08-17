@@ -79,6 +79,10 @@ class PlayerCycleSummariesTable extends Table
             ->notEmptyString('total_score');
 
         $validator
+            ->integer('epic_crypt_score')
+            ->notEmptyString('epic_crypt_score');
+
+        $validator
             ->boolean('goal_achieved')
             ->notEmptyString('goal_achieved');
 
