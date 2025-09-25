@@ -19,6 +19,7 @@ use Authentication\PasswordHasher\DefaultPasswordHasher;
  * @property \Cake\I18n\DateTime|null $created
  * @property \Cake\I18n\DateTime|null $modified
  *
+ * @property \App\Model\Entity\Member[] $members
  * @property \App\Model\Entity\Role[] $roles
  */
 class User extends Entity
@@ -39,6 +40,7 @@ class User extends Entity
         'created' => true,
         'modified' => true,
         'roles' => true,
+        'members' => true,
     ];
     protected function _setPassword(string $password)
     {

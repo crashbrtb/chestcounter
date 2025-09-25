@@ -35,6 +35,7 @@ $this->Breadcrumbs->add([
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
+                    <th><?= $this->Paginator->sort('member_id', 'Member') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -46,6 +47,11 @@ $this->Breadcrumbs->add([
                         <td><?= $this->Number->format($user->id) ?></td>
                         <td><?= h($user->name) ?></td>
                         <td><?= h($user->email) ?></td>
+                        <td>
+                            <?php if (!empty($user->members)) : ?>
+                                <?= implode(', ', collection($user->members)->extract('player')->toList()) ?>
+                            <?php endif; ?>
+                        </td>
                         <td><?= h($user->created) ?></td>
                         <td><?= h($user->modified) ?></td>
                         <td class="actions">

@@ -20,7 +20,8 @@ $this->Breadcrumbs->add([
         <?= $this->Form->control('name') ?>
         <?= $this->Form->control('email') ?>
         <?= $this->Form->control('password') ?>
-        <?= $this->Form->control('roles._ids', ['options' => $roles]) ?>
+        <?= $this->Form->control('members._ids', ['options' => $members, 'multiple' => true]); ?>
+        <p><?= __('The user will be created with the role: user') ?></p>
     </div>
     <div class="card-footer d-flex">
         <div class="ml-auto">
