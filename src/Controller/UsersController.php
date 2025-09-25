@@ -107,27 +107,25 @@ class UsersController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
 
-            if (!empty($data['members']['_ids'])) {
-                $selectedMembers = $this->Users->Members->find()
-                    ->where([
-                        'Members.id IN' => $data['members']['_ids'],
-                        'Members.user_id IS NOT' => null,
-                        'Members.user_id IS NOT' => $id,
-                    ]);
+            $selectedMemberIds = $data['members']['_ids'] ?? [];
 
-                if ($selectedMembers->count() > 0) {
-                    $this->Flash->error(__('One or more selected members are already associated with another user. Please deselect them.'));
-                } else {
-                    $user = $this->Users->patchEntity($user, $data);
-                    if ($this->Users->save($user)) {
-                        $this->Flash->success(__('The user has been saved.'));
-                        return $this->redirect(['action' => 'index']);
-                    }
-                    $this->Flash->error(__('The user could not be saved. Please, try again.'));
-                }
+            $conflictingMembers = $this->Users->Members->find()
+                ->where([
+                    'Members.id IN' => $selectedMemberIds,
+                    'Members.user_id IS NOT' => null,
+                    'Members.user_id IS NOT' => $id,
+                ]);
+
+            if ($conflictingMembers->count() > 0) {
+                $this->Flash->error(__('One or more selected members are already associated with another user. Please deselect them.'));
             } else {
-                 // Also handle the case where all members are deselected
-                $data['members']['_ids'] = [];
+                // First, unlink all currently associated members.
+                $this->Users->Members->updateAll(
+                    ['user_id' => null],
+                    ['user_id' => $id]
+                );
+
+                // Now, patch and save the new associations.
                 $user = $this->Users->patchEntity($user, $data);
                 if ($this->Users->save($user)) {
                     $this->Flash->success(__('The user has been saved.'));
