@@ -21,6 +21,7 @@ $this->Breadcrumbs->add([
         <?= $this->Form->control('name') ?>
         <?= $this->Form->control('email') ?>
         <?= $this->Form->control('password') ?>
+        <?= $this->Form->control('members._ids', ['options' => $members, 'multiple' => true]); ?>
         <?= $this->Form->control('roles._ids', ['options' => $roles]) ?>
     </div>
     <div class="card-footer d-flex">

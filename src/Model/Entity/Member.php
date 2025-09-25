@@ -16,8 +16,11 @@ use Cake\ORM\Entity;
  * @property int $monsters
  * @property int $engineers
  * @property int $active
+ * @property int|null $user_id
  * @property \Cake\I18n\DateTime $created_at
  * @property \Cake\I18n\DateTime $modified_at
+ *
+ * @property \App\Model\Entity\User $user
  */
 class Member extends Entity
 {
@@ -40,5 +43,6 @@ class Member extends Entity
         'active' => true,
         'created_at' => true,
         'modified_at' => true,
+        'user_id' => true,
     ];
 }

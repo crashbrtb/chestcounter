@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Members Model
  *
+ * @property \App\Model\Table\UsersTable&\Cake\ORM\Association\BelongsTo $Users
  * @method \App\Model\Entity\Member newEmptyEntity()
  * @method \App\Model\Entity\Member newEntity(array $data, array $options = [])
  * @method array<\App\Model\Entity\Member> newEntities(array $data, array $options = [])
@@ -48,6 +49,10 @@ class MembersTable extends Table
                     'modified_at' => 'always'
                 ]
             ]
+        ]);
+
+        $this->belongsTo('Users', [
+            'foreignKey' => 'user_id',
         ]);
     }
 
@@ -88,6 +93,10 @@ class MembersTable extends Table
         $validator
             ->requirePresence('active', 'create')
             ->notEmptyString('active');
+
+        $validator
+            ->integer('user_id')
+            ->allowEmptyString('user_id');
 
         // created_at e modified_at são gerenciados pelo TimestampBehavior
         // não precisam de validação explícita aqui, a menos que haja regras muito específicas.

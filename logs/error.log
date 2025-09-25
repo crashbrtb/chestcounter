@@ -5650,3 +5650,1025 @@ Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp
 Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
 [main]
 
+2025-08-26 17:16:06 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score?cycle=1
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-08-26 17:16:06 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score?cycle=1
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-08-26 17:16:06 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score?cycle=1
+Referer URL: http://127.0.0.1/chestcounter/score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:41:59 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:41:59 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:41:59 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:41:59 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 229
+Cake\Http\ResponseEmitter->setCookie() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 213
+Cake\Http\ResponseEmitter->emitCookies() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 201
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:42:13 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:42:13 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:42:13 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:42:34 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:42:34 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:42:34 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:48:31 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:48:31 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 02:48:31 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 09:57:15 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 09:57:15 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-12 09:57:15 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/config/
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:11 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:11 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:11 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:11 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 229
+Cake\Http\ResponseEmitter->setCookie() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 213
+Cake\Http\ResponseEmitter->emitCookies() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 201
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:25 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:25 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:25 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /score
+Referer URL: http://127.0.0.1/chestcounter/users/login
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:52 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:52 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 00:55:52 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:06:07 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:06:07 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:06:07 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:08:50 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:08:50 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:08:50 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:10:21 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:10:22 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:10:22 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:11:57 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/add
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:11:57 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:11:57 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/add
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:14:19 error: [Cake\Database\Exception\QueryException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Users.member_id' in 'on clause'
+Query: SELECT Users.id AS Users__id, Users.name AS Users__name, Users.email AS Users__email, Users.password AS Users__password, Users.created AS Users__created, Users.modified AS Users__modified, Members.id AS Members__id, Members.player AS Members__player, Members.active AS Members__active, Members.created_at AS Members__created_at, Members.modified_at AS Members__modified_at, Members.power AS Members__power, Members.guards AS Members__guards, Members.specialists AS Members__specialists, Members.monsters AS Members__monsters, Members.engineers AS Members__engineers FROM users Users INNER JOIN members Members ON Members.id = Users.member_id LIMIT 20 OFFSET 0 in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 382
+Stack Trace:
+- CORE\src\Database\Driver.php:329
+- CORE\src\Database\Driver\Mysql.php:178
+- CORE\src\Database\Connection.php:280
+- CORE\src\Core\Retry\CommandRetry.php:71
+- CORE\src\Database\Connection.php:280
+- CORE\src\Database\Query.php:223
+- CORE\src\Database\Query\SelectQuery.php:122
+- CORE\src\ORM\Query\SelectQuery.php:1570
+- CORE\src\ORM\Query\SelectQuery.php:382
+- CORE\src\Datasource\Paging\NumericPaginator.php:299
+- CORE\src\Datasource\Paging\NumericPaginator.php:225
+- CORE\src\Controller\Controller.php:885
+- APP/Controller\UsersController.php:30
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Caused by: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Users.member_id' in 'on clause' in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Statement\Statement.php on line 146
+Stack Trace:
+- CORE\src\Database\Statement\Statement.php:146
+- CORE\src\Database\Driver.php:327
+- CORE\src\Database\Driver\Mysql.php:178
+- CORE\src\Database\Connection.php:280
+- CORE\src\Core\Retry\CommandRetry.php:71
+- CORE\src\Database\Connection.php:280
+- CORE\src\Database\Query.php:223
+- CORE\src\Database\Query\SelectQuery.php:122
+- CORE\src\ORM\Query\SelectQuery.php:1570
+- CORE\src\ORM\Query\SelectQuery.php:382
+- CORE\src\Datasource\Paging\NumericPaginator.php:299
+- CORE\src\Datasource\Paging\NumericPaginator.php:225
+- CORE\src\Controller\Controller.php:885
+- APP/Controller\UsersController.php:30
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+2025-09-25 01:17:22 warning: Attempt to read property "player" on null
+Request URL: /users
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\templates\Users\index.php, line 50
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 516
+Cake\Controller\Controller->invokeAction() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 166
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:17:22 warning: Attempt to read property "id" on null
+Request URL: /users
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\templates\Users\index.php, line 50
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 516
+Cake\Controller\Controller->invokeAction() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 166
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:17:22 error: [TypeError] Cake\View\Helper\HtmlHelper::link(): Argument #1 ($title) must be of type array|string, null given, called in C:\Apache24\htdocs\chestcounter\templates\Users\index.php on line 50 in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\Helper\HtmlHelper.php on line 259
+Stack Trace:
+- ROOT\templates\Users\index.php:50
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:785
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+2025-09-25 01:17:44 warning: Attempt to read property "player" on null
+Request URL: /users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\templates\Users\index.php, line 50
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 516
+Cake\Controller\Controller->invokeAction() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 166
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:17:44 warning: Attempt to read property "id" on null
+Request URL: /users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\templates\Users\index.php, line 50
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 516
+Cake\Controller\Controller->invokeAction() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 166
+Cake\Controller\ControllerFactory->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\ControllerFactory.php, line 141
+Cake\Controller\ControllerFactory->invoke() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\BaseApplication.php, line 362
+Cake\Http\BaseApplication->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 86
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\CsrfProtectionMiddleware.php, line 169
+Cake\Http\Middleware\CsrfProtectionMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php, line 106
+Authentication\Middleware\AuthenticationMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Middleware\BodyParserMiddleware.php, line 157
+Cake\Http\Middleware\BodyParserMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\RoutingMiddleware.php, line 118
+Cake\Routing\Middleware\RoutingMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Routing\Middleware\AssetMiddleware.php, line 69
+Cake\Routing\Middleware\AssetMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 115
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:17:44 error: [TypeError] Cake\View\Helper\HtmlHelper::link(): Argument #1 ($title) must be of type array|string, null given, called in C:\Apache24\htdocs\chestcounter\templates\Users\index.php on line 50 in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\Helper\HtmlHelper.php on line 259
+Stack Trace:
+- ROOT\templates\Users\index.php:50
+- CORE\src\View\View.php:1188
+- CORE\src\View\View.php:1145
+- CORE\src\View\View.php:785
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users
+Client IP: 127.0.0.1
+2025-09-25 01:19:33 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/edit/3
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:19:33 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/edit/3
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:19:33 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/edit/3
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:20:27 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/edit/4
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:20:27 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/edit/4
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:20:27 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/edit/4
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:20:40 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /users/edit/3
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:20:40 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/edit/3
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:20:40 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /users/edit/3
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-09-25 01:25:49 error: [Cake\Database\Exception\QueryException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Members.user_id' in 'where clause'
+Query: SELECT Members.id AS Members__id, Members.player AS Members__player, Members.active AS Members__active, Members.created_at AS Members__created_at, Members.modified_at AS Members__modified_at, Members.power AS Members__power, Members.guards AS Members__guards, Members.specialists AS Members__specialists, Members.monsters AS Members__monsters, Members.engineers AS Members__engineers FROM members Members WHERE Members.user_id IN ('3','4') in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Driver.php on line 382
+Stack Trace:
+- CORE\src\Database\Driver.php:329
+- CORE\src\Database\Driver\Mysql.php:178
+- CORE\src\Database\Connection.php:280
+- CORE\src\Core\Retry\CommandRetry.php:71
+- CORE\src\Database\Connection.php:280
+- CORE\src\Database\Query.php:223
+- CORE\src\Database\Query\SelectQuery.php:122
+- CORE\src\ORM\Query\SelectQuery.php:1570
+- CORE\src\ORM\Query\SelectQuery.php:382
+- CORE\src\ORM\Association\Loader\SelectLoader.php:490
+- CORE\src\ORM\Association\Loader\SelectLoader.php:129
+- CORE\src\ORM\Association\HasMany.php:674
+- CORE\src\ORM\EagerLoader.php:662
+- CORE\src\ORM\Query\SelectQuery.php:1574
+- CORE\src\ORM\Query\SelectQuery.php:382
+- CORE\src\Datasource\Paging\NumericPaginator.php:299
+- CORE\src\Datasource\Paging\NumericPaginator.php:225
+- CORE\src\Controller\Controller.php:885
+- APP/Controller\UsersController.php:30
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Caused by: [PDOException] SQLSTATE[42S22]: Column not found: 1054 Unknown column 'Members.user_id' in 'where clause' in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Database\Statement\Statement.php on line 146
+Stack Trace:
+- CORE\src\Database\Statement\Statement.php:146
+- CORE\src\Database\Driver.php:327
+- CORE\src\Database\Driver\Mysql.php:178
+- CORE\src\Database\Connection.php:280
+- CORE\src\Core\Retry\CommandRetry.php:71
+- CORE\src\Database\Connection.php:280
+- CORE\src\Database\Query.php:223
+- CORE\src\Database\Query\SelectQuery.php:122
+- CORE\src\ORM\Query\SelectQuery.php:1570
+- CORE\src\ORM\Query\SelectQuery.php:382
+- CORE\src\ORM\Association\Loader\SelectLoader.php:490
+- CORE\src\ORM\Association\Loader\SelectLoader.php:129
+- CORE\src\ORM\Association\HasMany.php:674
+- CORE\src\ORM\EagerLoader.php:662
+- CORE\src\ORM\Query\SelectQuery.php:1574
+- CORE\src\ORM\Query\SelectQuery.php:382
+- CORE\src\Datasource\Paging\NumericPaginator.php:299
+- CORE\src\Datasource\Paging\NumericPaginator.php:225
+- CORE\src\Controller\Controller.php:885
+- APP/Controller\UsersController.php:30
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users
+Client IP: 127.0.0.1
+2025-09-25 01:28:36 error: [Error] Call to undefined method Cake\Database\Expression\QueryExpression::or_() in C:\Apache24\htdocs\chestcounter\src\Controller\UsersController.php on line 140
+Stack Trace:
+- CORE\src\Database\Query.php:1748
+- CORE\src\Database\Query.php:902
+- APP/Controller\UsersController.php:139
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/edit/3
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+2025-09-25 01:28:48 error: [Error] Call to undefined method Cake\Database\Expression\QueryExpression::or_() in C:\Apache24\htdocs\chestcounter\src\Controller\UsersController.php on line 140
+Stack Trace:
+- CORE\src\Database\Query.php:1748
+- CORE\src\Database\Query.php:902
+- APP/Controller\UsersController.php:139
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/edit/6
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1
+2025-09-25 01:28:57 error: [Error] Call to undefined method Cake\Database\Expression\QueryExpression::or_() in C:\Apache24\htdocs\chestcounter\src\Controller\UsersController.php on line 140
+Stack Trace:
+- CORE\src\Database\Query.php:1748
+- CORE\src\Database\Query.php:902
+- APP/Controller\UsersController.php:139
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /users/edit/3
+Referer URL: http://127.0.0.1/chestcounter/users
+Client IP: 127.0.0.1

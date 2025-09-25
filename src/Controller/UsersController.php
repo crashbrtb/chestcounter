@@ -26,7 +26,7 @@ class UsersController extends AppController
      }
     public function index()
     {
-        $query = $this->Users->find();
+        $query = $this->Users->find()->contain(['Members']);
         $users = $this->paginate($query);
 
         $this->set(compact('users'));
@@ -41,7 +41,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
-        $user = $this->Users->get($id, contain: ['Roles']);
+        $user = $this->Users->get($id, contain: ['Roles', 'Members']);
         $this->set(compact('user'));
     }
 
@@ -54,16 +54,44 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $data = $this->request->getData();
 
-                return $this->redirect(['action' => 'index']);
+            if (!empty($data['members']['_ids'])) {
+                $selectedMembers = $this->Users->Members->find()
+                    ->where(['Members.id IN' => $data['members']['_ids'], 'Members.user_id IS NOT' => null]);
+
+                if ($selectedMembers->count() > 0) {
+                    $this->Flash->error(__('One or more selected members are already associated with another user. Please deselect them.'));
+                } else {
+                    $userRole = $this->Users->Roles->findByName('user')->first();
+                    if ($userRole) {
+                        $data['roles']['_ids'] = [$userRole->id];
+                    }
+                    $user = $this->Users->patchEntity($user, $data);
+                    if ($this->Users->save($user)) {
+                        $this->Flash->success(__('The user has been saved.'));
+
+                        return $this->redirect(['action' => 'index']);
+                    }
+                    $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                }
+            } else {
+                // Also handle the case where no members are selected, if that's allowed
+                $userRole = $this->Users->Roles->findByName('user')->first();
+                if ($userRole) {
+                    $data['roles']['_ids'] = [$userRole->id];
+                }
+                $user = $this->Users->patchEntity($user, $data);
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+
+                    return $this->redirect(['action' => 'index']);
+                }
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $roles = $this->Users->Roles->find('list', limit: 200)->all();
-        $this->set(compact('user', 'roles'));
+        $members = $this->Users->Members->find('list')->where(['user_id IS' => null]);
+        $this->set(compact('user', 'members'));
     }
 
     /**
@@ -75,18 +103,47 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
-        $user = $this->Users->get($id, contain: ['Roles']);
+        $user = $this->Users->get($id, contain: ['Roles', 'Members']);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $user = $this->Users->patchEntity($user, $this->request->getData());
-            if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+            $data = $this->request->getData();
 
-                return $this->redirect(['action' => 'index']);
+            if (!empty($data['members']['_ids'])) {
+                $selectedMembers = $this->Users->Members->find()
+                    ->where([
+                        'Members.id IN' => $data['members']['_ids'],
+                        'Members.user_id IS NOT' => null,
+                        'Members.user_id IS NOT' => $id,
+                    ]);
+
+                if ($selectedMembers->count() > 0) {
+                    $this->Flash->error(__('One or more selected members are already associated with another user. Please deselect them.'));
+                } else {
+                    $user = $this->Users->patchEntity($user, $data);
+                    if ($this->Users->save($user)) {
+                        $this->Flash->success(__('The user has been saved.'));
+                        return $this->redirect(['action' => 'index']);
+                    }
+                    $this->Flash->error(__('The user could not be saved. Please, try again.'));
+                }
+            } else {
+                 // Also handle the case where all members are deselected
+                $data['members']['_ids'] = [];
+                $user = $this->Users->patchEntity($user, $data);
+                if ($this->Users->save($user)) {
+                    $this->Flash->success(__('The user has been saved.'));
+                    return $this->redirect(['action' => 'index']);
+                }
+                $this->Flash->error(__('The user could not be saved. Please, try again.'));
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
+        $members = $this->Users->Members->find('list')->where(function ($exp, $q) use ($id) {
+            return $exp->or([
+                'user_id IS' => null,
+                'user_id' => $id,
+            ]);
+        });
         $roles = $this->Users->Roles->find('list', limit: 200)->all();
-        $this->set(compact('user', 'roles'));
+        $this->set(compact('user', 'roles', 'members'));
     }
 
     /**

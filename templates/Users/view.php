@@ -57,6 +57,40 @@ $this->Breadcrumbs->add([
     </div>
 </div>
 
+<div class="related related-members view card">
+    <div class="card-header d-flex">
+        <h3 class="card-title"><?= __('Related Members') ?></h3>
+    </div>
+    <div class="card-body table-responsive p-0">
+        <table class="table table-hover text-nowrap">
+            <tr>
+                <th><?= __('Player') ?></th>
+                <th><?= __('Power') ?></th>
+                <th><?= __('Active') ?></th>
+                <th class="actions"><?= __('Actions') ?></th>
+            </tr>
+            <?php if (empty($user->members)) : ?>
+                <tr>
+                    <td colspan="4" class="text-muted">
+                        <?= __('Members record not found!') ?>
+                    </td>
+                </tr>
+            <?php else : ?>
+                <?php foreach ($user->members as $member) : ?>
+                    <tr>
+                        <td><?= h($member->player) ?></td>
+                        <td><?= h($member->power) ?></td>
+                        <td><?= $member->active ? __('Yes') : __('No'); ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['controller' => 'Members', 'action' => 'view', $member->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
+                        </td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </table>
+    </div>
+</div>
+
 <div class="related related-role view card">
     <div class="card-header d-flex">
         <h3 class="card-title"><?= __('Related Roles') ?></h3>

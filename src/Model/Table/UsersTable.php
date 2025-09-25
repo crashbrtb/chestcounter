@@ -11,6 +11,7 @@ use Cake\Validation\Validator;
 /**
  * Users Model
  *
+ * @property \App\Model\Table\MembersTable&\Cake\ORM\Association\HasMany $Members
  * @property \App\Model\Table\RolesTable&\Cake\ORM\Association\BelongsToMany $Roles
  *
  * @method \App\Model\Entity\User newEmptyEntity()
@@ -47,6 +48,9 @@ class UsersTable extends Table
 
         $this->addBehavior('Timestamp');
 
+        $this->hasMany('Members', [
+            'foreignKey' => 'user_id',
+        ]);
         $this->belongsToMany('Roles', [
             'foreignKey' => 'user_id',
             'targetForeignKey' => 'role_id',
