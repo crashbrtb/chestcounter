@@ -12,6 +12,76 @@
  * @var string[] $sourcesWithNonZeroScore // Esta variável virá do controller
  */
 ?>
+<?php
+// Define sort variables
+$sortColumn = $this->request->getQuery('sort', 'final_score');
+$sortDirection = $this->request->getQuery('direction', 'desc');
+
+// Helper to create sort links
+$createSortLink = function($column, $title) use ($sortColumn, $sortDirection, $sourcesWithNonZeroScore) {
+    $currentParams = $this->request->getQuery();
+    $direction = ($sortColumn === $column && $sortDirection === 'asc') ? 'desc' : 'asc';
+    $arrow = '';
+    if ($sortColumn === $column) {
+        $arrow = $sortDirection === 'asc' ? ' ▲' : ' ▼';
+    }
+    $url = $this->Url->build(['?' => array_merge($currentParams, ['sort' => $column, 'direction' => $direction])]);
+    // Adiciona a classe 'active' se esta for a coluna de ordenação atual
+    $class = ($sortColumn === $column) ? ' class="active"' : '';
+    return '<a href="' . $url . '"' . $class . '>' . h($title) . $arrow . '</a>';
+};
+
+// Combine data for sorting
+$playersData = [];
+if (!empty($playerChestCounts)) {
+    // Garante que $sourcesWithNonZeroScore seja um array para evitar erros
+    $sourcesWithNonZeroScore = $sourcesWithNonZeroScore ?? [];
+    sort($sourcesWithNonZeroScore); // Garante uma ordem consistente para as colunas dinâmicas
+
+    foreach (array_keys($playerChestCounts) as $player) {
+        $counts = $playerChestCounts[$player] ?? [];
+        $epicCryptScore = 0;
+        if (isset($chestScores) && (is_array($chestScores) || $chestScores instanceof \ArrayAccess)) {
+            foreach ($counts as $source => $count) {
+                if (stripos($source, 'epic') !== false && isset($chestScores[$source])) {
+                    $epicCryptScore += $chestScores[$source]->score * $count;
+                }
+            }
+        }
+
+        $playerData = [
+            'player' => $player,
+            'total_chests' => $playerTotalChests[$player] ?? 0,
+            'final_score' => $playerFinalScores[$player] ?? 0,
+            'epic_crypt_score' => $epicCryptScore,
+            'counts' => $counts,
+        ];
+
+        foreach ($sourcesWithNonZeroScore as $source) {
+            $playerData[$source] = $counts[$source] ?? 0;
+        }
+        $playersData[] = $playerData;
+    }
+}
+
+// Sort the data
+if (!empty($playersData)) {
+    usort($playersData, function($a, $b) use ($sortColumn, $sortDirection) {
+        $valA = $a[$sortColumn] ?? 0;
+        $valB = $b[$sortColumn] ?? 0;
+
+        if ($sortColumn === 'player') {
+            return $sortDirection === 'asc' ? strcasecmp((string)$valA, (string)$valB) : strcasecmp((string)$valB, (string)$valA);
+        }
+
+        if ($valA == $valB) {
+            return 0;
+        }
+
+        return ($sortDirection === 'asc' ? $valA < $valB : $valA > $valB) ? -1 : 1;
+    });
+}
+?>
 <style>
     table {
         border-collapse: separate;
@@ -33,6 +103,15 @@
         color:rgb(21, 39, 67);
         font-weight: 600;
         font-size: 1.05em;
+        position: relative; /* Para o posicionamento da seta */
+    }
+    th a {
+        color: inherit;
+        text-decoration: none;
+        display: block; /* Faz o link preencher toda a célula */
+    }
+    th a:hover {
+        text-decoration: underline;
     }
     tr:nth-child(even) {
         background: #f8fafc;
@@ -99,32 +178,25 @@
     <table>
         <thead>
             <tr>
-                <th><?= __('Player') ?></th>
-                <th><?= __('Total Chests') ?></th>
-                <th><?= __('Final Score') ?></th>
-                <th><?= __('Epic Crypt Score') ?></th>
+                <th><?= $createSortLink('player', __('Player')) ?></th>
+                <th><?= $createSortLink('total_chests', __('Total Chests')) ?></th>
+                <th><?= $createSortLink('final_score', __('Final Score')) ?></th>
+                <th><?= $createSortLink('epic_crypt_score', __('Epic Crypt Score')) ?></th>
                 <?php
-                // $allSources = [];
-                // foreach ($playerChestCounts as $counts) {
-                //     $allSources = array_unique(array_merge($allSources, array_keys($counts)));
-                // }
-                // sort($allSources);
-                // Usar a lista de sources com score != 0 vinda do controller
                 if (isset($sourcesWithNonZeroScore) && !empty($sourcesWithNonZeroScore)) {
-                    sort($sourcesWithNonZeroScore); // Garante uma ordem consistente
                     foreach ($sourcesWithNonZeroScore as $source): ?>
-                        <th><?= h($source) ?></th>
+                        <th><?= $createSortLink($source, $source) ?></th>
                 <?php endforeach;
                 } ?>
             </tr>
         </thead>
         <tbody>
-            <?php foreach ($playerChestCounts as $player => $counts): ?>
+            <?php foreach ($playersData as $playerData): ?>
                 <tr>
-                    <td><?= h($player) ?></td>
-                    <td><?= isset($playerTotalChests[$player]) ? $playerTotalChests[$player] : 0 ?></td>
+                    <td><?= h($playerData['player']) ?></td>
+                    <td><?= $playerData['total_chests'] ?></td>
                     <?php
-                    $score = isset($playerFinalScores[$player]) ? $playerFinalScores[$player] : 0;
+                    $score = $playerData['final_score'];
                     $percentage = $minimumChestScore > 0 ? min(max($score / $minimumChestScore, 0), 1) : ($score > 0 ? 1 : 0);
 
                     // Ponto de início da transição (ex: 0.9 para 90%)
@@ -160,14 +232,7 @@
                     <td style="color: <?= $color ?>;"><?= $score ?></td>
 
                     <?php
-                    $epicCryptScore = 0;
-                    foreach ($counts as $source => $count) {
-                        if (stripos($source, 'epic') !== false) {
-                            if (isset($chestScores[$source])) {
-                                $epicCryptScore += $chestScores[$source]->score * $count;
-                            }
-                        }
-                    }
+                    $epicCryptScore = $playerData['epic_crypt_score'];
 
                     // Aplicar a mesma lógica de cor para a pontuação da Epic Crypt
                     $epicPercentage = $minimumEpicChestScore > 0 ? min(max($epicCryptScore / $minimumEpicChestScore, 0), 1) : ($epicCryptScore > 0 ? 1 : 0);
@@ -190,7 +255,7 @@
                     <?php 
                     if (isset($sourcesWithNonZeroScore) && !empty($sourcesWithNonZeroScore)) {
                         foreach ($sourcesWithNonZeroScore as $source): ?>
-                            <td><?= isset($counts[$source]) ? $counts[$source] : 0 ?></td>
+                            <td><?= $playerData['counts'][$source] ?? 0 ?></td>
                     <?php endforeach;
                     } ?>
                 </tr>
