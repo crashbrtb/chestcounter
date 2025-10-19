@@ -2931,6 +2931,7 @@ Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\s
 Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
 [main]
 
+<<<<<<< HEAD
 2025-10-19 22:56:49 notice: Since 5.0.0: Calling `findList` finder with options array is deprecated. Use named arguments instead.
 C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\ORM\Table.php, line: 2627
 You can disable all deprecation warnings by setting `Error.errorLevel` to `E_ALL & ~E_USER_DEPRECATED`. Adding `vendor/cakephp/cakephp/src/ORM/Table.php` to `Error.ignoredDeprecationPaths` in your `config/app.php` config will mute deprecations from that file only.
@@ -3140,3 +3141,5 @@ Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\s
 Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
 [main]
 
+=======
+>>>>>>> 9d854700621d4d21a394b03b312833d8aa76f36f

@@ -9518,6 +9518,7 @@ Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp
 Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
 [main]
 
+<<<<<<< HEAD
 2025-10-19 22:56:49 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
 Request URL: /player-cycle-summaries/cycles_history
 Client IP: 127.0.0.1
@@ -9725,3 +9726,5 @@ Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp
 Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
 [main]
 
+=======
+>>>>>>> 9d854700621d4d21a394b03b312833d8aa76f36f
