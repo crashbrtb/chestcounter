@@ -61,6 +61,13 @@ class StandardChestsTable extends Table
             ->requirePresence('score', 'create')
             ->notEmptyString('score');
 
+        $validator
+            ->boolean('monster');
+
+        $validator
+            ->integer('qty_chest')
+            ->allowEmptyString('qty_chest');
+
         return $validator;
     }
 }

@@ -18,8 +18,8 @@ $this->Breadcrumbs->add([
     <div class="card-header d-sm-flex">
         <h2 class="card-title"><?= h($standardChest->id) ?></h2>
     </div>
-    <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
+    <div class="card-body">
+        <table class="table table-hover">
             <tr>
                 <th><?= __('Source') ?></th>
                 <td><?= h($standardChest->source) ?></td>
@@ -31,6 +31,14 @@ $this->Breadcrumbs->add([
             <tr>
                 <th><?= __('Score') ?></th>
                 <td><?= $this->Number->format($standardChest->score) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Epic Monster') ?></th>
+                <td><?= $standardChest->monster ? __('Yes') : __('No'); ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Chests Qty') ?></th>
+                <td><?= $standardChest->qty_chest === null ? '' : $this->Number->format($standardChest->qty_chest) ?></td>
             </tr>
         </table>
     </div>
