@@ -11,6 +11,8 @@ use Cake\ORM\Entity;
  * @property int $id
  * @property string $source
  * @property int $score
+ * @property int $monster
+ * @property int|null $qty_chest
  */
 class StandardChest extends Entity
 {
@@ -26,5 +28,7 @@ class StandardChest extends Entity
     protected array $_accessible = [
         'source' => true,
         'score' => true,
+        'monster' => true,
+        'qty_chest' => true,
     ];
 }

@@ -26,7 +26,7 @@ class PlayerCycleSummariesController extends AppController
         $this->Authentication->allowUnauthenticated(['index']);
     }
     public function index()
-    {        
+    {
 
         // Buscar todos os resumos para identificar os ciclos
         $allSummaries = $this->PlayerCycleSummaries->find()
@@ -84,6 +84,100 @@ class PlayerCycleSummariesController extends AppController
         
         // A paginação original $this->paginate($query) é removida pois estamos focando nos 3 últimos ciclos.
         $this->set(compact('summariesByCycle', 'formattedCycleDates'));
+    }
+
+    public function playerHistory($playerName = null)
+    {
+        if (!$playerName) {
+            $this->Flash->error(__('Player name cannot be empty.'));
+            return $this->redirect(['controller' => 'CollectedChests', 'action' => 'score']);
+        }
+        $playerName = urldecode($playerName);
+
+        $playerHistory = $this->PlayerCycleSummaries->find()
+            ->where(['player_name' => $playerName])
+            ->order(['cycle_end_date' => 'DESC'])
+            ->limit(6);
+
+        // Load configs for score coloring
+        $configsTable = TableRegistry::getTableLocator()->get('Config');
+        $configs = $configsTable->find('list', ['keyField' => 'param', 'valueField' => 'value'])->toArray();
+
+        $minimumChestScore = (int)($configs['minimum_chest_score'] ?? 0);
+        $scoreColorsConfig = [
+            'score_color_transition_start' => (float)($configs['score_color_transition_start'] ?? 0.0),
+            'score_color_start_r' => (int)($configs['score_color_start_r'] ?? 255),
+            'score_color_start_g' => (int)($configs['score_color_start_g'] ?? 0),
+            'score_color_start_b' => (int)($configs['score_color_start_b'] ?? 0),
+            'score_color_end_r' => (int)($configs['score_color_end_r'] ?? 0),
+            'score_color_end_g' => (int)($configs['score_color_end_g'] ?? 255),
+            'score_color_end_b' => (int)($configs['score_color_end_b'] ?? 0),
+        ];
+
+        $this->set(compact('playerHistory', 'playerName', 'minimumChestScore', 'scoreColorsConfig'));
+    }
+
+    public function cyclesHistory()
+    {
+        // Get the end dates of the last 6 distinct cycles
+        $lastSixCycleDates = $this->PlayerCycleSummaries->find()
+            ->select(['cycle_end_date'])
+            ->distinct(['cycle_end_date'])
+            ->order(['cycle_end_date' => 'DESC'])
+            ->limit(6)
+            ->toArray();
+
+        $cycleEndDates = array_map(function($summary) {
+            return $summary->cycle_end_date;
+        }, $lastSixCycleDates);
+        sort($cycleEndDates); // Sort dates chronologically for the table header
+
+        if (empty($cycleEndDates)) {
+            $this->set('playersData', []);
+            $this->set('playerNames', []);
+            $this->set('cycleDates', []);
+            return;
+        }
+
+        // Find all summaries within those last 6 cycles
+        $summaries = $this->PlayerCycleSummaries->find()
+            ->where(['cycle_end_date IN' => $cycleEndDates]);
+
+        // Get a unique, alphabetized list of players
+        $playerNames = (clone $summaries)->select(['player_name'])
+            ->distinct(['player_name'])
+            ->order(['player_name' => 'ASC'])
+            ->all()
+            ->extract('player_name')
+            ->toList();
+
+        // Pivot the data for the view
+        $pivotedData = [];
+        foreach ($summaries as $summary) {
+            $dateKey = $summary->cycle_end_date->toDateString();
+            $pivotedData[$summary->player_name][$dateKey] = $summary->total_score;
+        }
+
+        $this->set('playersData', $pivotedData);
+        $this->set('playerNames', $playerNames);
+        $this->set('cycleDates', $cycleEndDates);
+
+        // Load configs for score coloring
+        $configsTable = TableRegistry::getTableLocator()->get('Config');
+        $configs = $configsTable->find('list', ['keyField' => 'param', 'valueField' => 'value'])->toArray();
+
+        $minimumChestScore = (int)($configs['minimum_chest_score'] ?? 0);
+        $scoreColorsConfig = [
+            'score_color_transition_start' => (float)($configs['score_color_transition_start'] ?? 0.0),
+            'score_color_start_r' => (int)($configs['score_color_start_r'] ?? 255),
+            'score_color_start_g' => (int)($configs['score_color_start_g'] ?? 0),
+            'score_color_start_b' => (int)($configs['score_color_start_b'] ?? 0),
+            'score_color_end_r' => (int)($configs['score_color_end_r'] ?? 0),
+            'score_color_end_g' => (int)($configs['score_color_end_g'] ?? 255),
+            'score_color_end_b' => (int)($configs['score_color_end_b'] ?? 0),
+        ];
+
+        $this->set(compact('minimumChestScore', 'scoreColorsConfig'));
     }
 
     /**

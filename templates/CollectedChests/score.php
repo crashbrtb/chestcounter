@@ -193,7 +193,12 @@ if (!empty($playersData)) {
         <tbody>
             <?php foreach ($playersData as $playerData): ?>
                 <tr>
-                    <td><?= h($playerData['player']) ?></td>
+                    <td>
+                        <?= $this->Html->link(
+                            h($playerData['player']),
+                            ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($playerData['player'])]
+                        ) ?>
+                    </td>
                     <td><?= $playerData['total_chests'] ?></td>
                     <?php
                     $score = $playerData['final_score'];
