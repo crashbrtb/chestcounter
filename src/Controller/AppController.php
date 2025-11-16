@@ -16,11 +16,12 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Authentication\Controller\Component\AuthenticationComponent;
+use Cake\Controller\Component\AuthComponent;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Event\EventInterface;
-use Cake\Controller\Component\AuthComponent;
-use Authentication\Controller\Component\AuthenticationComponent;
+use Cake\ORM\TableRegistry;
 
 
 /**
@@ -96,5 +97,48 @@ class AppController extends Controller
             \Cake\I18n\I18n::setLocale($lang);
         }
         return $this->redirect($this->referer());
+    }
+
+    /**
+     * Retorna o ID do usuário autenticado ou null.
+     */
+    protected function currentUserId(): ?int
+    {
+        $identity = $this->request->getAttribute('identity');
+        if ($identity === null) {
+            return null;
+        }
+
+        if (method_exists($identity, 'getIdentifier')) {
+            return (int)$identity->getIdentifier();
+        }
+
+        if (method_exists($identity, 'get')) {
+            return (int)$identity->get('id');
+        }
+
+        if (isset($identity['id'])) {
+            return (int)$identity['id'];
+        }
+
+        return null;
+    }
+
+    /**
+     * Verifica se o usuário é administrador (role_id = 1).
+     */
+    protected function isAdmin(?int $userId = null): bool
+    {
+        $userId ??= $this->currentUserId();
+        if (!$userId) {
+            return false;
+        }
+
+        $rolesUsers = TableRegistry::getTableLocator()->get('RolesUsers');
+
+        return $rolesUsers->exists([
+            'user_id' => $userId,
+            'role_id' => 1,
+        ]);
     }
 }

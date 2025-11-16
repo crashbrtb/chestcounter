@@ -54,6 +54,22 @@ class MembersTable extends Table
         $this->belongsTo('Users', [
             'foreignKey' => 'user_id',
         ]);
+
+        $this->hasOne('BankAccounts', [
+            'foreignKey' => 'member_id',
+            'className' => 'BankAccounts',
+            'dependent' => true,
+        ]);
+
+        $this->hasMany('BankTransactions', [
+            'foreignKey' => 'member_id',
+            'className' => 'BankTransactions',
+        ]);
+
+        $this->hasMany('IncomingBankTransactions', [
+            'foreignKey' => 'destination_member_id',
+            'className' => 'BankTransactions',
+        ]);
     }
 
     /**

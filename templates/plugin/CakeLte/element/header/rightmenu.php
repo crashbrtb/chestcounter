@@ -58,6 +58,7 @@ if ($isAdmin):
             </ul>
         </li>
         <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Bank Approvals', ['prefix' => 'Admin', 'controller' => 'Bank', 'action' => 'approvals'], ['class' => 'dropdown-item']) ?>
 
     </ul>
 </li>

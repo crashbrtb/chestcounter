@@ -9,11 +9,17 @@
         
     </div>
 </li>
-<?php 
 
-?>
-
-<li class="nav-item d-none d-sm-inline-block">
-  <?= $this->Html->link(__('Bank'), '/pages/underconstruction', ['class' => 'nav-link']) ?>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="bankDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?= __('Bank') ?>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="bankDropdown">
+        <?= $this->Html->link('Bank', ['controller' => 'Bank', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Deposit', ['controller' => 'Bank', 'action' => 'deposit'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Withdraw', ['controller' => 'Bank', 'action' => 'withdraw'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Transfer', ['controller' => 'Bank', 'action' => 'transfer'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link('Statement', ['controller' => 'Bank', 'action' => 'statement'], ['class' => 'dropdown-item']) ?>
+    </div>
 </li>
 

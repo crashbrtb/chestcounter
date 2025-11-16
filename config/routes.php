@@ -68,6 +68,10 @@ return function (RouteBuilder $routes): void {
          */
         $builder->connect('/pages/*', 'Pages::display');
 
+        // Bank module routes
+        $builder->connect('/bank', ['controller' => 'Bank', 'action' => 'index']);
+        $builder->connect('/bank/:action/*', ['controller' => 'Bank']);
+
         /*
          * Connect catchall routes for all controllers.
          *
@@ -81,6 +85,12 @@ return function (RouteBuilder $routes): void {
          * You can remove these routes once you've connected the
          * routes you want in your application.
          */
+        $builder->fallbacks();
+    });
+
+    $routes->prefix('Admin', function (RouteBuilder $builder): void {
+        $builder->connect('/bank', ['controller' => 'Bank', 'action' => 'approvals']);
+        $builder->connect('/bank/approvals', ['controller' => 'Bank', 'action' => 'approvals']);
         $builder->fallbacks();
     });
 
