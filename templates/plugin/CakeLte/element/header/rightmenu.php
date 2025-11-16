@@ -58,7 +58,17 @@ if ($isAdmin):
             </ul>
         </li>
         <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Bank Approvals', ['prefix' => 'Admin', 'controller' => 'Bank', 'action' => 'approvals'], ['class' => 'dropdown-item']) ?>
+        <li class="dropdown-submenu dropdown-hover">
+            <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                <?= __('Bank') ?>
+            </a>
+            <ul aria-labelledby="chestsDropdownMenuLink" class="dropdown-menu border-0 shadow">
+                <li>
+                    <?= $this->Html->link('Bank Approvals', ['controller' => 'Bank', 'action' => 'approvals'], ['class' => 'dropdown-item']) ?>
+                </li>
+            </ul>
+        </li>
+        
 
     </ul>
 </li>

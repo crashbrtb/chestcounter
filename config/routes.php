@@ -89,8 +89,6 @@ return function (RouteBuilder $routes): void {
     });
 
     $routes->prefix('Admin', function (RouteBuilder $builder): void {
-        $builder->connect('/bank', ['controller' => 'Bank', 'action' => 'approvals']);
-        $builder->connect('/bank/approvals', ['controller' => 'Bank', 'action' => 'approvals']);
         $builder->fallbacks();
     });
 

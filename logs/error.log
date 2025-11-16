@@ -13562,3 +13562,601 @@ Stack Trace:
 Request URL: /admin/users
 Referer URL: http://127.0.0.1/chestcounter/admin/bank
 Client IP: 127.0.0.1
+2025-11-16 23:12:21 error: [Cake\Controller\Exception\MissingActionException] Action `Admin/BankController::index()` could not be found, or is not accessible. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php on line 487
+Exception Attributes: array (
+  0 => 'Admin/BankController',
+  1 => 'index',
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:161
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+2025-11-16 23:12:21 warning: Undefined variable $type
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 49
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 49
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 56
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $action
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 59
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 59
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 67
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $action
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 67
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $type
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 73
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $baseClass
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 75
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 77
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $extends
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 77
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:21 warning: Undefined variable $action
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/admin/bank
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 80
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 error: [Cake\Controller\Exception\MissingActionException] Action `Admin/BankController::index()` could not be found, or is not accessible. in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php on line 487
+Exception Attributes: array (
+  0 => 'Admin/BankController',
+  1 => 'index',
+)
+Stack Trace:
+- CORE\src\Controller\ControllerFactory.php:161
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+2025-11-16 23:12:24 warning: Undefined variable $type
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 49
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 49
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 56
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $action
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 59
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 59
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 67
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $action
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 67
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $type
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 73
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $baseClass
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 75
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $class
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 77
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $extends
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 77
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:24 warning: Undefined variable $action
+Request URL: /admin/bank
+Referer URL: http://127.0.0.1/chestcounter/bank/statement
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\Error\missing_action.php, line 80
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1188
+Cake\View\View->_evaluate() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 1145
+Cake\View\View->_render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php, line 785
+Cake\View\View->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Controller\Controller.php, line 712
+Cake\Controller\Controller->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 419
+Cake\Error\Renderer\WebExceptionRenderer->_outputMessage() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\WebExceptionRenderer.php, line 290
+Cake\Error\Renderer\WebExceptionRenderer->render() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 149
+Cake\Error\Middleware\ErrorHandlerMiddleware->handleException() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Middleware\ErrorHandlerMiddleware.php, line 119
+Cake\Error\Middleware\ErrorHandlerMiddleware->process() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 82
+Cake\Http\Runner->handle() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Runner.php, line 60
+Cake\Http\Runner->run() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 104
+Cake\Http\Server->run() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:29 warning: Unable to emit headers. Headers sent in file=C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php line=37
+Request URL: /
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 65
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:29 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 159
+Cake\Http\ResponseEmitter->emitStatusLine() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 68
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:29 warning: Cannot modify header information - headers already sent by (output started at C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Error\Renderer\HtmlErrorRenderer.php:37)
+Request URL: /
+Client IP: 127.0.0.1
+Trace:
+Cake\Error\ErrorTrap->handleError() [internal], line ??
+C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 192
+Cake\Http\ResponseEmitter->emitHeaders() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\ResponseEmitter.php, line 69
+Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\Http\Server.php, line 148
+Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
+[main]
+
+2025-11-16 23:12:43 error: [Cake\Http\Exception\ForbiddenException] Only administrators can access the banking approvals. in C:\Apache24\htdocs\chestcounter\src\Controller\BankController.php on line 619
+Stack Trace:
+- CORE\src\Controller\Controller.php:505
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /bank/approvals
+Client IP: 127.0.0.1
