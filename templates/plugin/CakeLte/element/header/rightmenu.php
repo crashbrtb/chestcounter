@@ -85,18 +85,29 @@ endif;
         ) ?>
     </li>
 <?php else: ?>
+    <?php
+    $pendingCount = $pendingApprovalsCount ?? 0;
+    $hasPendingApprovals = $pendingCount > 0;
+    $iconClass = 'fas fa-user-circle nav-icon' . ($hasPendingApprovals ? ' pending-approvals-icon' : '');
+    ?>
     <li class="nav-item dropdown user-menu">
         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">
-            <i class="fas fa-user-circle nav-icon"></i> <!-- Ícone de usuário genérico -->
-            <span class="d-none d-md-inline"><?= h($identity->get('username')) // Ou outro campo como 'email' ou 'nome_completo' ?></span>
+            <i class="<?= $iconClass ?>"></i>
+            <span class="d-none d-md-inline"><?= h($identity->get('username')) ?></span>
         </a>
         <ul class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
             <!-- User image -->
             <li class="user-header bg-primary">
-                <!-- Você pode adicionar uma imagem do usuário aqui se tiver -->
                 <p>
                     <?= h($identity->get('username')) ?>
-                    <small><?= __('Member since {0}', $identity->get('created')->nice()) // Exemplo de data de criação ?></small>
+                    <?php if ($hasPendingApprovals): ?>
+                        <small class="text-warning" style="font-weight: bold;">
+                            <i class="fas fa-exclamation-circle"></i> 
+                            <?= __('{0} pending approval(s)', $pendingCount) ?>
+                        </small>
+                    <?php else: ?>
+                        <small><?= __('Member since {0}', $identity->get('created')->nice()) ?></small>
+                    <?php endif; ?>
                 </p>
             </li>
             <!-- Menu Footer-->
@@ -110,6 +121,24 @@ endif;
             </li>
         </ul>
     </li>
+    <?php if ($hasPendingApprovals): ?>
+    <style>
+        .pending-approvals-icon {
+            animation: blink 1s infinite;
+            color: #ffc107 !important;
+        }
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1.1);
+            }
+        }
+    </style>
+    <?php endif; ?>
 <?php endif; ?>
 
 <li class="nav-item dropdown">

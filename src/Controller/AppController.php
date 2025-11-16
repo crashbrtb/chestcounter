@@ -88,6 +88,23 @@ class AppController extends Controller
     {
         parent::beforeRender($event);
 
+        // Count pending bank approvals for admin users
+        $pendingApprovalsCount = 0;
+        $userId = $this->currentUserId();
+        if ($userId && $this->isAdmin($userId)) {
+            $bankTransactions = TableRegistry::getTableLocator()->get('BankTransactions');
+            $pendingApprovalsCount = $bankTransactions->find()
+                ->where([
+                    'BankTransactions.status' => \App\Model\Table\BankTransactionsTable::STATUS_PENDING,
+                    'BankTransactions.type IN' => [
+                        \App\Model\Table\BankTransactionsTable::TYPE_DEPOSIT,
+                        \App\Model\Table\BankTransactionsTable::TYPE_WITHDRAWAL,
+                    ],
+                ])
+                ->count();
+        }
+
+        $this->set('pendingApprovalsCount', $pendingApprovalsCount);
     }
 
     public function changeLanguage($lang = null)
