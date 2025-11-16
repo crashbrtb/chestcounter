@@ -49,6 +49,9 @@ if ($isAdmin):
                 <li>
                     <?= $this->Html->link(__('Merge Players'), ['controller' => 'CollectedChests', 'action' => 'mergePlayers'], ['class' => 'dropdown-item']) ?>
                 </li>
+                <li>
+                    <?= $this->Html->link(__('Summary last cycles'), ['controller' => 'PlayerCycleSummaries', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                </li>
             </ul>
         </li>
         <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
