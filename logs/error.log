@@ -10366,3 +10366,129 @@ Cake\Http\ResponseEmitter->emit() C:\Apache24\htdocs\chestcounter\vendor\cakephp
 Cake\Http\Server->emit() C:\Apache24\htdocs\chestcounter\webroot\index.php, line 37
 [main]
 
+2025-11-16 17:37:16 error: [Cake\View\Exception\MissingTemplateException] Template file `CakeLte\index.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\CakeLte\index.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\CakeLte\index.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => 'CakeLte\\index.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /PlayerNameMappings
+Client IP: 127.0.0.1
+2025-11-16 17:40:29 error: [Cake\View\Exception\MissingTemplateException] Template file `plugin/CakeLte\index.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\plugin/CakeLte\index.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\plugin/CakeLte\index.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => 'plugin/CakeLte\\index.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /PlayerNameMappings
+Client IP: 127.0.0.1
+2025-11-16 17:40:55 error: [Cake\View\Exception\MissingTemplateException] Template file `\plugin/CakeLte\index.php` could not be found.
+
+The following paths were searched:
+
+- `C:\Apache24\htdocs\chestcounter\templates\\plugin/CakeLte\index.php`
+- `C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\templates\\plugin/CakeLte\index.php`
+ in C:\Apache24\htdocs\chestcounter\vendor\cakephp\cakephp\src\View\View.php on line 1377
+Exception Attributes: array (
+  'file' => '\\plugin/CakeLte\\index.php',
+  'paths' => 
+  array (
+    0 => 'C:\\Apache24\\htdocs\\chestcounter\\templates\\',
+    1 => 'C:\\Apache24\\htdocs\\chestcounter\\vendor\\cakephp\\cakephp\\templates\\',
+  ),
+)
+Stack Trace:
+- CORE\src\View\View.php:782
+- CORE\src\Controller\Controller.php:712
+- CORE\src\Controller\Controller.php:516
+- CORE\src\Controller\ControllerFactory.php:166
+- CORE\src\Controller\ControllerFactory.php:141
+- CORE\src\Http\BaseApplication.php:362
+- CORE\src\Http\Runner.php:86
+- CORE\src\Http\Middleware\CsrfProtectionMiddleware.php:169
+- CORE\src\Http\Runner.php:82
+- ROOT\vendor\cakephp\authentication\src\Middleware\AuthenticationMiddleware.php:106
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Middleware\BodyParserMiddleware.php:157
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\RoutingMiddleware.php:118
+- CORE\src\Http\Runner.php:82
+- CORE\src\Routing\Middleware\AssetMiddleware.php:69
+- CORE\src\Http\Runner.php:82
+- CORE\src\Error\Middleware\ErrorHandlerMiddleware.php:115
+- CORE\src\Http\Runner.php:82
+- CORE\src\Http\Runner.php:60
+- CORE\src\Http\Server.php:104
+- ROOT\webroot\index.php:37
+- [main]:
+
+Request URL: /PlayerNameMappings
+Client IP: 127.0.0.1

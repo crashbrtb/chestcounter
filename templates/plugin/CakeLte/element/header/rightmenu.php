@@ -34,6 +34,9 @@ if ($isAdmin):
                 <li>
                     <?= $this->Html->link(__('Update'), ['controller' => 'Members', 'action' => 'updateFromCollectedChests'], ['class' => 'dropdown-item']) ?>
                 </li>
+                <li>
+                    <?= $this->Html->link(__('Names Mapping'), ['controller' => 'PlayerNameMappings', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                </li>
             </ul>
         </li>
         <?= $this->Html->link('Users', ['controller' => 'Users', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
