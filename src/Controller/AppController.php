@@ -16,11 +16,12 @@ declare(strict_types=1);
  */
 namespace App\Controller;
 
+use Authentication\Controller\Component\AuthenticationComponent;
+use Cake\Controller\Component\AuthComponent;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Event\EventInterface;
-use Cake\Controller\Component\AuthComponent;
-use Authentication\Controller\Component\AuthenticationComponent;
+use Cake\ORM\TableRegistry;
 
 
 /**
@@ -87,6 +88,23 @@ class AppController extends Controller
     {
         parent::beforeRender($event);
 
+        // Count pending bank approvals for admin users
+        $pendingApprovalsCount = 0;
+        $userId = $this->currentUserId();
+        if ($userId && $this->isAdmin($userId)) {
+            $bankTransactions = TableRegistry::getTableLocator()->get('BankTransactions');
+            $pendingApprovalsCount = $bankTransactions->find()
+                ->where([
+                    'BankTransactions.status' => \App\Model\Table\BankTransactionsTable::STATUS_PENDING,
+                    'BankTransactions.type IN' => [
+                        \App\Model\Table\BankTransactionsTable::TYPE_DEPOSIT,
+                        \App\Model\Table\BankTransactionsTable::TYPE_WITHDRAWAL,
+                    ],
+                ])
+                ->count();
+        }
+
+        $this->set('pendingApprovalsCount', $pendingApprovalsCount);
     }
 
     public function changeLanguage($lang = null)
@@ -96,5 +114,48 @@ class AppController extends Controller
             \Cake\I18n\I18n::setLocale($lang);
         }
         return $this->redirect($this->referer());
+    }
+
+    /**
+     * Retorna o ID do usuário autenticado ou null.
+     */
+    protected function currentUserId(): ?int
+    {
+        $identity = $this->request->getAttribute('identity');
+        if ($identity === null) {
+            return null;
+        }
+
+        if (method_exists($identity, 'getIdentifier')) {
+            return (int)$identity->getIdentifier();
+        }
+
+        if (method_exists($identity, 'get')) {
+            return (int)$identity->get('id');
+        }
+
+        if (isset($identity['id'])) {
+            return (int)$identity['id'];
+        }
+
+        return null;
+    }
+
+    /**
+     * Verifica se o usuário é administrador (role_id = 1).
+     */
+    protected function isAdmin(?int $userId = null): bool
+    {
+        $userId ??= $this->currentUserId();
+        if (!$userId) {
+            return false;
+        }
+
+        $rolesUsers = TableRegistry::getTableLocator()->get('RolesUsers');
+
+        return $rolesUsers->exists([
+            'user_id' => $userId,
+            'role_id' => 1,
+        ]);
     }
 }
