@@ -21,6 +21,7 @@ use Cake\Controller\Component\AuthComponent;
 use Cake\Controller\Controller;
 use Cake\Event\Event;
 use Cake\Event\EventInterface;
+use Cake\Http\Exception\ForbiddenException;
 use Cake\ORM\TableRegistry;
 
 
@@ -157,5 +158,22 @@ class AppController extends Controller
             'user_id' => $userId,
             'role_id' => 1,
         ]);
+    }
+
+    /**
+     * Verifica se o usuário atual é administrador e lança exceção se não for.
+     * 
+     * @throws \Cake\Http\Exception\ForbiddenException Se o usuário não for administrador
+     */
+    protected function requireAdmin(): void
+    {
+        $userId = $this->currentUserId();
+        if (!$userId) {
+            throw new ForbiddenException(__('You must be logged in to access this page.'));
+        }
+
+        if (!$this->isAdmin($userId)) {
+            throw new ForbiddenException(__('Only administrators can access this page.'));
+        }
     }
 }

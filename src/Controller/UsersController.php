@@ -26,6 +26,7 @@ class UsersController extends AppController
      }
     public function index()
     {
+        $this->requireAdmin();
         $query = $this->Users->find()->contain(['Members']);
         $users = $this->paginate($query);
 
@@ -41,6 +42,7 @@ class UsersController extends AppController
      */
     public function view($id = null)
     {
+        $this->requireAdmin();
         $user = $this->Users->get($id, contain: ['Roles', 'Members']);
         $this->set(compact('user'));
     }
@@ -52,6 +54,7 @@ class UsersController extends AppController
      */
     public function add()
     {
+        $this->requireAdmin();
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
             $data = $this->request->getData();
@@ -103,6 +106,7 @@ class UsersController extends AppController
      */
     public function edit($id = null)
     {
+        $this->requireAdmin();
         $user = $this->Users->get($id, contain: ['Roles', 'Members']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
@@ -153,6 +157,7 @@ class UsersController extends AppController
      */
     public function delete($id = null)
     {
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {

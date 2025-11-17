@@ -17,6 +17,7 @@ class ConfigController extends AppController
      */
     public function index()
     {
+        $this->requireAdmin();
         $query = $this->Config->find();
         $config = $this->paginate($query);
 
@@ -32,6 +33,7 @@ class ConfigController extends AppController
      */
     public function view($id = null)
     {
+        $this->requireAdmin();
         $config = $this->Config->get($id, contain: []);
         $this->set(compact('config'));
     }
@@ -43,6 +45,7 @@ class ConfigController extends AppController
      */
     public function add()
     {
+        $this->requireAdmin();
         $config = $this->Config->newEmptyEntity();
         if ($this->request->is('post')) {
             $config = $this->Config->patchEntity($config, $this->request->getData());
@@ -65,6 +68,7 @@ class ConfigController extends AppController
      */
     public function edit($id = null)
     {
+        $this->requireAdmin();
         $config = $this->Config->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $config = $this->Config->patchEntity($config, $this->request->getData());
@@ -87,6 +91,7 @@ class ConfigController extends AppController
      */
     public function delete($id = null)
     {
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'delete']);
         $config = $this->Config->get($id);
         if ($this->Config->delete($config)) {

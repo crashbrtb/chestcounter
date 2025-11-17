@@ -29,6 +29,7 @@ class PlayerNameMappingsController extends AppController
     }
     public function index()
     {
+        $this->requireAdmin();
         $query = $this->PlayerNameMappings->find();
         $playerNameMappings = $this->paginate($query);
 
@@ -44,6 +45,7 @@ class PlayerNameMappingsController extends AppController
      */
     public function view($id = null)
     {
+        $this->requireAdmin();
         $playerNameMapping = $this->PlayerNameMappings->get($id, contain: []);
         $this->set(compact('playerNameMapping'));
     }
@@ -55,6 +57,7 @@ class PlayerNameMappingsController extends AppController
      */
     public function add()
     {
+        $this->requireAdmin();
         $playerNameMapping = $this->PlayerNameMappings->newEmptyEntity();
         if ($this->request->is('post')) {
             $playerNameMapping = $this->PlayerNameMappings->patchEntity($playerNameMapping, $this->request->getData());
@@ -77,6 +80,7 @@ class PlayerNameMappingsController extends AppController
      */
     public function edit($id = null)
     {
+        $this->requireAdmin();
         $playerNameMapping = $this->PlayerNameMappings->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $playerNameMapping = $this->PlayerNameMappings->patchEntity($playerNameMapping, $this->request->getData());
@@ -99,6 +103,7 @@ class PlayerNameMappingsController extends AppController
      */
     public function delete($id = null)
     {
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'delete']);
         $playerNameMapping = $this->PlayerNameMappings->get($id);
         if ($this->PlayerNameMappings->delete($playerNameMapping)) {

@@ -17,6 +17,7 @@ class RolesUsersController extends AppController
      */
     public function index()
     {
+        $this->requireAdmin();
         $query = $this->RolesUsers->find()
             ->contain(['Users', 'Roles']);
         $rolesUsers = $this->paginate($query);
@@ -33,6 +34,7 @@ class RolesUsersController extends AppController
      */
     public function view($id = null)
     {
+        $this->requireAdmin();
         $rolesUser = $this->RolesUsers->get($id, contain: ['Users', 'Roles']);
         $this->set(compact('rolesUser'));
     }
@@ -44,6 +46,7 @@ class RolesUsersController extends AppController
      */
     public function add()
     {
+        $this->requireAdmin();
         $rolesUser = $this->RolesUsers->newEmptyEntity();
         if ($this->request->is('post')) {
             $rolesUser = $this->RolesUsers->patchEntity($rolesUser, $this->request->getData());
@@ -68,6 +71,7 @@ class RolesUsersController extends AppController
      */
     public function edit($id = null)
     {
+        $this->requireAdmin();
         $rolesUser = $this->RolesUsers->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $rolesUser = $this->RolesUsers->patchEntity($rolesUser, $this->request->getData());
@@ -92,6 +96,7 @@ class RolesUsersController extends AppController
      */
     public function delete($id = null)
     {
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'delete']);
         $rolesUser = $this->RolesUsers->get($id);
         if ($this->RolesUsers->delete($rolesUser)) {
