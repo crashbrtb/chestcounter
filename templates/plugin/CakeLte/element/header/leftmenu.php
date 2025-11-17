@@ -10,6 +10,15 @@
     </div>
 </li>
 
+<?php
+$configTable = \Cake\ORM\TableRegistry::getTableLocator()->get('Config');
+$bankFunctionConfig = $configTable->find()
+    ->where(['param' => 'bank_function'])
+    ->first();
+$bankFunctionEnabled = $bankFunctionConfig && (int)$bankFunctionConfig->value === 1;
+?>
+
+<?php if ($bankFunctionEnabled): ?>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="bankDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?= __('Bank') ?>
@@ -22,4 +31,5 @@
         <?= $this->Html->link('Statement', ['controller' => 'Bank', 'action' => 'statement'], ['class' => 'dropdown-item']) ?>
     </div>
 </li>
+<?php endif; ?>
 

@@ -1,4 +1,6 @@
 <?php
+use Cake\ORM\TableRegistry;
+
 $identity = $this->request->getAttribute('identity');
 $isLoggedIn = $identity !== null;
 $isAdmin = false; // Inicia como falso
@@ -15,6 +17,13 @@ if ($isLoggedIn) {
         }
     }
 }
+
+// Verificar se a função do banco está habilitada
+$configTable = TableRegistry::getTableLocator()->get('Config');
+$bankFunctionConfig = $configTable->find()
+    ->where(['param' => 'bank_function'])
+    ->first();
+$bankFunctionEnabled = $bankFunctionConfig && (int)$bankFunctionConfig->value === 1;
 
 if ($isAdmin):
 ?>
@@ -58,6 +67,7 @@ if ($isAdmin):
             </ul>
         </li>
         <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?php if ($bankFunctionEnabled): ?>
         <li class="dropdown-submenu dropdown-hover">
             <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
                 <?= __('Bank') ?>
@@ -68,6 +78,7 @@ if ($isAdmin):
                 </li>
             </ul>
         </li>
+        <?php endif; ?>
         
 
     </ul>
