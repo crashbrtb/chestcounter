@@ -20,6 +20,7 @@ class MembersController extends AppController
      */
     public function index()
     {
+        $this->requireAdmin();
         $query = $this->Members->find();
         $members = $this->paginate($query);
 
@@ -35,6 +36,7 @@ class MembersController extends AppController
      */
     public function view($id = null)
     {
+        $this->requireAdmin();
         $member = $this->Members->get($id, contain: []);
         $this->set(compact('member'));
     }
@@ -46,6 +48,7 @@ class MembersController extends AppController
      */
     public function add()
     {
+        $this->requireAdmin();
         $member = $this->Members->newEmptyEntity();
         if ($this->request->is('post')) {
             $member = $this->Members->patchEntity($member, $this->request->getData());
@@ -68,6 +71,7 @@ class MembersController extends AppController
      */
     public function edit($id = null)
     {
+        $this->requireAdmin();
         $member = $this->Members->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $member = $this->Members->patchEntity($member, $this->request->getData());
@@ -90,6 +94,7 @@ class MembersController extends AppController
      */
     public function delete($id = null)
     {
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'delete']);
         $member = $this->Members->get($id);
         if ($this->Members->delete($member)) {
@@ -110,6 +115,7 @@ class MembersController extends AppController
      */
     public function updateFromCollectedChests()
     {
+        $this->requireAdmin();
         $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
         
         // Buscar todos os players únicos da tabela collectedchests

@@ -21,7 +21,7 @@ class CollectedChestsController extends AppController
      */
     public function index()
     {
-
+        $this->requireAdmin();
         $query = $this->CollectedChests->find();
         $collectedChests = $this->paginate($query);
 
@@ -37,7 +37,7 @@ class CollectedChestsController extends AppController
      */
     public function view($id = null)
     {
-
+        $this->requireAdmin();
         $collectedChest = $this->CollectedChests->get($id, contain: []);
         $this->set(compact('collectedChest'));
     }
@@ -49,7 +49,7 @@ class CollectedChestsController extends AppController
      */
     public function add()
     {
-
+        $this->requireAdmin();
         $collectedChest = $this->CollectedChests->newEmptyEntity();
         if ($this->request->is('post')) {
             $collectedChest = $this->CollectedChests->patchEntity($collectedChest, $this->request->getData());
@@ -72,7 +72,7 @@ class CollectedChestsController extends AppController
      */
     public function edit($id = null)
     {
-
+        $this->requireAdmin();
         $collectedChest = $this->CollectedChests->get($id, contain: []);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $collectedChest = $this->CollectedChests->patchEntity($collectedChest, $this->request->getData());
@@ -95,6 +95,7 @@ class CollectedChestsController extends AppController
      */
     public function delete($id = null)
     {
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'delete']);
         $collectedChest = $this->CollectedChests->get($id);
         if ($this->CollectedChests->delete($collectedChest)) {
@@ -277,6 +278,7 @@ class CollectedChestsController extends AppController
 
     public function mergePlayers()
     {
+        $this->requireAdmin();
         $collectedChestsTable = $this->CollectedChests; // Ou TableRegistry::getTableLocator()->get('CollectedChests');
         $membersTable = TableRegistry::getTableLocator()->get('Members'); // Adicionar MembersTable
 

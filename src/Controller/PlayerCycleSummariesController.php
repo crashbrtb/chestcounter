@@ -189,6 +189,7 @@ class PlayerCycleSummariesController extends AppController
      */
     public function view($id = null)
     {
+        $this->requireAdmin();
         $playerCycleSummary = $this->PlayerCycleSummaries->get($id, contain: []);
         $this->set(compact('playerCycleSummary'));
     }
@@ -202,6 +203,7 @@ class PlayerCycleSummariesController extends AppController
      */
     public function markFinePaid($id = null)
     {
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'put']);
         $playerCycleSummary = $this->PlayerCycleSummaries->get($id);
 
@@ -227,8 +229,7 @@ class PlayerCycleSummariesController extends AppController
      */
     public function processCycleSummaries()
     {
-        // Autorizar com base na TablePolicy, action 'processCycleSummaries'
-
+        $this->requireAdmin();
         $this->request->allowMethod(['post', 'get']); // Permitir GET para teste manual
         $configsTable = TableRegistry::getTableLocator()->get('Config');
         $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
