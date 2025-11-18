@@ -1,4 +1,6 @@
 <?php
+use Cake\ORM\TableRegistry;
+
 $identity = $this->request->getAttribute('identity');
 $isLoggedIn = $identity !== null;
 $isAdmin = false; // Inicia como falso
@@ -15,6 +17,13 @@ if ($isLoggedIn) {
         }
     }
 }
+
+// Verificar se a função do banco está habilitada
+$configTable = TableRegistry::getTableLocator()->get('Config');
+$bankFunctionConfig = $configTable->find()
+    ->where(['param' => 'bank_function'])
+    ->first();
+$bankFunctionEnabled = $bankFunctionConfig && (int)$bankFunctionConfig->value === 1;
 
 if ($isAdmin):
 ?>
@@ -58,6 +67,7 @@ if ($isAdmin):
             </ul>
         </li>
         <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?php if ($bankFunctionEnabled): ?>
         <li class="dropdown-submenu dropdown-hover">
             <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
                 <?= __('Bank') ?>
@@ -68,6 +78,7 @@ if ($isAdmin):
                 </li>
             </ul>
         </li>
+        <?php endif; ?>
         
 
     </ul>
@@ -110,6 +121,7 @@ endif;
                     <?php endif; ?>
                 </p>
             </li>
+
             <!-- Menu Footer-->
             <li class="user-footer">
                 <?php // $this->Html->link(__('Profile'), ['controller' => 'Users', 'action' => 'profile', $identity->getIdentifier()], ['class' => 'btn btn-default btn-flat']) ?>
@@ -118,7 +130,11 @@ endif;
                     ['controller' => 'Users', 'action' => 'logout'],
                     ['class' => 'btn btn-default btn-flat float-right']
                 ) ?>
-            </li>
+                
+                <a href="#" class="btn btn-default btn-flat" data-toggle="modal" data-target="#changePasswordModal">
+                    <i class="fas fa-key"></i> <?= __('Change Password') ?>
+                </a>
+
         </ul>
     </li>
     <?php if ($hasPendingApprovals): ?>
@@ -150,5 +166,132 @@ endif;
         <?= $this->Html->link('Português', ['controller' => 'App', 'action' => 'changeLanguage', 'pt_BR'], ['class' => 'dropdown-item']) ?>
     </div>
 </li>
+
+<?php if ($isLoggedIn): ?>
+<!-- Modal de Alteração de Senha -->
+<div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true" style="z-index: 1060;">
+    <div class="modal-dialog" role="document" style="z-index: 1060;">
+        <div class="modal-content" style="position: relative; z-index: 1060; pointer-events: auto;">
+            <?= $this->Form->create(null, [
+                'url' => ['controller' => 'Users', 'action' => 'changePassword'],
+                'id' => 'changePasswordForm'
+            ]) ?>
+            <div class="modal-header">
+                <h5 class="modal-title" id="changePasswordModalLabel">
+                    <i class="fas fa-key"></i> <?= __('Change Password') ?>
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <?= $this->Form->label('current_password', __('Current Password')) ?>
+                    <?= $this->Form->password('current_password', [
+                        'class' => 'form-control',
+                        'required' => true,
+                        'autocomplete' => 'current-password'
+                    ]) ?>
+                </div>
+                <div class="form-group">
+                    <?= $this->Form->label('new_password', __('New Password')) ?>
+                    <?= $this->Form->password('new_password', [
+                        'class' => 'form-control',
+                        'required' => true,
+                        'minlength' => 6,
+                        'autocomplete' => 'new-password'
+                    ]) ?>
+                    <small class="form-text text-muted"><?= __('Password must be at least 6 characters long.') ?></small>
+                </div>
+                <div class="form-group">
+                    <?= $this->Form->label('confirm_password', __('Confirm New Password')) ?>
+                    <?= $this->Form->password('confirm_password', [
+                        'class' => 'form-control',
+                        'required' => true,
+                        'minlength' => 6,
+                        'autocomplete' => 'new-password'
+                    ]) ?>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal"><?= __('Cancel') ?></button>
+                <?= $this->Form->button(__('Change Password'), [
+                    'class' => 'btn btn-primary',
+                    'type' => 'submit'
+                ]) ?>
+            </div>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
+</div>
+
+<style>
+/* Garantir que o modal apareça acima de todos os elementos */
+#changePasswordModal {
+    z-index: 1060 !important;
+}
+
+#changePasswordModal .modal-dialog {
+    z-index: 1060 !important;
+    pointer-events: auto !important;
+}
+
+#changePasswordModal .modal-content {
+    z-index: 1060 !important;
+    pointer-events: auto !important;
+    position: relative;
+}
+
+.modal-backdrop {
+    z-index: 1055 !important;
+}
+
+/* Garantir que o dropdown não interfira */
+.navbar-nav .dropdown-menu {
+    z-index: 1000;
+}
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Mover o modal para o body para evitar problemas de z-index
+    var modal = document.getElementById('changePasswordModal');
+    if (modal && modal.parentElement !== document.body) {
+        document.body.appendChild(modal);
+    }
+    
+    // Limpar formulário quando o modal for fechado
+    $('#changePasswordModal').on('hidden.bs.modal', function () {
+        $('#changePasswordForm')[0].reset();
+    });
+    
+    // Fechar dropdown quando abrir o modal
+    $('#changePasswordModal').on('show.bs.modal', function () {
+        $('.user-menu .dropdown-toggle').dropdown('hide');
+    });
+    
+    // Validação de confirmação de senha
+    $('#changePasswordForm').on('submit', function(e) {
+        var newPassword = $('input[name="new_password"]').val();
+        var confirmPassword = $('input[name="confirm_password"]').val();
+        
+        if (newPassword !== confirmPassword) {
+            e.preventDefault();
+            alert('<?= __('New password and confirmation do not match.') ?>');
+            return false;
+        }
+        
+        if (newPassword.length < 6) {
+            e.preventDefault();
+            alert('<?= __('Password must be at least 6 characters long.') ?>');
+            return false;
+        }
+        
+        // Fechar o modal após o submit (a mensagem será exibida após o redirecionamento)
+        $('#changePasswordModal').modal('hide');
+    });
+});
+</script>
+<?php endif; ?>
 
   
