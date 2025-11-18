@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 use Cake\Event\EventInterface;
 use Authentication\Authenticator\Result;
+use Cake\Http\Exception\UnauthorizedException;
 
 /**
  * Users Controller
@@ -108,8 +109,16 @@ class UsersController extends AppController
     {
         $this->requireAdmin();
         $user = $this->Users->get($id, contain: ['Roles', 'Members']);
+        $isAdmin = $this->isAdmin();
+        
         if ($this->request->is(['patch', 'post', 'put'])) {
             $data = $this->request->getData();
+
+            // Restrição: apenas administradores podem alterar email e role
+            if (!$isAdmin) {
+                unset($data['email']);
+                unset($data['roles']);
+            }
 
             $selectedMemberIds = $data['members']['_ids'] ?? [];
 
@@ -145,7 +154,7 @@ class UsersController extends AppController
             ]);
         });
         $roles = $this->Users->Roles->find('list', limit: 200)->all();
-        $this->set(compact('user', 'roles', 'members'));
+        $this->set(compact('user', 'roles', 'members', 'isAdmin'));
     }
 
     /**
@@ -199,5 +208,65 @@ class UsersController extends AppController
 
             return $this->redirect(['controller' => 'collectedChests', 'action' => 'score']);
         }
+    }
+
+    /**
+     * Change Password method
+     * Permite que o usuário altere sua própria senha
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful change, renders view otherwise.
+     */
+    public function changePassword()
+    {
+        $userId = $this->currentUserId();
+        if (!$userId) {
+            throw new UnauthorizedException(__('You must be logged in to change your password.'));
+        }
+
+        $user = $this->Users->get($userId);
+        
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+            
+            // Validar senha atual
+            $hasher = new \Authentication\PasswordHasher\DefaultPasswordHasher();
+            if (!$hasher->check($data['current_password'] ?? '', $user->password)) {
+                $this->Flash->error(__('Current password is incorrect.'));
+                return $this->redirect($this->referer());
+            }
+            
+            // Validar que as novas senhas coincidem
+            if (empty($data['new_password']) || empty($data['confirm_password'])) {
+                $this->Flash->error(__('New password and confirmation are required.'));
+                return $this->redirect($this->referer());
+            }
+            
+            if ($data['new_password'] !== $data['confirm_password']) {
+                $this->Flash->error(__('New password and confirmation do not match.'));
+                return $this->redirect($this->referer());
+            }
+            
+            // Validar comprimento mínimo da senha
+            if (strlen($data['new_password']) < 6) {
+                $this->Flash->error(__('Password must be at least 6 characters long.'));
+                return $this->redirect($this->referer());
+            }
+            
+            // Atualizar senha
+            $user->password = $data['new_password'];
+            if ($this->Users->save($user)) {
+                $this->Flash->success(__('Password has been changed successfully.'));
+                // Redirecionar para a página atual sem o modal
+                $referer = $this->referer();
+                if (strpos($referer, '#') !== false) {
+                    $referer = strtok($referer, '#');
+                }
+                return $this->redirect($referer);
+            } else {
+                $this->Flash->error(__('The password could not be changed. Please, try again.'));
+            }
+        }
+        
+        return $this->redirect($this->referer());
     }
 }

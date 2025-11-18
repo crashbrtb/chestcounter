@@ -2,7 +2,27 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
+ * @var bool $isAdmin
  */
+
+// Verificar se o usuário atual é administrador (se não foi passado pelo controller)
+if (!isset($isAdmin)) {
+    $identity = $this->request->getAttribute('identity');
+    $isLoggedIn = $identity !== null;
+    $isAdmin = false;
+    
+    if ($isLoggedIn) {
+        $userAssociatedRoles = $identity->get('roles');
+        if (!empty($userAssociatedRoles) && (is_array($userAssociatedRoles) || $userAssociatedRoles instanceof \Traversable)) {
+            foreach ($userAssociatedRoles as $roleEntity) {
+                if (is_object($roleEntity) && isset($roleEntity->name) && $roleEntity->name === 'admin') {
+                    $isAdmin = true;
+                    break;
+                }
+            }
+        }
+    }
+}
 ?>
 
 <?php
@@ -19,10 +39,23 @@ $this->Breadcrumbs->add([
     <?= $this->Form->create($user) ?>
     <div class="card-body">
         <?= $this->Form->control('name') ?>
-        <?= $this->Form->control('email') ?>
+        <?= $this->Form->control('email', [
+            'disabled' => !$isAdmin,
+            'readonly' => !$isAdmin
+        ]) ?>
+        <?php if (!$isAdmin): ?>
+            <small class="form-text text-muted"><?= __('Only administrators can change the email.') ?></small>
+        <?php endif; ?>
         <?= $this->Form->control('password') ?>
         <?= $this->Form->control('members._ids', ['options' => $members, 'multiple' => true]); ?>
-        <?= $this->Form->control('roles._ids', ['options' => $roles]) ?>
+        <?= $this->Form->control('roles._ids', [
+            'options' => $roles,
+            'disabled' => !$isAdmin,
+            'readonly' => !$isAdmin
+        ]) ?>
+        <?php if (!$isAdmin): ?>
+            <small class="form-text text-muted"><?= __('Only administrators can change the role.') ?></small>
+        <?php endif; ?>
     </div>
     <div class="card-footer d-flex">
         <div class="mr-auto">
