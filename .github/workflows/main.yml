@@ -54,6 +54,8 @@ jobs:
             --exclude='.git*' \
             --exclude='.github*' \
             --exclude='node_modules/' \
+            --exclude='dev/' \
+            --exclude='uni/' \
             -e "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null $SSH_PORT_OPTION" \
             ./ ${{ env.SSH_USER }}@${{ env.SSH_HOST }}:${{ env.REMOTE_PATH }}/
           echo "rsync completed."
