@@ -48,8 +48,22 @@ if ($isAdmin):
                 </li>
             </ul>
         </li>
-        <?= $this->Html->link('Users', ['controller' => 'Users', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Roles', ['controller' => 'Roles', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <li class="dropdown-submenu dropdown-hover">
+            <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                <?= __('Users') ?>
+            </a>
+            <ul aria-labelledby="chestsDropdownMenuLink" class="dropdown-menu border-0 shadow">
+                <li>
+                    <?= $this->Html->link('List', ['controller' => 'Users', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link(__('Add'), ['controller' => 'Users', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link('Roles', ['controller' => 'Roles', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                </li>
+            </ul>
+        </li>
         <li class="dropdown-submenu dropdown-hover">
             <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
                 <?= __('Chests') ?>
@@ -66,7 +80,6 @@ if ($isAdmin):
                 </li>
             </ul>
         </li>
-        <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
         <?php if ($bankFunctionEnabled): ?>
         <li class="dropdown-submenu dropdown-hover">
             <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
@@ -80,6 +93,7 @@ if ($isAdmin):
         </li>
         <?php endif; ?>
         
+        <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
 
     </ul>
 </li>
