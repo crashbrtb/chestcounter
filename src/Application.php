@@ -35,6 +35,7 @@ use Authentication\Identifier\IdentifierInterface;
 use Authentication\Middleware\AuthenticationMiddleware;
 use Cake\Routing\Router;
 use Psr\Http\Message\ServerRequestInterface;
+use Cake\Console\CommandCollection;
 
 /**
  * Application setup class.
@@ -160,5 +161,15 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
         return $service;
     }
 
-
+    /**
+     * Define the console commands for an application.
+     *
+     * @param \Cake\Console\CommandCollection $commands The CommandCollection to add commands into.
+     * @return \Cake\Console\CommandCollection The updated collection.
+     */
+    public function console(CommandCollection $commands): CommandCollection
+    {
+        // Auto-discover commands in App\Command namespace
+        return $commands->addMany($commands->autoDiscover());
+    }
 }
