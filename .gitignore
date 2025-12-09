@@ -54,6 +54,9 @@ Desktop.ini
 # Arquivos de log
 /logs/*
 !/logs/empty
+logs/debug.log
+logs/error.log
+logs/queries.log
 
 # Arquivos de teste de cobertura
 /coverage/*
