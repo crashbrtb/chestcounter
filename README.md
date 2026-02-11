@@ -72,6 +72,7 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 php composer.phar install --no-dev --optimize-autoloader
 ```
+> **Note:**  If errors, try php -d disable_functions="" composer install
 
 ### 4. Configure the Database
 
