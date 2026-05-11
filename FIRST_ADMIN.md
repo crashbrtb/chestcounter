@@ -15,6 +15,9 @@ Run the command without parameters and follow the instructions:
 
 ```bash
 php bin/cake.php create_admin
+or
+chmod +x bin/cake
+bin/cake create_admin
 ```
 
 The command will prompt for:

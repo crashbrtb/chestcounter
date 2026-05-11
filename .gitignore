@@ -3,6 +3,7 @@
 /config/.env
 /logs/*
 /tmp/*
+/vendor/*
 
 # Arquivos do CakePHP que devem ser ignorados
 .php-cs-fixer.cache
@@ -54,6 +55,9 @@ Desktop.ini
 # Arquivos de log
 /logs/*
 !/logs/empty
+logs/debug.log
+logs/error.log
+logs/queries.log
 
 # Arquivos de teste de cobertura
 /coverage/*

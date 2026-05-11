@@ -307,7 +307,21 @@ class CollectedChestsController extends AppController
 
                     if ($updatedRows > 0) {
                         $this->Flash->success(__('Successfully merged player "{0}" into "{1}". {2} records were updated.', $incorrectPlayer, $correctPlayer, $updatedRows));
-                        
+
+                        // Add mapping to player_name_mappings (ocr_text = incorrect, correct_name = correct)
+                        $playerNameMappingsTable = TableRegistry::getTableLocator()->get('PlayerNameMappings');
+                        $existingMapping = $playerNameMappingsTable->find()->where(['ocr_text' => $incorrectPlayer])->first();
+                        if ($existingMapping) {
+                            $existingMapping->correct_name = $correctPlayer;
+                            $playerNameMappingsTable->save($existingMapping);
+                        } else {
+                            $newMapping = $playerNameMappingsTable->newEntity([
+                                'ocr_text' => $incorrectPlayer,
+                                'correct_name' => $correctPlayer,
+                            ]);
+                            $playerNameMappingsTable->save($newMapping);
+                        }
+
                         // Excluir o jogador incorreto da tabela Members
                         $incorrectPlayerEntity = $membersTable->find()->where(['player' => $incorrectPlayer])->first();
                         if ($incorrectPlayerEntity) {
