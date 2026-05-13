@@ -62,6 +62,7 @@ return function (RouteBuilder $routes): void {
          */
         $builder->connect('/', ['controller' => 'CollectedChests', 'action' => 'score']);
         $builder->connect('/history', ['controller' => 'PlayerCycleSummaries', 'action' => 'cycles_history']);
+        $builder->connect('/scorenew', ['controller' => 'CollectedChests', 'action' => 'scorenew']);
 
         /*
          * ...and connect the rest of 'Pages' controller's URLs.

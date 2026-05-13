@@ -276,6 +276,20 @@ class CollectedChestsController extends AppController
 
     }
 
+    /**
+     * New score layout with top blocks + full ranking table.
+     *
+     * Reuses the same data preparation from score() and renders scorenew.php.
+     *
+     * @return \Cake\Http\Response|null|void
+     */
+    public function scorenew()
+    {
+        $this->score();
+
+        return $this->render('scorenew');
+    }
+
     public function mergePlayers()
     {
         $this->requireAdmin();
