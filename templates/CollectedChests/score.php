@@ -195,7 +195,7 @@ if (!empty($playersData)) {
                 <tr>
                     <td>
                         <?= $this->Html->link(
-                            h($playerData['player']),
+                            $playerData['player'],
                             ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($playerData['player'])]
                         ) ?>
                     </td>
