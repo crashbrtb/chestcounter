@@ -218,11 +218,19 @@ function abortInstallation(string $reason): void
 /**
  * Get or create the PDO connection for direct database operations.
  */
-function getDbConnection(array $dbConfig): PDO
+function getDbConnection(array $dbConfig, bool $forceNew = false): PDO
 {
     static $pdo = null;
 
-    if ($pdo === null) {
+    if ($pdo !== null && !$forceNew) {
+        try {
+            $pdo->query("SELECT 1");
+        } catch (Throwable $e) {
+            $pdo = null;
+        }
+    }
+
+    if ($pdo === null || $forceNew) {
         $dsn = "mysql:host={$dbConfig['host']};dbname={$dbConfig['database']};charset=utf8mb4";
         if (!empty($dbConfig['port'])) {
             $dsn = "mysql:host={$dbConfig['host']};port={$dbConfig['port']};dbname={$dbConfig['database']};charset=utf8mb4";
@@ -1066,14 +1074,6 @@ function createAdminUser(array $dbConfig): void
         abortInstallation('A valid email is required.');
     }
 
-    // Check if email already exists
-    $stmt = $pdo->prepare("SELECT COUNT(*) as cnt FROM `users` WHERE `email` = ?");
-    $stmt->execute([$email]);
-    $row = $stmt->fetch();
-    if ($row && $row['cnt'] > 0) {
-        abortInstallation('This email is already registered.');
-    }
-
     $password = promptPassword('Administrator password (min 6 chars)');
     if (empty($password) || strlen($password) < 6) {
         abortInstallation('Password must be at least 6 characters long.');
@@ -1082,6 +1082,17 @@ function createAdminUser(array $dbConfig): void
     $passwordConfirm = promptPassword('Confirm password');
     if ($password !== $passwordConfirm) {
         abortInstallation('Passwords do not match.');
+    }
+
+    // Refresh PDO connection after interactive prompts to prevent "MySQL server has gone away" timeout
+    $pdo = getDbConnection($dbConfig);
+
+    // Check if email already exists
+    $stmt = $pdo->prepare("SELECT COUNT(*) as cnt FROM `users` WHERE `email` = ?");
+    $stmt->execute([$email]);
+    $row = $stmt->fetch();
+    if ($row && $row['cnt'] > 0) {
+        abortInstallation('This email is already registered.');
     }
 
     echo PHP_EOL;
@@ -1110,6 +1121,8 @@ function createAdminUser(array $dbConfig): void
     // PHP-native fallback: insert directly with PDO
     printInfo("Creating admin via PHP-native method...");
 
+    $pdo = getDbConnection($dbConfig);
+
     // Hash password using bcrypt (same as CakePHP's DefaultPasswordHasher)
     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
     $now = date('Y-m-d H:i:s');
@@ -1133,7 +1146,9 @@ function createAdminUser(array $dbConfig): void
         printInfo("  → Name: {$name}");
         printInfo("  → Email: {$email}");
     } catch (PDOException $e) {
-        $pdo->rollBack();
+        if ($pdo->inTransaction()) {
+            $pdo->rollBack();
+        }
         printError("Failed to create administrator: " . $e->getMessage());
         printWarning("You can create it manually later: php bin/cake.php create_admin");
     }
