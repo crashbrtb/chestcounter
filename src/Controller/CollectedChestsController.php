@@ -189,7 +189,7 @@ class CollectedChestsController extends AppController
         // Buscar a pontuação de cada tipo de baú
 
         $chestScoresResult = $standardChestsTable->find()
-            ->select(['source', 'score'])
+            ->select(['source', 'score', 'monster'])
             ->toArray();
         
         $chestScores = [];

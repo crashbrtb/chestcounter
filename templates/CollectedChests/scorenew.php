@@ -45,38 +45,17 @@ if (!empty($playerChestCounts)) {
         return $scoreB <=> $scoreA;
     });
 
-    $level30CitadelSource = null;
-    foreach (array_keys((array)$chestScores) as $sourceName) {
-        $normalized = mb_strtolower((string)$sourceName);
-        if (
-            str_contains($normalized, 'level 30') &&
-            (
-                str_contains($normalized, 'citadel') ||
-                str_contains($normalized, 'cidadela') ||
-                str_contains($normalized, 'crypt')
-            )
-        ) {
-            $level30CitadelSource = (string)$sourceName;
-            break;
-        }
-    }
-
     foreach (array_keys($playerChestCounts) as $player) {
         $counts = $playerChestCounts[$player] ?? [];
         $epicCryptScore = 0;
-        $level30CitadelScore = 0;
+        $epicMonsterChestCount = 0;
         foreach ($counts as $source => $count) {
             if (stripos((string)$source, 'epic') !== false && isset($chestScores[$source])) {
                 $epicCryptScore += $chestScores[$source]->score * $count;
             }
-        }
-
-        if (
-            $level30CitadelSource !== null &&
-            isset($counts[$level30CitadelSource]) &&
-            isset($chestScores[$level30CitadelSource])
-        ) {
-            $level30CitadelScore = (int)$counts[$level30CitadelSource] * (int)$chestScores[$level30CitadelSource]->score;
+            if (isset($chestScores[$source]) && !empty($chestScores[$source]->monster)) {
+                $epicMonsterChestCount += (int)$count;
+            }
         }
 
         $playerData = [
@@ -84,7 +63,7 @@ if (!empty($playerChestCounts)) {
             'total_chests' => $playerTotalChests[$player] ?? 0,
             'final_score' => $playerFinalScores[$player] ?? 0,
             'epic_crypt_score' => $epicCryptScore,
-            'level_30_citadel_score' => $level30CitadelScore,
+            'epic_monster_chest_count' => $epicMonsterChestCount,
             'counts' => $counts,
         ];
 
@@ -114,11 +93,11 @@ if (!empty($playersData)) {
     });
 }
 
-$topByCrypts = $playersData;
-usort($topByCrypts, function ($a, $b) {
-    return ($b['level_30_citadel_score'] <=> $a['level_30_citadel_score']);
+$topByEpicMonsters = $playersData;
+usort($topByEpicMonsters, function ($a, $b) {
+    return ($b['epic_monster_chest_count'] <=> $a['epic_monster_chest_count']);
 });
-$topByCrypts = array_slice($topByCrypts, 0, 5);
+$topByEpicMonsters = array_slice($topByEpicMonsters, 0, 5);
 
 $topByMonsters = $playersData;
 usort($topByMonsters, function ($a, $b) {
@@ -373,14 +352,14 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
 
     <div class="top-grid mt-3">
         <section class="top-card">
-            <div class="top-card-header"><?= __('Top 5 - Citadel Wreckers') ?></div>
-            <?php if (!empty($topByCrypts)): ?>
+            <div class="top-card-header"><?= __('Top 5 Epic Monster Chest') ?></div>
+            <?php if (!empty($topByEpicMonsters)): ?>
                 <ul class="top-list">
-                    <?php foreach ($topByCrypts as $i => $player): ?>
+                    <?php foreach ($topByEpicMonsters as $i => $player): ?>
                         <li class="top-item">
                             <span class="top-rank"><?= $i + 1 ?></span>
                             <span class="top-player"><?= h($player['player']) ?></span>
-                            <span class="top-value"><?= (int)$player['level_30_citadel_score'] ?></span>
+                            <span class="top-value"><?= (int)$player['epic_monster_chest_count'] ?></span>
                         </li>
                     <?php endforeach; ?>
                 </ul>
