@@ -197,6 +197,31 @@ class CollectedChestsController extends AppController
             $chestScores[$row->source] = $row;
         }
 
+        // Identificar sources de Epic Monster (monster = 1) e buscar detalhes individuais
+        $epicMonsterSources = [];
+        foreach ($chestScores as $src => $chestData) {
+            if (!empty($chestData->monster)) {
+                $epicMonsterSources[] = $src;
+            }
+        }
+
+        $epicMonsterDetails = [];
+        if (!empty($epicMonsterSources)) {
+            $rawEpicDetails = $collectedChestsTable->find()
+                ->select(['player', 'source', 'collected_at'])
+                ->where([
+                    'collected_at >=' => $cycleStart,
+                    'collected_at <=' => $cycleEnd,
+                    'source IN' => $epicMonsterSources,
+                ])
+                ->order(['player' => 'ASC', 'source' => 'ASC', 'collected_at' => 'DESC'])
+                ->toArray();
+
+            foreach ($rawEpicDetails as $row) {
+                $epicMonsterDetails[$row->player][$row->source][] = $row->collected_at->format('d/m/Y H:i');
+            }
+        }
+
         // Buscar os nomes (sources) dos baús que têm pontuação diferente de zero
         $sourcesWithNonZeroScore = $standardChestsTable->find('list', keyField: 'source', valueField: 'source')
         ->where(['score !=' => 0])
@@ -269,9 +294,10 @@ class CollectedChestsController extends AppController
             'minimumChestScore',
             'minimumEpicChestScore',
             'lastUpdate',
-            'sourcesWithNonZeroScore', // Adiciona a nova variável
+            'sourcesWithNonZeroScore',
             'chestScores',
-            'scoreColorsConfig'
+            'scoreColorsConfig',
+            'epicMonsterDetails'
         ));
 
     }

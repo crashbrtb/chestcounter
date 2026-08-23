@@ -13,6 +13,7 @@
  * @var string[] $sourcesWithNonZeroScore
  * @var array $chestScores
  * @var array $scoreColorsConfig
+ * @var array $epicMonsterDetails
  */
 ?>
 <?php
@@ -98,6 +99,32 @@ usort($topByEpicMonsters, function ($a, $b) {
     return ($b['epic_monster_chest_count'] <=> $a['epic_monster_chest_count']);
 });
 $topByEpicMonsters = array_slice($topByEpicMonsters, 0, 5);
+
+// Preparar dados dos detalhes de Epic Monster para o popup (JSON para JS)
+// Cada linha: source, date (apenas data sem hora), count
+$epicMonsterPopupData = [];
+$epicMonsterDetails = $epicMonsterDetails ?? [];
+foreach ($topByEpicMonsters as $p) {
+    $pName = $p['player'];
+    $details = $epicMonsterDetails[$pName] ?? [];
+    $rows = [];
+    foreach ($details as $src => $dateTimes) {
+        // Agrupar por data (sem hora)
+        $dateCounts = [];
+        foreach ($dateTimes as $dt) {
+            $dateOnly = substr($dt, 0, 10); // dd/mm/yyyy
+            $dateCounts[$dateOnly] = ($dateCounts[$dateOnly] ?? 0) + 1;
+        }
+        foreach ($dateCounts as $date => $count) {
+            $rows[] = [
+                'source' => $src,
+                'date' => $date,
+                'count' => $count,
+            ];
+        }
+    }
+    $epicMonsterPopupData[$pName] = $rows;
+}
 
 $topByMonsters = $playersData;
 usort($topByMonsters, function ($a, $b) {
@@ -330,6 +357,138 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
             grid-template-columns: 1fr;
         }
     }
+
+    /* Epic Monster Details Modal */
+    .em-modal-overlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        background: rgba(15, 23, 42, 0.55);
+        backdrop-filter: blur(4px);
+        z-index: 9998;
+        animation: emFadeIn 0.2s ease;
+    }
+
+    .em-modal {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #fff;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(17, 24, 39, 0.18);
+        z-index: 9999;
+        width: 90%;
+        max-width: 560px;
+        max-height: 80vh;
+        overflow: hidden;
+        animation: emSlideIn 0.25s ease;
+    }
+
+    .em-modal-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px;
+        border-bottom: 1px solid #e5e7eb;
+        background: #f8fafc;
+    }
+
+    .em-modal-head h3 {
+        margin: 0;
+        font-size: 1.05rem;
+        font-weight: 700;
+        color: #1f2937;
+    }
+
+    .em-modal-close {
+        background: none;
+        border: none;
+        font-size: 1.4rem;
+        color: #6b7280;
+        cursor: pointer;
+        padding: 4px 8px;
+        border-radius: 8px;
+        transition: background 0.15s, color 0.15s;
+    }
+
+    .em-modal-close:hover {
+        background: #fee2e2;
+        color: #dc2626;
+    }
+
+    .em-modal-body {
+        padding: 16px 20px;
+        overflow-y: auto;
+        max-height: calc(80vh - 60px);
+    }
+
+    .em-detail-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .em-detail-table th {
+        background: #eef2ff;
+        color: #3730a3;
+        font-weight: 700;
+        font-size: 0.88rem;
+        padding: 8px 12px;
+        text-align: left;
+        border-bottom: 2px solid #c7d2fe;
+    }
+
+    .em-detail-table th:last-child {
+        text-align: center;
+    }
+
+    .em-detail-table td {
+        padding: 7px 12px;
+        font-size: 0.88rem;
+        color: #374151;
+        border-bottom: 1px solid #f3f4f6;
+    }
+
+    .em-detail-table td:last-child {
+        text-align: center;
+        font-weight: 700;
+        color: #4f46e5;
+    }
+
+    .em-detail-table tbody tr:hover {
+        background: #f8fafc;
+    }
+
+    .em-no-data {
+        color: #9ca3af;
+        font-style: italic;
+        text-align: center;
+        padding: 20px;
+    }
+
+    .em-player-link {
+        color: #4f46e5;
+        cursor: pointer;
+        text-decoration: none;
+        font-weight: 600;
+        transition: color 0.15s;
+    }
+
+    .em-player-link:hover {
+        color: #3730a3;
+        text-decoration: underline;
+    }
+
+    @keyframes emFadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    @keyframes emSlideIn {
+        from { opacity: 0; transform: translate(-50%, -48%); }
+        to { opacity: 1; transform: translate(-50%, -50%); }
+    }
 </style>
 
 <div class="score-new-page">
@@ -358,7 +517,11 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
                     <?php foreach ($topByEpicMonsters as $i => $player): ?>
                         <li class="top-item">
                             <span class="top-rank"><?= $i + 1 ?></span>
-                            <span class="top-player"><?= h($player['player']) ?></span>
+                            <span class="top-player">
+                                <a href="#" class="em-player-link" data-player="<?= h($player['player']) ?>" onclick="showEpicMonsterDetails(this.dataset.player); return false;">
+                                    <?= h($player['player']) ?>
+                                </a>
+                            </span>
                             <span class="top-value"><?= (int)$player['epic_monster_chest_count'] ?></span>
                         </li>
                     <?php endforeach; ?>
@@ -463,3 +626,66 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         </div>
     <?php endif; ?>
 </div>
+
+<!-- Epic Monster Details Modal -->
+<div class="em-modal-overlay" id="emOverlay" onclick="closeEpicMonsterModal()"></div>
+<div class="em-modal" id="emModal">
+    <div class="em-modal-head">
+        <h3 id="emModalTitle"></h3>
+        <button class="em-modal-close" onclick="closeEpicMonsterModal()" title="<?= __('Close') ?>">&times;</button>
+    </div>
+    <div class="em-modal-body" id="emModalBody"></div>
+</div>
+
+<script>
+var epicMonsterData = <?= json_encode($epicMonsterPopupData, JSON_UNESCAPED_UNICODE) ?>;
+
+function showEpicMonsterDetails(playerName) {
+    var modal = document.getElementById('emModal');
+    var overlay = document.getElementById('emOverlay');
+    var title = document.getElementById('emModalTitle');
+    var body = document.getElementById('emModalBody');
+
+    title.textContent = playerName + ' — Epic Monster Chests';
+
+    var data = epicMonsterData[playerName];
+    if (!data || data.length === 0) {
+        body.innerHTML = '<div class="em-no-data"><?= __('No epic monster chests found for this player.') ?></div>';
+    } else {
+        var html = '<table class="em-detail-table">';
+        html += '<thead><tr>';
+        html += '<th><?= __('Chest') ?></th>';
+        html += '<th><?= __('Date') ?></th>';
+        html += '<th><?= __('Qty') ?></th>';
+        html += '</tr></thead><tbody>';
+        for (var i = 0; i < data.length; i++) {
+            var row = data[i];
+            html += '<tr>';
+            html += '<td>' + escapeHtml(row.source) + '</td>';
+            html += '<td>' + escapeHtml(row.date) + '</td>';
+            html += '<td>' + row.count + '</td>';
+            html += '</tr>';
+        }
+        html += '</tbody></table>';
+        body.innerHTML = html;
+    }
+
+    overlay.style.display = 'block';
+    modal.style.display = 'block';
+}
+
+function closeEpicMonsterModal() {
+    document.getElementById('emModal').style.display = 'none';
+    document.getElementById('emOverlay').style.display = 'none';
+}
+
+function escapeHtml(text) {
+    var div = document.createElement('div');
+    div.appendChild(document.createTextNode(text));
+    return div.innerHTML;
+}
+
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeEpicMonsterModal();
+});
+</script>
