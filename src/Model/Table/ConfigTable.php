@@ -68,6 +68,30 @@ class ConfigTable extends Table
             ->requirePresence('description', 'create')
             ->notEmptyString('description');
 
+        $validator
+            ->add('value', 'validRetentionDays', [
+                'rule' => function ($value, $context) {
+                    $entity = $context['providers']['entity'] ?? null;
+                    $paramName = $context['data']['param'] ?? ($entity ? $entity->param : null);
+
+                    if ($paramName === 'collected_chests_retention_days') {
+                        if (!is_numeric($value)) {
+                            return false;
+                        }
+                        $val = (int)$value;
+                        if ($val < 0) {
+                            return false;
+                        }
+                        if ($val > 0 && $val <= 7) {
+                            return false;
+                        }
+                    }
+
+                    return true;
+                },
+                'message' => __('Retention time must be 0 (to disable automatic purge) or greater than 7 days.'),
+            ]);
+
         return $validator;
     }
 }

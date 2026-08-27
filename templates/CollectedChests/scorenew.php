@@ -132,6 +132,27 @@ usort($topByMonsters, function ($a, $b) {
 });
 $topByMonsters = array_slice($topByMonsters, 0, 5);
 
+// Preparar dados de TODOS os jogadores para os modais "View All"
+$allByEpicMonsters = $playersData;
+usort($allByEpicMonsters, function ($a, $b) {
+    return ($b['epic_monster_chest_count'] <=> $a['epic_monster_chest_count']);
+});
+$allByEpicMonsters = array_values(array_filter($allByEpicMonsters, fn($p) => $p['epic_monster_chest_count'] > 0));
+$allEpicMonstersJson = array_map(fn($p) => [
+    'player' => $p['player'],
+    'count' => (int)$p['epic_monster_chest_count'],
+], $allByEpicMonsters);
+
+$allByEpicCrypt = $playersData;
+usort($allByEpicCrypt, function ($a, $b) {
+    return ($b['epic_crypt_score'] <=> $a['epic_crypt_score']);
+});
+$allByEpicCrypt = array_values(array_filter($allByEpicCrypt, fn($p) => $p['epic_crypt_score'] > 0));
+$allEpicCryptJson = array_map(fn($p) => [
+    'player' => $p['player'],
+    'score' => (int)$p['epic_crypt_score'],
+], $allByEpicCrypt);
+
 $transitionStart = (float)($scoreColorsConfig['score_color_transition_start'] ?? 0.0);
 $startR = (int)($scoreColorsConfig['score_color_start_r'] ?? 255);
 $startG = (int)($scoreColorsConfig['score_color_start_g'] ?? 0);
@@ -226,11 +247,35 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .top-card-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
         padding: 14px 16px;
         border-bottom: 1px solid var(--line);
         font-weight: 700;
         color: var(--text);
         background: #fcfcff;
+    }
+
+    .view-all-link {
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #4f46e5;
+        background: #eef2ff;
+        border: 1px solid #c7d2fe;
+        border-radius: 999px;
+        padding: 3px 10px;
+        text-decoration: none;
+        cursor: pointer;
+        white-space: nowrap;
+        transition: background 0.15s, color 0.15s, border-color 0.15s;
+    }
+
+    .view-all-link:hover {
+        background: #4f46e5;
+        color: #fff;
+        border-color: #4f46e5;
+        text-decoration: none;
     }
 
     .top-list {
@@ -511,7 +556,10 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
 
     <div class="top-grid mt-3">
         <section class="top-card">
-            <div class="top-card-header"><?= __('Top 5 Epic Monster Chest') ?></div>
+            <div class="top-card-header">
+                <span><?= __('Top 5 Epic Monster Chest') ?></span>
+                <a href="#" class="view-all-link" onclick="showViewAllModal('monster'); return false;"><?= __('View All') ?></a>
+            </div>
             <?php if (!empty($topByEpicMonsters)): ?>
                 <ul class="top-list">
                     <?php foreach ($topByEpicMonsters as $i => $player): ?>
@@ -532,7 +580,10 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         </section>
 
         <section class="top-card">
-            <div class="top-card-header"><?= __('Top 5 - Epic Crypt Raiders') ?></div>
+            <div class="top-card-header">
+                <span><?= __('Top 5 - Epic Crypt Raiders') ?></span>
+                <a href="#" class="view-all-link" onclick="showViewAllModal('crypt'); return false;"><?= __('View All') ?></a>
+            </div>
             <?php if (!empty($topByMonsters)): ?>
                 <ul class="top-list">
                     <?php foreach ($topByMonsters as $i => $player): ?>
@@ -639,14 +690,14 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
 
 <script>
 var epicMonsterData = <?= json_encode($epicMonsterPopupData, JSON_UNESCAPED_UNICODE) ?>;
+var allEpicMonsters = <?= json_encode($allEpicMonstersJson, JSON_UNESCAPED_UNICODE) ?>;
+var allEpicCrypt = <?= json_encode($allEpicCryptJson, JSON_UNESCAPED_UNICODE) ?>;
 
 function showEpicMonsterDetails(playerName) {
-    var modal = document.getElementById('emModal');
-    var overlay = document.getElementById('emOverlay');
     var title = document.getElementById('emModalTitle');
     var body = document.getElementById('emModalBody');
 
-    title.textContent = playerName + ' — Epic Monster Chests';
+    title.textContent = playerName + ' \u2014 Epic Monster Chests';
 
     var data = epicMonsterData[playerName];
     if (!data || data.length === 0) {
@@ -670,8 +721,54 @@ function showEpicMonsterDetails(playerName) {
         body.innerHTML = html;
     }
 
-    overlay.style.display = 'block';
-    modal.style.display = 'block';
+    openModal('emModal');
+}
+
+function showViewAllModal(type) {
+    var title = document.getElementById('emModalTitle');
+    var body = document.getElementById('emModalBody');
+    var data, titleText, valueHeader;
+
+    if (type === 'monster') {
+        data = allEpicMonsters;
+        titleText = '<?= __('All Players - Epic Monster Chest') ?>';
+        valueHeader = '<?= __('Chests') ?>';
+    } else {
+        data = allEpicCrypt;
+        titleText = '<?= __('All Players - Epic Crypt Raiders') ?>';
+        valueHeader = '<?= __('Score') ?>';
+    }
+
+    title.textContent = titleText;
+
+    if (!data || data.length === 0) {
+        body.innerHTML = '<div class="em-no-data"><?= __('No data available for this cycle.') ?></div>';
+    } else {
+        var html = '<table class="em-detail-table">';
+        html += '<thead><tr>';
+        html += '<th style="width:40px;text-align:center"><?= __('Pos.') ?></th>';
+        html += '<th style="text-align:left"><?= __('Player') ?></th>';
+        html += '<th>' + escapeHtml(valueHeader) + '</th>';
+        html += '</tr></thead><tbody>';
+        for (var i = 0; i < data.length; i++) {
+            var row = data[i];
+            var value = type === 'monster' ? row.count : row.score;
+            html += '<tr>';
+            html += '<td style="text-align:center"><span class="top-rank">' + (i + 1) + '</span></td>';
+            html += '<td style="text-align:left">' + escapeHtml(row.player) + '</td>';
+            html += '<td>' + value + '</td>';
+            html += '</tr>';
+        }
+        html += '</tbody></table>';
+        body.innerHTML = html;
+    }
+
+    openModal('emModal');
+}
+
+function openModal(modalId) {
+    document.getElementById('emOverlay').style.display = 'block';
+    document.getElementById(modalId).style.display = 'block';
 }
 
 function closeEpicMonsterModal() {

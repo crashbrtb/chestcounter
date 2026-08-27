@@ -17,109 +17,141 @@ foreach ($memberBalances as $balance) {
 }
 ?>
 
-<div class="bank withdraw content">
-    <h3><?= __('Request Withdrawal') ?></h3>
-    <p><?= __('Select a member and enter the Silver amount you want to withdraw. All values represent millions of Silver ($).') ?></p>
-    <p><?= __('Current withdrawal fee: {0} $.', $this->Number->format($withdrawFee, ['places' => 0])) ?></p>
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div>
+            <h1 class="score-title"><?= __('Request Withdrawal') ?></h1>
+            <p class="cycle-subtitle"><?= __('Select a member and enter the Silver amount. All values represent millions of Silver ($)') ?></p>
+        </div>
+        <div class="actions">
+            <?= $this->Html->link('<i class="fas fa-arrow-left mr-1"></i> ' . __('Back to Bank'), ['action' => 'index'], ['class' => 'btn btn-default btn-sm', 'escape' => false]) ?>
+        </div>
+    </div>
 
+    <div class="goal-pill">
+        <?= __('Current withdrawal fee: {0} $', $this->Number->format($withdrawFee, ['places' => 0])) ?>
+    </div>
 
     <?php if (!$hasMembers): ?>
         <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle mr-1"></i>
             <?= __('You do not have members available for withdrawals.') ?>
         </div>
         <?php return; ?>
     <?php endif; ?>
 
-    <div class="table-responsive mb-3">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th><?= __('Member') ?></th>
-                    <th><?= __('Current balance ($)') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($allMembers as $memberId => $memberName): ?>
+    <div class="card ranking-card mb-4">
+        <div class="ranking-header">
+            <h3 class="card-title"><?= __('Current Balances Overview') ?></h3>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table ranking-table table-hover">
+                <thead>
                     <tr>
-                        <td><?= h($memberName) ?></td>
-                        <td><?= $this->Number->format($memberBalances[$memberId] ?? 0, ['places' => 0]) ?> $</td>
+                        <th class="text-left"><?= __('Member') ?></th>
+                        <th class="text-center"><?= __('Current balance ($)') ?></th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    <?php foreach ($allMembers as $memberId => $memberName): ?>
+                        <?php $bal = $memberBalances[$memberId] ?? 0; ?>
+                        <tr>
+                            <td class="text-left font-weight-bold"><?= h($memberName) ?></td>
+                            <td class="text-center font-weight-bold" style="color: <?= $bal > 0 ? 'var(--text-dark)' : 'var(--danger)' ?>;">
+                                <?= $this->Number->format($bal, ['places' => 0]) ?> $
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <?php if (!$hasPositiveBalance): ?>
         <div class="alert alert-danger">
+            <i class="fas fa-exclamation-circle mr-1"></i>
             <?= __('All balances are zero or negative. Withdraw buttons are hidden until there is enough Silver.') ?>
         </div>
         <?php return; ?>
     <?php endif; ?>
 
-    <?= $this->Form->create(null, ['class' => 'mt-3']) ?>
-    <div class="form-group">
-        <?= $this->Form->control('member_id', [
-            'label' => __('Member'),
-            'options' => $allMembers,
-            'required' => true,
-            'class' => 'form-control',
-        ]) ?>
-    </div>
-    <div class="form-group">
-        <?= $this->Form->control('amount', [
-            'label' => __('Amount (millions of Silver)'),
-            'type' => 'number',
-            'min' => 1,
-            'step' => 1,
-            'class' => 'form-control',
-            'id' => 'withdraw-amount',
-            'required' => true,
-        ]) ?>
-        <small class="form-text text-muted">
-            <?= __('Only positive integers are accepted.') ?>
-        </small>
-    </div>
+    <div class="card ranking-card">
+        <div class="ranking-header">
+            <h3 class="card-title"><?= __('Withdrawal Form') ?></h3>
+        </div>
+        <div class="card-body">
+            <?= $this->Form->create(null) ?>
+            <div class="form-group">
+                <?= $this->Form->control('member_id', [
+                    'label' => __('Member'),
+                    'options' => $allMembers,
+                    'required' => true,
+                    'class' => 'form-control',
+                ]) ?>
+            </div>
+            <div class="form-group">
+                <?= $this->Form->control('amount', [
+                    'label' => __('Amount (millions of Silver)'),
+                    'type' => 'number',
+                    'min' => 1,
+                    'step' => 1,
+                    'class' => 'form-control',
+                    'id' => 'withdraw-amount',
+                    'required' => true,
+                ]) ?>
+                <small class="form-text text-muted">
+                    <?= __('Only positive integers are accepted.') ?>
+                </small>
+            </div>
 
-    <div class="form-group">
-        <?= $this->Form->control('fee_preview', [
-            'label' => __('Withdrawal fee ($)'),
-            'type' => 'text',
-            'readonly' => true,
-            'class' => 'form-control',
-            'id' => 'withdraw-fee-preview',
-            'value' => $this->Number->format($withdrawFee, ['places' => 0]),
-        ]) ?>
-    </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <?= $this->Form->control('fee_preview', [
+                        'label' => __('Withdrawal fee ($)'),
+                        'type' => 'text',
+                        'readonly' => true,
+                        'class' => 'form-control font-weight-bold',
+                        'id' => 'withdraw-fee-preview',
+                        'value' => $this->Number->format($withdrawFee, ['places' => 0]),
+                    ]) ?>
+                </div>
 
-    <div class="form-group">
-        <?= $this->Form->control('final_preview', [
-            'label' => __('Total deduction ($)'),
-            'type' => 'text',
-            'readonly' => true,
-            'class' => 'form-control',
-            'id' => 'withdraw-total-preview',
-            'value' => $this->Number->format($withdrawFee, ['places' => 0]),
-        ]) ?>
-    </div>
+                <div class="col-md-6 form-group">
+                    <?= $this->Form->control('final_preview', [
+                        'label' => __('Total deduction ($)'),
+                        'type' => 'text',
+                        'readonly' => true,
+                        'class' => 'form-control font-weight-bold text-danger',
+                        'id' => 'withdraw-total-preview',
+                        'value' => $this->Number->format($withdrawFee, ['places' => 0]),
+                    ]) ?>
+                </div>
+            </div>
 
-    <div class="form-group">
-        <?= $this->Form->control('description', [
-            'label' => __('Comment (English only, optional)'),
-            'type' => 'text',
-            'maxlength' => 512,
-            'class' => 'form-control',
-            'placeholder' => __('Short English comment (max 512 characters)'),
-        ]) ?>
-    </div>
+            <div class="form-group">
+                <?= $this->Form->control('description', [
+                    'label' => __('Comment (English only, optional)'),
+                    'type' => 'text',
+                    'maxlength' => 512,
+                    'class' => 'form-control',
+                    'placeholder' => __('Short English comment (max 512 characters)'),
+                ]) ?>
+            </div>
 
-    <div class="alert alert-info">
-        <?= $isAdmin
-            ? __('Administrator withdrawals are executed immediately.')
-            : __('Withdrawals stay pending until an administrator approves them.') ?>
-    </div>
+            <div class="alert alert-info mt-3 mb-4">
+                <i class="fas fa-info-circle mr-1"></i>
+                <?= $isAdmin
+                    ? __('Administrator withdrawals are executed immediately.')
+                    : __('Withdrawals stay pending until an administrator approves them.') ?>
+            </div>
 
-    <?= $this->Form->button(__('Submit withdrawal'), ['class' => 'btn btn-warning']) ?>
-    <?= $this->Form->end() ?>
+            <div class="d-flex justify-content-end">
+                <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default mr-2']) ?>
+                <?= $this->Form->button('<i class="fas fa-arrow-circle-up mr-1"></i> ' . __('Submit withdrawal'), ['class' => 'btn btn-warning', 'escapeTitle' => false]) ?>
+            </div>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
 </div>
 
 <?php $withdrawFeeValue = (int)$withdrawFee; ?>
@@ -140,80 +172,4 @@ foreach ($memberBalances as $balance) {
     amountInput.addEventListener('input', recalc);
     recalc();
 })();
-
-// Highlight error messages with extra emphasis
-(function() {
-    const errorAlerts = document.querySelectorAll('.alert-danger, .alert.alert-danger');
-    errorAlerts.forEach(function(alert) {
-        // Apply enhanced styling
-        alert.style.fontSize = '1.2em';
-        alert.style.fontWeight = 'bold';
-        alert.style.border = '4px solid #dc0000';
-        alert.style.borderRadius = '8px';
-        alert.style.padding = '20px 25px';
-        alert.style.marginBottom = '30px';
-        alert.style.backgroundColor = '#ffe6e6';
-        alert.style.boxShadow = '0 6px 12px rgba(220, 0, 0, 0.5)';
-        alert.style.color = '#dc0000';
-        
-        // Convert line breaks to HTML breaks
-        const textNodes = [];
-        function getTextNodes(node) {
-            if (node.nodeType === 3) { // Text node
-                textNodes.push(node);
-            } else {
-                for (let child of node.childNodes) {
-                    getTextNodes(child);
-                }
-            }
-        }
-        getTextNodes(alert);
-        
-        textNodes.forEach(function(textNode) {
-            const text = textNode.textContent;
-            if (text.includes('\n')) {
-                const parent = textNode.parentNode;
-                const parts = text.split('\n');
-                parts.forEach(function(part, index) {
-                    if (index > 0) {
-                        parent.insertBefore(document.createElement('br'), textNode);
-                    }
-                    if (part.trim()) {
-                        const span = document.createElement('span');
-                        span.textContent = part;
-                        span.style.display = 'block';
-                        span.style.marginBottom = '5px';
-                        if (part.includes('⚠️') || part.includes('INSUFFICIENT')) {
-                            span.style.fontSize = '1.3em';
-                            span.style.color = '#dc0000';
-                        }
-                        parent.insertBefore(span, textNode);
-                    }
-                });
-                parent.removeChild(textNode);
-            }
-        });
-        
-        // Add icon if not present
-        if (!alert.querySelector('.fas, .fa')) {
-            const icon = document.createElement('i');
-            icon.className = 'fas fa-exclamation-triangle';
-            icon.style.marginRight = '12px';
-            icon.style.fontSize = '1.4em';
-            icon.style.color = '#dc0000';
-            alert.insertBefore(icon, alert.firstChild);
-        }
-        
-        // Make all text more visible
-        const textElements = alert.querySelectorAll('p, div, span');
-        textElements.forEach(function(el) {
-            if (el.textContent.trim() && !el.querySelector('.fas, .fa')) {
-                el.style.fontSize = '1.1em';
-                el.style.lineHeight = '1.6';
-                el.style.color = '#dc0000';
-            }
-        });
-    });
-})();
 </script>
-

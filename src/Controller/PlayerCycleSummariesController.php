@@ -82,8 +82,24 @@ class PlayerCycleSummariesController extends AppController
             }
         }
         
+        // Load configs for score coloring
+        $configsTable = TableRegistry::getTableLocator()->get('Config');
+        $configs = $configsTable->find('list', ['keyField' => 'param', 'valueField' => 'value'])->toArray();
+
+        $minimumChestScore = (int)($configs['minimum_chest_score'] ?? 0);
+        $minimumEpicChestScore = (int)($configs['minimum_epic_chest_score'] ?? 0);
+        $scoreColorsConfig = [
+            'score_color_transition_start' => (float)($configs['score_color_transition_start'] ?? 0.0),
+            'score_color_start_r' => (int)($configs['score_color_start_r'] ?? 255),
+            'score_color_start_g' => (int)($configs['score_color_start_g'] ?? 0),
+            'score_color_start_b' => (int)($configs['score_color_start_b'] ?? 0),
+            'score_color_end_r' => (int)($configs['score_color_end_r'] ?? 0),
+            'score_color_end_g' => (int)($configs['score_color_end_g'] ?? 255),
+            'score_color_end_b' => (int)($configs['score_color_end_b'] ?? 0),
+        ];
+
         // A paginação original $this->paginate($query) é removida pois estamos focando nos 3 últimos ciclos.
-        $this->set(compact('summariesByCycle', 'formattedCycleDates'));
+        $this->set(compact('summariesByCycle', 'formattedCycleDates', 'minimumChestScore', 'minimumEpicChestScore', 'scoreColorsConfig'));
     }
 
     public function playerHistory($playerName = null)
@@ -232,8 +248,6 @@ class PlayerCycleSummariesController extends AppController
         $this->requireAdmin();
         $this->request->allowMethod(['post', 'get']); // Permitir GET para teste manual
         $configsTable = TableRegistry::getTableLocator()->get('Config');
-        $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
-        $standardChestsTable = TableRegistry::getTableLocator()->get('StandardChests');
         $playerCycleSummariesTable = $this->PlayerCycleSummaries;
 
         // --- Lógica para determinar o ciclo a ser processado (ex: o último ciclo concluído) ---
@@ -272,115 +286,29 @@ class PlayerCycleSummariesController extends AppController
         $cycleStart = $referenceDay->addDays($targetCycleToProcessOffset * $cycleDuration);
         $cycleEnd = $cycleStart->addDays($cycleDuration)->sub(new \DateInterval('PT1S'));
 
-        // Verificar se este ciclo já foi processado para algum jogador
-        $existingSummaryCheck = $playerCycleSummariesTable->find()
-            ->where(['cycle_start_date' => $cycleStart->format('Y-m-d')])
-            ->count();
-        
-        if ($existingSummaryCheck > 0 && !$this->request->getQuery('force_reprocess')) {
+        $forceReprocess = (bool)$this->request->getQuery('force_reprocess');
+
+        // Delegar o processamento para a Table model
+        $result = $playerCycleSummariesTable->processCycleForDateRange(
+            $cycleStart,
+            $cycleEnd,
+            $minimumRequiredScore,
+            $forceReprocess
+        );
+
+        if ($result['skipped']) {
             $this->Flash->info(__('Cycle from {0} to {1} has already been processed. Use ?force_reprocess=1 to re-process.', $cycleStart->format('Y-m-d'), $cycleEnd->format('Y-m-d')));
-            return $this->redirect(['action' => 'index']);
-        }
-        
-        // Se forçar reprocessamento, limpar registros existentes para este ciclo
-        if ($this->request->getQuery('force_reprocess')) {
-            $playerCycleSummariesTable->deleteAll(['cycle_start_date' => $cycleStart->format('Y-m-d')]);
+        } elseif ($forceReprocess) {
             $this->Flash->info(__('Cleared existing summaries for cycle {0} due to force_reprocess.', $cycleStart->format('Y-m-d')));
         }
 
-        // --- Lógica copiada e adaptada de CollectedChestsController::score() ---
-        $collectedChestsData = $collectedChestsTable->find()
-            ->select(['player', 'source', 'count' => 'COUNT(*)'])
-            ->where([
-                'collected_at >=' => $cycleStart,
-                'collected_at <=' => $cycleEnd,
-            ])
-            ->group(['player', 'source'])
-            ->toArray();
-
-        $chestScoresResult = $standardChestsTable->find()
-            ->select(['source', 'score'])
-            ->toArray();
-        
-        $chestScores = [];
-        foreach ($chestScoresResult as $row) {
-            $chestScores[$row->source] = $row;
+        if ($result['processed'] > 0) {
+            $this->Flash->success(__('{0} player cycle summaries processed successfully for cycle {1} - {2}.', $result['processed'], $cycleStart->format('Y-m-d'), $cycleEnd->format('Y-m-d')));
         }
-
-        // 1. Inicializar um array para manter os dados de resumo de cada jogador.
-        $playerSummaries = [];
-
-        // 2. Iterar sobre todos os baús coletados no ciclo.
-        foreach ($collectedChestsData as $chest) {
-            $playerName = $chest->player;
-            $sourceName = $chest->source;
-            $chestCount = $chest->count;
-
-            // Inicializar o resumo para o jogador se for a primeira vez que o vemos.
-            if (!isset($playerSummaries[$playerName])) {
-                $playerSummaries[$playerName] = [
-                    'total_chests' => 0,
-                    'total_score' => 0,
-                    'epic_crypt_score' => 0,
-                ];
-            }
-
-            // 3. Adicionar o número de baús ao total do jogador.
-            $playerSummaries[$playerName]['total_chests'] += $chestCount;
-
-            // 4. Verificar se este tipo de baú tem uma pontuação definida.
-            if (isset($chestScores[$sourceName])) {
-                // Obter a pontuação para este tipo de baú específico.
-                $scorePerChest = $chestScores[$sourceName]->score;
-                
-                // Calcular a pontuação total para este grupo de baús.
-                $scoreForThisGroup = $scorePerChest * $chestCount;
-
-                // 5. Adicionar ao score total geral do jogador.
-                $playerSummaries[$playerName]['total_score'] += $scoreForThisGroup;
-
-                // 6. Verificar se o nome da fonte contém "epic" (insensível a maiúsculas e minúsculas).
-                if (stripos($sourceName, 'epic') !== false) {
-                    // Se contiver, adicionar também ao score épico do jogador.
-                    $playerSummaries[$playerName]['epic_crypt_score'] += $scoreForThisGroup;
-                }
-            }
+        if ($result['errors'] > 0) {
+            $this->Flash->error(__('{0} errors occurred while processing player cycle summaries.', $result['errors']));
         }
-
-        $processedCount = 0;
-        $errorCount = 0;
-
-        // 7. Salvar os resumos para cada jogador.
-        foreach ($playerSummaries as $playerName => $data) {
-            $goalAchieved = $data['total_score'] >= $minimumRequiredScore;
-            $fineDue = !$goalAchieved;
-
-            $summary = $playerCycleSummariesTable->newEntity([
-                'player_name' => $playerName,
-                'cycle_start_date' => $cycleStart->format('Y-m-d'),
-                'cycle_end_date' => $cycleEnd->format('Y-m-d'),
-                'total_chests' => $data['total_chests'],
-                'total_score' => $data['total_score'],
-                'epic_crypt_score' => $data['epic_crypt_score'],
-                'goal_achieved' => $goalAchieved,
-                'fine_due' => $fineDue,
-                'fine_paid' => false,
-            ]);
-
-            if ($playerCycleSummariesTable->save($summary)) {
-                $processedCount++;
-            } else {
-                $errorCount++;
-            }
-        }
-
-        if ($processedCount > 0) {
-            $this->Flash->success(__('{0} player cycle summaries processed successfully for cycle {1} - {2}.', $processedCount, $cycleStart->format('Y-m-d'), $cycleEnd->format('Y-m-d')));
-        }
-        if ($errorCount > 0) {
-            $this->Flash->error(__('{0} errors occurred while processing player cycle summaries.', $errorCount));
-        }
-        if ($processedCount === 0 && $errorCount === 0) {
+        if ($result['processed'] === 0 && $result['errors'] === 0 && !$result['skipped']) {
             $this->Flash->info(__('No player data found to process for cycle {0} - {1}.', $cycleStart->format('Y-m-d'), $cycleEnd->format('Y-m-d')));
         }
 

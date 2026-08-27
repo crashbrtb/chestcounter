@@ -9,103 +9,129 @@
  */
 ?>
 
-<div class="bank statement content">
-    <h3><?= __('Account statement') ?></h3>
-    <p><?= __('Track every transaction registered for your members. Amounts are in millions of Silver ($).') ?></p>
-
-    <?= $this->Form->create(null, ['type' => 'get', 'class' => 'form-inline mb-3']) ?>
-        <div class="form-group mr-2">
-            <?= $this->Form->control('member_id', [
-                'label' => __('Member'),
-                'options' => $members,
-                'value' => $memberId,
-                'class' => 'form-control',
-            ]) ?>
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div>
+            <h1 class="score-title"><?= __('Account Statement') ?></h1>
+            <p class="cycle-subtitle"><?= __('Track every transaction registered for your members. Amounts in millions of Silver ($)') ?></p>
         </div>
-        <?= $this->Form->button(__('Refresh'), ['class' => 'btn btn-primary']) ?>
-    <?= $this->Form->end() ?>
+        <div class="actions">
+            <?= $this->Html->link('<i class="fas fa-arrow-left mr-1"></i> ' . __('Back to Bank'), ['action' => 'index'], ['class' => 'btn btn-default btn-sm', 'escape' => false]) ?>
+        </div>
+    </div>
 
-    <p><?= __('Selected member: {0}', h($member->player)) ?></p>
-    <p><?= __('Current balance: {0} $', $this->Number->format($balance, ['places' => 0])) ?></p>
+    <div class="card ranking-card mb-4">
+        <div class="card-body">
+            <?= $this->Form->create(null, ['type' => 'get', 'class' => 'form-inline']) ?>
+                <div class="form-group mr-2 mb-0">
+                    <label class="mr-2"><?= __('Member') ?>:</label>
+                    <?= $this->Form->select('member_id', $members, [
+                        'value' => $memberId,
+                        'class' => 'form-control',
+                    ]) ?>
+                </div>
+                <?= $this->Form->button('<i class="fas fa-sync-alt mr-1"></i> ' . __('Refresh'), ['class' => 'btn btn-primary btn-sm', 'escapeTitle' => false]) ?>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
 
-    <div class="table-responsive">
-        <table class="table table-striped table-hover">
-            <thead>
-                <tr>
-                    <th><?= __('Type') ?></th>
-                    <th><?= __('Amount ($)') ?></th>
-                    <th><?= __('Fee ($)') ?></th>
-                    <th><?= __('Net effect ($)') ?></th>
-                    <th><?= __('Status') ?></th>
-                    <th><?= __('Created at') ?></th>
-                    <th><?= __('Approval log') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (count($transactions) === 0): ?>
+    <div class="goal-pill">
+        <?= __('Member: {0} | Current balance: {1} $', h($member->player), $this->Number->format($balance, ['places' => 0])) ?>
+    </div>
+
+    <div class="card ranking-card">
+        <div class="ranking-header">
+            <h3 class="card-title"><?= __('Statement Records') ?></h3>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table ranking-table table-hover">
+                <thead>
                     <tr>
-                        <td colspan="6"><?= __('No transactions registered yet.') ?></td>
+                        <th><?= __('Type') ?></th>
+                        <th><?= __('Amount ($)') ?></th>
+                        <th><?= __('Fee ($)') ?></th>
+                        <th><?= __('Net effect ($)') ?></th>
+                        <th><?= __('Status') ?></th>
+                        <th><?= __('Created at') ?></th>
+                        <th><?= __('Approval log') ?></th>
                     </tr>
-                <?php endif; ?>
-                <?php foreach ($transactions as $transaction): ?>
-                    <?php
-                        $isSource = (int)$transaction->member_id === $memberId;
-                        $isDestination = (int)$transaction->destination_member_id === $memberId;
+                </thead>
+                <tbody>
+                    <?php if (count($transactions) === 0): ?>
+                        <tr>
+                            <td colspan="7" class="text-muted"><?= __('No transactions registered yet.') ?></td>
+                        </tr>
+                    <?php endif; ?>
+                    <?php foreach ($transactions as $transaction): ?>
+                        <?php
+                            $isSource = (int)$transaction->member_id === $memberId;
+                            $isDestination = (int)$transaction->destination_member_id === $memberId;
 
-                        $label = ucfirst($transaction->type);
-                        if ($transaction->type === 'transfer') {
-                            if ($isSource) {
-                                $label = __('Transfer to {0}', $transaction->destination_member->player ?? __('Unknown'));
-                            } elseif ($isDestination) {
-                                $label = __('Transfer from {0}', $transaction->member->player ?? __('Unknown'));
+                            $label = ucfirst($transaction->type);
+                            if ($transaction->type === 'transfer') {
+                                if ($isSource) {
+                                    $label = __('Transfer to {0}', $transaction->destination_member->player ?? __('Unknown'));
+                                } elseif ($isDestination) {
+                                    $label = __('Transfer from {0}', $transaction->member->player ?? __('Unknown'));
+                                }
                             }
-                        }
 
-                        $effectValue = (int)$transaction->final_amount;
-                        $effectSign = '+';
-                        if ($transaction->type === 'withdrawal') {
-                            $effectSign = '-';
-                        } elseif ($transaction->type === 'transfer') {
-                            if ($isSource) {
+                            $effectValue = (int)$transaction->final_amount;
+                            $effectSign = '+';
+                            if ($transaction->type === 'withdrawal') {
                                 $effectSign = '-';
-                                $effectValue = (int)$transaction->amount + (int)$transaction->fee;
-                            } elseif ($isDestination) {
-                                $effectSign = '+';
-                                $effectValue = (int)$transaction->amount;
+                            } elseif ($transaction->type === 'transfer') {
+                                if ($isSource) {
+                                    $effectSign = '-';
+                                    $effectValue = (int)$transaction->amount + (int)$transaction->fee;
+                                } elseif ($isDestination) {
+                                    $effectSign = '+';
+                                    $effectValue = (int)$transaction->amount;
+                                }
                             }
-                        }
 
-                        $netEffect = ($effectSign === '-' ? -1 : 1) * $effectValue;
-                        $rowClass = $transaction->status === 'pending' ? 'table-warning' : '';
-                    ?>
-                    <tr class="<?= h($rowClass) ?>">
-                        <td><?= h($label) ?></td>
-                        <td><?= $this->Number->format($transaction->amount, ['places' => 0]) ?></td>
-                        <td><?= $this->Number->format($transaction->fee, ['places' => 0]) ?></td>
-                        <td><?= $this->Number->format($netEffect, ['places' => 0]) ?></td>
-                        <td><?= ucfirst($transaction->status) ?></td>
-                        <td><?= $transaction->created ? $transaction->created->i18nFormat('yyyy-MM-dd HH:mm') : '' ?></td>
-                        <td>
-                            <?php if (!empty($transaction->bank_approval_logs)): ?>
-                                <ul class="list-unstyled mb-0">
-                                    <?php foreach ($transaction->bank_approval_logs as $log): ?>
-                                        <li>
-                                            <?= ($log->created ? $log->created->i18nFormat('yyyy-MM-dd HH:mm') : '') ?>
-                                            - <?= ucfirst($log->action) ?>
-                                            <?php if (!empty($log->admin_user->name)): ?>
-                                                (<?= h($log->admin_user->name) ?>)
-                                            <?php endif; ?>
-                                        </li>
-                                    <?php endforeach; ?>
-                                </ul>
-                            <?php else: ?>
-                                <?= __('No log entries') ?>
-                            <?php endif; ?>
-                        </td>
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+                            $netEffect = ($effectSign === '-' ? -1 : 1) * $effectValue;
+                        ?>
+                        <tr>
+                            <td><span class="badge badge-light"><?= h($label) ?></span></td>
+                            <td class="font-weight-bold"><?= $this->Number->format($transaction->amount, ['places' => 0]) ?></td>
+                            <td><?= $this->Number->format($transaction->fee, ['places' => 0]) ?></td>
+                            <td class="font-weight-bold" style="color: <?= $netEffect > 0 ? 'var(--success)' : ($netEffect < 0 ? 'var(--danger)' : 'inherit') ?>;">
+                                <?= ($netEffect > 0 ? '+' : '') . $this->Number->format($netEffect, ['places' => 0]) ?>
+                            </td>
+                            <td>
+                                <?php if ($transaction->status === 'approved'): ?>
+                                    <span class="badge badge-success"><?= __('Approved') ?></span>
+                                <?php elseif ($transaction->status === 'pending'): ?>
+                                    <span class="badge badge-warning"><?= __('Pending') ?></span>
+                                <?php elseif ($transaction->status === 'rejected'): ?>
+                                    <span class="badge badge-danger"><?= __('Rejected') ?></span>
+                                <?php else: ?>
+                                    <span class="badge badge-light"><?= ucfirst($transaction->status) ?></span>
+                                <?php endif; ?>
+                            </td>
+                            <td><?= $transaction->created ? $transaction->created->i18nFormat('yyyy-MM-dd HH:mm') : '' ?></td>
+                            <td>
+                                <?php if (!empty($transaction->bank_approval_logs)): ?>
+                                    <ul class="list-unstyled mb-0" style="font-size: 0.82rem;">
+                                        <?php foreach ($transaction->bank_approval_logs as $log): ?>
+                                            <li>
+                                                <?= ($log->created ? $log->created->i18nFormat('yyyy-MM-dd HH:mm') : '') ?>
+                                                - <?= ucfirst($log->action) ?>
+                                                <?php if (!empty($log->admin_user->name)): ?>
+                                                    (<?= h($log->admin_user->name) ?>)
+                                                <?php endif; ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php else: ?>
+                                    <span class="text-muted">-</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-

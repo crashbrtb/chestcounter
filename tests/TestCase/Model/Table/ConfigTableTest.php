@@ -52,13 +52,55 @@ class ConfigTableTest extends TestCase
     }
 
     /**
-     * Test validationDefault method
+     * Test validation of collected_chests_retention_days
      *
      * @return void
-     * @uses \App\Model\Table\ConfigTable::validationDefault()
      */
-    public function testValidationDefault(): void
+    public function testCollectedChestsRetentionDaysValidation(): void
     {
-        $this->markTestIncomplete('Not implemented yet.');
+        // Valid cases: 0 (disabled), 30 (default), 8 (> 7)
+        $validEntity = $this->Config->newEntity([
+            'param' => 'collected_chests_retention_days',
+            'value' => '30',
+            'description' => 'Test description',
+        ]);
+        $this->assertEmpty($validEntity->getErrors());
+
+        $zeroEntity = $this->Config->newEntity([
+            'param' => 'collected_chests_retention_days',
+            'value' => '0',
+            'description' => 'Test description',
+        ]);
+        $this->assertEmpty($zeroEntity->getErrors());
+
+        $eightEntity = $this->Config->newEntity([
+            'param' => 'collected_chests_retention_days',
+            'value' => '8',
+            'description' => 'Test description',
+        ]);
+        $this->assertEmpty($eightEntity->getErrors());
+
+        // Invalid cases: 7 (must be > 7), 1, -5, non-numeric
+        $sevenEntity = $this->Config->newEntity([
+            'param' => 'collected_chests_retention_days',
+            'value' => '7',
+            'description' => 'Test description',
+        ]);
+        $this->assertNotEmpty($sevenEntity->getErrors());
+        $this->assertArrayHasKey('validRetentionDays', $sevenEntity->getErrors()['value']);
+
+        $oneEntity = $this->Config->newEntity([
+            'param' => 'collected_chests_retention_days',
+            'value' => '1',
+            'description' => 'Test description',
+        ]);
+        $this->assertNotEmpty($oneEntity->getErrors());
+
+        $negativeEntity = $this->Config->newEntity([
+            'param' => 'collected_chests_retention_days',
+            'value' => '-5',
+            'description' => 'Test description',
+        ]);
+        $this->assertNotEmpty($negativeEntity->getErrors());
     }
 }

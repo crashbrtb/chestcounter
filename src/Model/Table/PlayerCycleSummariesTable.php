@@ -3,9 +3,11 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use Cake\I18n\FrozenTime;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
+use Cake\ORM\TableRegistry;
 use Cake\Validation\Validator;
 
 /**
@@ -113,5 +115,120 @@ class PlayerCycleSummariesTable extends Table
         ]);
 
         return $rules;
+    }
+
+    /**
+     * Process cycle summaries for a given date range.
+     *
+     * Calculates player scores from collected chests within the cycle period
+     * and saves summary records to the player_cycle_summaries table.
+     *
+     * This method is shared by both the web controller (manual processing)
+     * and the DailyMaintenanceCommand (automated processing).
+     *
+     * @param \Cake\I18n\FrozenTime $cycleStart Start of the cycle period.
+     * @param \Cake\I18n\FrozenTime $cycleEnd End of the cycle period.
+     * @param int $minimumRequiredScore Minimum score to consider goal achieved.
+     * @param bool $forceReprocess If true, deletes existing summaries for this cycle before reprocessing.
+     * @return array{processed: int, errors: int, skipped: bool} Result of the processing.
+     */
+    public function processCycleForDateRange(
+        FrozenTime $cycleStart,
+        FrozenTime $cycleEnd,
+        int $minimumRequiredScore,
+        bool $forceReprocess = false
+    ): array {
+        // Check if this cycle has already been processed
+        $existingCount = $this->find()
+            ->where(['cycle_start_date' => $cycleStart->format('Y-m-d')])
+            ->count();
+
+        if ($existingCount > 0 && !$forceReprocess) {
+            return ['processed' => 0, 'errors' => 0, 'skipped' => true];
+        }
+
+        // If force reprocess, clear existing records for this cycle
+        if ($forceReprocess && $existingCount > 0) {
+            $this->deleteAll(['cycle_start_date' => $cycleStart->format('Y-m-d')]);
+        }
+
+        // Fetch collected chests data for the cycle period
+        $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
+        $standardChestsTable = TableRegistry::getTableLocator()->get('StandardChests');
+
+        $collectedChestsData = $collectedChestsTable->find()
+            ->select(['player', 'source', 'count' => 'COUNT(*)'])
+            ->where([
+                'collected_at >=' => $cycleStart,
+                'collected_at <=' => $cycleEnd,
+            ])
+            ->group(['player', 'source'])
+            ->toArray();
+
+        $chestScoresResult = $standardChestsTable->find()
+            ->select(['source', 'score'])
+            ->toArray();
+
+        $chestScores = [];
+        foreach ($chestScoresResult as $row) {
+            $chestScores[$row->source] = $row;
+        }
+
+        // Build player summaries
+        $playerSummaries = [];
+        foreach ($collectedChestsData as $chest) {
+            $playerName = $chest->player;
+            $sourceName = $chest->source;
+            $chestCount = $chest->count;
+
+            if (!isset($playerSummaries[$playerName])) {
+                $playerSummaries[$playerName] = [
+                    'total_chests' => 0,
+                    'total_score' => 0,
+                    'epic_crypt_score' => 0,
+                ];
+            }
+
+            $playerSummaries[$playerName]['total_chests'] += $chestCount;
+
+            if (isset($chestScores[$sourceName])) {
+                $scorePerChest = $chestScores[$sourceName]->score;
+                $scoreForThisGroup = $scorePerChest * $chestCount;
+                $playerSummaries[$playerName]['total_score'] += $scoreForThisGroup;
+
+                if (stripos($sourceName, 'epic') !== false) {
+                    $playerSummaries[$playerName]['epic_crypt_score'] += $scoreForThisGroup;
+                }
+            }
+        }
+
+        // Save summaries
+        $processedCount = 0;
+        $errorCount = 0;
+
+        foreach ($playerSummaries as $playerName => $data) {
+            $goalAchieved = $data['total_score'] >= $minimumRequiredScore;
+            $fineDue = !$goalAchieved;
+
+            $summary = $this->newEntity([
+                'player_name' => $playerName,
+                'cycle_start_date' => $cycleStart->format('Y-m-d'),
+                'cycle_end_date' => $cycleEnd->format('Y-m-d'),
+                'total_chests' => $data['total_chests'],
+                'total_score' => $data['total_score'],
+                'epic_crypt_score' => $data['epic_crypt_score'],
+                'goal_achieved' => $goalAchieved,
+                'fine_due' => $fineDue,
+                'fine_paid' => false,
+            ]);
+
+            if ($this->save($summary)) {
+                $processedCount++;
+            } else {
+                $errorCount++;
+            }
+        }
+
+        return ['processed' => $processedCount, 'errors' => $errorCount, 'skipped' => false];
     }
 } 
