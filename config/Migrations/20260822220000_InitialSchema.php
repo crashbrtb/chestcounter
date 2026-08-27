@@ -431,9 +431,9 @@ class InitialSchema extends AbstractMigration
                 'null' => true,
                 'default' => null,
             ])
-            ->addIndex(['member_id'], ['name' => 'member_id'])
-            ->addIndex(['user_id'], ['name' => 'user_id'])
-            ->addIndex(['destination_member_id'], ['name' => 'destination_member_id'])
+            ->addIndex(['member_id'], ['name' => 'idx_bank_tx_member_id'])
+            ->addIndex(['user_id'], ['name' => 'idx_bank_tx_user_id'])
+            ->addIndex(['destination_member_id'], ['name' => 'idx_bank_tx_dest_member_id'])
             ->addForeignKey('member_id', 'members', 'id', [
                 'delete' => 'CASCADE',
                 'update' => 'CASCADE',

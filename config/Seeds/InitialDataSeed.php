@@ -8,7 +8,7 @@ use Migrations\AbstractSeed;
  *
  * Inserts the essential records required for the application to work:
  * - roles (3 records)
- * - config (20 records)
+ * - config (21 records)
  * - standard_chests (102 records)
  *
  * This seed is idempotent: it checks if data already exists
@@ -200,6 +200,12 @@ class InitialDataSeed extends AbstractSeed
                 'param' => 'bank_function',
                 'value' => '1',
                 'description' => '1 = Bank active / 0 = no Bank',
+            ],
+            [
+                'id' => 21,
+                'param' => 'collected_chests_retention_days',
+                'value' => '30',
+                'description' => 'Retention time in days for old collected chests. Minimum retention time must be greater than 7 days, and default is 30 days. Setting to 0 disables automatic purge.',
             ],
         ];
 

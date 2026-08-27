@@ -52,7 +52,7 @@ php bin/cake.php migrations seed
 
 This inserts the essential initial data:
 - **roles**: 3 roles (admin, user, bankers)
-- **config**: 20 configuration parameters
+- **config**: 21 configuration parameters
 - **standard_chests**: 102 chest types with configured scores
 
 ### 5. Verify Installation
@@ -65,7 +65,7 @@ php bin/cake.php migrations status
 ```sql
 -- Verify initial data
 SELECT COUNT(*) FROM roles;           -- Should return 3
-SELECT COUNT(*) FROM config;          -- Should return 20
+SELECT COUNT(*) FROM config;          -- Should return 21
 SELECT COUNT(*) FROM standard_chests; -- Should return 102
 ```
 
