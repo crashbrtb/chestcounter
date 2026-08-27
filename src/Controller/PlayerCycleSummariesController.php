@@ -82,8 +82,24 @@ class PlayerCycleSummariesController extends AppController
             }
         }
         
+        // Load configs for score coloring
+        $configsTable = TableRegistry::getTableLocator()->get('Config');
+        $configs = $configsTable->find('list', ['keyField' => 'param', 'valueField' => 'value'])->toArray();
+
+        $minimumChestScore = (int)($configs['minimum_chest_score'] ?? 0);
+        $minimumEpicChestScore = (int)($configs['minimum_epic_chest_score'] ?? 0);
+        $scoreColorsConfig = [
+            'score_color_transition_start' => (float)($configs['score_color_transition_start'] ?? 0.0),
+            'score_color_start_r' => (int)($configs['score_color_start_r'] ?? 255),
+            'score_color_start_g' => (int)($configs['score_color_start_g'] ?? 0),
+            'score_color_start_b' => (int)($configs['score_color_start_b'] ?? 0),
+            'score_color_end_r' => (int)($configs['score_color_end_r'] ?? 0),
+            'score_color_end_g' => (int)($configs['score_color_end_g'] ?? 255),
+            'score_color_end_b' => (int)($configs['score_color_end_b'] ?? 0),
+        ];
+
         // A paginação original $this->paginate($query) é removida pois estamos focando nos 3 últimos ciclos.
-        $this->set(compact('summariesByCycle', 'formattedCycleDates'));
+        $this->set(compact('summariesByCycle', 'formattedCycleDates', 'minimumChestScore', 'minimumEpicChestScore', 'scoreColorsConfig'));
     }
 
     public function playerHistory($playerName = null)
