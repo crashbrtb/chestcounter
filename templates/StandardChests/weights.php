@@ -3,59 +3,38 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\StandardChest[]|\Cake\Collection\CollectionInterface $standardChests
  * @var \App\Model\Entity\Config $referencegoalConfig
- * @var string $showAll // Espera-se que o controller passe '0' ou '1'
+ * @var \App\Model\Entity\Config $epicGoalConfig
+ * @var string $showAll
  */
 
-// Define o estado atual e o link/texto do botão
-$showAllParam = $this->request->getQuery('show_all', '0'); // Default é '0' (não mostrar todos)
+$showAllParam = $this->request->getQuery('show_all', '0');
 
 $buttonLinkParams = $this->request->getQueryParams();
 $buttonText = '';
-// $buttonIcon = ''; // Ícone opcional
 
 if ($showAllParam === '1') {
     $buttonText = __('Show Only Scored');
-    // $buttonIcon = 'fas fa-filter';
-    // Para voltar ao padrão, removemos o parâmetro ou definimos como 0
-    // Se houver outros parâmetros de paginação/sort, eles são mantidos.
     unset($buttonLinkParams['show_all']);
-    // Ou, se preferir manter o parâmetro explicitamente:
-    // $buttonLinkParams['show_all'] = '0';
 } else {
     $buttonText = __('Show All Chests');
-    // $buttonIcon = 'fas fa-list-ul';
     $buttonLinkParams['show_all'] = '1';
 }
-// Garante que 'page' seja resetado ao mudar o filtro, para evitar ir para uma página inexistente.
+
 if (isset($buttonLinkParams['page'])) {
     unset($buttonLinkParams['page']);
 }
-// Tentativa de correção para URL duplicada, assegurando que nenhum prefixo de rota seja aplicado automaticamente:
+
 $toggleShowAllLink = $this->Url->build(['prefix' => false, 'controller' => 'StandardChests', 'action' => 'weights', '?' => $buttonLinkParams]);
 ?>
 
-
-
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&display=swap');
-
-.fun-goal-text {
-    font-family: 'Comic Neue', cursive;
-    color: #ff6b6b; /* Uma cor divertida, como um vermelho-rosado */
-    font-size: 1.2em; /* Um pouco maior */
-    text-shadow: 1px 1px 1px #ccc; /* Uma leve sombra */
-}
-</style>
-
-<div class="card card-primary card-outline">
-    <div class="card-header d-flex flex-column flex-md-row">
-        <h2 class="card-title">
-            <p class="fun-goal-text">
-                Current Goal <?= $this->Number->format($referencegoalConfig->value ?? 0) ?> chest points and <?= $this->Number->format($epicGoalConfig->value ?? 0) ?> Epic chest points
-            </p>
-        </h2>
-        <div class="d-flex ml-auto align-items-center">
-            <?= $this->Html->link($buttonText, $toggleShowAllLink, ['class' => 'btn btn-info btn-sm mr-2']) ?>
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div>
+            <h1 class="score-title"><?= __('Chest Weights & Goals') ?></h1>
+            <p class="cycle-subtitle"><?= __('Score values and points assigned to each chest source') ?></p>
+        </div>
+        <div class="d-flex align-items-center">
+            <?= $this->Html->link('<i class="fas fa-filter mr-1"></i> ' . $buttonText, $toggleShowAllLink, ['class' => 'btn btn-outline-primary btn-sm mr-2', 'escape' => false]) ?>
             <?= $this->Paginator->limitControl([], null, [
                 'label' => false,
                 'class' => 'form-control form-control-sm',
@@ -63,38 +42,46 @@ $toggleShowAllLink = $this->Url->build(['prefix' => false, 'controller' => 'Stan
             ]); ?>
         </div>
     </div>
-    <!-- /.card-header -->
-    <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('source', __('Chests')) ?></th>
-                    <th><?= $this->Paginator->sort('score', __('Score')) ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($standardChests as $standardChest) : ?>
-                    <tr>
-                        <td><?= h($standardChest->source) ?></td>
-                        <td><?= $this->Number->format($standardChest->score) ?></td>
 
-                    </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
+    <div class="goal-pill">
+        <?= __('Current Goal: {0} chest points and {1} Epic chest points', $this->Number->format($referencegoalConfig->value ?? 0), $this->Number->format($epicGoalConfig->value ?? 0)) ?>
     </div>
-    <!-- /.card-body -->
-    <div class="card-footer d-flex flex-column flex-md-row">
-        <div class="text-muted">
-            <?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?>
+
+    <div class="card ranking-card">
+        <div class="ranking-header d-flex justify-content-between align-items-center">
+            <h3 class="card-title"><?= __('Chest Scoring Table') ?></h3>
         </div>
-        <ul class="pagination pagination-sm mb-0 ml-auto">
-            <?= $this->Paginator->first('<i class="fas fa-angle-double-left"></i>', ['escape' => false]) ?>
-            <?= $this->Paginator->prev('<i class="fas fa-angle-left"></i>', ['escape' => false]) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next('<i class="fas fa-angle-right"></i>', ['escape' => false]) ?>
-            <?= $this->Paginator->last('<i class="fas fa-angle-double-right"></i>', ['escape' => false]) ?>
-        </ul>
+        <div class="card-body table-responsive p-0">
+            <table class="table ranking-table table-hover">
+                <thead>
+                    <tr>
+                        <th class="text-left"><?= $this->Paginator->sort('source', __('Chest Source')) ?></th>
+                        <th class="text-center"><?= $this->Paginator->sort('score', __('Score Value')) ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php foreach ($standardChests as $standardChest) : ?>
+                        <tr>
+                            <td class="text-left font-weight-bold"><?= h($standardChest->source) ?></td>
+                            <td class="text-center font-weight-bold" style="color: <?= (int)$standardChest->score > 0 ? 'var(--accent)' : 'var(--muted)' ?>;">
+                                <?= $this->Number->format($standardChest->score) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
+        <div class="card-footer d-flex flex-column flex-md-row align-items-center justify-content-between">
+            <div class="text-muted">
+                <?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?>
+            </div>
+            <ul class="pagination pagination-sm mb-0 ml-auto">
+                <?= $this->Paginator->first('<i class="fas fa-angle-double-left"></i>', ['escape' => false]) ?>
+                <?= $this->Paginator->prev('<i class="fas fa-angle-left"></i>', ['escape' => false]) ?>
+                <?= $this->Paginator->numbers() ?>
+                <?= $this->Paginator->next('<i class="fas fa-angle-right"></i>', ['escape' => false]) ?>
+                <?= $this->Paginator->last('<i class="fas fa-angle-double-right"></i>', ['escape' => false]) ?>
+            </ul>
+        </div>
     </div>
-    <!-- /.card-footer -->
 </div>

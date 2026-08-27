@@ -1,5 +1,6 @@
 <?php
 /**
- * You can add here your custom CSS styles
+ * Custom CSS styles for ChestCounter
  */
+echo $this->Html->css('theme-score');
 ?>

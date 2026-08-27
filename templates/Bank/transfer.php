@@ -18,38 +18,57 @@ foreach ($memberBalances as $balance) {
 }
 ?>
 
-<div class="bank transfer content">
-    <h3><?= __('Transfer Silver') ?></h3>
-    <p><?= __('Choose one of your members as the source, select a destination member, and inform the amount in millions of Silver ($).') ?></p>
-    <p><?= __('Transfer fee: {0} $. Fees are charged in addition to the transferred amount.', $this->Number->format($transferFee, ['places' => 0])) ?></p>
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div>
+            <h1 class="score-title"><?= __('Transfer Silver') ?></h1>
+            <p class="cycle-subtitle"><?= __('Choose a source and destination member. All values represent millions of Silver ($)') ?></p>
+        </div>
+        <div class="actions">
+            <?= $this->Html->link('<i class="fas fa-arrow-left mr-1"></i> ' . __('Back to Bank'), ['action' => 'index'], ['class' => 'btn btn-default btn-sm', 'escape' => false]) ?>
+        </div>
+    </div>
 
-    <div class="table-responsive mb-3">
-        <table class="table table-bordered">
-            <thead>
-                <tr>
-                    <th><?= __('Source member') ?></th>
-                    <th><?= __('Balance ($)') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if (!$hasSource): ?>
+    <div class="goal-pill">
+        <?= __('Transfer fee: {0} $ (charged in addition to the transferred amount)', $this->Number->format($transferFee, ['places' => 0])) ?>
+    </div>
+
+    <div class="card ranking-card mb-4">
+        <div class="ranking-header">
+            <h3 class="card-title"><?= __('Your Available Source Balances') ?></h3>
+        </div>
+        <div class="card-body table-responsive p-0">
+            <table class="table ranking-table table-hover">
+                <thead>
                     <tr>
-                        <td colspan="2"><?= __('No members available.') ?></td>
+                        <th class="text-left"><?= __('Source member') ?></th>
+                        <th class="text-center"><?= __('Balance ($)') ?></th>
                     </tr>
-                <?php else: ?>
-                    <?php foreach ($sourceMembers as $memberId => $memberName): ?>
+                </thead>
+                <tbody>
+                    <?php if (!$hasSource): ?>
                         <tr>
-                            <td><?= h($memberName) ?></td>
-                            <td><?= $this->Number->format($memberBalances[$memberId] ?? 0, ['places' => 0]) ?> $</td>
+                            <td colspan="2" class="text-muted"><?= __('No members available.') ?></td>
                         </tr>
-                    <?php endforeach; ?>
-                <?php endif; ?>
-            </tbody>
-        </table>
+                    <?php else: ?>
+                        <?php foreach ($sourceMembers as $memberId => $memberName): ?>
+                            <?php $bal = $memberBalances[$memberId] ?? 0; ?>
+                            <tr>
+                                <td class="text-left font-weight-bold"><?= h($memberName) ?></td>
+                                <td class="text-center font-weight-bold" style="color: <?= $bal > 0 ? 'var(--text-dark)' : 'var(--danger)' ?>;">
+                                    <?= $this->Number->format($bal, ['places' => 0]) ?> $
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <?php if (!$hasSource): ?>
         <div class="alert alert-warning">
+            <i class="fas fa-exclamation-triangle mr-1"></i>
             <?= __('You must have at least one member to initiate transfers.') ?>
         </div>
         <?php return; ?>
@@ -57,26 +76,27 @@ foreach ($memberBalances as $balance) {
 
     <?php if (!$hasPositiveBalance): ?>
         <div class="alert alert-danger">
+            <i class="fas fa-exclamation-circle mr-1"></i>
             <?= __('There is no balance available for transfers. The form will be hidden until one member has Silver.') ?>
         </div>
         <?php return; ?>
     <?php endif; ?>
 
     <?php if ($confirmationData): ?>
-        <div class="card border-danger mb-4">
-            <div class="card-header bg-danger text-white">
-                <?= __('Confirm transfer') ?>
+        <div class="card ranking-card border-danger mb-4">
+            <div class="ranking-header text-danger font-weight-bold" style="background: var(--danger-light) !important;">
+                <i class="fas fa-exclamation-triangle mr-1"></i> <?= __('Confirm transfer') ?>
             </div>
             <div class="card-body">
                 <p class="text-danger font-weight-bold"><?= __('This operation cannot be undone.') ?></p>
-                <ul class="list-unstyled">
-                    <li><?= __('From: {0}', h($confirmationData['source']->player)) ?></li>
-                    <li><?= __('To: {0}', h($confirmationData['destination']->player)) ?></li>
-                    <li><?= __('Amount: {0} $', $this->Number->format($confirmationData['amount'], ['places' => 0])) ?></li>
-                    <li><?= __('Fee: {0} $', $this->Number->format($confirmationData['fee'], ['places' => 0])) ?></li>
-                    <li><?= __('Total deduction: {0} $', $this->Number->format($confirmationData['totalDeduction'], ['places' => 0])) ?></li>
+                <ul class="list-group mb-3">
+                    <li class="list-group-item d-flex justify-content-between"><span><?= __('From') ?>:</span> <strong><?= h($confirmationData['source']->player) ?></strong></li>
+                    <li class="list-group-item d-flex justify-content-between"><span><?= __('To') ?>:</span> <strong><?= h($confirmationData['destination']->player) ?></strong></li>
+                    <li class="list-group-item d-flex justify-content-between"><span><?= __('Amount') ?>:</span> <strong><?= $this->Number->format($confirmationData['amount'], ['places' => 0]) ?> $</strong></li>
+                    <li class="list-group-item d-flex justify-content-between"><span><?= __('Fee') ?>:</span> <strong><?= $this->Number->format($confirmationData['fee'], ['places' => 0]) ?> $</strong></li>
+                    <li class="list-group-item d-flex justify-content-between bg-light"><span><?= __('Total deduction') ?>:</span> <strong class="text-danger"><?= $this->Number->format($confirmationData['totalDeduction'], ['places' => 0]) ?> $</strong></li>
                     <?php if (!empty($confirmationData['description'])): ?>
-                        <li><?= __('Comment: {0}', h($confirmationData['description'])) ?></li>
+                        <li class="list-group-item"><span><?= __('Comment') ?>:</span> <em><?= h($confirmationData['description']) ?></em></li>
                     <?php endif; ?>
                 </ul>
 
@@ -86,80 +106,94 @@ foreach ($memberBalances as $balance) {
                 <?= $this->Form->hidden('amount', ['value' => $confirmationData['amount']]) ?>
                 <?= $this->Form->hidden('description', ['value' => $confirmationData['description']]) ?>
                 <?= $this->Form->hidden('confirm', ['value' => 1]) ?>
-                <?= $this->Form->button(__('Confirm transfer'), ['class' => 'btn btn-danger mr-2']) ?>
-                <?= $this->Html->link(__('Cancel'), ['action' => 'transfer'], ['class' => 'btn btn-secondary']) ?>
+                <div class="d-flex justify-content-end">
+                    <?= $this->Html->link(__('Cancel'), ['action' => 'transfer'], ['class' => 'btn btn-default mr-2']) ?>
+                    <?= $this->Form->button('<i class="fas fa-check mr-1"></i> ' . __('Confirm transfer'), ['class' => 'btn btn-danger', 'escapeTitle' => false]) ?>
+                </div>
                 <?= $this->Form->end() ?>
             </div>
         </div>
         <?php return; ?>
     <?php endif; ?>
 
-    <?= $this->Form->create(null, ['class' => 'mt-3']) ?>
-    <div class="form-group">
-        <?= $this->Form->control('source_member_id', [
-            'label' => __('Source member'),
-            'options' => $sourceMembers,
-            'required' => true,
-            'class' => 'form-control',
-        ]) ?>
-    </div>
-    <div class="form-group">
-        <?= $this->Form->control('destination_member_id', [
-            'label' => __('Destination member'),
-            'options' => $destinationMembers,
-            'required' => true,
-            'class' => 'form-control',
-        ]) ?>
-        <small class="form-text text-muted">
-            <?= __('Destination members can belong to you or be unassigned.') ?>
-        </small>
-    </div>
-    <div class="form-group">
-        <?= $this->Form->control('amount', [
-            'label' => __('Amount (millions of Silver)'),
-            'type' => 'number',
-            'min' => 1,
-            'step' => 1,
-            'class' => 'form-control',
-            'id' => 'transfer-amount',
-            'required' => true,
-        ]) ?>
-    </div>
+    <div class="card ranking-card">
+        <div class="ranking-header">
+            <h3 class="card-title"><?= __('Transfer Details') ?></h3>
+        </div>
+        <div class="card-body">
+            <?= $this->Form->create(null) ?>
+            <div class="form-group">
+                <?= $this->Form->control('source_member_id', [
+                    'label' => __('Source member'),
+                    'options' => $sourceMembers,
+                    'required' => true,
+                    'class' => 'form-control',
+                ]) ?>
+            </div>
+            <div class="form-group">
+                <?= $this->Form->control('destination_member_id', [
+                    'label' => __('Destination member'),
+                    'options' => $destinationMembers,
+                    'required' => true,
+                    'class' => 'form-control',
+                ]) ?>
+                <small class="form-text text-muted">
+                    <?= __('Destination members can belong to you or be unassigned.') ?>
+                </small>
+            </div>
+            <div class="form-group">
+                <?= $this->Form->control('amount', [
+                    'label' => __('Amount (millions of Silver)'),
+                    'type' => 'number',
+                    'min' => 1,
+                    'step' => 1,
+                    'class' => 'form-control',
+                    'id' => 'transfer-amount',
+                    'required' => true,
+                ]) ?>
+            </div>
 
-    <div class="form-group">
-        <?= $this->Form->control('fee_preview', [
-            'label' => __('Transfer fee ($)'),
-            'type' => 'text',
-            'readonly' => true,
-            'class' => 'form-control',
-            'id' => 'transfer-fee-preview',
-            'value' => $this->Number->format($transferFee, ['places' => 0]),
-        ]) ?>
-    </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <?= $this->Form->control('fee_preview', [
+                        'label' => __('Transfer fee ($)'),
+                        'type' => 'text',
+                        'readonly' => true,
+                        'class' => 'form-control font-weight-bold',
+                        'id' => 'transfer-fee-preview',
+                        'value' => $this->Number->format($transferFee, ['places' => 0]),
+                    ]) ?>
+                </div>
 
-    <div class="form-group">
-        <?= $this->Form->control('total_preview', [
-            'label' => __('Total deduction ($)'),
-            'type' => 'text',
-            'readonly' => true,
-            'class' => 'form-control',
-            'id' => 'transfer-total-preview',
-            'value' => $this->Number->format($transferFee, ['places' => 0]),
-        ]) ?>
-    </div>
+                <div class="col-md-6 form-group">
+                    <?= $this->Form->control('total_preview', [
+                        'label' => __('Total deduction ($)'),
+                        'type' => 'text',
+                        'readonly' => true,
+                        'class' => 'form-control font-weight-bold text-danger',
+                        'id' => 'transfer-total-preview',
+                        'value' => $this->Number->format($transferFee, ['places' => 0]),
+                    ]) ?>
+                </div>
+            </div>
 
-    <div class="form-group">
-        <?= $this->Form->control('description', [
-            'label' => __('Comment (English only, optional)'),
-            'type' => 'text',
-            'maxlength' => 512,
-            'class' => 'form-control',
-            'placeholder' => __('Short English comment (max 512 characters)'),
-        ]) ?>
-    </div>
+            <div class="form-group">
+                <?= $this->Form->control('description', [
+                    'label' => __('Comment (English only, optional)'),
+                    'type' => 'text',
+                    'maxlength' => 512,
+                    'class' => 'form-control',
+                    'placeholder' => __('Short English comment (max 512 characters)'),
+                ]) ?>
+            </div>
 
-    <?= $this->Form->button(__('Review transfer'), ['class' => 'btn btn-primary']) ?>
-    <?= $this->Form->end() ?>
+            <div class="d-flex justify-content-end mt-4">
+                <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default mr-2']) ?>
+                <?= $this->Form->button('<i class="fas fa-arrow-right mr-1"></i> ' . __('Review transfer'), ['class' => 'btn btn-primary', 'escapeTitle' => false]) ?>
+            </div>
+            <?= $this->Form->end() ?>
+        </div>
+    </div>
 </div>
 
 <?php $transferFeeValue = (int)$transferFee; ?>
@@ -184,4 +218,3 @@ foreach ($memberBalances as $balance) {
     recalc();
 })();
 </script>
-

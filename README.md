@@ -1,10 +1,9 @@
-# Chest Counter - Total Battle Game
+# Chest Counter & Clan Bank - Total Battle Game
 
-Chest counter for Total Battle game developed in CakePHP 5.
+Chest counter and Clan Silver Bank management system for the Total Battle game, developed in CakePHP 5.
 
-Use the Python script to collect the chests and send them to the MySQL database.
-
-Use this front-end to display the score for the clan.
+- **Chest Counter:** Collect chests via Python script, send them to MySQL, and display player scores, rankings, and cycle summaries for the clan.
+- **Clan Silver Bank:** Complete banking system to manage clan silver, including deposits, withdrawals, player-to-player transfers, banker approval workflows, and transaction statements.
 
 **Repository:** https://github.com/crashbrtb/chestcounter.git
 
@@ -197,7 +196,35 @@ Make sure the `mod_rewrite` module is enabled and the `.htaccess` file is presen
 The `.htaccess` file is already configured to redirect all requests to `webroot/index.php`.
 
 
-### 10. Final Checks
+### 10. Configure Automated Maintenance (Cron Job)
+
+The application includes an automated daily maintenance task (`daily_maintenance`) that performs two essential routines in order:
+1. **Cycle Summaries Processing:** Automatically calculates and archives player scores for any completed cycles.
+2. **Old Chest Data Purge:** Purges collected chests older than the configured retention period (`collected_chests_retention_days`, default 30 days) to optimize database size.
+
+To configure this automated task on Linux, open the server crontab:
+
+```bash
+crontab -e
+```
+
+Add the following entry to run the maintenance daily at **03:00 AM**:
+
+```cron
+0 3 * * * cd /var/www/html/chestcounter && /usr/bin/php bin/cake.php daily_maintenance >> /var/log/chestcounter_cron.log 2>&1
+```
+
+> **Note:** Replace `/var/www/html/chestcounter` with the actual path to your application.
+
+You can test the command manually in dry-run mode (without modifying the database):
+
+```bash
+php bin/cake.php daily_maintenance --dry-run
+```
+
+---
+
+### 11. Final Checks
 
 1. **Test application access:**
    - Access `http://your-domain.com` in your browser
@@ -298,6 +325,12 @@ chestcounter/
 ```bash
 # Create new administrator (only if none exists)
 php bin/cake.php create_admin
+
+# Run daily maintenance manually (dry-run mode)
+php bin/cake.php daily_maintenance --dry-run
+
+# Run daily maintenance (processes pending summaries + purges old chests)
+php bin/cake.php daily_maintenance
 
 # Clear cache
 rm -rf tmp/cache/*
