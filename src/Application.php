@@ -101,9 +101,25 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
             
             // Cross Site Request Forgery (CSRF) Protection Middleware
             // https://book.cakephp.org/5/en/security/csrf.html#cross-site-request-forgery-csrf-middleware
-            ->add(new CsrfProtectionMiddleware([
-                'httponly' => true,
-            ]));
+            ->add(
+                (new CsrfProtectionMiddleware([
+                    'httponly' => true,
+                ]))->skipCheckCallback(function ($request) {
+                    // Skip CSRF for Google OAuth callback (Google sends POST without CSRF token)
+                    // Security is ensured by JWT signature verification instead
+                    $path = $request->getPath();
+                    if (str_contains($path, 'google-login') || str_contains($path, 'googleLogin')) {
+                        return true;
+                    }
+                    $params = (array)$request->getAttribute('params', []);
+                    $controller = strtolower($params['controller'] ?? '');
+                    $action = strtolower($params['action'] ?? '');
+                    if ($controller === 'users' && in_array($action, ['googlelogin', 'google_login', 'google-login'], true)) {
+                        return true;
+                    }
+                    return false;
+                })
+            );
             
 
         return $middlewareQueue;

@@ -7,6 +7,7 @@ use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\ORM\TableRegistry;
 
 /**
  * Users Model
@@ -81,7 +82,7 @@ class UsersTable extends Table
             ->scalar('password')
             ->maxLength('password', 255)
             ->requirePresence('password', 'create')
-            ->notEmptyString('password');
+            ->allowEmptyString('password', null, 'update');
 
         return $validator;
     }
@@ -96,14 +97,101 @@ class UsersTable extends Table
     public function buildRules(RulesChecker $rules): RulesChecker
     {
         $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
+        $rules->add($rules->isUnique(['google_id']), [
+            'errorField' => 'google_id',
+            'message' => 'This Google account is already linked to another user.',
+        ]);
 
         return $rules;
     }
 
     public function findAuth(SelectQuery $query, array $options): SelectQuery
     {
-        $query->contain(['Roles']);
+        $query
+            ->contain(['Roles'])
+            ->where(['Users.active' => 1]);
 
         return $query;
+    }
+
+    /**
+     * Find or create a user by Google OAuth payload.
+     * If user exists with the same email, links the Google ID.
+     * If user does not exist, creates an inactive user pending admin approval.
+     *
+     * @param array $googlePayload Decoded Google JWT payload with 'sub', 'email', 'name', 'picture'.
+     * @return \App\Model\Entity\User|null The user entity, or null if user is inactive.
+     */
+    public function findOrCreateByGoogle(array $googlePayload): ?\App\Model\Entity\User
+    {
+        $googleId = $googlePayload['sub'];
+        $email = $googlePayload['email'];
+        $name = $googlePayload['name'] ?? $email;
+
+        // First, try to find by google_id
+        $user = $this->find()
+            ->contain(['Roles'])
+            ->where(['Users.google_id' => $googleId])
+            ->first();
+
+        if ($user) {
+            return $user->active ? $user : null;
+        }
+
+        // Try to find by email and link Google ID
+        $user = $this->find()
+            ->contain(['Roles'])
+            ->where(['Users.email' => $email])
+            ->first();
+
+        if ($user) {
+            $user->google_id = $googleId;
+            $this->save($user);
+            return $user->active ? $user : null;
+        }
+
+        // Create new inactive user (pending admin approval)
+        $newUser = $this->newEntity([
+            'name' => $name,
+            'email' => $email,
+            'google_id' => $googleId,
+            'active' => 0,
+            'password' => null,
+        ], ['validate' => 'googleSignup']);
+
+        // Assign default 'user' role
+        $rolesTable = TableRegistry::getTableLocator()->get('Roles');
+        $userRole = $rolesTable->find()->where(['name' => 'user'])->first();
+        if ($userRole) {
+            $newUser->roles = [$userRole];
+        }
+
+        if ($this->save($newUser)) {
+            return null; // User created but inactive, needs admin approval
+        }
+
+        return null;
+    }
+
+    /**
+     * Validation rules for Google signup (no password required).
+     */
+    public function validationGoogleSignup(Validator $validator): Validator
+    {
+        $validator
+            ->scalar('name')
+            ->maxLength('name', 60)
+            ->requirePresence('name', 'create')
+            ->notEmptyString('name');
+
+        $validator
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
+
+        $validator
+            ->allowEmptyString('password');
+
+        return $validator;
     }
 }

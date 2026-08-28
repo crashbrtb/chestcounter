@@ -18,6 +18,9 @@
     <?= $this->Html->meta('icon') ?>
     <?= $this->fetch('meta') ?>
 
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client?hl=en" async defer></script>
+
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <!-- Font Awesome Icons -->

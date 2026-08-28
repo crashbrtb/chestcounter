@@ -47,6 +47,22 @@ $this->Breadcrumbs->add([
             <small class="form-text text-muted"><?= __('Only administrators can change the email.') ?></small>
         <?php endif; ?>
         <?= $this->Form->control('password') ?>
+        <?= $this->Form->control('active', [
+            'type' => 'checkbox',
+            'custom' => true,
+            'label' => __('Active (Allow user to log in and access the system)'),
+            'disabled' => !$isAdmin,
+        ]) ?>
+        <?php if (!empty($user->google_id)): ?>
+            <div class="form-group">
+                <label><?= __('Google Account') ?></label>
+                <div>
+                    <span class="badge badge-success p-2">
+                        <i class="fab fa-google mr-1"></i> <?= __('Linked with Google OAuth') ?>
+                    </span>
+                </div>
+            </div>
+        <?php endif; ?>
         <?= $this->Form->control('members._ids', ['options' => $members, 'multiple' => true]); ?>
         <?= $this->Form->control('roles._ids', [
             'options' => $roles,

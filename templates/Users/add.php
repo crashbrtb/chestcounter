@@ -20,6 +20,13 @@ $this->Breadcrumbs->add([
         <?= $this->Form->control('name') ?>
         <?= $this->Form->control('email') ?>
         <?= $this->Form->control('password') ?>
+        <?= $this->Form->control('active', [
+            'type' => 'checkbox',
+            'custom' => true,
+            'label' => __('Active (Allow user to log in)'),
+            'default' => 1,
+            'checked' => true,
+        ]) ?>
         <?= $this->Form->control('members._ids', ['options' => $members, 'multiple' => true]); ?>
         <p><?= __('The user will be created with the role: user') ?></p>
     </div>

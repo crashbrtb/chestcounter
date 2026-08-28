@@ -37,13 +37,19 @@ class User extends Entity
         'name' => true,
         'email' => true,
         'password' => true,
+        'google_id' => true,
+        'active' => true,
         'created' => true,
         'modified' => true,
         'roles' => true,
         'members' => true,
     ];
-    protected function _setPassword(string $password)
+    protected function _setPassword(?string $password): ?string
     {
+        if ($password === null || strlen($password) === 0) {
+            return null;
+        }
+
         $hasher = new DefaultPasswordHasher();
         return $hasher->hash($password);
     }

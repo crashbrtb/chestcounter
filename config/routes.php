@@ -69,6 +69,12 @@ return function (RouteBuilder $routes): void {
          */
         $builder->connect('/pages/*', 'Pages::display');
 
+        // Users routes
+        $builder->connect('/users/login', ['controller' => 'Users', 'action' => 'login']);
+        $builder->connect('/users/google-login', ['controller' => 'Users', 'action' => 'googleLogin']);
+        $builder->connect('/users/awaiting-approval', ['controller' => 'Users', 'action' => 'awaitingApproval']);
+        $builder->connect('/users/toggle-active/*', ['controller' => 'Users', 'action' => 'toggleActive']);
+
         // Bank module routes
         $builder->connect('/bank', ['controller' => 'Bank', 'action' => 'index']);
         $builder->connect('/bank/:action/*', ['controller' => 'Bank']);
