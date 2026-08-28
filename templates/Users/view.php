@@ -29,6 +29,26 @@ $this->Breadcrumbs->add([
                 <td><?= h($user->email) ?></td>
             </tr>
             <tr>
+                <th><?= __('Status') ?></th>
+                <td>
+                    <?php if ($user->active): ?>
+                        <span class="badge badge-success"><i class="fas fa-check-circle mr-1"></i> <?= __('Active') ?></span>
+                    <?php else: ?>
+                        <span class="badge badge-warning text-dark"><i class="fas fa-clock mr-1"></i> <?= __('Pending / Inactive') ?></span>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
+                <th><?= __('Google Account') ?></th>
+                <td>
+                    <?php if (!empty($user->google_id)): ?>
+                        <span class="badge badge-success"><i class="fab fa-google mr-1"></i> <?= __('Linked') ?></span>
+                    <?php else: ?>
+                        <span class="badge badge-secondary"><?= __('Not Linked') ?></span>
+                    <?php endif; ?>
+                </td>
+            </tr>
+            <tr>
                 <th><?= __('Id') ?></th>
                 <td><?= $this->Number->format($user->id) ?></td>
             </tr>
@@ -44,6 +64,11 @@ $this->Breadcrumbs->add([
     </div>
     <div class="card-footer d-flex">
         <div class="mr-auto">
+            <?php if (!$user->active): ?>
+                <?= $this->Form->postLink('<i class="fas fa-check mr-1"></i> ' . __('Approve User'), ['action' => 'toggleActive', $user->id], ['class' => 'btn btn-success mr-2', 'escape' => false]) ?>
+            <?php else: ?>
+                <?= $this->Form->postLink('<i class="fas fa-ban mr-1"></i> ' . __('Deactivate User'), ['action' => 'toggleActive', $user->id], ['class' => 'btn btn-outline-secondary mr-2', 'escape' => false, 'confirm' => __('Are you sure you want to deactivate {0}?', $user->name)]) ?>
+            <?php endif; ?>
             <?= $this->Form->postLink(
                 __('Delete'),
                 ['action' => 'delete', $user->id],
@@ -51,7 +76,7 @@ $this->Breadcrumbs->add([
             ) ?>
         </div>
         <div class="ml-auto">
-            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-secondary']) ?>
+            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-primary']) ?>
             <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
         </div>
     </div>

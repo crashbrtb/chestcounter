@@ -101,6 +101,10 @@ class ComposerStaticInita82133f060632f8228fcd22bfe9f90d5
             'JsonSchema\\' => 11,
             'Jasny\\Twig\\' => 11,
         ),
+        'F' => 
+        array (
+            'Firebase\\JWT\\' => 13,
+        ),
         'D' => 
         array (
             'Doctrine\\SqlFormatter\\' => 22,
@@ -299,6 +303,10 @@ class ComposerStaticInita82133f060632f8228fcd22bfe9f90d5
         'Jasny\\Twig\\' => 
         array (
             0 => __DIR__ . '/..' . '/jasny/twig-extensions/src',
+        ),
+        'Firebase\\JWT\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
         ),
         'Doctrine\\SqlFormatter\\' => 
         array (

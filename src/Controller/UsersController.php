@@ -5,6 +5,10 @@ namespace App\Controller;
 use Cake\Event\EventInterface;
 use Authentication\Authenticator\Result;
 use Cake\Http\Exception\UnauthorizedException;
+use Cake\Core\Configure;
+use Firebase\JWT\JWT;
+use Firebase\JWT\JWK;
+use Firebase\JWT\Key;
 
 /**
  * Users Controller
@@ -23,7 +27,7 @@ class UsersController extends AppController
      {
          parent::beforeFilter($event);
      
-         $this->Authentication->allowUnauthenticated(['login']);
+         $this->Authentication->allowUnauthenticated(['login', 'googleLogin', 'awaitingApproval']);
      }
     public function index()
     {
@@ -268,5 +272,140 @@ class UsersController extends AppController
         }
         
         return $this->redirect($this->referer());
+    }
+
+    /**
+     * Google Login action.
+     * Receives the Google Identity Services JWT credential via POST,
+     * validates it, and logs in (or creates) the user.
+     *
+     * @return \Cake\Http\Response|null
+     */
+    public function googleLogin()
+    {
+        $this->request->allowMethod(['post']);
+        $credential = $this->request->getData('credential');
+
+        if (empty($credential)) {
+            $this->Flash->error(__('Google authentication failed. No credential received.'));
+            return $this->redirect(['action' => 'login']);
+        }
+
+        $payload = $this->verifyGoogleToken($credential);
+
+        if (!$payload) {
+            $this->Flash->error(__('Google authentication failed. Invalid token.'));
+            return $this->redirect(['action' => 'login']);
+        }
+
+        // Verify email is verified by Google
+        if (empty($payload['email_verified']) || $payload['email_verified'] !== true) {
+            $this->Flash->error(__('Google account email is not verified.'));
+            return $this->redirect(['action' => 'login']);
+        }
+
+        // Find or create user by Google payload
+        $user = $this->Users->findOrCreateByGoogle($payload);
+
+        if (!$user) {
+            // User was created but is inactive (pending admin approval)
+            // or user exists but is inactive
+            $this->request->getSession()->write('PendingGoogleUser', [
+                'name' => $payload['name'] ?? '',
+                'email' => $payload['email'] ?? '',
+                'picture' => $payload['picture'] ?? '',
+            ]);
+            return $this->redirect(['action' => 'awaitingApproval']);
+        }
+
+        // Set the user identity in the session
+        $this->Authentication->setIdentity($user);
+
+        return $this->redirect([
+            'controller' => 'CollectedChests',
+            'action' => 'score',
+        ]);
+    }
+
+    /**
+     * Awaiting Approval page for new or inactive Google OAuth users.
+     *
+     * @return \Cake\Http\Response|null|void
+     */
+    public function awaitingApproval()
+    {
+        $this->viewBuilder()->setLayout('CakeLte/layout/login');
+        $pendingUser = $this->request->getSession()->read('PendingGoogleUser');
+        $this->set(compact('pendingUser'));
+    }
+
+    /**
+     * Toggle active status of a user (admin only).
+     *
+     * @param string|null $id User id.
+     * @return \Cake\Http\Response|null
+     */
+    public function toggleActive($id = null)
+    {
+        $this->requireAdmin();
+        $this->request->allowMethod(['post']);
+        $user = $this->Users->get($id);
+        $user->active = $user->active ? 0 : 1;
+        if ($this->Users->save($user)) {
+            $status = $user->active ? __('activated') : __('deactivated');
+            $this->Flash->success(__('User "{0}" has been {1} successfully.', $user->name, $status));
+        } else {
+            $this->Flash->error(__('Could not change user status. Please try again.'));
+        }
+
+        return $this->redirect($this->referer(['action' => 'index']));
+    }
+
+    /**
+     * Verify a Google Identity Services JWT token.
+     * Uses Google's public keys to validate the signature.
+     *
+     * @param string $idToken The JWT credential from Google.
+     * @return array|null The decoded payload, or null if verification fails.
+     */
+    private function verifyGoogleToken(string $idToken): ?array
+    {
+        try {
+            // Fetch Google's public keys
+            $jwksUrl = 'https://www.googleapis.com/oauth2/v3/certs';
+            $jwksJson = file_get_contents($jwksUrl);
+            if ($jwksJson === false) {
+                return null;
+            }
+            $jwks = json_decode($jwksJson, true);
+            $keys = JWK::parseKeySet($jwks);
+
+            // Decode and verify the JWT
+            $decoded = JWT::decode($idToken, $keys);
+            $payload = (array) $decoded;
+
+            // Verify the audience matches our Client ID
+            $clientId = Configure::read('Google.clientId');
+            if (($payload['aud'] ?? '') !== $clientId) {
+                return null;
+            }
+
+            // Verify the issuer
+            $validIssuers = ['accounts.google.com', 'https://accounts.google.com'];
+            if (!in_array($payload['iss'] ?? '', $validIssuers)) {
+                return null;
+            }
+
+            // Verify token is not expired
+            if (($payload['exp'] ?? 0) < time()) {
+                return null;
+            }
+
+            return $payload;
+        } catch (\Exception $e) {
+            // Log the error for debugging
+            \Cake\Log\Log::error('Google token verification failed: ' . $e->getMessage());
+            return null;
+        }
     }
 }

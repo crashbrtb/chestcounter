@@ -35,26 +35,42 @@ $this->Breadcrumbs->add([
                     <th><?= $this->Paginator->sort('id') ?></th>
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
+                    <th><?= $this->Paginator->sort('active', __('Status')) ?></th>
                     <th><?= $this->Paginator->sort('member_id', 'Member') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
             <tbody>
                 <?php foreach ($users as $user) : ?>
-                    <tr>
+                    <tr class="<?= !$user->active ? 'table-warning' : '' ?>">
                         <td><?= $this->Number->format($user->id) ?></td>
-                        <td><?= h($user->name) ?></td>
+                        <td>
+                            <?= h($user->name) ?>
+                            <?php if (!empty($user->google_id)): ?>
+                                <i class="fab fa-google text-danger ml-1" title="<?= __('Linked with Google') ?>"></i>
+                            <?php endif; ?>
+                        </td>
                         <td><?= h($user->email) ?></td>
+                        <td>
+                            <?php if ($user->active): ?>
+                                <span class="badge badge-success"><i class="fas fa-check-circle mr-1"></i> <?= __('Active') ?></span>
+                            <?php else: ?>
+                                <span class="badge badge-warning text-dark"><i class="fas fa-clock mr-1"></i> <?= __('Pending') ?></span>
+                            <?php endif; ?>
+                        </td>
                         <td>
                             <?php if (!empty($user->members)) : ?>
                                 <?= implode(', ', collection($user->members)->extract('player')->toList()) ?>
                             <?php endif; ?>
                         </td>
                         <td><?= h($user->created) ?></td>
-                        <td><?= h($user->modified) ?></td>
                         <td class="actions">
+                            <?php if (!$user->active): ?>
+                                <?= $this->Form->postLink('<i class="fas fa-check"></i> ' . __('Approve'), ['action' => 'toggleActive', $user->id], ['class' => 'btn btn-xs btn-success font-weight-bold', 'escape' => false, 'title' => __('Approve user access')]) ?>
+                            <?php else: ?>
+                                <?= $this->Form->postLink('<i class="fas fa-ban"></i>', ['action' => 'toggleActive', $user->id], ['class' => 'btn btn-xs btn-outline-secondary', 'escape' => false, 'confirm' => __('Are you sure you want to deactivate {0}?', $user->name), 'title' => __('Deactivate user')]) ?>
+                            <?php endif; ?>
                             <?= $this->Html->link(__('View'), ['action' => 'view', $user->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                             <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]) ?>
                             <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['class' => 'btn btn-xs btn-outline-danger', 'escape' => false, 'confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>

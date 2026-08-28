@@ -91,4 +91,16 @@ return [
             'url' => env('EMAIL_TRANSPORT_DEFAULT_URL', null),
         ],
     ],
+
+    /*
+     * Google OAuth Configuration
+     *
+     * To enable Google login, create OAuth credentials at:
+     * https://console.cloud.google.com/apis/credentials
+     * Type: Web application
+     * Add your domain to "Authorized JavaScript origins"
+     */
+    'Google' => [
+        'clientId' => env('GOOGLE_CLIENT_ID', 'YOUR_GOOGLE_CLIENT_ID_HERE'),
+    ],
 ];
