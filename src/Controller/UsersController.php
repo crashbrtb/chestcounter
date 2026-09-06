@@ -299,7 +299,7 @@ class UsersController extends AppController
         }
 
         // Verify email is verified by Google
-        if (empty($payload['email_verified']) || $payload['email_verified'] !== true) {
+        if (empty($payload['email_verified']) || ($payload['email_verified'] !== true && $payload['email_verified'] !== 'true')) {
             $this->Flash->error(__('Google account email is not verified.'));
             return $this->redirect(['action' => 'login']);
         }
@@ -363,49 +363,70 @@ class UsersController extends AppController
 
     /**
      * Verify a Google Identity Services JWT token.
-     * Uses Google's public keys to validate the signature.
+     * Tries local verification via Firebase\JWT if available,
+     * or falls back to Google's official tokeninfo endpoint.
      *
      * @param string $idToken The JWT credential from Google.
      * @return array|null The decoded payload, or null if verification fails.
      */
     private function verifyGoogleToken(string $idToken): ?array
     {
-        try {
-            // Fetch Google's public keys
-            $jwksUrl = 'https://www.googleapis.com/oauth2/v3/certs';
-            $jwksJson = file_get_contents($jwksUrl);
-            if ($jwksJson === false) {
-                return null;
+        $clientId = Configure::read('Google.clientId');
+
+        // 1. Try local JWK/JWT verification if library is installed
+        if (class_exists('Firebase\JWT\JWK') && class_exists('Firebase\JWT\JWT')) {
+            try {
+                $jwksUrl = 'https://www.googleapis.com/oauth2/v3/certs';
+                $http = new \Cake\Http\Client();
+                $jwksResponse = $http->get($jwksUrl);
+                if ($jwksResponse->isOk()) {
+                    $jwks = $jwksResponse->getJson();
+                    if (is_array($jwks)) {
+                        $keys = JWK::parseKeySet($jwks);
+                        $decoded = JWT::decode($idToken, $keys);
+                        $payload = (array) $decoded;
+
+                        if (($payload['aud'] ?? '') === $clientId) {
+                            $validIssuers = ['accounts.google.com', 'https://accounts.google.com'];
+                            if (in_array($payload['iss'] ?? '', $validIssuers, true)) {
+                                if (($payload['exp'] ?? 0) >= time()) {
+                                    return $payload;
+                                }
+                            }
+                        }
+                    }
+                }
+            } catch (\Throwable $e) {
+                \Cake\Log\Log::warning('Local JWT verification failed, trying Google tokeninfo endpoint: ' . $e->getMessage());
             }
-            $jwks = json_decode($jwksJson, true);
-            $keys = JWK::parseKeySet($jwks);
-
-            // Decode and verify the JWT
-            $decoded = JWT::decode($idToken, $keys);
-            $payload = (array) $decoded;
-
-            // Verify the audience matches our Client ID
-            $clientId = Configure::read('Google.clientId');
-            if (($payload['aud'] ?? '') !== $clientId) {
-                return null;
-            }
-
-            // Verify the issuer
-            $validIssuers = ['accounts.google.com', 'https://accounts.google.com'];
-            if (!in_array($payload['iss'] ?? '', $validIssuers)) {
-                return null;
-            }
-
-            // Verify token is not expired
-            if (($payload['exp'] ?? 0) < time()) {
-                return null;
-            }
-
-            return $payload;
-        } catch (\Exception $e) {
-            // Log the error for debugging
-            \Cake\Log\Log::error('Google token verification failed: ' . $e->getMessage());
-            return null;
         }
+
+        // 2. Fallback: Verify via Google's official tokeninfo API endpoint
+        try {
+            $http = new \Cake\Http\Client(['timeout' => 10]);
+            $response = $http->get('https://oauth2.googleapis.com/tokeninfo', ['id_token' => $idToken]);
+
+            if ($response->isOk()) {
+                $payload = $response->getJson();
+                if (is_array($payload) && !isset($payload['error_description']) && !isset($payload['error'])) {
+                    // Check audience matches Client ID
+                    if (($payload['aud'] ?? '') === $clientId) {
+                        $validIssuers = ['accounts.google.com', 'https://accounts.google.com'];
+                        if (in_array($payload['iss'] ?? '', $validIssuers, true)) {
+                            // Normalize email_verified to boolean
+                            $payload['email_verified'] = (
+                                ($payload['email_verified'] ?? false) === true ||
+                                ($payload['email_verified'] ?? '') === 'true'
+                            );
+                            return $payload;
+                        }
+                    }
+                }
+            }
+        } catch (\Throwable $e) {
+            \Cake\Log\Log::error('Google token verification failed: ' . $e->getMessage());
+        }
+
+        return null;
     }
 }

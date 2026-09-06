@@ -1,7 +1,10 @@
 <?php
 
 return [
-    'Bake' => [],
+    'Bake' => [
+        'onlyCli' => true,
+        'optional' => true,
+    ],
     'CakeLte' => [],
     'Migrations' => [],
 ];
