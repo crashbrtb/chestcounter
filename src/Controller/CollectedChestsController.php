@@ -308,9 +308,7 @@ class CollectedChestsController extends AppController
      */
     public function scorenew()
     {
-        $this->score();
-
-        return $this->render('scorenew');
+        return $this->redirect(['action' => 'score', '?' => $this->request->getQuery()]);
     }
 
     public function mergePlayers()
