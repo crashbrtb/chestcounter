@@ -51,7 +51,7 @@ class AppController extends Controller
         parent::initialize();
         $this->loadComponent('Authentication.Authentication');
         $this->loadComponent('Flash');
-        $this->Authentication->allowUnauthenticated(['score','history']);
+        $this->Authentication->allowUnauthenticated(['score', 'history', 'scorenew']);
         
         // Configuração do CakeLTE
         $this->viewBuilder()->setLayout('CakeLte/layout/default');

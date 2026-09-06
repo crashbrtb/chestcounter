@@ -155,10 +155,7 @@ class CollectedChestsController extends AppController
         }
 
         // Buscar as cores para o degradê da pontuação
-        $scoreColorsConfig = $configsTable->find('list', [
-            'keyField' => 'param',
-            'valueField' => 'value'
-        ])
+        $scoreColorsConfig = $configsTable->find('list', keyField: 'param', valueField: 'value')
         ->where(['param IN' => [
             'score_color_start_r', 'score_color_start_g', 'score_color_start_b',
             'score_color_end_r', 'score_color_end_g', 'score_color_end_b',
