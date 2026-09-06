@@ -32,30 +32,53 @@ $createSortLink = function ($column, $title) use ($sortColumn, $sortDirection) {
     return '<a href="' . $url . '">' . h($title) . $arrow . '</a>';
 };
 
-$playersData = [];
-if (!empty($playerChestCounts)) {
-    $sourcesWithNonZeroScore = $sourcesWithNonZeroScore ?? [];
-    usort($sourcesWithNonZeroScore, function ($a, $b) use ($chestScores) {
+// 1. Identify all monster sources
+$monsterSources = [];
+if (!empty($chestScores)) {
+    foreach ($chestScores as $src => $chestObj) {
+        if (!empty($chestObj->monster)) {
+            $monsterSources[] = $src;
+        }
+    }
+    usort($monsterSources, function ($a, $b) use ($chestScores) {
         $scoreA = isset($chestScores[$a]) ? (int)$chestScores[$a]->score : 0;
         $scoreB = isset($chestScores[$b]) ? (int)$chestScores[$b]->score : 0;
-
         if ($scoreA === $scoreB) {
             return strcasecmp((string)$a, (string)$b);
         }
-
         return $scoreB <=> $scoreA;
     });
+}
 
+// 2. Process player data
+$playersData = [];
+$sourcesWithNonZeroScore = $sourcesWithNonZeroScore ?? [];
+usort($sourcesWithNonZeroScore, function ($a, $b) use ($chestScores) {
+    $scoreA = isset($chestScores[$a]) ? (int)$chestScores[$a]->score : 0;
+    $scoreB = isset($chestScores[$b]) ? (int)$chestScores[$b]->score : 0;
+    if ($scoreA === $scoreB) {
+        return strcasecmp((string)$a, (string)$b);
+    }
+    return $scoreB <=> $scoreA;
+});
+
+if (!empty($playerChestCounts)) {
     foreach (array_keys($playerChestCounts) as $player) {
         $counts = $playerChestCounts[$player] ?? [];
         $epicCryptScore = 0;
         $epicMonsterChestCount = 0;
+        $monsterScore = 0;
+        $playerMonsterCounts = [];
+
         foreach ($counts as $source => $count) {
+            $cnt = (int)$count;
             if (stripos((string)$source, 'epic') !== false && isset($chestScores[$source])) {
-                $epicCryptScore += $chestScores[$source]->score * $count;
+                $epicCryptScore += (int)$chestScores[$source]->score * $cnt;
             }
             if (isset($chestScores[$source]) && !empty($chestScores[$source]->monster)) {
-                $epicMonsterChestCount += (int)$count;
+                $epicMonsterChestCount += $cnt;
+                $monsterScore += (int)$chestScores[$source]->score * $cnt;
+                $playerMonsterCounts[$source] = $cnt;
             }
         }
 
@@ -65,6 +88,8 @@ if (!empty($playerChestCounts)) {
             'final_score' => $playerFinalScores[$player] ?? 0,
             'epic_crypt_score' => $epicCryptScore,
             'epic_monster_chest_count' => $epicMonsterChestCount,
+            'monster_score' => $monsterScore,
+            'monster_counts' => $playerMonsterCounts,
             'counts' => $counts,
         ];
 
@@ -75,8 +100,10 @@ if (!empty($playerChestCounts)) {
     }
 }
 
-if (!empty($playersData)) {
-    usort($playersData, function ($a, $b) use ($sortColumn, $sortDirection) {
+// 3. Score Summary sorting
+$summaryPlayers = $playersData;
+if (!empty($summaryPlayers)) {
+    usort($summaryPlayers, function ($a, $b) use ($sortColumn, $sortDirection) {
         $valA = $a[$sortColumn] ?? 0;
         $valB = $b[$sortColumn] ?? 0;
 
@@ -94,25 +121,40 @@ if (!empty($playersData)) {
     });
 }
 
-$topByEpicMonsters = $playersData;
-usort($topByEpicMonsters, function ($a, $b) {
-    return ($b['epic_monster_chest_count'] <=> $a['epic_monster_chest_count']);
+// 4. Monster Table sorting (by monster count DESC, then monster score DESC)
+$monsterPlayers = $playersData;
+usort($monsterPlayers, function ($a, $b) {
+    if ($b['epic_monster_chest_count'] === $a['epic_monster_chest_count']) {
+        return $b['monster_score'] <=> $a['monster_score'];
+    }
+    return $b['epic_monster_chest_count'] <=> $a['epic_monster_chest_count'];
 });
-$topByEpicMonsters = array_slice($topByEpicMonsters, 0, 5);
 
-// Preparar dados dos detalhes de Epic Monster para o popup (JSON para JS)
-// Cada linha: source, date (apenas data sem hora), count
+// Filter active monster sources (at least 1 chest collected across players)
+$activeMonsterSources = [];
+foreach ($monsterSources as $mSrc) {
+    foreach ($playersData as $p) {
+        if (!empty($p['counts'][$mSrc])) {
+            $activeMonsterSources[] = $mSrc;
+            break;
+        }
+    }
+}
+if (empty($activeMonsterSources)) {
+    $activeMonsterSources = $monsterSources;
+}
+
+// 5. Prepare monster date/time details for popup
 $epicMonsterPopupData = [];
 $epicMonsterDetails = $epicMonsterDetails ?? [];
-foreach ($topByEpicMonsters as $p) {
+foreach ($playersData as $p) {
     $pName = $p['player'];
     $details = $epicMonsterDetails[$pName] ?? [];
     $rows = [];
     foreach ($details as $src => $dateTimes) {
-        // Agrupar por data (sem hora)
         $dateCounts = [];
         foreach ($dateTimes as $dt) {
-            $dateOnly = substr($dt, 0, 10); // dd/mm/yyyy
+            $dateOnly = substr($dt, 0, 10);
             $dateCounts[$dateOnly] = ($dateCounts[$dateOnly] ?? 0) + 1;
         }
         foreach ($dateCounts as $date => $count) {
@@ -123,36 +165,41 @@ foreach ($topByEpicMonsters as $p) {
             ];
         }
     }
-    $epicMonsterPopupData[$pName] = $rows;
+    if (!empty($rows)) {
+        $epicMonsterPopupData[$pName] = $rows;
+    }
 }
 
-$topByMonsters = $playersData;
-usort($topByMonsters, function ($a, $b) {
-    return ($b['epic_crypt_score'] <=> $a['epic_crypt_score']);
-});
-$topByMonsters = array_slice($topByMonsters, 0, 5);
+// 6. Prepare player full chest breakdown for popup
+$playerAllDetailsData = [];
+foreach ($playersData as $p) {
+    $pName = $p['player'];
+    $nonZeroChests = [];
+    foreach ($sourcesWithNonZeroScore as $src) {
+        $cnt = (int)($p['counts'][$src] ?? 0);
+        if ($cnt > 0) {
+            $singleScore = isset($chestScores[$src]) ? (int)$chestScores[$src]->score : 0;
+            $isMonster = !empty($chestScores[$src]->monster);
+            $nonZeroChests[] = [
+                'source' => $src,
+                'count' => $cnt,
+                'score_each' => $singleScore,
+                'total_points' => $cnt * $singleScore,
+                'is_monster' => $isMonster,
+            ];
+        }
+    }
+    $playerAllDetailsData[$pName] = [
+        'player' => $pName,
+        'final_score' => (int)$p['final_score'],
+        'total_chests' => (int)$p['total_chests'],
+        'epic_crypt_score' => (int)$p['epic_crypt_score'],
+        'monster_chests' => (int)$p['epic_monster_chest_count'],
+        'chests' => $nonZeroChests,
+    ];
+}
 
-// Preparar dados de TODOS os jogadores para os modais "View All"
-$allByEpicMonsters = $playersData;
-usort($allByEpicMonsters, function ($a, $b) {
-    return ($b['epic_monster_chest_count'] <=> $a['epic_monster_chest_count']);
-});
-$allByEpicMonsters = array_values(array_filter($allByEpicMonsters, fn($p) => $p['epic_monster_chest_count'] > 0));
-$allEpicMonstersJson = array_map(fn($p) => [
-    'player' => $p['player'],
-    'count' => (int)$p['epic_monster_chest_count'],
-], $allByEpicMonsters);
-
-$allByEpicCrypt = $playersData;
-usort($allByEpicCrypt, function ($a, $b) {
-    return ($b['epic_crypt_score'] <=> $a['epic_crypt_score']);
-});
-$allByEpicCrypt = array_values(array_filter($allByEpicCrypt, fn($p) => $p['epic_crypt_score'] > 0));
-$allEpicCryptJson = array_map(fn($p) => [
-    'player' => $p['player'],
-    'score' => (int)$p['epic_crypt_score'],
-], $allByEpicCrypt);
-
+// Dynamic score gradient calculation
 $transitionStart = (float)($scoreColorsConfig['score_color_transition_start'] ?? 0.0);
 $startR = (int)($scoreColorsConfig['score_color_start_r'] ?? 255);
 $startG = (int)($scoreColorsConfig['score_color_start_g'] ?? 0);
@@ -189,24 +236,39 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         --muted: #6b7280;
         --line: #e5e7eb;
         --accent: #4f46e5;
+        --accent-hover: #4338ca;
+        --accent-light: #eef2ff;
+        --success: #10b981;
+        --warning: #f59e0b;
+        --danger: #ef4444;
         background: var(--bg);
-        padding: 16px;
-        border-radius: 14px;
+        padding: 20px;
+        border-radius: 16px;
     }
 
+    /* Toolbar & Headers */
     .score-toolbar {
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
-        gap: 12px;
-        margin-bottom: 16px;
+        gap: 16px;
+        margin-bottom: 20px;
+    }
+
+    .score-title-group {
+        display: flex;
+        flex-direction: column;
     }
 
     .score-title {
         margin: 0;
         color: var(--text);
-        font-weight: 700;
+        font-weight: 800;
+        font-size: 1.75rem;
+        display: flex;
+        align-items: center;
+        gap: 10px;
     }
 
     .cycle-subtitle {
@@ -215,14 +277,11 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         font-size: 0.95rem;
     }
 
-    .goal-pill {
-        background: #eef2ff;
-        border: 1px solid #c7d2fe;
-        color: #3730a3;
-        border-radius: 999px;
-        padding: 8px 14px;
-        font-weight: 600;
-        font-size: 0.9rem;
+    .toolbar-actions {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 12px;
     }
 
     .filter-form {
@@ -231,69 +290,206 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         align-items: center;
     }
 
-    .top-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 14px;
-        margin-bottom: 16px;
+    .filter-form select {
+        padding: 7px 12px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        background: #fff;
+        font-size: 0.9rem;
+        color: var(--text);
+        font-weight: 500;
     }
 
-    .top-card {
+    .filter-form button {
+        padding: 7px 16px;
+        border-radius: 8px;
+        background: #fff;
+        border: 1px solid var(--line);
+        color: var(--text);
+        font-weight: 600;
+        font-size: 0.9rem;
+        cursor: pointer;
+        transition: all 0.2s;
+    }
+
+    .filter-form button:hover {
+        background: #f3f4f6;
+    }
+
+    /* Action Toggle: View All */
+    .btn-view-all-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+        color: #fff !important;
+        border: none;
+        border-radius: 10px;
+        padding: 8px 18px;
+        font-weight: 600;
+        font-size: 0.92rem;
+        cursor: pointer;
+        box-shadow: 0 4px 14px rgba(79, 70, 229, 0.3);
+        transition: all 0.2s ease;
+        text-decoration: none !important;
+    }
+
+    .btn-view-all-toggle:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 6px 20px rgba(79, 70, 229, 0.4);
+        background: linear-gradient(135deg, #4338ca 0%, #2563eb 100%);
+    }
+
+    .btn-view-all-toggle.active {
+        background: #1f2937;
+        box-shadow: 0 4px 14px rgba(31, 41, 55, 0.3);
+    }
+
+    /* Goals Pill */
+    .goals-bar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: center;
+        margin-bottom: 22px;
+    }
+
+    .goal-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #ffffff;
+        border: 1px solid #c7d2fe;
+        color: #3730a3;
+        border-radius: 999px;
+        padding: 8px 16px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+    }
+
+    .goal-pill i {
+        color: #6366f1;
+    }
+
+    .goal-pill.epic {
+        border-color: #fbcfe8;
+        color: #9d174d;
+        box-shadow: 0 2px 8px rgba(244, 63, 94, 0.08);
+    }
+
+    .goal-pill.epic i {
+        color: #ec4899;
+    }
+
+    /* Tables Container */
+    .tables-container {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .score-card {
         background: var(--card);
         border: 1px solid var(--line);
-        border-radius: 14px;
-        box-shadow: 0 8px 24px rgba(17, 24, 39, 0.06);
+        border-radius: 16px;
+        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.05);
         overflow: hidden;
+        transition: box-shadow 0.2s;
     }
 
-    .top-card-header {
+    .score-card-header {
+        padding: 16px 22px;
+        border-bottom: 1px solid var(--line);
+        background: #fcfcff;
         display: flex;
+        flex-wrap: wrap;
         align-items: center;
         justify-content: space-between;
-        padding: 14px 16px;
-        border-bottom: 1px solid var(--line);
+        gap: 12px;
+    }
+
+    .score-card-title {
+        margin: 0;
+        font-size: 1.15rem;
         font-weight: 700;
         color: var(--text);
-        background: #fcfcff;
-    }
-
-    .view-all-link {
-        font-size: 0.78rem;
-        font-weight: 600;
-        color: #4f46e5;
-        background: #eef2ff;
-        border: 1px solid #c7d2fe;
-        border-radius: 999px;
-        padding: 3px 10px;
-        text-decoration: none;
-        cursor: pointer;
-        white-space: nowrap;
-        transition: background 0.15s, color 0.15s, border-color 0.15s;
-    }
-
-    .view-all-link:hover {
-        background: #4f46e5;
-        color: #fff;
-        border-color: #4f46e5;
-        text-decoration: none;
-    }
-
-    .top-list {
-        list-style: none;
-        margin: 0;
-        padding: 8px 0;
-    }
-
-    .top-item {
         display: flex;
         align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-        padding: 10px 16px;
+        gap: 10px;
     }
 
-    .top-item:not(:last-child) {
-        border-bottom: 1px solid #f0f2f7;
+    .table-search-box {
+        position: relative;
+        min-width: 220px;
+    }
+
+    .table-search-box input {
+        width: 100%;
+        padding: 6px 12px 6px 32px;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+        font-size: 0.88rem;
+        outline: none;
+        transition: border-color 0.2s;
+    }
+
+    .table-search-box input:focus {
+        border-color: var(--accent);
+    }
+
+    .table-search-box i {
+        position: absolute;
+        left: 10px;
+        top: 50%;
+        transform: translateY(-50%);
+        color: #9ca3af;
+        font-size: 0.85rem;
+    }
+
+    /* Tables */
+    .table-wrap {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        position: relative;
+    }
+
+    .custom-score-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .custom-score-table th,
+    .custom-score-table td {
+        padding: 12px 14px;
+        border-bottom: 1px solid #f1f3f7;
+        text-align: center;
+        white-space: nowrap;
+        font-size: 0.94rem;
+    }
+
+    .custom-score-table th {
+        background: #f8fafc;
+        color: #374151;
+        font-size: 0.88rem;
+        font-weight: 700;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        border-bottom: 2px solid var(--line);
+    }
+
+    .custom-score-table th a {
+        color: inherit;
+        text-decoration: none;
+    }
+
+    .custom-score-table th a:hover {
+        color: var(--accent);
+    }
+
+    .custom-score-table tbody tr:hover {
+        background: #f8fbff;
     }
 
     .top-rank {
@@ -309,101 +505,178 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         font-size: 0.85rem;
     }
 
-    .top-player {
-        flex: 1;
-        color: var(--text);
-        margin-left: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        white-space: nowrap;
-    }
+    .top-rank.rank-1 { background: #fef3c7; color: #b45309; }
+    .top-rank.rank-2 { background: #e5e7eb; color: #374151; }
+    .top-rank.rank-3 { background: #ffedd5; color: #c2410c; }
 
-    .top-value {
-        font-weight: 700;
-        color: #111827;
-    }
-
-    .ranking-card {
-        background: var(--card);
-        border: 1px solid var(--line);
-        border-radius: 14px;
-        box-shadow: 0 10px 30px rgba(17, 24, 39, 0.06);
-        overflow: hidden;
-    }
-
-    .ranking-header {
-        padding: 14px 16px;
-        border-bottom: 1px solid var(--line);
-        font-weight: 700;
-        color: var(--text);
-        background: #fcfcff;
-    }
-
-    .ranking-table-wrap {
-        overflow-x: auto;
-    }
-
-    .ranking-table {
-        width: 100%;
-        border-collapse: collapse;
-        min-width: 900px;
-    }
-
-    .ranking-table th,
-    .ranking-table td {
-        padding: 11px 12px;
-        border-bottom: 1px solid #eef0f4;
-        text-align: center;
-        white-space: nowrap;
-    }
-
-    .ranking-table th {
-        background: #f8fafc;
-        color: #374151;
-        font-size: 0.9rem;
-        font-weight: 700;
-        position: sticky;
-        top: 0;
-        z-index: 1;
-    }
-
-    .ranking-table th a {
-        color: inherit;
-        text-decoration: none;
-    }
-
-    .ranking-table th a:hover {
-        color: var(--accent);
-    }
-
-    .ranking-table tbody tr:hover {
-        background: #f8fbff;
+    /* Player cell & link with truncation support */
+    .player-cell-box {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 0;
+        max-width: 100%;
     }
 
     .player-link {
         color: #1d4ed8;
         text-decoration: none;
         font-weight: 600;
+        transition: color 0.15s;
+        display: inline-block;
+        max-width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        vertical-align: middle;
     }
 
     .player-link:hover {
+        color: #1e40af;
         text-decoration: underline;
     }
 
-    .footer-note {
-        margin-top: 14px;
+    /* Monster hunted chips under player name */
+    .player-monster-chips {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-top: 4px;
+    }
+
+    .m-chip {
+        display: inline-flex;
+        align-items: center;
+        gap: 3px;
+        padding: 2px 7px;
+        border-radius: 6px;
+        background: #f1f5f9;
+        color: #334155;
+        font-size: 0.72rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.15s;
+        white-space: nowrap;
+        text-decoration: none;
+        border: 1px solid #e2e8f0;
+    }
+
+    .m-chip i {
+        color: #dc2626;
+        font-size: 0.68rem;
+    }
+
+    .m-chip strong {
+        color: #b91c1c;
+        font-weight: 700;
+    }
+
+    .m-chip:hover {
+        background: #fee2e2;
+        border-color: #fca5a5;
+        color: #991b1b;
+        transform: translateY(-1px);
+    }
+
+    /* Monster Table Switcher */
+    .monster-view-switcher {
+        display: inline-flex;
+        align-items: center;
+        background: #f1f5f9;
+        padding: 3px;
+        border-radius: 8px;
+        gap: 3px;
+    }
+
+    .btn-m-switch {
+        border: none;
+        background: transparent;
+        padding: 4px 10px;
+        border-radius: 6px;
+        font-size: 0.78rem;
+        font-weight: 600;
+        color: #64748b;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        transition: all 0.15s;
+    }
+
+    .btn-m-switch.active {
+        background: #ffffff;
+        color: #1e293b;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Scroll hint */
+    .mobile-scroll-hint {
+        display: none;
+        padding: 6px 12px;
+        background: #f8fafc;
+        border-bottom: 1px solid #e2e8f0;
+        color: #64748b;
+        font-size: 0.76rem;
         text-align: center;
-        color: var(--muted);
-        font-size: 0.9rem;
     }
 
-    @media (max-width: 992px) {
-        .top-grid {
-            grid-template-columns: 1fr;
-        }
+    /* Interactive Data Links for Details */
+    .interactive-score-link {
+        cursor: pointer;
+        font-weight: 800;
+        font-size: 1.02rem;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 8px;
+        border-radius: 6px;
+        transition: background 0.15s, transform 0.15s;
     }
 
-    /* Epic Monster Details Modal */
+    .interactive-score-link:hover {
+        background: rgba(79, 70, 229, 0.08);
+        transform: translateY(-1px);
+        text-decoration: underline;
+    }
+
+    .interactive-monster-link {
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        gap: 5px;
+        padding: 3px 10px;
+        border-radius: 999px;
+        background: #fee2e2;
+        color: #991b1b !important;
+        font-weight: 700;
+        font-size: 0.88rem;
+        text-decoration: none;
+        transition: background 0.15s, transform 0.15s;
+    }
+
+    .interactive-monster-link:hover {
+        background: #fecaca;
+        transform: translateY(-1px);
+        text-decoration: underline;
+    }
+
+    /* Detailed View Section */
+    #detailedViewSection {
+        display: none;
+    }
+
+    #detailedViewSection.show {
+        display: block;
+        animation: fadeIn 0.25s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(6px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Modals */
     .em-modal-overlay {
         display: none;
         position: fixed;
@@ -422,11 +695,11 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         transform: translate(-50%, -50%);
         background: #fff;
         border-radius: 16px;
-        box-shadow: 0 20px 60px rgba(17, 24, 39, 0.18);
+        box-shadow: 0 20px 60px rgba(17, 24, 39, 0.2);
         z-index: 9999;
         width: 90%;
-        max-width: 560px;
-        max-height: 80vh;
+        max-width: 600px;
+        max-height: 85vh;
         overflow: hidden;
         animation: emSlideIn 0.25s ease;
     }
@@ -445,6 +718,9 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         font-size: 1.05rem;
         font-weight: 700;
         color: #1f2937;
+        display: flex;
+        align-items: center;
+        gap: 8px;
     }
 
     .em-modal-close {
@@ -464,9 +740,9 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .em-modal-body {
-        padding: 16px 20px;
+        padding: 18px;
         overflow-y: auto;
-        max-height: calc(80vh - 60px);
+        max-height: calc(85vh - 65px);
     }
 
     .em-detail-table {
@@ -478,8 +754,8 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         background: #eef2ff;
         color: #3730a3;
         font-weight: 700;
-        font-size: 0.88rem;
-        padding: 8px 12px;
+        font-size: 0.86rem;
+        padding: 8px 10px;
         text-align: left;
         border-bottom: 2px solid #c7d2fe;
     }
@@ -489,8 +765,8 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .em-detail-table td {
-        padding: 7px 12px;
-        font-size: 0.88rem;
+        padding: 8px 10px;
+        font-size: 0.86rem;
         color: #374151;
         border-bottom: 1px solid #f3f4f6;
     }
@@ -509,20 +785,15 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         color: #9ca3af;
         font-style: italic;
         text-align: center;
-        padding: 20px;
+        padding: 28px;
     }
 
-    .em-player-link {
-        color: #4f46e5;
-        cursor: pointer;
-        text-decoration: none;
-        font-weight: 600;
-        transition: color 0.15s;
-    }
-
-    .em-player-link:hover {
-        color: #3730a3;
-        text-decoration: underline;
+    /* Footer Notes */
+    .footer-note {
+        margin-top: 20px;
+        text-align: center;
+        color: var(--muted);
+        font-size: 0.88rem;
     }
 
     @keyframes emFadeIn {
@@ -534,122 +805,666 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         from { opacity: 0; transform: translate(-50%, -48%); }
         to { opacity: 1; transform: translate(-50%, -50%); }
     }
+
+    /* Default Desktop column rules for tables */
+    @media (min-width: 769px) {
+        #monsterTable {
+            min-width: 600px;
+        }
+        #monsterTable .monster-source-col {
+            display: table-cell !important;
+        }
+        .player-monster-chips {
+            display: none !important;
+        }
+        .monster-view-switcher {
+            display: none !important;
+        }
+        .mobile-scroll-hint {
+            display: none !important;
+        }
+    }
+
+    /* Mobile and Tablet Responsive Design */
+    @media (max-width: 768px) {
+        .score-new-page {
+            padding: 10px 8px;
+            border-radius: 12px;
+        }
+
+        .score-toolbar {
+            flex-direction: column;
+            align-items: stretch;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .score-title {
+            font-size: 1.32rem;
+            gap: 8px;
+        }
+
+        .cycle-subtitle {
+            font-size: 0.82rem;
+        }
+
+        .toolbar-actions {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .btn-view-all-toggle {
+            width: 100%;
+            justify-content: center;
+            padding: 8px 12px;
+            font-size: 0.86rem;
+        }
+
+        .filter-form form {
+            width: 100%;
+            display: flex;
+            gap: 6px;
+        }
+
+        .filter-form select {
+            flex: 1;
+            min-width: 0;
+            font-size: 0.82rem;
+            padding: 6px 8px;
+        }
+
+        .filter-form button {
+            padding: 6px 14px;
+            font-size: 0.82rem;
+            white-space: nowrap;
+        }
+
+        .goals-bar {
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .goal-pill {
+            flex: 1 1 calc(50% - 4px);
+            justify-content: center;
+            padding: 6px 10px;
+            font-size: 0.78rem;
+            white-space: nowrap;
+        }
+
+        .score-card {
+            border-radius: 12px;
+        }
+
+        .score-card-header {
+            padding: 12px 14px;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+        }
+
+        .score-card-header-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 8px;
+        }
+
+        .score-card-title {
+            font-size: 1.05rem;
+        }
+
+        .table-search-box {
+            width: 100%;
+            min-width: 100%;
+        }
+
+        .table-search-box input {
+            font-size: 0.84rem;
+            padding: 7px 10px 7px 30px;
+        }
+
+        /* 1. SCORE SUMMARY TABLE: ZERO HORIZONTAL SCROLL */
+        #summaryTable {
+            min-width: 0 !important;
+            width: 100% !important;
+            table-layout: fixed;
+        }
+
+        #summaryTable th, 
+        #summaryTable td {
+            padding: 8px 4px;
+            font-size: 0.84rem;
+        }
+
+        #summaryTable .col-pos,
+        #summaryTable th:nth-child(1),
+        #summaryTable td:nth-child(1) {
+            width: 36px !important;
+            max-width: 36px !important;
+            padding-left: 4px;
+            padding-right: 2px;
+            text-align: center;
+        }
+
+        .top-rank {
+            min-width: 22px;
+            width: 22px;
+            height: 22px;
+            font-size: 0.74rem;
+        }
+
+        #summaryTable .col-player,
+        #summaryTable th:nth-child(2),
+        #summaryTable td:nth-child(2) {
+            width: auto !important;
+            overflow: hidden;
+            padding-left: 4px;
+            padding-right: 4px;
+            text-align: left;
+        }
+
+        #summaryTable td:nth-child(2) .player-link {
+            width: 100%;
+            font-size: 0.85rem;
+        }
+
+        #summaryTable .col-score,
+        #summaryTable th:nth-child(3),
+        #summaryTable td:nth-child(3) {
+            width: 80px !important;
+            max-width: 80px !important;
+            padding-left: 2px;
+            padding-right: 4px;
+            text-align: right;
+        }
+
+        .interactive-score-link {
+            font-size: 0.86rem;
+            padding: 2px 2px;
+            gap: 2px;
+            display: inline-flex;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .interactive-score-link i {
+            display: none;
+        }
+
+        #summaryTable .col-monsters,
+        #summaryTable th:nth-child(4),
+        #summaryTable td:nth-child(4) {
+            width: 62px !important;
+            max-width: 62px !important;
+            padding-left: 2px;
+            padding-right: 4px;
+            text-align: center;
+        }
+
+        .interactive-monster-link {
+            font-size: 0.76rem;
+            padding: 2px 5px;
+            gap: 3px;
+        }
+
+        /* 2. MONSTER TABLE COMPACT MODE: ZERO HORIZONTAL SCROLL */
+        #monsterTable.compact-mode {
+            min-width: 0 !important;
+            width: 100% !important;
+            table-layout: fixed;
+        }
+
+        #monsterTable.compact-mode .monster-source-col {
+            display: none !important;
+        }
+
+        #monsterTable.compact-mode th,
+        #monsterTable.compact-mode td {
+            padding: 8px 4px;
+            font-size: 0.84rem;
+        }
+
+        #monsterTable.compact-mode th:nth-child(1),
+        #monsterTable.compact-mode td:nth-child(1) {
+            width: 36px !important;
+            max-width: 36px !important;
+            padding-left: 4px;
+            padding-right: 2px;
+            text-align: center;
+        }
+
+        #monsterTable.compact-mode th:nth-child(2),
+        #monsterTable.compact-mode td:nth-child(2) {
+            width: auto !important;
+            overflow: hidden;
+            padding-left: 4px;
+            padding-right: 4px;
+            text-align: left;
+        }
+
+        #monsterTable.compact-mode td:nth-child(2) .player-link {
+            width: 100%;
+            font-size: 0.85rem;
+        }
+
+        #monsterTable.compact-mode th:nth-child(3),
+        #monsterTable.compact-mode td:nth-child(3) {
+            width: 58px !important;
+            max-width: 58px !important;
+            padding-left: 2px;
+            padding-right: 2px;
+            text-align: center;
+        }
+
+        #monsterTable.compact-mode th:nth-child(4),
+        #monsterTable.compact-mode td:nth-child(4) {
+            width: 64px !important;
+            max-width: 64px !important;
+            padding-left: 2px;
+            padding-right: 4px;
+            text-align: right;
+            font-size: 0.84rem;
+        }
+
+        /* Monster Table in Full Matrix Mode on mobile */
+        #monsterTable.full-mode {
+            min-width: 650px;
+        }
+
+        #monsterTable.full-mode .player-monster-chips {
+            display: none !important;
+        }
+
+        .mobile-scroll-hint {
+            display: block;
+        }
+
+        /* 3. DETAILED FULL DATA TABLE (STICKY COLUMNS) */
+        #detailedTable {
+            min-width: 700px;
+        }
+
+        #detailedTable th:nth-child(1),
+        #detailedTable td:nth-child(1) {
+            position: sticky;
+            left: 0;
+            z-index: 3;
+            background: #f8fafc;
+        }
+        #detailedTable tbody td:nth-child(1) {
+            background: #ffffff;
+        }
+
+        #detailedTable th:nth-child(2),
+        #detailedTable td:nth-child(2) {
+            position: sticky;
+            left: 42px;
+            z-index: 3;
+            background: #f8fafc;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.06);
+        }
+        #detailedTable tbody td:nth-child(2) {
+            background: #ffffff;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.06);
+        }
+
+        /* Mobile Modal */
+        .em-modal {
+            width: 95%;
+            max-height: 90vh;
+            border-radius: 12px;
+        }
+        .em-modal-head {
+            padding: 12px 14px;
+        }
+        .em-modal-body {
+            padding: 14px 10px;
+        }
+    }
+
+    @media (max-width: 380px) {
+        #summaryTable .col-score,
+        #summaryTable th:nth-child(3),
+        #summaryTable td:nth-child(3) {
+            width: 72px !important;
+            max-width: 72px !important;
+        }
+        .interactive-score-link {
+            font-size: 0.82rem;
+        }
+        #summaryTable .col-monsters,
+        #summaryTable th:nth-child(4),
+        #summaryTable td:nth-child(4) {
+            width: 56px !important;
+            max-width: 56px !important;
+        }
+        .interactive-monster-link {
+            font-size: 0.74rem;
+            padding: 2px 4px;
+        }
+        #monsterTable.compact-mode th:nth-child(4),
+        #monsterTable.compact-mode td:nth-child(4) {
+            width: 58px !important;
+            max-width: 58px !important;
+        }
+    }
 </style>
 
 <div class="score-new-page">
+    <!-- Header / Toolbar -->
     <div class="score-toolbar">
-        <div>
-            <h1 class="score-title"><?= __('Players Score') ?></h1>
-            <p class="cycle-subtitle"><?= h($cycleOptions[$selectedCycleOffset] ?? __('Current Cycle')) ?></p>
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-chart-line text-primary"></i> <?= __('Players Score & Monsters') ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= h($cycleOptions[$selectedCycleOffset] ?? __('Current Cycle')) ?>
+            </p>
         </div>
-        <div class="filter-form">
-            <?= $this->Form->create(null, ['type' => 'get']) ?>
-            <?= $this->Form->select('cycle', $cycleOptions, ['default' => $selectedCycleOffset]) ?>
-            <?= $this->Form->button(__('Filter')) ?>
-            <?= $this->Form->end() ?>
+
+        <div class="toolbar-actions">
+            <!-- View All Button (Detailed Data) -->
+            <button type="button" class="btn-view-all-toggle" id="btnToggleDetailed" onclick="toggleDetailedView()" title="<?= __('Toggle between clean view and full detailed data') ?>">
+                <i class="fas fa-table" id="toggleIcon"></i>
+                <span id="toggleText"><?= __('View All (Detailed Data)') ?></span>
+            </button>
+
+            <!-- Cycle Filter Form -->
+            <div class="filter-form">
+                <?= $this->Form->create(null, ['type' => 'get']) ?>
+                <?= $this->Form->select('cycle', $cycleOptions, ['default' => $selectedCycleOffset]) ?>
+                <?= $this->Form->button('<i class="fas fa-filter mr-1"></i> ' . __('Filter'), ['escapeTitle' => false]) ?>
+                <?= $this->Form->end() ?>
+            </div>
         </div>
     </div>
 
-    <div class="goal-pill">
-        <?= __('Current Goal {0} chest points and {1} Epic chest points', $this->Number->format($minimumChestScore ?? 0), $this->Number->format($minimumEpicChestScore ?? 0)) ?>
+    <!-- Goals Bar (Without Total Players) -->
+    <div class="goals-bar">
+        <div class="goal-pill">
+            <i class="fas fa-bullseye"></i>
+            <span><?= __('Chest Score Goal: {0} points', $this->Number->format($minimumChestScore ?? 0)) ?></span>
+        </div>
+        <div class="goal-pill epic">
+            <i class="fas fa-gem"></i>
+            <span><?= __('Epic Chest Goal: {0} points', $this->Number->format($minimumEpicChestScore ?? 0)) ?></span>
+        </div>
     </div>
 
-    <div class="top-grid mt-3">
-        <section class="top-card">
-            <div class="top-card-header">
-                <span><?= __('Top 5 Epic Monster Chest') ?></span>
-                <a href="#" class="view-all-link" onclick="showViewAllModal('monster'); return false;"><?= __('View All') ?></a>
+    <!-- SECTION 1: TWO SEPARATE TABLES (SCORE SUMMARY & MONSTER CHESTS) -->
+    <div class="tables-container" id="splitViewSection">
+        
+        <!-- TABLE 1: SCORE SUMMARY (Columns in order: Pos, Player, Final Score, Monster Chests) -->
+        <section class="score-card">
+            <div class="score-card-header">
+                <div class="score-card-header-top">
+                    <div class="score-card-title">
+                        <i class="fas fa-award text-warning"></i>
+                        <span><?= __('Score Summary') ?></span>
+                    </div>
+                </div>
+                <div class="table-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchSummaryTable" placeholder="<?= __('Search player...') ?>" onkeyup="filterTable('summaryTable', this.value)">
+                </div>
             </div>
-            <?php if (!empty($topByEpicMonsters)): ?>
-                <ul class="top-list">
-                    <?php foreach ($topByEpicMonsters as $i => $player): ?>
-                        <li class="top-item">
-                            <span class="top-rank"><?= $i + 1 ?></span>
-                            <span class="top-player">
-                                <a href="#" class="em-player-link" data-player="<?= h($player['player']) ?>" onclick="showEpicMonsterDetails(this.dataset.player); return false;">
-                                    <?= h($player['player']) ?>
-                                </a>
-                            </span>
-                            <span class="top-value"><?= (int)$player['epic_monster_chest_count'] ?></span>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <div class="p-3 text-muted"><?= __('No data available for this cycle.') ?></div>
-            <?php endif; ?>
-        </section>
 
-        <section class="top-card">
-            <div class="top-card-header">
-                <span><?= __('Top 5 - Epic Crypt Raiders') ?></span>
-                <a href="#" class="view-all-link" onclick="showViewAllModal('crypt'); return false;"><?= __('View All') ?></a>
-            </div>
-            <?php if (!empty($topByMonsters)): ?>
-                <ul class="top-list">
-                    <?php foreach ($topByMonsters as $i => $player): ?>
-                        <li class="top-item">
-                            <span class="top-rank"><?= $i + 1 ?></span>
-                            <span class="top-player"><?= h($player['player']) ?></span>
-                            <span class="top-value"><?= (int)$player['epic_crypt_score'] ?></span>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            <?php else: ?>
-                <div class="p-3 text-muted"><?= __('No data available for this cycle.') ?></div>
-            <?php endif; ?>
-        </section>
-    </div>
-
-    <section class="ranking-card">
-        <div class="ranking-header"><?= __('Full Ranking') ?></div>
-        <?php if (!empty($playersData)): ?>
-            <div class="ranking-table-wrap">
-                <table class="ranking-table">
-                    <thead>
-                    <tr>
-                        <th><?= __('Pos.') ?></th>
-                        <th><?= $createSortLink('player', __('Player')) ?></th>
-                        <th><?= $createSortLink('final_score', __('Final Score')) ?></th>
-                        <th><?= $createSortLink('total_chests', __('Total Chests')) ?></th>
-                        <th><?= $createSortLink('epic_crypt_score', __('Epic Crypt Score')) ?></th>
-                        <?php foreach ($sourcesWithNonZeroScore as $source): ?>
-                            <th><?= $createSortLink($source, $source) ?></th>
-                        <?php endforeach; ?>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($playersData as $index => $playerData): ?>
-                        <?php
-                        $score = $playerData['final_score'];
-                        $scoreCellColor = $scoreColor($score, (int)$minimumChestScore);
-                        $epicScore = $playerData['epic_crypt_score'];
-                        $epicCellColor = $scoreColor($epicScore, (int)$minimumEpicChestScore);
-                        ?>
-                        <tr>
-                            <td><span class="top-rank"><?= $index + 1 ?></span></td>
-                            <td>
-                                <?= $this->Html->link(
-                                    $playerData['player'],
-                                    ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($playerData['player'])],
-                                    ['class' => 'player-link']
-                                ) ?>
-                            </td>
-                            <td style="color: <?= h($scoreCellColor) ?>; font-weight: 700;"><?= (int)$score ?></td>
-                            <td><?= (int)$playerData['total_chests'] ?></td>
-                            <td style="color: <?= h($epicCellColor) ?>; font-weight: 700;"><?= (int)$epicScore ?></td>
-                            <?php foreach ($sourcesWithNonZeroScore as $source): ?>
-                                <td><?= (int)($playerData['counts'][$source] ?? 0) ?></td>
+            <?php if (!empty($summaryPlayers)): ?>
+                <div class="table-wrap">
+                    <table class="custom-score-table" id="summaryTable">
+                        <thead>
+                            <tr>
+                                <th class="col-pos" style="width: 70px;"><?= __('Pos.') ?></th>
+                                <th class="col-player" style="text-align: left;"><?= $createSortLink('player', __('Player')) ?></th>
+                                <th class="col-score"><?= $createSortLink('final_score', __('Final Score')) ?></th>
+                                <th class="col-monsters"><?= $createSortLink('epic_monster_chest_count', __('Monster Chests')) ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($summaryPlayers as $index => $p): ?>
+                                <?php
+                                $finalScore = (int)$p['final_score'];
+                                $scoreCellColor = $scoreColor($finalScore, (int)$minimumChestScore);
+                                $monsterCount = (int)$p['epic_monster_chest_count'];
+                                ?>
+                                <tr>
+                                    <td class="col-pos">
+                                        <span class="top-rank <?= $index === 0 ? 'rank-1' : ($index === 1 ? 'rank-2' : ($index === 2 ? 'rank-3' : '')) ?>">
+                                            <?= $index + 1 ?>
+                                        </span>
+                                    </td>
+                                    <td class="col-player" style="text-align: left;">
+                                        <div class="player-cell-box">
+                                            <?= $this->Html->link(
+                                                $p['player'],
+                                                ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($p['player'])],
+                                                ['class' => 'player-link', 'title' => $p['player']]
+                                            ) ?>
+                                        </div>
+                                    </td>
+                                    <!-- Interactive Final Score Link -> opens detailed score popup -->
+                                    <td class="col-score">
+                                        <a href="#" class="interactive-score-link" style="color: <?= h($scoreCellColor) ?>;" onclick="showPlayerSummaryModal('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('Click to view detailed chest breakdown for {0}', h($p['player'])) ?>">
+                                            <?= $this->Number->format($finalScore) ?>
+                                            <i class="fas fa-external-link-alt ml-1" style="font-size: 0.72rem; opacity: 0.6;"></i>
+                                        </a>
+                                    </td>
+                                    <!-- Interactive Monster Chests Link -> opens monster dates/history popup -->
+                                    <td class="col-monsters">
+                                        <?php if ($monsterCount > 0): ?>
+                                            <a href="#" class="interactive-monster-link" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('Click to view monster chest dates and details for {0}', h($p['player'])) ?>">
+                                                <i class="fas fa-dragon mr-1"></i><?= $this->Number->format($monsterCount) ?>
+                                            </a>
+                                        <?php else: ?>
+                                            <span class="text-muted" style="color: #9ca3af !important;">0</span>
+                                        <?php endif; ?>
+                                    </td>
+                                </tr>
                             <?php endforeach; ?>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-            </div>
-        <?php else: ?>
-            <div class="p-3 text-muted"><?= __('No chests collected in this cycle.') ?></div>
-        <?php endif; ?>
-    </section>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="p-4 text-center text-muted"><?= __('No chests collected in this cycle.') ?></div>
+            <?php endif; ?>
+        </section>
 
+        <!-- TABLE 2: MONSTER CHESTS -->
+        <section class="score-card">
+            <div class="score-card-header">
+                <div class="score-card-header-top">
+                    <div class="score-card-title">
+                        <i class="fas fa-dragon text-danger"></i>
+                        <span><?= __('Monster Chests') ?></span>
+                    </div>
+                    <div class="monster-view-switcher">
+                        <button type="button" class="btn-m-switch active" id="btnMonsterCompact" onclick="setMonsterView('compact')" title="<?= __('Compact View (Fit to screen)') ?>">
+                            <i class="fas fa-list"></i> <?= __('Summary') ?>
+                        </button>
+                        <button type="button" class="btn-m-switch" id="btnMonsterFull" onclick="setMonsterView('full')" title="<?= __('Full matrix with all monster columns') ?>">
+                            <i class="fas fa-table"></i> <?= __('Matrix') ?>
+                        </button>
+                    </div>
+                </div>
+                <div class="table-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchMonsterTable" placeholder="<?= __('Search monster or player...') ?>" onkeyup="filterTable('monsterTable', this.value)">
+                </div>
+            </div>
+
+            <?php if (!empty($monsterPlayers)): ?>
+                <div class="table-wrap">
+                    <table class="custom-score-table compact-mode" id="monsterTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 70px;" class="col-pos"><?= __('Pos.') ?></th>
+                                <th style="text-align: left;" class="col-player"><?= __('Player') ?></th>
+                                <th class="col-monsters"><?= __('Monster Chests') ?></th>
+                                <th class="col-points" style="text-align: right;"><?= __('Monster Points') ?></th>
+                                <?php foreach ($activeMonsterSources as $mSource): ?>
+                                    <th class="monster-source-col" title="<?= h($mSource) ?>">
+                                        <?= h($mSource) ?>
+                                        <?php if (isset($chestScores[$mSource])): ?>
+                                            <small class="d-block text-muted" style="font-size: 0.72rem; font-weight: normal;">(<?= (int)$chestScores[$mSource]->score ?> pts)</small>
+                                        <?php endif; ?>
+                                    </th>
+                                <?php endforeach; ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php $mPos = 1; ?>
+                            <?php foreach ($monsterPlayers as $p): ?>
+                                <?php $mCount = (int)$p['epic_monster_chest_count']; ?>
+                                <tr>
+                                    <td class="col-pos">
+                                        <span class="top-rank <?= $mPos === 1 ? 'rank-1' : ($mPos === 2 ? 'rank-2' : ($mPos === 3 ? 'rank-3' : '')) ?>">
+                                            <?= $mPos++ ?>
+                                        </span>
+                                    </td>
+                                    <td class="col-player" style="text-align: left;">
+                                        <div class="player-cell-box">
+                                            <?= $this->Html->link(
+                                                $p['player'],
+                                                ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($p['player'])],
+                                                ['class' => 'player-link', 'title' => $p['player']]
+                                            ) ?>
+                                            <?php
+                                            $playerHunted = [];
+                                            foreach ($activeMonsterSources as $mSource) {
+                                                $smc = (int)($p['counts'][$mSource] ?? 0);
+                                                if ($smc > 0) {
+                                                    $playerHunted[] = ['name' => $mSource, 'count' => $smc];
+                                                }
+                                            }
+                                            ?>
+                                            <?php if (!empty($playerHunted)): ?>
+                                                <div class="player-monster-chips">
+                                                    <?php foreach ($playerHunted as $ph): ?>
+                                                        <span class="m-chip" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); event.stopPropagation();" title="<?= h($ph['name']) ?>: <?= $ph['count'] ?> chests">
+                                                            <i class="fas fa-paw"></i> <?= h($ph['name']) ?>: <strong><?= $ph['count'] ?></strong>
+                                                        </span>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            <?php endif; ?>
+                                        </div>
+                                    </td>
+                                    <!-- Interactive Monster Chest Link -->
+                                    <td class="col-monsters">
+                                        <?php if ($mCount > 0): ?>
+                                            <a href="#" class="interactive-monster-link" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('Click to view dates and details for {0}', h($p['player'])) ?>">
+                                                <i class="fas fa-dragon mr-1"></i><?= $this->Number->format($mCount) ?>
+                                            </a>
+                                        <?php else: ?>
+                                            <span class="text-muted" style="color: #9ca3af !important;">0</span>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="col-points" style="font-weight: 700; color: #dc2626; text-align: right;">
+                                        <?= $this->Number->format($p['monster_score']) ?>
+                                    </td>
+                                    <?php foreach ($activeMonsterSources as $mSource): ?>
+                                        <?php $singleMCount = (int)($p['counts'][$mSource] ?? 0); ?>
+                                        <td class="monster-source-col">
+                                            <?php if ($singleMCount > 0): ?>
+                                                <a href="#" style="font-weight: 700; color: #1f2937; text-decoration: none;" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('View details') ?>">
+                                                    <?= $this->Number->format($singleMCount) ?>
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="text-muted" style="color: #cbd5e1 !important;">-</span>
+                                            <?php endif; ?>
+                                        </td>
+                                    <?php endforeach; ?>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="p-4 text-center text-muted"><?= __('No monster data available for this cycle.') ?></div>
+            <?php endif; ?>
+        </section>
+
+    </div>
+
+    <!-- SECTION 2: FULL DETAILED DATA (VIEW ALL) -->
+    <div id="detailedViewSection">
+        <section class="score-card">
+            <div class="score-card-header">
+                <div class="score-card-header-top">
+                    <div class="score-card-title">
+                        <i class="fas fa-th-list text-indigo"></i>
+                        <span><?= __('All Detailed Data by Chest Source') ?></span>
+                    </div>
+                </div>
+                <div class="table-search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchDetailedTable" placeholder="<?= __('Filter player...') ?>" onkeyup="filterTable('detailedTable', this.value)">
+                </div>
+            </div>
+
+            <div class="mobile-scroll-hint">
+                <i class="fas fa-arrows-alt-h mr-1"></i> <?= __('Scroll horizontally to view all chest columns') ?>
+            </div>
+
+            <?php if (!empty($playersData)): ?>
+                <div class="table-wrap">
+                    <table class="custom-score-table" id="detailedTable">
+                        <thead>
+                            <tr>
+                                <th style="width: 60px;"><?= __('Pos.') ?></th>
+                                <th style="text-align: left;"><?= $createSortLink('player', __('Player')) ?></th>
+                                <th><?= $createSortLink('final_score', __('Final Score')) ?></th>
+                                <th><?= $createSortLink('total_chests', __('Total Chests')) ?></th>
+                                <th><?= $createSortLink('epic_crypt_score', __('Epic Crypt Score')) ?></th>
+                                <?php foreach ($sourcesWithNonZeroScore as $source): ?>
+                                    <th><?= $createSortLink($source, $source) ?></th>
+                                <?php endforeach; ?>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($playersData as $index => $playerData): ?>
+                                <?php
+                                $score = $playerData['final_score'];
+                                $scoreCellColor = $scoreColor($score, (int)$minimumChestScore);
+                                $epicScore = $playerData['epic_crypt_score'];
+                                $epicCellColor = $scoreColor($epicScore, (int)$minimumEpicChestScore);
+                                ?>
+                                <tr>
+                                    <td><span class="top-rank"><?= $index + 1 ?></span></td>
+                                    <td style="text-align: left;">
+                                        <div class="player-cell-box">
+                                            <?= $this->Html->link(
+                                                $playerData['player'],
+                                                ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($playerData['player'])],
+                                                ['class' => 'player-link', 'title' => $playerData['player']]
+                                            ) ?>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="interactive-score-link" style="color: <?= h($scoreCellColor) ?>;" onclick="showPlayerSummaryModal('<?= h(addslashes($playerData['player'])) ?>'); return false;">
+                                            <?= (int)$score ?>
+                                        </a>
+                                    </td>
+                                    <td><?= (int)$playerData['total_chests'] ?></td>
+                                    <td style="color: <?= h($epicCellColor) ?>; font-weight: 700;"><?= (int)$epicScore ?></td>
+                                    <?php foreach ($sourcesWithNonZeroScore as $source): ?>
+                                        <td><?= (int)($playerData['counts'][$source] ?? 0) ?></td>
+                                    <?php endforeach; ?>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                </div>
+            <?php else: ?>
+                <div class="p-4 text-center text-muted"><?= __('No detailed data available for this cycle.') ?></div>
+            <?php endif; ?>
+        </section>
+    </div>
+
+    <!-- Footer Notes -->
     <div class="footer-note">
         <?php
         $now = \Cake\I18n\FrozenTime::now();
@@ -658,7 +1473,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
 
         if ($now >= $startOfCurrentCycle && $now <= $endOfCurrentCycle) {
             $diff = $now->diff($endOfCurrentCycle);
-            echo __('Time remaining until the end of the Current Cycle: ');
+            echo __('Time remaining until cycle ends: ');
             if ($diff->days > 0) {
                 echo __("{0} day{1}, ", $diff->days, $diff->days > 1 ? 's' : '');
             }
@@ -673,46 +1488,118 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
 
     <?php if (isset($lastUpdate)): ?>
         <div class="footer-note">
-            <?= __('Last update: {0} UTC', $lastUpdate->collected_at->i18nFormat('dd/MM/yyyy HH:mm:ss')) ?>
+            <?= __('Last chest update: {0} UTC', $lastUpdate->collected_at->i18nFormat('dd/MM/yyyy HH:mm:ss')) ?>
         </div>
     <?php endif; ?>
 </div>
 
-<!-- Epic Monster Details Modal -->
-<div class="em-modal-overlay" id="emOverlay" onclick="closeEpicMonsterModal()"></div>
-<div class="em-modal" id="emModal">
+<!-- Modal for Monster Details & Player Chest Breakdown -->
+<div class="em-modal-overlay" id="appOverlay" onclick="closeModal()"></div>
+<div class="em-modal" id="appModal">
     <div class="em-modal-head">
-        <h3 id="emModalTitle"></h3>
-        <button class="em-modal-close" onclick="closeEpicMonsterModal()" title="<?= __('Close') ?>">&times;</button>
+        <h3 id="appModalTitle"></h3>
+        <button class="em-modal-close" onclick="closeModal()" title="<?= __('Close') ?>">&times;</button>
     </div>
-    <div class="em-modal-body" id="emModalBody"></div>
+    <div class="em-modal-body" id="appModalBody"></div>
 </div>
 
 <script>
+// Data serialized for client interactivity
 var epicMonsterData = <?= json_encode($epicMonsterPopupData, JSON_UNESCAPED_UNICODE) ?>;
-var allEpicMonsters = <?= json_encode($allEpicMonstersJson, JSON_UNESCAPED_UNICODE) ?>;
-var allEpicCrypt = <?= json_encode($allEpicCryptJson, JSON_UNESCAPED_UNICODE) ?>;
+var playerAllDetails = <?= json_encode($playerAllDetailsData, JSON_UNESCAPED_UNICODE) ?>;
 
+var currentMode = 'split';
+
+function switchView(mode) {
+    var splitSec = document.getElementById('splitViewSection');
+    var detailSec = document.getElementById('detailedViewSection');
+    var toggleBtn = document.getElementById('btnToggleDetailed');
+    var toggleText = document.getElementById('toggleText');
+    var toggleIcon = document.getElementById('toggleIcon');
+
+    if (mode === 'full') {
+        currentMode = 'full';
+        if (splitSec) splitSec.style.display = 'none';
+        if (detailSec) detailSec.className = 'show';
+        if (toggleBtn) toggleBtn.classList.add('active');
+        if (toggleText) toggleText.textContent = '<?= __('Back to Organized View') ?>';
+        if (toggleIcon) toggleIcon.className = 'fas fa-columns';
+    } else {
+        currentMode = 'split';
+        if (splitSec) splitSec.style.display = 'flex';
+        if (detailSec) detailSec.className = '';
+        if (toggleBtn) toggleBtn.classList.remove('active');
+        if (toggleText) toggleText.textContent = '<?= __('View All (Detailed Data)') ?>';
+        if (toggleIcon) toggleIcon.className = 'fas fa-table';
+    }
+}
+
+function toggleDetailedView() {
+    if (currentMode === 'split') {
+        switchView('full');
+    } else {
+        switchView('split');
+    }
+}
+
+// Switch between compact view and full matrix for Monster table on mobile
+function setMonsterView(view) {
+    var table = document.getElementById('monsterTable');
+    var btnCompact = document.getElementById('btnMonsterCompact');
+    var btnFull = document.getElementById('btnMonsterFull');
+    if (!table) return;
+
+    if (view === 'full') {
+        table.classList.remove('compact-mode');
+        table.classList.add('full-mode');
+        if (btnCompact) btnCompact.classList.remove('active');
+        if (btnFull) btnFull.classList.add('active');
+    } else {
+        table.classList.remove('full-mode');
+        table.classList.add('compact-mode');
+        if (btnCompact) btnCompact.classList.add('active');
+        if (btnFull) btnFull.classList.remove('active');
+    }
+}
+
+// Instant table search filter
+function filterTable(tableId, query) {
+    var table = document.getElementById(tableId);
+    if (!table) return;
+    var rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+    var filter = query.toLowerCase().trim();
+
+    for (var i = 0; i < rows.length; i++) {
+        var text = rows[i].textContent.toLowerCase();
+        if (text.indexOf(filter) > -1) {
+            rows[i].style.display = '';
+        } else {
+            rows[i].style.display = 'none';
+        }
+    }
+}
+
+// Monster Details Modal with Dates
 function showEpicMonsterDetails(playerName) {
-    var title = document.getElementById('emModalTitle');
-    var body = document.getElementById('emModalBody');
+    var title = document.getElementById('appModalTitle');
+    var body = document.getElementById('appModalBody');
 
-    title.textContent = playerName + ' \u2014 Epic Monster Chests';
+    title.innerHTML = '<i class="fas fa-dragon text-danger mr-2"></i>' + escapeHtml(playerName) + ' — Monster Chests History';
 
     var data = epicMonsterData[playerName];
     if (!data || data.length === 0) {
-        body.innerHTML = '<div class="em-no-data"><?= __('No epic monster chests found for this player.') ?></div>';
+        body.innerHTML = '<div class="em-no-data"><?= __('No individual monster chest records found for this player in this cycle.') ?></div>';
     } else {
         var html = '<table class="em-detail-table">';
         html += '<thead><tr>';
-        html += '<th><?= __('Chest') ?></th>';
+        html += '<th><?= __('Monster Chest') ?></th>';
         html += '<th><?= __('Date') ?></th>';
-        html += '<th><?= __('Qty') ?></th>';
+        html += '<th><?= __('Quantity') ?></th>';
         html += '</tr></thead><tbody>';
         for (var i = 0; i < data.length; i++) {
             var row = data[i];
             html += '<tr>';
-            html += '<td>' + escapeHtml(row.source) + '</td>';
+            html += '<td><i class="fas fa-paw text-muted mr-1"></i> ' + escapeHtml(row.source) + '</td>';
             html += '<td>' + escapeHtml(row.date) + '</td>';
             html += '<td>' + row.count + '</td>';
             html += '</tr>';
@@ -721,68 +1608,76 @@ function showEpicMonsterDetails(playerName) {
         body.innerHTML = html;
     }
 
-    openModal('emModal');
+    openModal();
 }
 
-function showViewAllModal(type) {
-    var title = document.getElementById('emModalTitle');
-    var body = document.getElementById('emModalBody');
-    var data, titleText, valueHeader;
+// Player Full Chest Breakdown Modal
+function showPlayerSummaryModal(playerName) {
+    var title = document.getElementById('appModalTitle');
+    var body = document.getElementById('appModalBody');
 
-    if (type === 'monster') {
-        data = allEpicMonsters;
-        titleText = '<?= __('All Players - Epic Monster Chest') ?>';
-        valueHeader = '<?= __('Chests') ?>';
-    } else {
-        data = allEpicCrypt;
-        titleText = '<?= __('All Players - Epic Crypt Raiders') ?>';
-        valueHeader = '<?= __('Score') ?>';
+    var p = playerAllDetails[playerName];
+    if (!p) {
+        body.innerHTML = '<div class="em-no-data"><?= __('Player data not found.') ?></div>';
+        openModal();
+        return;
     }
 
-    title.textContent = titleText;
+    title.innerHTML = '<i class="fas fa-user text-primary mr-2"></i>' + escapeHtml(playerName) + ' — Score & Chest Breakdown';
 
-    if (!data || data.length === 0) {
-        body.innerHTML = '<div class="em-no-data"><?= __('No data available for this cycle.') ?></div>';
+    var html = '<div style="margin-bottom: 16px; display: flex; gap: 10px; flex-wrap: wrap;">';
+    html += '<div class="goal-pill"><i class="fas fa-star text-warning"></i> Final Score: <strong>' + p.final_score.toLocaleString() + '</strong></div>';
+    html += '<div class="goal-pill"><i class="fas fa-box text-primary"></i> Total Chests: <strong>' + p.total_chests.toLocaleString() + '</strong></div>';
+    html += '<div class="goal-pill epic"><i class="fas fa-gem"></i> Epic Crypts: <strong>' + p.epic_crypt_score.toLocaleString() + '</strong></div>';
+    html += '<div class="goal-pill" style="border-color:#fecaca; color:#991b1b;"><i class="fas fa-dragon text-danger"></i> Monsters: <strong>' + p.monster_chests.toLocaleString() + '</strong></div>';
+    html += '</div>';
+
+    if (!p.chests || p.chests.length === 0) {
+        html += '<div class="em-no-data"><?= __('No scored chests recorded for this player in this cycle.') ?></div>';
     } else {
-        var html = '<table class="em-detail-table">';
+        html += '<table class="em-detail-table">';
         html += '<thead><tr>';
-        html += '<th style="width:40px;text-align:center"><?= __('Pos.') ?></th>';
-        html += '<th style="text-align:left"><?= __('Player') ?></th>';
-        html += '<th>' + escapeHtml(valueHeader) + '</th>';
+        html += '<th><?= __('Chest Source') ?></th>';
+        html += '<th style="text-align:center;"><?= __('Qty') ?></th>';
+        html += '<th style="text-align:center;"><?= __('Points Each') ?></th>';
+        html += '<th style="text-align:right;"><?= __('Total Points') ?></th>';
         html += '</tr></thead><tbody>';
-        for (var i = 0; i < data.length; i++) {
-            var row = data[i];
-            var value = type === 'monster' ? row.count : row.score;
+
+        for (var i = 0; i < p.chests.length; i++) {
+            var c = p.chests[i];
+            var icon = c.is_monster ? '<i class="fas fa-dragon text-danger mr-1"></i> ' : '<i class="fas fa-box text-muted mr-1"></i> ';
             html += '<tr>';
-            html += '<td style="text-align:center"><span class="top-rank">' + (i + 1) + '</span></td>';
-            html += '<td style="text-align:left">' + escapeHtml(row.player) + '</td>';
-            html += '<td>' + value + '</td>';
+            html += '<td>' + icon + escapeHtml(c.source) + '</td>';
+            html += '<td style="text-align:center; font-weight: 600;">' + c.count + '</td>';
+            html += '<td style="text-align:center; color: #6b7280;">' + c.score_each + '</td>';
+            html += '<td style="text-align:right; font-weight: 700; color: #4f46e5;">' + c.total_points.toLocaleString() + '</td>';
             html += '</tr>';
         }
         html += '</tbody></table>';
-        body.innerHTML = html;
     }
 
-    openModal('emModal');
+    body.innerHTML = html;
+    openModal();
 }
 
-function openModal(modalId) {
-    document.getElementById('emOverlay').style.display = 'block';
-    document.getElementById(modalId).style.display = 'block';
+function openModal() {
+    document.getElementById('appOverlay').style.display = 'block';
+    document.getElementById('appModal').style.display = 'block';
 }
 
-function closeEpicMonsterModal() {
-    document.getElementById('emModal').style.display = 'none';
-    document.getElementById('emOverlay').style.display = 'none';
+function closeModal() {
+    document.getElementById('appModal').style.display = 'none';
+    document.getElementById('appOverlay').style.display = 'none';
 }
 
 function escapeHtml(text) {
+    if (!text) return '';
     var div = document.createElement('div');
     div.appendChild(document.createTextNode(text));
     return div.innerHTML;
 }
 
 document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeEpicMonsterModal();
+    if (e.key === 'Escape') closeModal();
 });
 </script>
