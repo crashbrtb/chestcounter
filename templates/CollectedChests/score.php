@@ -1273,195 +1273,199 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
             <?php endif; ?>
         </section>
 
-        <!-- TABLE 2: MONSTER CHESTS -->
-        <section class="score-card">
-            <div class="score-card-header">
-                <div class="score-card-header-top">
-                    <div class="score-card-title">
-                        <i class="fas fa-dragon text-danger"></i>
-                        <span><?= __('Monster Chests') ?></span>
-                    </div>
-                    <div class="monster-view-switcher">
-                        <button type="button" class="btn-m-switch active" id="btnMonsterCompact" onclick="setMonsterView('compact')" title="<?= __('Compact View (Fit to screen)') ?>">
-                            <i class="fas fa-list"></i> <?= __('Summary') ?>
-                        </button>
-                        <button type="button" class="btn-m-switch" id="btnMonsterFull" onclick="setMonsterView('full')" title="<?= __('Full matrix with all monster columns') ?>">
-                            <i class="fas fa-table"></i> <?= __('Matrix') ?>
-                        </button>
-                    </div>
-                </div>
-                <div class="table-search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchMonsterTable" placeholder="<?= __('Search monster or player...') ?>" onkeyup="filterTable('monsterTable', this.value)">
-                </div>
-            </div>
-
-            <?php if (!empty($monsterPlayers)): ?>
-                <div class="table-wrap">
-                    <table class="custom-score-table compact-mode" id="monsterTable">
-                        <thead>
-                            <tr>
-                                <th style="width: 70px;" class="col-pos"><?= __('Pos.') ?></th>
-                                <th style="text-align: left;" class="col-player"><?= __('Player') ?></th>
-                                <th class="col-monsters"><?= __('Monster Chests') ?></th>
-                                <th class="col-points" style="text-align: right;"><?= __('Monster Points') ?></th>
-                                <?php foreach ($activeMonsterSources as $mSource): ?>
-                                    <th class="monster-source-col" title="<?= h($mSource) ?>">
-                                        <?= h($mSource) ?>
-                                        <?php if (isset($chestScores[$mSource])): ?>
-                                            <small class="d-block text-muted" style="font-size: 0.72rem; font-weight: normal;">(<?= (int)$chestScores[$mSource]->score ?> pts)</small>
-                                        <?php endif; ?>
-                                    </th>
-                                <?php endforeach; ?>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php $mPos = 1; ?>
-                            <?php foreach ($monsterPlayers as $p): ?>
-                                <?php $mCount = (int)$p['epic_monster_chest_count']; ?>
-                                <tr>
-                                    <td class="col-pos">
-                                        <span class="top-rank <?= $mPos === 1 ? 'rank-1' : ($mPos === 2 ? 'rank-2' : ($mPos === 3 ? 'rank-3' : '')) ?>">
-                                            <?= $mPos++ ?>
-                                        </span>
-                                    </td>
-                                    <td class="col-player" style="text-align: left;">
-                                        <div class="player-cell-box">
-                                            <?= $this->Html->link(
-                                                $p['player'],
-                                                ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($p['player'])],
-                                                ['class' => 'player-link', 'title' => $p['player']]
-                                            ) ?>
-                                            <?php
-                                            $playerHunted = [];
-                                            foreach ($activeMonsterSources as $mSource) {
-                                                $smc = (int)($p['counts'][$mSource] ?? 0);
-                                                if ($smc > 0) {
-                                                    $playerHunted[] = ['name' => $mSource, 'count' => $smc];
-                                                }
-                                            }
-                                            ?>
-                                            <?php if (!empty($playerHunted)): ?>
-                                                <div class="player-monster-chips">
-                                                    <?php foreach ($playerHunted as $ph): ?>
-                                                        <span class="m-chip" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); event.stopPropagation();" title="<?= h($ph['name']) ?>: <?= $ph['count'] ?> chests">
-                                                            <i class="fas fa-paw"></i> <?= h($ph['name']) ?>: <strong><?= $ph['count'] ?></strong>
-                                                        </span>
-                                                    <?php endforeach; ?>
-                                                </div>
-                                            <?php endif; ?>
-                                        </div>
-                                    </td>
-                                    <!-- Interactive Monster Chest Link -->
-                                    <td class="col-monsters">
-                                        <?php if ($mCount > 0): ?>
-                                            <a href="#" class="interactive-monster-link" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('Click to view dates and details for {0}', h($p['player'])) ?>">
-                                                <i class="fas fa-dragon mr-1"></i><?= $this->Number->format($mCount) ?>
-                                            </a>
-                                        <?php else: ?>
-                                            <span class="text-muted" style="color: #9ca3af !important;">0</span>
-                                        <?php endif; ?>
-                                    </td>
-                                    <td class="col-points" style="font-weight: 700; color: #dc2626; text-align: right;">
-                                        <?= $this->Number->format($p['monster_score']) ?>
-                                    </td>
-                                    <?php foreach ($activeMonsterSources as $mSource): ?>
-                                        <?php $singleMCount = (int)($p['counts'][$mSource] ?? 0); ?>
-                                        <td class="monster-source-col">
-                                            <?php if ($singleMCount > 0): ?>
-                                                <a href="#" style="font-weight: 700; color: #1f2937; text-decoration: none;" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('View details') ?>">
-                                                    <?= $this->Number->format($singleMCount) ?>
-                                                </a>
-                                            <?php else: ?>
-                                                <span class="text-muted" style="color: #cbd5e1 !important;">-</span>
-                                            <?php endif; ?>
-                                        </td>
-                                    <?php endforeach; ?>
-                                </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
-                </div>
-            <?php else: ?>
-                <div class="p-4 text-center text-muted"><?= __('No monster data available for this cycle.') ?></div>
-            <?php endif; ?>
-        </section>
-
     </div>
 
     <!-- SECTION 2: FULL DETAILED DATA (VIEW ALL) -->
     <div id="detailedViewSection">
-        <section class="score-card">
-            <div class="score-card-header">
-                <div class="score-card-header-top">
-                    <div class="score-card-title">
-                        <i class="fas fa-th-list text-indigo"></i>
-                        <span><?= __('All Detailed Data by Chest Source') ?></span>
+        <div class="tables-container">
+
+            <!-- TABLE 2: MONSTER CHESTS -->
+            <section class="score-card">
+                <div class="score-card-header">
+                    <div class="score-card-header-top">
+                        <div class="score-card-title">
+                            <i class="fas fa-dragon text-danger"></i>
+                            <span><?= __('Monster Chests') ?></span>
+                        </div>
+                        <div class="monster-view-switcher">
+                            <button type="button" class="btn-m-switch active" id="btnMonsterCompact" onclick="setMonsterView('compact')" title="<?= __('Compact View (Fit to screen)') ?>">
+                                <i class="fas fa-list"></i> <?= __('Summary') ?>
+                            </button>
+                            <button type="button" class="btn-m-switch" id="btnMonsterFull" onclick="setMonsterView('full')" title="<?= __('Full matrix with all monster columns') ?>">
+                                <i class="fas fa-table"></i> <?= __('Matrix') ?>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="table-search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchMonsterTable" placeholder="<?= __('Search monster or player...') ?>" onkeyup="filterTable('monsterTable', this.value)">
                     </div>
                 </div>
-                <div class="table-search-box">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchDetailedTable" placeholder="<?= __('Filter player...') ?>" onkeyup="filterTable('detailedTable', this.value)">
-                </div>
-            </div>
 
-            <div class="mobile-scroll-hint">
-                <i class="fas fa-arrows-alt-h mr-1"></i> <?= __('Scroll horizontally to view all chest columns') ?>
-            </div>
-
-            <?php if (!empty($playersData)): ?>
-                <div class="table-wrap">
-                    <table class="custom-score-table" id="detailedTable">
-                        <thead>
-                            <tr>
-                                <th style="width: 60px;"><?= __('Pos.') ?></th>
-                                <th style="text-align: left;"><?= $createSortLink('player', __('Player')) ?></th>
-                                <th><?= $createSortLink('final_score', __('Final Score')) ?></th>
-                                <th><?= $createSortLink('total_chests', __('Total Chests')) ?></th>
-                                <th><?= $createSortLink('epic_crypt_score', __('Epic Crypt Score')) ?></th>
-                                <?php foreach ($sourcesWithNonZeroScore as $source): ?>
-                                    <th><?= $createSortLink($source, $source) ?></th>
-                                <?php endforeach; ?>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php foreach ($playersData as $index => $playerData): ?>
-                                <?php
-                                $score = $playerData['final_score'];
-                                $scoreCellColor = $scoreColor($score, (int)$minimumChestScore);
-                                $epicScore = $playerData['epic_crypt_score'];
-                                $epicCellColor = $scoreColor($epicScore, (int)$minimumEpicChestScore);
-                                ?>
+                <?php if (!empty($monsterPlayers)): ?>
+                    <div class="table-wrap">
+                        <table class="custom-score-table compact-mode" id="monsterTable">
+                            <thead>
                                 <tr>
-                                    <td><span class="top-rank"><?= $index + 1 ?></span></td>
-                                    <td style="text-align: left;">
-                                        <div class="player-cell-box">
-                                            <?= $this->Html->link(
-                                                $playerData['player'],
-                                                ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($playerData['player'])],
-                                                ['class' => 'player-link', 'title' => $playerData['player']]
-                                            ) ?>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <a href="#" class="interactive-score-link" style="color: <?= h($scoreCellColor) ?>;" onclick="showPlayerSummaryModal('<?= h(addslashes($playerData['player'])) ?>'); return false;">
-                                            <?= (int)$score ?>
-                                        </a>
-                                    </td>
-                                    <td><?= (int)$playerData['total_chests'] ?></td>
-                                    <td style="color: <?= h($epicCellColor) ?>; font-weight: 700;"><?= (int)$epicScore ?></td>
-                                    <?php foreach ($sourcesWithNonZeroScore as $source): ?>
-                                        <td><?= (int)($playerData['counts'][$source] ?? 0) ?></td>
+                                    <th style="width: 70px;" class="col-pos"><?= __('Pos.') ?></th>
+                                    <th style="text-align: left;" class="col-player"><?= __('Player') ?></th>
+                                    <th class="col-monsters"><?= __('Monster Chests') ?></th>
+                                    <th class="col-points" style="text-align: right;"><?= __('Monster Points') ?></th>
+                                    <?php foreach ($activeMonsterSources as $mSource): ?>
+                                        <th class="monster-source-col" title="<?= h($mSource) ?>">
+                                            <?= h($mSource) ?>
+                                            <?php if (isset($chestScores[$mSource])): ?>
+                                                <small class="d-block text-muted" style="font-size: 0.72rem; font-weight: normal;">(<?= (int)$chestScores[$mSource]->score ?> pts)</small>
+                                            <?php endif; ?>
+                                        </th>
                                     <?php endforeach; ?>
                                 </tr>
-                            <?php endforeach; ?>
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                                <?php $mPos = 1; ?>
+                                <?php foreach ($monsterPlayers as $p): ?>
+                                    <?php $mCount = (int)$p['epic_monster_chest_count']; ?>
+                                    <tr>
+                                        <td class="col-pos">
+                                            <span class="top-rank <?= $mPos === 1 ? 'rank-1' : ($mPos === 2 ? 'rank-2' : ($mPos === 3 ? 'rank-3' : '')) ?>">
+                                                <?= $mPos++ ?>
+                                            </span>
+                                        </td>
+                                        <td class="col-player" style="text-align: left;">
+                                            <div class="player-cell-box">
+                                                <?= $this->Html->link(
+                                                    $p['player'],
+                                                    ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($p['player'])],
+                                                    ['class' => 'player-link', 'title' => $p['player']]
+                                                ) ?>
+                                                <?php
+                                                $playerHunted = [];
+                                                foreach ($activeMonsterSources as $mSource) {
+                                                    $smc = (int)($p['counts'][$mSource] ?? 0);
+                                                    if ($smc > 0) {
+                                                        $playerHunted[] = ['name' => $mSource, 'count' => $smc];
+                                                    }
+                                                }
+                                                ?>
+                                                <?php if (!empty($playerHunted)): ?>
+                                                    <div class="player-monster-chips">
+                                                        <?php foreach ($playerHunted as $ph): ?>
+                                                            <span class="m-chip" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); event.stopPropagation();" title="<?= h($ph['name']) ?>: <?= $ph['count'] ?> chests">
+                                                                <i class="fas fa-paw"></i> <?= h($ph['name']) ?>: <strong><?= $ph['count'] ?></strong>
+                                                            </span>
+                                                        <?php endforeach; ?>
+                                                    </div>
+                                                <?php endif; ?>
+                                            </div>
+                                        </td>
+                                        <!-- Interactive Monster Chest Link -->
+                                        <td class="col-monsters">
+                                            <?php if ($mCount > 0): ?>
+                                                <a href="#" class="interactive-monster-link" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('Click to view dates and details for {0}', h($p['player'])) ?>">
+                                                    <i class="fas fa-dragon mr-1"></i><?= $this->Number->format($mCount) ?>
+                                                </a>
+                                            <?php else: ?>
+                                                <span class="text-muted" style="color: #9ca3af !important;">0</span>
+                                            <?php endif; ?>
+                                        </td>
+                                        <td class="col-points" style="font-weight: 700; color: #dc2626; text-align: right;">
+                                            <?= $this->Number->format($p['monster_score']) ?>
+                                        </td>
+                                        <?php foreach ($activeMonsterSources as $mSource): ?>
+                                            <?php $singleMCount = (int)($p['counts'][$mSource] ?? 0); ?>
+                                            <td class="monster-source-col">
+                                                <?php if ($singleMCount > 0): ?>
+                                                    <a href="#" style="font-weight: 700; color: #1f2937; text-decoration: none;" onclick="showEpicMonsterDetails('<?= h(addslashes($p['player'])) ?>'); return false;" title="<?= __('View details') ?>">
+                                                        <?= $this->Number->format($singleMCount) ?>
+                                                    </a>
+                                                <?php else: ?>
+                                                    <span class="text-muted" style="color: #cbd5e1 !important;">-</span>
+                                                <?php endif; ?>
+                                            </td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <div class="p-4 text-center text-muted"><?= __('No monster data available for this cycle.') ?></div>
+                <?php endif; ?>
+            </section>
+
+            <!-- TABLE 3: ALL DETAILED DATA BY CHEST SOURCE -->
+            <section class="score-card">
+                <div class="score-card-header">
+                    <div class="score-card-header-top">
+                        <div class="score-card-title">
+                            <i class="fas fa-th-list text-indigo"></i>
+                            <span><?= __('All Detailed Data by Chest Source') ?></span>
+                        </div>
+                    </div>
+                    <div class="table-search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchDetailedTable" placeholder="<?= __('Filter player...') ?>" onkeyup="filterTable('detailedTable', this.value)">
+                    </div>
                 </div>
-            <?php else: ?>
-                <div class="p-4 text-center text-muted"><?= __('No detailed data available for this cycle.') ?></div>
-            <?php endif; ?>
-        </section>
+
+                <div class="mobile-scroll-hint">
+                    <i class="fas fa-arrows-alt-h mr-1"></i> <?= __('Scroll horizontally to view all chest columns') ?>
+                </div>
+
+                <?php if (!empty($playersData)): ?>
+                    <div class="table-wrap">
+                        <table class="custom-score-table" id="detailedTable">
+                            <thead>
+                                <tr>
+                                    <th style="width: 60px;"><?= __('Pos.') ?></th>
+                                    <th style="text-align: left;"><?= $createSortLink('player', __('Player')) ?></th>
+                                    <th><?= $createSortLink('final_score', __('Final Score')) ?></th>
+                                    <th><?= $createSortLink('total_chests', __('Total Chests')) ?></th>
+                                    <th><?= $createSortLink('epic_crypt_score', __('Epic Crypt Score')) ?></th>
+                                    <?php foreach ($sourcesWithNonZeroScore as $source): ?>
+                                        <th><?= $createSortLink($source, $source) ?></th>
+                                    <?php endforeach; ?>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php foreach ($playersData as $index => $playerData): ?>
+                                    <?php
+                                    $score = $playerData['final_score'];
+                                    $scoreCellColor = $scoreColor($score, (int)$minimumChestScore);
+                                    $epicScore = $playerData['epic_crypt_score'];
+                                    $epicCellColor = $scoreColor($epicScore, (int)$minimumEpicChestScore);
+                                    ?>
+                                    <tr>
+                                        <td><span class="top-rank"><?= $index + 1 ?></span></td>
+                                        <td style="text-align: left;">
+                                            <div class="player-cell-box">
+                                                <?= $this->Html->link(
+                                                    $playerData['player'],
+                                                    ['controller' => 'PlayerCycleSummaries', 'action' => 'playerHistory', urlencode($playerData['player'])],
+                                                    ['class' => 'player-link', 'title' => $playerData['player']]
+                                                ) ?>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="interactive-score-link" style="color: <?= h($scoreCellColor) ?>;" onclick="showPlayerSummaryModal('<?= h(addslashes($playerData['player'])) ?>'); return false;">
+                                                <?= (int)$score ?>
+                                            </a>
+                                        </td>
+                                        <td><?= (int)$playerData['total_chests'] ?></td>
+                                        <td style="color: <?= h($epicCellColor) ?>; font-weight: 700;"><?= (int)$epicScore ?></td>
+                                        <?php foreach ($sourcesWithNonZeroScore as $source): ?>
+                                            <td><?= (int)($playerData['counts'][$source] ?? 0) ?></td>
+                                        <?php endforeach; ?>
+                                    </tr>
+                                <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                <?php else: ?>
+                    <div class="p-4 text-center text-muted"><?= __('No detailed data available for this cycle.') ?></div>
+                <?php endif; ?>
+            </section>
+        </div>
     </div>
 
     <!-- Footer Notes -->
