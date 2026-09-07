@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Model\Table;
 
+use ArrayObject;
+use Cake\Event\EventInterface;
 use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
@@ -43,6 +45,27 @@ class StandardChestsTable extends Table
     }
 
     /**
+     * Normalize the alias before marshalling: trim it and store blanks as null,
+     * so reports fall back to the raw source name.
+     *
+     * @param \Cake\Event\EventInterface $event The event.
+     * @param \ArrayObject $data The data being marshalled.
+     * @param \ArrayObject $options The marshalling options.
+     * @return void
+     */
+    public function beforeMarshal(EventInterface $event, ArrayObject $data, ArrayObject $options): void
+    {
+        if (array_key_exists('source', (array)$data) && is_string($data['source'])) {
+            $data['source'] = trim($data['source']);
+        }
+
+        if (array_key_exists('alias', (array)$data)) {
+            $alias = trim((string)($data['alias'] ?? ''));
+            $data['alias'] = $alias !== '' ? $alias : null;
+        }
+    }
+
+    /**
      * Default validation rules.
      *
      * @param \Cake\Validation\Validator $validator Validator instance.
@@ -57,6 +80,11 @@ class StandardChestsTable extends Table
             ->notEmptyString('source');
 
         $validator
+            ->scalar('alias')
+            ->maxLength('alias', 50)
+            ->allowEmptyString('alias');
+
+        $validator
             ->integer('score')
             ->requirePresence('score', 'create')
             ->notEmptyString('score');
@@ -69,5 +97,27 @@ class StandardChestsTable extends Table
             ->allowEmptyString('qty_chest');
 
         return $validator;
+    }
+
+    /**
+     * Returns a rules checker object that will be used for validating
+     * application integrity.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        // A chest source identifies the chest type, so it can only be registered once.
+        $rules->add(
+            $rules->isUnique(
+                ['source'],
+                __('This chest source is already registered.')
+            ),
+            'uniqueSource',
+            ['errorField' => 'source']
+        );
+
+        return $rules;
     }
 }

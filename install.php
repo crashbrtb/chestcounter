@@ -742,10 +742,12 @@ function runMigrationsNative(array $dbConfig): void
         'standard_chests' => "CREATE TABLE IF NOT EXISTS `standard_chests` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
             `source` char(50) NOT NULL,
+            `alias` varchar(50) DEFAULT NULL COMMENT 'Optional friendly name shown in reports instead of source',
             `score` int(11) NOT NULL,
             `monster` int(11) NOT NULL DEFAULT 0 COMMENT '1 = Epic Monsters chest 0 = Regular chest',
             `qty_chest` int(11) DEFAULT NULL COMMENT 'If the chest type is epic monsters, inform the amount of chests earned by killing a monster',
-            PRIMARY KEY (`id`)
+            PRIMARY KEY (`id`),
+            UNIQUE KEY `source_UNIQUE` (`source`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
 
         'collected_chests' => "CREATE TABLE IF NOT EXISTS `collected_chests` (
@@ -1016,17 +1018,16 @@ function runSeedsNative(array $dbConfig): void
             [64,'Authority Rush tournament',0,0,null],[65,'Epic Fenrir squad',5,1,25],[66,'Epic Inferno squad',5,0,null],
             [67,'Epic Jormungandr squad',5,0,null],[69,'Tartaros Crypt level 20',20,0,null],[70,'Tartaros Crypt level 25',60,0,null],
             [71,'Tartaros Crypt level 30',90,0,null],[72,'Tartaros Crypt level 35',120,0,null],[74,'Hermes\' Store',10,0,null],
-            [75,'Arachne\'s Swarm Epic squad',35,0,null],[76,'Shadow City',5,0,null],
+            [75,'Arachne\'s Swarm Epic squad',35,0,null],
             [77,'Union of Triumph personal reward',0,0,null],[78,'Clan wealth',0,0,null],
             [79,'Level 45 Vault of the Ancients',0,0,null],[80,'Rise of the Ancients event',0,0,null],
             [81,'Epic Ancient squad',0,0,null],[82,'Mimic Chest',0,0,null],
-            [83,'Epic Chimera squad',0,0,null],[84,'Epic Basilisk squad',0,0,null],
             [85,'Alchemy tournament',0,0,null],[86,'Lvl 20-24 Raid Runic squad',0,0,null],
             [87,'Lvl 45 Raid Runic squad',0,0,null],[88,'Lvl 40-44 Raid Runic squad',0,0,null],
             [89,'Lvi 30-34 Raid Runic squad',0,0,null],[90,'Tartaros Crypt level 10',0,0,null],
             [91,'Tartaros Crypt level 15',0,0,null],[92,'Bank',0,0,null],
             [93,'Level 40-44 Vault of the Ancients',0,0,null],[94,'Level 35-39 Vault of the Ancients',0,0,null],
-            [95,'Hermes\' Store',0,0,null],[96,'Epic Briareus squad',0,0,null],
+            [96,'Epic Briareus squad',0,0,null],
             [97,'Level 30-34 Vault of the Ancients',0,0,null],[98,'Event "Trials of Olympus"',0,0,null],
             [99,'Jérmungandr Shop',0,0,null],[100,'Jormungandr Shop',0,0,null],
             [101,'Epic Chimera squad',5,0,null],[102,'Epic Basilisk squad',5,0,null],

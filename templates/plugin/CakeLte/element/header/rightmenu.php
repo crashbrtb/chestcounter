@@ -73,6 +73,9 @@ if ($isAdmin):
                     <?= $this->Html->link(__('Standard Chests'), ['controller' => 'StandardChests', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
                 </li>
                 <li>
+                    <?= $this->Html->link(__('Lost Chests'), ['controller' => 'StandardChests', 'action' => 'lostChests'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
                     <?= $this->Html->link(__('Merge Players'), ['controller' => 'CollectedChests', 'action' => 'mergePlayers'], ['class' => 'dropdown-item']) ?>
                 </li>
                 <li>

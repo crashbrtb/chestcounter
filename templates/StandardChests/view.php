@@ -25,6 +25,10 @@ $this->Breadcrumbs->add([
                 <td><?= h($standardChest->source) ?></td>
             </tr>
             <tr>
+                <th><?= __('Alias') ?></th>
+                <td><?= $standardChest->alias ? h($standardChest->alias) : '<span class="text-muted">&mdash;</span>' ?></td>
+            </tr>
+            <tr>
                 <th><?= __('Id') ?></th>
                 <td><?= $this->Number->format($standardChest->id) ?></td>
             </tr>

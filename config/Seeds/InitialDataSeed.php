@@ -9,7 +9,7 @@ use Migrations\AbstractSeed;
  * Inserts the essential records required for the application to work:
  * - roles (3 records)
  * - config (21 records)
- * - standard_chests (102 records)
+ * - standard_chests (96 records)
  *
  * This seed is idempotent: it checks if data already exists
  * before inserting, so it is safe to run multiple times.
@@ -213,7 +213,7 @@ class InitialDataSeed extends AbstractSeed
     }
 
     /**
-     * Seed the standard_chests table with 102 chest types.
+     * Seed the standard_chests table with 96 unique chest types.
      */
     private function seedStandardChests(): void
     {
@@ -298,15 +298,12 @@ class InitialDataSeed extends AbstractSeed
             ['id' => 72, 'source' => 'Tartaros Crypt level 35', 'score' => 120, 'monster' => 0, 'qty_chest' => null],
             ['id' => 74, 'source' => 'Hermes\' Store', 'score' => 10, 'monster' => 0, 'qty_chest' => null],
             ['id' => 75, 'source' => 'Arachne\'s Swarm Epic squad', 'score' => 35, 'monster' => 0, 'qty_chest' => null],
-            ['id' => 76, 'source' => 'Shadow City', 'score' => 5, 'monster' => 0, 'qty_chest' => null],
             ['id' => 77, 'source' => 'Union of Triumph personal reward', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 78, 'source' => 'Clan wealth', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 79, 'source' => 'Level 45 Vault of the Ancients', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 80, 'source' => 'Rise of the Ancients event', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 81, 'source' => 'Epic Ancient squad', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 82, 'source' => 'Mimic Chest', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
-            ['id' => 83, 'source' => 'Epic Chimera squad', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
-            ['id' => 84, 'source' => 'Epic Basilisk squad', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 85, 'source' => 'Alchemy tournament', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 86, 'source' => 'Lvl 20-24 Raid Runic squad', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 87, 'source' => 'Lvl 45 Raid Runic squad', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
@@ -317,7 +314,6 @@ class InitialDataSeed extends AbstractSeed
             ['id' => 92, 'source' => 'Bank', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 93, 'source' => 'Level 40-44 Vault of the Ancients', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 94, 'source' => 'Level 35-39 Vault of the Ancients', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
-            ['id' => 95, 'source' => 'Hermes\' Store', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 96, 'source' => 'Epic Briareus squad', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 97, 'source' => 'Level 30-34 Vault of the Ancients', 'score' => 0, 'monster' => 0, 'qty_chest' => null],
             ['id' => 98, 'source' => 'Event "Trials of Olympus"', 'score' => 0, 'monster' => 0, 'qty_chest' => null],

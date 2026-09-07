@@ -186,12 +186,15 @@ class CollectedChestsController extends AppController
         // Buscar a pontuação de cada tipo de baú
 
         $chestScoresResult = $standardChestsTable->find()
-            ->select(['source', 'score', 'monster'])
+            ->select(['source', 'alias', 'score', 'monster'])
             ->toArray();
-        
+
         $chestScores = [];
+        // Nome exibido nos relatorios: o alias quando definido, senao o source
+        $chestDisplayNames = [];
         foreach ($chestScoresResult as $row) {
             $chestScores[$row->source] = $row;
+            $chestDisplayNames[$row->source] = $row->display_name;
         }
 
         // Identificar sources de Epic Monster (monster = 1) e buscar detalhes individuais
@@ -293,6 +296,7 @@ class CollectedChestsController extends AppController
             'lastUpdate',
             'sourcesWithNonZeroScore',
             'chestScores',
+            'chestDisplayNames',
             'scoreColorsConfig',
             'epicMonsterDetails'
         ));
