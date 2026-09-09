@@ -65,3 +65,6 @@ logs/queries.log
 
 #readme
 README.md
+
+# Ferramenta temporaria de captura (nao versionar)
+/tempapp/

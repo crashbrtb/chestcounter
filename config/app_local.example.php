@@ -18,6 +18,27 @@ return [
     'debug' => filter_var(env('DEBUG', false), FILTER_VALIDATE_BOOLEAN),
 
     /*
+     * Error handling configuration.
+     *
+     * - errorLevel - In production (DEBUG=false) deprecation notices from
+     *   vendor packages are muted so they do not flood the logs. With
+     *   DEBUG=true you still see everything.
+     * - ignoredDeprecationPaths - Glob paths whose deprecations are ignored.
+     *   These entries are APPENDED to the list already defined in app.php.
+     *   `cakephp/migrations` triggers its own deprecation (setConstraint())
+     *   while converting Phinx foreign keys, which cannot be avoided from
+     *   the migration files themselves.
+     */
+    'Error' => [
+        'errorLevel' => filter_var(env('DEBUG', false), FILTER_VALIDATE_BOOLEAN)
+            ? E_ALL
+            : E_ALL & ~E_USER_DEPRECATED,
+        'ignoredDeprecationPaths' => [
+            'vendor/cakephp/migrations/*',
+        ],
+    ],
+
+    /*
      * Security and encryption configuration
      *
      * - salt - A random string used in security hashing methods.

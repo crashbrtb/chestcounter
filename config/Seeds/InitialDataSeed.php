@@ -69,147 +69,134 @@ class InitialDataSeed extends AbstractSeed
     }
 
     /**
-     * Seed the config table with 20 default configuration parameters.
+     * Seed the config table with 21 default configuration parameters.
      */
     private function seedConfig(): void
     {
-        $table = $this->table('config');
-        $exists = $this->fetchRow('SELECT COUNT(*) as cnt FROM config');
-
-        if ($exists && $exists['cnt'] > 0) {
-            return;
-        }
-
         $data = [
             [
-                'id' => 1,
                 'param' => 'reference_day',
                 'value' => '2025-07-30 17:00:00',
                 'description' => 'Select a reference date for the start/end of the count. For example: If it is a weekly count, select a date that represents the day of the week that the count will start/end. If the count is for the Rise of Ancients event, select a date that represents the day of the event. Always use the format (YYYY-MM-DD hh:mm:ss) with UTC time (ex: "2025-05-13 17:00:00")',
             ],
             [
-                'id' => 2,
                 'param' => 'every_how_many_days',
                 'value' => '6',
                 'description' => 'Every how many days: Sets how many days each counting period lasts. Suggestion: 6 to start counting every elder 7 for a weekly count',
             ],
             [
-                'id' => 3,
                 'param' => 'minimum_chest_score',
                 'value' => '15000',
                 'description' => 'Minimum Chest Score',
             ],
             [
-                'id' => 4,
                 'param' => 'minimum_epic_score',
                 'value' => '6000',
                 'description' => 'Minimum points for collecting MONSTER epic chests.',
             ],
             [
-                'id' => 5,
                 'param' => 'clan_name',
                 'value' => 'Special Task Force',
                 'description' => 'Clan name',
             ],
             [
-                'id' => 6,
                 'param' => 'clan_acronym',
                 'value' => 'ABC',
                 'description' => 'clan acronym',
             ],
             [
-                'id' => 7,
                 'param' => 'kingdom_number',
                 'value' => 'K001',
                 'description' => 'kingdom number kxxx',
             ],
             [
-                'id' => 8,
                 'param' => 'score_color_start_r',
                 'value' => '255',
                 'description' => 'R (Red) value of the initial color for low score (0-255).',
             ],
             [
-                'id' => 9,
                 'param' => 'score_color_start_g',
                 'value' => '0',
                 'description' => 'G (Green) value of the starting color for low score (0-255).',
             ],
             [
-                'id' => 10,
                 'param' => 'score_color_start_b',
                 'value' => '0',
                 'description' => 'Starting color B (Blue) value for low score (0-255).',
             ],
             [
-                'id' => 11,
                 'param' => 'score_color_end_r',
                 'value' => '0',
                 'description' => 'R (Red) value of the final color for high score (0-255).',
             ],
             [
-                'id' => 12,
                 'param' => 'score_color_end_g',
                 'value' => '255',
                 'description' => 'G (Green) value of the final color for high score (0-255).',
             ],
             [
-                'id' => 13,
                 'param' => 'score_color_end_b',
                 'value' => '0',
                 'description' => 'Final color B (Blue) value for high score (0-255).',
             ],
             [
-                'id' => 14,
                 'param' => 'score_color_transition_start',
                 'value' => '0.9',
                 'description' => 'Value between 0 and 1 (e.g. 0.9 for 90%) that defines the point at which the score color starts to change from the initial color to the final color.',
             ],
             [
-                'id' => 15,
                 'param' => 'minimum_epic_chest_score',
                 'value' => '6000',
                 'description' => 'Minimum epic chest score',
             ],
             [
-                'id' => 16,
                 'param' => 'deposit_fee',
                 'value' => '50',
                 'description' => 'Fixed deposit fee in millions of Silver',
             ],
             [
-                'id' => 17,
                 'param' => 'withdrawal_fee',
                 'value' => '50',
                 'description' => 'Fixed withdrawal fee in millions of Silver',
             ],
             [
-                'id' => 18,
                 'param' => 'transfer_fee',
                 'value' => '10',
                 'description' => 'Fixed transfer fee in millions of Silver',
             ],
             [
-                'id' => 19,
                 'param' => 'caravan_fee',
                 'value' => '20',
                 'description' => 'Caravan fee percentage for deposits',
             ],
             [
-                'id' => 20,
                 'param' => 'bank_function',
                 'value' => '1',
                 'description' => '1 = Bank active / 0 = no Bank',
             ],
             [
-                'id' => 21,
                 'param' => 'collected_chests_retention_days',
                 'value' => '30',
                 'description' => 'Retention time in days for old collected chests. Minimum retention time must be greater than 7 days, and default is 30 days. Setting to 0 disables automatic purge.',
             ],
         ];
 
-        $table->insert($data)->save();
+        // Insert only the parameters that are still missing. A per-parameter
+        // check is required because migrations may already have populated the
+        // table (e.g. AddCollectedChestsRetentionDaysConfig), which would make
+        // a table-wide "is it empty?" guard skip every remaining parameter.
+        $existing = array_column($this->fetchAll('SELECT param FROM config'), 'param');
+
+        $missing = array_values(array_filter(
+            $data,
+            fn (array $row): bool => !in_array($row['param'], $existing, true)
+        ));
+
+        if (!$missing) {
+            return;
+        }
+
+        $this->table('config')->insert($missing)->save();
     }
 
     /**
