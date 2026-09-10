@@ -6,7 +6,22 @@
 
 <IfModule mod_rewrite.c>
     RewriteEngine on
+
+    # Force HTTPS on every request.
+    # The ACME challenge is excluded so Let's Encrypt renewals keep working over HTTP.
+    # %{HTTP:X-Forwarded-Proto} covers setups behind a reverse proxy / load balancer.
+    RewriteCond %{REQUEST_URI} !^/\.well-known/acme-challenge/
+    RewriteCond %{HTTPS} !=on
+    RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+    RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+
     RewriteRule    ^(\.well-known/.*)$ $1 [L]
     RewriteRule    ^$    webroot/    [L]
     RewriteRule    (.*) webroot/$1    [L]
 </IfModule>
+
+# Uncomment to enable HSTS (browsers will refuse plain HTTP for this domain).
+# Only enable once HTTPS is confirmed working on all subdomains - it is hard to undo.
+#<IfModule mod_headers.c>
+#    Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+#</IfModule>

@@ -20,6 +20,11 @@ $this->Breadcrumbs->add([
     <div class="card-body">
         <?php
             echo $this->Form->control('source', ['label' => 'Source']);
+            echo $this->Form->control('alias', [
+                'label' => __('Alias') . ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . __('Optional friendly name shown in reports instead of the source') . '"></i>',
+                'escape' => false,
+                'required' => false,
+            ]);
             echo $this->Form->control('score', ['label' => 'Score']);
         ?>
         <div class="form-group">

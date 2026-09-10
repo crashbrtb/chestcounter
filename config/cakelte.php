@@ -1,10 +1,30 @@
 <?php
 use Cake\ORM\TableRegistry;
 
-$configTable = TableRegistry::getTableLocator()->get('Config');
-$kingdomNumber = $configTable->find()->where(['param' => 'kingdom_number'])->first()->value;
-$clanAcronym = $configTable->find()->where(['param' => 'clan_acronym'])->first()->value;
-$clanName = $configTable->find()->where(['param' => 'clan_name'])->first()->value;
+/**
+ * Reads the branding parameters from the `config` table.
+ *
+ * This file is loaded by CakeLteHelper while the View is being built, which
+ * also happens when rendering an error page. If the config table is missing
+ * rows (fresh install before seeding, or a broken database) it must degrade
+ * gracefully instead of emitting warnings and masking the real error.
+ */
+$readConfig = function (string $param, string $default = ''): string {
+    try {
+        $row = TableRegistry::getTableLocator()->get('Config')
+            ->find()
+            ->where(['param' => $param])
+            ->first();
+    } catch (\Throwable $e) {
+        return $default;
+    }
+
+    return $row->value ?? $default;
+};
+
+$kingdomNumber = $readConfig('kingdom_number');
+$clanAcronym = $readConfig('clan_acronym');
+$clanName = $readConfig('clan_name', 'ChestCounter');
 
 return [
     'CakeLte' => [
@@ -13,7 +33,7 @@ return [
         'small-text' => true,
         'dark-mode' => false,
         'layout-boxed' => false,
-        
+
         'theme' => [
             'folder' => 'CakeLte',
             'skin' => 'blue',
@@ -30,4 +50,4 @@ return [
             'enable' => true
         ]
     ]
-]; 
+];

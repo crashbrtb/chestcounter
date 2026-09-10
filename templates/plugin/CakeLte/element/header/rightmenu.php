@@ -73,7 +73,29 @@ if ($isAdmin):
                     <?= $this->Html->link(__('Standard Chests'), ['controller' => 'StandardChests', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
                 </li>
                 <li>
+                    <?= $this->Html->link(__('Lost Chests'), ['controller' => 'StandardChests', 'action' => 'lostChests'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
                     <?= $this->Html->link(__('Merge Players'), ['controller' => 'CollectedChests', 'action' => 'mergePlayers'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?php
+                    // The count belongs in the menu: chests waiting to be read by
+                    // hand are invisible work until somebody is told they exist.
+                    try {
+                        $pendingIncomplete = \Cake\ORM\TableRegistry::getTableLocator()
+                            ->get('IncompleteChests')->pendingCount();
+                    } catch (\Throwable $e) {
+                        $pendingIncomplete = 0;
+                    }
+                    ?>
+                    <?= $this->Html->link(
+                        __('Incomplete Chests') . ($pendingIncomplete
+                            ? ' <span class="badge badge-warning">' . $pendingIncomplete . '</span>'
+                            : ''),
+                        ['controller' => 'IncompleteChests', 'action' => 'index'],
+                        ['class' => 'dropdown-item', 'escape' => false]
+                    ) ?>
                 </li>
                 <li>
                     <?= $this->Html->link(__('Summary last cycles'), ['controller' => 'PlayerCycleSummaries', 'action' => 'index'], ['class' => 'dropdown-item']) ?>

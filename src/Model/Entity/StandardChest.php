@@ -10,9 +10,11 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $source
+ * @property string|null $alias
  * @property int $score
  * @property int $monster
  * @property int|null $qty_chest
+ * @property string $display_name
  */
 class StandardChest extends Entity
 {
@@ -27,8 +29,28 @@ class StandardChest extends Entity
      */
     protected array $_accessible = [
         'source' => true,
+        'alias' => true,
         'score' => true,
         'monster' => true,
         'qty_chest' => true,
     ];
+
+    /**
+     * Virtual fields exposed when the entity is serialized.
+     *
+     * @var list<string>
+     */
+    protected array $_virtual = ['display_name'];
+
+    /**
+     * Name used by reports: the alias when defined, the raw source otherwise.
+     *
+     * @return string
+     */
+    protected function _getDisplayName(): string
+    {
+        $alias = trim((string)($this->alias ?? ''));
+
+        return $alias !== '' ? $alias : (string)$this->source;
+    }
 }

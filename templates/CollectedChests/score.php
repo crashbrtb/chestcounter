@@ -12,11 +12,20 @@
  * @var array $currentCycleFormatted
  * @var string[] $sourcesWithNonZeroScore
  * @var array $chestScores
+ * @var array $chestDisplayNames
  * @var array $scoreColorsConfig
  * @var array $epicMonsterDetails
  */
 ?>
 <?php
+// Nome exibido para um bau: o alias cadastrado quando existir, senao o proprio source
+$chestDisplayNames = $chestDisplayNames ?? [];
+$chestName = function ($source) use ($chestDisplayNames) {
+    $name = $chestDisplayNames[$source] ?? '';
+
+    return $name !== '' ? (string)$name : (string)$source;
+};
+
 $sortColumn = $this->request->getQuery('sort', 'final_score');
 $sortDirection = $this->request->getQuery('direction', 'desc');
 
@@ -40,11 +49,11 @@ if (!empty($chestScores)) {
             $monsterSources[] = $src;
         }
     }
-    usort($monsterSources, function ($a, $b) use ($chestScores) {
+    usort($monsterSources, function ($a, $b) use ($chestScores, $chestName) {
         $scoreA = isset($chestScores[$a]) ? (int)$chestScores[$a]->score : 0;
         $scoreB = isset($chestScores[$b]) ? (int)$chestScores[$b]->score : 0;
         if ($scoreA === $scoreB) {
-            return strcasecmp((string)$a, (string)$b);
+            return strcasecmp($chestName($a), $chestName($b));
         }
         return $scoreB <=> $scoreA;
     });
@@ -53,11 +62,11 @@ if (!empty($chestScores)) {
 // 2. Process player data
 $playersData = [];
 $sourcesWithNonZeroScore = $sourcesWithNonZeroScore ?? [];
-usort($sourcesWithNonZeroScore, function ($a, $b) use ($chestScores) {
+usort($sourcesWithNonZeroScore, function ($a, $b) use ($chestScores, $chestName) {
     $scoreA = isset($chestScores[$a]) ? (int)$chestScores[$a]->score : 0;
     $scoreB = isset($chestScores[$b]) ? (int)$chestScores[$b]->score : 0;
     if ($scoreA === $scoreB) {
-        return strcasecmp((string)$a, (string)$b);
+        return strcasecmp($chestName($a), $chestName($b));
     }
     return $scoreB <=> $scoreA;
 });
@@ -159,7 +168,7 @@ foreach ($playersData as $p) {
         }
         foreach ($dateCounts as $date => $count) {
             $rows[] = [
-                'source' => $src,
+                'source' => $chestName($src),
                 'date' => $date,
                 'count' => $count,
             ];
@@ -181,7 +190,7 @@ foreach ($playersData as $p) {
             $singleScore = isset($chestScores[$src]) ? (int)$chestScores[$src]->score : 0;
             $isMonster = !empty($chestScores[$src]->monster);
             $nonZeroChests[] = [
-                'source' => $src,
+                'source' => $chestName($src),
                 'count' => $cnt,
                 'score_each' => $singleScore,
                 'total_points' => $cnt * $singleScore,
@@ -1312,8 +1321,8 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
                                     <th class="col-monsters"><?= __('Monster Chests') ?></th>
                                     <th class="col-points" style="text-align: right;"><?= __('Monster Points') ?></th>
                                     <?php foreach ($activeMonsterSources as $mSource): ?>
-                                        <th class="monster-source-col" title="<?= h($mSource) ?>">
-                                            <?= h($mSource) ?>
+                                        <th class="monster-source-col" title="<?= h($chestName($mSource)) ?>">
+                                            <?= h($chestName($mSource)) ?>
                                             <?php if (isset($chestScores[$mSource])): ?>
                                                 <small class="d-block text-muted" style="font-size: 0.72rem; font-weight: normal;">(<?= (int)$chestScores[$mSource]->score ?> pts)</small>
                                             <?php endif; ?>
@@ -1343,7 +1352,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
                                                 foreach ($activeMonsterSources as $mSource) {
                                                     $smc = (int)($p['counts'][$mSource] ?? 0);
                                                     if ($smc > 0) {
-                                                        $playerHunted[] = ['name' => $mSource, 'count' => $smc];
+                                                        $playerHunted[] = ['name' => $chestName($mSource), 'count' => $smc];
                                                     }
                                                 }
                                                 ?>
@@ -1423,7 +1432,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
                                     <th><?= $createSortLink('total_chests', __('Total Chests')) ?></th>
                                     <th><?= $createSortLink('epic_crypt_score', __('Epic Crypt Score')) ?></th>
                                     <?php foreach ($sourcesWithNonZeroScore as $source): ?>
-                                        <th><?= $createSortLink($source, $source) ?></th>
+                                        <th><?= $createSortLink($source, $chestName($source)) ?></th>
                                     <?php endforeach; ?>
                                 </tr>
                             </thead>

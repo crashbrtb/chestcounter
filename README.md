@@ -142,17 +142,16 @@ chown -R username:username tmp logs
 
 ### 7. Install the Database
 
-Execute the complete SQL dump that contains the entire structure and initial data:
+Create the schema with the migrations, then load the initial data with the seed.
+Both steps are required — migrations only create empty tables.
 
 ```bash
-mysql -u your_user -p chestcounter < config/databasemodel.sql
-```
+# 1. Create all tables, indexes and foreign keys
+php bin/cake.php migrations migrate
 
-**Or via phpMyAdmin:**
-1. Select the `chestcounter` database
-2. Go to "Import"
-3. Select the file `config/databasemodel.sql`
-4. Click "Execute"
+# 2. Insert roles, configuration parameters and standard chest types
+php bin/cake.php migrations seed
+```
 
 **Verify if it was installed correctly:**
 
@@ -162,9 +161,17 @@ SHOW TABLES;
 
 -- Verify initial data
 SELECT COUNT(*) FROM roles; -- Should return 3
-SELECT COUNT(*) FROM config; -- Should return 20
-SELECT COUNT(*) FROM standard_chests; -- Should return 102
+SELECT COUNT(*) FROM config; -- Should return 21
+SELECT COUNT(*) FROM standard_chests; -- Should return 96
 ```
+
+If `config` does not return 21, the application will fail to render its pages
+because parameters such as `reference_day` are missing. Re-run the seed — it is
+idempotent and inserts only the rows that are absent.
+
+Then adjust `kingdom_number`, `clan_acronym`, `clan_name` and `reference_day`
+to your own clan's values, either in the Settings screen or directly in the
+`config` table. The seed ships placeholders (`K001`, `ABC`, ...).
 
 > **Note:** For more details about database installation, see [INSTALL_DATABASE.md](INSTALL_DATABASE.md).
 
@@ -295,7 +302,8 @@ A 500 error is one of the most common and can have several causes. Follow this c
 chestcounter/
 ├── bin/                    # Executable scripts
 ├── config/                 # Configuration files
-│   ├── databasemodel.sql   # Complete database SQL dump
+│   ├── Migrations/         # Database schema migrations
+│   ├── Seeds/              # Initial data seeds
 │   └── app_local.php       # Local configurations (not versioned)
 ├── logs/                   # Log files
 ├── src/                    # Application source code

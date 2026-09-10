@@ -2,6 +2,7 @@
 declare(strict_types=1);
 
 namespace App\Controller;
+use Cake\Http\Response;
 use Cake\Controller\Controller;
 use Cake\ORM\TableRegistry;
 use Cake\I18n\Time;
@@ -106,6 +107,25 @@ class CollectedChestsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+
+    /**
+     * Render the "missing configuration" page for a required config parameter.
+     *
+     * Actions must return a Response or null, so a plain string cannot be used
+     * to report a broken setup. Returns 503 so monitoring sees the app is not
+     * ready rather than assuming a healthy page.
+     *
+     * @param string $param Name of the offending row in the `config` table.
+     * @param string $reason Short description of what is wrong with it.
+     * @return \Cake\Http\Response
+     */
+    private function renderConfigMissing(string $param, string $reason): Response
+    {
+        $this->set(compact('param', 'reason'));
+
+        return $this->render('config_missing')->withStatus(503);
+    }
+
     public function score()
     {
 
@@ -119,7 +139,7 @@ class CollectedChestsController extends AppController
             ->first();
 
         if (!$referenceDayConfig || empty($referenceDayConfig->value)) {
-            return 'Parâmetro reference_day não encontrado ou vazio.';
+            return $this->renderConfigMissing('reference_day', 'não encontrado ou vazio');
         }
 
         $referenceDay = new FrozenTime($referenceDayConfig->value);
@@ -130,7 +150,7 @@ class CollectedChestsController extends AppController
             ->first();
 
         if (!$everyHowManyDaysConfig || !is_numeric($everyHowManyDaysConfig->value)) {
-            return 'Parâmetro every_how_many_days não encontrado ou inválido.';
+            return $this->renderConfigMissing('every_how_many_days', 'não encontrado ou inválido');
         }
         $cycleDuration = (int) $everyHowManyDaysConfig->value;
 
@@ -139,7 +159,7 @@ class CollectedChestsController extends AppController
             ->where(['param' => 'minimum_chest_score'])
             ->first();
         if (!$minimumChestScore || !is_numeric($minimumChestScore->value)) {
-            return 'Parâmetro minimum_chest_score não encontrado ou inválido.';
+            return $this->renderConfigMissing('minimum_chest_score', 'não encontrado ou inválido');
         }
         $minimumChestScore = (int) $minimumChestScore->value;
 
@@ -186,12 +206,15 @@ class CollectedChestsController extends AppController
         // Buscar a pontuação de cada tipo de baú
 
         $chestScoresResult = $standardChestsTable->find()
-            ->select(['source', 'score', 'monster'])
+            ->select(['source', 'alias', 'score', 'monster'])
             ->toArray();
-        
+
         $chestScores = [];
+        // Nome exibido nos relatorios: o alias quando definido, senao o source
+        $chestDisplayNames = [];
         foreach ($chestScoresResult as $row) {
             $chestScores[$row->source] = $row;
+            $chestDisplayNames[$row->source] = $row->display_name;
         }
 
         // Identificar sources de Epic Monster (monster = 1) e buscar detalhes individuais
@@ -293,6 +316,7 @@ class CollectedChestsController extends AppController
             'lastUpdate',
             'sourcesWithNonZeroScore',
             'chestScores',
+            'chestDisplayNames',
             'scoreColorsConfig',
             'epicMonsterDetails'
         ));

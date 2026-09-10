@@ -53,9 +53,24 @@ php bin/cake.php migrations seed
 This inserts the essential initial data:
 - **roles**: 3 roles (admin, user, bankers)
 - **config**: 21 configuration parameters
-- **standard_chests**: 102 chest types with configured scores
+- **standard_chests**: 96 chest types with configured scores
 
-### 5. Verify Installation
+The seed is idempotent per row: it inserts only the records that are still
+missing, so it is safe to run again at any time.
+
+### 5. Adjust Your Clan's Settings
+
+The seed ships placeholders. Set them to your own values, either in the
+Settings screen or directly in the `config` table:
+
+| Parameter | Placeholder | Meaning |
+|-----------|-------------|---------|
+| `kingdom_number` | `K001` | Kingdom number |
+| `clan_acronym` | `ABC` | Clan acronym |
+| `clan_name` | `Special Task Force` | Clan name |
+| `reference_day` | `2025-07-30 17:00:00` | Start/end reference of the counting cycle, UTC |
+
+### 6. Verify Installation
 
 ```bash
 # Check migration status
@@ -66,10 +81,10 @@ php bin/cake.php migrations status
 -- Verify initial data
 SELECT COUNT(*) FROM roles;           -- Should return 3
 SELECT COUNT(*) FROM config;          -- Should return 21
-SELECT COUNT(*) FROM standard_chests; -- Should return 102
+SELECT COUNT(*) FROM standard_chests; -- Should return 96
 ```
 
-### 6. Create the First Administrator
+### 7. Create the First Administrator
 
 ```bash
 php bin/cake.php create_admin
@@ -93,7 +108,7 @@ This tells CakePHP that the `InitialSchema` migration has already been applied (
 
 ## 📝 Database Structure
 
-### Tables (15 tables):
+### Tables (16 tables):
 
 | Table | Description |
 |-------|-------------|
@@ -102,8 +117,8 @@ This tells CakePHP that the `InitialSchema` migration has already been applied (
 | `roles_users` | User-role relationships |
 | `members` | Clan members |
 | `collected_chests` | Collected chests |
-| `standard_chests` | Standard chest types (102 types) |
-| `config` | System configuration (20 parameters) |
+| `standard_chests` | Standard chest types (96 types) |
+| `config` | System configuration (21 parameters) |
 | `player_cycle_summaries` | Player cycle summaries |
 | `player_name_mappings` | Player name mappings |
 | `bank_accounts` | Member bank accounts |
@@ -112,12 +127,13 @@ This tells CakePHP that the `InitialSchema` migration has already been applied (
 | `errors` | Error log |
 | `events` | Events |
 | `incomplete_chests` | Incomplete chests |
+| `troops` | Troop types and their attributes |
 
 ### Initial Data (via Seeds):
 
 - **roles**: 3 roles (admin, user, bankers)
-- **config**: 20 initial configuration parameters
-- **standard_chests**: 102 chest types with configured scores
+- **config**: 21 initial configuration parameters
+- **standard_chests**: 96 chest types with configured scores
 
 ---
 
@@ -143,6 +159,24 @@ php bin/cake.php migrations seed --seed InitialDataSeed
 ---
 
 ## ⚠️ Troubleshooting
+
+### Error: Home page returns HTTP 500 after installing
+
+Check whether the seed actually ran:
+
+```sql
+SELECT COUNT(*) FROM config;   -- must return 21
+```
+
+If it returns fewer rows, the configuration parameters are missing and the
+score page cannot be calculated. Run the seed again:
+
+```bash
+php bin/cake.php migrations seed --seed InitialDataSeed
+```
+
+The seed inserts only the parameters that are absent, so running it on a
+partially populated table is safe.
 
 ### Error: "Table already exists"
 

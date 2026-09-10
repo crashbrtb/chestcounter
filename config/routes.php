@@ -80,6 +80,12 @@ return function (RouteBuilder $routes): void {
         $builder->connect('/bank', ['controller' => 'Bank', 'action' => 'index']);
         $builder->connect('/bank/:action/*', ['controller' => 'Bank']);
 
+        // Standard Chests routes
+        $builder->connect('/standard-chests/lost-chests', ['controller' => 'StandardChests', 'action' => 'lostChests']);
+
+        // Troop calculator
+        $builder->connect('/calculator', ['controller' => 'TroopCalculator', 'action' => 'index']);
+
         /*
          * Connect catchall routes for all controllers.
          *

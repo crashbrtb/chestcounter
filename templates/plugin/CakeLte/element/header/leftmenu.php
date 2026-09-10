@@ -8,6 +8,21 @@
     </div>
 </li>
 
+<?php if ($this->request->getAttribute('identity') !== null): ?>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?= __('Tools') ?>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="toolsDropdown">
+        <?= $this->Html->link(
+            __('Troop Calculator'),
+            ['controller' => 'TroopCalculator', 'action' => 'index'],
+            ['class' => 'dropdown-item']
+        ) ?>
+    </div>
+</li>
+<?php endif; ?>
+
 <?php
 $configTable = \Cake\ORM\TableRegistry::getTableLocator()->get('Config');
 $bankFunctionConfig = $configTable->find()

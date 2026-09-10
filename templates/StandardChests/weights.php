@@ -62,7 +62,12 @@ $toggleShowAllLink = $this->Url->build(['prefix' => false, 'controller' => 'Stan
                 <tbody>
                     <?php foreach ($standardChests as $standardChest) : ?>
                         <tr>
-                            <td class="text-left font-weight-bold"><?= h($standardChest->source) ?></td>
+                            <td class="text-left font-weight-bold">
+                                <?= h($standardChest->display_name) ?>
+                                <?php if (!empty($standardChest->alias)) : ?>
+                                    <small class="d-block text-muted font-weight-normal"><?= h($standardChest->source) ?></small>
+                                <?php endif; ?>
+                            </td>
                             <td class="text-center font-weight-bold" style="color: <?= (int)$standardChest->score > 0 ? 'var(--accent)' : 'var(--muted)' ?>;">
                                 <?= $this->Number->format($standardChest->score) ?>
                             </td>
