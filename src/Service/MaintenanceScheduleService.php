@@ -19,11 +19,10 @@ use Throwable;
  * computed from were never summarised. So this service exists to answer one
  * question out loud ("is it scheduled?") and to write the entry when it is not.
  *
- * Times are chosen in Brazil time, because that is the clock the clan plays by,
- * and written to the crontab in UTC. The block carries `CRON_TZ=UTC` so an entry
- * means the same moment whatever timezone the server keeps; if the cron
- * implementation refuses that variable, installing falls back to the server's own
- * local time, which needs its offset but no special syntax.
+ * All times are chosen and stored directly in UTC. The block carries `CRON_TZ=UTC`
+ * so an entry means the same moment whatever timezone the server keeps; if the
+ * cron implementation refuses that variable, installing falls back to the server's
+ * own local time, which needs its offset but no special syntax.
  *
  * The nightly database backup lives in the same block, because it is the same
  * promise to the same administrator — something has to be running on a schedule
@@ -35,19 +34,19 @@ class MaintenanceScheduleService
     use LocatorAwareTrait;
 
     /**
-     * `config` row holding the chosen times, as "HH:MM,HH:MM" in Brazil time.
+     * `config` row holding the chosen times, as "HH:MM,HH:MM" in UTC.
      */
     public const PARAM = 'maintenance_schedule';
 
     /**
-     * The clock an administrator picks times on.
+     * The clock an administrator picks times on (always UTC).
      */
-    public const SCHEDULE_TZ = 'America/Sao_Paulo';
+    public const SCHEDULE_TZ = 'UTC';
 
     /**
-     * Twice a day, in the quiet hours either side of the clan's active evening.
+     * Twice a day, spaced across the day and aligned with the game cycle.
      */
-    public const DEFAULT_TIMES = ['02:15', '14:15'];
+    public const DEFAULT_TIMES = ['05:15', '17:15'];
 
     /**
      * Run counts the picker offers: each one divides the day evenly.
@@ -184,7 +183,7 @@ class MaintenanceScheduleService
     /**
      * Write the managed block into the crontab, replacing any earlier one.
      *
-     * @param array<mixed> $rawTimes Times in Brazil time, as "HH:MM" strings.
+     * @param array<mixed> $rawTimes Times in UTC, as "HH:MM" strings.
      * @return array<string> The times actually installed, normalised.
      * @throws \App\Service\Maintenance\CrontabException When the crontab cannot be written.
      */
@@ -249,7 +248,7 @@ class MaintenanceScheduleService
     /**
      * The block as it would be installed, for someone doing it by hand.
      *
-     * @param array<string> $times Times in Brazil time.
+     * @param array<string> $times Times in UTC.
      * @return string
      */
     public function blockFor(array $times): string
@@ -279,7 +278,7 @@ class MaintenanceScheduleService
             $step = (int)round(24 * 60 / $count);
             $times = [];
             for ($i = 0; $i < $count; $i++) {
-                $minutes = (2 * 60 + 15 + $i * $step) % (24 * 60);
+                $minutes = (5 * 60 + 15 + $i * $step) % (24 * 60);
                 $times[] = sprintf('%02d:%02d', intdiv($minutes, 60), $minutes % 60);
             }
             sort($times);
@@ -315,41 +314,35 @@ class MaintenanceScheduleService
     }
 
     /**
-     * A Brazil-time "HH:MM" as the same moment in UTC.
+     * Returns the time string as UTC (identity function, since all times are UTC).
      *
-     * @param string $time Time in Brazil time.
+     * @param string $time Time string.
      * @return string Time in UTC.
      */
     public function toUtc(string $time): string
     {
-        return $this->shiftZone($time, self::SCHEDULE_TZ, 'UTC');
+        return $time;
     }
 
     /**
-     * A UTC "HH:MM" as the same moment in Brazil time.
+     * Returns the time string in UTC (identity function, since all times are UTC).
      *
      * @param string $time Time in UTC.
-     * @return string Time in Brazil time.
+     * @return string Time in UTC.
      */
     public function fromUtc(string $time): string
     {
-        return $this->shiftZone($time, 'UTC', self::SCHEDULE_TZ);
+        return $time;
     }
 
     /**
-     * How far from UTC Brazil currently is, in minutes (so, negative).
-     *
-     * Read from the timezone database rather than hard-coded at -03:00: Brazil
-     * has abolished daylight saving before and could bring it back, and when it
-     * does this page should go on telling the truth.
+     * How far from UTC the schedule clock is, in minutes (always 0 since it is UTC).
      *
      * @return int
      */
     public function scheduleOffsetMinutes(): int
     {
-        $zone = new DateTimeZone(self::SCHEDULE_TZ);
-
-        return intdiv($zone->getOffset(new DateTimeImmutable('now', new DateTimeZone('UTC'))), 60);
+        return 0;
     }
 
     /**
@@ -437,7 +430,7 @@ class MaintenanceScheduleService
             $row->set('param', self::PARAM);
             $row->set(
                 'description',
-                'Times of day (Brazil time) the daily maintenance runs. Managed under Admin > Maintenance.'
+                'Times of day (UTC) the daily maintenance runs. Managed under Admin > Maintenance.'
             );
         }
 
@@ -448,7 +441,7 @@ class MaintenanceScheduleService
     /**
      * The crontab lines this page owns.
      *
-     * @param array<string> $times Times in Brazil time.
+     * @param array<string> $times Times in UTC.
      * @param int|null $serverOffsetMinutes When given, write the entries in the
      *   server's local time instead of declaring `CRON_TZ=UTC`.
      * @return array<string>
@@ -474,9 +467,7 @@ class MaintenanceScheduleService
             [$hour, $minute] = array_map('intval', explode(':', $when));
 
             $lines[] = sprintf(
-                '# %s %s = %s UTC%s',
-                $time,
-                self::SCHEDULE_TZ,
+                '# %s UTC%s',
                 $utc,
                 $useCronTz ? '' : sprintf(' = %s server local time', $when)
             );
@@ -494,10 +485,8 @@ class MaintenanceScheduleService
             );
 
             $lines[] = sprintf(
-                '# Database backup at the %s UTC game reset (%s %s)%s',
+                '# Database backup at the %s UTC game reset%s',
                 $utc,
-                $this->fromUtc($utc),
-                self::SCHEDULE_TZ,
                 $useCronTz ? '' : sprintf(' = %s server local time', $when)
             );
             $lines[] = sprintf('%d %d * * * %s', $minute, $hour, $backupCommand);
@@ -699,7 +688,7 @@ class MaintenanceScheduleService
     }
 
     /**
-     * Brazil-time times read back out of installed cron entries.
+     * Times in UTC read back out of installed cron entries.
      *
      * The crontab is the authority on what is scheduled, so the page shows what
      * is in it rather than what was last chosen here — the two differ whenever
@@ -725,15 +714,15 @@ class MaintenanceScheduleService
             $written = sprintf('%02d:%02d', (int)$match[2], (int)$match[1]);
 
             if (strcasecmp($timezone, 'UTC') === 0) {
-                $times[] = $this->fromUtc($written);
+                $times[] = $written;
                 continue;
             }
             if ($timezone !== 'server') {
-                $times[] = $this->shiftZone($written, $timezone, self::SCHEDULE_TZ);
+                $times[] = $this->shiftZone($written, $timezone, 'UTC');
                 continue;
             }
             if ($offset !== null) {
-                $times[] = $this->fromUtc($this->shiftMinutes($written, -$offset));
+                $times[] = $this->shiftMinutes($written, -$offset);
             }
         }
 

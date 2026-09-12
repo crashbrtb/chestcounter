@@ -77,7 +77,7 @@ class ConfigControllerMaintenanceTest extends TestCase
      *
      * @return void
      */
-    public function testPageOffersTheSuggestedScheduleInBothClocks(): void
+    public function testPageOffersTheSuggestedScheduleInUtc(): void
     {
         $this->signIn(1);
 
@@ -85,12 +85,12 @@ class ConfigControllerMaintenanceTest extends TestCase
 
         $this->assertResponseOk();
 
-        // Two a day, at the suggested times, with the count named as suggested.
-        $this->assertResponseContains('value="14:15"');
-        $this->assertResponseContains('value="02:15"');
+        // Two a day, at the suggested times in UTC, with the count named as suggested.
+        $this->assertResponseContains('value="17:15"');
+        $this->assertResponseContains('value="05:15"');
         $this->assertResponseContains('times a day (suggested)');
 
-        // The block to paste is in UTC, whichever clock the times were chosen on.
+        // The block to paste is in UTC.
         $this->assertResponseContains('CRON_TZ=UTC');
         $this->assertResponseContains('15 17 * * *');
         $this->assertResponseContains('15 5 * * *');
@@ -316,7 +316,7 @@ class ConfigControllerMaintenanceTest extends TestCase
         $this->assertResponseContains('Instalar no crontab');
         $this->assertResponseContains('Backup do banco de dados');
         $this->assertResponseContains('Quantas vezes ao dia');
-        $this->assertResponseContains('horário de Brasília');
+        $this->assertResponseContains('Execução 1 (UTC)');
     }
 
     // ─────────────────────────────────────────────────────────────────────

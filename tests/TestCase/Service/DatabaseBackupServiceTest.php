@@ -347,6 +347,119 @@ class DatabaseBackupServiceTest extends TestCase
         $this->assertSame('1.5 MB', $this->backup->humanBytes(1572864));
     }
 
+    /**
+     * Test that clan_acronym in config is reflected in the backup filename prefix.
+     *
+     * @return void
+     */
+    public function testFilePrefixIncludesClanAcronymWhenConfigured(): void
+    {
+        $table = $this->fetchTable('Config');
+        $row = $table->newEmptyEntity();
+        $row->set('param', DatabaseBackupService::PARAM_CLAN_ACRONYM);
+        $row->set('value', 'STF');
+        $row->set('description', 'Clan acronym');
+        $table->saveOrFail($row);
+
+        $backup = new DatabaseBackupService();
+        $this->assertSame('STF', $backup->clanAcronym());
+        $this->assertStringStartsWith('backup_STF_', $backup->filePrefix());
+
+        $settings = $backup->settings();
+        $this->assertSame('STF', $settings['clanAcronym']);
+        $this->assertSame($backup->filePrefix(), $settings['filePrefix']);
+    }
+
+    /**
+     * Test that special characters and whitespace in clan_acronym are sanitized
+     * so they remain safe for filenames and globbing.
+     *
+     * @return void
+     */
+    public function testFilePrefixSanitizesSpecialCharactersInClanAcronym(): void
+    {
+        $table = $this->fetchTable('Config');
+        $row = $table->newEmptyEntity();
+        $row->set('param', DatabaseBackupService::PARAM_CLAN_ACRONYM);
+        $row->set('value', '[~A-B C~]');
+        $row->set('description', 'Clan acronym with brackets and spaces');
+        $table->saveOrFail($row);
+
+        $backup = new DatabaseBackupService();
+        $this->assertSame('[~A-B C~]', $backup->clanAcronym());
+        $this->assertStringStartsWith('backup_A-B_C_', $backup->filePrefix());
+    }
+
+    /**
+     * Test that two sites sharing the same folder do not conflict:
+     * each site lists and prunes only its own clan's dumps.
+     *
+     * @return void
+     */
+    public function testTwoSitesSharingFolderDoNotConflict(): void
+    {
+        $table = $this->fetchTable('Config');
+
+        // Configure this site as clan 'ABC'
+        $row = $table->find()->where(['param' => DatabaseBackupService::PARAM_CLAN_ACRONYM])->first()
+            ?? $table->newEmptyEntity();
+        $row->set('param', DatabaseBackupService::PARAM_CLAN_ACRONYM);
+        $row->set('value', 'ABC');
+        $row->set('description', 'Site 1 clan');
+        $table->saveOrFail($row);
+
+        $backupSite1 = new DatabaseBackupService();
+        $prefixSite1 = $backupSite1->filePrefix();
+
+        // Site 2 has clan 'XYZ'
+        $row->set('value', 'XYZ');
+        $table->saveOrFail($row);
+
+        $backupSite2 = new DatabaseBackupService();
+        $prefixSite2 = $backupSite2->filePrefix();
+
+        // Ensure prefixes are distinct
+        $this->assertNotSame($prefixSite1, $prefixSite2);
+        $this->assertStringStartsWith('backup_ABC_', $prefixSite1);
+        $this->assertStringStartsWith('backup_XYZ_', $prefixSite2);
+
+        // Configure backup folder and 7 days retention
+        $backupSite1->save([
+            'enabled' => '1',
+            'directory' => $this->folder,
+            'retention_days' => '7',
+        ]);
+
+        // Reset config back to Site 1 (ABC)
+        $row->set('value', 'ABC');
+        $table->saveOrFail($row);
+        $site1 = new DatabaseBackupService();
+
+        // Create expired and fresh backups for Site 1
+        $site1Old = $this->write($prefixSite1 . '2026-01-01_17-00-00.sql.gz', time() - 10 * 86400);
+        $site1Fresh = $this->write($prefixSite1 . '2026-09-10_17-00-00.sql.gz', time() - 86400);
+
+        // Create expired and fresh backups for Site 2 in the same folder
+        $site2Old = $this->write($prefixSite2 . '2026-01-01_17-00-00.sql.gz', time() - 10 * 86400);
+        $site2Fresh = $this->write($prefixSite2 . '2026-09-10_17-00-00.sql.gz', time() - 86400);
+
+        // Site 1 only sees its own backups
+        $site1Backups = $site1->backups();
+        $this->assertCount(2, $site1Backups);
+        $this->assertSame(basename($site1Fresh), $site1Backups[0]['name']);
+        $this->assertSame(basename($site1Old), $site1Backups[1]['name']);
+
+        // Site 1 prunes: only its own expired dump should be deleted
+        $removed = $site1->prune();
+        $this->assertSame([basename($site1Old)], $removed);
+
+        $this->assertFileDoesNotExist($site1Old);
+        $this->assertFileExists($site1Fresh);
+        // Site 2's files must remain completely untouched
+        $this->assertFileExists($site2Old);
+        $this->assertFileExists($site2Fresh);
+    }
+
     // ─────────────────────────────────────────────────────────────────────
 
     /**

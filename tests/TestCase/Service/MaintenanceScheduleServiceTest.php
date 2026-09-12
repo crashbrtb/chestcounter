@@ -50,20 +50,17 @@ class MaintenanceScheduleServiceTest extends TestCase
     }
 
     /**
-     * Brazil has been on UTC-3 all year round since 2019, so the suggested times
-     * land three hours later in UTC. If daylight saving ever comes back this is
-     * the test that should fail first.
+     * All times are in UTC, so the offset is 0 and toUtc/fromUtc return the time as-is.
      *
      * @return void
      */
-    public function testSuggestedTimesConvertToUtc(): void
+    public function testSuggestedTimesAreInUtc(): void
     {
-        $this->assertSame(-180, $this->schedule->scheduleOffsetMinutes());
-        $this->assertSame('17:15', $this->schedule->toUtc('14:15'));
-        $this->assertSame('05:15', $this->schedule->toUtc('02:15'));
-        // Crossing midnight in each direction.
-        $this->assertSame('02:30', $this->schedule->toUtc('23:30'));
-        $this->assertSame('21:00', $this->schedule->fromUtc('00:00'));
+        $this->assertSame(0, $this->schedule->scheduleOffsetMinutes());
+        $this->assertSame('17:15', $this->schedule->toUtc('17:15'));
+        $this->assertSame('05:15', $this->schedule->toUtc('05:15'));
+        $this->assertSame('02:30', $this->schedule->toUtc('02:30'));
+        $this->assertSame('21:00', $this->schedule->fromUtc('21:00'));
     }
 
     /**
@@ -157,18 +154,18 @@ class MaintenanceScheduleServiceTest extends TestCase
      */
     public function testBlockIsWrittenInUtcBetweenMarkers(): void
     {
-        $block = $this->schedule->blockFor(['14:15', '02:15']);
+        $block = $this->schedule->blockFor(['17:15', '05:15']);
         $lines = explode("\n", $block);
 
         $this->assertSame(MaintenanceScheduleService::BEGIN, $lines[0]);
         $this->assertSame(MaintenanceScheduleService::END, (string)end($lines));
         $this->assertStringContainsString('CRON_TZ=UTC', $block);
 
-        // The schedule fields are UTC, and the Brazil time they came from is
-        // spelled out in a comment so `crontab -l` is readable on its own.
+        // The schedule fields are UTC.
         $this->assertMatchesRegularExpression('/^15 5 \* \* \* /m', $block);
         $this->assertMatchesRegularExpression('/^15 17 \* \* \* /m', $block);
-        $this->assertStringContainsString('# 02:15 America/Sao_Paulo = 05:15 UTC', $block);
+        $this->assertStringContainsString('# 05:15 UTC', $block);
+        $this->assertStringContainsString('# 17:15 UTC', $block);
         $this->assertStringContainsString('bin/cake.php daily_maintenance', $block);
         $this->assertStringContainsString('logs/maintenance_cron.log', $block);
     }
@@ -204,7 +201,7 @@ class MaintenanceScheduleServiceTest extends TestCase
     {
         $this->enableBackup();
         $schedule = new MaintenanceScheduleService();
-        $crontab = explode("\n", $schedule->blockFor(['02:15', '14:15']));
+        $crontab = explode("\n", $schedule->blockFor(['05:15', '17:15']));
 
         $reflected = new ReflectionMethod($schedule, 'managedBlock');
         $reflected->setAccessible(true);
@@ -217,7 +214,7 @@ class MaintenanceScheduleServiceTest extends TestCase
         $times = new ReflectionMethod($schedule, 'timesFromEntries');
         $times->setAccessible(true);
         $this->assertSame(
-            ['02:15', '14:15'],
+            ['05:15', '17:15'],
             $times->invokeArgs($schedule, [$block['maintenance'], $block['timezone']])
         );
     }
@@ -227,11 +224,11 @@ class MaintenanceScheduleServiceTest extends TestCase
      *
      * @return void
      */
-    public function testInstalledBlockIsReadBackAsBrazilTimes(): void
+    public function testInstalledBlockIsReadBackAsUtcTimes(): void
     {
         $crontab = array_merge(
             ['@reboot /usr/local/bin/warm-cache'],
-            explode("\n", $this->schedule->blockFor(['14:15', '02:15']))
+            explode("\n", $this->schedule->blockFor(['17:15', '05:15']))
         );
 
         $block = $this->invoke('managedBlock', [$crontab]);
@@ -239,13 +236,13 @@ class MaintenanceScheduleServiceTest extends TestCase
         $this->assertSame('UTC', $block['timezone']);
         $this->assertCount(2, $block['entries']);
         $this->assertSame(
-            ['02:15', '14:15'],
+            ['05:15', '17:15'],
             $this->invoke('timesFromEntries', [$block['entries'], $block['timezone']])
         );
     }
 
     /**
-     * Test that a block written in a named timezone is still understood.
+     * Test that a block written in a named timezone is still understood and converted to UTC.
      *
      * Only this service writes `CRON_TZ=UTC`, but an administrator who edited
      * the block by hand may well have put their own zone there.
@@ -255,10 +252,10 @@ class MaintenanceScheduleServiceTest extends TestCase
     public function testEntriesInAnotherTimezoneAreConverted(): void
     {
         $times = $this->invoke('timesFromEntries', [['15 18 * * * cd /srv && php bin/cake.php daily_maintenance'], 'UTC']);
-        $this->assertSame(['15:15'], $times);
+        $this->assertSame(['18:15'], $times);
 
-        $sameClock = $this->invoke('timesFromEntries', [['15 14 * * * cd /srv && php bin/cake.php daily_maintenance'], 'America/Sao_Paulo']);
-        $this->assertSame(['14:15'], $sameClock);
+        $fromSaoPaulo = $this->invoke('timesFromEntries', [['15 14 * * * cd /srv && php bin/cake.php daily_maintenance'], 'America/Sao_Paulo']);
+        $this->assertSame(['17:15'], $fromSaoPaulo);
     }
 
     /**
@@ -309,7 +306,7 @@ class MaintenanceScheduleServiceTest extends TestCase
         $byHand = '0 3 * * * cd /var/www/chestcounter && php bin/cake.php daily_maintenance';
         $crontab = array_merge(
             [$byHand, '# 0 5 * * * php bin/cake.php daily_maintenance'],
-            explode("\n", $this->schedule->blockFor(['02:15']))
+            explode("\n", $this->schedule->blockFor(['05:15']))
         );
 
         // Ours is inside the markers, so only the hand-added line is listed, and
