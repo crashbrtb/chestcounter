@@ -263,6 +263,74 @@ class IncompleteChestsController extends AppController
     }
 
     /**
+     * Bulk unresolved method - marks selected (or all pending) chests as not recoverable.
+     *
+     * @return \Cake\Http\Response|null Redirects.
+     */
+    public function bulkUnresolved()
+    {
+        $this->requireAdmin();
+        $this->request->allowMethod(['post']);
+
+        $status = (string)$this->request->getData('status', $this->request->getQuery('status', 'pending'));
+        $redirectUrl = ['action' => 'index', '?' => ['status' => $status]];
+
+        $markAllPending = (bool)$this->request->getData('mark_all_pending');
+        $now = new DateTime();
+        $userId = $this->currentUserId();
+
+        if ($markAllPending) {
+            $count = $this->IncompleteChests->updateAll(
+                [
+                    'status' => IncompleteChest::STATUS_UNRESOLVED,
+                    'reviewed_by' => $userId,
+                    'reviewed_at' => $now->format('Y-m-d H:i:s'),
+                ],
+                [
+                    'status' => IncompleteChest::STATUS_PENDING,
+                ]
+            );
+
+            if ($count > 0) {
+                $this->Flash->success(__('{0} pending chest(s) marked as not recoverable.', $count));
+            } else {
+                $this->Flash->info(__('No pending chests were found to update.'));
+            }
+
+            return $this->redirect($redirectUrl);
+        }
+
+        $ids = (array)$this->request->getData('ids');
+        $ids = array_values(array_filter(array_map('intval', $ids)));
+
+        if (empty($ids)) {
+            $this->Flash->warning(__('No chests selected.'));
+
+            return $this->redirect($redirectUrl);
+        }
+
+        $count = $this->IncompleteChests->updateAll(
+            [
+                'status' => IncompleteChest::STATUS_UNRESOLVED,
+                'reviewed_by' => $userId,
+                'reviewed_at' => $now->format('Y-m-d H:i:s'),
+            ],
+            [
+                'id IN' => $ids,
+                'status' => IncompleteChest::STATUS_PENDING,
+            ]
+        );
+
+        if ($count > 0) {
+            $this->Flash->success(__('{0} chest(s) marked as not recoverable.', $count));
+        } else {
+            $this->Flash->info(__('No pending chests were updated.'));
+        }
+
+        return $this->redirect($redirectUrl);
+    }
+
+    /**
      * Reopen method - puts a reviewed chest back in the queue.
      *
      * For a decision made in error. A chest that was corrected keeps its
