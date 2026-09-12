@@ -4454,3 +4454,39 @@ msgstr ""
 #: ./templates/TroopCalculator/index.php:354
 msgid "Only one band is for hire at a time, and it follows your best guardsmen. Set it here if the game offers you a different one."
 msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:6
+msgid "Scoreboard"
+msgstr "Marcador"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:7
+msgid "Goals"
+msgstr "Objetivos"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:71
+msgid "Deposit"
+msgstr "Depósito"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:72
+msgid "Withdraw"
+msgstr "Retirar"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:73
+msgid "Transfer"
+msgstr "Transferencia"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:74
+msgid "Statement"
+msgstr "Extracto"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:112
+msgid "Bank Approvals"
+msgstr "Aprobaciones del Banco"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:153
+msgid "Configs"
+msgstr "Configuraciones"
+
+#: ./src/Controller/TroopCalculatorController.php:47
+msgid "Troop Calculator is currently disabled."
+msgstr "La calculadora de tropas está desactivada actualmente."

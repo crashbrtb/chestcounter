@@ -4454,3 +4454,39 @@ msgstr ""
 #: ./templates/TroopCalculator/index.php:354
 msgid "Only one band is for hire at a time, and it follows your best guardsmen. Set it here if the game offers you a different one."
 msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:6
+msgid "Scoreboard"
+msgstr "スコアボード"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:7
+msgid "Goals"
+msgstr "目標"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:71
+msgid "Deposit"
+msgstr "預金"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:72
+msgid "Withdraw"
+msgstr "引き出し"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:73
+msgid "Transfer"
+msgstr "送金"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:74
+msgid "Statement"
+msgstr "明細書"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:112
+msgid "Bank Approvals"
+msgstr "銀行の承認"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:153
+msgid "Configs"
+msgstr "設定"
+
+#: ./src/Controller/TroopCalculatorController.php:47
+msgid "Troop Calculator is currently disabled."
+msgstr "部隊計算機は現在無効になっています。"

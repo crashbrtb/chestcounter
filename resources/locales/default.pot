@@ -4462,3 +4462,39 @@ msgstr ""
 msgid "New"
 msgstr ""
 
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:6
+msgid "Scoreboard"
+msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:7
+msgid "Goals"
+msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:71
+msgid "Deposit"
+msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:72
+msgid "Withdraw"
+msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:73
+msgid "Transfer"
+msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:74
+msgid "Statement"
+msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:112
+msgid "Bank Approvals"
+msgstr ""
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:153
+msgid "Configs"
+msgstr ""
+
+#: ./src/Controller/TroopCalculatorController.php:47
+msgid "Troop Calculator is currently disabled."
+msgstr ""

@@ -7,6 +7,7 @@ use App\Model\Entity\Troop;
 use App\Service\Stacker\StackRequest;
 use App\Service\Stacker\StackSolver;
 use Cake\Event\EventInterface;
+use Cake\Http\Exception\NotFoundException;
 
 /**
  * TroopCalculator Controller
@@ -34,6 +35,18 @@ class TroopCalculatorController extends AppController
     ];
 
     /**
+     * Initialization hook method.
+     *
+     * @return void
+     */
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        $this->Authentication->allowUnauthenticated(['index', 'reset']);
+    }
+
+    /**
      * beforeFilter callback.
      *
      * @param \Cake\Event\EventInterface $event An Event instance.
@@ -42,6 +55,13 @@ class TroopCalculatorController extends AppController
     public function beforeFilter(EventInterface $event): void
     {
         parent::beforeFilter($event);
+
+        $calculatorConfig = $this->fetchTable('Config')->find()
+            ->where(['param' => 'calculator_function'])
+            ->first();
+        if ($calculatorConfig && (int)$calculatorConfig->value === 0) {
+            throw new NotFoundException(__('Troop Calculator is currently disabled.'));
+        }
 
         $this->viewBuilder()->setHelpers(['Html', 'Form', 'Paginator', 'Breadcrumbs']);
     }

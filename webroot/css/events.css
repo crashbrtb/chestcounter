@@ -23,6 +23,8 @@
     line-height: 0;
     box-shadow: 0 2px 10px rgba(79, 70, 229, 0.16);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
+    margin: 0;
+    vertical-align: middle;
 }
 
 .event-badge img {

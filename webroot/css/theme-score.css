@@ -184,6 +184,10 @@ h1.page-title,
     margin-bottom: 16px;
 }
 
+.goals-bar .goal-pill {
+    margin-bottom: 0;
+}
+
 .breadcrumb {
     background: transparent !important;
     padding: 4px 0 !important;
