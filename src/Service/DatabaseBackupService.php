@@ -732,11 +732,11 @@ class DatabaseBackupService
             // --defaults-extra-file has to come first, before any other option.
             $command = sprintf(
                 '%s --defaults-extra-file=%s %s %s > %s',
-                escapeshellarg($binary),
-                escapeshellarg($defaults),
+                self::escapeArg($binary),
+                self::escapeArg($defaults),
                 implode(' ', $flags),
-                escapeshellarg($database),
-                escapeshellarg($target)
+                self::escapeArg($database),
+                self::escapeArg($target)
             );
 
             @exec($command . ' 2>&1', $output, $code);
@@ -811,7 +811,7 @@ class DatabaseBackupService
 
         $output = [];
         $code = 0;
-        @exec('gzip ' . escapeshellarg($file) . ' 2>&1', $output, $code);
+        @exec('gzip ' . self::escapeArg($file) . ' 2>&1', $output, $code);
 
         if ($code !== 0 || !is_file($target)) {
             throw new BackupException(__(
@@ -1006,5 +1006,18 @@ class DatabaseBackupService
         }
 
         return is_string($value) && in_array(strtolower(trim($value)), ['1', 'true', 'yes', 'on'], true);
+    }
+
+    /**
+     * Escape an argument for safe use in a shell command line.
+     *
+     * Fallback when escapeshellarg() is disabled in php.ini.
+     *
+     * @param string $arg The argument to escape.
+     * @return string
+     */
+    public static function escapeArg(string $arg): string
+    {
+        return MaintenanceScheduleService::escapeArg($arg);
     }
 }

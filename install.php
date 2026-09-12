@@ -118,6 +118,25 @@ function confirm(string $question, bool $default = true): bool
 }
 
 /**
+ * Safely escape a shell argument, even if escapeshellarg() is disabled in php.ini.
+ */
+function escapeShellArgSafe(string $arg): string
+{
+    if (function_exists('escapeshellarg')) {
+        $disabled = array_map('trim', explode(',', (string)ini_get('disable_functions')));
+        if (!in_array('escapeshellarg', $disabled, true)) {
+            return escapeshellarg($arg);
+        }
+    }
+
+    if (DIRECTORY_SEPARATOR === '\\') {
+        return '"' . str_replace(['"', '%'], ' ', $arg) . '"';
+    }
+
+    return "'" . str_replace("'", "'\\''", $arg) . "'";
+}
+
+/**
  * Check if any shell execution function is available.
  */
 function canRunShell(): bool
@@ -323,7 +342,7 @@ function installComposerDependencies(): void
 
                 $localPhar = ROOT . DIRECTORY_SEPARATOR . 'composer.phar';
                 if (file_exists($localPhar)) {
-                    array_unshift($candidates, 'php ' . escapeshellarg($localPhar));
+                    array_unshift($candidates, 'php ' . escapeShellArgSafe($localPhar));
                 }
 
                 foreach ($candidates as $cmd) {
@@ -336,7 +355,7 @@ function installComposerDependencies(): void
 
                 if ($composerCmd !== null) {
                     printInfo("Using: {$composerCmd}");
-                    $installCmd = $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeshellarg(ROOT);
+                    $installCmd = $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeShellArgSafe(ROOT);
                     $result = runCommand($installCmd);
 
                     if ($result !== null && $result['exitCode'] === 0) {
@@ -344,7 +363,7 @@ function installComposerDependencies(): void
                     } else {
                         // Try with disable_functions workaround
                         printWarning("Standard install failed, trying with disable_functions workaround...");
-                        $installCmd = 'php -d disable_functions="" ' . $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeshellarg(ROOT);
+                        $installCmd = 'php -d disable_functions="" ' . $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeShellArgSafe(ROOT);
                         $result = runCommand($installCmd);
 
                         if ($result !== null && $result['exitCode'] === 0) {
@@ -376,7 +395,7 @@ function installComposerDependencies(): void
 
     $localPhar = ROOT . DIRECTORY_SEPARATOR . 'composer.phar';
     if (file_exists($localPhar)) {
-        array_unshift($candidates, 'php ' . escapeshellarg($localPhar));
+        array_unshift($candidates, 'php ' . escapeShellArgSafe($localPhar));
     }
 
     foreach ($candidates as $cmd) {
@@ -402,11 +421,11 @@ function installComposerDependencies(): void
         }
 
         file_put_contents($installerPath, $installer);
-        $result = runCommand('php ' . escapeshellarg($installerPath) . ' --install-dir=' . escapeshellarg(ROOT) . ' --filename=composer.phar');
+        $result = runCommand('php ' . escapeShellArgSafe($installerPath) . ' --install-dir=' . escapeShellArgSafe(ROOT) . ' --filename=composer.phar');
         @unlink($installerPath);
 
         if ($result !== null && file_exists($localPhar)) {
-            $composerCmd = 'php ' . escapeshellarg($localPhar);
+            $composerCmd = 'php ' . escapeShellArgSafe($localPhar);
             printSuccess("Composer downloaded successfully");
         } else {
             printError("Failed to install Composer.");
@@ -418,13 +437,13 @@ function installComposerDependencies(): void
     printInfo("Installing dependencies (this may take a few minutes)...");
     echo PHP_EOL;
 
-    $installCmd = $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeshellarg(ROOT);
+    $installCmd = $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeShellArgSafe(ROOT);
     $result = runCommand($installCmd);
 
     if ($result === null || $result['exitCode'] !== 0) {
         // Try with disable_functions workaround
         printWarning("Standard install failed, trying with disable_functions workaround...");
-        $installCmd = 'php -d disable_functions="" ' . $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeshellarg(ROOT);
+        $installCmd = 'php -d disable_functions="" ' . $composerCmd . ' install --no-dev --optimize-autoloader --no-interaction --working-dir=' . escapeShellArgSafe(ROOT);
         $result = runCommand($installCmd);
 
         if ($result === null || $result['exitCode'] !== 0) {
@@ -630,7 +649,7 @@ function runMigrations(array $dbConfig): void
 
     // First try via shell
     if (canRunShell()) {
-        $statusResult = runCommand('php ' . escapeshellarg(CAKE_BIN) . ' migrations status');
+        $statusResult = runCommand('php ' . escapeShellArgSafe(CAKE_BIN) . ' migrations status');
 
         if ($statusResult !== null && $statusResult['exitCode'] === 0) {
             // Check if migrations are already applied
@@ -640,7 +659,7 @@ function runMigrations(array $dbConfig): void
             }
 
             printInfo("Creating database tables...");
-            $result = runCommand('php ' . escapeshellarg(CAKE_BIN) . ' migrations migrate --no-interaction');
+            $result = runCommand('php ' . escapeShellArgSafe(CAKE_BIN) . ' migrations migrate --no-interaction');
 
             if ($result !== null && $result['exitCode'] === 0) {
                 printSuccess("All tables created successfully (15 tables)");
@@ -654,7 +673,7 @@ function runMigrations(array $dbConfig): void
                 || strpos($result['output'], 'table or view already exists') !== false
             )) {
                 printWarning("Tables already exist, marking migration as applied...");
-                $markResult = runCommand('php ' . escapeshellarg(CAKE_BIN) . ' migrations mark_migrated 20260822220000');
+                $markResult = runCommand('php ' . escapeShellArgSafe(CAKE_BIN) . ' migrations mark_migrated 20260822220000');
                 if ($markResult !== null && $markResult['exitCode'] === 0) {
                     printSuccess("Migration marked as applied");
                     return;
@@ -986,7 +1005,7 @@ function runSeeds(array $dbConfig): void
     // First try via shell
     if (canRunShell()) {
         printInfo("Inserting roles, configuration, and chest types...");
-        $result = runCommand('php ' . escapeshellarg(CAKE_BIN) . ' migrations seed --no-interaction');
+        $result = runCommand('php ' . escapeShellArgSafe(CAKE_BIN) . ' migrations seed --no-interaction');
 
         if ($result !== null && $result['exitCode'] === 0) {
             printSuccess("Initial data inserted successfully");
@@ -1166,12 +1185,12 @@ function createAdminUser(array $dbConfig): void
 
     // First try via shell (uses CakePHP's password hasher)
     if (canRunShell()) {
-        $escapedName = escapeshellarg($name);
-        $escapedEmail = escapeshellarg($email);
-        $escapedPassword = escapeshellarg($password);
+        $escapedName = escapeShellArgSafe($name);
+        $escapedEmail = escapeShellArgSafe($email);
+        $escapedPassword = escapeShellArgSafe($password);
 
         $result = runCommand(
-            'php ' . escapeshellarg(CAKE_BIN) .
+            'php ' . escapeShellArgSafe(CAKE_BIN) .
             " create_admin --name {$escapedName} --email {$escapedEmail} --password {$escapedPassword}"
         );
 
