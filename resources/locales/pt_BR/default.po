@@ -4012,8 +4012,8 @@ msgid "The maintenance entries were removed from the crontab."
 msgstr "As entradas de manutenção foram removidas do crontab."
 
 #: ./src/Controller/ConfigController.php:177
-msgid "Scheduled: {0} Brazil time ({1} UTC)."
-msgstr "Agendado: {0} horário de Brasília ({1} UTC)."
+msgid "Scheduled: {0} UTC."
+msgstr "Agendado: {0} UTC."
 
 #: ./src/Controller/ConfigController.php:242
 msgid "The settings were saved, but the crontab could not be rewritten: {0}"
@@ -4219,8 +4219,8 @@ msgid "Nothing is running the maintenance. Finished cycles are not being archive
 msgstr "Nada está executando a manutenção. Ciclos encerrados não estão sendo arquivados e baús antigos não estão sendo limpos. Instale abaixo."
 
 #: ./templates/Config/maintenance.php:125
-msgid "Brazil time"
-msgstr "Horário de Brasília"
+msgid "Scheduled times (UTC)"
+msgstr "Horários agendados (UTC)"
 
 #: ./templates/Config/maintenance.php:126
 msgid "UTC"
@@ -4239,8 +4239,8 @@ msgid "The cron log has never been written, so the task has probably never run h
 msgstr "O log do cron nunca foi gravado, portanto a tarefa provavelmente nunca rodou aqui."
 
 #: ./templates/Config/maintenance.php:157
-msgid "Brazil is {0} right now; {1} is written to the crontab as {2} UTC."
-msgstr "O horário de Brasília é {0} no momento; {1} é gravado no crontab como {2} UTC."
+msgid "All maintenance schedules and tasks follow UTC (Coordinated Universal Time)."
+msgstr "Todos os agendamentos e tarefas de manutenção seguem o horário UTC (Tempo Universal Coordenado)."
 
 #: ./templates/Config/maintenance.php:167
 msgid "The server clock is {0}."
@@ -4263,8 +4263,8 @@ msgid "Schedule"
 msgstr "Agendamento"
 
 #: ./templates/Config/maintenance.php:200
-msgid "Pick the times on the Brazil clock. They are converted to UTC before being written, so the schedule holds whatever timezone the server keeps."
-msgstr "Escolha os horários no relógio de Brasília. Eles são convertidos para UTC antes de serem gravados, mantendo o agendamento independente do fuso horário do servidor."
+msgid "Pick the times in UTC. The schedule holds whatever timezone the server keeps."
+msgstr "Escolha os horários em UTC. O agendamento mantém a execução independente do fuso horário do servidor."
 
 #: ./templates/Config/maintenance.php:206
 msgid "How many times a day"
@@ -4283,12 +4283,12 @@ msgid "{0} times a day"
 msgstr "{0} vezes ao dia"
 
 #: ./templates/Config/maintenance.php:217
-msgid "Twice a day is the suggestion: {0} and {1} Brazil time, quiet hours either side of the clan's active evening. Changing this fills in suggested times, which you can then edit."
-msgstr "A sugestão é duas vezes ao dia: {0} e {1} no horário de Brasília, períodos mais tranquilos antes e depois da noite ativa do clã. Alterar isso preenche os horários sugeridos, que você pode editar."
+msgid "Twice a day is the suggestion: {0} and {1} UTC, quiet hours spaced across the day. Changing this fills in suggested times, which you can then edit."
+msgstr "A sugestão é duas vezes ao dia: {0} e {1} UTC, horários espaçados ao longo do dia. Alterar isso preenche os horários sugeridos, que você pode editar."
 
 #: ./templates/Config/maintenance.php:230
-msgid "Run {0}"
-msgstr "Execução {0}"
+msgid "Run {0} (UTC)"
+msgstr "Execução {0} (UTC)"
 
 #: ./templates/Config/maintenance.php:240
 msgid "Save schedule"
@@ -4335,8 +4335,8 @@ msgid "Backing up daily"
 msgstr "Backup diário ativo"
 
 #: ./templates/Config/maintenance.php:304
-msgid "Every day at {0} UTC ({1} Brazil time), keeping {2} day(s) of dumps."
-msgstr "Todos os dias às {0} UTC ({1} horário de Brasília), mantendo {2} dia(s) de dumps."
+msgid "Every day at {0} UTC, keeping {1} day(s) of dumps."
+msgstr "Todos os dias às {0} UTC, mantendo {1} dia(s) de dumps."
 
 #: ./templates/Config/maintenance.php:318
 msgid "Saving to"

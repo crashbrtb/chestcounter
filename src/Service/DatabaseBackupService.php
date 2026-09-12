@@ -19,7 +19,9 @@ use Throwable;
  * know how to restore from:
  *
  *  - `mysqldump` of the single application database,
- *  - written as `backup_<database>_<Y-m-d_H-i-s>.sql`, then gzipped,
+ *  - written as `backup_<clan>_<database>_<Y-m-d_H-i-s>.sql` (with the clan
+ *    acronym when configured, to avoid collisions when multiple sites share
+ *    the backup folder), then gzipped,
  *  - every step appended to `backup.log` in the same folder,
  *  - dumps older than the retention period deleted afterwards,
  *  - a dump that failed or came out empty deleted rather than kept, because a
@@ -48,6 +50,11 @@ class DatabaseBackupService
      * `config` row holding how many days of dumps are kept.
      */
     public const PARAM_RETENTION = 'database_backup_retention_days';
+
+    /**
+     * `config` row holding the clan acronym.
+     */
+    public const PARAM_CLAN_ACRONYM = 'clan_acronym';
 
     /**
      * Where dumps go when nobody has said otherwise.
@@ -171,20 +178,43 @@ class DatabaseBackupService
     }
 
     /**
+     * The clan acronym from the configuration.
+     *
+     * @return string
+     */
+    public function clanAcronym(): string
+    {
+        return trim($this->read(self::PARAM_CLAN_ACRONYM, ''));
+    }
+
+    /**
      * What every dump's filename starts with.
      *
-     * The database name goes in the filename, as it did in the script, but it
-     * cannot go in raw: a driver whose "database" is a file path (SQLite, which
-     * the test suite runs on) would ask for a dump inside a folder that does not
-     * exist, and the glob that finds old dumps would never match it.
+     * The clan acronym (when configured) and the database name go into the
+     * prefix so that multiple instances on the same server sharing the backup
+     * directory do not collide.
+     *
+     * Characters that are unsafe for filenames or glob matching are sanitized.
      *
      * @return string
      */
     public function filePrefix(): string
     {
-        $name = (string)preg_replace('/[^A-Za-z0-9_.-]+/', '_', $this->databaseName());
+        $parts = ['backup'];
 
-        return 'backup_' . trim($name, '_') . '_';
+        $acronym = (string)preg_replace('/[^A-Za-z0-9_.-]+/', '_', $this->clanAcronym());
+        $acronym = trim($acronym, '_');
+        if ($acronym !== '') {
+            $parts[] = $acronym;
+        }
+
+        $dbName = (string)preg_replace('/[^A-Za-z0-9_.-]+/', '_', $this->databaseName());
+        $dbName = trim($dbName, '_');
+        if ($dbName !== '' && strcasecmp($dbName, $acronym) !== 0) {
+            $parts[] = $dbName;
+        }
+
+        return implode('_', $parts) . '_';
     }
 
     /**
@@ -213,6 +243,8 @@ class DatabaseBackupService
             'retentionDays' => $this->retentionDays(),
             'utcTime' => self::UTC_TIME,
             'database' => $this->databaseName(),
+            'clanAcronym' => $this->clanAcronym(),
+            'filePrefix' => $this->filePrefix(),
             'exists' => is_dir($resolved),
             'writable' => is_dir($resolved) && is_writable($resolved),
             'backups' => $backups,
@@ -351,9 +383,14 @@ class DatabaseBackupService
             $this->ensureDirectory($directory);
         }
 
+        $acronym = $this->clanAcronym();
         $log = $this->logger($directory, $report, $dryRun);
         $log('==========================================');
-        $log(sprintf('Starting database backup: %s', $database));
+        $log(sprintf(
+            'Starting database backup: %s%s',
+            $database,
+            $acronym !== '' ? sprintf(' (clan: %s)', $acronym) : ''
+        ));
 
         $binary = $this->findDumpBinary();
         if ($binary === null) {

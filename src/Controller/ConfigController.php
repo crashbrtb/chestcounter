@@ -173,11 +173,9 @@ class ConfigController extends AppController
                     $this->saveBackupSettings($backup, $schedule);
                 } else {
                     $times = $schedule->install((array)$this->request->getData('times'));
-                    $utc = array_map([$schedule, 'toUtc'], $times);
                     $this->Flash->success(__(
-                        'Scheduled: {0} Brazil time ({1} UTC).',
-                        implode(', ', $times),
-                        implode(', ', $utc)
+                        'Scheduled: {0} UTC.',
+                        implode(', ', $times)
                     ));
                 }
 
@@ -199,7 +197,7 @@ class ConfigController extends AppController
             'manualBlock' => $schedule->blockFor($status['times']),
             'backup' => $backup->settings(),
             'backupService' => $backup,
-            'backupLocalTime' => $schedule->fromUtc(DatabaseBackupService::UTC_TIME),
+            'backupLocalTime' => DatabaseBackupService::UTC_TIME,
             'backupDefaultDir' => DatabaseBackupService::DEFAULT_DIR,
             'backupMinDays' => DatabaseBackupService::MIN_RETENTION_DAYS,
             'backupMaxDays' => DatabaseBackupService::MAX_RETENTION_DAYS,

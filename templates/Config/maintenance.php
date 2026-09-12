@@ -2,10 +2,7 @@
 /**
  * Is the daily maintenance in the server's crontab, and put it there.
  *
- * Times are picked on the Brazil clock and shown beside their UTC equivalent,
- * because the crontab is written in UTC: an administrator comparing this page
- * with `crontab -l` has to be able to see both numbers without doing the
- * arithmetic in their head.
+ * All times are picked and displayed in UTC.
  *
  * @var \App\View\AppView $this
  * @var array<string, mixed> $status
@@ -34,11 +31,8 @@ $this->Breadcrumbs->add([
 
 $this->Html->css('branding', ['block' => 'css']);
 
-$converter = new MaintenanceScheduleService();
 $maxRuns = MaintenanceScheduleService::MAX_RUNS;
 $chosenCount = count($times);
-$offsetMinutes = (int)$status['offsetMinutes'];
-$offsetLabel = sprintf('UTC%+03d:%02d', intdiv($offsetMinutes, 60), abs($offsetMinutes % 60));
 $serverOffset = $status['serverOffsetMinutes'];
 ?>
 <div class="content-page-wrap maintenance-page">
@@ -122,15 +116,13 @@ $serverOffset = $status['serverOffsetMinutes'];
                 <table class="table table-sm mb-0">
                     <thead>
                         <tr>
-                            <th><?= __('Brazil time') ?> <small class="text-muted">(<?= h($scheduleZone) ?>)</small></th>
-                            <th><?= __('UTC') ?></th>
+                            <th><?= __('Scheduled times (UTC)') ?></th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach ($status['installedTimes'] as $time): ?>
                             <tr>
-                                <td><strong><?= h($time) ?></strong></td>
-                                <td><?= h($converter->toUtc($time)) ?></td>
+                                <td><strong><?= h($time) ?></strong> UTC</td>
                             </tr>
                         <?php endforeach; ?>
                     </tbody>
@@ -154,12 +146,7 @@ $serverOffset = $status['serverOffsetMinutes'];
             </li>
             <li>
                 <i class="fas fa-globe"></i>
-                <?= __(
-                    'Brazil is {0} right now; {1} is written to the crontab as {2} UTC.',
-                    $offsetLabel,
-                    $defaultTimes[0] ?? '02:15',
-                    $converter->toUtc($defaultTimes[0] ?? '02:15')
-                ) ?>
+                <?= __('All maintenance schedules and tasks follow UTC (Coordinated Universal Time).') ?>
             </li>
             <?php if ($serverOffset !== null): ?>
                 <li>
@@ -197,8 +184,7 @@ $serverOffset = $status['serverOffsetMinutes'];
         <div class="brand-section-head">
             <h2><i class="fas fa-calendar-check text-primary"></i> <?= __('Schedule') ?></h2>
             <p class="section-hint">
-                <?= __('Pick the times on the Brazil clock. They are converted to UTC before being written, '
-                    . 'so the schedule holds whatever timezone the server keeps.') ?>
+                <?= __('Pick the times in UTC. The schedule holds whatever timezone the server keeps.') ?>
             </p>
         </div>
 
@@ -215,10 +201,10 @@ $serverOffset = $status['serverOffsetMinutes'];
             </select>
             <small class="form-text text-muted">
                 <?= __(
-                    'Twice a day is the suggestion: {0} and {1} Brazil time, quiet hours either side of the '
-                        . 'clan\'s active evening. Changing this fills in suggested times, which you can then edit.',
-                    $defaultTimes[1] ?? '14:15',
-                    $defaultTimes[0] ?? '02:15'
+                    'Twice a day is the suggestion: {0} and {1} UTC, quiet hours spaced across the day. '
+                        . 'Changing this fills in suggested times, which you can then edit.',
+                    $defaultTimes[1] ?? '17:15',
+                    $defaultTimes[0] ?? '05:15'
                 ) ?>
             </small>
         </div>
@@ -227,10 +213,9 @@ $serverOffset = $status['serverOffsetMinutes'];
             <?php for ($i = 0; $i < $maxRuns; $i++): ?>
                 <?php $visible = $i < $chosenCount; ?>
                 <div class="cron-time-row<?= $visible ? '' : ' is-hidden' ?>" data-index="<?= $i ?>">
-                    <label for="cron-time-<?= $i ?>"><?= __('Run {0}', $i + 1) ?></label>
+                    <label for="cron-time-<?= $i ?>"><?= __('Run {0} (UTC)', $i + 1) ?></label>
                     <input type="time" id="cron-time-<?= $i ?>" name="times[]" class="form-control cron-time"
                         value="<?= h($times[$i] ?? '') ?>" <?= $visible ? 'required' : 'disabled' ?>>
-                    <span class="cron-utc" aria-live="polite"></span>
                 </div>
             <?php endfor; ?>
         </div>
@@ -302,9 +287,8 @@ $serverOffset = $status['serverOffsetMinutes'];
                     <strong><?= __('Backing up daily') ?></strong>
                     <p class="mb-0">
                         <?= __(
-                            'Every day at {0} UTC ({1} Brazil time), keeping {2} day(s) of dumps.',
+                            'Every day at {0} UTC, keeping {1} day(s) of dumps.',
                             h($backup['utcTime']),
-                            h($backupLocalTime),
                             (int)$backup['retentionDays']
                         ) ?>
                     </p>
@@ -465,32 +449,10 @@ $serverOffset = $status['serverOffsetMinutes'];
 <?php $this->start('script'); ?>
 <script>
     (function () {
-        // Offset of the Brazil clock from UTC, in minutes, as the timezone
-        // database has it today. UTC = Brazil - offset.
-        var OFFSET = <?= $offsetMinutes ?>;
         var SUGGESTIONS = <?= json_encode($suggestions) ?>;
 
         var runs = document.getElementById('cron-runs');
         var rows = Array.prototype.slice.call(document.querySelectorAll('.cron-time-row'));
-
-        function toUtc(value) {
-            var parts = /^(\d{1,2}):(\d{2})/.exec(value || '');
-            if (!parts) {
-                return '';
-            }
-            var total = (parseInt(parts[1], 10) * 60 + parseInt(parts[2], 10)) - OFFSET;
-            total = ((total % 1440) + 1440) % 1440;
-            var hour = Math.floor(total / 60);
-
-            return (hour < 10 ? '0' : '') + hour + ':' + (total % 60 < 10 ? '0' : '') + (total % 60);
-        }
-
-        function paint(row) {
-            var input = row.querySelector('.cron-time');
-            var label = row.querySelector('.cron-utc');
-            var utc = toUtc(input.value);
-            label.textContent = utc === '' ? '' : <?= json_encode(__('= {0} UTC')) ?>.replace('{0}', utc);
-        }
 
         function show(count) {
             var suggestion = SUGGESTIONS[count] || [];
@@ -503,16 +465,8 @@ $serverOffset = $status['serverOffsetMinutes'];
                 if (visible && suggestion[index]) {
                     input.value = suggestion[index];
                 }
-                paint(row);
             });
         }
-
-        rows.forEach(function (row) {
-            paint(row);
-            row.querySelector('.cron-time').addEventListener('input', function () {
-                paint(row);
-            });
-        });
 
         if (runs) {
             runs.addEventListener('change', function () {
