@@ -1048,8 +1048,9 @@ function runSeedsNative(array $dbConfig): void
             (17, 'withdrawal_fee', '50', 'Fixed withdrawal fee in millions of Silver'),
             (18, 'transfer_fee', '10', 'Fixed transfer fee in millions of Silver'),
             (19, 'caravan_fee', '20', 'Caravan fee percentage for deposits'),
-            (20, 'bank_function', '1', '1 = Bank active / 0 = no Bank')");
-        printSuccess("Inserted 20 config parameters");
+            (20, 'bank_function', '1', '1 = Bank active / 0 = no Bank'),
+            (21, 'calculator_function', '1', '1 = Troop Calculator active / 0 = no Troop Calculator')");
+        printSuccess("Inserted 21 config parameters");
     } else {
         printInfo("Config already exists (skipped)");
     }

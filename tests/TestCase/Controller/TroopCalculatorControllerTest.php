@@ -401,4 +401,45 @@ class TroopCalculatorControllerTest extends TestCase
         $this->assertResponseContains('Purifier II');
         $this->assertResponseNotContains('>Corax II');
     }
+
+    /**
+     * Unauthenticated visitors can access the calculator without login.
+     *
+     * @return void
+     * @uses \App\Controller\TroopCalculatorController::index()
+     */
+    public function testUnauthenticatedUserCanAccessCalculator(): void
+    {
+        // Clear session so the request is made by a guest visitor
+        $this->session([]);
+        $this->get('/calculator');
+
+        $this->assertResponseOk();
+        $this->assertResponseContains('Troop Calculator');
+    }
+
+    /**
+     * When calculator_function config is set to 0, accessing the calculator returns 404.
+     *
+     * @return void
+     * @uses \App\Controller\TroopCalculatorController::index()
+     */
+    public function testDisabledCalculatorReturnsNotFound(): void
+    {
+        $configTable = $this->fetchTable('Config');
+        $row = $configTable->find()->where(['param' => 'calculator_function'])->first();
+        if (!$row) {
+            $row = $configTable->newEntity([
+                'param' => 'calculator_function',
+                'value' => '0',
+                'description' => 'Troop calculator toggle',
+            ]);
+        } else {
+            $row->value = '0';
+        }
+        $configTable->saveOrFail($row);
+
+        $this->get('/calculator');
+        $this->assertResponseCode(404);
+    }
 }

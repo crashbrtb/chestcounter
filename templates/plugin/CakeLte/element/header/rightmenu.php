@@ -33,10 +33,10 @@ if ($isAdmin):
     </a>
     <ul class="dropdown-menu" aria-labelledby="langDropdown">
         <li class="dropdown-submenu dropdown-hover">
-            <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+            <a id="membersDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
                 <?= __('Members') ?>
             </a>
-            <ul aria-labelledby="chestsDropdownMenuLink" class="dropdown-menu border-0 shadow">
+            <ul aria-labelledby="membersDropdownMenuLink" class="dropdown-menu border-0 shadow">
                 <li>
                     <?= $this->Html->link(__('List'), ['controller' => 'Members', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
                 </li>
@@ -49,18 +49,18 @@ if ($isAdmin):
             </ul>
         </li>
         <li class="dropdown-submenu dropdown-hover">
-            <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+            <a id="usersDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
                 <?= __('Users') ?>
             </a>
-            <ul aria-labelledby="chestsDropdownMenuLink" class="dropdown-menu border-0 shadow">
+            <ul aria-labelledby="usersDropdownMenuLink" class="dropdown-menu border-0 shadow">
                 <li>
-                    <?= $this->Html->link('List', ['controller' => 'Users', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                    <?= $this->Html->link(__('List'), ['controller' => 'Users', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
                 </li>
                 <li>
                     <?= $this->Html->link(__('Add'), ['controller' => 'Users', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
                 </li>
                 <li>
-                    <?= $this->Html->link('Roles', ['controller' => 'Roles', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                    <?= $this->Html->link(__('Roles'), ['controller' => 'Roles', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
                 </li>
             </ul>
         </li>
@@ -104,12 +104,12 @@ if ($isAdmin):
         </li>
         <?php if ($bankFunctionEnabled): ?>
         <li class="dropdown-submenu dropdown-hover">
-            <a id="chestsDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+            <a id="bankAdminDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
                 <?= __('Bank') ?>
             </a>
-            <ul aria-labelledby="chestsDropdownMenuLink" class="dropdown-menu border-0 shadow">
+            <ul aria-labelledby="bankAdminDropdownMenuLink" class="dropdown-menu border-0 shadow">
                 <li>
-                    <?= $this->Html->link('Bank Approvals', ['controller' => 'Bank', 'action' => 'approvals'], ['class' => 'dropdown-item']) ?>
+                    <?= $this->Html->link(__('Bank Approvals'), ['controller' => 'Bank', 'action' => 'approvals'], ['class' => 'dropdown-item']) ?>
                 </li>
             </ul>
         </li>
@@ -150,7 +150,7 @@ if ($isAdmin):
             ['class' => 'dropdown-item']
         ) ?>
 
-        <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Configs'), ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
 
     </ul>
 </li>

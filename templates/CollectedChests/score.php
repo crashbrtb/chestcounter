@@ -364,10 +364,21 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         border: 1px solid var(--accent-border);
         color: var(--accent-dark);
         border-radius: 999px;
-        padding: 8px 16px;
+        padding: 0 16px;
+        height: 38px;
+        box-sizing: border-box;
+        line-height: 1;
         font-weight: 600;
         font-size: 0.9rem;
         box-shadow: 0 2px 8px rgba(99, 102, 241, 0.08);
+        margin: 0;
+    }
+
+    .goals-bar .event-badge {
+        margin: 0;
+        height: 38px;
+        display: inline-flex;
+        align-items: center;
     }
 
     .goal-pill i {
@@ -891,9 +902,16 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         .goal-pill {
             flex: 1 1 calc(50% - 4px);
             justify-content: center;
-            padding: 6px 10px;
+            padding: 0 10px;
             font-size: 0.78rem;
             white-space: nowrap;
+            height: 31px;
+            margin: 0;
+        }
+
+        .goals-bar .event-badge {
+            margin: 0;
+            height: 31px;
         }
 
         .score-card {

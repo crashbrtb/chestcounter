@@ -1,10 +1,10 @@
 <li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <a class="nav-link dropdown-toggle" href="#" id="chestsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?= __('Chests') ?>
     </a>
-    <div class="dropdown-menu" aria-labelledby="langDropdown">
-        <?= $this->Html->link('Scoreboard', '/score', ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Goals', ['controller' => 'StandardChests', 'action' => 'weights'], ['class' => 'dropdown-item']) ?>
+    <div class="dropdown-menu" aria-labelledby="chestsDropdown">
+        <?= $this->Html->link(__('Scoreboard'), '/score', ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Goals'), ['controller' => 'StandardChests', 'action' => 'weights'], ['class' => 'dropdown-item']) ?>
     </div>
 </li>
 
@@ -38,7 +38,15 @@ try {
     </div>
 </li>
 
-<?php if ($this->request->getAttribute('identity') !== null): ?>
+<?php
+$configTable = \Cake\ORM\TableRegistry::getTableLocator()->get('Config');
+$calculatorFunctionConfig = $configTable->find()
+    ->where(['param' => 'calculator_function'])
+    ->first();
+$calculatorFunctionEnabled = !$calculatorFunctionConfig || (int)$calculatorFunctionConfig->value === 1;
+?>
+
+<?php if ($calculatorFunctionEnabled): ?>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
         <?= __('Tools') ?>
@@ -54,7 +62,6 @@ try {
 <?php endif; ?>
 
 <?php
-$configTable = \Cake\ORM\TableRegistry::getTableLocator()->get('Config');
 $bankFunctionConfig = $configTable->find()
     ->where(['param' => 'bank_function'])
     ->first();
@@ -67,11 +74,11 @@ $bankFunctionEnabled = $bankFunctionConfig && (int)$bankFunctionConfig->value ==
         <?= __('Bank') ?>
     </a>
     <div class="dropdown-menu" aria-labelledby="bankDropdown">
-        <?= $this->Html->link('Bank', ['controller' => 'Bank', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Deposit', ['controller' => 'Bank', 'action' => 'deposit'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Withdraw', ['controller' => 'Bank', 'action' => 'withdraw'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Transfer', ['controller' => 'Bank', 'action' => 'transfer'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Statement', ['controller' => 'Bank', 'action' => 'statement'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Bank'), ['controller' => 'Bank', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Deposit'), ['controller' => 'Bank', 'action' => 'deposit'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Withdraw'), ['controller' => 'Bank', 'action' => 'withdraw'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Transfer'), ['controller' => 'Bank', 'action' => 'transfer'], ['class' => 'dropdown-item']) ?>
+        <?= $this->Html->link(__('Statement'), ['controller' => 'Bank', 'action' => 'statement'], ['class' => 'dropdown-item']) ?>
     </div>
 </li>
 <?php endif; ?>
