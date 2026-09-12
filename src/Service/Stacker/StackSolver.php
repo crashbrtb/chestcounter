@@ -64,6 +64,32 @@ class StackSolver
     ];
 
     /**
+     * Which mercenary band a player is offered, by their best guardsman tier.
+     *
+     * Mercenaries come in four bands -- 5, 6, 7 and 9 -- and only one is for
+     * hire at a time. The bands do not line up one-to-one with guardsman
+     * levels: everything from tier 6 up is offered band 9, which is why a
+     * tier 8 account sees the same roster as a tier 9 one.
+     *
+     * Tiers 6 to 9 are confirmed in game; the rest come from the catalogue's
+     * own availability data, except tiers 1 and 2, which are inferred as the
+     * only remaining band.
+     *
+     * @var array<int, int>
+     */
+    private const MERC_BAND_BY_GUARDSMEN = [
+        1 => 5,
+        2 => 5,
+        3 => 6,
+        4 => 6,
+        5 => 7,
+        6 => 9,
+        7 => 9,
+        8 => 9,
+        9 => 9,
+    ];
+
+    /**
      * @param list<\App\Model\Entity\Troop> $troops The unit catalogue.
      */
     public function __construct(private readonly array $troops)
@@ -183,10 +209,10 @@ class StackSolver
     private function candidatesFor(string $section, string $pool, StackRequest $request): array
     {
         $excluded = array_flip($request->excludedSlugs);
-        // The mercenary roster on offer depends on the player's best guardsmen:
-        // a tier 9 account is shown the tier 6-9 mercenaries and none of the
-        // lower ones, so planning around units it cannot hire is wasted.
-        $tier = $this->highestGuardsmenTier($request);
+        // Only one mercenary band is for hire at a time, and which one follows
+        // the player's best guardsmen, so planning around a unit from another
+        // band is wasted.
+        $tier = $this->mercTier($request);
 
         $keep = static function (Troop $troop) use ($section, $pool, $excluded, $tier): bool {
             if (isset($excluded[$troop->slug]) || !$troop->enabled || $troop->cost <= 0) {
@@ -204,7 +230,7 @@ class StackSolver
                 return !$troop->is_mercenary;
             }
 
-            return $troop->is_mercenary && $troop->isAvailableAtGuardsmenTier($tier);
+            return $troop->is_mercenary && $troop->isInMercTier($tier);
         };
 
         $eligible = array_filter($this->troops, $keep);
@@ -212,6 +238,41 @@ class StackSolver
         return $section === 'mercenaries'
             ? $this->orderMercenaries($eligible, $request)
             : $this->orderByKillOrder($eligible, $request);
+    }
+
+    /**
+     * Which mercenary band is on offer.
+     *
+     * The player may name the band outright; otherwise it follows their best
+     * guardsmen, through the fixed mapping above.
+     *
+     * @param \App\Service\Stacker\StackRequest $request The request.
+     * @return int|null Null when no band applies, which leaves mercenaries out.
+     */
+    private function mercTier(StackRequest $request): ?int
+    {
+        if ($request->mercTier !== null) {
+            return $request->mercTier;
+        }
+
+        $guardsmen = $this->highestGuardsmenTier($request);
+        if ($guardsmen === null) {
+            return null;
+        }
+
+        $band = self::MERC_BAND_BY_GUARDSMEN[$guardsmen] ?? null;
+        if ($band === null) {
+            return null;
+        }
+
+        // A band the catalogue does not carry is no use to anyone.
+        foreach ($this->troops as $troop) {
+            if ($troop->is_mercenary && $troop->merc_tier === $band) {
+                return $band;
+            }
+        }
+
+        return null;
     }
 
     /**

@@ -1,0 +1,4456 @@
+# it_IT translation of the Chest Counter & Clan Bank application.
+# Game terminology follows Total Battle.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Chest Counter\n"
+"PO-Revision-Date: 2026-09-11 00:00+0000\n"
+"Language: it_IT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ./src/Controller/AppController.php:163
+msgid "You must be logged in to access this page."
+msgstr "Devi accedere per aprire questa pagina."
+
+#: ./src/Controller/AppController.php:167
+msgid "Only administrators can access this page."
+msgstr "Solo gli amministratori possono aprire questa pagina."
+
+#: ./src/Controller/BankController.php:62
+msgid "You must be logged in to access the bank."
+msgstr "Devi accedere per entrare nella banca."
+
+#: ./src/Controller/BankController.php:108
+msgid "You must be logged in to view transaction history."
+msgstr "Devi accedere per vedere lo storico delle transazioni."
+
+#: ./src/Controller/BankController.php:114
+msgid "Only administrators can view transaction history."
+msgstr "Solo gli amministratori possono vedere lo storico delle transazioni."
+
+#: ./src/Controller/BankController.php:123
+#: ./src/Controller/BankController.php:557
+msgid "Member not found."
+msgstr "Membro non trovato."
+
+#: ./src/Controller/BankController.php:149
+msgid "You must be logged in to deposit Silver."
+msgstr "Devi accedere per depositare Argento."
+
+#: ./src/Controller/BankController.php:158
+msgid "You do not have members available for banking operations."
+msgstr "Non hai membri disponibili per le operazioni bancarie."
+
+#: ./src/Controller/BankController.php:181
+#: ./src/Controller/BankController.php:290
+#: ./src/Controller/BankController.php:421
+msgid "Enter a valid integer amount in millions of Silver."
+msgstr "Inserisci un importo intero valido in milioni di Argento."
+
+#: ./src/Controller/BankController.php:187
+#: ./src/Controller/BankController.php:296
+#: ./src/Controller/BankController.php:427
+msgid "Amount must be greater than zero."
+msgstr "L'importo deve essere maggiore di zero."
+
+#: ./src/Controller/BankController.php:198
+msgid "The total fee cannot be greater than the deposit."
+msgstr "La commissione totale non può superare il deposito."
+
+#: ./src/Controller/BankController.php:227
+msgid "Deposit completed successfully."
+msgstr "Deposito completato."
+
+#: ./src/Controller/BankController.php:228
+msgid "Deposit registered and waiting for administrator approval."
+msgstr "Deposito registrato e in attesa dell'approvazione di un amministratore."
+
+#: ./src/Controller/BankController.php:242
+msgid "Unable to register this deposit. Please review the information and try again."
+msgstr "Non è stato possibile registrare questo deposito. Controlla i dati e riprova."
+
+#: ./src/Controller/BankController.php:263
+msgid "You must be logged in to withdraw Silver."
+msgstr "Devi accedere per prelevare Argento."
+
+#: ./src/Controller/BankController.php:304
+msgid "⚠️ INSUFFICIENT BALANCE ⚠️"
+msgstr "⚠️ SALDO INSUFFICIENTE ⚠️"
+
+#: ./src/Controller/BankController.php:305
+msgid "Available balance: {0} $"
+msgstr "Saldo disponibile: {0} $"
+
+#: ./src/Controller/BankController.php:306
+msgid "Withdrawal amount: {0} $"
+msgstr "Importo del prelievo: {0} $"
+
+#: ./src/Controller/BankController.php:307
+msgid "Fee: {0} $"
+msgstr "Commissione: {0} $"
+
+#: ./src/Controller/BankController.php:308
+msgid "Total required: {0} $"
+msgstr "Totale necessario: {0} $"
+
+#: ./src/Controller/BankController.php:309
+msgid "Please reduce the withdrawal amount."
+msgstr "Riduci l'importo del prelievo."
+
+#: ./src/Controller/BankController.php:338
+msgid "Withdrawal completed successfully."
+msgstr "Prelievo completato."
+
+#: ./src/Controller/BankController.php:339
+msgid "Withdrawal registered and waiting for administrator approval."
+msgstr "Prelievo registrato e in attesa dell'approvazione di un amministratore."
+
+#: ./src/Controller/BankController.php:353
+msgid "Unable to register this withdrawal. Please try again."
+msgstr "Non è stato possibile registrare questo prelievo. Riprova."
+
+#: ./src/Controller/BankController.php:373
+msgid "You must be logged in to transfer Silver."
+msgstr "Devi accedere per trasferire Argento."
+
+#: ./src/Controller/BankController.php:381
+msgid "You do not have members available for transfers."
+msgstr "Non hai membri disponibili per i trasferimenti."
+
+#: ./src/Controller/BankController.php:411
+msgid "Destination member not found."
+msgstr "Membro di destinazione non trovato."
+
+#: ./src/Controller/BankController.php:416
+msgid "Source and destination members must be different."
+msgstr "I membri di origine e destinazione devono essere diversi."
+
+#: ./src/Controller/BankController.php:435
+msgid "There is no balance available for transfers."
+msgstr "Non c'è saldo disponibile per i trasferimenti."
+
+#: ./src/Controller/BankController.php:440
+msgid "Insufficient balance for this transfer."
+msgstr "Saldo insufficiente per questo trasferimento."
+
+#: ./src/Controller/BankController.php:469
+msgid "Transfer completed successfully."
+msgstr "Trasferimento completato."
+
+#: ./src/Controller/BankController.php:473
+msgid "Unable to complete this transfer. Please try again."
+msgstr "Non è stato possibile completare questo trasferimento. Riprova."
+
+#: ./src/Controller/BankController.php:491
+msgid "You must be logged in to view statements."
+msgstr "Devi accedere per vedere gli estratti conto."
+
+#: ./src/Controller/BankController.php:498
+msgid "You do not have registered members."
+msgstr "Non hai membri registrati."
+
+#: ./src/Controller/BankController.php:561
+msgid "You can only operate with your own members."
+msgstr "Puoi operare solo con i tuoi membri."
+
+#: ./src/Controller/BankController.php:614
+msgid "You must be logged in to view approvals."
+msgstr "Devi accedere per vedere le approvazioni."
+
+#: ./src/Controller/BankController.php:619
+msgid "Only administrators can access the banking approvals."
+msgstr "Solo gli amministratori possono aprire le approvazioni bancarie."
+
+#: ./src/Controller/BankController.php:645
+msgid "You must be logged in to approve transactions."
+msgstr "Devi accedere per approvare le transazioni."
+
+#: ./src/Controller/BankController.php:650
+msgid "Only administrators can approve transactions."
+msgstr "Solo gli amministratori possono approvare le transazioni."
+
+#: ./src/Controller/BankController.php:664
+msgid "This transaction is not pending approval."
+msgstr "Questa transazione non è in attesa di approvazione."
+
+#: ./src/Controller/BankController.php:683
+msgid "Transaction approved and applied successfully."
+msgstr "Transazione approvata e applicata."
+
+#: ./src/Controller/BankController.php:685
+msgid "Unable to approve this transaction."
+msgstr "Non è stato possibile approvare questa transazione."
+
+#: ./src/Controller/BankController.php:688
+#: ./src/Controller/BankController.php:743
+msgid "Transaction not found."
+msgstr "Transazione non trovata."
+
+#: ./src/Controller/BankController.php:694
+msgid "An error occurred while processing the approval."
+msgstr "Si è verificato un errore durante l'elaborazione dell'approvazione."
+
+#: ./src/Controller/BankController.php:705
+msgid "You must be logged in to reject transactions."
+msgstr "Devi accedere per rifiutare le transazioni."
+
+#: ./src/Controller/BankController.php:710
+msgid "Only administrators can reject transactions."
+msgstr "Solo gli amministratori possono rifiutare le transazioni."
+
+#: ./src/Controller/BankController.php:727
+msgid "Transaction rejected."
+msgstr "Transazione rifiutata."
+
+#: ./src/Controller/BankController.php:729
+msgid "Unable to reject this transaction."
+msgstr "Non è stato possibile rifiutare questa transazione."
+
+#: ./src/Controller/BankController.php:747
+msgid "This transaction is not pending."
+msgstr "Questa transazione non è in attesa."
+
+#: ./src/Controller/BankController.php:751
+msgid "Only deposits and withdrawals require approval."
+msgstr "Solo i depositi e i prelievi richiedono approvazione."
+
+#: ./src/Controller/BankController.php:771
+msgid "Unsupported transaction type."
+msgstr "Tipo di transazione non supportato."
+
+#: ./src/Controller/CollectedChestsController.php:58
+#: ./src/Controller/CollectedChestsController.php:81
+msgid "The collected chest has been saved."
+msgstr "Il forziere raccolto è stato salvato."
+
+#: ./src/Controller/CollectedChestsController.php:62
+#: ./src/Controller/CollectedChestsController.php:85
+msgid "The collected chest could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare il forziere raccolto. Riprova."
+
+#: ./src/Controller/CollectedChestsController.php:103
+msgid "The collected chest has been deleted."
+msgstr "Il forziere raccolto è stato eliminato."
+
+#: ./src/Controller/CollectedChestsController.php:105
+msgid "The collected chest could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare il forziere raccolto. Riprova."
+
+#: ./src/Controller/CollectedChestsController.php:282
+#: ./templates/CollectedChests/score.php:1167
+msgid "Current Cycle"
+msgstr "Ciclo Attuale"
+
+#: ./src/Controller/CollectedChestsController.php:282
+msgid "Previous Cycle"
+msgstr "Ciclo Precedente"
+
+#: ./src/Controller/CollectedChestsController.php:357
+msgid "Please select both the correct player name and the incorrect player name."
+msgstr "Seleziona sia il nome corretto sia quello sbagliato del giocatore."
+
+#: ./src/Controller/CollectedChestsController.php:359
+msgid "The correct and incorrect player names cannot be the same."
+msgstr "Il nome corretto e quello sbagliato non possono essere uguali."
+
+#: ./src/Controller/CollectedChestsController.php:368
+msgid "Successfully merged player \"{0}\" into \"{1}\". {2} records were updated."
+msgstr "Giocatore \"{0}\" unito in \"{1}\". Record aggiornati: {2}."
+
+#: ./src/Controller/CollectedChestsController.php:388
+msgid "Player \"{0}\" was successfully deleted from the members list."
+msgstr "Il giocatore \"{0}\" è stato rimosso dall'elenco dei membri."
+
+#: ./src/Controller/CollectedChestsController.php:390
+msgid "Could not delete player \"{0}\" from the members list."
+msgstr "Non è stato possibile rimuovere il giocatore \"{0}\" dall'elenco dei membri."
+
+#: ./src/Controller/CollectedChestsController.php:406
+msgid "No records found for player \"{0}\" to merge into \"{1}\". No changes were made."
+msgstr "Nessun record trovato per il giocatore \"{0}\" da unire in \"{1}\". Non è stato modificato nulla."
+
+#: ./src/Controller/CollectedChestsController.php:409
+msgid "An error occurred while merging players: {0}"
+msgstr "Si è verificato un errore durante l'unione dei giocatori: {0}"
+
+#: ./src/Controller/CollectedChestsController.php:415
+#: ./templates/CollectedChests/merge_players.php:22
+msgid "Merge Player Names"
+msgstr "Unisci Nomi Giocatori"
+
+#: ./src/Controller/ConfigController.php:33
+msgid "Theme updated."
+msgstr "Tema aggiornato."
+
+#: ./src/Controller/ConfigController.php:37
+msgid "That theme is not available."
+msgstr "Quel tema non è disponibile."
+
+#: ./src/Controller/ConfigController.php:119
+msgid "Branding updated."
+msgstr "Identità visiva aggiornata."
+
+#: ./src/Controller/ConfigController.php:181
+#: ./src/Controller/ConfigController.php:204
+msgid "The config has been saved."
+msgstr "L'impostazione è stata salvata."
+
+#: ./src/Controller/ConfigController.php:185
+#: ./src/Controller/ConfigController.php:208
+msgid "The config could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare l'impostazione. Riprova."
+
+#: ./src/Controller/ConfigController.php:226
+msgid "The config has been deleted."
+msgstr "L'impostazione è stata eliminata."
+
+#: ./src/Controller/ConfigController.php:228
+msgid "The config could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare l'impostazione. Riprova."
+
+#: ./src/Controller/EventsController.php:164
+msgid "Unknown banner."
+msgstr "Banner sconosciuto."
+
+#: ./src/Controller/EventsController.php:170
+msgid "This banner has not been set up yet."
+msgstr "Questo banner non è ancora stato configurato."
+
+#: ./src/Controller/EventsController.php:270
+msgid "An event can only be closed once its end date has passed."
+msgstr "Un evento può essere chiuso solo dopo che è passata la sua data di fine."
+
+#: ./src/Controller/EventsController.php:279
+msgid "Results for event #{0} were recorded: {1} player(s) ranked."
+msgstr "Risultato dell'evento n. {0} registrato: {1} giocatore(i) in classifica."
+
+#: ./src/Controller/EventsController.php:285
+msgid "The results could not be recorded. Please, try again."
+msgstr "Non è stato possibile registrare il risultato. Riprova."
+
+#: ./src/Controller/EventsController.php:311
+msgid "Event #{0} is active again."
+msgstr "L'evento n. {0} è di nuovo attivo."
+
+#: ./src/Controller/EventsController.php:312
+msgid "Event #{0} was cancelled."
+msgstr "L'evento n. {0} è stato annullato."
+
+#: ./src/Controller/EventsController.php:314
+msgid "The event could not be updated. Please, try again."
+msgstr "Non è stato possibile aggiornare l'evento. Riprova."
+
+#: ./src/Controller/EventsController.php:333
+msgid "Event #{0} was deleted."
+msgstr "L'evento n. {0} è stato eliminato."
+
+#: ./src/Controller/EventsController.php:335
+msgid "The event could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare l'evento. Riprova."
+
+#: ./src/Controller/EventsController.php:372
+msgid "The banner \"{0}\" could not be saved."
+msgstr "Non è stato possibile salvare il banner \"{0}\"."
+
+#: ./src/Controller/EventsController.php:378
+msgid "{0} banner(s) updated."
+msgstr "{0} banner aggiornato(i)."
+
+#: ./src/Controller/EventsController.php:384
+msgid "No image was chosen, so nothing changed."
+msgstr "Non è stata scelta nessuna immagine, quindi non è cambiato nulla."
+
+#: ./src/Controller/EventsController.php:441
+msgid "Event #{0} was created."
+msgstr "L'evento n. {0} è stato creato."
+
+#: ./src/Controller/EventsController.php:442
+msgid "Event #{0} was saved."
+msgstr "L'evento n. {0} è stato salvato."
+
+#: ./src/Controller/EventsController.php:447
+msgid "The event could not be saved. Please check the fields below."
+msgstr "Non è stato possibile salvare l'evento. Controlla i campi qui sotto."
+
+#: ./src/Controller/EventsController.php:494
+msgid "The image could not be uploaded. Please, try again."
+msgstr "Non è stato possibile caricare l'immagine. Riprova."
+
+#: ./src/Controller/EventsController.php:499
+msgid "The image is too large. The limit is {0} MB."
+msgstr "L'immagine è troppo grande. Il limite è {0} MB."
+
+#: ./src/Controller/EventsController.php:507
+msgid "The image is empty."
+msgstr "L'immagine è vuota."
+
+#: ./src/Controller/EventsController.php:515
+#: ./src/Service/BrandingService.php:704
+msgid "Use a PNG, JPEG, GIF or WebP image."
+msgstr "Usa un'immagine PNG, JPEG, GIF o WebP."
+
+#: ./src/Controller/IncompleteChestsController.php:131
+msgid "This record has no screenshot."
+msgstr "Questo record non ha uno screenshot."
+
+#: ./src/Controller/IncompleteChestsController.php:163
+#: ./src/Controller/IncompleteChestsController.php:244
+msgid "This chest has already been reviewed."
+msgstr "Questo forziere è già stato esaminato."
+
+#: ./src/Controller/IncompleteChestsController.php:176
+#: ./src/Model/Table/IncompleteChestsTable.php:101
+msgid "Fill in the chest name, the player and the source."
+msgstr "Compila il nome del forziere, il giocatore e la fonte."
+
+#: ./src/Controller/IncompleteChestsController.php:196
+msgid "The chest could not be saved into collected chests."
+msgstr "Non è stato possibile salvare il forziere fra i forzieri raccolti."
+
+#: ./src/Controller/IncompleteChestsController.php:213
+msgid "Chest corrected and recorded for \"{0}\". Collected chest #{1}."
+msgstr "Forziere corretto e registrato per \"{0}\". Forziere raccolto n. {1}."
+
+#: ./src/Controller/IncompleteChestsController.php:221
+msgid "The chest was recorded as #{0}, but this row could not be marked as corrected."
+msgstr "Il forziere è stato registrato come n. {0}, ma non è stato possibile segnare questa riga come corretta."
+
+#: ./src/Controller/IncompleteChestsController.php:257
+msgid "Marked as reviewed and not recoverable."
+msgstr "Segnato come esaminato e non recuperabile."
+
+#: ./src/Controller/IncompleteChestsController.php:259
+#: ./src/Controller/IncompleteChestsController.php:290
+msgid "The record could not be updated. Please, try again."
+msgstr "Non è stato possibile aggiornare il record. Riprova."
+
+#: ./src/Controller/IncompleteChestsController.php:288
+msgid "Back in the queue."
+msgstr "Rimesso in coda."
+
+#: ./src/Controller/MembersController.php:56
+#: ./src/Controller/MembersController.php:79
+msgid "The member has been saved."
+msgstr "Il membro è stato salvato."
+
+#: ./src/Controller/MembersController.php:60
+#: ./src/Controller/MembersController.php:83
+msgid "The member could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare il membro. Riprova."
+
+#: ./src/Controller/MembersController.php:101
+msgid "The member has been deleted."
+msgstr "Il membro è stato eliminato."
+
+#: ./src/Controller/MembersController.php:103
+msgid "The member could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare il membro. Riprova."
+
+#: ./src/Controller/MembersController.php:194
+msgid "Error saving member {0}: {1}"
+msgstr "Errore nel salvataggio del membro {0}: {1}"
+
+#: ./src/Controller/MembersController.php:201
+msgid "Update completed. Found {0} players (samples: {1}). {2} new members added, {3} members updated."
+msgstr "Aggiornamento completato. Trovati {0} giocatore(i) (campioni: {1}). {2} nuovo(i) membro(i) aggiunto(i), {3} membro(i) aggiornato(i)."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:108
+msgid "Player name cannot be empty."
+msgstr "Il nome del giocatore non può essere vuoto."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:229
+msgid "Fine marked as paid for {0} in cycle starting {1}."
+msgstr "Multa di {0} segnata come pagata nel ciclo iniziato il {1}."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:231
+msgid "The fine could not be marked as paid. Please, try again."
+msgstr "Non è stato possibile segnare la multa come pagata. Riprova."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:234
+msgid "No fine to mark as paid or it has already been paid."
+msgstr "Non c'è nessuna multa da segnare come pagata, oppure è già stata pagata."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:260
+msgid "Configuration parameters for cycle processing are missing or invalid."
+msgstr "I parametri di configurazione per l'elaborazione dei cicli sono mancanti o non validi."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:282
+msgid "Invalid cycle offset. Cannot process future cycles or cycles before the reference start."
+msgstr "Scostamento del ciclo non valido. Non si possono elaborare cicli futuri o precedenti all'inizio di riferimento."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:300
+msgid "Cycle from {0} to {1} has already been processed. Use ?force_reprocess=1 to re-process."
+msgstr "Il ciclo dal {0} al {1} è già stato elaborato. Usa ?force_reprocess=1 per rielaborarlo."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:302
+msgid "Cleared existing summaries for cycle {0} due to force_reprocess."
+msgstr "I riepiloghi esistenti del ciclo {0} sono stati cancellati per force_reprocess."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:306
+msgid "{0} player cycle summaries processed successfully for cycle {1} - {2}."
+msgstr "{0} riepilogo(hi) di ciclo elaborato(i) per il ciclo {1} - {2}."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:309
+msgid "{0} errors occurred while processing player cycle summaries."
+msgstr "Si sono verificati {0} errore(i) durante l'elaborazione dei riepiloghi di ciclo dei giocatori."
+
+#: ./src/Controller/PlayerCycleSummariesController.php:312
+msgid "No player data found to process for cycle {0} - {1}."
+msgstr "Nessun dato dei giocatori da elaborare per il ciclo {0} - {1}."
+
+#: ./src/Controller/PlayerNameMappingsController.php:65
+#: ./src/Controller/PlayerNameMappingsController.php:88
+msgid "The player name mapping has been saved."
+msgstr "La corrispondenza del nome giocatore è stata salvata."
+
+#: ./src/Controller/PlayerNameMappingsController.php:69
+#: ./src/Controller/PlayerNameMappingsController.php:92
+msgid "The player name mapping could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare la corrispondenza del nome giocatore. Riprova."
+
+#: ./src/Controller/PlayerNameMappingsController.php:110
+msgid "The player name mapping has been deleted."
+msgstr "La corrispondenza del nome giocatore è stata eliminata."
+
+#: ./src/Controller/PlayerNameMappingsController.php:112
+msgid "The player name mapping could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare la corrispondenza del nome giocatore. Riprova."
+
+#: ./src/Controller/RolesController.php:53
+#: ./src/Controller/RolesController.php:77
+msgid "The role has been saved."
+msgstr "Il ruolo è stato salvato."
+
+#: ./src/Controller/RolesController.php:57
+#: ./src/Controller/RolesController.php:81
+msgid "The role could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare il ruolo. Riprova."
+
+#: ./src/Controller/RolesController.php:100
+msgid "The role has been deleted."
+msgstr "Il ruolo è stato eliminato."
+
+#: ./src/Controller/RolesController.php:102
+msgid "The role could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare il ruolo. Riprova."
+
+#: ./src/Controller/RolesUsersController.php:54
+#: ./src/Controller/RolesUsersController.php:79
+msgid "The roles user has been saved."
+msgstr "L'assegnazione del ruolo è stata salvata."
+
+#: ./src/Controller/RolesUsersController.php:58
+#: ./src/Controller/RolesUsersController.php:83
+msgid "The roles user could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare l'assegnazione del ruolo. Riprova."
+
+#: ./src/Controller/RolesUsersController.php:103
+msgid "The roles user has been deleted."
+msgstr "L'assegnazione del ruolo è stata eliminata."
+
+#: ./src/Controller/RolesUsersController.php:105
+msgid "The roles user could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare l'assegnazione del ruolo. Riprova."
+
+#: ./src/Controller/StandardChestsController.php:173
+#: ./src/Controller/StandardChestsController.php:196
+msgid "The standard chest has been saved."
+msgstr "Il forziere standard è stato salvato."
+
+#: ./src/Controller/StandardChestsController.php:218
+msgid "The standard chest has been deleted."
+msgstr "Il forziere standard è stato eliminato."
+
+#: ./src/Controller/StandardChestsController.php:220
+msgid "The standard chest could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare il forziere standard. Riprova."
+
+#: ./src/Controller/StandardChestsController.php:240
+msgid "The standard chest could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare il forziere standard. Riprova."
+
+#: ./src/Controller/StandardChestsController.php:326
+msgid "{0} lost chest(s) successfully added to Standard Chests."
+msgstr "{0} forziere(i) perduto(i) aggiunto(i) ai Forzieri Standard."
+
+#: ./src/Controller/StandardChestsController.php:328
+msgid "Failed to add selected chest(s). Please check values and try again."
+msgstr "Non è stato possibile aggiungere i forzieri selezionati. Controlla i valori e riprova."
+
+#: ./src/Controller/StandardChestsController.php:330
+msgid "No chests were selected to add."
+msgstr "Non è stato selezionato nessun forziere da aggiungere."
+
+#: ./src/Controller/StandardChestsController.php:334
+msgid "{0} chest(s) were skipped because their source is already registered."
+msgstr "{0} forziere(i) è stato saltato perché la sua fonte è già registrata."
+
+#: ./src/Controller/TroopCalculatorController.php:69
+msgid "Nothing could be planned. Check the army limits and the selected levels."
+msgstr "Non è stato possibile pianificare nulla. Controlla i limiti dell'esercito e i livelli selezionati."
+
+#: ./src/Controller/TroopCalculatorController.php:96
+msgid "The saved inputs were cleared."
+msgstr "I valori salvati sono stati cancellati."
+
+#: ./src/Controller/TroopCalculatorController.php:259
+#: ./templates/TroopCalculator/index.php:45
+msgid "Guardsmen"
+msgstr "Guardie"
+
+#: ./src/Controller/TroopCalculatorController.php:260
+#: ./templates/Members/view.php:40
+#: ./templates/TroopCalculator/index.php:46
+msgid "Specialists"
+msgstr "Specialisti"
+
+#: ./src/Controller/TroopCalculatorController.php:261
+#: ./templates/Members/view.php:44
+#: ./templates/TroopCalculator/index.php:47
+msgid "Monsters"
+msgstr "Mostri"
+
+#: ./src/Controller/TroopCalculatorController.php:262
+#: ./templates/TroopCalculator/index.php:48
+msgid "Engineer corps"
+msgstr "Corpo del Genio"
+
+#: ./src/Controller/UsersController.php:72
+#: ./src/Controller/UsersController.php:137
+msgid "One or more selected members are already associated with another user. Please deselect them."
+msgstr "Uno o più membri selezionati sono già associati a un altro utente. Deselezionali."
+
+#: ./src/Controller/UsersController.php:80
+#: ./src/Controller/UsersController.php:94
+#: ./src/Controller/UsersController.php:148
+msgid "The user has been saved."
+msgstr "L'utente è stato salvato."
+
+#: ./src/Controller/UsersController.php:84
+#: ./src/Controller/UsersController.php:98
+#: ./src/Controller/UsersController.php:151
+msgid "The user could not be saved. Please, try again."
+msgstr "Non è stato possibile salvare l'utente. Riprova."
+
+#: ./src/Controller/UsersController.php:177
+msgid "The user has been deleted."
+msgstr "L'utente è stato eliminato."
+
+#: ./src/Controller/UsersController.php:179
+msgid "The user could not be deleted. Please, try again."
+msgstr "Non è stato possibile eliminare l'utente. Riprova."
+
+#: ./src/Controller/UsersController.php:202
+msgid "Invalid email or password"
+msgstr "E-mail o password non validi"
+
+#: ./src/Controller/UsersController.php:227
+msgid "You must be logged in to change your password."
+msgstr "Devi accedere per cambiare la tua password."
+
+#: ./src/Controller/UsersController.php:238
+msgid "Current password is incorrect."
+msgstr "La password attuale non è corretta."
+
+#: ./src/Controller/UsersController.php:244
+msgid "New password and confirmation are required."
+msgstr "La nuova password e la conferma sono obbligatorie."
+
+#: ./src/Controller/UsersController.php:249
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:359
+msgid "New password and confirmation do not match."
+msgstr "La nuova password e la conferma non coincidono."
+
+#: ./src/Controller/UsersController.php:255
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:283
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:365
+msgid "Password must be at least 6 characters long."
+msgstr "La password deve avere almeno 6 caratteri."
+
+#: ./src/Controller/UsersController.php:262
+msgid "Password has been changed successfully."
+msgstr "La password è stata cambiata."
+
+#: ./src/Controller/UsersController.php:270
+msgid "The password could not be changed. Please, try again."
+msgstr "Non è stato possibile cambiare la password. Riprova."
+
+#: ./src/Controller/UsersController.php:290
+msgid "Google authentication failed. No credential received."
+msgstr "Autenticazione Google non riuscita. Nessuna credenziale ricevuta."
+
+#: ./src/Controller/UsersController.php:297
+msgid "Google authentication failed. Invalid token."
+msgstr "Autenticazione Google non riuscita. Token non valido."
+
+#: ./src/Controller/UsersController.php:303
+msgid "Google account email is not verified."
+msgstr "L'e-mail dell'account Google non è verificata."
+
+#: ./src/Controller/UsersController.php:355
+msgid "activated"
+msgstr "attivato"
+
+#: ./src/Controller/UsersController.php:355
+msgid "deactivated"
+msgstr "disattivato"
+
+#: ./src/Controller/UsersController.php:356
+msgid "User \"{0}\" has been {1} successfully."
+msgstr "L'utente \"{0}\" è stato {1}."
+
+#: ./src/Controller/UsersController.php:358
+msgid "Could not change user status. Please try again."
+msgstr "Non è stato possibile cambiare lo stato dell'utente. Riprova."
+
+#: ./src/Model/Entity/Event.php:103
+msgid "Number of chests collected"
+msgstr "Numero di forzieri raccolti"
+
+#: ./src/Model/Entity/Event.php:104
+msgid "Chest score"
+msgstr "Punteggio dei forzieri"
+
+#: ./src/Model/Entity/Event.php:105
+msgid "Number of epic monster chests"
+msgstr "Numero di forzieri di mostri epici"
+
+#: ./src/Model/Entity/Event.php:106
+msgid "Custom chests"
+msgstr "Forzieri personalizzati"
+
+#: ./src/Model/Entity/Event.php:118
+msgid "Every chest collected inside the event window counts as one point."
+msgstr "Ogni forziere raccolto dentro la finestra dell'evento vale un punto."
+
+#: ./src/Model/Entity/Event.php:119
+msgid "Chests are worth the score configured for their type."
+msgstr "Ogni forziere vale il punteggio configurato per il suo tipo."
+
+#: ./src/Model/Entity/Event.php:120
+msgid "Only chests from epic monsters count, one point each."
+msgstr "Contano solo i forzieri dei mostri epici, un punto ciascuno."
+
+#: ./src/Model/Entity/Event.php:121
+msgid "Only the chest types you pick below count."
+msgstr "Contano solo i tipi di forziere che scegli qui sotto."
+
+#: ./src/Model/Entity/Event.php:144
+#: ./src/Model/Entity/Event.php:147
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:3
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:69
+msgid "Chests"
+msgstr "Forzieri"
+
+#: ./src/Model/Entity/Event.php:145
+msgid "Epic Chests"
+msgstr "Forzieri Epici"
+
+#: ./src/Model/Entity/Event.php:148
+#: ./templates/PlayerCycleSummaries/index.php:241
+#: ./templates/PlayerCycleSummaries/player_history.php:135
+msgid "Total Score"
+msgstr "Punteggio Totale"
+
+#: ./src/Model/Table/ConfigTable.php:92
+msgid "Retention time must be 0 (to disable automatic purge) or greater than 7 days."
+msgstr "Il tempo di conservazione deve essere 0 (per disattivare la pulizia automatica) o superiore a 7 giorni."
+
+#: ./src/Model/Table/EventsTable.php:208
+msgid "Give the event a name."
+msgstr "Dai un nome all'evento."
+
+#: ./src/Model/Table/EventsTable.php:217
+msgid "Choose one of the listed criteria."
+msgstr "Scegli uno dei criteri elencati."
+
+#: ./src/Model/Table/EventsTable.php:226
+msgid "Choose when the event starts (UTC)."
+msgstr "Scegli quando inizia l'evento (UTC)."
+
+#: ./src/Model/Table/EventsTable.php:231
+msgid "Choose when the event ends (UTC)."
+msgstr "Scegli quando finisce l'evento (UTC)."
+
+#: ./src/Model/Table/EventsTable.php:236
+msgid "Describe the prize the players are competing for."
+msgstr "Descrivi il premio per cui gareggiano i giocatori."
+
+#: ./src/Model/Table/EventsTable.php:242
+msgid "Say who the winner should look for."
+msgstr "Indica chi deve cercare il vincitore."
+
+#: ./src/Model/Table/EventsTable.php:275
+msgid "The event must end after it starts."
+msgstr "L'evento deve finire dopo l'inizio."
+
+#: ./src/Model/Table/EventsTable.php:298
+msgid "The start date must be in the future."
+msgstr "La data di inizio deve essere nel futuro."
+
+#: ./src/Model/Table/EventsTable.php:313
+msgid "The end date must be in the future."
+msgstr "La data di fine deve essere nel futuro."
+
+#: ./src/Model/Table/EventsTable.php:328
+msgid "Pick at least one chest for a custom chest event."
+msgstr "Scegli almeno un forziere per un evento a forzieri personalizzati."
+
+#: ./src/Model/Table/StandardChestsTable.php:115
+msgid "This chest source is already registered."
+msgstr "Questa fonte di forzieri è già registrata."
+
+#: ./src/Service/BrandingService.php:347
+msgid "That logo is not available."
+msgstr "Quel logo non è disponibile."
+
+#: ./src/Service/BrandingService.php:364
+msgid "That favicon is not available."
+msgstr "Quella favicon non è disponibile."
+
+#: ./src/Service/BrandingService.php:389
+msgid "The logo is too small: it is {0}x{1} and the minimum is {2}x{2} pixels."
+msgstr "Il logo è troppo piccolo: è {0}x{1} e il minimo è {2}x{2} pixel."
+
+#: ./src/Service/BrandingService.php:398
+msgid "The logo is too large: it is {0}x{1} and the maximum is {2}x{2} pixels."
+msgstr "Il logo è troppo grande: è {0}x{1} e il massimo è {2}x{2} pixel."
+
+#: ./src/Service/BrandingService.php:408
+msgid "The logo is the wrong shape: it is {0}x{1}. Use a square emblem, or anything up to {2} times wider than it is tall."
+msgstr "Il logo ha la forma sbagliata: è {0}x{1}. Usa uno stemma quadrato, oppure qualcosa di larghezza fino a {2} volte l'altezza."
+
+#: ./src/Service/BrandingService.php:618
+msgid "The favicon is too small: it is {0}x{1} and the minimum is {2}x{2} pixels."
+msgstr "La favicon è troppo piccola: è {0}x{1} e il minimo è {2}x{2} pixel."
+
+#: ./src/Service/BrandingService.php:627
+msgid "The favicon is too large: it is {0}x{1} and the maximum is {2}x{2} pixels."
+msgstr "La favicon è troppo grande: è {0}x{1} e il massimo è {2}x{2} pixel."
+
+#: ./src/Service/BrandingService.php:636
+msgid "The favicon must be square: this one is {0}x{1} pixels."
+msgstr "La favicon deve essere quadrata: questa è {0}x{1} pixel."
+
+#: ./src/Service/BrandingService.php:656
+msgid "The file is too large. The limit is {0} KB."
+msgstr "Il file è troppo grande. Il limite è {0} KB."
+
+#: ./src/Service/BrandingService.php:663
+msgid "The file could not be uploaded. Please, try again."
+msgstr "Non è stato possibile caricare il file. Riprova."
+
+#: ./src/Service/BrandingService.php:668
+#: ./src/Service/BrandingService.php:681
+msgid "The file is too large: it is {0} KB and the limit is {1} KB."
+msgstr "Il file è troppo grande: è {0} KB e il limite è {1} KB."
+
+#: ./src/Service/BrandingService.php:677
+msgid "The file is empty."
+msgstr "Il file è vuoto."
+
+#: ./src/Service/BrandingService.php:721
+msgid "The image could not be read. It may be damaged."
+msgstr "Non è stato possibile leggere l'immagine. Potrebbe essere danneggiata."
+
+#: ./src/Service/BrandingService.php:774
+msgid "The image could not be converted. Please, try another file."
+msgstr "Non è stato possibile convertire l'immagine. Prova con un altro file."
+
+#: ./src/Service/BrandingService.php:791
+msgid "The image could not be saved to disk. Check that {0} is writable by the web server."
+msgstr "Non è stato possibile salvare l'immagine su disco. Verifica che il server web possa scrivere in {0}."
+
+#: ./src/Service/BrandingService.php:812
+msgid "The folder {0} could not be created. Check the permissions of the webroot directory."
+msgstr "Non è stato possibile creare la cartella {0}. Controlla i permessi della directory webroot."
+
+#: ./templates/Admin/Bank/approvals.php:11
+msgid "Admin Pending Bank Approvals"
+msgstr "Approvazioni Bancarie in Attesa"
+
+#: ./templates/Admin/Bank/approvals.php:12
+#: ./templates/Bank/approvals.php:12
+msgid "Approve or reject transactions. Approved entries update member balances immediately"
+msgstr "Approva o rifiuta le transazioni. Le voci approvate aggiornano subito i saldi dei membri"
+
+#: ./templates/Admin/Bank/approvals.php:15
+#: ./templates/Bank/approvals.php:15
+#: ./templates/Bank/deposit.php:30
+#: ./templates/Bank/history.php:19
+#: ./templates/Bank/statement.php:19
+#: ./templates/Bank/transfer.php:28
+#: ./templates/Bank/withdraw.php:27
+msgid "Back to Bank"
+msgstr "Torna alla Banca"
+
+#: ./templates/Admin/Bank/approvals.php:21
+msgid "Pending Approvals Queue"
+msgstr "Coda delle Approvazioni in Attesa"
+
+#: ./templates/Admin/Bank/approvals.php:27
+#: ./templates/Bank/approvals.php:27
+#: ./templates/Bank/history.php:35
+#: ./templates/Bank/statement.php:50
+#: ./templates/CollectedChests/view.php:40
+msgid "Type"
+msgstr "Tipo"
+
+#: ./templates/Admin/Bank/approvals.php:28
+#: ./templates/Bank/approvals.php:28
+#: ./templates/Bank/deposit.php:46
+#: ./templates/Bank/index.php:83
+#: ./templates/Bank/statement.php:27
+#: ./templates/Bank/withdraw.php:51
+#: ./templates/Bank/withdraw.php:86
+#: ./templates/Members/view.php:9
+msgid "Member"
+msgstr "Membro"
+
+#: ./templates/Admin/Bank/approvals.php:29
+#: ./templates/Bank/approvals.php:29
+msgid "Requested by"
+msgstr "Richiesto da"
+
+#: ./templates/Admin/Bank/approvals.php:30
+#: ./templates/Bank/approvals.php:30
+#: ./templates/Bank/history.php:36
+#: ./templates/Bank/statement.php:51
+msgid "Amount ($)"
+msgstr "Importo ($)"
+
+#: ./templates/Admin/Bank/approvals.php:31
+#: ./templates/Bank/approvals.php:31
+#: ./templates/Bank/history.php:37
+#: ./templates/Bank/statement.php:52
+msgid "Fee ($)"
+msgstr "Commissione ($)"
+
+#: ./templates/Admin/Bank/approvals.php:32
+#: ./templates/Bank/approvals.php:32
+#: ./templates/Bank/history.php:38
+#: ./templates/Bank/statement.php:53
+msgid "Net effect ($)"
+msgstr "Effetto netto ($)"
+
+#: ./templates/Admin/Bank/approvals.php:33
+#: ./templates/Bank/approvals.php:33
+#: ./templates/Bank/history.php:42
+#: ./templates/Bank/statement.php:55
+msgid "Created at"
+msgstr "Creato il"
+
+#: ./templates/Admin/Bank/approvals.php:34
+#: ./templates/Bank/approvals.php:34
+#: ./templates/Bank/history.php:40
+#: ./templates/Bank/transfer.php:99
+msgid "Comment"
+msgstr "Commento"
+
+#: ./templates/Admin/Bank/approvals.php:35
+#: ./templates/Bank/approvals.php:35
+#: ./templates/Bank/index.php:62
+#: ./templates/CollectedChests/index.php:41
+#: ./templates/Config/index.php:39
+#: ./templates/Errors/index.php:36
+#: ./templates/Events/manage.php:66
+#: ./templates/IncompleteChests/index.php:62
+#: ./templates/Members/index.php:42
+#: ./templates/PlayerCycleSummaries/index.php:246
+#: ./templates/PlayerNameMappings/index.php:35
+#: ./templates/RolesUsers/index.php:38
+#: ./templates/Roles/index.php:41
+#: ./templates/Roles/view.php:81
+#: ./templates/StandardChests/index.php:126
+#: ./templates/Users/index.php:41
+#: ./templates/Users/view.php:95
+#: ./templates/Users/view.php:136
+msgid "Actions"
+msgstr "Azioni"
+
+#: ./templates/Admin/Bank/approvals.php:41
+#: ./templates/Bank/approvals.php:41
+msgid "No transactions awaiting approval."
+msgstr "Nessuna transazione in attesa di approvazione."
+
+#: ./templates/Admin/Bank/approvals.php:53
+#: ./templates/Admin/Bank/approvals.php:54
+#: ./templates/Bank/approvals.php:53
+#: ./templates/Bank/approvals.php:54
+#: ./templates/Bank/history.php:59
+#: ./templates/Bank/history.php:62
+#: ./templates/Bank/statement.php:73
+#: ./templates/Bank/statement.php:75
+msgid "Unknown"
+msgstr "Sconosciuto"
+
+#: ./templates/Admin/Bank/approvals.php:65
+#: ./templates/Bank/approvals.php:65
+#: ./templates/Users/index.php:70
+msgid "Approve"
+msgstr "Approva"
+
+#: ./templates/Admin/Bank/approvals.php:67
+#: ./templates/Bank/approvals.php:67
+msgid "Approve this transaction?"
+msgstr "Approvare questa transazione?"
+
+#: ./templates/Admin/Bank/approvals.php:76
+#: ./templates/Bank/approvals.php:76
+msgid "Reason (optional)"
+msgstr "Motivo (facoltativo)"
+
+#: ./templates/Admin/Bank/approvals.php:81
+#: ./templates/Bank/approvals.php:81
+msgid "Reject"
+msgstr "Rifiuta"
+
+#: ./templates/Admin/Bank/approvals.php:87
+#: ./templates/Bank/approvals.php:87
+msgid "Approval log:"
+msgstr "Registro delle approvazioni:"
+
+#: ./templates/Bank/approvals.php:11
+msgid "Pending Bank Approvals"
+msgstr "Approvazioni Bancarie in Attesa"
+
+#: ./templates/Bank/approvals.php:21
+msgid "Pending Queue"
+msgstr "Coda in Attesa"
+
+#: ./templates/Bank/deposit.php:15
+msgid "My members"
+msgstr "I miei membri"
+
+#: ./templates/Bank/deposit.php:18
+msgid "All members"
+msgstr "Tutti i membri"
+
+#: ./templates/Bank/deposit.php:26
+msgid "Register Deposit"
+msgstr "Registra Deposito"
+
+#: ./templates/Bank/deposit.php:27
+msgid "Request a Silver deposit. Amounts represent millions of Silver ($)"
+msgstr "Richiedi un deposito di Argento. Gli importi rappresentano milioni di Argento ($)"
+
+#: ./templates/Bank/deposit.php:35
+msgid "Flat deposit fee: {0} $ | Caravan fee: {1}%"
+msgstr "Commissione fissa di deposito: {0} $ | Commissione carovana: {1}%"
+
+#: ./templates/Bank/deposit.php:40
+msgid "Deposit Details"
+msgstr "Dati del Deposito"
+
+#: ./templates/Bank/deposit.php:54
+#: ./templates/Bank/transfer.php:146
+#: ./templates/Bank/withdraw.php:94
+msgid "Amount (millions of Silver)"
+msgstr "Importo (milioni di Argento)"
+
+#: ./templates/Bank/deposit.php:63
+msgid "Example: 10 means 10 million Silver ($). Only integers are accepted."
+msgstr "Esempio: 10 significa 10 milioni di Argento ($). Si accettano solo numeri interi."
+
+#: ./templates/Bank/deposit.php:69
+msgid "Caravan (apply caravan fee and zero flat fee)"
+msgstr "Carovana (applica la commissione carovana e azzera quella fissa)"
+
+#: ./templates/Bank/deposit.php:75
+msgid "Estimated total fee ($)"
+msgstr "Commissione totale stimata ($)"
+
+#: ./templates/Bank/deposit.php:86
+msgid "Amount after caravan fee ($)"
+msgstr "Importo dopo la commissione carovana ($)"
+
+#: ./templates/Bank/deposit.php:97
+msgid "Net amount to credit ($)"
+msgstr "Importo netto da accreditare ($)"
+
+#: ./templates/Bank/deposit.php:109
+#: ./templates/Bank/transfer.php:182
+#: ./templates/Bank/withdraw.php:133
+msgid "Comment (English only, optional)"
+msgstr "Commento (solo in inglese, facoltativo)"
+
+#: ./templates/Bank/deposit.php:113
+#: ./templates/Bank/transfer.php:186
+#: ./templates/Bank/withdraw.php:137
+msgid "Short English comment (max 512 characters)"
+msgstr "Commento breve in inglese (max 512 caratteri)"
+
+#: ./templates/Bank/deposit.php:120
+msgid "Administrator deposits are approved instantly."
+msgstr "I depositi degli amministratori vengono approvati subito."
+
+#: ./templates/Bank/deposit.php:121
+msgid "Deposits created by players stay pending until an administrator approves them."
+msgstr "I depositi creati dai giocatori restano in attesa finché un amministratore non li approva."
+
+#: ./templates/Bank/deposit.php:125
+#: ./templates/Bank/transfer.php:110
+#: ./templates/Bank/transfer.php:191
+#: ./templates/Bank/withdraw.php:149
+#: ./templates/CollectedChests/add.php:29
+#: ./templates/CollectedChests/edit.php:37
+#: ./templates/CollectedChests/view.php:59
+#: ./templates/Config/add.php:27
+#: ./templates/Config/edit.php:35
+#: ./templates/Config/view.php:51
+#: ./templates/Errors/add.php:25
+#: ./templates/Errors/edit.php:33
+#: ./templates/Errors/view.php:39
+#: ./templates/Events/form.php:316
+#: ./templates/Events/manage.php:125
+#: ./templates/Members/add.php:33
+#: ./templates/Members/edit.php:41
+#: ./templates/Members/view.php:75
+#: ./templates/PlayerNameMappings/add.php:28
+#: ./templates/PlayerNameMappings/edit.php:36
+#: ./templates/PlayerNameMappings/view.php:49
+#: ./templates/RolesUsers/add.php:26
+#: ./templates/RolesUsers/edit.php:34
+#: ./templates/RolesUsers/view.php:47
+#: ./templates/Roles/add.php:28
+#: ./templates/Roles/edit.php:36
+#: ./templates/Roles/view.php:59
+#: ./templates/StandardChests/add.php:44
+#: ./templates/StandardChests/edit.php:52
+#: ./templates/StandardChests/view.php:59
+#: ./templates/Users/add.php:36
+#: ./templates/Users/edit.php:86
+#: ./templates/Users/view.php:80
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:296
+msgid "Cancel"
+msgstr "Annulla"
+
+#: ./templates/Bank/deposit.php:126
+msgid "Submit deposit"
+msgstr "Invia deposito"
+
+#: ./templates/Bank/history.php:15
+msgid "Transaction history for {0}"
+msgstr "Storico delle transazioni di {0}"
+
+#: ./templates/Bank/history.php:16
+msgid "Values are saved in millions of Silver ($)"
+msgstr "I valori sono salvati in milioni di Argento ($)"
+
+#: ./templates/Bank/history.php:24
+msgid "Current balance: {0} $"
+msgstr "Saldo attuale: {0} $"
+
+#: ./templates/Bank/history.php:29
+msgid "Transactions"
+msgstr "Transazioni"
+
+#: ./templates/Bank/history.php:39
+#: ./templates/Bank/statement.php:54
+#: ./templates/IncompleteChests/index.php:60
+#: ./templates/Users/index.php:38
+#: ./templates/Users/view.php:32
+msgid "Status"
+msgstr "Stato"
+
+#: ./templates/Bank/history.php:41
+#: ./templates/Bank/statement.php:56
+msgid "Approval log"
+msgstr "Registro delle approvazioni"
+
+#: ./templates/Bank/history.php:48
+msgid "No transactions found."
+msgstr "Nessuna transazione trovata."
+
+#: ./templates/Bank/history.php:60
+#: ./templates/Bank/statement.php:73
+msgid "Transfer to {0}"
+msgstr "Trasferimento a {0}"
+
+#: ./templates/Bank/history.php:63
+#: ./templates/Bank/statement.php:75
+msgid "Transfer from {0}"
+msgstr "Trasferimento da {0}"
+
+#: ./templates/Bank/history.php:96
+#: ./templates/Bank/statement.php:104
+msgid "Approved"
+msgstr "Approvata"
+
+#: ./templates/Bank/history.php:98
+#: ./templates/Bank/statement.php:106
+#: ./templates/IncompleteChests/index.php:18
+#: ./templates/IncompleteChests/view.php:20
+#: ./templates/Users/index.php:59
+msgid "Pending"
+msgstr "In attesa"
+
+#: ./templates/Bank/history.php:100
+#: ./templates/Bank/statement.php:108
+msgid "Rejected"
+msgstr "Rifiutata"
+
+#: ./templates/Bank/index.php:13
+msgid "Bank Members Overview"
+msgstr "Panoramica dei Membri della Banca"
+
+#: ./templates/Bank/index.php:14
+msgid "All values are stored in millions of Silver ($)"
+msgstr "Tutti i valori sono salvati in milioni di Argento ($)"
+
+#: ./templates/Bank/index.php:17
+msgid "Deposit Silver"
+msgstr "Deposita Argento"
+
+#: ./templates/Bank/index.php:18
+msgid "Withdraw Silver"
+msgstr "Preleva Argento"
+
+#: ./templates/Bank/index.php:19
+#: ./templates/Bank/transfer.php:24
+msgid "Transfer Silver"
+msgstr "Trasferisci Argento"
+
+#: ./templates/Bank/index.php:28
+msgid "Total Silver in Bank"
+msgstr "Argento Totale in Banca"
+
+#: ./templates/Bank/index.php:41
+msgid "Total Fees Collected"
+msgstr "Totale Commissioni Incassate"
+
+#: ./templates/Bank/index.php:54
+msgid "Members Account Balances"
+msgstr "Saldi dei Conti dei Membri"
+
+#: ./templates/Bank/index.php:60
+#: ./templates/CollectedChests/score.php:1225
+#: ./templates/CollectedChests/score.php:1314
+#: ./templates/CollectedChests/score.php:1424
+#: ./templates/CollectedChests/view.php:28
+#: ./templates/Events/view.php:303
+#: ./templates/IncompleteChests/index.php:58
+#: ./templates/IncompleteChests/view.php:108
+#: ./templates/Members/view.php:24
+#: ./templates/Users/view.php:92
+msgid "Player"
+msgstr "Giocatore"
+
+#: ./templates/Bank/index.php:61
+#: ./templates/Bank/transfer.php:45
+msgid "Balance ($)"
+msgstr "Saldo ($)"
+
+#: ./templates/Bank/index.php:81
+msgid "View history"
+msgstr "Vedi storico"
+
+#: ./templates/Bank/statement.php:15
+msgid "Account Statement"
+msgstr "Estratto Conto"
+
+#: ./templates/Bank/statement.php:16
+msgid "Track every transaction registered for your members. Amounts in millions of Silver ($)"
+msgstr "Segui ogni transazione registrata per i tuoi membri. Importi in milioni di Argento ($)"
+
+#: ./templates/Bank/statement.php:33
+msgid "Refresh"
+msgstr "Aggiorna"
+
+#: ./templates/Bank/statement.php:39
+msgid "Member: {0} | Current balance: {1} $"
+msgstr "Membro: {0} | Saldo attuale: {1} $"
+
+#: ./templates/Bank/statement.php:44
+msgid "Statement Records"
+msgstr "Voci dell'Estratto"
+
+#: ./templates/Bank/statement.php:62
+msgid "No transactions registered yet."
+msgstr "Nessuna transazione registrata per ora."
+
+#: ./templates/Bank/transfer.php:25
+msgid "Choose a source and destination member. All values represent millions of Silver ($)"
+msgstr "Scegli un membro di origine e uno di destinazione. Tutti i valori rappresentano milioni di Argento ($)"
+
+#: ./templates/Bank/transfer.php:33
+msgid "Transfer fee: {0} $ (charged in addition to the transferred amount)"
+msgstr "Commissione di trasferimento: {0} $ (si aggiunge all'importo trasferito)"
+
+#: ./templates/Bank/transfer.php:38
+msgid "Your Available Source Balances"
+msgstr "I Tuoi Saldi di Origine Disponibili"
+
+#: ./templates/Bank/transfer.php:44
+#: ./templates/Bank/transfer.php:127
+msgid "Source member"
+msgstr "Membro di origine"
+
+#: ./templates/Bank/transfer.php:51
+msgid "No members available."
+msgstr "Nessun membro disponibile."
+
+#: ./templates/Bank/transfer.php:72
+msgid "You must have at least one member to initiate transfers."
+msgstr "Ti serve almeno un membro per avviare i trasferimenti."
+
+#: ./templates/Bank/transfer.php:80
+msgid "There is no balance available for transfers. The form will be hidden until one member has Silver."
+msgstr "Non c'è saldo disponibile per i trasferimenti. Il modulo resterà nascosto finché un membro non avrà Argento."
+
+#: ./templates/Bank/transfer.php:88
+#: ./templates/Bank/transfer.php:111
+msgid "Confirm transfer"
+msgstr "Conferma trasferimento"
+
+#: ./templates/Bank/transfer.php:91
+msgid "This operation cannot be undone."
+msgstr "Questa operazione non si può annullare."
+
+#: ./templates/Bank/transfer.php:93
+msgid "From"
+msgstr "Da"
+
+#: ./templates/Bank/transfer.php:94
+msgid "To"
+msgstr "A"
+
+#: ./templates/Bank/transfer.php:95
+msgid "Amount"
+msgstr "Importo"
+
+#: ./templates/Bank/transfer.php:96
+msgid "Fee"
+msgstr "Commissione"
+
+#: ./templates/Bank/transfer.php:97
+msgid "Total deduction"
+msgstr "Detrazione totale"
+
+#: ./templates/Bank/transfer.php:121
+msgid "Transfer Details"
+msgstr "Dati del Trasferimento"
+
+#: ./templates/Bank/transfer.php:135
+msgid "Destination member"
+msgstr "Membro di destinazione"
+
+#: ./templates/Bank/transfer.php:141
+msgid "Destination members can belong to you or be unassigned."
+msgstr "Il membro di destinazione può essere tuo oppure non assegnato a nessuno."
+
+#: ./templates/Bank/transfer.php:159
+msgid "Transfer fee ($)"
+msgstr "Commissione di trasferimento ($)"
+
+#: ./templates/Bank/transfer.php:170
+#: ./templates/Bank/withdraw.php:121
+msgid "Total deduction ($)"
+msgstr "Detrazione totale ($)"
+
+#: ./templates/Bank/transfer.php:192
+msgid "Review transfer"
+msgstr "Controlla il trasferimento"
+
+#: ./templates/Bank/withdraw.php:23
+msgid "Request Withdrawal"
+msgstr "Richiedi Prelievo"
+
+#: ./templates/Bank/withdraw.php:24
+msgid "Select a member and enter the Silver amount. All values represent millions of Silver ($)"
+msgstr "Scegli un membro e inserisci la quantità di Argento. Tutti i valori rappresentano milioni di Argento ($)"
+
+#: ./templates/Bank/withdraw.php:32
+msgid "Current withdrawal fee: {0} $"
+msgstr "Commissione di prelievo attuale: {0} $"
+
+#: ./templates/Bank/withdraw.php:38
+msgid "You do not have members available for withdrawals."
+msgstr "Non hai membri disponibili per i prelievi."
+
+#: ./templates/Bank/withdraw.php:45
+msgid "Current Balances Overview"
+msgstr "Panoramica dei Saldi Attuali"
+
+#: ./templates/Bank/withdraw.php:52
+msgid "Current balance ($)"
+msgstr "Saldo attuale ($)"
+
+#: ./templates/Bank/withdraw.php:73
+msgid "All balances are zero or negative. Withdraw buttons are hidden until there is enough Silver."
+msgstr "Tutti i saldi sono a zero o negativi. I pulsanti di prelievo restano nascosti finché non c'è Argento a sufficienza."
+
+#: ./templates/Bank/withdraw.php:80
+msgid "Withdrawal Form"
+msgstr "Modulo di Prelievo"
+
+#: ./templates/Bank/withdraw.php:103
+msgid "Only positive integers are accepted."
+msgstr "Si accettano solo numeri interi positivi."
+
+#: ./templates/Bank/withdraw.php:110
+msgid "Withdrawal fee ($)"
+msgstr "Commissione di prelievo ($)"
+
+#: ./templates/Bank/withdraw.php:144
+msgid "Administrator withdrawals are executed immediately."
+msgstr "I prelievi degli amministratori vengono eseguiti subito."
+
+#: ./templates/Bank/withdraw.php:145
+msgid "Withdrawals stay pending until an administrator approves them."
+msgstr "I prelievi restano in attesa finché un amministratore non li approva."
+
+#: ./templates/Bank/withdraw.php:150
+msgid "Submit withdrawal"
+msgstr "Invia prelievo"
+
+#: ./templates/CollectedChests/add.php:9
+msgid "Add Collected Chest"
+msgstr "Aggiungi Forziere Raccolto"
+
+#: ./templates/CollectedChests/add.php:11
+#: ./templates/CollectedChests/edit.php:11
+#: ./templates/CollectedChests/index.php:11
+#: ./templates/CollectedChests/view.php:11
+#: ./templates/Config/add.php:11
+#: ./templates/Config/branding.php:22
+#: ./templates/Config/edit.php:11
+#: ./templates/Config/index.php:11
+#: ./templates/Config/theme.php:16
+#: ./templates/Config/view.php:11
+#: ./templates/Errors/add.php:11
+#: ./templates/Errors/edit.php:11
+#: ./templates/Errors/index.php:11
+#: ./templates/Errors/view.php:11
+#: ./templates/IncompleteChests/index.php:13
+#: ./templates/IncompleteChests/view.php:14
+#: ./templates/Members/add.php:11
+#: ./templates/Members/edit.php:11
+#: ./templates/Members/index.php:11
+#: ./templates/Members/view.php:11
+#: ./templates/PlayerNameMappings/add.php:11
+#: ./templates/PlayerNameMappings/edit.php:11
+#: ./templates/PlayerNameMappings/index.php:11
+#: ./templates/PlayerNameMappings/view.php:11
+#: ./templates/RolesUsers/add.php:11
+#: ./templates/RolesUsers/edit.php:11
+#: ./templates/RolesUsers/index.php:11
+#: ./templates/RolesUsers/view.php:11
+#: ./templates/Roles/add.php:11
+#: ./templates/Roles/edit.php:11
+#: ./templates/Roles/index.php:11
+#: ./templates/Roles/view.php:11
+#: ./templates/StandardChests/add.php:11
+#: ./templates/StandardChests/edit.php:11
+#: ./templates/StandardChests/index.php:12
+#: ./templates/StandardChests/lost_chests.php:11
+#: ./templates/StandardChests/view.php:11
+#: ./templates/TroopCalculator/index.php:18
+#: ./templates/Users/add.php:11
+#: ./templates/Users/edit.php:31
+#: ./templates/Users/index.php:11
+#: ./templates/Users/view.php:11
+msgid "Home"
+msgstr "Home"
+
+#: ./templates/CollectedChests/add.php:12
+#: ./templates/CollectedChests/edit.php:12
+#: ./templates/CollectedChests/index.php:12
+#: ./templates/CollectedChests/view.php:12
+msgid "List Collected Chests"
+msgstr "Elenca Forzieri Raccolti"
+
+#: ./templates/CollectedChests/add.php:13
+#: ./templates/Config/add.php:13
+#: ./templates/Errors/add.php:13
+#: ./templates/Members/add.php:13
+#: ./templates/PlayerNameMappings/add.php:13
+#: ./templates/RolesUsers/add.php:13
+#: ./templates/Roles/add.php:13
+#: ./templates/StandardChests/add.php:13
+#: ./templates/StandardChests/lost_chests.php:246
+#: ./templates/StandardChests/lost_chests.php:250
+#: ./templates/Users/add.php:13
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:60
+msgid "Add"
+msgstr "Aggiungi"
+
+#: ./templates/CollectedChests/add.php:28
+#: ./templates/CollectedChests/edit.php:36
+#: ./templates/Config/add.php:26
+#: ./templates/Config/edit.php:34
+#: ./templates/Errors/add.php:24
+#: ./templates/Errors/edit.php:32
+#: ./templates/Members/add.php:32
+#: ./templates/Members/edit.php:40
+#: ./templates/PlayerNameMappings/add.php:27
+#: ./templates/PlayerNameMappings/edit.php:35
+#: ./templates/RolesUsers/add.php:25
+#: ./templates/RolesUsers/edit.php:33
+#: ./templates/Roles/add.php:27
+#: ./templates/Roles/edit.php:35
+#: ./templates/StandardChests/add.php:43
+#: ./templates/StandardChests/edit.php:51
+#: ./templates/Users/add.php:35
+#: ./templates/Users/edit.php:85
+msgid "Save"
+msgstr "Salva"
+
+#: ./templates/CollectedChests/edit.php:9
+msgid "Edit Collected Chest"
+msgstr "Modifica Forziere Raccolto"
+
+#: ./templates/CollectedChests/edit.php:13
+#: ./templates/CollectedChests/index.php:54
+#: ./templates/CollectedChests/view.php:13
+#: ./templates/Config/edit.php:13
+#: ./templates/Config/index.php:50
+#: ./templates/Config/view.php:13
+#: ./templates/Errors/edit.php:13
+#: ./templates/Errors/index.php:44
+#: ./templates/Errors/view.php:13
+#: ./templates/IncompleteChests/index.php:80
+#: ./templates/Members/edit.php:13
+#: ./templates/Members/index.php:56
+#: ./templates/Members/view.php:13
+#: ./templates/PlayerCycleSummaries/index.php:288
+#: ./templates/PlayerNameMappings/edit.php:13
+#: ./templates/PlayerNameMappings/view.php:13
+#: ./templates/RolesUsers/edit.php:13
+#: ./templates/RolesUsers/index.php:48
+#: ./templates/RolesUsers/view.php:13
+#: ./templates/Roles/edit.php:13
+#: ./templates/Roles/index.php:54
+#: ./templates/Roles/view.php:13
+#: ./templates/Roles/view.php:99
+#: ./templates/StandardChests/edit.php:13
+#: ./templates/StandardChests/view.php:13
+#: ./templates/Users/edit.php:33
+#: ./templates/Users/index.php:74
+#: ./templates/Users/view.php:13
+#: ./templates/Users/view.php:110
+#: ./templates/Users/view.php:154
+msgid "View"
+msgstr "Vedi"
+
+#: ./templates/CollectedChests/edit.php:14
+#: ./templates/CollectedChests/index.php:55
+#: ./templates/CollectedChests/view.php:58
+#: ./templates/Config/edit.php:14
+#: ./templates/Config/index.php:51
+#: ./templates/Config/view.php:50
+#: ./templates/Errors/edit.php:14
+#: ./templates/Errors/index.php:45
+#: ./templates/Errors/view.php:38
+#: ./templates/Events/manage.php:97
+#: ./templates/Events/view.php:82
+#: ./templates/Members/edit.php:14
+#: ./templates/Members/index.php:57
+#: ./templates/Members/view.php:74
+#: ./templates/PlayerNameMappings/edit.php:14
+#: ./templates/PlayerNameMappings/index.php:47
+#: ./templates/PlayerNameMappings/view.php:47
+#: ./templates/RolesUsers/edit.php:14
+#: ./templates/RolesUsers/index.php:49
+#: ./templates/RolesUsers/view.php:46
+#: ./templates/Roles/edit.php:14
+#: ./templates/Roles/index.php:55
+#: ./templates/Roles/view.php:58
+#: ./templates/Roles/view.php:100
+#: ./templates/StandardChests/edit.php:14
+#: ./templates/StandardChests/view.php:58
+#: ./templates/Users/edit.php:34
+#: ./templates/Users/index.php:75
+#: ./templates/Users/view.php:79
+#: ./templates/Users/view.php:155
+msgid "Edit"
+msgstr "Modifica"
+
+#: ./templates/CollectedChests/edit.php:30
+#: ./templates/CollectedChests/index.php:56
+#: ./templates/CollectedChests/view.php:52
+#: ./templates/Config/edit.php:28
+#: ./templates/Config/index.php:52
+#: ./templates/Config/view.php:44
+#: ./templates/Errors/edit.php:26
+#: ./templates/Errors/index.php:46
+#: ./templates/Errors/view.php:32
+#: ./templates/Events/manage.php:138
+#: ./templates/Members/edit.php:34
+#: ./templates/Members/index.php:58
+#: ./templates/Members/view.php:68
+#: ./templates/PlayerNameMappings/edit.php:29
+#: ./templates/PlayerNameMappings/index.php:48
+#: ./templates/PlayerNameMappings/view.php:48
+#: ./templates/RolesUsers/edit.php:27
+#: ./templates/RolesUsers/index.php:50
+#: ./templates/RolesUsers/view.php:40
+#: ./templates/Roles/edit.php:29
+#: ./templates/Roles/index.php:56
+#: ./templates/Roles/view.php:52
+#: ./templates/Roles/view.php:101
+#: ./templates/StandardChests/edit.php:45
+#: ./templates/StandardChests/view.php:52
+#: ./templates/Users/edit.php:79
+#: ./templates/Users/index.php:76
+#: ./templates/Users/view.php:73
+#: ./templates/Users/view.php:156
+msgid "Delete"
+msgstr "Elimina"
+
+#: ./templates/CollectedChests/edit.php:32
+#: ./templates/CollectedChests/index.php:56
+#: ./templates/CollectedChests/view.php:54
+#: ./templates/Config/edit.php:30
+#: ./templates/Config/index.php:52
+#: ./templates/Config/view.php:46
+#: ./templates/Errors/edit.php:28
+#: ./templates/Errors/index.php:46
+#: ./templates/Errors/view.php:34
+#: ./templates/Members/edit.php:36
+#: ./templates/Members/index.php:58
+#: ./templates/Members/view.php:70
+#: ./templates/PlayerNameMappings/edit.php:31
+#: ./templates/PlayerNameMappings/index.php:48
+#: ./templates/PlayerNameMappings/view.php:48
+#: ./templates/RolesUsers/edit.php:29
+#: ./templates/RolesUsers/index.php:50
+#: ./templates/RolesUsers/view.php:42
+#: ./templates/Roles/edit.php:31
+#: ./templates/Roles/index.php:56
+#: ./templates/Roles/view.php:54
+#: ./templates/Roles/view.php:101
+#: ./templates/StandardChests/edit.php:47
+#: ./templates/StandardChests/index.php:141
+#: ./templates/StandardChests/view.php:54
+#: ./templates/Users/edit.php:81
+#: ./templates/Users/index.php:76
+#: ./templates/Users/view.php:75
+#: ./templates/Users/view.php:156
+msgid "Are you sure you want to delete # {0}?"
+msgstr "Vuoi davvero eliminare il n. {0}?"
+
+#: ./templates/CollectedChests/index.php:9
+msgid "Collected Chests"
+msgstr "Forzieri Raccolti"
+
+#: ./templates/CollectedChests/index.php:27
+msgid "New Collected Chest"
+msgstr "Nuovo Forziere Raccolto"
+
+#: ./templates/CollectedChests/index.php:66
+#: ./templates/Config/index.php:62
+#: ./templates/Errors/index.php:56
+#: ./templates/IncompleteChests/index.php:100
+#: ./templates/Members/index.php:68
+#: ./templates/PlayerNameMappings/index.php:58
+#: ./templates/RolesUsers/index.php:60
+#: ./templates/Roles/index.php:66
+#: ./templates/StandardChests/index.php:161
+#: ./templates/StandardChests/weights.php:81
+#: ./templates/Users/index.php:86
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr "Pagina {{page}} di {{pages}}, mostrando {{current}} record su {{count}} totali"
+
+#: ./templates/CollectedChests/merge_players.php:13
+msgid "Select the correct player name to keep and the incorrect name to replace"
+msgstr "Scegli il nome corretto del giocatore, che verrà mantenuto, e quello sbagliato, che verrà sostituito"
+
+#: ./templates/CollectedChests/merge_players.php:16
+msgid "Back to Score"
+msgstr "Torna alla Classifica"
+
+#: ./templates/CollectedChests/merge_players.php:26
+msgid "All collected chest records associated with the incorrect name will be reassigned to the correct name. This action cannot be undone."
+msgstr "Tutti i forzieri raccolti associati al nome sbagliato passeranno al nome corretto. Questa azione non si può annullare."
+
+#: ./templates/CollectedChests/merge_players.php:33
+msgid "Select Correct Name"
+msgstr "Scegli il Nome Corretto"
+
+#: ./templates/CollectedChests/merge_players.php:34
+msgid "Correct Player Name (Keep this one)"
+msgstr "Nome corretto del giocatore (questo resta)"
+
+#: ./templates/CollectedChests/merge_players.php:42
+msgid "Select Incorrect Name"
+msgstr "Scegli il Nome Sbagliato"
+
+#: ./templates/CollectedChests/merge_players.php:43
+msgid "Incorrect Player Name (Replace this one)"
+msgstr "Nome sbagliato del giocatore (questo viene sostituito)"
+
+#: ./templates/CollectedChests/merge_players.php:49
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:79
+msgid "Merge Players"
+msgstr "Unisci Giocatori"
+
+#: ./templates/CollectedChests/merge_players.php:57
+msgid "Current Unique Player List"
+msgstr "Elenco Attuale dei Giocatori Unici"
+
+#: ./templates/CollectedChests/merge_players.php:67
+msgid "No player names found."
+msgstr "Nessun nome di giocatore trovato."
+
+#: ./templates/CollectedChests/score.php:1164
+msgid "Players Score & Monsters"
+msgstr "Punteggi e Mostri dei Giocatori"
+
+#: ./templates/CollectedChests/score.php:1173
+msgid "Toggle between clean view and full detailed data"
+msgstr "Passa dalla vista pulita ai dati dettagliati completi"
+
+#: ./templates/CollectedChests/score.php:1175
+#: ./templates/CollectedChests/score.php:1539
+msgid "View All (Detailed Data)"
+msgstr "Vedi Tutto (Dati Dettagliati)"
+
+#: ./templates/CollectedChests/score.php:1182
+#: ./templates/StandardChests/index.php:102
+msgid "Filter"
+msgstr "Filtra"
+
+#: ./templates/CollectedChests/score.php:1192
+msgid "Chest Score Goal: {0} points"
+msgstr "Obiettivo punteggio forzieri: {0} punti"
+
+#: ./templates/CollectedChests/score.php:1196
+msgid "Epic Chest Goal: {0} points"
+msgstr "Obiettivo forzieri epici: {0} punti"
+
+#: ./templates/CollectedChests/score.php:1210
+msgid "Score Summary"
+msgstr "Riepilogo Punteggi"
+
+#: ./templates/CollectedChests/score.php:1215
+#: ./templates/Events/view.php:291
+msgid "Search player..."
+msgstr "Cerca giocatore..."
+
+#: ./templates/CollectedChests/score.php:1224
+#: ./templates/CollectedChests/score.php:1313
+#: ./templates/CollectedChests/score.php:1423
+#: ./templates/PlayerCycleSummaries/index.php:238
+msgid "Pos."
+msgstr "Pos."
+
+#: ./templates/CollectedChests/score.php:1226
+#: ./templates/CollectedChests/score.php:1425
+msgid "Final Score"
+msgstr "Punteggio Finale"
+
+#: ./templates/CollectedChests/score.php:1227
+#: ./templates/CollectedChests/score.php:1291
+#: ./templates/CollectedChests/score.php:1315
+msgid "Monster Chests"
+msgstr "Forzieri di Mostri"
+
+#: ./templates/CollectedChests/score.php:1254
+msgid "Click to view detailed chest breakdown for {0}"
+msgstr "Clicca per vedere il dettaglio dei forzieri di {0}"
+
+#: ./templates/CollectedChests/score.php:1262
+msgid "Click to view monster chest dates and details for {0}"
+msgstr "Clicca per vedere date e dettagli dei forzieri di mostri di {0}"
+
+#: ./templates/CollectedChests/score.php:1275
+msgid "No chests collected in this cycle."
+msgstr "Nessun forziere raccolto in questo ciclo."
+
+#: ./templates/CollectedChests/score.php:1294
+msgid "Compact View (Fit to screen)"
+msgstr "Vista Compatta (si adatta allo schermo)"
+
+#: ./templates/CollectedChests/score.php:1295
+msgid "Summary"
+msgstr "Riepilogo"
+
+#: ./templates/CollectedChests/score.php:1297
+msgid "Full matrix with all monster columns"
+msgstr "Matrice completa con tutte le colonne dei mostri"
+
+#: ./templates/CollectedChests/score.php:1298
+msgid "Matrix"
+msgstr "Matrice"
+
+#: ./templates/CollectedChests/score.php:1304
+msgid "Search monster or player..."
+msgstr "Cerca mostro o giocatore..."
+
+#: ./templates/CollectedChests/score.php:1316
+msgid "Monster Points"
+msgstr "Punti Mostri"
+
+#: ./templates/CollectedChests/score.php:1367
+msgid "Click to view dates and details for {0}"
+msgstr "Clicca per vedere date e dettagli di {0}"
+
+#: ./templates/CollectedChests/score.php:1381
+msgid "View details"
+msgstr "Vedi dettagli"
+
+#: ./templates/CollectedChests/score.php:1395
+msgid "No monster data available for this cycle."
+msgstr "Nessun dato sui mostri disponibile per questo ciclo."
+
+#: ./templates/CollectedChests/score.php:1405
+msgid "All Detailed Data by Chest Source"
+msgstr "Tutti i Dati Dettagliati per Fonte del Forziere"
+
+#: ./templates/CollectedChests/score.php:1410
+msgid "Filter player..."
+msgstr "Filtra giocatore..."
+
+#: ./templates/CollectedChests/score.php:1415
+msgid "Scroll horizontally to view all chest columns"
+msgstr "Scorri in orizzontale per vedere tutte le colonne dei forzieri"
+
+#: ./templates/CollectedChests/score.php:1426
+#: ./templates/Events/view.php:305
+#: ./templates/PlayerCycleSummaries/index.php:240
+msgid "Total Chests"
+msgstr "Forzieri Totali"
+
+#: ./templates/CollectedChests/score.php:1427
+#: ./templates/PlayerCycleSummaries/index.php:242
+msgid "Epic Crypt Score"
+msgstr "Punteggio della Cripta Epica"
+
+#: ./templates/CollectedChests/score.php:1468
+msgid "No detailed data available for this cycle."
+msgstr "Nessun dato dettagliato disponibile per questo ciclo."
+
+#: ./templates/CollectedChests/score.php:1483
+msgid "Time remaining until cycle ends: "
+msgstr "Tempo rimasto alla fine del ciclo: "
+
+#: ./templates/CollectedChests/score.php:1485
+msgid "{0} day{1}, "
+msgstr "{0} g, "
+
+#: ./templates/CollectedChests/score.php:1487
+msgid "{0} hour{1}, "
+msgstr "{0} h, "
+
+#: ./templates/CollectedChests/score.php:1488
+msgid "{0} minute{1}, "
+msgstr "{0} min, "
+
+#: ./templates/CollectedChests/score.php:1489
+msgid "{0} second{1}"
+msgstr "{0} s"
+
+#: ./templates/CollectedChests/score.php:1491
+msgid "The Current Cycle has already ended."
+msgstr "Il ciclo attuale è già finito."
+
+#: ./templates/CollectedChests/score.php:1498
+msgid "Last chest update: {0} UTC"
+msgstr "Ultimo aggiornamento dei forzieri: {0} UTC"
+
+#: ./templates/CollectedChests/score.php:1508
+msgid "Close"
+msgstr "Chiudi"
+
+#: ./templates/CollectedChests/score.php:1532
+msgid "Back to Organized View"
+msgstr "Torna alla Vista Organizzata"
+
+#: ./templates/CollectedChests/score.php:1598
+msgid "No individual monster chest records found for this player in this cycle."
+msgstr "Nessun record singolo di forziere di mostro trovato per questo giocatore in questo ciclo."
+
+#: ./templates/CollectedChests/score.php:1602
+msgid "Monster Chest"
+msgstr "Forziere di Mostro"
+
+#: ./templates/CollectedChests/score.php:1603
+msgid "Date"
+msgstr "Data"
+
+#: ./templates/CollectedChests/score.php:1604
+msgid "Quantity"
+msgstr "Quantità"
+
+#: ./templates/CollectedChests/score.php:1628
+msgid "Player data not found."
+msgstr "Dati del giocatore non trovati."
+
+#: ./templates/CollectedChests/score.php:1643
+msgid "No scored chests recorded for this player in this cycle."
+msgstr "Nessun forziere con punteggio registrato per questo giocatore in questo ciclo."
+
+#: ./templates/CollectedChests/score.php:1647
+#: ./templates/StandardChests/weights.php:58
+msgid "Chest Source"
+msgstr "Fonte del Forziere"
+
+#: ./templates/CollectedChests/score.php:1648
+msgid "Qty"
+msgstr "Qtà"
+
+#: ./templates/CollectedChests/score.php:1649
+msgid "Points Each"
+msgstr "Punti ciascuno"
+
+#: ./templates/CollectedChests/score.php:1650
+msgid "Total Points"
+msgstr "Punti Totali"
+
+#: ./templates/CollectedChests/view.php:9
+msgid "Collected Chest"
+msgstr "Forziere Raccolto"
+
+#: ./templates/CollectedChests/view.php:24
+#: ./templates/Roles/view.php:24
+#: ./templates/Roles/view.php:76
+#: ./templates/Users/view.php:24
+#: ./templates/Users/view.php:131
+msgid "Name"
+msgstr "Nome"
+
+#: ./templates/CollectedChests/view.php:32
+#: ./templates/IncompleteChests/index.php:59
+#: ./templates/IncompleteChests/view.php:122
+#: ./templates/StandardChests/view.php:24
+msgid "Source"
+msgstr "Fonte"
+
+#: ./templates/CollectedChests/view.php:36
+#: ./templates/Config/view.php:36
+#: ./templates/Errors/view.php:24
+#: ./templates/Members/view.php:28
+#: ./templates/PlayerNameMappings/view.php:32
+#: ./templates/RolesUsers/view.php:32
+#: ./templates/Roles/view.php:36
+#: ./templates/Roles/view.php:75
+#: ./templates/StandardChests/view.php:32
+#: ./templates/Users/view.php:52
+#: ./templates/Users/view.php:130
+msgid "Id"
+msgstr "Id"
+
+#: ./templates/CollectedChests/view.php:44
+msgid "Collected At"
+msgstr "Raccolto il"
+
+#: ./templates/Config/add.php:9
+msgid "Add Config"
+msgstr "Aggiungi Impostazione"
+
+#: ./templates/Config/add.php:12
+#: ./templates/Config/edit.php:12
+#: ./templates/Config/index.php:12
+#: ./templates/Config/view.php:12
+msgid "List Config"
+msgstr "Elenca Impostazioni"
+
+#: ./templates/Config/branding.php:20
+#: ./templates/Config/branding.php:24
+#: ./templates/Config/branding.php:45
+#: ./templates/Config/theme.php:36
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:136
+msgid "Branding"
+msgstr "Identità Visiva"
+
+#: ./templates/Config/branding.php:23
+#: ./templates/Config/index.php:9
+#: ./templates/Config/theme.php:17
+#: ./templates/Config/view.php:9
+msgid "Config"
+msgstr "Impostazione"
+
+#: ./templates/Config/branding.php:48
+msgid "The logo in the navbar and the icon in the browser tab"
+msgstr "Il logo nella barra di navigazione e l'icona nella scheda del browser"
+
+#: ./templates/Config/branding.php:53
+msgid "All settings"
+msgstr "Tutte le impostazioni"
+
+#: ./templates/Config/branding.php:65
+msgid "Logo"
+msgstr "Logo"
+
+#: ./templates/Config/branding.php:67
+msgid "Shown beside the site name in the navbar, and above the sign-in box."
+msgstr "Compare accanto al nome del sito nella barra di navigazione e sopra il riquadro di accesso."
+
+#: ./templates/Config/branding.php:73
+msgid "PNG, JPEG, GIF or WebP. Use a PNG if you want a transparent background."
+msgstr "PNG, JPEG, GIF o WebP. Usa un PNG se vuoi lo sfondo trasparente."
+
+#: ./templates/Config/branding.php:74
+#: ./templates/Config/branding.php:100
+msgid "Between {0}x{0} and {1}x{1} pixels."
+msgstr "Tra {0}x{0} e {1}x{1} pixel."
+
+#: ./templates/Config/branding.php:79
+msgid "Square, or up to {0} times wider than it is tall. Taller than it is wide is not accepted."
+msgstr "Quadrato, oppure fino a {0} volte più largo che alto. Più alto che largo non è accettato."
+
+#: ./templates/Config/branding.php:83
+#: ./templates/Config/branding.php:109
+msgid "At most {0}."
+msgstr "Al massimo {0}."
+
+#: ./templates/Config/branding.php:84
+msgid "Saved as a PNG {0} pixels on its longest side, in webroot/img/branding/custom."
+msgstr "Salvato come PNG di {0} pixel sul lato più lungo, in webroot/img/branding/custom."
+
+#: ./templates/Config/branding.php:91
+msgid "Favicon"
+msgstr "Favicon"
+
+#: ./templates/Config/branding.php:93
+msgid "Shown in the browser tab, in bookmarks, and when somebody pins the site."
+msgstr "Compare nella scheda del browser, nei preferiti e quando qualcuno fissa il sito."
+
+#: ./templates/Config/branding.php:99
+msgid "PNG, JPEG, GIF, WebP or ICO. Anything but JPEG can keep a transparent background."
+msgstr "PNG, JPEG, GIF, WebP o ICO. Tutti tranne JPEG possono mantenere lo sfondo trasparente."
+
+#: ./templates/Config/branding.php:105
+msgid "Square, give or take {0}%. Keep the artwork simple: it is usually drawn at 16 pixels."
+msgstr "Quadrata, con una tolleranza del {0}%. Tieni il disegno semplice: di solito viene mostrato a 16 pixel."
+
+#: ./templates/Config/branding.php:110
+msgid "Saved as a {0}x{0} PNG plus a generated favicon.ico holding the 16, 32, 48 and 64 pixel sizes."
+msgstr "Salvata come PNG {0}x{0} più una favicon.ico generata con le dimensioni da 16, 32, 48 e 64 pixel."
+
+#: ./templates/Config/branding.php:146
+msgid "Your upload"
+msgstr "Il tuo caricamento"
+
+#: ./templates/Config/branding.php:149
+msgid "The image you uploaded."
+msgstr "L'immagine che hai caricato."
+
+#: ./templates/Config/branding.php:150
+msgid "Nothing uploaded yet."
+msgstr "Non hai ancora caricato nulla."
+
+#: ./templates/Config/branding.php:174
+msgid "Or upload your own {0}"
+msgstr "Oppure carica il tuo {0}"
+
+#: ./templates/Config/branding.php:179
+msgid "Uploading replaces whatever is in the \"Your upload\" slot and selects it."
+msgstr "Il caricamento sostituisce quello che c'è nello spazio \"Il tuo caricamento\" e lo seleziona."
+
+#: ./templates/Config/branding.php:192
+msgid "Save branding"
+msgstr "Salva identità visiva"
+
+#: ./templates/Config/branding.php:201
+msgid "Every image is stored as a file under webroot/img/branding, never in the database. Browsers cache icons hard, so a changed favicon can take a reload or two to appear in the tab."
+msgstr "Ogni immagine è salvata come file sotto webroot/img/branding, mai nel database. I browser tengono in cache le icone con insistenza, quindi una favicon nuova può richiedere uno o due ricaricamenti prima di comparire nella scheda."
+
+#: ./templates/Config/edit.php:9
+msgid "Edit Config"
+msgstr "Modifica Impostazione"
+
+#: ./templates/Config/index.php:27
+msgid "New Config"
+msgstr "Nuova Impostazione"
+
+#: ./templates/Config/theme.php:14
+#: ./templates/Config/theme.php:18
+#: ./templates/Config/theme.php:28
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:142
+msgid "Theme"
+msgstr "Tema"
+
+#: ./templates/Config/theme.php:31
+msgid "The colours every page of the site is drawn in"
+msgstr "I colori con cui viene disegnata ogni pagina del sito"
+
+#: ./templates/Config/theme.php:47
+msgid "Colour scheme"
+msgstr "Schema di colori"
+
+#: ./templates/Config/theme.php:49
+msgid "Applies to everyone who visits the site, players included, not just to you."
+msgstr "Vale per tutti quelli che visitano il sito, giocatori compresi, non solo per te."
+
+#: ./templates/Config/theme.php:76
+msgid "A dark theme"
+msgstr "Un tema scuro"
+
+#: ./templates/Config/theme.php:87
+msgid "Save theme"
+msgstr "Salva tema"
+
+#: ./templates/Config/theme.php:96
+msgid "The previews above are drawn from a handful of colours each. Save a theme and reload to see it applied across the whole site."
+msgstr "Ogni anteprima qui sopra è composta da una manciata di colori. Salva un tema e ricarica per vederlo applicato a tutto il sito."
+
+#: ./templates/Config/view.php:24
+msgid "Param"
+msgstr "Parametro"
+
+#: ./templates/Config/view.php:28
+msgid "Value"
+msgstr "Valore"
+
+#: ./templates/Config/view.php:32
+#: ./templates/Roles/view.php:28
+#: ./templates/Users/view.php:132
+msgid "Description"
+msgstr "Descrizione"
+
+#: ./templates/Errors/add.php:9
+msgid "Add Error"
+msgstr "Aggiungi Errore"
+
+#: ./templates/Errors/add.php:12
+#: ./templates/Errors/edit.php:12
+#: ./templates/Errors/index.php:12
+#: ./templates/Errors/view.php:12
+msgid "List Errors"
+msgstr "Elenca Errori"
+
+#: ./templates/Errors/edit.php:9
+msgid "Edit Error"
+msgstr "Modifica Errore"
+
+#: ./templates/Errors/index.php:9
+msgid "Errors"
+msgstr "Errori"
+
+#: ./templates/Errors/index.php:27
+msgid "New Error"
+msgstr "Nuovo Errore"
+
+#: ./templates/Errors/view.php:9
+msgid "Error"
+msgstr "Errore"
+
+#: ./templates/Errors/view.php:46
+msgid "Error Value"
+msgstr "Valore dell'Errore"
+
+#: ./templates/Events/form.php:23
+#: ./templates/Events/form.php:61
+#: ./templates/Events/manage.php:42
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:127
+msgid "New Event"
+msgstr "Nuovo Evento"
+
+#: ./templates/Events/form.php:23
+msgid "Edit Event"
+msgstr "Modifica Evento"
+
+#: ./templates/Events/form.php:61
+msgid "Edit Event #{0}"
+msgstr "Modifica Evento n. {0}"
+
+#: ./templates/Events/form.php:65
+msgid "It will be created as event #{0}"
+msgstr "Verrà creato come evento n. {0}"
+
+#: ./templates/Events/form.php:66
+msgid "Created {0}"
+msgstr "Creato il {0}"
+
+#: ./templates/Events/form.php:71
+#: ./templates/Events/manage.php:13
+#: ./templates/Events/manage.php:32
+#: ./templates/Events/settings.php:39
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:124
+msgid "Manage Events"
+msgstr "Gestisci Eventi"
+
+#: ./templates/Events/form.php:82
+msgid "Identification"
+msgstr "Identificazione"
+
+#: ./templates/Events/form.php:83
+msgid "The name players will see, and an optional explanation of the rules."
+msgstr "Il nome che vedranno i giocatori e una spiegazione facoltativa delle regole."
+
+#: ./templates/Events/form.php:87
+msgid "Event number"
+msgstr "Numero dell'evento"
+
+#: ./templates/Events/form.php:91
+msgid "Assigned automatically and never reused."
+msgstr "Assegnato automaticamente e mai riutilizzato."
+
+#: ./templates/Events/form.php:97
+msgid "Event name"
+msgstr "Nome dell'evento"
+
+#: ./templates/Events/form.php:101
+msgid "e.g. September Chest Marathon"
+msgstr "es. Maratona dei Forzieri di Settembre"
+
+#: ./templates/Events/form.php:110
+msgid "Description (optional)"
+msgstr "Descrizione (facoltativa)"
+
+#: ./templates/Events/form.php:114
+msgid "Anything the players should know about this event."
+msgstr "Tutto quello che i giocatori devono sapere su questo evento."
+
+#: ./templates/Events/form.php:125
+msgid "When it runs"
+msgstr "Quando si svolge"
+
+#: ./templates/Events/form.php:129
+msgid "Both moments are UTC, the same clock the scoreboard uses. Only chests collected inside this window count, and the start must be in the future."
+msgstr "Entrambi i momenti sono in UTC, lo stesso orologio che usa la classifica. Contano solo i forzieri raccolti dentro questa finestra, e l'inizio deve essere nel futuro."
+
+#: ./templates/Events/form.php:134
+msgid "Starts at (UTC)"
+msgstr "Inizia il (UTC)"
+
+#: ./templates/Events/form.php:141
+msgid "Ends at (UTC)"
+msgstr "Finisce il (UTC)"
+
+#: ./templates/Events/form.php:150
+msgid "Right now it is {0} UTC."
+msgstr "Adesso sono le {0} UTC."
+
+#: ./templates/Events/form.php:159
+msgid "What counts"
+msgstr "Cosa conta"
+
+#: ./templates/Events/form.php:160
+msgid "How players are ranked in this event."
+msgstr "Come vengono classificati i giocatori in questo evento."
+
+#: ./templates/Events/form.php:183
+msgid "Chests in this event"
+msgstr "Forzieri di questo evento"
+
+#: ./templates/Events/form.php:185
+msgid "Only chests that carry a score can be picked, because a chest worth nothing cannot decide a ranking. Choose as many as you like."
+msgstr "Si possono scegliere solo forzieri che hanno un punteggio, perché un forziere che non vale nulla non può decidere una classifica. Scegline quanti vuoi."
+
+#: ./templates/Events/form.php:189
+msgid "Rank players by"
+msgstr "Classifica i giocatori per"
+
+#: ./templates/Events/form.php:194
+msgid "Total score of the chosen chests"
+msgstr "Punteggio totale dei forzieri scelti"
+
+#: ./templates/Events/form.php:199
+msgid "Number of the chosen chests collected"
+msgstr "Numero dei forzieri scelti che sono stati raccolti"
+
+#: ./templates/Events/form.php:207
+msgid "Filter chests..."
+msgstr "Filtra forzieri..."
+
+#: ./templates/Events/form.php:213
+msgid "Select all shown"
+msgstr "Seleziona tutti quelli mostrati"
+
+#: ./templates/Events/form.php:216
+msgid "Clear"
+msgstr "Pulisci"
+
+#: ./templates/Events/form.php:224
+msgid "No chest has a score yet. Set chest scores before creating a custom chest event."
+msgstr "Nessun forziere ha ancora un punteggio. Imposta i punteggi dei forzieri prima di creare un evento a forzieri personalizzati."
+
+#: ./templates/Events/form.php:234
+msgid "Epic monster chest"
+msgstr "Forziere di mostro epico"
+
+#: ./templates/Events/form.php:250
+msgid "Prize and contact"
+msgstr "Premio e contatto"
+
+#: ./templates/Events/form.php:251
+msgid "What the winner gets, and who they should look for to claim it."
+msgstr "Cosa vince il vincitore e chi deve cercare per ritirarlo."
+
+#: ./templates/Events/form.php:256
+#: ./templates/Events/view.php:233
+msgid "Prize"
+msgstr "Premio"
+
+#: ./templates/Events/form.php:261
+msgid "e.g. 500 gold for first place, 250 for second."
+msgstr "es. 500 oro per il primo posto, 250 per il secondo."
+
+#: ./templates/Events/form.php:270
+msgid "Player to look for"
+msgstr "Giocatore da cercare"
+
+#: ./templates/Events/form.php:274
+msgid "e.g. Ventura"
+msgstr "es. Ventura"
+
+#: ./templates/Events/form.php:285
+msgid "Event banner"
+msgstr "Banner dell'evento"
+
+#: ./templates/Events/form.php:287
+msgid "Shown on the scoreboard next to the goals while this event is running. Leave it empty to use the default banner."
+msgstr "Compare nella classifica accanto agli obiettivi mentre questo evento è in corso. Lascialo vuoto per usare il banner predefinito."
+
+#: ./templates/Events/form.php:294
+msgid "Banner preview"
+msgstr "Anteprima del banner"
+
+#: ./templates/Events/form.php:297
+msgid "Replace the banner"
+msgstr "Sostituisci il banner"
+
+#: ./templates/Events/form.php:301
+#: ./templates/Events/settings.php:75
+msgid "PNG, JPEG, GIF or WebP, up to 3 MB. A wide strip works best, around 640 x 160 pixels."
+msgstr "PNG, JPEG, GIF o WebP, fino a 3 MB. Una striscia larga funziona meglio, intorno a 640 x 160 pixel."
+
+#: ./templates/Events/form.php:309
+msgid "Drop this banner and go back to the default"
+msgstr "Scarta questo banner e torna a quello predefinito"
+
+#: ./templates/Events/form.php:318
+msgid "Create event"
+msgstr "Crea evento"
+
+#: ./templates/Events/form.php:318
+msgid "Save changes"
+msgstr "Salva modifiche"
+
+#: ./templates/Events/form.php:343
+msgid "1 chest selected"
+msgstr "1 forziere selezionato"
+
+#: ./templates/Events/form.php:344
+msgid "{0} chests selected"
+msgstr "{0} forzieri selezionati"
+
+#: ./templates/Events/form.php:396
+msgid "The end must come after the start."
+msgstr "La fine deve venire dopo l'inizio."
+
+#: ./templates/Events/form.php:404
+msgid "Duration: {0} day(s) and {1} hour(s)."
+msgstr "Durata: {0} giorno(i) e {1} ora(e)."
+
+#: ./templates/Events/form.php:405
+msgid "Duration: {0} hour(s)."
+msgstr "Durata: {0} ora(e)."
+
+#: ./templates/Events/history.php:11
+#: ./templates/Events/history.php:17
+#: ./templates/Events/no_event.php:25
+#: ./templates/Events/view.php:76
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:34
+msgid "Event History"
+msgstr "Storico degli Eventi"
+
+#: ./templates/Events/history.php:18
+msgid "Every event that has been held, newest first"
+msgstr "Tutti gli eventi che si sono svolti, dal più recente"
+
+#: ./templates/Events/history.php:22
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:29
+msgid "Current Event"
+msgstr "Evento Attuale"
+
+#: ./templates/Events/history.php:31
+msgid "Running now"
+msgstr "In corso adesso"
+
+#: ./templates/Events/history.php:42
+#: ./templates/Events/no_event.php:52
+msgid "Coming up"
+msgstr "In arrivo"
+
+#: ./templates/Events/history.php:52
+msgid "Past events"
+msgstr "Eventi passati"
+
+#: ./templates/Events/history.php:64
+#: ./templates/Events/manage.php:152
+msgid "Page {{page}} of {{pages}}, showing {{current}} event(s) out of {{count}} total"
+msgstr "Pagina {{page}} di {{pages}}, mostrando {{current}} evento(i) su {{count}} totali"
+
+#: ./templates/Events/history.php:78
+msgid "No event has finished yet."
+msgstr "Nessun evento è ancora finito."
+
+#: ./templates/Events/manage.php:16
+#: ./templates/Events/view.php:21
+#: ./templates/element/event_row.php:20
+msgid "Running"
+msgstr "In corso"
+
+#: ./templates/Events/manage.php:17
+#: ./templates/element/event_row.php:21
+msgid "Scheduled"
+msgstr "Programmato"
+
+#: ./templates/Events/manage.php:18
+#: ./templates/Events/view.php:23
+#: ./templates/element/event_row.php:22
+msgid "Finished"
+msgstr "Concluso"
+
+#: ./templates/Events/manage.php:19
+#: ./templates/Events/view.php:24
+#: ./templates/element/event_row.php:23
+msgid "Cancelled"
+msgstr "Annullato"
+
+#: ./templates/Events/manage.php:33
+msgid "The next event created will be #{0}"
+msgstr "Il prossimo evento creato sarà il n. {0}"
+
+#: ./templates/Events/manage.php:37
+#: ./templates/Events/settings.php:15
+#: ./templates/Events/settings.php:34
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:130
+msgid "Event Banners"
+msgstr "Banner degli Eventi"
+
+#: ./templates/Events/manage.php:52
+msgid "All events"
+msgstr "Tutti gli eventi"
+
+#: ./templates/Events/manage.php:62
+msgid "Event"
+msgstr "Evento"
+
+#: ./templates/Events/manage.php:63
+msgid "Criteria"
+msgstr "Criterio"
+
+#: ./templates/Events/manage.php:64
+msgid "Window (UTC)"
+msgstr "Finestra (UTC)"
+
+#: ./templates/Events/manage.php:65
+msgid "State"
+msgstr "Stato"
+
+#: ./templates/Events/manage.php:78
+msgid "Result recorded"
+msgstr "Risultato registrato"
+
+#: ./templates/Events/manage.php:108
+msgid "Recalculate the recorded result"
+msgstr "Ricalcola il risultato registrato"
+
+#: ./templates/Events/manage.php:109
+msgid "Close and record the result"
+msgstr "Chiudi e registra il risultato"
+
+#: ./templates/Events/manage.php:110
+msgid "Record the current standings as the official result of event #{0}?"
+msgstr "Registrare la classifica attuale come risultato ufficiale dell'evento n. {0}?"
+
+#: ./templates/Events/manage.php:124
+msgid "Reactivate"
+msgstr "Riattiva"
+
+#: ./templates/Events/manage.php:127
+msgid "Make event #{0} active again?"
+msgstr "Rendere di nuovo attivo l'evento n. {0}?"
+
+#: ./templates/Events/manage.php:128
+msgid "Cancel event #{0}?"
+msgstr "Annullare l'evento n. {0}?"
+
+#: ./templates/Events/manage.php:139
+msgid "Delete event #{0} and its recorded results for good?"
+msgstr "Eliminare per sempre l'evento n. {0} e i suoi risultati registrati?"
+
+#: ./templates/Events/manage.php:165
+#: ./templates/Events/no_event.php:76
+msgid "No event has been created yet."
+msgstr "Non è ancora stato creato nessun evento."
+
+#: ./templates/Events/manage.php:167
+msgid "Create the first event"
+msgstr "Crea il primo evento"
+
+#: ./templates/Events/no_event.php:14
+#: ./templates/Events/no_event.php:20
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:22
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:120
+msgid "Events"
+msgstr "Eventi"
+
+#: ./templates/Events/no_event.php:21
+msgid "Tournaments, prizes and standings"
+msgstr "Tornei, premi e classifiche"
+
+#: ./templates/Events/no_event.php:36
+msgid "Nothing running"
+msgstr "Niente in corso"
+
+#: ./templates/Events/no_event.php:38
+msgid "No event is running right now"
+msgstr "Adesso non c'è nessun evento in corso"
+
+#: ./templates/Events/no_event.php:40
+msgid "When an administrator opens an event, it appears here and a banner shows up on the scoreboard."
+msgstr "Quando un amministratore apre un evento, compare qui e nella classifica appare un banner."
+
+#: ./templates/Events/no_event.php:45
+#: ./templates/element/event_banner.php:38
+msgid "No event running"
+msgstr "Nessun evento in corso"
+
+#: ./templates/Events/no_event.php:63
+msgid "Recently finished"
+msgstr "Conclusi di recente"
+
+#: ./templates/Events/settings.php:19
+msgid "Event running"
+msgstr "Evento in corso"
+
+#: ./templates/Events/settings.php:21
+msgid "Shown on the scoreboard while an event is running, unless that event has its own banner."
+msgstr "Compare nella classifica mentre un evento è in corso, a meno che quell'evento non abbia un banner proprio."
+
+#: ./templates/Events/settings.php:24
+msgid "No event"
+msgstr "Nessun evento"
+
+#: ./templates/Events/settings.php:26
+msgid "Shown on the scoreboard when nothing is running."
+msgstr "Compare nella classifica quando non c'è niente in corso."
+
+#: ./templates/Events/settings.php:35
+msgid "The default artwork shown beside the goals on the scoreboard"
+msgstr "L'immagine predefinita mostrata accanto agli obiettivi nella classifica"
+
+#: ./templates/Events/settings.php:60
+msgid "Last changed: {0}"
+msgstr "Ultima modifica: {0}"
+
+#: ./templates/Events/settings.php:65
+msgid "This banner has not been set up. Upload one below."
+msgstr "Questo banner non è stato configurato. Caricane uno qui sotto."
+
+#: ./templates/Events/settings.php:70
+msgid "Upload a replacement"
+msgstr "Carica un sostituto"
+
+#: ./templates/Events/settings.php:84
+msgid "Save banners"
+msgstr "Salva banner"
+
+#: ./templates/Events/view.php:14
+msgid "Event #{0} - {1}"
+msgstr "Evento n. {0} - {1}"
+
+#: ./templates/Events/view.php:22
+msgid "Starts soon"
+msgstr "Inizia presto"
+
+#: ./templates/Events/view.php:63
+msgid "Event Standings"
+msgstr "Classifica dell'Evento"
+
+#: ./templates/Events/view.php:65
+msgid "Official ranking and leaders for this event"
+msgstr "Classifica ufficiale e leader di questo evento"
+
+#: ./templates/Events/view.php:70
+msgid "Go to running event"
+msgstr "Vai all'evento in corso"
+
+#: ./templates/Events/view.php:89
+msgid "Recalculate results"
+msgstr "Ricalcola i risultati"
+
+#: ./templates/Events/view.php:90
+msgid "Close & record results"
+msgstr "Chiudi e registra i risultati"
+
+#: ./templates/Events/view.php:95
+msgid "Record the current standings as this event's official result?"
+msgstr "Registrare la classifica attuale come risultato ufficiale di questo evento?"
+
+#: ./templates/Events/view.php:111
+msgid "Event #{0}"
+msgstr "Evento n. {0}"
+
+#: ./templates/Events/view.php:136
+msgid "Official result recorded"
+msgstr "Risultato ufficiale registrato"
+
+#: ./templates/Events/view.php:149
+msgid "Days"
+msgstr "Giorni"
+
+#: ./templates/Events/view.php:153
+msgid "Hours"
+msgstr "Ore"
+
+#: ./templates/Events/view.php:157
+msgid "Minutes"
+msgstr "Minuti"
+
+#: ./templates/Events/view.php:161
+msgid "Seconds"
+msgstr "Secondi"
+
+#: ./templates/Events/view.php:165
+msgid "until the end"
+msgstr "alla fine"
+
+#: ./templates/Events/view.php:165
+msgid "until the start"
+msgstr "all'inizio"
+
+#: ./templates/Events/view.php:167
+msgid "Time left"
+msgstr "Tempo rimasto"
+
+#: ./templates/Events/view.php:183
+msgid "Leader"
+msgstr "Leader"
+
+#: ./templates/Events/view.php:183
+msgid "Champion"
+msgstr "Campione"
+
+#: ./templates/Events/view.php:190
+msgid "{0} chest(s) collected"
+msgstr "{0} forziere(i) raccolto(i)"
+
+#: ./templates/Events/view.php:192
+msgid "Nobody has scored yet"
+msgstr "Nessuno ha ancora segnato punti"
+
+#: ./templates/Events/view.php:199
+msgid "Leader {0}"
+msgstr "Leader {0}"
+
+#: ./templates/Events/view.php:205
+msgid "Share: {0}%"
+msgstr "Quota: {0}%"
+
+#: ./templates/Events/view.php:211
+msgid "Event Total"
+msgstr "Totale dell'Evento"
+
+#: ./templates/Events/view.php:215
+msgid "Chests counted: {0}"
+msgstr "Forzieri contati: {0}"
+
+#: ./templates/Events/view.php:221
+msgid "Participants"
+msgstr "Partecipanti"
+
+#: ./templates/Events/view.php:225
+msgid "Average: {0} pts"
+msgstr "Media: {0} pt"
+
+#: ./templates/Events/view.php:238
+msgid "Who to talk to"
+msgstr "Con chi parlare"
+
+#: ./templates/Events/view.php:241
+msgid "Look for this player when the event ends to claim the prize."
+msgstr "Cerca questo giocatore quando l'evento finisce per ritirare il premio."
+
+#: ./templates/Events/view.php:246
+msgid "How it is scored"
+msgstr "Come si assegnano i punti"
+
+#: ./templates/Events/view.php:252
+msgid "Ranked by how many of these chests each player collected."
+msgstr "Classifica basata su quanti di questi forzieri ha raccolto ogni giocatore."
+
+#: ./templates/Events/view.php:253
+msgid "Ranked by the total score of these chests."
+msgstr "Classifica basata sul punteggio totale di questi forzieri."
+
+#: ./templates/Events/view.php:277
+msgid "Player Ranking"
+msgstr "Classifica Giocatori"
+
+#: ./templates/Events/view.php:280
+msgid "Official result"
+msgstr "Risultato ufficiale"
+
+#: ./templates/Events/view.php:284
+msgid "Live"
+msgstr "Dal vivo"
+
+#: ./templates/Events/view.php:302
+msgid "Position"
+msgstr "Posizione"
+
+#: ./templates/Events/view.php:306
+msgid "Share"
+msgstr "Quota"
+
+#: ./templates/Events/view.php:307
+msgid "Highlight"
+msgstr "In evidenza"
+
+#: ./templates/Events/view.php:321
+#: ./templates/element/event_row.php:67
+msgid "Winner"
+msgstr "Vincitore"
+
+#: ./templates/Events/view.php:322
+msgid "2nd Place"
+msgstr "2° Posto"
+
+#: ./templates/Events/view.php:323
+msgid "3rd Place"
+msgstr "3° Posto"
+
+#: ./templates/Events/view.php:324
+msgid "Top 10"
+msgstr "Top 10"
+
+#: ./templates/Events/view.php:325
+msgid "Participant"
+msgstr "Partecipante"
+
+#: ./templates/Events/view.php:371
+msgid "This event has not started yet. Chests collected from {0} UTC will count."
+msgstr "Questo evento non è ancora iniziato. Conteranno i forzieri raccolti dalle {0} UTC."
+
+#: ./templates/Events/view.php:373
+msgid "This event was cancelled."
+msgstr "Questo evento è stato annullato."
+
+#: ./templates/Events/view.php:375
+msgid "No chest matching this event has been collected yet."
+msgstr "Non è ancora stato raccolto nessun forziere valido per questo evento."
+
+#: ./templates/IncompleteChests/index.php:11
+#: ./templates/IncompleteChests/index.php:14
+#: ./templates/IncompleteChests/index.php:33
+#: ./templates/IncompleteChests/view.php:15
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:93
+msgid "Incomplete Chests"
+msgstr "Forzieri Incompleti"
+
+#: ./templates/IncompleteChests/index.php:19
+#: ./templates/IncompleteChests/view.php:21
+msgid "Corrected"
+msgstr "Corretto"
+
+#: ./templates/IncompleteChests/index.php:20
+#: ./templates/IncompleteChests/view.php:22
+msgid "Not recoverable"
+msgstr "Non recuperabile"
+
+#: ./templates/IncompleteChests/index.php:23
+msgid "Pending ({0})"
+msgstr "In attesa ({0})"
+
+#: ./templates/IncompleteChests/index.php:24
+msgid "Corrected ({0})"
+msgstr "Corretti ({0})"
+
+#: ./templates/IncompleteChests/index.php:25
+msgid "Not recoverable ({0})"
+msgstr "Non recuperabili ({0})"
+
+#: ./templates/IncompleteChests/index.php:26
+#: ./templates/StandardChests/index.php:56
+#: ./templates/StandardChests/index.php:69
+#: ./templates/StandardChests/index.php:82
+msgid "All"
+msgstr "Tutti"
+
+#: ./templates/IncompleteChests/index.php:48
+msgid "Chests the collector opened but could not read. The screenshot of each one was kept so it can be filled in by hand — the chest itself is no longer in the game."
+msgstr "Forzieri che il raccoglitore ha aperto ma non è riuscito a leggere. Lo screenshot di ciascuno è stato conservato per poterli compilare a mano: il forziere in sé non è più nel gioco."
+
+#: ./templates/IncompleteChests/index.php:56
+#: ./templates/IncompleteChests/view.php:60
+msgid "Collected at"
+msgstr "Raccolto il"
+
+#: ./templates/IncompleteChests/index.php:57
+#: ./templates/IncompleteChests/view.php:94
+msgid "Chest"
+msgstr "Forziere"
+
+#: ./templates/IncompleteChests/index.php:61
+#: ./templates/IncompleteChests/view.php:69
+msgid "Reviewed at"
+msgstr "Esaminato il"
+
+#: ./templates/IncompleteChests/index.php:73
+#: ./templates/IncompleteChests/index.php:74
+#: ./templates/IncompleteChests/index.php:75
+msgid "not read"
+msgstr "non letto"
+
+#: ./templates/IncompleteChests/index.php:80
+msgid "Review"
+msgstr "Esamina"
+
+#: ./templates/IncompleteChests/index.php:90
+msgid "Nothing here — every chest was read."
+msgstr "Qui non c'è niente: tutti i forzieri sono stati letti."
+
+#: ./templates/IncompleteChests/view.php:12
+msgid "Review Incomplete Chest"
+msgstr "Esamina Forziere Incompleto"
+
+#: ./templates/IncompleteChests/view.php:16
+msgid "#{0}"
+msgstr "n. {0}"
+
+#: ./templates/IncompleteChests/view.php:32
+msgid "Chest as it was on screen"
+msgstr "Il forziere come si vedeva sullo schermo"
+
+#: ./templates/IncompleteChests/view.php:43
+msgid "Screenshot of the chest"
+msgstr "Screenshot del forziere"
+
+#: ./templates/IncompleteChests/view.php:49
+msgid "Read the text in the picture and fill in the fields beside it."
+msgstr "Leggi il testo nell'immagine e compila i campi accanto."
+
+#: ./templates/IncompleteChests/view.php:54
+msgid "This record has no screenshot — it was collected before the screenshot was kept."
+msgstr "Questo record non ha screenshot: è stato raccolto prima che gli screenshot venissero conservati."
+
+#: ./templates/IncompleteChests/view.php:62
+msgid "Read as chest"
+msgstr "Letto come forziere"
+
+#: ./templates/IncompleteChests/view.php:63
+#: ./templates/IncompleteChests/view.php:65
+#: ./templates/IncompleteChests/view.php:67
+msgid "nothing"
+msgstr "niente"
+
+#: ./templates/IncompleteChests/view.php:64
+msgid "Read as player"
+msgstr "Letto come giocatore"
+
+#: ./templates/IncompleteChests/view.php:66
+msgid "Read as source"
+msgstr "Letto come fonte"
+
+#: ./templates/IncompleteChests/view.php:72
+msgid "Collected chest"
+msgstr "Forziere raccolto"
+
+#: ./templates/IncompleteChests/view.php:76
+msgid "Notes"
+msgstr "Note"
+
+#: ./templates/IncompleteChests/view.php:89
+msgid "Correct and record"
+msgstr "Correggi e registra"
+
+#: ./templates/IncompleteChests/view.php:136
+msgid "The chest is recorded with the date it was collected, not today, so it counts in the right cycle."
+msgstr "Il forziere viene registrato con la data in cui è stato raccolto, non con quella di oggi, così conta nel ciclo giusto."
+
+#: ./templates/IncompleteChests/view.php:140
+msgid "Record in collected chests"
+msgstr "Registra fra i forzieri raccolti"
+
+#: ./templates/IncompleteChests/view.php:141
+#: ./templates/IncompleteChests/view.php:187
+msgid "Back to the queue"
+msgstr "Torna alla coda"
+
+#: ./templates/IncompleteChests/view.php:148
+msgid "Cannot be recovered"
+msgstr "Non si può recuperare"
+
+#: ./templates/IncompleteChests/view.php:153
+msgid "Use this when the picture does not show enough to fill the fields in. The record stays, marked as reviewed, and leaves the queue."
+msgstr "Usa questo quando l'immagine non mostra abbastanza per compilare i campi. Il record resta, segnato come esaminato, ed esce dalla coda."
+
+#: ./templates/IncompleteChests/view.php:156
+msgid "Note (optional)"
+msgstr "Nota (facoltativa)"
+
+#: ./templates/IncompleteChests/view.php:162
+msgid "Mark as reviewed, not recovered"
+msgstr "Segna come esaminato, non recuperato"
+
+#: ./templates/IncompleteChests/view.php:169
+msgid "Already reviewed"
+msgstr "Già esaminato"
+
+#: ./templates/IncompleteChests/view.php:174
+msgid "This chest was corrected and recorded in collected chests."
+msgstr "Questo forziere è stato corretto e registrato fra i forzieri raccolti."
+
+#: ./templates/IncompleteChests/view.php:175
+msgid "This chest was examined and could not be recovered."
+msgstr "Questo forziere è stato esaminato e non è stato possibile recuperarlo."
+
+#: ./templates/IncompleteChests/view.php:180
+msgid "Put back in the queue"
+msgstr "Rimetti in coda"
+
+#: ./templates/IncompleteChests/view.php:184
+msgid "Review this chest again? Any collected chest already recorded from it stays as it is."
+msgstr "Esaminare di nuovo questo forziere? Ogni forziere raccolto già registrato da esso resta com'è."
+
+#: ./templates/Members/add.php:9
+msgid "Add Member"
+msgstr "Aggiungi Membro"
+
+#: ./templates/Members/add.php:12
+#: ./templates/Members/edit.php:12
+#: ./templates/Members/index.php:12
+#: ./templates/Members/view.php:12
+msgid "List Members"
+msgstr "Elenca Membri"
+
+#: ./templates/Members/edit.php:9
+msgid "Edit Member"
+msgstr "Modifica Membro"
+
+#: ./templates/Members/index.php:9
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:37
+msgid "Members"
+msgstr "Membri"
+
+#: ./templates/Members/index.php:27
+msgid "New Member"
+msgstr "Nuovo Membro"
+
+#: ./templates/Members/view.php:32
+#: ./templates/Users/view.php:93
+msgid "Power"
+msgstr "Potenza"
+
+#: ./templates/Members/view.php:36
+msgid "Guards"
+msgstr "Guardie"
+
+#: ./templates/Members/view.php:48
+msgid "Engineers"
+msgstr "Genieri"
+
+#: ./templates/Members/view.php:52
+#: ./templates/Users/index.php:57
+#: ./templates/Users/view.php:35
+#: ./templates/Users/view.php:94
+msgid "Active"
+msgstr "Attivo"
+
+#: ./templates/Members/view.php:56
+msgid "Created At"
+msgstr "Creato il"
+
+#: ./templates/Members/view.php:60
+msgid "Modified At"
+msgstr "Modificato il"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:145
+msgid "Last 6 Cycles History"
+msgstr "Storico degli Ultimi 6 Cicli"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:146
+msgid "Historical score breakdown across recent cycles"
+msgstr "Dettaglio storico dei punteggi nei cicli recenti"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:152
+msgid "Chest Score Goal per cycle: {0}"
+msgstr "Obiettivo punteggio forzieri per ciclo: {0}"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:157
+msgid "History Matrix"
+msgstr "Matrice dello Storico"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:163
+#: ./templates/PlayerCycleSummaries/index.php:239
+msgid "Player Name"
+msgstr "Nome del Giocatore"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:218
+msgid "No cycle history data available."
+msgstr "Nessun dato storico dei cicli disponibile."
+
+#: ./templates/PlayerCycleSummaries/index.php:189
+msgid "Player Cycle Summaries"
+msgstr "Riepiloghi di Ciclo dei Giocatori"
+
+#: ./templates/PlayerCycleSummaries/index.php:190
+msgid "Summary of player performance by cycle"
+msgstr "Riepilogo del rendimento dei giocatori per ciclo"
+
+#: ./templates/PlayerCycleSummaries/index.php:194
+msgid "Process Cycle (offset=1)"
+msgstr "Elabora Ciclo (offset=1)"
+
+#: ./templates/PlayerCycleSummaries/index.php:197
+msgid "Process Previous Cycle (offset=0)"
+msgstr "Elabora Ciclo Precedente (offset=0)"
+
+#: ./templates/PlayerCycleSummaries/index.php:200
+msgid "Process Newest Completed Cycle"
+msgstr "Elabora l'Ultimo Ciclo Completato"
+
+#: ./templates/PlayerCycleSummaries/index.php:209
+#: ./templates/StandardChests/weights.php:47
+msgid "Current Goal: {0} chest points and {1} Epic chest points"
+msgstr "Obiettivo attuale: {0} punti forzieri e {1} punti forzieri Epici"
+
+#: ./templates/PlayerCycleSummaries/index.php:215
+msgid "No Summaries Found"
+msgstr "Nessun Riepilogo Trovato"
+
+#: ./templates/PlayerCycleSummaries/index.php:216
+msgid "There are no player cycle summaries to display. You can try processing a cycle using the buttons above."
+msgstr "Non ci sono riepiloghi di ciclo da mostrare. Puoi provare a elaborare un ciclo con i pulsanti qui sopra."
+
+#: ./templates/PlayerCycleSummaries/index.php:227
+msgid "Cycle: {0} to {1}"
+msgstr "Ciclo: dal {0} al {1}"
+
+#: ./templates/PlayerCycleSummaries/index.php:230
+#: ./templates/StandardChests/lost_chests.php:118
+msgid "Players"
+msgstr "Giocatori"
+
+#: ./templates/PlayerCycleSummaries/index.php:243
+msgid "Goal Achieved"
+msgstr "Obiettivo Raggiunto"
+
+#: ./templates/PlayerCycleSummaries/index.php:244
+msgid "Fine Status"
+msgstr "Stato della Multa"
+
+#: ./templates/PlayerCycleSummaries/index.php:275
+#: ./templates/StandardChests/index.php:136
+#: ./templates/StandardChests/lost_chests.php:177
+#: ./templates/StandardChests/view.php:41
+#: ./templates/Users/view.php:108
+msgid "Yes"
+msgstr "Sì"
+
+#: ./templates/PlayerCycleSummaries/index.php:275
+#: ./templates/StandardChests/index.php:136
+#: ./templates/StandardChests/view.php:41
+#: ./templates/Users/view.php:108
+msgid "No"
+msgstr "No"
+
+#: ./templates/PlayerCycleSummaries/index.php:279
+msgid "N/A"
+msgstr "N/D"
+
+#: ./templates/PlayerCycleSummaries/index.php:281
+msgid "Paid"
+msgstr "Pagata"
+
+#: ./templates/PlayerCycleSummaries/index.php:283
+msgid "Due"
+msgstr "Da pagare"
+
+#: ./templates/PlayerCycleSummaries/index.php:290
+msgid "Mark Paid"
+msgstr "Segna come Pagata"
+
+#: ./templates/PlayerCycleSummaries/index.php:292
+msgid "Are you sure you want to mark the fine as paid for {0}?"
+msgstr "Vuoi davvero segnare la multa di {0} come pagata?"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:123
+msgid "History for Player: {0}"
+msgstr "Storico del Giocatore: {0}"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:124
+msgid "Past cycle performance breakdown"
+msgstr "Dettaglio del rendimento nei cicli passati"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:129
+msgid "Player History"
+msgstr "Storico del Giocatore"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:134
+msgid "Cycle End Date"
+msgstr "Data di Fine del Ciclo"
+
+#: ./templates/PlayerNameMappings/add.php:9
+msgid "Add Player Name Mapping"
+msgstr "Aggiungi Corrispondenza Nome"
+
+#: ./templates/PlayerNameMappings/add.php:12
+#: ./templates/PlayerNameMappings/edit.php:12
+#: ./templates/PlayerNameMappings/index.php:12
+#: ./templates/PlayerNameMappings/view.php:12
+msgid "List Player Name Mappings"
+msgstr "Elenca Corrispondenze Nome"
+
+#: ./templates/PlayerNameMappings/edit.php:9
+msgid "Edit Player Name Mapping"
+msgstr "Modifica Corrispondenza Nome"
+
+#: ./templates/PlayerNameMappings/index.php:9
+#: ./templates/PlayerNameMappings/index.php:19
+msgid "Player Name Mappings"
+msgstr "Corrispondenze Nomi Giocatori"
+
+#: ./templates/PlayerNameMappings/index.php:22
+msgid "New Player Name Mapping"
+msgstr "Nuova Corrispondenza Nome"
+
+#: ./templates/PlayerNameMappings/view.php:9
+msgid "View Player Name Mapping"
+msgstr "Vedi Corrispondenza Nome"
+
+#: ./templates/PlayerNameMappings/view.php:24
+msgid "Ocr Text"
+msgstr "Testo OCR"
+
+#: ./templates/PlayerNameMappings/view.php:28
+msgid "Correct Name"
+msgstr "Nome Corretto"
+
+#: ./templates/PlayerNameMappings/view.php:36
+#: ./templates/Roles/view.php:40
+#: ./templates/Roles/view.php:79
+#: ./templates/Users/view.php:56
+#: ./templates/Users/view.php:134
+msgid "Created"
+msgstr "Creato"
+
+#: ./templates/PlayerNameMappings/view.php:40
+#: ./templates/Roles/view.php:44
+#: ./templates/Roles/view.php:80
+#: ./templates/Users/view.php:60
+#: ./templates/Users/view.php:135
+msgid "Modified"
+msgstr "Modificato"
+
+#: ./templates/RolesUsers/add.php:9
+msgid "Add Roles User"
+msgstr "Aggiungi Ruolo Utente"
+
+#: ./templates/RolesUsers/add.php:12
+#: ./templates/RolesUsers/edit.php:12
+#: ./templates/RolesUsers/index.php:12
+#: ./templates/RolesUsers/view.php:12
+msgid "List Roles Users"
+msgstr "Elenca Ruoli Utente"
+
+#: ./templates/RolesUsers/edit.php:9
+msgid "Edit Roles User"
+msgstr "Modifica Ruolo Utente"
+
+#: ./templates/RolesUsers/index.php:9
+msgid "Roles Users"
+msgstr "Ruoli Utente"
+
+#: ./templates/RolesUsers/index.php:27
+msgid "New Roles User"
+msgstr "Nuovo Ruolo Utente"
+
+#: ./templates/RolesUsers/view.php:9
+msgid "Roles User"
+msgstr "Ruolo Utente"
+
+#: ./templates/RolesUsers/view.php:24
+#: ./templates/Users/awaiting_approval.php:8
+#: ./templates/Users/view.php:9
+msgid "User"
+msgstr "Utente"
+
+#: ./templates/RolesUsers/view.php:28
+#: ./templates/Roles/view.php:9
+msgid "Role"
+msgstr "Ruolo"
+
+#: ./templates/Roles/add.php:9
+msgid "Add Role"
+msgstr "Aggiungi Ruolo"
+
+#: ./templates/Roles/add.php:12
+#: ./templates/Roles/edit.php:12
+#: ./templates/Roles/index.php:12
+#: ./templates/Roles/view.php:12
+#: ./templates/Users/view.php:124
+msgid "List Roles"
+msgstr "Elenca Ruoli"
+
+#: ./templates/Roles/edit.php:9
+msgid "Edit Role"
+msgstr "Modifica Ruolo"
+
+#: ./templates/Roles/index.php:9
+msgid "Roles"
+msgstr "Ruoli"
+
+#: ./templates/Roles/index.php:27
+#: ./templates/Users/view.php:123
+msgid "New Role"
+msgstr "Nuovo Ruolo"
+
+#: ./templates/Roles/view.php:32
+#: ./templates/StandardChests/add.php:23
+#: ./templates/StandardChests/edit.php:24
+#: ./templates/StandardChests/index.php:80
+#: ./templates/StandardChests/index.php:122
+#: ./templates/StandardChests/view.php:28
+#: ./templates/Users/view.php:133
+msgid "Alias"
+msgstr "Alias"
+
+#: ./templates/Roles/view.php:66
+msgid "Related Users"
+msgstr "Utenti Collegati"
+
+#: ./templates/Roles/view.php:68
+#: ./templates/Users/index.php:27
+msgid "New User"
+msgstr "Nuovo Utente"
+
+#: ./templates/Roles/view.php:69
+#: ./templates/Users/add.php:12
+#: ./templates/Users/edit.php:32
+#: ./templates/Users/index.php:12
+#: ./templates/Users/view.php:12
+msgid "List Users"
+msgstr "Elenca Utenti"
+
+#: ./templates/Roles/view.php:77
+#: ./templates/Users/login.php:20
+#: ./templates/Users/view.php:28
+msgid "Email"
+msgstr "E-mail"
+
+#: ./templates/Roles/view.php:78
+#: ./templates/Users/login.php:26
+msgid "Password"
+msgstr "Password"
+
+#: ./templates/Roles/view.php:86
+msgid "Users record not found!"
+msgstr "Record utente non trovato!"
+
+#: ./templates/StandardChests/add.php:9
+msgid "Add Standard Chest"
+msgstr "Aggiungi Forziere Standard"
+
+#: ./templates/StandardChests/add.php:12
+#: ./templates/StandardChests/edit.php:12
+#: ./templates/StandardChests/index.php:13
+#: ./templates/StandardChests/view.php:12
+msgid "List Standard Chests"
+msgstr "Elenca Forzieri Standard"
+
+#: ./templates/StandardChests/add.php:23
+#: ./templates/StandardChests/edit.php:24
+#: ./templates/StandardChests/lost_chests.php:155
+msgid "Optional friendly name shown in reports instead of the source"
+msgstr "Nome leggibile facoltativo, mostrato nei report invece della fonte"
+
+#: ./templates/StandardChests/edit.php:9
+msgid "Edit Standard Chest"
+msgstr "Modifica Forziere Standard"
+
+#: ./templates/StandardChests/index.php:10
+#: ./templates/StandardChests/lost_chests.php:12
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:73
+msgid "Standard Chests"
+msgstr "Forzieri Standard"
+
+#: ./templates/StandardChests/index.php:29
+msgid "Filters"
+msgstr "Filtri"
+
+#: ./templates/StandardChests/index.php:35
+msgid "New Standard Chest"
+msgstr "Nuovo Forziere Standard"
+
+#: ./templates/StandardChests/index.php:45
+msgid "Search"
+msgstr "Cerca"
+
+#: ./templates/StandardChests/index.php:46
+msgid "Source or alias..."
+msgstr "Fonte o alias..."
+
+#: ./templates/StandardChests/index.php:54
+msgid "Chest Type"
+msgstr "Tipo di Forziere"
+
+#: ./templates/StandardChests/index.php:57
+#: ./templates/StandardChests/view.php:40
+msgid "Epic Monster"
+msgstr "Mostro Epico"
+
+#: ./templates/StandardChests/index.php:58
+msgid "Regular"
+msgstr "Normale"
+
+#: ./templates/StandardChests/index.php:67
+#: ./templates/StandardChests/view.php:36
+msgid "Score"
+msgstr "Punteggio"
+
+#: ./templates/StandardChests/index.php:70
+msgid "Scored"
+msgstr "Con punteggio"
+
+#: ./templates/StandardChests/index.php:71
+msgid "Without score"
+msgstr "Senza punteggio"
+
+#: ./templates/StandardChests/index.php:83
+msgid "With alias"
+msgstr "Con alias"
+
+#: ./templates/StandardChests/index.php:84
+msgid "Without alias"
+msgstr "Senza alias"
+
+#: ./templates/StandardChests/index.php:93
+msgid "Per page"
+msgstr "Per pagina"
+
+#: ./templates/StandardChests/index.php:96
+msgid "Default"
+msgstr "Predefinito"
+
+#: ./templates/StandardChests/index.php:108
+msgid "Clear filters"
+msgstr "Pulisci filtri"
+
+#: ./templates/StandardChests/index.php:150
+msgid "No standard chest matches the selected filters."
+msgstr "Nessun forziere standard corrisponde ai filtri selezionati."
+
+#: ./templates/StandardChests/index.php:151
+msgid "No standard chest registered yet."
+msgstr "Nessun forziere standard registrato per ora."
+
+#: ./templates/StandardChests/lost_chests.php:9
+#: ./templates/StandardChests/lost_chests.php:13
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:76
+msgid "Lost Chests"
+msgstr "Forzieri Perduti"
+
+#: ./templates/StandardChests/lost_chests.php:25
+msgid "Unregistered Chest Types"
+msgstr "Tipi di Forziere non Registrati"
+
+#: ./templates/StandardChests/lost_chests.php:34
+msgid "Total Unregistered Collections"
+msgstr "Totale Raccolte non Registrate"
+
+#: ./templates/StandardChests/lost_chests.php:43
+msgid "Quick Action"
+msgstr "Azione Rapida"
+
+#: ./templates/StandardChests/lost_chests.php:45
+msgid "Configure score & monster status, select and add to Standard Chests."
+msgstr "Imposta punteggio e condizione di mostro, seleziona e aggiungi ai Forzieri Standard."
+
+#: ./templates/StandardChests/lost_chests.php:57
+msgid "Lost Chests Detected in Collected History"
+msgstr "Forzieri Perduti Rilevati nello Storico delle Raccolte"
+
+#: ./templates/StandardChests/lost_chests.php:59
+msgid "types"
+msgstr "tipi"
+
+#: ./templates/StandardChests/lost_chests.php:64
+msgid "Filter chest names..."
+msgstr "Filtra nomi dei forzieri..."
+
+#: ./templates/StandardChests/lost_chests.php:69
+msgid "Back to Standard Chests"
+msgstr "Torna ai Forzieri Standard"
+
+#: ./templates/StandardChests/lost_chests.php:78
+msgid "All Chests are Registered!"
+msgstr "Tutti i Forzieri sono Registrati!"
+
+#: ./templates/StandardChests/lost_chests.php:80
+msgid "There are no collected chests missing from your Standard Chests catalog. Everything is up to date."
+msgstr "Nel tuo catalogo Forzieri Standard non manca nessun forziere raccolto. Tutto è aggiornato."
+
+#: ./templates/StandardChests/lost_chests.php:82
+msgid "View Standard Chests"
+msgstr "Vedi Forzieri Standard"
+
+#: ./templates/StandardChests/lost_chests.php:90
+msgid "Select All"
+msgstr "Seleziona Tutto"
+
+#: ./templates/StandardChests/lost_chests.php:93
+msgid "Deselect All"
+msgstr "Deseleziona Tutto"
+
+#: ./templates/StandardChests/lost_chests.php:97
+msgid "selected"
+msgstr "selezionato(i)"
+
+#: ./templates/StandardChests/lost_chests.php:103
+#: ./templates/StandardChests/lost_chests.php:199
+msgid "Add Selected to Standard Chests"
+msgstr "Aggiungi i Selezionati ai Forzieri Standard"
+
+#: ./templates/StandardChests/lost_chests.php:113
+msgid "Select all"
+msgstr "Seleziona tutto"
+
+#: ./templates/StandardChests/lost_chests.php:115
+msgid "Chest Source (Name)"
+msgstr "Fonte del Forziere (Nome)"
+
+#: ./templates/StandardChests/lost_chests.php:116
+msgid "Alias (optional)"
+msgstr "Alias (facoltativo)"
+
+#: ./templates/StandardChests/lost_chests.php:117
+msgid "Times Seen"
+msgstr "Volte Visto"
+
+#: ./templates/StandardChests/lost_chests.php:119
+msgid "Activity Window"
+msgstr "Finestra di Attività"
+
+#: ./templates/StandardChests/lost_chests.php:120
+msgid "Points (Score)"
+msgstr "Punti (Punteggio)"
+
+#: ./templates/StandardChests/lost_chests.php:121
+msgid "Epic Monster?"
+msgstr "Mostro Epico?"
+
+#: ./templates/StandardChests/lost_chests.php:122
+msgid "Qty / Kill"
+msgstr "Qtà / Uccisione"
+
+#: ./templates/StandardChests/lost_chests.php:123
+msgid "Action"
+msgstr "Azione"
+
+#: ./templates/StandardChests/lost_chests.php:150
+msgid "Possible Monster Chest"
+msgstr "Possibile Forziere di Mostro"
+
+#: ./templates/StandardChests/lost_chests.php:155
+msgid "Friendly name"
+msgstr "Nome leggibile"
+
+#: ./templates/StandardChests/lost_chests.php:168
+msgid "First:"
+msgstr "Primo:"
+
+#: ./templates/StandardChests/lost_chests.php:169
+msgid "Last:"
+msgstr "Ultimo:"
+
+#: ./templates/StandardChests/lost_chests.php:181
+msgid "Opt."
+msgstr "Fac."
+
+#: ./templates/StandardChests/lost_chests.php:184
+msgid "Add only this chest"
+msgstr "Aggiungi solo questo forziere"
+
+#: ./templates/StandardChests/lost_chests.php:196
+msgid "Tip: Fill in the points and select which chests you want to register. Unselected chests will remain in the lost list."
+msgstr "Consiglio: inserisci i punti e scegli quali forzieri vuoi registrare. I forzieri non selezionati resteranno nell'elenco dei perduti."
+
+#: ./templates/StandardChests/lost_chests.php:246
+#: ./templates/StandardChests/lost_chests.php:250
+msgid "Selected to Standard Chests"
+msgstr "Selezionati ai Forzieri Standard"
+
+#: ./templates/StandardChests/lost_chests.php:301
+msgid "Add \"{0}\" to Standard Chests?"
+msgstr "Aggiungere \"{0}\" ai Forzieri Standard?"
+
+#: ./templates/StandardChests/view.php:9
+msgid "Standard Chest"
+msgstr "Forziere Standard"
+
+#: ./templates/StandardChests/view.php:44
+msgid "Chests Qty"
+msgstr "Qtà Forzieri"
+
+#: ./templates/StandardChests/weights.php:16
+msgid "Show Only Scored"
+msgstr "Mostra Solo con Punteggio"
+
+#: ./templates/StandardChests/weights.php:19
+msgid "Show All Chests"
+msgstr "Mostra Tutti i Forzieri"
+
+#: ./templates/StandardChests/weights.php:33
+msgid "Chest Weights & Goals"
+msgstr "Pesi e Obiettivi dei Forzieri"
+
+#: ./templates/StandardChests/weights.php:34
+msgid "Score values and points assigned to each chest source"
+msgstr "Valori di punteggio e punti assegnati a ogni fonte di forziere"
+
+#: ./templates/StandardChests/weights.php:52
+msgid "Chest Scoring Table"
+msgstr "Tabella dei Punteggi dei Forzieri"
+
+#: ./templates/StandardChests/weights.php:59
+msgid "Score Value"
+msgstr "Valore del Punteggio"
+
+#: ./templates/TroopCalculator/index.php:13
+#: ./templates/TroopCalculator/index.php:19
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:48
+msgid "Troop Calculator"
+msgstr "Calcolatore di Truppe"
+
+#: ./templates/TroopCalculator/index.php:49
+msgid "Epic Monster Hunters"
+msgstr "Cacciatori di Mostri Epici"
+
+#: ./templates/TroopCalculator/index.php:52
+msgid "Melee"
+msgstr "Corpo a corpo"
+
+#: ./templates/TroopCalculator/index.php:53
+msgid "Mounted"
+msgstr "Cavalleria"
+
+#: ./templates/TroopCalculator/index.php:54
+msgid "Ranged"
+msgstr "A distanza"
+
+#: ./templates/TroopCalculator/index.php:55
+msgid "Flying"
+msgstr "Volanti"
+
+#: ./templates/TroopCalculator/index.php:58
+msgid "Beasts"
+msgstr "Bestie"
+
+#: ./templates/TroopCalculator/index.php:59
+msgid "Giants"
+msgstr "Giganti"
+
+#: ./templates/TroopCalculator/index.php:60
+msgid "Dragons"
+msgstr "Draghi"
+
+#: ./templates/TroopCalculator/index.php:61
+msgid "Elementals"
+msgstr "Elementali"
+
+#: ./templates/TroopCalculator/index.php:64
+msgid "Army (leadership)"
+msgstr "Esercito (comando)"
+
+#: ./templates/TroopCalculator/index.php:65
+msgid "Monsters (dominance)"
+msgstr "Mostri (dominio)"
+
+#: ./templates/TroopCalculator/index.php:66
+msgid "Mercenaries (authority)"
+msgstr "Mercenari (autorità)"
+
+#: ./templates/TroopCalculator/index.php:123
+msgid "Army Limits"
+msgstr "Limiti dell'Esercito"
+
+#: ./templates/TroopCalculator/index.php:127
+msgid "Take these from the army screen. Each limit is spent by its own section: leadership buys guardsmen, specialists and siege; dominance buys monsters; authority buys mercenaries."
+msgstr "Prendi questi valori dalla schermata dell'esercito. Ogni limite è consumato dalla sua sezione: il comando paga guardie, specialisti e assedio; il dominio paga i mostri; l'autorità paga i mercenari."
+
+#: ./templates/TroopCalculator/index.php:133
+msgid "Leadership"
+msgstr "Comando"
+
+#: ./templates/TroopCalculator/index.php:142
+msgid "Dominance"
+msgstr "Dominio"
+
+#: ./templates/TroopCalculator/index.php:151
+msgid "Authority"
+msgstr "Autorità"
+
+#: ./templates/TroopCalculator/index.php:163
+msgid "Bonuses"
+msgstr "Bonus"
+
+#: ./templates/TroopCalculator/index.php:167
+msgid "Percentages exactly as the game reports them: type 420 for +420%. Leave a field blank when you have no bonus of that kind."
+msgstr "Percentuali esattamente come le mostra il gioco: scrivi 420 per +420%. Lascia il campo vuoto quando non hai bonus di quel tipo."
+
+#: ./templates/TroopCalculator/index.php:174
+msgid "By class"
+msgstr "Per classe"
+
+#: ./templates/TroopCalculator/index.php:175
+msgid "By category"
+msgstr "Per categoria"
+
+#: ./templates/TroopCalculator/index.php:176
+msgid "Monsters Boost research"
+msgstr "Ricerca Potenziamento Mostri"
+
+#: ./templates/TroopCalculator/index.php:185
+msgid "Health %"
+msgstr "Salute %"
+
+#: ./templates/TroopCalculator/index.php:186
+msgid "Strength %"
+msgstr "Forza %"
+
+#: ./templates/TroopCalculator/index.php:211
+msgid "Strength against Epic Monsters (%)"
+msgstr "Forza contro i Mostri Epici (%)"
+
+#: ./templates/TroopCalculator/index.php:216
+msgid "The single figure the battle report shows for every unit in the march."
+msgstr "Il valore unico che il rapporto di battaglia mostra per ogni unità della marcia."
+
+#: ./templates/TroopCalculator/index.php:228
+msgid "The monster figures above already include the weakest Monsters Boost research"
+msgstr "I valori dei mostri qui sopra includono già la ricerca Potenziamento Mostri più bassa"
+
+#: ./templates/TroopCalculator/index.php:231
+msgid "This is how the army screen reports it. Untick only if you typed the monster bonuses with no type research folded in, otherwise the boost is counted twice."
+msgstr "È così che lo mostra la schermata dell'esercito. Togli la spunta solo se hai inserito i bonus dei mostri senza la ricerca di tipo inclusa, altrimenti il potenziamento viene contato due volte."
+
+#: ./templates/TroopCalculator/index.php:242
+msgid "Kill Order"
+msgstr "Ordine di Morte"
+
+#: ./templates/TroopCalculator/index.php:246
+msgid "The stacks are lost in this order, weakest first, so the strongest units survive the most rounds and land the most hits."
+msgstr "I gruppi si perdono in questo ordine, dal più debole, così le unità più forti sopravvivono a più round e colpiscono più volte."
+
+#: ./templates/TroopCalculator/index.php:250
+msgid "Levels you are bringing"
+msgstr "Livelli che porti"
+
+#: ./templates/TroopCalculator/index.php:267
+msgid "Click a level to select it. Leave all unselected to use everything in the catalogue."
+msgstr "Clicca su un livello per selezionarlo. Lasciali tutti non selezionati per usare tutto il catalogo."
+
+#: ./templates/TroopCalculator/index.php:275
+msgid "Order within each level"
+msgstr "Ordine dentro ogni livello"
+
+#: ./templates/TroopCalculator/index.php:284
+msgid "Custom order"
+msgstr "Ordine personalizzato"
+
+#: ./templates/TroopCalculator/index.php:293
+msgid "Category order within a level"
+msgstr "Ordine delle categorie dentro un livello"
+
+#: ./templates/TroopCalculator/index.php:303
+msgid "Dies #{0}"
+msgstr "Muore #{0}"
+
+#: ./templates/TroopCalculator/index.php:314
+msgid "First box dies first. Siege engines always lead their own level."
+msgstr "La prima casella muore per prima. Le macchine d'assedio guidano sempre il proprio livello."
+
+#: ./templates/TroopCalculator/index.php:322
+msgid "Advanced"
+msgstr "Avanzate"
+
+#: ./templates/TroopCalculator/index.php:334
+msgid "Enemy stacks"
+msgstr "Gruppi nemici"
+
+#: ./templates/TroopCalculator/index.php:341
+msgid "4 for a standard Epic Monster. The first stack lost in each round is a sacrifice that will not strike. Use 0 to treat every stack as a striker."
+msgstr "4 per un Mostro Epico standard. Il primo gruppo perso in ogni round è un sacrificio e non colpirà. Usa 0 per considerare ogni gruppo come attaccante."
+
+#: ./templates/TroopCalculator/index.php:350
+msgid "Section gap"
+msgstr "Distacco fra sezioni"
+
+#: ./templates/TroopCalculator/index.php:355
+msgid "How far below the army the monsters start, and the mercenaries below them. 0.95 leaves a 5% gap."
+msgstr "Quanto sotto l'esercito iniziano i mostri, e i mercenari sotto di loro. 0,95 lascia un distacco del 5%."
+
+#: ./templates/TroopCalculator/index.php:367
+msgid "Keep strength descending too"
+msgstr "Mantieni anche la forza decrescente"
+
+#: ./templates/TroopCalculator/index.php:371
+msgid "Stacks strike in order of strength but die in order of health. Leave this on so every stack strikes before it is lost."
+msgstr "I gruppi colpiscono in ordine di forza ma muoiono in ordine di salute. Lascialo attivo così ogni gruppo colpisce prima di essere perso."
+
+#: ./templates/TroopCalculator/index.php:377
+msgid "Units to leave out"
+msgstr "Unità da escludere"
+
+#: ./templates/TroopCalculator/index.php:387
+msgid "Hold Ctrl to pick several. Use this for units you have not researched yet."
+msgstr "Tieni premuto Ctrl per scegliere più voci. Usalo per le unità che non hai ancora ricercato."
+
+#: ./templates/TroopCalculator/index.php:394
+msgid "Calculate"
+msgstr "Calcola"
+
+#: ./templates/TroopCalculator/index.php:396
+msgid "Clear saved inputs"
+msgstr "Cancella i valori salvati"
+
+#: ./templates/TroopCalculator/index.php:398
+msgid "Clear the remembered inputs?"
+msgstr "Cancellare i valori memorizzati?"
+
+#: ./templates/TroopCalculator/index.php:413
+msgid "Planned March"
+msgstr "Marcia Pianificata"
+
+#: ./templates/TroopCalculator/index.php:416
+msgid "Copy as text"
+msgstr "Copia come testo"
+
+#: ./templates/TroopCalculator/index.php:423
+msgid "Total health"
+msgstr "Salute totale"
+
+#: ./templates/TroopCalculator/index.php:427
+msgid "Total strength"
+msgstr "Forza totale"
+
+#: ./templates/TroopCalculator/index.php:431
+msgid "Stacks"
+msgstr "Gruppi"
+
+#: ./templates/TroopCalculator/index.php:435
+msgid "Full revival"
+msgstr "Rianimazione completa"
+
+#: ./templates/TroopCalculator/index.php:436
+msgid "gold"
+msgstr "oro"
+
+#: ./templates/TroopCalculator/index.php:454
+msgid "Unit"
+msgstr "Unità"
+
+#: ./templates/TroopCalculator/index.php:455
+msgid "Tier"
+msgstr "Livello"
+
+#: ./templates/TroopCalculator/index.php:456
+msgid "Count"
+msgstr "Quantità"
+
+#: ./templates/TroopCalculator/index.php:457
+msgid "Stack health"
+msgstr "Salute del gruppo"
+
+#: ./templates/TroopCalculator/index.php:458
+msgid "Stack strength"
+msgstr "Forza del gruppo"
+
+#: ./templates/TroopCalculator/index.php:459
+msgid "Limit used"
+msgstr "Limite usato"
+
+#: ./templates/TroopCalculator/index.php:471
+msgid "Opens a round and will be lost before it strikes"
+msgstr "Apre un round e verrà perso prima di colpire"
+
+#: ./templates/TroopCalculator/index.php:472
+msgid "sacrifice"
+msgstr "sacrificio"
+
+#: ./templates/TroopCalculator/index.php:516
+msgid "Copied"
+msgstr "Copiato"
+
+#: ./templates/Users/add.php:9
+msgid "Add User"
+msgstr "Aggiungi Utente"
+
+#: ./templates/Users/add.php:26
+msgid "Active (Allow user to log in)"
+msgstr "Attivo (consenti l'accesso all'utente)"
+
+#: ./templates/Users/add.php:31
+msgid "The user will be created with the role: user"
+msgstr "L'utente verrà creato con il ruolo: user"
+
+#: ./templates/Users/awaiting_approval.php:29
+msgid "Registration Complete!"
+msgstr "Registrazione Completata!"
+
+#: ./templates/Users/awaiting_approval.php:32
+msgid "Awaiting Administrator Approval"
+msgstr "In Attesa dell'Approvazione dell'Amministratore"
+
+#: ./templates/Users/awaiting_approval.php:50
+msgid "Your Google account has been successfully registered."
+msgstr "Il tuo account Google è stato registrato correttamente."
+
+#: ./templates/Users/awaiting_approval.php:53
+msgid "For clan security and organization purposes, your access must be <strong>activated by an administrator</strong>. Please contact a clan leader or admin to grant your access."
+msgstr "Per sicurezza e ordine del clan, il tuo accesso deve essere <strong>attivato da un amministratore</strong>. Contatta un capo del clan o un admin per ottenere l'accesso."
+
+#: ./templates/Users/awaiting_approval.php:59
+msgid "Back to Login"
+msgstr "Torna all'Accesso"
+
+#: ./templates/Users/edit.php:29
+msgid "Edit User"
+msgstr "Modifica Utente"
+
+#: ./templates/Users/edit.php:47
+msgid "Only administrators can change the email."
+msgstr "Solo gli amministratori possono cambiare l'e-mail."
+
+#: ./templates/Users/edit.php:53
+msgid "Active (Allow user to log in and access the system)"
+msgstr "Attivo (consenti all'utente di accedere e usare il sistema)"
+
+#: ./templates/Users/edit.php:58
+#: ./templates/Users/view.php:42
+msgid "Google Account"
+msgstr "Account Google"
+
+#: ./templates/Users/edit.php:61
+msgid "Linked with Google OAuth"
+msgstr "Collegato con Google OAuth"
+
+#: ./templates/Users/edit.php:73
+msgid "Only administrators can change the role."
+msgstr "Solo gli amministratori possono cambiare il ruolo."
+
+#: ./templates/Users/index.php:9
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:53
+msgid "Users"
+msgstr "Utenti"
+
+#: ./templates/Users/index.php:51
+msgid "Linked with Google"
+msgstr "Collegato con Google"
+
+#: ./templates/Users/index.php:70
+msgid "Approve user access"
+msgstr "Approva l'accesso dell'utente"
+
+#: ./templates/Users/index.php:72
+#: ./templates/Users/view.php:70
+msgid "Are you sure you want to deactivate {0}?"
+msgstr "Vuoi davvero disattivare {0}?"
+
+#: ./templates/Users/index.php:72
+msgid "Deactivate user"
+msgstr "Disattiva utente"
+
+#: ./templates/Users/login.php:14
+msgid "Sign in to start your session"
+msgstr "Accedi per iniziare la tua sessione"
+
+#: ./templates/Users/login.php:35
+msgid "Sign In"
+msgstr "Accedi"
+
+#: ./templates/Users/login.php:44
+msgid "OR"
+msgstr "OPPURE"
+
+#: ./templates/Users/view.php:37
+msgid "Pending / Inactive"
+msgstr "In attesa / Inattivo"
+
+#: ./templates/Users/view.php:45
+msgid "Linked"
+msgstr "Collegato"
+
+#: ./templates/Users/view.php:47
+msgid "Not Linked"
+msgstr "Non collegato"
+
+#: ./templates/Users/view.php:68
+msgid "Approve User"
+msgstr "Approva Utente"
+
+#: ./templates/Users/view.php:70
+msgid "Deactivate User"
+msgstr "Disattiva Utente"
+
+#: ./templates/Users/view.php:87
+msgid "Related Members"
+msgstr "Membri Collegati"
+
+#: ./templates/Users/view.php:100
+msgid "Members record not found!"
+msgstr "Record membro non trovato!"
+
+#: ./templates/Users/view.php:121
+msgid "Related Roles"
+msgstr "Ruoli Collegati"
+
+#: ./templates/Users/view.php:141
+msgid "Roles record not found!"
+msgstr "Record ruolo non trovato!"
+
+#: ./templates/element/event_banner.php:32
+msgid "Event running: {0}"
+msgstr "Evento in corso: {0}"
+
+#: ./templates/element/event_banner.php:33
+msgid "Event #{0} - {1} - ends {2} UTC"
+msgstr "Evento n. {0} - {1} - finisce alle {2} UTC"
+
+#: ./templates/element/event_banner.php:39
+msgid "No event is running. Click to see past events."
+msgstr "Nessun evento in corso. Clicca per vedere gli eventi passati."
+
+#: ./templates/element/event_row.php:84
+msgid "Open event"
+msgstr "Apri evento"
+
+#: ./templates/layout/error.php:36
+msgid "Back"
+msgstr "Indietro"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:44
+msgid "Tools"
+msgstr "Strumenti"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:67
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:108
+msgid "Bank"
+msgstr "Banca"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:32
+msgid "Admin"
+msgstr "Admin"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:41
+msgid "List"
+msgstr "Elenca"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:44
+msgid "Update"
+msgstr "Aggiorna"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:47
+msgid "Names Mapping"
+msgstr "Corrispondenza Nomi"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:101
+msgid "Summary last cycles"
+msgstr "Riepilogo ultimi cicli"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:158
+msgid "Login"
+msgstr "Accedi"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:182
+msgid "{0} pending approval(s)"
+msgstr "{0} approvazione(i) in attesa"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:185
+msgid "Member since {0}"
+msgstr "Membro dal {0}"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:194
+msgid "Logout"
+msgstr "Esci"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:200
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:260
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:297
+msgid "Change Password"
+msgstr "Cambia Password"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:268
+msgid "Current Password"
+msgstr "Password Attuale"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:276
+msgid "New Password"
+msgstr "Nuova Password"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:286
+msgid "Confirm New Password"
+msgstr "Conferma Nuova Password"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:4
+msgid "MAIN"
+msgstr "PRINCIPALE"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:8
+msgid "Start Pages"
+msgstr "Pagine Iniziali"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:12
+msgid "Active Page"
+msgstr "Pagina Attiva"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:16
+msgid "Inactive Page"
+msgstr "Pagina Inattiva"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:22
+msgid "Simple Link"
+msgstr "Link Semplice"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:23
+msgid "New"
+msgstr "Nuovo"
+
+#: ./src/Controller/ConfigController.php:171
+msgid "The maintenance entries were removed from the crontab."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:177
+msgid "Scheduled: {0} Brazil time ({1} UTC)."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:242
+msgid "The settings were saved, but the crontab could not be rewritten: {0}"
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:254
+msgid "The schedule in the crontab was written by hand and this page cannot rewrite it, so the backup line was not added. Copy the block at the bottom of this page into the crontab."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:261
+msgid "The nightly database backup is turned off."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:266
+msgid "The database is backed up every day at {0} UTC to {1}, keeping {2} day(s)."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:277
+msgid "Nothing is scheduled yet, so no backup will be taken. Install the schedule above."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:278
+msgid "The crontab cannot be reached from here, so nothing will take the backup until the block at the bottom of this page is installed by hand."
+msgstr ""
+
+#: ./src/Controller/TroopCalculatorController.php:304
+msgid "From my best guardsmen"
+msgstr ""
+
+#: ./src/Controller/TroopCalculatorController.php:306
+msgid "Tier {0}"
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:330
+msgid "The database connection does not name a database to back up."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:338
+msgid "The application is not on MySQL or MariaDB, so mysqldump cannot back it up."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:362
+msgid "mysqldump was not found on this server, so no backup can be taken."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:449
+msgid "PHP on this server cannot run shell commands, so mysqldump cannot be called."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:454
+msgid "PHP on this server has exec() disabled, so mysqldump cannot be called."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:539
+msgid "The backup folder cannot contain line breaks."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:548
+msgid "The backup folder has to be a full path, such as {0}, because cron does not start in the site directory."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:558
+msgid "The backup folder path is too long (255 characters at most)."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:585
+msgid "The retention period has to be a whole number of days."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:591
+msgid "The retention period has to be between {0} and {1} days."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:720
+msgid "mysqldump failed: {0}"
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:722
+msgid "it exited with code {0}."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:730
+msgid "The dump file was not created or came out empty, so it was deleted."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:760
+msgid "The dump was written but could not be compressed."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:780
+msgid "The dump was written but could not be compressed: {0}"
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:803
+msgid "A temporary file for the database credentials could not be created."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:864
+msgid "The backup folder {0} could not be created."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:868
+msgid "The backup folder {0} cannot be written to."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:219
+msgid "The crontab was saved but the maintenance entries are not in it. Please add them by hand."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:403
+msgid "\"{0}\" is not a valid time of day."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:412
+msgid "Choose at least one time of day for the maintenance to run."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:417
+msgid "The maintenance cannot be scheduled more than {0} times a day."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:563
+msgid "This server runs Windows, which has no crontab. Use Task Scheduler with the command shown below."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:569
+msgid "PHP on this server cannot run shell commands, so the crontab cannot be reached from here."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:574
+msgid "PHP on this server has exec() disabled, so the crontab cannot be reached from here."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:578
+msgid "The crontab command is not installed on this server."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:607
+msgid "The crontab could not be read: {0}"
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:625
+msgid "A temporary file for the new crontab could not be created."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:638
+msgid "The crontab could not be written: {0}"
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:640
+msgid "the crontab command failed."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:28
+#: ./templates/Config/maintenance.php:32
+#: ./templates/Config/maintenance.php:49
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:148
+msgid "Maintenance"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:52
+msgid "The scheduled tasks: archiving finished cycles, recording finished events, purging old chests and backing up the database"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:58
+msgid "Check again"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:68
+msgid "Current status"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:70
+msgid "Read from the crontab of the user the web server runs as, every time this page is opened."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:78
+msgid "The crontab cannot be checked from here"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:80
+msgid "The entry can still be installed by hand: copy the block at the bottom of this page."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:87
+msgid "The crontab could not be read"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:97
+msgid "The maintenance is in the crontab and runs {0} time(s) a day."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:102
+msgid "The database backup is in there too."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:111
+msgid "Not scheduled"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:113
+msgid "Nothing is running the maintenance. Finished cycles are not being archived and old chests are not being purged. Install it below."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:125
+msgid "Brazil time"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:126
+msgid "UTC"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:142
+msgid "The lines in the crontab:"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:150
+msgid "Last cron output written {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:152
+msgid "The cron log has never been written, so the task has probably never run here."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:157
+msgid "Brazil is {0} right now; {1} is written to the crontab as {2} UTC."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:167
+msgid "The server clock is {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:174
+msgid "The entries declare CRON_TZ=UTC, so this does not change when they run."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:183
+msgid "Entries added by hand"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:185
+msgid "These call the maintenance but were not installed from this page, so saving here will not change or remove them. Delete them with <code>crontab -e</code> if you do not want the task running twice."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:198
+msgid "Schedule"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:200
+msgid "Pick the times on the Brazil clock. They are converted to UTC before being written, so the schedule holds whatever timezone the server keeps."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:206
+msgid "How many times a day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:211
+msgid "{0} times a day (suggested)"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:212
+msgid "Once a day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:212
+msgid "{0} times a day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:217
+msgid "Twice a day is the suggestion: {0} and {1} Brazil time, quiet hours either side of the clan's active evening. Changing this fills in suggested times, which you can then edit."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:230
+msgid "Run {0}"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:240
+msgid "Save schedule"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:240
+msgid "Install in crontab"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:245
+msgid "Remove from crontab"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:252
+msgid "Remove the maintenance from the crontab? Nothing will archive cycles, purge old chests or back up the database until it is installed again."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:266
+msgid "Database backup"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:268
+msgid "A gzipped mysqldump of the whole database, taken every day at {0} UTC — the game reset — so each dump holds one cycle day exactly as the game closed it. The time is fixed for that reason; the folder and how long dumps are kept are yours to choose."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:281
+msgid "Not backing up"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:283
+msgid "Nothing is dumping the database. Turn it on below."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:291
+msgid "Turned on, but not in the crontab"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:293
+msgid "The backup is turned on but nothing is calling it. Save the schedule above, or install the block by hand."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:302
+msgid "Backing up daily"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:304
+msgid "Every day at {0} UTC ({1} Brazil time), keeping {2} day(s) of dumps."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:318
+msgid "Saving to"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:321
+msgid "(configured as {0})"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:324
+msgid "— created on the first run."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:326
+msgid "— this folder cannot be written to."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:332
+msgid "{0} dump(s) there, {1} in all. Newest: {2}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:339
+msgid "No dumps in that folder yet."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:341
+msgid "The folder is not there yet, so there are no dumps."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:346
+msgid "Every step is appended to {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:349
+msgid "Cron last wrote its own log {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:357
+msgid "This installation is not on MySQL or MariaDB, so mysqldump cannot back it up."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:362
+msgid "The command may still work from a real shell, where cron runs it."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:365
+msgid "mysqldump found at {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:368
+msgid "mysqldump was not found on this server. Install the MySQL/MariaDB client tools, or no backup can be taken."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:380
+msgid "Back the database up every day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:386
+msgid "Folder to save to"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:390
+msgid "A full path, because cron does not start in the site directory. {0} is the home directory of the user the site runs as, so the default {1} needs nothing set up. The folder is created if it is not there."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:399
+msgid "Keep dumps for"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:405
+msgid "days"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:409
+msgid "Anything older is deleted after each backup, so the folder holds this many days and no more. Between {0} and {1} days; the old script kept {2}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:421
+msgid "Save backup settings"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:431
+msgid "Install it by hand"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:433
+msgid "For the times shown in the form above. Run <code>crontab -e</code> on the server and paste this at the end of the file."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:441
+#: ./templates/Config/maintenance.php:530
+msgid "Copy"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:444
+msgid "This block is what the buttons above write. Saving the schedule here rewrites everything between the two marker comments and leaves the rest of the crontab alone."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:451
+msgid "You can also run the task yourself at any time: {0} from the application directory, or add {1} to see what it would do without touching the database."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:457
+msgid "The backup is the same: {0} takes one now, and {1} takes one even while the nightly backup is turned off."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:492
+msgid "= {0} UTC"
+msgstr ""
+
+#: ./templates/TroopCalculator/index.php:348
+msgid "Mercenary tier"
+msgstr ""
+
+#: ./templates/TroopCalculator/index.php:354
+msgid "Only one band is for hire at a time, and it follows your best guardsmen. Set it here if the game offers you a different one."
+msgstr ""

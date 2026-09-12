@@ -2,7 +2,8 @@
 /**
  * @var \App\View\AppView $this
  * @var list<\App\Model\Entity\Troop> $troops
- * @var list<string> $groups
+ * @var array<string, array{label: string, codes: list<string>}> $groupRows
+ * @var array<string, string> $mercTiers
  * @var array<string, mixed> $form
  * @var \App\Service\Stacker\StackPlan|null $plan
  * @var array<string, string> $orderPresets
@@ -11,6 +12,9 @@
 use App\Service\Stacker\StackRequest;
 
 $this->assign('title', __('Troop Calculator'));
+// Only this page needs the level picker's styling, so it rides the css block
+// rather than the global layout.
+$this->Html->css('troop-calculator', ['block' => true]);
 $this->Breadcrumbs->add([
     ['title' => __('Home'), 'url' => '/'],
     ['title' => __('Troop Calculator')],
@@ -63,6 +67,37 @@ $sectionLabels = [
     'mercenaries' => __('Mercenaries (authority)'),
 ];
 
+// Which units have a portrait. One directory read beats a filesystem check per
+// row, and it keeps the page in step with whatever is on disk.
+$troopImages = [];
+foreach (glob(WWW_ROOT . 'img' . DS . 'troops' . DS . '*.png') ?: [] as $portrait) {
+    $troopImages[basename($portrait, '.png')] = true;
+}
+
+/**
+ * A unit's portrait, or a tier badge coloured by category when the catalogue
+ * has no art for it. The badge still says which class and level the unit is,
+ * so a missing picture costs no information.
+ */
+$troopIcon = function (\App\Model\Entity\Troop $troop) use ($troopImages): string {
+    if (isset($troopImages[$troop->slug])) {
+        return $this->Html->image('troops/' . $troop->slug . '.png', [
+            'class' => 'troop-icon',
+            'alt' => '',
+            'loading' => 'lazy',
+            'width' => 28,
+            'height' => 28,
+        ]);
+    }
+
+    return sprintf(
+        '<span class="troop-icon troop-icon-fallback troop-icon--%s" title="%s">%s</span>',
+        h($troop->category),
+        h($troop->name),
+        h($troop->group_code),
+    );
+};
+
 /**
  * Compact big numbers so the result tables stay readable.
  */
@@ -76,6 +111,8 @@ $short = function (float $number): string {
     return number_format($number);
 };
 ?>
+
+<div class="troop-calculator">
 
 <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'id' => 'calc-form']) ?>
 
@@ -91,7 +128,7 @@ $short = function (float $number): string {
                     <?= __('Take these from the army screen. Each limit is spent by its own section: leadership buys guardsmen, specialists and siege; dominance buys monsters; authority buys mercenaries.') ?>
                 </p>
                 <div class="form-row">
-                    <div class="col-4">
+                    <div class="col-12 col-sm-4">
                         <?= $this->Form->control('leadership_cap', [
                             'type' => 'text',
                             'label' => __('Leadership'),
@@ -100,7 +137,7 @@ $short = function (float $number): string {
                             'class' => 'form-control form-control-sm',
                         ]) ?>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6 col-sm-4">
                         <?= $this->Form->control('dominance_cap', [
                             'type' => 'text',
                             'label' => __('Dominance'),
@@ -109,7 +146,7 @@ $short = function (float $number): string {
                             'class' => 'form-control form-control-sm',
                         ]) ?>
                     </div>
-                    <div class="col-4">
+                    <div class="col-6 col-sm-4">
                         <?= $this->Form->control('authority_cap', [
                             'type' => 'text',
                             'label' => __('Authority'),
@@ -131,95 +168,42 @@ $short = function (float $number): string {
                     <?= __('Percentages exactly as the game reports them: type 420 for +420%. Leave a field blank when you have no bonus of that kind.') ?>
                 </p>
 
-                <h6 class="text-uppercase text-muted small mb-2"><?= __('By class') ?></h6>
-                <table class="table table-sm mb-3">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="text-center"><?= __('Health %') ?></th>
-                            <th class="text-center"><?= __('Strength %') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($classLabels as $key => $label) : ?>
-                        <tr>
-                            <td class="align-middle"><?= h($label) ?></td>
-                            <td><?= $this->Form->number("health_class.$key", [
-                                'step' => 'any',
-                                'value' => $bonus('health_class', $key),
-                                'class' => 'form-control form-control-sm text-right',
-                                'label' => false,
-                            ]) ?></td>
-                            <td><?= $this->Form->number("strength_class.$key", [
-                                'step' => 'any',
-                                'value' => $bonus('strength_class', $key),
-                                'class' => 'form-control form-control-sm text-right',
-                                'label' => false,
-                            ]) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-
-                <h6 class="text-uppercase text-muted small mb-2"><?= __('By category') ?></h6>
-                <table class="table table-sm mb-3">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="text-center"><?= __('Health %') ?></th>
-                            <th class="text-center"><?= __('Strength %') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($categoryLabels as $key => $label) : ?>
-                        <tr>
-                            <td class="align-middle"><?= h($label) ?></td>
-                            <td><?= $this->Form->number("health_category.$key", [
-                                'step' => 'any',
-                                'value' => $bonus('health_category', $key),
-                                'class' => 'form-control form-control-sm text-right',
-                                'label' => false,
-                            ]) ?></td>
-                            <td><?= $this->Form->number("strength_category.$key", [
-                                'step' => 'any',
-                                'value' => $bonus('strength_category', $key),
-                                'class' => 'form-control form-control-sm text-right',
-                                'label' => false,
-                            ]) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
-
-                <h6 class="text-uppercase text-muted small mb-2"><?= __('Monsters Boost research') ?></h6>
-                <table class="table table-sm mb-2">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th class="text-center"><?= __('Health %') ?></th>
-                            <th class="text-center"><?= __('Strength %') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach ($typeLabels as $key => $label) : ?>
-                        <tr>
-                            <td class="align-middle"><?= h($label) ?></td>
-                            <td><?= $this->Form->number("health_type.$key", [
-                                'step' => 'any',
-                                'value' => $bonus('health_type', $key),
-                                'class' => 'form-control form-control-sm text-right',
-                                'label' => false,
-                            ]) ?></td>
-                            <td><?= $this->Form->number("strength_type.$key", [
-                                'step' => 'any',
-                                'value' => $bonus('strength_type', $key),
-                                'class' => 'form-control form-control-sm text-right',
-                                'label' => false,
-                            ]) ?></td>
-                        </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+                <?php
+                // The three bonus grids differ only by their heading, their row
+                // labels and the field prefix, so they share one block.
+                $bonusGrids = [
+                    ['heading' => __('By class'), 'prefix' => 'class', 'rows' => $classLabels],
+                    ['heading' => __('By category'), 'prefix' => 'category', 'rows' => $categoryLabels],
+                    ['heading' => __('Monsters Boost research'), 'prefix' => 'type', 'rows' => $typeLabels],
+                ];
+                ?>
+                <?php foreach ($bonusGrids as $grid) : ?>
+                    <h6 class="text-uppercase text-muted small mb-2"><?= h($grid['heading']) ?></h6>
+                    <table class="table table-sm bonus-table mb-3">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th class="text-center"><?= __('Health %') ?></th>
+                                <th class="text-center"><?= __('Strength %') ?></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php foreach ($grid['rows'] as $key => $label) : ?>
+                            <tr>
+                                <th scope="row" class="align-middle font-weight-normal"><?= h($label) ?></th>
+                                <?php foreach (['health', 'strength'] as $stat) : ?>
+                                    <td><?= $this->Form->number("{$stat}_{$grid['prefix']}.$key", [
+                                        'step' => 'any',
+                                        'value' => $bonus("{$stat}_{$grid['prefix']}", $key),
+                                        'class' => 'form-control form-control-sm text-right',
+                                        'label' => false,
+                                    ]) ?></td>
+                                <?php endforeach; ?>
+                            </tr>
+                        <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php endforeach; ?>
 
                 <div class="form-group">
                     <?= $this->Form->control('strength_vs_epic_monsters', [
@@ -265,18 +249,23 @@ $short = function (float $number): string {
 
                 <div class="form-group">
                     <label><?= __('Levels you are bringing') ?></label>
-                    <div class="border rounded p-2" style="max-height: 190px; overflow-y: auto;">
-                        <?php foreach ($groups as $code) : ?>
-                            <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" class="custom-control-input" name="groups[]"
-                                       id="group-<?= h($code) ?>" value="<?= h($code) ?>"
-                                    <?= in_array($code, $selectedGroups, true) ? 'checked' : '' ?>>
-                                <label class="custom-control-label" for="group-<?= h($code) ?>"><?= h($code) ?></label>
+                    <div class="border rounded p-2">
+                        <?php foreach ($groupRows as $prefix => $row) : ?>
+                            <div class="tier-row">
+                                <span class="tier-row-label"><?= h($row['label']) ?></span>
+                                <div class="tier-pills">
+                                    <?php foreach ($row['codes'] as $code) : ?>
+                                        <input type="checkbox" class="tier-pill-input" name="groups[]"
+                                               id="group-<?= h($code) ?>" value="<?= h($code) ?>"
+                                            <?= in_array($code, $selectedGroups, true) ? 'checked' : '' ?>>
+                                        <label class="tier-pill" for="group-<?= h($code) ?>"><?= h($code) ?></label>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
                         <?php endforeach; ?>
                     </div>
                     <small class="form-text text-muted">
-                        <?= __('E = engineer corps, S = specialists, G = guardsmen, M = monsters. Leave all unticked to use everything in the catalogue.') ?>
+                        <?= __('Click a level to select it. Leave all unselected to use everything in the catalogue.') ?>
                     </small>
                 </div>
 
@@ -305,13 +294,18 @@ $short = function (float $number): string {
                     <label><?= __('Category order within a level') ?></label>
                     <div class="form-row">
                         <?php
-                        $currentCategoryOrder = (array)($form['category_order'] ?? StackRequest::DEFAULT_CATEGORY_ORDER);
-                        foreach (array_keys($categoryLabels) as $position => $ignored) :
-                            $value = $currentCategoryOrder[$position] ?? array_keys($categoryLabels)[$position];
+                        $defaultCategoryOrder = StackRequest::DEFAULT_CATEGORY_ORDER;
+                        $currentCategoryOrder = (array)($form['category_order'] ?? $defaultCategoryOrder);
+                        foreach ($defaultCategoryOrder as $position => $fallback) :
+                            $value = $currentCategoryOrder[$position] ?? $fallback;
                             ?>
-                            <div class="col-6 col-md-3">
+                            <div class="col-6 col-md-3 mb-2 mb-md-0">
+                                <label class="text-muted small mb-1" for="category-order-<?= $position ?>">
+                                    <?= __('Dies #{0}', $position + 1) ?>
+                                </label>
                                 <?= $this->Form->select("category_order[$position]", $categoryLabels, [
                                     'value' => $value,
+                                    'id' => "category-order-$position",
                                     'class' => 'form-control form-control-sm',
                                 ]) ?>
                             </div>
@@ -346,6 +340,18 @@ $short = function (float $number): string {
                         ]) ?>
                         <small class="form-text text-muted">
                             <?= __('4 for a standard Epic Monster. The first stack lost in each round is a sacrifice that will not strike. Use 0 to treat every stack as a striker.') ?>
+                        </small>
+                    </div>
+                    <div class="col-12 col-md-4">
+                        <?= $this->Form->control('merc_tier', [
+                            'type' => 'select',
+                            'label' => __('Mercenary tier'),
+                            'options' => $mercTiers,
+                            'value' => (string)$val('merc_tier', ''),
+                            'class' => 'form-control form-control-sm',
+                        ]) ?>
+                        <small class="form-text text-muted">
+                            <?= __('Only one band is for hire at a time, and it follows your best guardsmen. Set it here if the game offers you a different one.') ?>
                         </small>
                     </div>
                     <div class="col-12 col-md-4">
@@ -397,7 +403,7 @@ $short = function (float $number): string {
             </div>
         </div>
 
-        <div class="mb-4">
+        <div class="mb-4 calc-actions">
             <?= $this->Form->button(__('Calculate'), ['class' => 'btn btn-primary', 'type' => 'submit']) ?>
             <?= $this->Html->link(
                 __('Clear saved inputs'),
@@ -454,7 +460,7 @@ $short = function (float $number): string {
                     <?= number_format($plan->usedCap($section)) ?> / <?= number_format($plan->offeredCap($section)) ?>
                 </h6>
                 <div class="table-responsive">
-                    <table class="table table-sm table-striped mb-0">
+                    <table class="table table-sm table-striped plan-table mb-0">
                         <thead>
                             <tr>
                                 <th style="width: 3rem;">#</th>
@@ -471,12 +477,15 @@ $short = function (float $number): string {
                             <tr<?= $line->isSacrifice ? ' class="table-warning"' : '' ?>>
                                 <td><?= $line->rank + 1 ?></td>
                                 <td>
-                                    <?= h($line->troop->name) ?>
-                                    <?php if ($line->isSacrifice) : ?>
-                                        <span class="badge badge-warning ml-1" title="<?= h(__('Opens a round and will be lost before it strikes')) ?>">
-                                            <?= __('sacrifice') ?>
-                                        </span>
-                                    <?php endif; ?>
+                                    <span class="troop-cell">
+                                        <?= $troopIcon($line->troop) ?>
+                                        <span class="troop-name"><?= h($line->troop->name) ?></span>
+                                        <?php if ($line->isSacrifice) : ?>
+                                            <span class="badge badge-warning" title="<?= h(__('Opens a round and will be lost before it strikes')) ?>">
+                                                <?= __('sacrifice') ?>
+                                            </span>
+                                        <?php endif; ?>
+                                    </span>
                                 </td>
                                 <td><small class="text-muted"><?= h($line->troop->group_code) ?></small></td>
                                 <td class="text-right"><strong><?= number_format($line->count) ?></strong></td>
@@ -523,3 +532,6 @@ $short = function (float $number): string {
         });
     </script>
 <?php endif; ?>
+
+</div>
+

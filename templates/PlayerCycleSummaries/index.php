@@ -59,13 +59,10 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
 ?>
 
 <style>
+    /* No token declarations here: this element sits below <html data-theme>,
+       so redeclaring --bg and friends would override the active theme for
+       everything inside it. */
     .score-new-page {
-        --bg: #f5f7fb;
-        --card: #ffffff;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --line: #e5e7eb;
-        --accent: #4f46e5;
         background: var(--bg);
         padding: 16px;
         border-radius: 14px;
@@ -93,9 +90,9 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .goal-pill {
-        background: #eef2ff;
-        border: 1px solid #c7d2fe;
-        color: #3730a3;
+        background: var(--accent-light);
+        border: 1px solid var(--accent-border);
+        color: var(--accent-dark);
         border-radius: 999px;
         padding: 8px 14px;
         font-weight: 600;
@@ -118,7 +115,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         border-bottom: 1px solid var(--line);
         font-weight: 700;
         color: var(--text);
-        background: #fcfcff;
+        background: var(--surface-raised);
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -142,14 +139,14 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     .ranking-table th,
     .ranking-table td {
         padding: 11px 12px;
-        border-bottom: 1px solid #eef0f4;
+        border-bottom: 1px solid var(--line-subtle);
         text-align: center;
         white-space: nowrap;
     }
 
     .ranking-table th {
-        background: #f8fafc;
-        color: #374151;
+        background: var(--surface-sunken);
+        color: var(--text-soft);
         font-size: 0.9rem;
         font-weight: 700;
         position: sticky;
@@ -158,11 +155,11 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .ranking-table tbody tr:hover {
-        background: #f8fbff;
+        background: var(--surface-hover);
     }
 
     .player-link {
-        color: #1d4ed8;
+        color: var(--link);
         text-decoration: none;
         font-weight: 600;
     }
@@ -175,8 +172,8 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         min-width: 28px;
         height: 28px;
         border-radius: 999px;
-        background: #e0e7ff;
-        color: #3730a3;
+        background: var(--accent-light);
+        color: var(--accent-dark);
         display: inline-flex;
         align-items: center;
         justify-content: center;

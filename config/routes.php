@@ -86,6 +86,17 @@ return function (RouteBuilder $routes): void {
         // Troop calculator
         $builder->connect('/calculator', ['controller' => 'TroopCalculator', 'action' => 'index']);
 
+        // Language switcher. Public: the score page is readable without
+        // logging in, so the switch there has to work without a session.
+        $builder->connect('/lang/*', ['controller' => 'Locale', 'action' => 'change']);
+
+        // Events module. The banner on the public score page links here, so the
+        // reading routes have to resolve for anonymous visitors too.
+        $builder->connect('/events', ['controller' => 'Events', 'action' => 'index']);
+        $builder->connect('/events/history', ['controller' => 'Events', 'action' => 'history']);
+        $builder->connect('/events/banner/*', ['controller' => 'Events', 'action' => 'banner']);
+        $builder->connect('/events/asset/*', ['controller' => 'Events', 'action' => 'asset']);
+
         /*
          * Connect catchall routes for all controllers.
          *

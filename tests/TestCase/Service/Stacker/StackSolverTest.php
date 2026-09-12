@@ -441,44 +441,67 @@ class StackSolverTest extends TestCase
     }
 
     /**
-     * The mercenary roster follows the player's best guardsman tier: a tier 9
-     * account is offered the tier 6-9 mercenaries and none of the lower ones.
+     * Only one mercenary band is for hire, and it follows the best guardsmen.
+     *
+     * The bands do not line up one-to-one with guardsman levels: tier 6 and
+     * above are all offered band 9, so a tier 8 account sees the same roster
+     * as a tier 9 one.
      *
      * @return void
      */
-    public function testMercenariesAreLimitedToTheGuardsmenTierOnOffer(): void
+    public function testMercenaryBandFollowsTheBestGuardsmen(): void
     {
         $solver = new StackSolver($this->catalogue);
 
-        $tiers = static function (StackPlan $plan): array {
+        $bands = static function (StackPlan $plan): array {
             $seen = [];
             foreach ($plan->section('mercenaries') as $line) {
-                foreach ($line->troop->guardsmen_tier_list as $tier) {
-                    $seen[$tier] = true;
-                }
+                $seen[$line->troop->merc_tier] = true;
             }
             ksort($seen);
 
             return array_keys($seen);
         };
 
-        $top = $solver->solve(new StackRequest(
+        foreach ([9 => 9, 8 => 9, 7 => 9, 6 => 9, 5 => 7, 4 => 6, 3 => 6] as $guardsmen => $expected) {
+            $plan = $solver->solve(new StackRequest(
+                leadershipCap: 200_000,
+                authorityCap: 3_000,
+                bonuses: $this->lateGameBonuses(),
+                killOrder: ["S{$guardsmen}", "G{$guardsmen}"],
+            ));
+
+            $this->assertNotEmpty(
+                $plan->section('mercenaries'),
+                sprintf('G%d should be offered a mercenary band', $guardsmen),
+            );
+            $this->assertSame(
+                [$expected],
+                $bands($plan),
+                sprintf('G%d should hire from band %d', $guardsmen, $expected),
+            );
+        }
+    }
+
+    /**
+     * Naming the band outright overrides what the guardsmen would give.
+     *
+     * @return void
+     */
+    public function testMercenaryBandCanBeSetByHand(): void
+    {
+        $plan = (new StackSolver($this->catalogue))->solve(new StackRequest(
             leadershipCap: 200_000,
             authorityCap: 3_000,
             bonuses: $this->lateGameBonuses(),
             killOrder: ['S9', 'G9'],
+            mercTier: 6,
         ));
-        $this->assertNotEmpty($top->section('mercenaries'));
-        $this->assertSame([6, 7, 8, 9], $tiers($top));
 
-        $mid = $solver->solve(new StackRequest(
-            leadershipCap: 200_000,
-            authorityCap: 3_000,
-            bonuses: $this->lateGameBonuses(),
-            killOrder: ['S5', 'G5'],
-        ));
-        $this->assertNotEmpty($mid->section('mercenaries'));
-        $this->assertSame([5], $tiers($mid));
+        $this->assertNotEmpty($plan->section('mercenaries'));
+        foreach ($plan->section('mercenaries') as $line) {
+            $this->assertSame(6, $line->troop->merc_tier, $line->troop->name . ' is not in band 6');
+        }
     }
 
     /**

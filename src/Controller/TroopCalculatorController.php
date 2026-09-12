@@ -77,7 +77,8 @@ class TroopCalculatorController extends AppController
                 $troops,
                 static fn (Troop $troop): bool => $troop->category !== 'scout',
             )),
-            'groups' => $this->availableGroups($troops),
+            'groupRows' => $this->groupRows($troops),
+            'mercTiers' => $this->mercTiers($troops),
             'form' => $form,
             'plan' => $plan,
             'orderPresets' => self::ORDER_PRESETS,
@@ -119,6 +120,7 @@ class TroopCalculatorController extends AppController
             'enemy_stack_count' => $this->number($form['enemy_stack_count'] ?? 4),
             'enforce_strike_order' => (bool)($form['enforce_strike_order'] ?? false),
             'section_gap' => (float)($form['section_gap'] ?? 0.95),
+            'merc_tier' => $form['merc_tier'] ?? '',
             'bonuses' => [
                 'health' => [
                     'class' => $this->numbers($form['health_class'] ?? []),
@@ -242,6 +244,69 @@ class TroopCalculatorController extends AppController
         });
 
         return $codes;
+    }
+
+    /**
+     * The same group codes, split one row per class so the form can offer the
+     * levels of each class on its own line.
+     *
+     * @param list<\App\Model\Entity\Troop> $troops Unit catalogue.
+     * @return array<string, array{label: string, codes: list<string>}> Keyed by
+     *   class prefix, in the order the rows should be shown. Classes absent from
+     *   the catalogue are left out.
+     */
+    protected function groupRows(array $troops): array
+    {
+        $labels = [
+            'G' => __('Guardsmen'),
+            'S' => __('Specialists'),
+            'M' => __('Monsters'),
+            'E' => __('Engineer corps'),
+        ];
+
+        $rows = [];
+        foreach ($this->availableGroups($troops) as $code) {
+            $prefix = substr($code, 0, 1);
+            if (!isset($labels[$prefix])) {
+                continue;
+            }
+            $rows[$prefix][] = $code;
+        }
+
+        $ordered = [];
+        foreach ($labels as $prefix => $label) {
+            if (!empty($rows[$prefix])) {
+                $ordered[$prefix] = ['label' => $label, 'codes' => $rows[$prefix]];
+            }
+        }
+
+        return $ordered;
+    }
+
+    /**
+     * The mercenary bands the catalogue holds, for the form's selector.
+     *
+     * @param list<\App\Model\Entity\Troop> $troops Unit catalogue.
+     * @return array<string, string> Blank key first, meaning "work it out".
+     */
+    protected function mercTiers(array $troops): array
+    {
+        $bands = [];
+        foreach ($troops as $troop) {
+            if ($troop->is_mercenary && $troop->merc_tier !== null) {
+                $bands[$troop->merc_tier] = true;
+            }
+        }
+
+        $codes = array_keys($bands);
+        sort($codes);
+
+        $options = ['' => __('From my best guardsmen')];
+        foreach ($codes as $code) {
+            $options[(string)$code] = __('Tier {0}', $code);
+        }
+
+        return $options;
     }
 
     /**

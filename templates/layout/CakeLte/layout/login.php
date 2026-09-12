@@ -8,14 +8,14 @@
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= h(str_replace('_', '-', \Cake\I18n\I18n::getLocale())) ?>" data-theme="<?= h($this->SiteTheme->slug()) ?>">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?= $this->fetch('title') . ' | ' . strip_tags($this->CakeLte->getConfig('app-name')) ?></title>
 
-    <?= $this->Html->meta('icon') ?>
+    <?= $this->Branding->favicon() ?>
     <?= $this->fetch('meta') ?>
 
     <!-- Google Identity Services -->
@@ -29,6 +29,8 @@
     <?= $this->Html->css('/adminlte/dist/css/adminlte.min.css') ?>
     <?= $this->Html->css('CakeLte.style') ?>
     <?= $this->Html->css('theme-score') ?>
+    <?= $this->Html->css('themes') ?>
+    <?= $this->Html->css('branding') ?>
     <?= $this->element('CakeLte.extra/css') ?>
     <?= $this->fetch('css') ?>
 </head>
@@ -36,7 +38,8 @@
 <body class="hold-transition login-page">
     <div class="login-box">
         <div class="login-logo">
-            <?= $this->CakeLte->getConfig('app-name') ?>
+            <?= $this->Branding->logo(['class' => 'login-brand-image', 'alt' => '']) ?>
+            <div><?= $this->CakeLte->getConfig('app-name') ?></div>
         </div>
         <!-- /.login-logo -->
         <?= $this->Flash->render() ?>

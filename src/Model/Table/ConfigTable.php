@@ -58,7 +58,9 @@ class ConfigTable extends Table
 
         $validator
             ->scalar('value')
-            ->maxLength('value', 45)
+            // 255 since AddDatabaseBackupConfig widened the column: the backup
+            // folder is a full filesystem path, which 45 characters cannot hold.
+            ->maxLength('value', 255)
             ->requirePresence('value', 'create')
             ->notEmptyString('value');
 

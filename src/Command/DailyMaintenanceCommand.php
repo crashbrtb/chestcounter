@@ -3,13 +3,19 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Model\Entity\Event;
+use App\Service\EventScoringService;
 use Cake\Command\Command;
 use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
+// Aliased: this file already uses PHP's own DateTime, and the Cake one is what
+// the ORM hands back and expects.
+use Cake\I18n\DateTime as CakeDateTime;
 use Cake\I18n\FrozenTime;
 use Cake\ORM\Locator\LocatorAwareTrait;
 use DateTime;
+use Throwable;
 
 /**
  * DailyMaintenance command.
@@ -17,6 +23,7 @@ use DateTime;
  * Orchestrates daily automated maintenance tasks:
  * 1. Process pending/unprocessed completed cycle summaries.
  * 2. Purge old collected chests based on retention configuration.
+ * 3. Record the results of events whose window has closed.
  */
 class DailyMaintenanceCommand extends Command
 {
@@ -44,6 +51,10 @@ class DailyMaintenanceCommand extends Command
             ->addOption('skip-purge', [
                 'boolean' => true,
                 'help' => 'Skip old chests purge step.',
+            ])
+            ->addOption('skip-events', [
+                'boolean' => true,
+                'help' => 'Skip recording the results of events that have ended.',
             ]);
 
         return $parser;
@@ -68,25 +79,99 @@ class DailyMaintenanceCommand extends Command
         // 1. Process Cycle Summaries
         if (!$args->getOption('skip-summaries')) {
             $io->hr();
-            $io->out('<info>[Task 1/2] Processing pending cycle summaries...</info>');
+            $io->out('<info>[Task 1/3] Processing pending cycle summaries...</info>');
             $this->runProcessCycleSummaries($io, $isDryRun);
         } else {
-            $io->out('[Task 1/2] Skipped cycle summaries processing (--skip-summaries specified).');
+            $io->out('[Task 1/3] Skipped cycle summaries processing (--skip-summaries specified).');
         }
 
         // 2. Purge Old Collected Chests
         if (!$args->getOption('skip-purge')) {
             $io->hr();
-            $io->out('<info>[Task 2/2] Purging old collected chests...</info>');
+            $io->out('<info>[Task 2/3] Purging old collected chests...</info>');
             $this->runPurgeCollectedChests($io, $isDryRun);
         } else {
-            $io->out('[Task 2/2] Skipped old chests purge (--skip-purge specified).');
+            $io->out('[Task 2/3] Skipped old chests purge (--skip-purge specified).');
+        }
+
+        // 3. Record the results of events that have ended
+        if (!$args->getOption('skip-events')) {
+            $io->hr();
+            $io->out('<info>[Task 3/3] Recording results for events that have ended...</info>');
+            $this->runFinalizeEndedEvents($io, $isDryRun);
+        } else {
+            $io->out('[Task 3/3] Skipped event results recording (--skip-events specified).');
         }
 
         $io->hr();
         $io->success('Daily Maintenance completed successfully.');
 
         return static::CODE_SUCCESS;
+    }
+
+    /**
+     * Freeze the standings of every event whose window has closed.
+     *
+     * This is not a convenience: `collected_chests` is purged on a retention
+     * schedule, so an event nobody closed by hand loses the data its result was
+     * computed from and its history becomes permanently empty. Running here
+     * means that only happens if maintenance itself stops running.
+     *
+     * Events already recorded are left alone, so an administrator's own
+     * correction is never overwritten by the next nightly run.
+     *
+     * @param \Cake\Console\ConsoleIo $io Console io.
+     * @param bool $isDryRun Whether to report without writing.
+     * @return void
+     */
+    protected function runFinalizeEndedEvents(ConsoleIo $io, bool $isDryRun): void
+    {
+        try {
+            $events = $this->fetchTable('Events');
+        } catch (Throwable $e) {
+            $io->warning('Events module is not installed; skipping. (' . $e->getMessage() . ')');
+
+            return;
+        }
+
+        $pending = $events->find('withoutBanner')
+            ->where([
+                'Events.ends_at <' => CakeDateTime::now(),
+                'Events.finalized_at IS' => null,
+                'Events.status !=' => Event::STATUS_CANCELLED,
+            ])
+            ->orderBy(['Events.ends_at' => 'ASC'])
+            ->all();
+
+        if ($pending->isEmpty()) {
+            $io->out('No event is waiting to be recorded.');
+
+            return;
+        }
+
+        $service = new EventScoringService();
+
+        foreach ($pending as $event) {
+            if ($isDryRun) {
+                $io->out(sprintf(
+                    '[DRY-RUN] Would record the result of event #%d (%s).',
+                    $event->event_number,
+                    $event->name
+                ));
+                continue;
+            }
+
+            $recorded = $service->finalize($event);
+            $event->set('finalized_at', CakeDateTime::now());
+            $events->save($event, ['checkRules' => false]);
+
+            $io->out(sprintf(
+                'Recorded event #%d (%s): %d player(s) ranked.',
+                $event->event_number,
+                $event->name,
+                $recorded
+            ));
+        }
     }
 
     /**

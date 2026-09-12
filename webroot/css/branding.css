@@ -1,0 +1,502 @@
+/**
+ * Branding picker.
+ *
+ * Built on the tokens declared in theme-score.css, and deliberately reusing the
+ * card shape of the event admin forms: this is the same kind of page and should
+ * not look like a different application.
+ */
+
+.branding-page .brand-section,
+.maintenance-page .brand-section {
+    background: var(--card, #fff);
+    border: 1px solid var(--line, #e5e7eb);
+    border-radius: var(--radius-lg, 14px);
+    box-shadow: var(--shadow-card, 0 8px 24px rgba(17, 24, 39, 0.05));
+    padding: 22px 24px;
+    margin-bottom: 18px;
+}
+
+.branding-page .brand-section-head h2,
+.maintenance-page .brand-section-head h2 {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark, #111827);
+    margin: 0 0 4px;
+}
+
+.branding-page .brand-section-head .section-hint,
+.maintenance-page .brand-section-head .section-hint {
+    color: var(--muted, #6b7280);
+    font-size: 0.85rem;
+    margin: 0 0 18px;
+}
+
+/* ==========================================================================
+   The picker
+   ========================================================================== */
+
+.branding-page .brand-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(132px, 1fr));
+    gap: 12px;
+}
+
+.branding-page .brand-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 4px;
+    margin: 0;
+    padding: 14px 10px 12px;
+    border: 2px solid var(--line, #e5e7eb);
+    border-radius: var(--radius-lg, 14px);
+    background: var(--surface, #fff);
+    cursor: pointer;
+    font-weight: 400;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.branding-page .brand-card:hover {
+    border-color: var(--accent-border, #c7d2fe);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+}
+
+.branding-page .brand-card.is-chosen {
+    border-color: var(--accent, #4f46e5);
+    background: var(--accent-light, #eef2ff);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.18);
+}
+
+/* The radio itself is the accessible control, so it is moved off-screen rather
+   than hidden: display:none would drop it out of the tab order and leave the
+   picker unusable from the keyboard. */
+.branding-page .brand-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+}
+
+.branding-page .brand-card input[type="radio"]:focus-visible + .brand-thumb {
+    outline: 2px solid var(--accent, #4f46e5);
+    outline-offset: 3px;
+    border-radius: 50%;
+}
+
+/* A tick in the corner, so the chosen card is still obvious to anyone who
+   cannot pick the highlight out by colour alone. */
+.branding-page .brand-card.is-chosen::after {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 6px;
+    right: 8px;
+    font-size: 0.72rem;
+    color: var(--accent, #4f46e5);
+}
+
+.branding-page .brand-thumb {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 72px;
+    height: 72px;
+    margin-bottom: 4px;
+}
+
+.branding-page .brand-thumb img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.branding-page .brand-thumb i {
+    font-size: 1.6rem;
+}
+
+.branding-page .brand-name {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-dark, #111827);
+    line-height: 1.2;
+}
+
+.branding-page .brand-blurb {
+    font-size: 0.72rem;
+    color: var(--muted, #6b7280);
+    line-height: 1.3;
+}
+
+.branding-page .brand-card-custom.is-empty {
+    border-style: dashed;
+}
+
+.branding-page .brand-card-custom.is-empty:hover {
+    transform: none;
+    box-shadow: none;
+}
+
+/* ==========================================================================
+   Upload
+   ========================================================================== */
+
+.branding-page .brand-upload {
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid var(--line-subtle, #eef0f4);
+}
+
+.branding-page .brand-upload > label {
+    font-weight: 700;
+    font-size: 0.86rem;
+    color: var(--text-dark, #111827);
+    margin-bottom: 8px;
+}
+
+.branding-page .brand-upload-note {
+    font-size: 0.78rem;
+    color: var(--muted, #6b7280);
+    margin: 8px 0 10px;
+}
+
+.branding-page .brand-rules {
+    margin: 0;
+    padding-left: 18px;
+    font-size: 0.78rem;
+    color: var(--muted, #6b7280);
+}
+
+.branding-page .brand-rules li {
+    margin-bottom: 3px;
+}
+
+.branding-page .brand-footnote,
+.maintenance-page .brand-footnote {
+    margin-top: 18px;
+    font-size: 0.82rem;
+}
+
+/* ==========================================================================
+   The logo above the sign-in box
+   ========================================================================== */
+
+.login-logo .login-brand-image {
+    display: block;
+    width: 84px;
+    height: auto;
+    margin: 0 auto 10px;
+}
+
+@media (max-width: 575.98px) {
+    .branding-page .brand-grid {
+        grid-template-columns: repeat(auto-fill, minmax(108px, 1fr));
+    }
+
+    .branding-page .brand-thumb {
+        width: 56px;
+        height: 56px;
+    }
+}
+
+/* ==========================================================================
+   Theme picker
+   --------------------------------------------------------------------------
+   The preview is a small mock of a page: a navbar strip and a card with a few
+   lines and a button on it. It is painted from inline colours supplied by the
+   template, not from the tokens, because the whole point is to show a theme
+   that is not the one currently applied.
+   ========================================================================== */
+
+.theme-page .theme-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 16px;
+}
+
+.theme-page .theme-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 0;
+    padding: 12px 12px 14px;
+    border: 2px solid var(--line, #e5e7eb);
+    border-radius: var(--radius-lg, 14px);
+    background: var(--surface, #fff);
+    cursor: pointer;
+    font-weight: 400;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+.theme-page .theme-card:hover {
+    border-color: var(--accent-border, #c7d2fe);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(17, 24, 39, 0.08);
+}
+
+.theme-page .theme-card.is-chosen {
+    border-color: var(--accent, #4f46e5);
+    box-shadow: 0 6px 18px rgba(79, 70, 229, 0.18);
+}
+
+/* Off-screen rather than display:none, so the picker stays keyboard-usable. */
+.theme-page .theme-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+}
+
+.theme-page .theme-card input[type="radio"]:focus-visible + .theme-preview {
+    outline: 2px solid var(--accent, #4f46e5);
+    outline-offset: 3px;
+}
+
+.theme-page .theme-card.is-chosen::after {
+    content: "\f00c";
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    font-size: 0.72rem;
+    color: var(--accent, #4f46e5);
+    z-index: 1;
+}
+
+.theme-page .theme-preview {
+    display: block;
+    border-radius: var(--radius-md, 10px);
+    overflow: hidden;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.theme-page .theme-preview-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 7px 8px;
+    margin-bottom: 10px;
+}
+
+.theme-page .theme-preview-dot {
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    flex: none;
+}
+
+.theme-page .theme-preview-card {
+    display: block;
+    margin: 0 10px;
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.theme-page .theme-preview-line {
+    display: block;
+    height: 5px;
+    border-radius: 3px;
+    /* One ink colour at a few strengths, the way real text sits on a page. */
+    opacity: 0.42;
+    margin-bottom: 6px;
+}
+
+.theme-page .theme-preview-bar .theme-preview-line {
+    width: 56px;
+    margin-bottom: 0;
+    opacity: 0.6;
+}
+
+.theme-page .theme-preview-line.is-title {
+    height: 7px;
+    width: 62%;
+    opacity: 0.85;
+    margin-bottom: 9px;
+}
+
+.theme-page .theme-preview-line.is-short {
+    width: 45%;
+}
+
+.theme-page .theme-preview-button {
+    display: block;
+    width: 52px;
+    height: 13px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+.theme-page .theme-name {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-dark, #111827);
+}
+
+.theme-page .theme-dark-mark {
+    font-size: 0.72rem;
+    color: var(--muted, #6b7280);
+    margin-left: 3px;
+}
+
+.theme-page .theme-blurb {
+    font-size: 0.76rem;
+    color: var(--muted, #6b7280);
+    line-height: 1.35;
+}
+
+/* ==========================================================================
+   Maintenance schedule
+   --------------------------------------------------------------------------
+   The verdict strip at the top is the whole page in one glance: an
+   administrator who opens this should know whether the task is scheduled
+   before reading a word. Everything below it is detail for when it is not.
+   ========================================================================== */
+
+.maintenance-page .cron-verdict {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 14px 16px;
+    border-radius: var(--radius-md, 10px);
+    border: 1px solid var(--line, #e5e7eb);
+    margin-bottom: 16px;
+}
+
+.maintenance-page .cron-verdict i {
+    font-size: 1.5rem;
+    line-height: 1.2;
+}
+
+.maintenance-page .cron-verdict strong {
+    display: block;
+    font-size: 1rem;
+    color: var(--text-dark, #111827);
+}
+
+.maintenance-page .cron-verdict p {
+    margin: 4px 0 0;
+    font-size: 0.85rem;
+    color: var(--muted, #6b7280);
+}
+
+.maintenance-page .cron-verdict.is-ok {
+    background: var(--success-light, #ecfdf5);
+    border-color: var(--success-border, #a7f3d0);
+}
+
+.maintenance-page .cron-verdict.is-ok i {
+    color: var(--success, #10b981);
+}
+
+.maintenance-page .cron-verdict.is-missing {
+    background: var(--danger-light, #fef2f2);
+    border-color: var(--danger-border, #fecaca);
+}
+
+.maintenance-page .cron-verdict.is-missing i {
+    color: var(--danger, #ef4444);
+}
+
+.maintenance-page .cron-verdict.is-unknown {
+    background: var(--warning-light, #fffbeb);
+    border-color: var(--warning-border, #fde68a);
+}
+
+.maintenance-page .cron-verdict.is-unknown i {
+    color: var(--warning, #f59e0b);
+}
+
+.maintenance-page .cron-times {
+    max-width: 320px;
+    margin-bottom: 14px;
+}
+
+.maintenance-page .cron-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--muted, #6b7280);
+    margin: 0 0 6px;
+}
+
+/* The crontab lines, shown as the file has them: long, and never wrapped into
+   something that would be wrong if it were copied. */
+.maintenance-page .cron-code {
+    background: var(--surface-sunken, #f3f4f6);
+    color: var(--text-dark, #111827);
+    border: 1px solid var(--line, #e5e7eb);
+    border-radius: var(--radius-md, 10px);
+    padding: 12px 14px;
+    font-size: 0.78rem;
+    line-height: 1.6;
+    overflow-x: auto;
+    margin: 0 0 12px;
+}
+
+.maintenance-page .cron-facts {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.82rem;
+    color: var(--muted, #6b7280);
+}
+
+.maintenance-page .cron-facts li {
+    margin-bottom: 5px;
+}
+
+.maintenance-page .cron-facts i {
+    width: 18px;
+    text-align: center;
+    margin-right: 4px;
+    opacity: 0.8;
+}
+
+.maintenance-page .cron-runs {
+    max-width: 320px;
+}
+
+.maintenance-page .cron-time-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(210px, 1fr));
+    gap: 12px;
+    margin-top: 6px;
+}
+
+.maintenance-page .cron-time-row.is-hidden {
+    display: none;
+}
+
+.maintenance-page .cron-time-row label {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--muted, #6b7280);
+    margin-bottom: 4px;
+}
+
+.maintenance-page .cron-utc {
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.78rem;
+    color: var(--muted, #6b7280);
+}
+
+.maintenance-page .event-form-actions {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
