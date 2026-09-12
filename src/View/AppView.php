@@ -43,6 +43,11 @@ class AppView extends View
     {
         parent::initialize();
         $this->addHelper('CakeLte.CakeLte');
+        // Branding is in the <head> and the navbar of every layout, so the
+        // helper has to be here rather than added per-controller.
+        $this->addHelper('Branding');
+        // The theme goes on the <html> element of every layout.
+        $this->addHelper('SiteTheme');
         
         // Inicializa o CakeLte com configurações específicas
 

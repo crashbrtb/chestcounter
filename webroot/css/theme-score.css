@@ -42,6 +42,29 @@
     --radius-lg: 14px;
     --radius-pill: 999px;
 
+    /* Surfaces. Everything that was once a literal white or near-white now
+       goes through one of these, which is what makes a theme a theme: a
+       palette swap rather than a second copy of the stylesheet. */
+    --surface: #ffffff;
+    --surface-raised: #fcfcff;
+    --surface-sunken: #f8fafc;
+    --surface-hover: #f8fbff;
+
+    --text-soft: #374151;
+    --text-muted-strong: #4b5563;
+    --text-faint: #9ca3af;
+
+    --input-bg: #ffffff;
+    --input-border: #d1d5db;
+    --link: #1d4ed8;
+
+    /* The epic-monster accent, used by the goal pill on the score page. It is
+       its own hue rather than a reuse of --danger: an epic hunt is not an
+       error, and the two must not look the same. */
+    --epic: #ec4899;
+    --epic-border: #fbcfe8;
+    --epic-text: #9d174d;
+
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04);
     --shadow-lg: 0 10px 30px rgba(17, 24, 39, 0.06);
@@ -63,7 +86,7 @@ body {
 }
 
 .main-header.navbar {
-    background: #ffffff !important;
+    background: var(--surface) !important;
     border-bottom: 1px solid var(--line) !important;
     box-shadow: 0 2px 10px rgba(17, 24, 39, 0.03) !important;
 }
@@ -74,7 +97,7 @@ body {
 }
 
 .main-header.navbar .nav-link {
-    color: #4b5563 !important;
+    color: var(--text-muted-strong) !important;
     font-weight: 500;
     border-radius: var(--radius-sm);
     transition: all 0.15s ease-in-out;
@@ -106,7 +129,7 @@ body {
 }
 
 .main-footer {
-    background: #ffffff !important;
+    background: var(--surface) !important;
     border-top: 1px solid var(--line) !important;
     color: var(--muted) !important;
     font-size: 0.88rem;
@@ -207,7 +230,7 @@ h1.page-title,
 .card-header,
 .ranking-header,
 .top-card-header {
-    background: #fcfcff !important;
+    background: var(--surface-raised) !important;
     border-bottom: 1px solid var(--line) !important;
     padding: 14px 18px !important;
     color: var(--text-dark) !important;
@@ -231,7 +254,7 @@ h1.page-title,
 }
 
 .card-footer {
-    background: #fcfcff !important;
+    background: var(--surface-raised) !important;
     border-top: 1px solid var(--line) !important;
     padding: 12px 18px !important;
     border-bottom-left-radius: var(--radius-lg) !important;
@@ -257,8 +280,8 @@ h1.page-title,
 
 .table th,
 .ranking-table th {
-    background: #f8fafc !important;
-    color: #374151 !important;
+    background: var(--surface-sunken) !important;
+    color: var(--text-soft) !important;
     font-size: 0.88rem;
     font-weight: 700;
     text-transform: uppercase;
@@ -287,12 +310,12 @@ h1.page-title,
 
 .table-hover tbody tr:hover,
 .ranking-table tbody tr:hover {
-    background-color: #f8fbff !important;
+    background-color: var(--surface-hover) !important;
 }
 
 .table th a,
 .ranking-table th a {
-    color: #374151;
+    color: var(--text-soft);
     text-decoration: none;
     display: inline-block;
     transition: color 0.15s;
@@ -304,7 +327,7 @@ h1.page-title,
 }
 
 .player-link {
-    color: #1d4ed8 !important;
+    color: var(--link) !important;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.15s;
@@ -432,15 +455,15 @@ h1.page-title,
 
 .btn-default,
 .btn-secondary {
-    background-color: #f3f4f6 !important;
+    background-color: var(--surface-sunken) !important;
     border-color: var(--line) !important;
-    color: #374151 !important;
+    color: var(--text-soft) !important;
 }
 
 .btn-default:hover,
 .btn-secondary:hover {
-    background-color: #e5e7eb !important;
-    color: #1f2937 !important;
+    background-color: var(--line) !important;
+    color: var(--text-dark) !important;
 }
 
 .btn-tool {
@@ -452,7 +475,7 @@ h1.page-title,
 
 .btn-tool:hover {
     color: var(--text);
-    background: #eef2ff;
+    background: var(--accent-light);
 }
 
 /* ==========================================================================
@@ -460,7 +483,7 @@ h1.page-title,
    ========================================================================== */
 .form-group label,
 label {
-    color: #374151;
+    color: var(--text-soft);
     font-weight: 600;
     font-size: 0.9rem;
     margin-bottom: 6px;
@@ -469,8 +492,8 @@ label {
 .form-control,
 select.form-control,
 textarea.form-control {
-    background-color: #ffffff;
-    border: 1px solid #d1d5db;
+    background-color: var(--input-bg);
+    border: 1px solid var(--input-border);
     border-radius: var(--radius-sm);
     color: var(--text);
     font-size: 0.95rem;
@@ -541,8 +564,8 @@ textarea.form-control:focus {
 }
 
 .badge-light {
-    background-color: #f3f4f6 !important;
-    color: #4b5563 !important;
+    background-color: var(--surface-sunken) !important;
+    color: var(--text-muted-strong) !important;
     border: 1px solid var(--line);
 }
 
@@ -562,10 +585,10 @@ textarea.form-control:focus {
 .pagination .page-item .page-link {
     border-radius: 6px;
     border: 1px solid var(--line);
-    color: #4b5563;
+    color: var(--text-muted-strong);
     font-weight: 600;
     padding: 6px 12px;
-    background: #ffffff;
+    background: var(--surface);
     transition: all 0.15s;
 }
 
@@ -583,8 +606,8 @@ textarea.form-control:focus {
 }
 
 .pagination .page-item.disabled .page-link {
-    background: #f9fafb;
-    color: #9ca3af;
+    background: var(--surface-sunken);
+    color: var(--text-faint);
     border-color: var(--line);
 }
 

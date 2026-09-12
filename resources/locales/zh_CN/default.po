@@ -1,0 +1,4456 @@
+# zh_CN translation of the Chest Counter & Clan Bank application.
+# Game terminology follows Total Battle.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Chest Counter\n"
+"PO-Revision-Date: 2026-09-11 00:00+0000\n"
+"Language: zh_CN\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ./src/Controller/AppController.php:163
+msgid "You must be logged in to access this page."
+msgstr "需要登录后才能访问此页面。"
+
+#: ./src/Controller/AppController.php:167
+msgid "Only administrators can access this page."
+msgstr "只有管理员才能访问此页面。"
+
+#: ./src/Controller/BankController.php:62
+msgid "You must be logged in to access the bank."
+msgstr "需要登录后才能进入银行。"
+
+#: ./src/Controller/BankController.php:108
+msgid "You must be logged in to view transaction history."
+msgstr "需要登录后才能查看交易记录。"
+
+#: ./src/Controller/BankController.php:114
+msgid "Only administrators can view transaction history."
+msgstr "只有管理员才能查看交易记录。"
+
+#: ./src/Controller/BankController.php:123
+#: ./src/Controller/BankController.php:557
+msgid "Member not found."
+msgstr "未找到成员。"
+
+#: ./src/Controller/BankController.php:149
+msgid "You must be logged in to deposit Silver."
+msgstr "需要登录后才能存入银币。"
+
+#: ./src/Controller/BankController.php:158
+msgid "You do not have members available for banking operations."
+msgstr "你没有可用于银行操作的成员。"
+
+#: ./src/Controller/BankController.php:181
+#: ./src/Controller/BankController.php:290
+#: ./src/Controller/BankController.php:421
+msgid "Enter a valid integer amount in millions of Silver."
+msgstr "请输入以百万银币为单位的有效整数。"
+
+#: ./src/Controller/BankController.php:187
+#: ./src/Controller/BankController.php:296
+#: ./src/Controller/BankController.php:427
+msgid "Amount must be greater than zero."
+msgstr "金额必须大于零。"
+
+#: ./src/Controller/BankController.php:198
+msgid "The total fee cannot be greater than the deposit."
+msgstr "手续费总额不能超过存入金额。"
+
+#: ./src/Controller/BankController.php:227
+msgid "Deposit completed successfully."
+msgstr "存入完成。"
+
+#: ./src/Controller/BankController.php:228
+msgid "Deposit registered and waiting for administrator approval."
+msgstr "存入已登记，等待管理员审批。"
+
+#: ./src/Controller/BankController.php:242
+msgid "Unable to register this deposit. Please review the information and try again."
+msgstr "无法登记此次存入。请核对信息后重试。"
+
+#: ./src/Controller/BankController.php:263
+msgid "You must be logged in to withdraw Silver."
+msgstr "需要登录后才能取出银币。"
+
+#: ./src/Controller/BankController.php:304
+msgid "⚠️ INSUFFICIENT BALANCE ⚠️"
+msgstr "⚠️ 余额不足 ⚠️"
+
+#: ./src/Controller/BankController.php:305
+msgid "Available balance: {0} $"
+msgstr "可用余额：{0} $"
+
+#: ./src/Controller/BankController.php:306
+msgid "Withdrawal amount: {0} $"
+msgstr "取出金额：{0} $"
+
+#: ./src/Controller/BankController.php:307
+msgid "Fee: {0} $"
+msgstr "手续费：{0} $"
+
+#: ./src/Controller/BankController.php:308
+msgid "Total required: {0} $"
+msgstr "共需：{0} $"
+
+#: ./src/Controller/BankController.php:309
+msgid "Please reduce the withdrawal amount."
+msgstr "请减少取出金额。"
+
+#: ./src/Controller/BankController.php:338
+msgid "Withdrawal completed successfully."
+msgstr "取出完成。"
+
+#: ./src/Controller/BankController.php:339
+msgid "Withdrawal registered and waiting for administrator approval."
+msgstr "取出已登记，等待管理员审批。"
+
+#: ./src/Controller/BankController.php:353
+msgid "Unable to register this withdrawal. Please try again."
+msgstr "无法登记此次取出。请重试。"
+
+#: ./src/Controller/BankController.php:373
+msgid "You must be logged in to transfer Silver."
+msgstr "需要登录后才能转账银币。"
+
+#: ./src/Controller/BankController.php:381
+msgid "You do not have members available for transfers."
+msgstr "你没有可用于转账的成员。"
+
+#: ./src/Controller/BankController.php:411
+msgid "Destination member not found."
+msgstr "未找到目标成员。"
+
+#: ./src/Controller/BankController.php:416
+msgid "Source and destination members must be different."
+msgstr "转出与转入的成员必须不同。"
+
+#: ./src/Controller/BankController.php:435
+msgid "There is no balance available for transfers."
+msgstr "没有可用于转账的余额。"
+
+#: ./src/Controller/BankController.php:440
+msgid "Insufficient balance for this transfer."
+msgstr "余额不足，无法完成此次转账。"
+
+#: ./src/Controller/BankController.php:469
+msgid "Transfer completed successfully."
+msgstr "转账完成。"
+
+#: ./src/Controller/BankController.php:473
+msgid "Unable to complete this transfer. Please try again."
+msgstr "无法完成此次转账。请重试。"
+
+#: ./src/Controller/BankController.php:491
+msgid "You must be logged in to view statements."
+msgstr "需要登录后才能查看对账单。"
+
+#: ./src/Controller/BankController.php:498
+msgid "You do not have registered members."
+msgstr "你没有已登记的成员。"
+
+#: ./src/Controller/BankController.php:561
+msgid "You can only operate with your own members."
+msgstr "你只能操作自己的成员。"
+
+#: ./src/Controller/BankController.php:614
+msgid "You must be logged in to view approvals."
+msgstr "需要登录后才能查看审批。"
+
+#: ./src/Controller/BankController.php:619
+msgid "Only administrators can access the banking approvals."
+msgstr "只有管理员才能访问银行审批。"
+
+#: ./src/Controller/BankController.php:645
+msgid "You must be logged in to approve transactions."
+msgstr "需要登录后才能审批交易。"
+
+#: ./src/Controller/BankController.php:650
+msgid "Only administrators can approve transactions."
+msgstr "只有管理员才能审批交易。"
+
+#: ./src/Controller/BankController.php:664
+msgid "This transaction is not pending approval."
+msgstr "此交易并未等待审批。"
+
+#: ./src/Controller/BankController.php:683
+msgid "Transaction approved and applied successfully."
+msgstr "交易已审批并生效。"
+
+#: ./src/Controller/BankController.php:685
+msgid "Unable to approve this transaction."
+msgstr "无法审批此交易。"
+
+#: ./src/Controller/BankController.php:688
+#: ./src/Controller/BankController.php:743
+msgid "Transaction not found."
+msgstr "未找到交易。"
+
+#: ./src/Controller/BankController.php:694
+msgid "An error occurred while processing the approval."
+msgstr "处理审批时发生错误。"
+
+#: ./src/Controller/BankController.php:705
+msgid "You must be logged in to reject transactions."
+msgstr "需要登录后才能驳回交易。"
+
+#: ./src/Controller/BankController.php:710
+msgid "Only administrators can reject transactions."
+msgstr "只有管理员才能驳回交易。"
+
+#: ./src/Controller/BankController.php:727
+msgid "Transaction rejected."
+msgstr "交易已驳回。"
+
+#: ./src/Controller/BankController.php:729
+msgid "Unable to reject this transaction."
+msgstr "无法驳回此交易。"
+
+#: ./src/Controller/BankController.php:747
+msgid "This transaction is not pending."
+msgstr "此交易不在待处理状态。"
+
+#: ./src/Controller/BankController.php:751
+msgid "Only deposits and withdrawals require approval."
+msgstr "只有存入和取出需要审批。"
+
+#: ./src/Controller/BankController.php:771
+msgid "Unsupported transaction type."
+msgstr "不支持的交易类型。"
+
+#: ./src/Controller/CollectedChestsController.php:58
+#: ./src/Controller/CollectedChestsController.php:81
+msgid "The collected chest has been saved."
+msgstr "已保存收集的宝箱。"
+
+#: ./src/Controller/CollectedChestsController.php:62
+#: ./src/Controller/CollectedChestsController.php:85
+msgid "The collected chest could not be saved. Please, try again."
+msgstr "无法保存收集的宝箱。请重试。"
+
+#: ./src/Controller/CollectedChestsController.php:103
+msgid "The collected chest has been deleted."
+msgstr "已删除收集的宝箱。"
+
+#: ./src/Controller/CollectedChestsController.php:105
+msgid "The collected chest could not be deleted. Please, try again."
+msgstr "无法删除收集的宝箱。请重试。"
+
+#: ./src/Controller/CollectedChestsController.php:282
+#: ./templates/CollectedChests/score.php:1167
+msgid "Current Cycle"
+msgstr "当前周期"
+
+#: ./src/Controller/CollectedChestsController.php:282
+msgid "Previous Cycle"
+msgstr "上一周期"
+
+#: ./src/Controller/CollectedChestsController.php:357
+msgid "Please select both the correct player name and the incorrect player name."
+msgstr "请同时选择正确的玩家名和错误的玩家名。"
+
+#: ./src/Controller/CollectedChestsController.php:359
+msgid "The correct and incorrect player names cannot be the same."
+msgstr "正确的玩家名和错误的玩家名不能相同。"
+
+#: ./src/Controller/CollectedChestsController.php:368
+msgid "Successfully merged player \"{0}\" into \"{1}\". {2} records were updated."
+msgstr "已将玩家“{0}”合并到“{1}”。更新了 {2} 条记录。"
+
+#: ./src/Controller/CollectedChestsController.php:388
+msgid "Player \"{0}\" was successfully deleted from the members list."
+msgstr "已将玩家“{0}”从成员列表中删除。"
+
+#: ./src/Controller/CollectedChestsController.php:390
+msgid "Could not delete player \"{0}\" from the members list."
+msgstr "无法将玩家“{0}”从成员列表中删除。"
+
+#: ./src/Controller/CollectedChestsController.php:406
+msgid "No records found for player \"{0}\" to merge into \"{1}\". No changes were made."
+msgstr "未找到玩家“{0}”可合并到“{1}”的记录。未做任何更改。"
+
+#: ./src/Controller/CollectedChestsController.php:409
+msgid "An error occurred while merging players: {0}"
+msgstr "合并玩家时发生错误：{0}"
+
+#: ./src/Controller/CollectedChestsController.php:415
+#: ./templates/CollectedChests/merge_players.php:22
+msgid "Merge Player Names"
+msgstr "合并玩家名"
+
+#: ./src/Controller/ConfigController.php:33
+msgid "Theme updated."
+msgstr "主题已更新。"
+
+#: ./src/Controller/ConfigController.php:37
+msgid "That theme is not available."
+msgstr "该主题不可用。"
+
+#: ./src/Controller/ConfigController.php:119
+msgid "Branding updated."
+msgstr "品牌外观已更新。"
+
+#: ./src/Controller/ConfigController.php:181
+#: ./src/Controller/ConfigController.php:204
+msgid "The config has been saved."
+msgstr "配置已保存。"
+
+#: ./src/Controller/ConfigController.php:185
+#: ./src/Controller/ConfigController.php:208
+msgid "The config could not be saved. Please, try again."
+msgstr "无法保存配置。请重试。"
+
+#: ./src/Controller/ConfigController.php:226
+msgid "The config has been deleted."
+msgstr "配置已删除。"
+
+#: ./src/Controller/ConfigController.php:228
+msgid "The config could not be deleted. Please, try again."
+msgstr "无法删除配置。请重试。"
+
+#: ./src/Controller/EventsController.php:164
+msgid "Unknown banner."
+msgstr "未知横幅。"
+
+#: ./src/Controller/EventsController.php:170
+msgid "This banner has not been set up yet."
+msgstr "此横幅尚未设置。"
+
+#: ./src/Controller/EventsController.php:270
+msgid "An event can only be closed once its end date has passed."
+msgstr "活动只能在结束日期过后才能关闭。"
+
+#: ./src/Controller/EventsController.php:279
+msgid "Results for event #{0} were recorded: {1} player(s) ranked."
+msgstr "已记录活动 #{0} 的结果：{1} 名玩家上榜。"
+
+#: ./src/Controller/EventsController.php:285
+msgid "The results could not be recorded. Please, try again."
+msgstr "无法记录结果。请重试。"
+
+#: ./src/Controller/EventsController.php:311
+msgid "Event #{0} is active again."
+msgstr "活动 #{0} 已重新启用。"
+
+#: ./src/Controller/EventsController.php:312
+msgid "Event #{0} was cancelled."
+msgstr "活动 #{0} 已取消。"
+
+#: ./src/Controller/EventsController.php:314
+msgid "The event could not be updated. Please, try again."
+msgstr "无法更新活动。请重试。"
+
+#: ./src/Controller/EventsController.php:333
+msgid "Event #{0} was deleted."
+msgstr "活动 #{0} 已删除。"
+
+#: ./src/Controller/EventsController.php:335
+msgid "The event could not be deleted. Please, try again."
+msgstr "无法删除活动。请重试。"
+
+#: ./src/Controller/EventsController.php:372
+msgid "The banner \"{0}\" could not be saved."
+msgstr "无法保存横幅“{0}”。"
+
+#: ./src/Controller/EventsController.php:378
+msgid "{0} banner(s) updated."
+msgstr "已更新 {0} 个横幅。"
+
+#: ./src/Controller/EventsController.php:384
+msgid "No image was chosen, so nothing changed."
+msgstr "未选择图片，因此没有任何改动。"
+
+#: ./src/Controller/EventsController.php:441
+msgid "Event #{0} was created."
+msgstr "活动 #{0} 已创建。"
+
+#: ./src/Controller/EventsController.php:442
+msgid "Event #{0} was saved."
+msgstr "活动 #{0} 已保存。"
+
+#: ./src/Controller/EventsController.php:447
+msgid "The event could not be saved. Please check the fields below."
+msgstr "无法保存活动。请检查下方字段。"
+
+#: ./src/Controller/EventsController.php:494
+msgid "The image could not be uploaded. Please, try again."
+msgstr "无法上传图片。请重试。"
+
+#: ./src/Controller/EventsController.php:499
+msgid "The image is too large. The limit is {0} MB."
+msgstr "图片过大。上限为 {0} MB。"
+
+#: ./src/Controller/EventsController.php:507
+msgid "The image is empty."
+msgstr "图片为空。"
+
+#: ./src/Controller/EventsController.php:515
+#: ./src/Service/BrandingService.php:704
+msgid "Use a PNG, JPEG, GIF or WebP image."
+msgstr "请使用 PNG、JPEG、GIF 或 WebP 图片。"
+
+#: ./src/Controller/IncompleteChestsController.php:131
+msgid "This record has no screenshot."
+msgstr "此记录没有截图。"
+
+#: ./src/Controller/IncompleteChestsController.php:163
+#: ./src/Controller/IncompleteChestsController.php:244
+msgid "This chest has already been reviewed."
+msgstr "此宝箱已审阅过。"
+
+#: ./src/Controller/IncompleteChestsController.php:176
+#: ./src/Model/Table/IncompleteChestsTable.php:101
+msgid "Fill in the chest name, the player and the source."
+msgstr "请填写宝箱名称、玩家和来源。"
+
+#: ./src/Controller/IncompleteChestsController.php:196
+msgid "The chest could not be saved into collected chests."
+msgstr "无法将宝箱保存到已收集宝箱中。"
+
+#: ./src/Controller/IncompleteChestsController.php:213
+msgid "Chest corrected and recorded for \"{0}\". Collected chest #{1}."
+msgstr "宝箱已修正并记入“{0}”。收集的宝箱 #{1}。"
+
+#: ./src/Controller/IncompleteChestsController.php:221
+msgid "The chest was recorded as #{0}, but this row could not be marked as corrected."
+msgstr "宝箱已记为 #{0}，但无法将此行标记为已修正。"
+
+#: ./src/Controller/IncompleteChestsController.php:257
+msgid "Marked as reviewed and not recoverable."
+msgstr "已标记为已审阅且无法恢复。"
+
+#: ./src/Controller/IncompleteChestsController.php:259
+#: ./src/Controller/IncompleteChestsController.php:290
+msgid "The record could not be updated. Please, try again."
+msgstr "无法更新记录。请重试。"
+
+#: ./src/Controller/IncompleteChestsController.php:288
+msgid "Back in the queue."
+msgstr "已放回队列。"
+
+#: ./src/Controller/MembersController.php:56
+#: ./src/Controller/MembersController.php:79
+msgid "The member has been saved."
+msgstr "成员已保存。"
+
+#: ./src/Controller/MembersController.php:60
+#: ./src/Controller/MembersController.php:83
+msgid "The member could not be saved. Please, try again."
+msgstr "无法保存成员。请重试。"
+
+#: ./src/Controller/MembersController.php:101
+msgid "The member has been deleted."
+msgstr "成员已删除。"
+
+#: ./src/Controller/MembersController.php:103
+msgid "The member could not be deleted. Please, try again."
+msgstr "无法删除成员。请重试。"
+
+#: ./src/Controller/MembersController.php:194
+msgid "Error saving member {0}: {1}"
+msgstr "保存成员 {0} 时出错：{1}"
+
+#: ./src/Controller/MembersController.php:201
+msgid "Update completed. Found {0} players (samples: {1}). {2} new members added, {3} members updated."
+msgstr "更新完成。找到 {0} 名玩家（样本：{1}）。新增成员 {2} 名，更新成员 {3} 名。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:108
+msgid "Player name cannot be empty."
+msgstr "玩家名不能为空。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:229
+msgid "Fine marked as paid for {0} in cycle starting {1}."
+msgstr "已将 {0} 在 {1} 开始的周期的罚款标记为已付。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:231
+msgid "The fine could not be marked as paid. Please, try again."
+msgstr "无法将罚款标记为已付。请重试。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:234
+msgid "No fine to mark as paid or it has already been paid."
+msgstr "没有需要标记为已付的罚款，或该罚款已付。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:260
+msgid "Configuration parameters for cycle processing are missing or invalid."
+msgstr "周期处理的配置参数缺失或无效。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:282
+msgid "Invalid cycle offset. Cannot process future cycles or cycles before the reference start."
+msgstr "周期偏移无效。无法处理未来的周期或参考起点之前的周期。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:300
+msgid "Cycle from {0} to {1} has already been processed. Use ?force_reprocess=1 to re-process."
+msgstr "{0} 至 {1} 的周期已处理过。如需重新处理，请使用 ?force_reprocess=1。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:302
+msgid "Cleared existing summaries for cycle {0} due to force_reprocess."
+msgstr "因 force_reprocess，已清除周期 {0} 的现有汇总。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:306
+msgid "{0} player cycle summaries processed successfully for cycle {1} - {2}."
+msgstr "已成功处理周期 {1} - {2} 的 {0} 条玩家周期汇总。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:309
+msgid "{0} errors occurred while processing player cycle summaries."
+msgstr "处理玩家周期汇总时发生 {0} 个错误。"
+
+#: ./src/Controller/PlayerCycleSummariesController.php:312
+msgid "No player data found to process for cycle {0} - {1}."
+msgstr "未找到周期 {0} - {1} 需要处理的玩家数据。"
+
+#: ./src/Controller/PlayerNameMappingsController.php:65
+#: ./src/Controller/PlayerNameMappingsController.php:88
+msgid "The player name mapping has been saved."
+msgstr "玩家名映射已保存。"
+
+#: ./src/Controller/PlayerNameMappingsController.php:69
+#: ./src/Controller/PlayerNameMappingsController.php:92
+msgid "The player name mapping could not be saved. Please, try again."
+msgstr "无法保存玩家名映射。请重试。"
+
+#: ./src/Controller/PlayerNameMappingsController.php:110
+msgid "The player name mapping has been deleted."
+msgstr "玩家名映射已删除。"
+
+#: ./src/Controller/PlayerNameMappingsController.php:112
+msgid "The player name mapping could not be deleted. Please, try again."
+msgstr "无法删除玩家名映射。请重试。"
+
+#: ./src/Controller/RolesController.php:53
+#: ./src/Controller/RolesController.php:77
+msgid "The role has been saved."
+msgstr "角色已保存。"
+
+#: ./src/Controller/RolesController.php:57
+#: ./src/Controller/RolesController.php:81
+msgid "The role could not be saved. Please, try again."
+msgstr "无法保存角色。请重试。"
+
+#: ./src/Controller/RolesController.php:100
+msgid "The role has been deleted."
+msgstr "角色已删除。"
+
+#: ./src/Controller/RolesController.php:102
+msgid "The role could not be deleted. Please, try again."
+msgstr "无法删除角色。请重试。"
+
+#: ./src/Controller/RolesUsersController.php:54
+#: ./src/Controller/RolesUsersController.php:79
+msgid "The roles user has been saved."
+msgstr "角色分配已保存。"
+
+#: ./src/Controller/RolesUsersController.php:58
+#: ./src/Controller/RolesUsersController.php:83
+msgid "The roles user could not be saved. Please, try again."
+msgstr "无法保存角色分配。请重试。"
+
+#: ./src/Controller/RolesUsersController.php:103
+msgid "The roles user has been deleted."
+msgstr "角色分配已删除。"
+
+#: ./src/Controller/RolesUsersController.php:105
+msgid "The roles user could not be deleted. Please, try again."
+msgstr "无法删除角色分配。请重试。"
+
+#: ./src/Controller/StandardChestsController.php:173
+#: ./src/Controller/StandardChestsController.php:196
+msgid "The standard chest has been saved."
+msgstr "标准宝箱已保存。"
+
+#: ./src/Controller/StandardChestsController.php:218
+msgid "The standard chest has been deleted."
+msgstr "标准宝箱已删除。"
+
+#: ./src/Controller/StandardChestsController.php:220
+msgid "The standard chest could not be deleted. Please, try again."
+msgstr "无法删除标准宝箱。请重试。"
+
+#: ./src/Controller/StandardChestsController.php:240
+msgid "The standard chest could not be saved. Please, try again."
+msgstr "无法保存标准宝箱。请重试。"
+
+#: ./src/Controller/StandardChestsController.php:326
+msgid "{0} lost chest(s) successfully added to Standard Chests."
+msgstr "已将 {0} 个遗漏宝箱添加到标准宝箱。"
+
+#: ./src/Controller/StandardChestsController.php:328
+msgid "Failed to add selected chest(s). Please check values and try again."
+msgstr "无法添加所选宝箱。请检查数值后重试。"
+
+#: ./src/Controller/StandardChestsController.php:330
+msgid "No chests were selected to add."
+msgstr "未选择要添加的宝箱。"
+
+#: ./src/Controller/StandardChestsController.php:334
+msgid "{0} chest(s) were skipped because their source is already registered."
+msgstr "有 {0} 个宝箱被跳过，因为其来源已登记。"
+
+#: ./src/Controller/TroopCalculatorController.php:69
+msgid "Nothing could be planned. Check the army limits and the selected levels."
+msgstr "无法编排任何内容。请检查部队上限和所选等级。"
+
+#: ./src/Controller/TroopCalculatorController.php:96
+msgid "The saved inputs were cleared."
+msgstr "已清除保存的输入值。"
+
+#: ./src/Controller/TroopCalculatorController.php:259
+#: ./templates/TroopCalculator/index.php:45
+msgid "Guardsmen"
+msgstr "卫兵"
+
+#: ./src/Controller/TroopCalculatorController.php:260
+#: ./templates/Members/view.php:40
+#: ./templates/TroopCalculator/index.php:46
+msgid "Specialists"
+msgstr "专家"
+
+#: ./src/Controller/TroopCalculatorController.php:261
+#: ./templates/Members/view.php:44
+#: ./templates/TroopCalculator/index.php:47
+msgid "Monsters"
+msgstr "怪物"
+
+#: ./src/Controller/TroopCalculatorController.php:262
+#: ./templates/TroopCalculator/index.php:48
+msgid "Engineer corps"
+msgstr "工兵队"
+
+#: ./src/Controller/UsersController.php:72
+#: ./src/Controller/UsersController.php:137
+msgid "One or more selected members are already associated with another user. Please deselect them."
+msgstr "所选成员中有一位或多位已关联到其他用户。请取消勾选。"
+
+#: ./src/Controller/UsersController.php:80
+#: ./src/Controller/UsersController.php:94
+#: ./src/Controller/UsersController.php:148
+msgid "The user has been saved."
+msgstr "用户已保存。"
+
+#: ./src/Controller/UsersController.php:84
+#: ./src/Controller/UsersController.php:98
+#: ./src/Controller/UsersController.php:151
+msgid "The user could not be saved. Please, try again."
+msgstr "无法保存用户。请重试。"
+
+#: ./src/Controller/UsersController.php:177
+msgid "The user has been deleted."
+msgstr "用户已删除。"
+
+#: ./src/Controller/UsersController.php:179
+msgid "The user could not be deleted. Please, try again."
+msgstr "无法删除用户。请重试。"
+
+#: ./src/Controller/UsersController.php:202
+msgid "Invalid email or password"
+msgstr "邮箱或密码有误"
+
+#: ./src/Controller/UsersController.php:227
+msgid "You must be logged in to change your password."
+msgstr "需要登录后才能修改密码。"
+
+#: ./src/Controller/UsersController.php:238
+msgid "Current password is incorrect."
+msgstr "当前密码不正确。"
+
+#: ./src/Controller/UsersController.php:244
+msgid "New password and confirmation are required."
+msgstr "新密码和确认密码为必填项。"
+
+#: ./src/Controller/UsersController.php:249
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:359
+msgid "New password and confirmation do not match."
+msgstr "新密码和确认密码不一致。"
+
+#: ./src/Controller/UsersController.php:255
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:283
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:365
+msgid "Password must be at least 6 characters long."
+msgstr "密码长度至少为 6 个字符。"
+
+#: ./src/Controller/UsersController.php:262
+msgid "Password has been changed successfully."
+msgstr "密码已成功修改。"
+
+#: ./src/Controller/UsersController.php:270
+msgid "The password could not be changed. Please, try again."
+msgstr "无法修改密码。请重试。"
+
+#: ./src/Controller/UsersController.php:290
+msgid "Google authentication failed. No credential received."
+msgstr "Google 认证失败。未收到凭据。"
+
+#: ./src/Controller/UsersController.php:297
+msgid "Google authentication failed. Invalid token."
+msgstr "Google 认证失败。令牌无效。"
+
+#: ./src/Controller/UsersController.php:303
+msgid "Google account email is not verified."
+msgstr "Google 账号的邮箱尚未验证。"
+
+#: ./src/Controller/UsersController.php:355
+msgid "activated"
+msgstr "启用"
+
+#: ./src/Controller/UsersController.php:355
+msgid "deactivated"
+msgstr "停用"
+
+#: ./src/Controller/UsersController.php:356
+msgid "User \"{0}\" has been {1} successfully."
+msgstr "用户“{0}”已成功{1}。"
+
+#: ./src/Controller/UsersController.php:358
+msgid "Could not change user status. Please try again."
+msgstr "无法更改用户状态。请重试。"
+
+#: ./src/Model/Entity/Event.php:103
+msgid "Number of chests collected"
+msgstr "收集的宝箱数量"
+
+#: ./src/Model/Entity/Event.php:104
+msgid "Chest score"
+msgstr "宝箱积分"
+
+#: ./src/Model/Entity/Event.php:105
+msgid "Number of epic monster chests"
+msgstr "史诗怪物宝箱数量"
+
+#: ./src/Model/Entity/Event.php:106
+msgid "Custom chests"
+msgstr "自定义宝箱"
+
+#: ./src/Model/Entity/Event.php:118
+msgid "Every chest collected inside the event window counts as one point."
+msgstr "在活动时间窗内收集的每个宝箱算 1 分。"
+
+#: ./src/Model/Entity/Event.php:119
+msgid "Chests are worth the score configured for their type."
+msgstr "每个宝箱的分值按其类型的配置计算。"
+
+#: ./src/Model/Entity/Event.php:120
+msgid "Only chests from epic monsters count, one point each."
+msgstr "只统计史诗怪物的宝箱，每个 1 分。"
+
+#: ./src/Model/Entity/Event.php:121
+msgid "Only the chest types you pick below count."
+msgstr "只统计你在下方选择的宝箱类型。"
+
+#: ./src/Model/Entity/Event.php:144
+#: ./src/Model/Entity/Event.php:147
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:3
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:69
+msgid "Chests"
+msgstr "宝箱"
+
+#: ./src/Model/Entity/Event.php:145
+msgid "Epic Chests"
+msgstr "史诗宝箱"
+
+#: ./src/Model/Entity/Event.php:148
+#: ./templates/PlayerCycleSummaries/index.php:241
+#: ./templates/PlayerCycleSummaries/player_history.php:135
+msgid "Total Score"
+msgstr "总积分"
+
+#: ./src/Model/Table/ConfigTable.php:92
+msgid "Retention time must be 0 (to disable automatic purge) or greater than 7 days."
+msgstr "保留时间必须为 0（关闭自动清理）或大于 7 天。"
+
+#: ./src/Model/Table/EventsTable.php:208
+msgid "Give the event a name."
+msgstr "请为活动取个名字。"
+
+#: ./src/Model/Table/EventsTable.php:217
+msgid "Choose one of the listed criteria."
+msgstr "请从列出的标准中选择一项。"
+
+#: ./src/Model/Table/EventsTable.php:226
+msgid "Choose when the event starts (UTC)."
+msgstr "请选择活动的开始时间（UTC）。"
+
+#: ./src/Model/Table/EventsTable.php:231
+msgid "Choose when the event ends (UTC)."
+msgstr "请选择活动的结束时间（UTC）。"
+
+#: ./src/Model/Table/EventsTable.php:236
+msgid "Describe the prize the players are competing for."
+msgstr "请描述玩家争夺的奖品。"
+
+#: ./src/Model/Table/EventsTable.php:242
+msgid "Say who the winner should look for."
+msgstr "请说明获胜者应联系谁。"
+
+#: ./src/Model/Table/EventsTable.php:275
+msgid "The event must end after it starts."
+msgstr "活动的结束时间必须晚于开始时间。"
+
+#: ./src/Model/Table/EventsTable.php:298
+msgid "The start date must be in the future."
+msgstr "开始日期必须在将来。"
+
+#: ./src/Model/Table/EventsTable.php:313
+msgid "The end date must be in the future."
+msgstr "结束日期必须在将来。"
+
+#: ./src/Model/Table/EventsTable.php:328
+msgid "Pick at least one chest for a custom chest event."
+msgstr "自定义宝箱活动至少需要选择一个宝箱。"
+
+#: ./src/Model/Table/StandardChestsTable.php:115
+msgid "This chest source is already registered."
+msgstr "此宝箱来源已登记。"
+
+#: ./src/Service/BrandingService.php:347
+msgid "That logo is not available."
+msgstr "该徽标不可用。"
+
+#: ./src/Service/BrandingService.php:364
+msgid "That favicon is not available."
+msgstr "该网站图标不可用。"
+
+#: ./src/Service/BrandingService.php:389
+msgid "The logo is too small: it is {0}x{1} and the minimum is {2}x{2} pixels."
+msgstr "徽标太小：当前为 {0}x{1}，最小需 {2}x{2} 像素。"
+
+#: ./src/Service/BrandingService.php:398
+msgid "The logo is too large: it is {0}x{1} and the maximum is {2}x{2} pixels."
+msgstr "徽标太大：当前为 {0}x{1}，最大为 {2}x{2} 像素。"
+
+#: ./src/Service/BrandingService.php:408
+msgid "The logo is the wrong shape: it is {0}x{1}. Use a square emblem, or anything up to {2} times wider than it is tall."
+msgstr "徽标的比例不合适：当前为 {0}x{1}。请使用正方形徽章，或宽度不超过高度 {2} 倍的图片。"
+
+#: ./src/Service/BrandingService.php:618
+msgid "The favicon is too small: it is {0}x{1} and the minimum is {2}x{2} pixels."
+msgstr "网站图标太小：当前为 {0}x{1}，最小需 {2}x{2} 像素。"
+
+#: ./src/Service/BrandingService.php:627
+msgid "The favicon is too large: it is {0}x{1} and the maximum is {2}x{2} pixels."
+msgstr "网站图标太大：当前为 {0}x{1}，最大为 {2}x{2} 像素。"
+
+#: ./src/Service/BrandingService.php:636
+msgid "The favicon must be square: this one is {0}x{1} pixels."
+msgstr "网站图标必须是正方形：当前为 {0}x{1} 像素。"
+
+#: ./src/Service/BrandingService.php:656
+msgid "The file is too large. The limit is {0} KB."
+msgstr "文件过大。上限为 {0} KB。"
+
+#: ./src/Service/BrandingService.php:663
+msgid "The file could not be uploaded. Please, try again."
+msgstr "无法上传文件。请重试。"
+
+#: ./src/Service/BrandingService.php:668
+#: ./src/Service/BrandingService.php:681
+msgid "The file is too large: it is {0} KB and the limit is {1} KB."
+msgstr "文件过大：当前为 {0} KB，上限为 {1} KB。"
+
+#: ./src/Service/BrandingService.php:677
+msgid "The file is empty."
+msgstr "文件为空。"
+
+#: ./src/Service/BrandingService.php:721
+msgid "The image could not be read. It may be damaged."
+msgstr "无法读取图片。可能已损坏。"
+
+#: ./src/Service/BrandingService.php:774
+msgid "The image could not be converted. Please, try another file."
+msgstr "无法转换图片。请换一个文件试试。"
+
+#: ./src/Service/BrandingService.php:791
+msgid "The image could not be saved to disk. Check that {0} is writable by the web server."
+msgstr "无法将图片写入磁盘。请检查网站服务器是否可写入 {0}。"
+
+#: ./src/Service/BrandingService.php:812
+msgid "The folder {0} could not be created. Check the permissions of the webroot directory."
+msgstr "无法创建文件夹 {0}。请检查 webroot 目录的权限。"
+
+#: ./templates/Admin/Bank/approvals.php:11
+msgid "Admin Pending Bank Approvals"
+msgstr "待审批的银行操作"
+
+#: ./templates/Admin/Bank/approvals.php:12
+#: ./templates/Bank/approvals.php:12
+msgid "Approve or reject transactions. Approved entries update member balances immediately"
+msgstr "审批或驳回交易。通过审批的记录会立即更新成员余额"
+
+#: ./templates/Admin/Bank/approvals.php:15
+#: ./templates/Bank/approvals.php:15
+#: ./templates/Bank/deposit.php:30
+#: ./templates/Bank/history.php:19
+#: ./templates/Bank/statement.php:19
+#: ./templates/Bank/transfer.php:28
+#: ./templates/Bank/withdraw.php:27
+msgid "Back to Bank"
+msgstr "返回银行"
+
+#: ./templates/Admin/Bank/approvals.php:21
+msgid "Pending Approvals Queue"
+msgstr "待审批队列"
+
+#: ./templates/Admin/Bank/approvals.php:27
+#: ./templates/Bank/approvals.php:27
+#: ./templates/Bank/history.php:35
+#: ./templates/Bank/statement.php:50
+#: ./templates/CollectedChests/view.php:40
+msgid "Type"
+msgstr "类型"
+
+#: ./templates/Admin/Bank/approvals.php:28
+#: ./templates/Bank/approvals.php:28
+#: ./templates/Bank/deposit.php:46
+#: ./templates/Bank/index.php:83
+#: ./templates/Bank/statement.php:27
+#: ./templates/Bank/withdraw.php:51
+#: ./templates/Bank/withdraw.php:86
+#: ./templates/Members/view.php:9
+msgid "Member"
+msgstr "成员"
+
+#: ./templates/Admin/Bank/approvals.php:29
+#: ./templates/Bank/approvals.php:29
+msgid "Requested by"
+msgstr "申请人"
+
+#: ./templates/Admin/Bank/approvals.php:30
+#: ./templates/Bank/approvals.php:30
+#: ./templates/Bank/history.php:36
+#: ./templates/Bank/statement.php:51
+msgid "Amount ($)"
+msgstr "金额（$）"
+
+#: ./templates/Admin/Bank/approvals.php:31
+#: ./templates/Bank/approvals.php:31
+#: ./templates/Bank/history.php:37
+#: ./templates/Bank/statement.php:52
+msgid "Fee ($)"
+msgstr "手续费（$）"
+
+#: ./templates/Admin/Bank/approvals.php:32
+#: ./templates/Bank/approvals.php:32
+#: ./templates/Bank/history.php:38
+#: ./templates/Bank/statement.php:53
+msgid "Net effect ($)"
+msgstr "净影响（$）"
+
+#: ./templates/Admin/Bank/approvals.php:33
+#: ./templates/Bank/approvals.php:33
+#: ./templates/Bank/history.php:42
+#: ./templates/Bank/statement.php:55
+msgid "Created at"
+msgstr "创建时间"
+
+#: ./templates/Admin/Bank/approvals.php:34
+#: ./templates/Bank/approvals.php:34
+#: ./templates/Bank/history.php:40
+#: ./templates/Bank/transfer.php:99
+msgid "Comment"
+msgstr "备注"
+
+#: ./templates/Admin/Bank/approvals.php:35
+#: ./templates/Bank/approvals.php:35
+#: ./templates/Bank/index.php:62
+#: ./templates/CollectedChests/index.php:41
+#: ./templates/Config/index.php:39
+#: ./templates/Errors/index.php:36
+#: ./templates/Events/manage.php:66
+#: ./templates/IncompleteChests/index.php:62
+#: ./templates/Members/index.php:42
+#: ./templates/PlayerCycleSummaries/index.php:246
+#: ./templates/PlayerNameMappings/index.php:35
+#: ./templates/RolesUsers/index.php:38
+#: ./templates/Roles/index.php:41
+#: ./templates/Roles/view.php:81
+#: ./templates/StandardChests/index.php:126
+#: ./templates/Users/index.php:41
+#: ./templates/Users/view.php:95
+#: ./templates/Users/view.php:136
+msgid "Actions"
+msgstr "操作"
+
+#: ./templates/Admin/Bank/approvals.php:41
+#: ./templates/Bank/approvals.php:41
+msgid "No transactions awaiting approval."
+msgstr "没有等待审批的交易。"
+
+#: ./templates/Admin/Bank/approvals.php:53
+#: ./templates/Admin/Bank/approvals.php:54
+#: ./templates/Bank/approvals.php:53
+#: ./templates/Bank/approvals.php:54
+#: ./templates/Bank/history.php:59
+#: ./templates/Bank/history.php:62
+#: ./templates/Bank/statement.php:73
+#: ./templates/Bank/statement.php:75
+msgid "Unknown"
+msgstr "未知"
+
+#: ./templates/Admin/Bank/approvals.php:65
+#: ./templates/Bank/approvals.php:65
+#: ./templates/Users/index.php:70
+msgid "Approve"
+msgstr "审批通过"
+
+#: ./templates/Admin/Bank/approvals.php:67
+#: ./templates/Bank/approvals.php:67
+msgid "Approve this transaction?"
+msgstr "要审批通过此交易吗？"
+
+#: ./templates/Admin/Bank/approvals.php:76
+#: ./templates/Bank/approvals.php:76
+msgid "Reason (optional)"
+msgstr "原因（可选）"
+
+#: ./templates/Admin/Bank/approvals.php:81
+#: ./templates/Bank/approvals.php:81
+msgid "Reject"
+msgstr "驳回"
+
+#: ./templates/Admin/Bank/approvals.php:87
+#: ./templates/Bank/approvals.php:87
+msgid "Approval log:"
+msgstr "审批日志："
+
+#: ./templates/Bank/approvals.php:11
+msgid "Pending Bank Approvals"
+msgstr "待审批的银行操作"
+
+#: ./templates/Bank/approvals.php:21
+msgid "Pending Queue"
+msgstr "待处理队列"
+
+#: ./templates/Bank/deposit.php:15
+msgid "My members"
+msgstr "我的成员"
+
+#: ./templates/Bank/deposit.php:18
+msgid "All members"
+msgstr "所有成员"
+
+#: ./templates/Bank/deposit.php:26
+msgid "Register Deposit"
+msgstr "登记存入"
+
+#: ./templates/Bank/deposit.php:27
+msgid "Request a Silver deposit. Amounts represent millions of Silver ($)"
+msgstr "申请存入银币。金额以百万银币（$）为单位"
+
+#: ./templates/Bank/deposit.php:35
+msgid "Flat deposit fee: {0} $ | Caravan fee: {1}%"
+msgstr "存入固定手续费：{0} $ | 商队手续费：{1}%"
+
+#: ./templates/Bank/deposit.php:40
+msgid "Deposit Details"
+msgstr "存入明细"
+
+#: ./templates/Bank/deposit.php:54
+#: ./templates/Bank/transfer.php:146
+#: ./templates/Bank/withdraw.php:94
+msgid "Amount (millions of Silver)"
+msgstr "金额（百万银币）"
+
+#: ./templates/Bank/deposit.php:63
+msgid "Example: 10 means 10 million Silver ($). Only integers are accepted."
+msgstr "例如：10 表示 1000 万银币（$）。只接受整数。"
+
+#: ./templates/Bank/deposit.php:69
+msgid "Caravan (apply caravan fee and zero flat fee)"
+msgstr "商队（按商队费率收费，固定手续费归零）"
+
+#: ./templates/Bank/deposit.php:75
+msgid "Estimated total fee ($)"
+msgstr "预计手续费总额（$）"
+
+#: ./templates/Bank/deposit.php:86
+msgid "Amount after caravan fee ($)"
+msgstr "扣除商队手续费后的金额（$）"
+
+#: ./templates/Bank/deposit.php:97
+msgid "Net amount to credit ($)"
+msgstr "实际入账净额（$）"
+
+#: ./templates/Bank/deposit.php:109
+#: ./templates/Bank/transfer.php:182
+#: ./templates/Bank/withdraw.php:133
+msgid "Comment (English only, optional)"
+msgstr "备注（仅英文，可选）"
+
+#: ./templates/Bank/deposit.php:113
+#: ./templates/Bank/transfer.php:186
+#: ./templates/Bank/withdraw.php:137
+msgid "Short English comment (max 512 characters)"
+msgstr "简短的英文备注（最多 512 个字符）"
+
+#: ./templates/Bank/deposit.php:120
+msgid "Administrator deposits are approved instantly."
+msgstr "管理员的存入会立即通过审批。"
+
+#: ./templates/Bank/deposit.php:121
+msgid "Deposits created by players stay pending until an administrator approves them."
+msgstr "玩家创建的存入会保持待处理，直到管理员审批。"
+
+#: ./templates/Bank/deposit.php:125
+#: ./templates/Bank/transfer.php:110
+#: ./templates/Bank/transfer.php:191
+#: ./templates/Bank/withdraw.php:149
+#: ./templates/CollectedChests/add.php:29
+#: ./templates/CollectedChests/edit.php:37
+#: ./templates/CollectedChests/view.php:59
+#: ./templates/Config/add.php:27
+#: ./templates/Config/edit.php:35
+#: ./templates/Config/view.php:51
+#: ./templates/Errors/add.php:25
+#: ./templates/Errors/edit.php:33
+#: ./templates/Errors/view.php:39
+#: ./templates/Events/form.php:316
+#: ./templates/Events/manage.php:125
+#: ./templates/Members/add.php:33
+#: ./templates/Members/edit.php:41
+#: ./templates/Members/view.php:75
+#: ./templates/PlayerNameMappings/add.php:28
+#: ./templates/PlayerNameMappings/edit.php:36
+#: ./templates/PlayerNameMappings/view.php:49
+#: ./templates/RolesUsers/add.php:26
+#: ./templates/RolesUsers/edit.php:34
+#: ./templates/RolesUsers/view.php:47
+#: ./templates/Roles/add.php:28
+#: ./templates/Roles/edit.php:36
+#: ./templates/Roles/view.php:59
+#: ./templates/StandardChests/add.php:44
+#: ./templates/StandardChests/edit.php:52
+#: ./templates/StandardChests/view.php:59
+#: ./templates/Users/add.php:36
+#: ./templates/Users/edit.php:86
+#: ./templates/Users/view.php:80
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:296
+msgid "Cancel"
+msgstr "取消"
+
+#: ./templates/Bank/deposit.php:126
+msgid "Submit deposit"
+msgstr "提交存入"
+
+#: ./templates/Bank/history.php:15
+msgid "Transaction history for {0}"
+msgstr "{0} 的交易记录"
+
+#: ./templates/Bank/history.php:16
+msgid "Values are saved in millions of Silver ($)"
+msgstr "数值以百万银币（$）为单位保存"
+
+#: ./templates/Bank/history.php:24
+msgid "Current balance: {0} $"
+msgstr "当前余额：{0} $"
+
+#: ./templates/Bank/history.php:29
+msgid "Transactions"
+msgstr "交易"
+
+#: ./templates/Bank/history.php:39
+#: ./templates/Bank/statement.php:54
+#: ./templates/IncompleteChests/index.php:60
+#: ./templates/Users/index.php:38
+#: ./templates/Users/view.php:32
+msgid "Status"
+msgstr "状态"
+
+#: ./templates/Bank/history.php:41
+#: ./templates/Bank/statement.php:56
+msgid "Approval log"
+msgstr "审批日志"
+
+#: ./templates/Bank/history.php:48
+msgid "No transactions found."
+msgstr "未找到交易。"
+
+#: ./templates/Bank/history.php:60
+#: ./templates/Bank/statement.php:73
+msgid "Transfer to {0}"
+msgstr "转给 {0}"
+
+#: ./templates/Bank/history.php:63
+#: ./templates/Bank/statement.php:75
+msgid "Transfer from {0}"
+msgstr "来自 {0} 的转账"
+
+#: ./templates/Bank/history.php:96
+#: ./templates/Bank/statement.php:104
+msgid "Approved"
+msgstr "已通过"
+
+#: ./templates/Bank/history.php:98
+#: ./templates/Bank/statement.php:106
+#: ./templates/IncompleteChests/index.php:18
+#: ./templates/IncompleteChests/view.php:20
+#: ./templates/Users/index.php:59
+msgid "Pending"
+msgstr "待处理"
+
+#: ./templates/Bank/history.php:100
+#: ./templates/Bank/statement.php:108
+msgid "Rejected"
+msgstr "已驳回"
+
+#: ./templates/Bank/index.php:13
+msgid "Bank Members Overview"
+msgstr "银行成员总览"
+
+#: ./templates/Bank/index.php:14
+msgid "All values are stored in millions of Silver ($)"
+msgstr "所有数值以百万银币（$）为单位保存"
+
+#: ./templates/Bank/index.php:17
+msgid "Deposit Silver"
+msgstr "存入银币"
+
+#: ./templates/Bank/index.php:18
+msgid "Withdraw Silver"
+msgstr "取出银币"
+
+#: ./templates/Bank/index.php:19
+#: ./templates/Bank/transfer.php:24
+msgid "Transfer Silver"
+msgstr "转账银币"
+
+#: ./templates/Bank/index.php:28
+msgid "Total Silver in Bank"
+msgstr "银行银币总量"
+
+#: ./templates/Bank/index.php:41
+msgid "Total Fees Collected"
+msgstr "已收取手续费总额"
+
+#: ./templates/Bank/index.php:54
+msgid "Members Account Balances"
+msgstr "成员账户余额"
+
+#: ./templates/Bank/index.php:60
+#: ./templates/CollectedChests/score.php:1225
+#: ./templates/CollectedChests/score.php:1314
+#: ./templates/CollectedChests/score.php:1424
+#: ./templates/CollectedChests/view.php:28
+#: ./templates/Events/view.php:303
+#: ./templates/IncompleteChests/index.php:58
+#: ./templates/IncompleteChests/view.php:108
+#: ./templates/Members/view.php:24
+#: ./templates/Users/view.php:92
+msgid "Player"
+msgstr "玩家"
+
+#: ./templates/Bank/index.php:61
+#: ./templates/Bank/transfer.php:45
+msgid "Balance ($)"
+msgstr "余额（$）"
+
+#: ./templates/Bank/index.php:81
+msgid "View history"
+msgstr "查看记录"
+
+#: ./templates/Bank/statement.php:15
+msgid "Account Statement"
+msgstr "账户对账单"
+
+#: ./templates/Bank/statement.php:16
+msgid "Track every transaction registered for your members. Amounts in millions of Silver ($)"
+msgstr "追踪你的成员的每一笔交易记录。金额以百万银币（$）为单位"
+
+#: ./templates/Bank/statement.php:33
+msgid "Refresh"
+msgstr "刷新"
+
+#: ./templates/Bank/statement.php:39
+msgid "Member: {0} | Current balance: {1} $"
+msgstr "成员：{0} | 当前余额：{1} $"
+
+#: ./templates/Bank/statement.php:44
+msgid "Statement Records"
+msgstr "对账单条目"
+
+#: ./templates/Bank/statement.php:62
+msgid "No transactions registered yet."
+msgstr "暂无已登记的交易。"
+
+#: ./templates/Bank/transfer.php:25
+msgid "Choose a source and destination member. All values represent millions of Silver ($)"
+msgstr "请选择转出与转入的成员。所有数值以百万银币（$）为单位"
+
+#: ./templates/Bank/transfer.php:33
+msgid "Transfer fee: {0} $ (charged in addition to the transferred amount)"
+msgstr "转账手续费：{0} $（在转账金额之外另行收取）"
+
+#: ./templates/Bank/transfer.php:38
+msgid "Your Available Source Balances"
+msgstr "你可用的转出余额"
+
+#: ./templates/Bank/transfer.php:44
+#: ./templates/Bank/transfer.php:127
+msgid "Source member"
+msgstr "转出成员"
+
+#: ./templates/Bank/transfer.php:51
+msgid "No members available."
+msgstr "没有可用的成员。"
+
+#: ./templates/Bank/transfer.php:72
+msgid "You must have at least one member to initiate transfers."
+msgstr "发起转账至少需要一位成员。"
+
+#: ./templates/Bank/transfer.php:80
+msgid "There is no balance available for transfers. The form will be hidden until one member has Silver."
+msgstr "没有可用于转账的余额。在某位成员拥有银币之前，表单将保持隐藏。"
+
+#: ./templates/Bank/transfer.php:88
+#: ./templates/Bank/transfer.php:111
+msgid "Confirm transfer"
+msgstr "确认转账"
+
+#: ./templates/Bank/transfer.php:91
+msgid "This operation cannot be undone."
+msgstr "此操作无法撤销。"
+
+#: ./templates/Bank/transfer.php:93
+msgid "From"
+msgstr "从"
+
+#: ./templates/Bank/transfer.php:94
+msgid "To"
+msgstr "至"
+
+#: ./templates/Bank/transfer.php:95
+msgid "Amount"
+msgstr "金额"
+
+#: ./templates/Bank/transfer.php:96
+msgid "Fee"
+msgstr "手续费"
+
+#: ./templates/Bank/transfer.php:97
+msgid "Total deduction"
+msgstr "共计扣除"
+
+#: ./templates/Bank/transfer.php:121
+msgid "Transfer Details"
+msgstr "转账明细"
+
+#: ./templates/Bank/transfer.php:135
+msgid "Destination member"
+msgstr "转入成员"
+
+#: ./templates/Bank/transfer.php:141
+msgid "Destination members can belong to you or be unassigned."
+msgstr "转入成员可以是你的成员，也可以是未分配的成员。"
+
+#: ./templates/Bank/transfer.php:159
+msgid "Transfer fee ($)"
+msgstr "转账手续费（$）"
+
+#: ./templates/Bank/transfer.php:170
+#: ./templates/Bank/withdraw.php:121
+msgid "Total deduction ($)"
+msgstr "共计扣除（$）"
+
+#: ./templates/Bank/transfer.php:192
+msgid "Review transfer"
+msgstr "核对转账"
+
+#: ./templates/Bank/withdraw.php:23
+msgid "Request Withdrawal"
+msgstr "申请取出"
+
+#: ./templates/Bank/withdraw.php:24
+msgid "Select a member and enter the Silver amount. All values represent millions of Silver ($)"
+msgstr "请选择成员并输入银币金额。所有数值以百万银币（$）为单位"
+
+#: ./templates/Bank/withdraw.php:32
+msgid "Current withdrawal fee: {0} $"
+msgstr "当前取出手续费：{0} $"
+
+#: ./templates/Bank/withdraw.php:38
+msgid "You do not have members available for withdrawals."
+msgstr "你没有可用于取出的成员。"
+
+#: ./templates/Bank/withdraw.php:45
+msgid "Current Balances Overview"
+msgstr "当前余额总览"
+
+#: ./templates/Bank/withdraw.php:52
+msgid "Current balance ($)"
+msgstr "当前余额（$）"
+
+#: ./templates/Bank/withdraw.php:73
+msgid "All balances are zero or negative. Withdraw buttons are hidden until there is enough Silver."
+msgstr "所有余额均为零或负数。在银币足够之前，取出按钮将保持隐藏。"
+
+#: ./templates/Bank/withdraw.php:80
+msgid "Withdrawal Form"
+msgstr "取出表单"
+
+#: ./templates/Bank/withdraw.php:103
+msgid "Only positive integers are accepted."
+msgstr "只接受正整数。"
+
+#: ./templates/Bank/withdraw.php:110
+msgid "Withdrawal fee ($)"
+msgstr "取出手续费（$）"
+
+#: ./templates/Bank/withdraw.php:144
+msgid "Administrator withdrawals are executed immediately."
+msgstr "管理员的取出会立即执行。"
+
+#: ./templates/Bank/withdraw.php:145
+msgid "Withdrawals stay pending until an administrator approves them."
+msgstr "取出会保持待处理，直到管理员审批。"
+
+#: ./templates/Bank/withdraw.php:150
+msgid "Submit withdrawal"
+msgstr "提交取出"
+
+#: ./templates/CollectedChests/add.php:9
+msgid "Add Collected Chest"
+msgstr "添加收集的宝箱"
+
+#: ./templates/CollectedChests/add.php:11
+#: ./templates/CollectedChests/edit.php:11
+#: ./templates/CollectedChests/index.php:11
+#: ./templates/CollectedChests/view.php:11
+#: ./templates/Config/add.php:11
+#: ./templates/Config/branding.php:22
+#: ./templates/Config/edit.php:11
+#: ./templates/Config/index.php:11
+#: ./templates/Config/theme.php:16
+#: ./templates/Config/view.php:11
+#: ./templates/Errors/add.php:11
+#: ./templates/Errors/edit.php:11
+#: ./templates/Errors/index.php:11
+#: ./templates/Errors/view.php:11
+#: ./templates/IncompleteChests/index.php:13
+#: ./templates/IncompleteChests/view.php:14
+#: ./templates/Members/add.php:11
+#: ./templates/Members/edit.php:11
+#: ./templates/Members/index.php:11
+#: ./templates/Members/view.php:11
+#: ./templates/PlayerNameMappings/add.php:11
+#: ./templates/PlayerNameMappings/edit.php:11
+#: ./templates/PlayerNameMappings/index.php:11
+#: ./templates/PlayerNameMappings/view.php:11
+#: ./templates/RolesUsers/add.php:11
+#: ./templates/RolesUsers/edit.php:11
+#: ./templates/RolesUsers/index.php:11
+#: ./templates/RolesUsers/view.php:11
+#: ./templates/Roles/add.php:11
+#: ./templates/Roles/edit.php:11
+#: ./templates/Roles/index.php:11
+#: ./templates/Roles/view.php:11
+#: ./templates/StandardChests/add.php:11
+#: ./templates/StandardChests/edit.php:11
+#: ./templates/StandardChests/index.php:12
+#: ./templates/StandardChests/lost_chests.php:11
+#: ./templates/StandardChests/view.php:11
+#: ./templates/TroopCalculator/index.php:18
+#: ./templates/Users/add.php:11
+#: ./templates/Users/edit.php:31
+#: ./templates/Users/index.php:11
+#: ./templates/Users/view.php:11
+msgid "Home"
+msgstr "首页"
+
+#: ./templates/CollectedChests/add.php:12
+#: ./templates/CollectedChests/edit.php:12
+#: ./templates/CollectedChests/index.php:12
+#: ./templates/CollectedChests/view.php:12
+msgid "List Collected Chests"
+msgstr "收集的宝箱列表"
+
+#: ./templates/CollectedChests/add.php:13
+#: ./templates/Config/add.php:13
+#: ./templates/Errors/add.php:13
+#: ./templates/Members/add.php:13
+#: ./templates/PlayerNameMappings/add.php:13
+#: ./templates/RolesUsers/add.php:13
+#: ./templates/Roles/add.php:13
+#: ./templates/StandardChests/add.php:13
+#: ./templates/StandardChests/lost_chests.php:246
+#: ./templates/StandardChests/lost_chests.php:250
+#: ./templates/Users/add.php:13
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:60
+msgid "Add"
+msgstr "添加"
+
+#: ./templates/CollectedChests/add.php:28
+#: ./templates/CollectedChests/edit.php:36
+#: ./templates/Config/add.php:26
+#: ./templates/Config/edit.php:34
+#: ./templates/Errors/add.php:24
+#: ./templates/Errors/edit.php:32
+#: ./templates/Members/add.php:32
+#: ./templates/Members/edit.php:40
+#: ./templates/PlayerNameMappings/add.php:27
+#: ./templates/PlayerNameMappings/edit.php:35
+#: ./templates/RolesUsers/add.php:25
+#: ./templates/RolesUsers/edit.php:33
+#: ./templates/Roles/add.php:27
+#: ./templates/Roles/edit.php:35
+#: ./templates/StandardChests/add.php:43
+#: ./templates/StandardChests/edit.php:51
+#: ./templates/Users/add.php:35
+#: ./templates/Users/edit.php:85
+msgid "Save"
+msgstr "保存"
+
+#: ./templates/CollectedChests/edit.php:9
+msgid "Edit Collected Chest"
+msgstr "编辑收集的宝箱"
+
+#: ./templates/CollectedChests/edit.php:13
+#: ./templates/CollectedChests/index.php:54
+#: ./templates/CollectedChests/view.php:13
+#: ./templates/Config/edit.php:13
+#: ./templates/Config/index.php:50
+#: ./templates/Config/view.php:13
+#: ./templates/Errors/edit.php:13
+#: ./templates/Errors/index.php:44
+#: ./templates/Errors/view.php:13
+#: ./templates/IncompleteChests/index.php:80
+#: ./templates/Members/edit.php:13
+#: ./templates/Members/index.php:56
+#: ./templates/Members/view.php:13
+#: ./templates/PlayerCycleSummaries/index.php:288
+#: ./templates/PlayerNameMappings/edit.php:13
+#: ./templates/PlayerNameMappings/view.php:13
+#: ./templates/RolesUsers/edit.php:13
+#: ./templates/RolesUsers/index.php:48
+#: ./templates/RolesUsers/view.php:13
+#: ./templates/Roles/edit.php:13
+#: ./templates/Roles/index.php:54
+#: ./templates/Roles/view.php:13
+#: ./templates/Roles/view.php:99
+#: ./templates/StandardChests/edit.php:13
+#: ./templates/StandardChests/view.php:13
+#: ./templates/Users/edit.php:33
+#: ./templates/Users/index.php:74
+#: ./templates/Users/view.php:13
+#: ./templates/Users/view.php:110
+#: ./templates/Users/view.php:154
+msgid "View"
+msgstr "查看"
+
+#: ./templates/CollectedChests/edit.php:14
+#: ./templates/CollectedChests/index.php:55
+#: ./templates/CollectedChests/view.php:58
+#: ./templates/Config/edit.php:14
+#: ./templates/Config/index.php:51
+#: ./templates/Config/view.php:50
+#: ./templates/Errors/edit.php:14
+#: ./templates/Errors/index.php:45
+#: ./templates/Errors/view.php:38
+#: ./templates/Events/manage.php:97
+#: ./templates/Events/view.php:82
+#: ./templates/Members/edit.php:14
+#: ./templates/Members/index.php:57
+#: ./templates/Members/view.php:74
+#: ./templates/PlayerNameMappings/edit.php:14
+#: ./templates/PlayerNameMappings/index.php:47
+#: ./templates/PlayerNameMappings/view.php:47
+#: ./templates/RolesUsers/edit.php:14
+#: ./templates/RolesUsers/index.php:49
+#: ./templates/RolesUsers/view.php:46
+#: ./templates/Roles/edit.php:14
+#: ./templates/Roles/index.php:55
+#: ./templates/Roles/view.php:58
+#: ./templates/Roles/view.php:100
+#: ./templates/StandardChests/edit.php:14
+#: ./templates/StandardChests/view.php:58
+#: ./templates/Users/edit.php:34
+#: ./templates/Users/index.php:75
+#: ./templates/Users/view.php:79
+#: ./templates/Users/view.php:155
+msgid "Edit"
+msgstr "编辑"
+
+#: ./templates/CollectedChests/edit.php:30
+#: ./templates/CollectedChests/index.php:56
+#: ./templates/CollectedChests/view.php:52
+#: ./templates/Config/edit.php:28
+#: ./templates/Config/index.php:52
+#: ./templates/Config/view.php:44
+#: ./templates/Errors/edit.php:26
+#: ./templates/Errors/index.php:46
+#: ./templates/Errors/view.php:32
+#: ./templates/Events/manage.php:138
+#: ./templates/Members/edit.php:34
+#: ./templates/Members/index.php:58
+#: ./templates/Members/view.php:68
+#: ./templates/PlayerNameMappings/edit.php:29
+#: ./templates/PlayerNameMappings/index.php:48
+#: ./templates/PlayerNameMappings/view.php:48
+#: ./templates/RolesUsers/edit.php:27
+#: ./templates/RolesUsers/index.php:50
+#: ./templates/RolesUsers/view.php:40
+#: ./templates/Roles/edit.php:29
+#: ./templates/Roles/index.php:56
+#: ./templates/Roles/view.php:52
+#: ./templates/Roles/view.php:101
+#: ./templates/StandardChests/edit.php:45
+#: ./templates/StandardChests/view.php:52
+#: ./templates/Users/edit.php:79
+#: ./templates/Users/index.php:76
+#: ./templates/Users/view.php:73
+#: ./templates/Users/view.php:156
+msgid "Delete"
+msgstr "删除"
+
+#: ./templates/CollectedChests/edit.php:32
+#: ./templates/CollectedChests/index.php:56
+#: ./templates/CollectedChests/view.php:54
+#: ./templates/Config/edit.php:30
+#: ./templates/Config/index.php:52
+#: ./templates/Config/view.php:46
+#: ./templates/Errors/edit.php:28
+#: ./templates/Errors/index.php:46
+#: ./templates/Errors/view.php:34
+#: ./templates/Members/edit.php:36
+#: ./templates/Members/index.php:58
+#: ./templates/Members/view.php:70
+#: ./templates/PlayerNameMappings/edit.php:31
+#: ./templates/PlayerNameMappings/index.php:48
+#: ./templates/PlayerNameMappings/view.php:48
+#: ./templates/RolesUsers/edit.php:29
+#: ./templates/RolesUsers/index.php:50
+#: ./templates/RolesUsers/view.php:42
+#: ./templates/Roles/edit.php:31
+#: ./templates/Roles/index.php:56
+#: ./templates/Roles/view.php:54
+#: ./templates/Roles/view.php:101
+#: ./templates/StandardChests/edit.php:47
+#: ./templates/StandardChests/index.php:141
+#: ./templates/StandardChests/view.php:54
+#: ./templates/Users/edit.php:81
+#: ./templates/Users/index.php:76
+#: ./templates/Users/view.php:75
+#: ./templates/Users/view.php:156
+msgid "Are you sure you want to delete # {0}?"
+msgstr "确定要删除 #{0} 吗？"
+
+#: ./templates/CollectedChests/index.php:9
+msgid "Collected Chests"
+msgstr "收集的宝箱"
+
+#: ./templates/CollectedChests/index.php:27
+msgid "New Collected Chest"
+msgstr "新增收集的宝箱"
+
+#: ./templates/CollectedChests/index.php:66
+#: ./templates/Config/index.php:62
+#: ./templates/Errors/index.php:56
+#: ./templates/IncompleteChests/index.php:100
+#: ./templates/Members/index.php:68
+#: ./templates/PlayerNameMappings/index.php:58
+#: ./templates/RolesUsers/index.php:60
+#: ./templates/Roles/index.php:66
+#: ./templates/StandardChests/index.php:161
+#: ./templates/StandardChests/weights.php:81
+#: ./templates/Users/index.php:86
+msgid "Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total"
+msgstr "第 {{page}} / {{pages}} 页，共 {{count}} 条记录，显示 {{current}} 条"
+
+#: ./templates/CollectedChests/merge_players.php:13
+msgid "Select the correct player name to keep and the incorrect name to replace"
+msgstr "选择要保留的正确玩家名，以及要被替换的错误玩家名"
+
+#: ./templates/CollectedChests/merge_players.php:16
+msgid "Back to Score"
+msgstr "返回积分榜"
+
+#: ./templates/CollectedChests/merge_players.php:26
+msgid "All collected chest records associated with the incorrect name will be reassigned to the correct name. This action cannot be undone."
+msgstr "与错误玩家名关联的所有收集宝箱记录都将转到正确的玩家名下。此操作无法撤销。"
+
+#: ./templates/CollectedChests/merge_players.php:33
+msgid "Select Correct Name"
+msgstr "选择正确的名字"
+
+#: ./templates/CollectedChests/merge_players.php:34
+msgid "Correct Player Name (Keep this one)"
+msgstr "正确的玩家名（保留这个）"
+
+#: ./templates/CollectedChests/merge_players.php:42
+msgid "Select Incorrect Name"
+msgstr "选择错误的名字"
+
+#: ./templates/CollectedChests/merge_players.php:43
+msgid "Incorrect Player Name (Replace this one)"
+msgstr "错误的玩家名（替换这个）"
+
+#: ./templates/CollectedChests/merge_players.php:49
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:79
+msgid "Merge Players"
+msgstr "合并玩家"
+
+#: ./templates/CollectedChests/merge_players.php:57
+msgid "Current Unique Player List"
+msgstr "当前唯一玩家列表"
+
+#: ./templates/CollectedChests/merge_players.php:67
+msgid "No player names found."
+msgstr "未找到玩家名。"
+
+#: ./templates/CollectedChests/score.php:1164
+msgid "Players Score & Monsters"
+msgstr "玩家积分与怪物"
+
+#: ./templates/CollectedChests/score.php:1173
+msgid "Toggle between clean view and full detailed data"
+msgstr "在简洁视图和完整明细数据之间切换"
+
+#: ./templates/CollectedChests/score.php:1175
+#: ./templates/CollectedChests/score.php:1539
+msgid "View All (Detailed Data)"
+msgstr "查看全部（明细数据）"
+
+#: ./templates/CollectedChests/score.php:1182
+#: ./templates/StandardChests/index.php:102
+msgid "Filter"
+msgstr "筛选"
+
+#: ./templates/CollectedChests/score.php:1192
+msgid "Chest Score Goal: {0} points"
+msgstr "宝箱积分目标：{0} 分"
+
+#: ./templates/CollectedChests/score.php:1196
+msgid "Epic Chest Goal: {0} points"
+msgstr "史诗宝箱目标：{0} 分"
+
+#: ./templates/CollectedChests/score.php:1210
+msgid "Score Summary"
+msgstr "积分概要"
+
+#: ./templates/CollectedChests/score.php:1215
+#: ./templates/Events/view.php:291
+msgid "Search player..."
+msgstr "搜索玩家…"
+
+#: ./templates/CollectedChests/score.php:1224
+#: ./templates/CollectedChests/score.php:1313
+#: ./templates/CollectedChests/score.php:1423
+#: ./templates/PlayerCycleSummaries/index.php:238
+msgid "Pos."
+msgstr "排名"
+
+#: ./templates/CollectedChests/score.php:1226
+#: ./templates/CollectedChests/score.php:1425
+msgid "Final Score"
+msgstr "最终积分"
+
+#: ./templates/CollectedChests/score.php:1227
+#: ./templates/CollectedChests/score.php:1291
+#: ./templates/CollectedChests/score.php:1315
+msgid "Monster Chests"
+msgstr "怪物宝箱"
+
+#: ./templates/CollectedChests/score.php:1254
+msgid "Click to view detailed chest breakdown for {0}"
+msgstr "点击查看 {0} 的宝箱明细"
+
+#: ./templates/CollectedChests/score.php:1262
+msgid "Click to view monster chest dates and details for {0}"
+msgstr "点击查看 {0} 的怪物宝箱日期与详情"
+
+#: ./templates/CollectedChests/score.php:1275
+msgid "No chests collected in this cycle."
+msgstr "本周期未收集任何宝箱。"
+
+#: ./templates/CollectedChests/score.php:1294
+msgid "Compact View (Fit to screen)"
+msgstr "紧凑视图（适应屏幕）"
+
+#: ./templates/CollectedChests/score.php:1295
+msgid "Summary"
+msgstr "概要"
+
+#: ./templates/CollectedChests/score.php:1297
+msgid "Full matrix with all monster columns"
+msgstr "包含所有怪物列的完整矩阵"
+
+#: ./templates/CollectedChests/score.php:1298
+msgid "Matrix"
+msgstr "矩阵"
+
+#: ./templates/CollectedChests/score.php:1304
+msgid "Search monster or player..."
+msgstr "搜索怪物或玩家…"
+
+#: ./templates/CollectedChests/score.php:1316
+msgid "Monster Points"
+msgstr "怪物积分"
+
+#: ./templates/CollectedChests/score.php:1367
+msgid "Click to view dates and details for {0}"
+msgstr "点击查看 {0} 的日期与详情"
+
+#: ./templates/CollectedChests/score.php:1381
+msgid "View details"
+msgstr "查看详情"
+
+#: ./templates/CollectedChests/score.php:1395
+msgid "No monster data available for this cycle."
+msgstr "本周期没有怪物数据。"
+
+#: ./templates/CollectedChests/score.php:1405
+msgid "All Detailed Data by Chest Source"
+msgstr "按宝箱来源列出的全部明细数据"
+
+#: ./templates/CollectedChests/score.php:1410
+msgid "Filter player..."
+msgstr "筛选玩家…"
+
+#: ./templates/CollectedChests/score.php:1415
+msgid "Scroll horizontally to view all chest columns"
+msgstr "横向滚动可查看所有宝箱列"
+
+#: ./templates/CollectedChests/score.php:1426
+#: ./templates/Events/view.php:305
+#: ./templates/PlayerCycleSummaries/index.php:240
+msgid "Total Chests"
+msgstr "宝箱总数"
+
+#: ./templates/CollectedChests/score.php:1427
+#: ./templates/PlayerCycleSummaries/index.php:242
+msgid "Epic Crypt Score"
+msgstr "史诗地穴积分"
+
+#: ./templates/CollectedChests/score.php:1468
+msgid "No detailed data available for this cycle."
+msgstr "本周期没有明细数据。"
+
+#: ./templates/CollectedChests/score.php:1483
+msgid "Time remaining until cycle ends: "
+msgstr "本周期结束倒计时： "
+
+#: ./templates/CollectedChests/score.php:1485
+msgid "{0} day{1}, "
+msgstr "{0}天 "
+
+#: ./templates/CollectedChests/score.php:1487
+msgid "{0} hour{1}, "
+msgstr "{0}小时 "
+
+#: ./templates/CollectedChests/score.php:1488
+msgid "{0} minute{1}, "
+msgstr "{0}分 "
+
+#: ./templates/CollectedChests/score.php:1489
+msgid "{0} second{1}"
+msgstr "{0}秒"
+
+#: ./templates/CollectedChests/score.php:1491
+msgid "The Current Cycle has already ended."
+msgstr "当前周期已经结束。"
+
+#: ./templates/CollectedChests/score.php:1498
+msgid "Last chest update: {0} UTC"
+msgstr "宝箱最后更新：{0} UTC"
+
+#: ./templates/CollectedChests/score.php:1508
+msgid "Close"
+msgstr "关闭"
+
+#: ./templates/CollectedChests/score.php:1532
+msgid "Back to Organized View"
+msgstr "返回整理视图"
+
+#: ./templates/CollectedChests/score.php:1598
+msgid "No individual monster chest records found for this player in this cycle."
+msgstr "本周期内未找到该玩家的单条怪物宝箱记录。"
+
+#: ./templates/CollectedChests/score.php:1602
+msgid "Monster Chest"
+msgstr "怪物宝箱"
+
+#: ./templates/CollectedChests/score.php:1603
+msgid "Date"
+msgstr "日期"
+
+#: ./templates/CollectedChests/score.php:1604
+msgid "Quantity"
+msgstr "数量"
+
+#: ./templates/CollectedChests/score.php:1628
+msgid "Player data not found."
+msgstr "未找到玩家数据。"
+
+#: ./templates/CollectedChests/score.php:1643
+msgid "No scored chests recorded for this player in this cycle."
+msgstr "本周期内该玩家没有计分宝箱记录。"
+
+#: ./templates/CollectedChests/score.php:1647
+#: ./templates/StandardChests/weights.php:58
+msgid "Chest Source"
+msgstr "宝箱来源"
+
+#: ./templates/CollectedChests/score.php:1648
+msgid "Qty"
+msgstr "数量"
+
+#: ./templates/CollectedChests/score.php:1649
+msgid "Points Each"
+msgstr "每个分值"
+
+#: ./templates/CollectedChests/score.php:1650
+msgid "Total Points"
+msgstr "总分"
+
+#: ./templates/CollectedChests/view.php:9
+msgid "Collected Chest"
+msgstr "收集的宝箱"
+
+#: ./templates/CollectedChests/view.php:24
+#: ./templates/Roles/view.php:24
+#: ./templates/Roles/view.php:76
+#: ./templates/Users/view.php:24
+#: ./templates/Users/view.php:131
+msgid "Name"
+msgstr "名称"
+
+#: ./templates/CollectedChests/view.php:32
+#: ./templates/IncompleteChests/index.php:59
+#: ./templates/IncompleteChests/view.php:122
+#: ./templates/StandardChests/view.php:24
+msgid "Source"
+msgstr "来源"
+
+#: ./templates/CollectedChests/view.php:36
+#: ./templates/Config/view.php:36
+#: ./templates/Errors/view.php:24
+#: ./templates/Members/view.php:28
+#: ./templates/PlayerNameMappings/view.php:32
+#: ./templates/RolesUsers/view.php:32
+#: ./templates/Roles/view.php:36
+#: ./templates/Roles/view.php:75
+#: ./templates/StandardChests/view.php:32
+#: ./templates/Users/view.php:52
+#: ./templates/Users/view.php:130
+msgid "Id"
+msgstr "ID"
+
+#: ./templates/CollectedChests/view.php:44
+msgid "Collected At"
+msgstr "收集时间"
+
+#: ./templates/Config/add.php:9
+msgid "Add Config"
+msgstr "添加配置"
+
+#: ./templates/Config/add.php:12
+#: ./templates/Config/edit.php:12
+#: ./templates/Config/index.php:12
+#: ./templates/Config/view.php:12
+msgid "List Config"
+msgstr "配置列表"
+
+#: ./templates/Config/branding.php:20
+#: ./templates/Config/branding.php:24
+#: ./templates/Config/branding.php:45
+#: ./templates/Config/theme.php:36
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:136
+msgid "Branding"
+msgstr "品牌外观"
+
+#: ./templates/Config/branding.php:23
+#: ./templates/Config/index.php:9
+#: ./templates/Config/theme.php:17
+#: ./templates/Config/view.php:9
+msgid "Config"
+msgstr "配置"
+
+#: ./templates/Config/branding.php:48
+msgid "The logo in the navbar and the icon in the browser tab"
+msgstr "导航栏中的徽标和浏览器标签页中的图标"
+
+#: ./templates/Config/branding.php:53
+msgid "All settings"
+msgstr "全部设置"
+
+#: ./templates/Config/branding.php:65
+msgid "Logo"
+msgstr "徽标"
+
+#: ./templates/Config/branding.php:67
+msgid "Shown beside the site name in the navbar, and above the sign-in box."
+msgstr "显示在导航栏的站点名称旁，以及登录框上方。"
+
+#: ./templates/Config/branding.php:73
+msgid "PNG, JPEG, GIF or WebP. Use a PNG if you want a transparent background."
+msgstr "PNG、JPEG、GIF 或 WebP。若需要透明背景，请使用 PNG。"
+
+#: ./templates/Config/branding.php:74
+#: ./templates/Config/branding.php:100
+msgid "Between {0}x{0} and {1}x{1} pixels."
+msgstr "介于 {0}x{0} 与 {1}x{1} 像素之间。"
+
+#: ./templates/Config/branding.php:79
+msgid "Square, or up to {0} times wider than it is tall. Taller than it is wide is not accepted."
+msgstr "正方形，或宽度不超过高度的 {0} 倍。不接受高大于宽的图片。"
+
+#: ./templates/Config/branding.php:83
+#: ./templates/Config/branding.php:109
+msgid "At most {0}."
+msgstr "最多 {0}。"
+
+#: ./templates/Config/branding.php:84
+msgid "Saved as a PNG {0} pixels on its longest side, in webroot/img/branding/custom."
+msgstr "以长边 {0} 像素的 PNG 保存在 webroot/img/branding/custom。"
+
+#: ./templates/Config/branding.php:91
+msgid "Favicon"
+msgstr "网站图标"
+
+#: ./templates/Config/branding.php:93
+msgid "Shown in the browser tab, in bookmarks, and when somebody pins the site."
+msgstr "显示在浏览器标签页、书签中，以及有人固定站点时。"
+
+#: ./templates/Config/branding.php:99
+msgid "PNG, JPEG, GIF, WebP or ICO. Anything but JPEG can keep a transparent background."
+msgstr "PNG、JPEG、GIF、WebP 或 ICO。除 JPEG 外都可以保留透明背景。"
+
+#: ./templates/Config/branding.php:105
+msgid "Square, give or take {0}%. Keep the artwork simple: it is usually drawn at 16 pixels."
+msgstr "正方形，允许 {0}% 误差。图案请保持简洁：它通常以 16 像素显示。"
+
+#: ./templates/Config/branding.php:110
+msgid "Saved as a {0}x{0} PNG plus a generated favicon.ico holding the 16, 32, 48 and 64 pixel sizes."
+msgstr "以 {0}x{0} 的 PNG 保存，并生成包含 16、32、48 和 64 像素尺寸的 favicon.ico。"
+
+#: ./templates/Config/branding.php:146
+msgid "Your upload"
+msgstr "你上传的文件"
+
+#: ./templates/Config/branding.php:149
+msgid "The image you uploaded."
+msgstr "你上传的图片。"
+
+#: ./templates/Config/branding.php:150
+msgid "Nothing uploaded yet."
+msgstr "尚未上传任何内容。"
+
+#: ./templates/Config/branding.php:174
+msgid "Or upload your own {0}"
+msgstr "或上传你自己的{0}"
+
+#: ./templates/Config/branding.php:179
+msgid "Uploading replaces whatever is in the \"Your upload\" slot and selects it."
+msgstr "上传会替换“你上传的文件”位置中的内容，并将其选中。"
+
+#: ./templates/Config/branding.php:192
+msgid "Save branding"
+msgstr "保存品牌外观"
+
+#: ./templates/Config/branding.php:201
+msgid "Every image is stored as a file under webroot/img/branding, never in the database. Browsers cache icons hard, so a changed favicon can take a reload or two to appear in the tab."
+msgstr "每张图片都以文件形式保存在 webroot/img/branding 下，而不是数据库中。浏览器对图标的缓存很顽固，所以更换网站图标后，可能需要刷新一两次才会在标签页中显示。"
+
+#: ./templates/Config/edit.php:9
+msgid "Edit Config"
+msgstr "编辑配置"
+
+#: ./templates/Config/index.php:27
+msgid "New Config"
+msgstr "新增配置"
+
+#: ./templates/Config/theme.php:14
+#: ./templates/Config/theme.php:18
+#: ./templates/Config/theme.php:28
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:142
+msgid "Theme"
+msgstr "主题"
+
+#: ./templates/Config/theme.php:31
+msgid "The colours every page of the site is drawn in"
+msgstr "站点每个页面的配色"
+
+#: ./templates/Config/theme.php:47
+msgid "Colour scheme"
+msgstr "配色方案"
+
+#: ./templates/Config/theme.php:49
+msgid "Applies to everyone who visits the site, players included, not just to you."
+msgstr "对所有访问站点的人生效，包括玩家，而不只是你。"
+
+#: ./templates/Config/theme.php:76
+msgid "A dark theme"
+msgstr "深色主题"
+
+#: ./templates/Config/theme.php:87
+msgid "Save theme"
+msgstr "保存主题"
+
+#: ./templates/Config/theme.php:96
+msgid "The previews above are drawn from a handful of colours each. Save a theme and reload to see it applied across the whole site."
+msgstr "上面的每个预览都由少数几种颜色组成。保存主题后刷新页面，即可看到它应用于整个站点。"
+
+#: ./templates/Config/view.php:24
+msgid "Param"
+msgstr "参数"
+
+#: ./templates/Config/view.php:28
+msgid "Value"
+msgstr "值"
+
+#: ./templates/Config/view.php:32
+#: ./templates/Roles/view.php:28
+#: ./templates/Users/view.php:132
+msgid "Description"
+msgstr "说明"
+
+#: ./templates/Errors/add.php:9
+msgid "Add Error"
+msgstr "添加错误"
+
+#: ./templates/Errors/add.php:12
+#: ./templates/Errors/edit.php:12
+#: ./templates/Errors/index.php:12
+#: ./templates/Errors/view.php:12
+msgid "List Errors"
+msgstr "错误列表"
+
+#: ./templates/Errors/edit.php:9
+msgid "Edit Error"
+msgstr "编辑错误"
+
+#: ./templates/Errors/index.php:9
+msgid "Errors"
+msgstr "错误"
+
+#: ./templates/Errors/index.php:27
+msgid "New Error"
+msgstr "新增错误"
+
+#: ./templates/Errors/view.php:9
+msgid "Error"
+msgstr "错误"
+
+#: ./templates/Errors/view.php:46
+msgid "Error Value"
+msgstr "错误值"
+
+#: ./templates/Events/form.php:23
+#: ./templates/Events/form.php:61
+#: ./templates/Events/manage.php:42
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:127
+msgid "New Event"
+msgstr "新增活动"
+
+#: ./templates/Events/form.php:23
+msgid "Edit Event"
+msgstr "编辑活动"
+
+#: ./templates/Events/form.php:61
+msgid "Edit Event #{0}"
+msgstr "编辑活动 #{0}"
+
+#: ./templates/Events/form.php:65
+msgid "It will be created as event #{0}"
+msgstr "它将创建为活动 #{0}"
+
+#: ./templates/Events/form.php:66
+msgid "Created {0}"
+msgstr "创建于 {0}"
+
+#: ./templates/Events/form.php:71
+#: ./templates/Events/manage.php:13
+#: ./templates/Events/manage.php:32
+#: ./templates/Events/settings.php:39
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:124
+msgid "Manage Events"
+msgstr "管理活动"
+
+#: ./templates/Events/form.php:82
+msgid "Identification"
+msgstr "标识"
+
+#: ./templates/Events/form.php:83
+msgid "The name players will see, and an optional explanation of the rules."
+msgstr "玩家将看到的名称，以及可选的规则说明。"
+
+#: ./templates/Events/form.php:87
+msgid "Event number"
+msgstr "活动编号"
+
+#: ./templates/Events/form.php:91
+msgid "Assigned automatically and never reused."
+msgstr "自动分配，且不会重复使用。"
+
+#: ./templates/Events/form.php:97
+msgid "Event name"
+msgstr "活动名称"
+
+#: ./templates/Events/form.php:101
+msgid "e.g. September Chest Marathon"
+msgstr "例如：九月宝箱马拉松"
+
+#: ./templates/Events/form.php:110
+msgid "Description (optional)"
+msgstr "说明（可选）"
+
+#: ./templates/Events/form.php:114
+msgid "Anything the players should know about this event."
+msgstr "玩家关于此活动需要知道的任何事项。"
+
+#: ./templates/Events/form.php:125
+msgid "When it runs"
+msgstr "举办时间"
+
+#: ./templates/Events/form.php:129
+msgid "Both moments are UTC, the same clock the scoreboard uses. Only chests collected inside this window count, and the start must be in the future."
+msgstr "两个时间点都是 UTC，与积分榜使用同一时钟。只有在此时间窗内收集的宝箱才计入，且开始时间必须在将来。"
+
+#: ./templates/Events/form.php:134
+msgid "Starts at (UTC)"
+msgstr "开始时间（UTC）"
+
+#: ./templates/Events/form.php:141
+msgid "Ends at (UTC)"
+msgstr "结束时间（UTC）"
+
+#: ./templates/Events/form.php:150
+msgid "Right now it is {0} UTC."
+msgstr "现在是 {0} UTC。"
+
+#: ./templates/Events/form.php:159
+msgid "What counts"
+msgstr "计入范围"
+
+#: ./templates/Events/form.php:160
+msgid "How players are ranked in this event."
+msgstr "本次活动中玩家的排名方式。"
+
+#: ./templates/Events/form.php:183
+msgid "Chests in this event"
+msgstr "本活动的宝箱"
+
+#: ./templates/Events/form.php:185
+msgid "Only chests that carry a score can be picked, because a chest worth nothing cannot decide a ranking. Choose as many as you like."
+msgstr "只能选择有分值的宝箱，因为分值为零的宝箱无法决定排名。你可以选择任意多个。"
+
+#: ./templates/Events/form.php:189
+msgid "Rank players by"
+msgstr "玩家排名依据"
+
+#: ./templates/Events/form.php:194
+msgid "Total score of the chosen chests"
+msgstr "所选宝箱的总分"
+
+#: ./templates/Events/form.php:199
+msgid "Number of the chosen chests collected"
+msgstr "收集到的所选宝箱数量"
+
+#: ./templates/Events/form.php:207
+msgid "Filter chests..."
+msgstr "筛选宝箱…"
+
+#: ./templates/Events/form.php:213
+msgid "Select all shown"
+msgstr "选中显示的全部"
+
+#: ./templates/Events/form.php:216
+msgid "Clear"
+msgstr "清空"
+
+#: ./templates/Events/form.php:224
+msgid "No chest has a score yet. Set chest scores before creating a custom chest event."
+msgstr "目前还没有宝箱设置分值。请先设置宝箱分值，再创建自定义宝箱活动。"
+
+#: ./templates/Events/form.php:234
+msgid "Epic monster chest"
+msgstr "史诗怪物宝箱"
+
+#: ./templates/Events/form.php:250
+msgid "Prize and contact"
+msgstr "奖品与联系人"
+
+#: ./templates/Events/form.php:251
+msgid "What the winner gets, and who they should look for to claim it."
+msgstr "获胜者能得到什么，以及领奖时应联系谁。"
+
+#: ./templates/Events/form.php:256
+#: ./templates/Events/view.php:233
+msgid "Prize"
+msgstr "奖品"
+
+#: ./templates/Events/form.php:261
+msgid "e.g. 500 gold for first place, 250 for second."
+msgstr "例如：第一名 500 金币，第二名 250。"
+
+#: ./templates/Events/form.php:270
+msgid "Player to look for"
+msgstr "要联系的玩家"
+
+#: ./templates/Events/form.php:274
+msgid "e.g. Ventura"
+msgstr "例如：Ventura"
+
+#: ./templates/Events/form.php:285
+msgid "Event banner"
+msgstr "活动横幅"
+
+#: ./templates/Events/form.php:287
+msgid "Shown on the scoreboard next to the goals while this event is running. Leave it empty to use the default banner."
+msgstr "本活动进行期间，显示在积分榜的目标旁边。留空则使用默认横幅。"
+
+#: ./templates/Events/form.php:294
+msgid "Banner preview"
+msgstr "横幅预览"
+
+#: ./templates/Events/form.php:297
+msgid "Replace the banner"
+msgstr "更换横幅"
+
+#: ./templates/Events/form.php:301
+#: ./templates/Events/settings.php:75
+msgid "PNG, JPEG, GIF or WebP, up to 3 MB. A wide strip works best, around 640 x 160 pixels."
+msgstr "PNG、JPEG、GIF 或 WebP，最大 3 MB。宽条形效果最好，约 640 x 160 像素。"
+
+#: ./templates/Events/form.php:309
+msgid "Drop this banner and go back to the default"
+msgstr "弃用此横幅并恢复默认"
+
+#: ./templates/Events/form.php:318
+msgid "Create event"
+msgstr "创建活动"
+
+#: ./templates/Events/form.php:318
+msgid "Save changes"
+msgstr "保存更改"
+
+#: ./templates/Events/form.php:343
+msgid "1 chest selected"
+msgstr "已选择 1 个宝箱"
+
+#: ./templates/Events/form.php:344
+msgid "{0} chests selected"
+msgstr "已选择 {0} 个宝箱"
+
+#: ./templates/Events/form.php:396
+msgid "The end must come after the start."
+msgstr "结束时间必须晚于开始时间。"
+
+#: ./templates/Events/form.php:404
+msgid "Duration: {0} day(s) and {1} hour(s)."
+msgstr "时长：{0} 天 {1} 小时。"
+
+#: ./templates/Events/form.php:405
+msgid "Duration: {0} hour(s)."
+msgstr "时长：{0} 小时。"
+
+#: ./templates/Events/history.php:11
+#: ./templates/Events/history.php:17
+#: ./templates/Events/no_event.php:25
+#: ./templates/Events/view.php:76
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:34
+msgid "Event History"
+msgstr "活动历史"
+
+#: ./templates/Events/history.php:18
+msgid "Every event that has been held, newest first"
+msgstr "已举办的所有活动，从最新开始"
+
+#: ./templates/Events/history.php:22
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:29
+msgid "Current Event"
+msgstr "当前活动"
+
+#: ./templates/Events/history.php:31
+msgid "Running now"
+msgstr "正在进行"
+
+#: ./templates/Events/history.php:42
+#: ./templates/Events/no_event.php:52
+msgid "Coming up"
+msgstr "即将开始"
+
+#: ./templates/Events/history.php:52
+msgid "Past events"
+msgstr "往期活动"
+
+#: ./templates/Events/history.php:64
+#: ./templates/Events/manage.php:152
+msgid "Page {{page}} of {{pages}}, showing {{current}} event(s) out of {{count}} total"
+msgstr "第 {{page}} / {{pages}} 页，共 {{count}} 个活动，显示 {{current}} 个"
+
+#: ./templates/Events/history.php:78
+msgid "No event has finished yet."
+msgstr "还没有活动结束。"
+
+#: ./templates/Events/manage.php:16
+#: ./templates/Events/view.php:21
+#: ./templates/element/event_row.php:20
+msgid "Running"
+msgstr "进行中"
+
+#: ./templates/Events/manage.php:17
+#: ./templates/element/event_row.php:21
+msgid "Scheduled"
+msgstr "已排期"
+
+#: ./templates/Events/manage.php:18
+#: ./templates/Events/view.php:23
+#: ./templates/element/event_row.php:22
+msgid "Finished"
+msgstr "已结束"
+
+#: ./templates/Events/manage.php:19
+#: ./templates/Events/view.php:24
+#: ./templates/element/event_row.php:23
+msgid "Cancelled"
+msgstr "已取消"
+
+#: ./templates/Events/manage.php:33
+msgid "The next event created will be #{0}"
+msgstr "下一个创建的活动将是 #{0}"
+
+#: ./templates/Events/manage.php:37
+#: ./templates/Events/settings.php:15
+#: ./templates/Events/settings.php:34
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:130
+msgid "Event Banners"
+msgstr "活动横幅"
+
+#: ./templates/Events/manage.php:52
+msgid "All events"
+msgstr "所有活动"
+
+#: ./templates/Events/manage.php:62
+msgid "Event"
+msgstr "活动"
+
+#: ./templates/Events/manage.php:63
+msgid "Criteria"
+msgstr "标准"
+
+#: ./templates/Events/manage.php:64
+msgid "Window (UTC)"
+msgstr "时间窗（UTC）"
+
+#: ./templates/Events/manage.php:65
+msgid "State"
+msgstr "状态"
+
+#: ./templates/Events/manage.php:78
+msgid "Result recorded"
+msgstr "结果已记录"
+
+#: ./templates/Events/manage.php:108
+msgid "Recalculate the recorded result"
+msgstr "重新计算已记录的结果"
+
+#: ./templates/Events/manage.php:109
+msgid "Close and record the result"
+msgstr "关闭并记录结果"
+
+#: ./templates/Events/manage.php:110
+msgid "Record the current standings as the official result of event #{0}?"
+msgstr "要把当前排名记录为活动 #{0} 的正式结果吗？"
+
+#: ./templates/Events/manage.php:124
+msgid "Reactivate"
+msgstr "重新启用"
+
+#: ./templates/Events/manage.php:127
+msgid "Make event #{0} active again?"
+msgstr "要让活动 #{0} 重新启用吗？"
+
+#: ./templates/Events/manage.php:128
+msgid "Cancel event #{0}?"
+msgstr "要取消活动 #{0} 吗？"
+
+#: ./templates/Events/manage.php:139
+msgid "Delete event #{0} and its recorded results for good?"
+msgstr "要永久删除活动 #{0} 及其已记录的结果吗？"
+
+#: ./templates/Events/manage.php:165
+#: ./templates/Events/no_event.php:76
+msgid "No event has been created yet."
+msgstr "还没有创建任何活动。"
+
+#: ./templates/Events/manage.php:167
+msgid "Create the first event"
+msgstr "创建第一个活动"
+
+#: ./templates/Events/no_event.php:14
+#: ./templates/Events/no_event.php:20
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:22
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:120
+msgid "Events"
+msgstr "活动"
+
+#: ./templates/Events/no_event.php:21
+msgid "Tournaments, prizes and standings"
+msgstr "比赛、奖品与排名"
+
+#: ./templates/Events/no_event.php:36
+msgid "Nothing running"
+msgstr "没有进行中的活动"
+
+#: ./templates/Events/no_event.php:38
+msgid "No event is running right now"
+msgstr "目前没有活动在进行"
+
+#: ./templates/Events/no_event.php:40
+msgid "When an administrator opens an event, it appears here and a banner shows up on the scoreboard."
+msgstr "当管理员开启活动后，它会显示在这里，积分榜上也会出现横幅。"
+
+#: ./templates/Events/no_event.php:45
+#: ./templates/element/event_banner.php:38
+msgid "No event running"
+msgstr "没有活动在进行"
+
+#: ./templates/Events/no_event.php:63
+msgid "Recently finished"
+msgstr "近期已结束"
+
+#: ./templates/Events/settings.php:19
+msgid "Event running"
+msgstr "活动进行中"
+
+#: ./templates/Events/settings.php:21
+msgid "Shown on the scoreboard while an event is running, unless that event has its own banner."
+msgstr "活动进行期间显示在积分榜上，除非该活动有自己的横幅。"
+
+#: ./templates/Events/settings.php:24
+msgid "No event"
+msgstr "无活动"
+
+#: ./templates/Events/settings.php:26
+msgid "Shown on the scoreboard when nothing is running."
+msgstr "当没有活动进行时显示在积分榜上。"
+
+#: ./templates/Events/settings.php:35
+msgid "The default artwork shown beside the goals on the scoreboard"
+msgstr "积分榜目标旁显示的默认图片"
+
+#: ./templates/Events/settings.php:60
+msgid "Last changed: {0}"
+msgstr "最后修改：{0}"
+
+#: ./templates/Events/settings.php:65
+msgid "This banner has not been set up. Upload one below."
+msgstr "此横幅尚未设置。请在下方上传一个。"
+
+#: ./templates/Events/settings.php:70
+msgid "Upload a replacement"
+msgstr "上传替换图片"
+
+#: ./templates/Events/settings.php:84
+msgid "Save banners"
+msgstr "保存横幅"
+
+#: ./templates/Events/view.php:14
+msgid "Event #{0} - {1}"
+msgstr "活动 #{0} - {1}"
+
+#: ./templates/Events/view.php:22
+msgid "Starts soon"
+msgstr "即将开始"
+
+#: ./templates/Events/view.php:63
+msgid "Event Standings"
+msgstr "活动排名"
+
+#: ./templates/Events/view.php:65
+msgid "Official ranking and leaders for this event"
+msgstr "本次活动的正式排名与领先玩家"
+
+#: ./templates/Events/view.php:70
+msgid "Go to running event"
+msgstr "前往进行中的活动"
+
+#: ./templates/Events/view.php:89
+msgid "Recalculate results"
+msgstr "重新计算结果"
+
+#: ./templates/Events/view.php:90
+msgid "Close & record results"
+msgstr "关闭并记录结果"
+
+#: ./templates/Events/view.php:95
+msgid "Record the current standings as this event's official result?"
+msgstr "要把当前排名记录为本次活动的正式结果吗？"
+
+#: ./templates/Events/view.php:111
+msgid "Event #{0}"
+msgstr "活动 #{0}"
+
+#: ./templates/Events/view.php:136
+msgid "Official result recorded"
+msgstr "正式结果已记录"
+
+#: ./templates/Events/view.php:149
+msgid "Days"
+msgstr "天"
+
+#: ./templates/Events/view.php:153
+msgid "Hours"
+msgstr "小时"
+
+#: ./templates/Events/view.php:157
+msgid "Minutes"
+msgstr "分"
+
+#: ./templates/Events/view.php:161
+msgid "Seconds"
+msgstr "秒"
+
+#: ./templates/Events/view.php:165
+msgid "until the end"
+msgstr "距结束"
+
+#: ./templates/Events/view.php:165
+msgid "until the start"
+msgstr "距开始"
+
+#: ./templates/Events/view.php:167
+msgid "Time left"
+msgstr "剩余时间"
+
+#: ./templates/Events/view.php:183
+msgid "Leader"
+msgstr "领先者"
+
+#: ./templates/Events/view.php:183
+msgid "Champion"
+msgstr "冠军"
+
+#: ./templates/Events/view.php:190
+msgid "{0} chest(s) collected"
+msgstr "已收集 {0} 个宝箱"
+
+#: ./templates/Events/view.php:192
+msgid "Nobody has scored yet"
+msgstr "还没有人得分"
+
+#: ./templates/Events/view.php:199
+msgid "Leader {0}"
+msgstr "领先者 {0}"
+
+#: ./templates/Events/view.php:205
+msgid "Share: {0}%"
+msgstr "占比：{0}%"
+
+#: ./templates/Events/view.php:211
+msgid "Event Total"
+msgstr "活动总计"
+
+#: ./templates/Events/view.php:215
+msgid "Chests counted: {0}"
+msgstr "已统计宝箱：{0}"
+
+#: ./templates/Events/view.php:221
+msgid "Participants"
+msgstr "参与者"
+
+#: ./templates/Events/view.php:225
+msgid "Average: {0} pts"
+msgstr "平均：{0} 分"
+
+#: ./templates/Events/view.php:238
+msgid "Who to talk to"
+msgstr "联系谁"
+
+#: ./templates/Events/view.php:241
+msgid "Look for this player when the event ends to claim the prize."
+msgstr "活动结束后，请找这位玩家领取奖品。"
+
+#: ./templates/Events/view.php:246
+msgid "How it is scored"
+msgstr "计分方式"
+
+#: ./templates/Events/view.php:252
+msgid "Ranked by how many of these chests each player collected."
+msgstr "按每位玩家收集到的这些宝箱数量排名。"
+
+#: ./templates/Events/view.php:253
+msgid "Ranked by the total score of these chests."
+msgstr "按这些宝箱的总分排名。"
+
+#: ./templates/Events/view.php:277
+msgid "Player Ranking"
+msgstr "玩家排名"
+
+#: ./templates/Events/view.php:280
+msgid "Official result"
+msgstr "正式结果"
+
+#: ./templates/Events/view.php:284
+msgid "Live"
+msgstr "实时"
+
+#: ./templates/Events/view.php:302
+msgid "Position"
+msgstr "名次"
+
+#: ./templates/Events/view.php:306
+msgid "Share"
+msgstr "占比"
+
+#: ./templates/Events/view.php:307
+msgid "Highlight"
+msgstr "荣誉"
+
+#: ./templates/Events/view.php:321
+#: ./templates/element/event_row.php:67
+msgid "Winner"
+msgstr "获胜者"
+
+#: ./templates/Events/view.php:322
+msgid "2nd Place"
+msgstr "第 2 名"
+
+#: ./templates/Events/view.php:323
+msgid "3rd Place"
+msgstr "第 3 名"
+
+#: ./templates/Events/view.php:324
+msgid "Top 10"
+msgstr "前 10 名"
+
+#: ./templates/Events/view.php:325
+msgid "Participant"
+msgstr "参与者"
+
+#: ./templates/Events/view.php:371
+msgid "This event has not started yet. Chests collected from {0} UTC will count."
+msgstr "本活动尚未开始。从 {0} UTC 起收集的宝箱才会计入。"
+
+#: ./templates/Events/view.php:373
+msgid "This event was cancelled."
+msgstr "本活动已取消。"
+
+#: ./templates/Events/view.php:375
+msgid "No chest matching this event has been collected yet."
+msgstr "还没有收集到符合本活动条件的宝箱。"
+
+#: ./templates/IncompleteChests/index.php:11
+#: ./templates/IncompleteChests/index.php:14
+#: ./templates/IncompleteChests/index.php:33
+#: ./templates/IncompleteChests/view.php:15
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:93
+msgid "Incomplete Chests"
+msgstr "未完整的宝箱"
+
+#: ./templates/IncompleteChests/index.php:19
+#: ./templates/IncompleteChests/view.php:21
+msgid "Corrected"
+msgstr "已修正"
+
+#: ./templates/IncompleteChests/index.php:20
+#: ./templates/IncompleteChests/view.php:22
+msgid "Not recoverable"
+msgstr "无法恢复"
+
+#: ./templates/IncompleteChests/index.php:23
+msgid "Pending ({0})"
+msgstr "待处理（{0}）"
+
+#: ./templates/IncompleteChests/index.php:24
+msgid "Corrected ({0})"
+msgstr "已修正（{0}）"
+
+#: ./templates/IncompleteChests/index.php:25
+msgid "Not recoverable ({0})"
+msgstr "无法恢复（{0}）"
+
+#: ./templates/IncompleteChests/index.php:26
+#: ./templates/StandardChests/index.php:56
+#: ./templates/StandardChests/index.php:69
+#: ./templates/StandardChests/index.php:82
+msgid "All"
+msgstr "全部"
+
+#: ./templates/IncompleteChests/index.php:48
+msgid "Chests the collector opened but could not read. The screenshot of each one was kept so it can be filled in by hand — the chest itself is no longer in the game."
+msgstr "采集程序打开了但无法识别的宝箱。每个宝箱的截图都被保留下来，以便手工补录——宝箱本身已经不在游戏里了。"
+
+#: ./templates/IncompleteChests/index.php:56
+#: ./templates/IncompleteChests/view.php:60
+msgid "Collected at"
+msgstr "收集时间"
+
+#: ./templates/IncompleteChests/index.php:57
+#: ./templates/IncompleteChests/view.php:94
+msgid "Chest"
+msgstr "宝箱"
+
+#: ./templates/IncompleteChests/index.php:61
+#: ./templates/IncompleteChests/view.php:69
+msgid "Reviewed at"
+msgstr "审阅时间"
+
+#: ./templates/IncompleteChests/index.php:73
+#: ./templates/IncompleteChests/index.php:74
+#: ./templates/IncompleteChests/index.php:75
+msgid "not read"
+msgstr "未识别"
+
+#: ./templates/IncompleteChests/index.php:80
+msgid "Review"
+msgstr "审阅"
+
+#: ./templates/IncompleteChests/index.php:90
+msgid "Nothing here — every chest was read."
+msgstr "这里什么都没有——所有宝箱都已识别。"
+
+#: ./templates/IncompleteChests/view.php:12
+msgid "Review Incomplete Chest"
+msgstr "审阅未完整的宝箱"
+
+#: ./templates/IncompleteChests/view.php:16
+msgid "#{0}"
+msgstr "#{0}"
+
+#: ./templates/IncompleteChests/view.php:32
+msgid "Chest as it was on screen"
+msgstr "宝箱在屏幕上的样子"
+
+#: ./templates/IncompleteChests/view.php:43
+msgid "Screenshot of the chest"
+msgstr "宝箱截图"
+
+#: ./templates/IncompleteChests/view.php:49
+msgid "Read the text in the picture and fill in the fields beside it."
+msgstr "请识别图中的文字，并填写旁边的字段。"
+
+#: ./templates/IncompleteChests/view.php:54
+msgid "This record has no screenshot — it was collected before the screenshot was kept."
+msgstr "此记录没有截图——它是在开始保留截图之前收集的。"
+
+#: ./templates/IncompleteChests/view.php:62
+msgid "Read as chest"
+msgstr "识别为宝箱"
+
+#: ./templates/IncompleteChests/view.php:63
+#: ./templates/IncompleteChests/view.php:65
+#: ./templates/IncompleteChests/view.php:67
+msgid "nothing"
+msgstr "无"
+
+#: ./templates/IncompleteChests/view.php:64
+msgid "Read as player"
+msgstr "识别为玩家"
+
+#: ./templates/IncompleteChests/view.php:66
+msgid "Read as source"
+msgstr "识别为来源"
+
+#: ./templates/IncompleteChests/view.php:72
+msgid "Collected chest"
+msgstr "收集的宝箱"
+
+#: ./templates/IncompleteChests/view.php:76
+msgid "Notes"
+msgstr "备注"
+
+#: ./templates/IncompleteChests/view.php:89
+msgid "Correct and record"
+msgstr "修正并记录"
+
+#: ./templates/IncompleteChests/view.php:136
+msgid "The chest is recorded with the date it was collected, not today, so it counts in the right cycle."
+msgstr "宝箱按收集当天的日期记录，而不是今天，这样才能计入正确的周期。"
+
+#: ./templates/IncompleteChests/view.php:140
+msgid "Record in collected chests"
+msgstr "记入已收集宝箱"
+
+#: ./templates/IncompleteChests/view.php:141
+#: ./templates/IncompleteChests/view.php:187
+msgid "Back to the queue"
+msgstr "返回队列"
+
+#: ./templates/IncompleteChests/view.php:148
+msgid "Cannot be recovered"
+msgstr "无法恢复"
+
+#: ./templates/IncompleteChests/view.php:153
+msgid "Use this when the picture does not show enough to fill the fields in. The record stays, marked as reviewed, and leaves the queue."
+msgstr "当图片信息不足以填写字段时使用此项。记录会保留并标记为已审阅，同时离开队列。"
+
+#: ./templates/IncompleteChests/view.php:156
+msgid "Note (optional)"
+msgstr "备注（可选）"
+
+#: ./templates/IncompleteChests/view.php:162
+msgid "Mark as reviewed, not recovered"
+msgstr "标记为已审阅、未恢复"
+
+#: ./templates/IncompleteChests/view.php:169
+msgid "Already reviewed"
+msgstr "已审阅"
+
+#: ./templates/IncompleteChests/view.php:174
+msgid "This chest was corrected and recorded in collected chests."
+msgstr "此宝箱已修正并记入已收集宝箱。"
+
+#: ./templates/IncompleteChests/view.php:175
+msgid "This chest was examined and could not be recovered."
+msgstr "此宝箱已检查过，无法恢复。"
+
+#: ./templates/IncompleteChests/view.php:180
+msgid "Put back in the queue"
+msgstr "放回队列"
+
+#: ./templates/IncompleteChests/view.php:184
+msgid "Review this chest again? Any collected chest already recorded from it stays as it is."
+msgstr "要再次审阅此宝箱吗？由它生成的已收集宝箱记录将保持不变。"
+
+#: ./templates/Members/add.php:9
+msgid "Add Member"
+msgstr "添加成员"
+
+#: ./templates/Members/add.php:12
+#: ./templates/Members/edit.php:12
+#: ./templates/Members/index.php:12
+#: ./templates/Members/view.php:12
+msgid "List Members"
+msgstr "成员列表"
+
+#: ./templates/Members/edit.php:9
+msgid "Edit Member"
+msgstr "编辑成员"
+
+#: ./templates/Members/index.php:9
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:37
+msgid "Members"
+msgstr "成员"
+
+#: ./templates/Members/index.php:27
+msgid "New Member"
+msgstr "新增成员"
+
+#: ./templates/Members/view.php:32
+#: ./templates/Users/view.php:93
+msgid "Power"
+msgstr "战力"
+
+#: ./templates/Members/view.php:36
+msgid "Guards"
+msgstr "卫兵"
+
+#: ./templates/Members/view.php:48
+msgid "Engineers"
+msgstr "工兵"
+
+#: ./templates/Members/view.php:52
+#: ./templates/Users/index.php:57
+#: ./templates/Users/view.php:35
+#: ./templates/Users/view.php:94
+msgid "Active"
+msgstr "启用"
+
+#: ./templates/Members/view.php:56
+msgid "Created At"
+msgstr "创建时间"
+
+#: ./templates/Members/view.php:60
+msgid "Modified At"
+msgstr "修改时间"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:145
+msgid "Last 6 Cycles History"
+msgstr "最近 6 个周期的历史"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:146
+msgid "Historical score breakdown across recent cycles"
+msgstr "近期各周期积分的历史明细"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:152
+msgid "Chest Score Goal per cycle: {0}"
+msgstr "每周期宝箱积分目标：{0}"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:157
+msgid "History Matrix"
+msgstr "历史矩阵"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:163
+#: ./templates/PlayerCycleSummaries/index.php:239
+msgid "Player Name"
+msgstr "玩家名"
+
+#: ./templates/PlayerCycleSummaries/cycles_history.php:218
+msgid "No cycle history data available."
+msgstr "没有周期历史数据。"
+
+#: ./templates/PlayerCycleSummaries/index.php:189
+msgid "Player Cycle Summaries"
+msgstr "玩家周期汇总"
+
+#: ./templates/PlayerCycleSummaries/index.php:190
+msgid "Summary of player performance by cycle"
+msgstr "按周期汇总的玩家表现"
+
+#: ./templates/PlayerCycleSummaries/index.php:194
+msgid "Process Cycle (offset=1)"
+msgstr "处理周期（offset=1）"
+
+#: ./templates/PlayerCycleSummaries/index.php:197
+msgid "Process Previous Cycle (offset=0)"
+msgstr "处理上一周期（offset=0）"
+
+#: ./templates/PlayerCycleSummaries/index.php:200
+msgid "Process Newest Completed Cycle"
+msgstr "处理最近完成的周期"
+
+#: ./templates/PlayerCycleSummaries/index.php:209
+#: ./templates/StandardChests/weights.php:47
+msgid "Current Goal: {0} chest points and {1} Epic chest points"
+msgstr "当前目标：宝箱 {0} 分，史诗宝箱 {1} 分"
+
+#: ./templates/PlayerCycleSummaries/index.php:215
+msgid "No Summaries Found"
+msgstr "未找到汇总"
+
+#: ./templates/PlayerCycleSummaries/index.php:216
+msgid "There are no player cycle summaries to display. You can try processing a cycle using the buttons above."
+msgstr "没有可显示的玩家周期汇总。你可以用上面的按钮尝试处理一个周期。"
+
+#: ./templates/PlayerCycleSummaries/index.php:227
+msgid "Cycle: {0} to {1}"
+msgstr "周期：{0} 至 {1}"
+
+#: ./templates/PlayerCycleSummaries/index.php:230
+#: ./templates/StandardChests/lost_chests.php:118
+msgid "Players"
+msgstr "玩家"
+
+#: ./templates/PlayerCycleSummaries/index.php:243
+msgid "Goal Achieved"
+msgstr "达成目标"
+
+#: ./templates/PlayerCycleSummaries/index.php:244
+msgid "Fine Status"
+msgstr "罚款状态"
+
+#: ./templates/PlayerCycleSummaries/index.php:275
+#: ./templates/StandardChests/index.php:136
+#: ./templates/StandardChests/lost_chests.php:177
+#: ./templates/StandardChests/view.php:41
+#: ./templates/Users/view.php:108
+msgid "Yes"
+msgstr "是"
+
+#: ./templates/PlayerCycleSummaries/index.php:275
+#: ./templates/StandardChests/index.php:136
+#: ./templates/StandardChests/view.php:41
+#: ./templates/Users/view.php:108
+msgid "No"
+msgstr "否"
+
+#: ./templates/PlayerCycleSummaries/index.php:279
+msgid "N/A"
+msgstr "不适用"
+
+#: ./templates/PlayerCycleSummaries/index.php:281
+msgid "Paid"
+msgstr "已付"
+
+#: ./templates/PlayerCycleSummaries/index.php:283
+msgid "Due"
+msgstr "待付"
+
+#: ./templates/PlayerCycleSummaries/index.php:290
+msgid "Mark Paid"
+msgstr "标记为已付"
+
+#: ./templates/PlayerCycleSummaries/index.php:292
+msgid "Are you sure you want to mark the fine as paid for {0}?"
+msgstr "确定要把 {0} 的罚款标记为已付吗？"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:123
+msgid "History for Player: {0}"
+msgstr "玩家历史：{0}"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:124
+msgid "Past cycle performance breakdown"
+msgstr "往期周期表现明细"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:129
+msgid "Player History"
+msgstr "玩家历史"
+
+#: ./templates/PlayerCycleSummaries/player_history.php:134
+msgid "Cycle End Date"
+msgstr "周期结束日期"
+
+#: ./templates/PlayerNameMappings/add.php:9
+msgid "Add Player Name Mapping"
+msgstr "添加名称映射"
+
+#: ./templates/PlayerNameMappings/add.php:12
+#: ./templates/PlayerNameMappings/edit.php:12
+#: ./templates/PlayerNameMappings/index.php:12
+#: ./templates/PlayerNameMappings/view.php:12
+msgid "List Player Name Mappings"
+msgstr "名称映射列表"
+
+#: ./templates/PlayerNameMappings/edit.php:9
+msgid "Edit Player Name Mapping"
+msgstr "编辑名称映射"
+
+#: ./templates/PlayerNameMappings/index.php:9
+#: ./templates/PlayerNameMappings/index.php:19
+msgid "Player Name Mappings"
+msgstr "玩家名映射"
+
+#: ./templates/PlayerNameMappings/index.php:22
+msgid "New Player Name Mapping"
+msgstr "新增名称映射"
+
+#: ./templates/PlayerNameMappings/view.php:9
+msgid "View Player Name Mapping"
+msgstr "查看名称映射"
+
+#: ./templates/PlayerNameMappings/view.php:24
+msgid "Ocr Text"
+msgstr "OCR 文本"
+
+#: ./templates/PlayerNameMappings/view.php:28
+msgid "Correct Name"
+msgstr "正确名称"
+
+#: ./templates/PlayerNameMappings/view.php:36
+#: ./templates/Roles/view.php:40
+#: ./templates/Roles/view.php:79
+#: ./templates/Users/view.php:56
+#: ./templates/Users/view.php:134
+msgid "Created"
+msgstr "创建时间"
+
+#: ./templates/PlayerNameMappings/view.php:40
+#: ./templates/Roles/view.php:44
+#: ./templates/Roles/view.php:80
+#: ./templates/Users/view.php:60
+#: ./templates/Users/view.php:135
+msgid "Modified"
+msgstr "修改时间"
+
+#: ./templates/RolesUsers/add.php:9
+msgid "Add Roles User"
+msgstr "添加用户角色"
+
+#: ./templates/RolesUsers/add.php:12
+#: ./templates/RolesUsers/edit.php:12
+#: ./templates/RolesUsers/index.php:12
+#: ./templates/RolesUsers/view.php:12
+msgid "List Roles Users"
+msgstr "用户角色列表"
+
+#: ./templates/RolesUsers/edit.php:9
+msgid "Edit Roles User"
+msgstr "编辑用户角色"
+
+#: ./templates/RolesUsers/index.php:9
+msgid "Roles Users"
+msgstr "用户角色"
+
+#: ./templates/RolesUsers/index.php:27
+msgid "New Roles User"
+msgstr "新增用户角色"
+
+#: ./templates/RolesUsers/view.php:9
+msgid "Roles User"
+msgstr "用户角色"
+
+#: ./templates/RolesUsers/view.php:24
+#: ./templates/Users/awaiting_approval.php:8
+#: ./templates/Users/view.php:9
+msgid "User"
+msgstr "用户"
+
+#: ./templates/RolesUsers/view.php:28
+#: ./templates/Roles/view.php:9
+msgid "Role"
+msgstr "角色"
+
+#: ./templates/Roles/add.php:9
+msgid "Add Role"
+msgstr "添加角色"
+
+#: ./templates/Roles/add.php:12
+#: ./templates/Roles/edit.php:12
+#: ./templates/Roles/index.php:12
+#: ./templates/Roles/view.php:12
+#: ./templates/Users/view.php:124
+msgid "List Roles"
+msgstr "角色列表"
+
+#: ./templates/Roles/edit.php:9
+msgid "Edit Role"
+msgstr "编辑角色"
+
+#: ./templates/Roles/index.php:9
+msgid "Roles"
+msgstr "角色"
+
+#: ./templates/Roles/index.php:27
+#: ./templates/Users/view.php:123
+msgid "New Role"
+msgstr "新增角色"
+
+#: ./templates/Roles/view.php:32
+#: ./templates/StandardChests/add.php:23
+#: ./templates/StandardChests/edit.php:24
+#: ./templates/StandardChests/index.php:80
+#: ./templates/StandardChests/index.php:122
+#: ./templates/StandardChests/view.php:28
+#: ./templates/Users/view.php:133
+msgid "Alias"
+msgstr "别名"
+
+#: ./templates/Roles/view.php:66
+msgid "Related Users"
+msgstr "关联用户"
+
+#: ./templates/Roles/view.php:68
+#: ./templates/Users/index.php:27
+msgid "New User"
+msgstr "新增用户"
+
+#: ./templates/Roles/view.php:69
+#: ./templates/Users/add.php:12
+#: ./templates/Users/edit.php:32
+#: ./templates/Users/index.php:12
+#: ./templates/Users/view.php:12
+msgid "List Users"
+msgstr "用户列表"
+
+#: ./templates/Roles/view.php:77
+#: ./templates/Users/login.php:20
+#: ./templates/Users/view.php:28
+msgid "Email"
+msgstr "邮箱"
+
+#: ./templates/Roles/view.php:78
+#: ./templates/Users/login.php:26
+msgid "Password"
+msgstr "密码"
+
+#: ./templates/Roles/view.php:86
+msgid "Users record not found!"
+msgstr "未找到用户记录！"
+
+#: ./templates/StandardChests/add.php:9
+msgid "Add Standard Chest"
+msgstr "添加标准宝箱"
+
+#: ./templates/StandardChests/add.php:12
+#: ./templates/StandardChests/edit.php:12
+#: ./templates/StandardChests/index.php:13
+#: ./templates/StandardChests/view.php:12
+msgid "List Standard Chests"
+msgstr "标准宝箱列表"
+
+#: ./templates/StandardChests/add.php:23
+#: ./templates/StandardChests/edit.php:24
+#: ./templates/StandardChests/lost_chests.php:155
+msgid "Optional friendly name shown in reports instead of the source"
+msgstr "可选的友好名称，在报表中代替来源显示"
+
+#: ./templates/StandardChests/edit.php:9
+msgid "Edit Standard Chest"
+msgstr "编辑标准宝箱"
+
+#: ./templates/StandardChests/index.php:10
+#: ./templates/StandardChests/lost_chests.php:12
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:73
+msgid "Standard Chests"
+msgstr "标准宝箱"
+
+#: ./templates/StandardChests/index.php:29
+msgid "Filters"
+msgstr "筛选条件"
+
+#: ./templates/StandardChests/index.php:35
+msgid "New Standard Chest"
+msgstr "新增标准宝箱"
+
+#: ./templates/StandardChests/index.php:45
+msgid "Search"
+msgstr "搜索"
+
+#: ./templates/StandardChests/index.php:46
+msgid "Source or alias..."
+msgstr "来源或别名…"
+
+#: ./templates/StandardChests/index.php:54
+msgid "Chest Type"
+msgstr "宝箱类型"
+
+#: ./templates/StandardChests/index.php:57
+#: ./templates/StandardChests/view.php:40
+msgid "Epic Monster"
+msgstr "史诗怪物"
+
+#: ./templates/StandardChests/index.php:58
+msgid "Regular"
+msgstr "普通"
+
+#: ./templates/StandardChests/index.php:67
+#: ./templates/StandardChests/view.php:36
+msgid "Score"
+msgstr "积分"
+
+#: ./templates/StandardChests/index.php:70
+msgid "Scored"
+msgstr "有分值"
+
+#: ./templates/StandardChests/index.php:71
+msgid "Without score"
+msgstr "无分值"
+
+#: ./templates/StandardChests/index.php:83
+msgid "With alias"
+msgstr "有别名"
+
+#: ./templates/StandardChests/index.php:84
+msgid "Without alias"
+msgstr "无别名"
+
+#: ./templates/StandardChests/index.php:93
+msgid "Per page"
+msgstr "每页条数"
+
+#: ./templates/StandardChests/index.php:96
+msgid "Default"
+msgstr "默认"
+
+#: ./templates/StandardChests/index.php:108
+msgid "Clear filters"
+msgstr "清除筛选"
+
+#: ./templates/StandardChests/index.php:150
+msgid "No standard chest matches the selected filters."
+msgstr "没有标准宝箱符合所选筛选条件。"
+
+#: ./templates/StandardChests/index.php:151
+msgid "No standard chest registered yet."
+msgstr "尚未登记任何标准宝箱。"
+
+#: ./templates/StandardChests/lost_chests.php:9
+#: ./templates/StandardChests/lost_chests.php:13
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:76
+msgid "Lost Chests"
+msgstr "遗漏的宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:25
+msgid "Unregistered Chest Types"
+msgstr "未登记的宝箱类型"
+
+#: ./templates/StandardChests/lost_chests.php:34
+msgid "Total Unregistered Collections"
+msgstr "未登记的收集总次数"
+
+#: ./templates/StandardChests/lost_chests.php:43
+msgid "Quick Action"
+msgstr "快捷操作"
+
+#: ./templates/StandardChests/lost_chests.php:45
+msgid "Configure score & monster status, select and add to Standard Chests."
+msgstr "设置分值与怪物属性，选中后添加到标准宝箱。"
+
+#: ./templates/StandardChests/lost_chests.php:57
+msgid "Lost Chests Detected in Collected History"
+msgstr "在收集历史中发现的遗漏宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:59
+msgid "types"
+msgstr "种"
+
+#: ./templates/StandardChests/lost_chests.php:64
+msgid "Filter chest names..."
+msgstr "筛选宝箱名称…"
+
+#: ./templates/StandardChests/lost_chests.php:69
+msgid "Back to Standard Chests"
+msgstr "返回标准宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:78
+msgid "All Chests are Registered!"
+msgstr "所有宝箱都已登记！"
+
+#: ./templates/StandardChests/lost_chests.php:80
+msgid "There are no collected chests missing from your Standard Chests catalog. Everything is up to date."
+msgstr "你的标准宝箱目录中没有缺失的收集宝箱。一切都是最新的。"
+
+#: ./templates/StandardChests/lost_chests.php:82
+msgid "View Standard Chests"
+msgstr "查看标准宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:90
+msgid "Select All"
+msgstr "全选"
+
+#: ./templates/StandardChests/lost_chests.php:93
+msgid "Deselect All"
+msgstr "取消全选"
+
+#: ./templates/StandardChests/lost_chests.php:97
+msgid "selected"
+msgstr "已选中"
+
+#: ./templates/StandardChests/lost_chests.php:103
+#: ./templates/StandardChests/lost_chests.php:199
+msgid "Add Selected to Standard Chests"
+msgstr "将所选添加到标准宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:113
+msgid "Select all"
+msgstr "全选"
+
+#: ./templates/StandardChests/lost_chests.php:115
+msgid "Chest Source (Name)"
+msgstr "宝箱来源（名称）"
+
+#: ./templates/StandardChests/lost_chests.php:116
+msgid "Alias (optional)"
+msgstr "别名（可选）"
+
+#: ./templates/StandardChests/lost_chests.php:117
+msgid "Times Seen"
+msgstr "出现次数"
+
+#: ./templates/StandardChests/lost_chests.php:119
+msgid "Activity Window"
+msgstr "活跃时间段"
+
+#: ./templates/StandardChests/lost_chests.php:120
+msgid "Points (Score)"
+msgstr "分值（积分）"
+
+#: ./templates/StandardChests/lost_chests.php:121
+msgid "Epic Monster?"
+msgstr "是史诗怪物吗？"
+
+#: ./templates/StandardChests/lost_chests.php:122
+msgid "Qty / Kill"
+msgstr "数量 / 击杀"
+
+#: ./templates/StandardChests/lost_chests.php:123
+msgid "Action"
+msgstr "操作"
+
+#: ./templates/StandardChests/lost_chests.php:150
+msgid "Possible Monster Chest"
+msgstr "可能是怪物宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:155
+msgid "Friendly name"
+msgstr "友好名称"
+
+#: ./templates/StandardChests/lost_chests.php:168
+msgid "First:"
+msgstr "首次："
+
+#: ./templates/StandardChests/lost_chests.php:169
+msgid "Last:"
+msgstr "最近："
+
+#: ./templates/StandardChests/lost_chests.php:181
+msgid "Opt."
+msgstr "可选"
+
+#: ./templates/StandardChests/lost_chests.php:184
+msgid "Add only this chest"
+msgstr "只添加这个宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:196
+msgid "Tip: Fill in the points and select which chests you want to register. Unselected chests will remain in the lost list."
+msgstr "提示：填写分值并选择要登记的宝箱。未选中的宝箱会留在遗漏列表中。"
+
+#: ./templates/StandardChests/lost_chests.php:246
+#: ./templates/StandardChests/lost_chests.php:250
+msgid "Selected to Standard Chests"
+msgstr "所选项添加到标准宝箱"
+
+#: ./templates/StandardChests/lost_chests.php:301
+msgid "Add \"{0}\" to Standard Chests?"
+msgstr "要把“{0}”添加到标准宝箱吗？"
+
+#: ./templates/StandardChests/view.php:9
+msgid "Standard Chest"
+msgstr "标准宝箱"
+
+#: ./templates/StandardChests/view.php:44
+msgid "Chests Qty"
+msgstr "宝箱数量"
+
+#: ./templates/StandardChests/weights.php:16
+msgid "Show Only Scored"
+msgstr "仅显示有分值的"
+
+#: ./templates/StandardChests/weights.php:19
+msgid "Show All Chests"
+msgstr "显示所有宝箱"
+
+#: ./templates/StandardChests/weights.php:33
+msgid "Chest Weights & Goals"
+msgstr "宝箱权重与目标"
+
+#: ./templates/StandardChests/weights.php:34
+msgid "Score values and points assigned to each chest source"
+msgstr "分配给每个宝箱来源的分值"
+
+#: ./templates/StandardChests/weights.php:52
+msgid "Chest Scoring Table"
+msgstr "宝箱计分表"
+
+#: ./templates/StandardChests/weights.php:59
+msgid "Score Value"
+msgstr "分值"
+
+#: ./templates/TroopCalculator/index.php:13
+#: ./templates/TroopCalculator/index.php:19
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:48
+msgid "Troop Calculator"
+msgstr "部队计算器"
+
+#: ./templates/TroopCalculator/index.php:49
+msgid "Epic Monster Hunters"
+msgstr "史诗怪物猎人"
+
+#: ./templates/TroopCalculator/index.php:52
+msgid "Melee"
+msgstr "近战"
+
+#: ./templates/TroopCalculator/index.php:53
+msgid "Mounted"
+msgstr "骑兵"
+
+#: ./templates/TroopCalculator/index.php:54
+msgid "Ranged"
+msgstr "远程"
+
+#: ./templates/TroopCalculator/index.php:55
+msgid "Flying"
+msgstr "飞行"
+
+#: ./templates/TroopCalculator/index.php:58
+msgid "Beasts"
+msgstr "野兽"
+
+#: ./templates/TroopCalculator/index.php:59
+msgid "Giants"
+msgstr "巨人"
+
+#: ./templates/TroopCalculator/index.php:60
+msgid "Dragons"
+msgstr "巨龙"
+
+#: ./templates/TroopCalculator/index.php:61
+msgid "Elementals"
+msgstr "元素生物"
+
+#: ./templates/TroopCalculator/index.php:64
+msgid "Army (leadership)"
+msgstr "军队（统率）"
+
+#: ./templates/TroopCalculator/index.php:65
+msgid "Monsters (dominance)"
+msgstr "怪物（支配）"
+
+#: ./templates/TroopCalculator/index.php:66
+msgid "Mercenaries (authority)"
+msgstr "雇佣兵（威望）"
+
+#: ./templates/TroopCalculator/index.php:123
+msgid "Army Limits"
+msgstr "部队上限"
+
+#: ./templates/TroopCalculator/index.php:127
+msgid "Take these from the army screen. Each limit is spent by its own section: leadership buys guardsmen, specialists and siege; dominance buys monsters; authority buys mercenaries."
+msgstr "请从军队界面抄下这些数值。每个上限由各自的分区消耗：统率用于卫兵、专家和攻城；支配用于怪物；威望用于雇佣兵。"
+
+#: ./templates/TroopCalculator/index.php:133
+msgid "Leadership"
+msgstr "统率"
+
+#: ./templates/TroopCalculator/index.php:142
+msgid "Dominance"
+msgstr "支配"
+
+#: ./templates/TroopCalculator/index.php:151
+msgid "Authority"
+msgstr "威望"
+
+#: ./templates/TroopCalculator/index.php:163
+msgid "Bonuses"
+msgstr "加成"
+
+#: ./templates/TroopCalculator/index.php:167
+msgid "Percentages exactly as the game reports them: type 420 for +420%. Leave a field blank when you have no bonus of that kind."
+msgstr "百分比请照游戏显示的填写：+420% 就输入 420。若没有该类加成，请留空。"
+
+#: ./templates/TroopCalculator/index.php:174
+msgid "By class"
+msgstr "按职业"
+
+#: ./templates/TroopCalculator/index.php:175
+msgid "By category"
+msgstr "按类别"
+
+#: ./templates/TroopCalculator/index.php:176
+msgid "Monsters Boost research"
+msgstr "怪物强化研究"
+
+#: ./templates/TroopCalculator/index.php:185
+msgid "Health %"
+msgstr "生命 %"
+
+#: ./templates/TroopCalculator/index.php:186
+msgid "Strength %"
+msgstr "攻击力 %"
+
+#: ./templates/TroopCalculator/index.php:211
+msgid "Strength against Epic Monsters (%)"
+msgstr "对史诗怪物的攻击力（%）"
+
+#: ./templates/TroopCalculator/index.php:216
+msgid "The single figure the battle report shows for every unit in the march."
+msgstr "战报为行军中每个单位显示的那个数值。"
+
+#: ./templates/TroopCalculator/index.php:228
+msgid "The monster figures above already include the weakest Monsters Boost research"
+msgstr "上面的怪物数值已包含最低等级的怪物强化研究"
+
+#: ./templates/TroopCalculator/index.php:231
+msgid "This is how the army screen reports it. Untick only if you typed the monster bonuses with no type research folded in, otherwise the boost is counted twice."
+msgstr "军队界面就是这样显示的。只有当你填写的怪物加成没有算入类别研究时才取消勾选，否则强化会被重复计算。"
+
+#: ./templates/TroopCalculator/index.php:242
+msgid "Kill Order"
+msgstr "阵亡顺序"
+
+#: ./templates/TroopCalculator/index.php:246
+msgid "The stacks are lost in this order, weakest first, so the strongest units survive the most rounds and land the most hits."
+msgstr "队列按此顺序阵亡，最弱的先亡，这样最强的单位能存活更多回合、打出更多次攻击。"
+
+#: ./templates/TroopCalculator/index.php:250
+msgid "Levels you are bringing"
+msgstr "你要带的等级"
+
+#: ./templates/TroopCalculator/index.php:267
+msgid "Click a level to select it. Leave all unselected to use everything in the catalogue."
+msgstr "点击某个等级即可选中。全部不选则使用整个目录。"
+
+#: ./templates/TroopCalculator/index.php:275
+msgid "Order within each level"
+msgstr "每个等级内的顺序"
+
+#: ./templates/TroopCalculator/index.php:284
+msgid "Custom order"
+msgstr "自定义顺序"
+
+#: ./templates/TroopCalculator/index.php:293
+msgid "Category order within a level"
+msgstr "等级内的类别顺序"
+
+#: ./templates/TroopCalculator/index.php:303
+msgid "Dies #{0}"
+msgstr "第 {0} 个阵亡"
+
+#: ./templates/TroopCalculator/index.php:314
+msgid "First box dies first. Siege engines always lead their own level."
+msgstr "第一个格子先阵亡。攻城器械在自己的等级中始终排在最前。"
+
+#: ./templates/TroopCalculator/index.php:322
+msgid "Advanced"
+msgstr "高级"
+
+#: ./templates/TroopCalculator/index.php:334
+msgid "Enemy stacks"
+msgstr "敌方队列"
+
+#: ./templates/TroopCalculator/index.php:341
+msgid "4 for a standard Epic Monster. The first stack lost in each round is a sacrifice that will not strike. Use 0 to treat every stack as a striker."
+msgstr "标准史诗怪物填 4。每回合最先损失的队列是牺牲品，不会出手。填 0 则把所有队列都视为可出手。"
+
+#: ./templates/TroopCalculator/index.php:350
+msgid "Section gap"
+msgstr "分区间隔"
+
+#: ./templates/TroopCalculator/index.php:355
+msgid "How far below the army the monsters start, and the mercenaries below them. 0.95 leaves a 5% gap."
+msgstr "怪物从军队下方多远处开始，雇佣兵再在其下。0.95 表示留出 5% 的间隔。"
+
+#: ./templates/TroopCalculator/index.php:367
+msgid "Keep strength descending too"
+msgstr "攻击力也保持递减"
+
+#: ./templates/TroopCalculator/index.php:371
+msgid "Stacks strike in order of strength but die in order of health. Leave this on so every stack strikes before it is lost."
+msgstr "队列按攻击力顺序出手，但按生命顺序阵亡。保持开启，可让每个队列在阵亡前都出手一次。"
+
+#: ./templates/TroopCalculator/index.php:377
+msgid "Units to leave out"
+msgstr "要排除的单位"
+
+#: ./templates/TroopCalculator/index.php:387
+msgid "Hold Ctrl to pick several. Use this for units you have not researched yet."
+msgstr "按住 Ctrl 可多选。用于你还没研究出来的单位。"
+
+#: ./templates/TroopCalculator/index.php:394
+msgid "Calculate"
+msgstr "计算"
+
+#: ./templates/TroopCalculator/index.php:396
+msgid "Clear saved inputs"
+msgstr "清除已保存的输入"
+
+#: ./templates/TroopCalculator/index.php:398
+msgid "Clear the remembered inputs?"
+msgstr "要清除记住的输入值吗？"
+
+#: ./templates/TroopCalculator/index.php:413
+msgid "Planned March"
+msgstr "编排好的行军"
+
+#: ./templates/TroopCalculator/index.php:416
+msgid "Copy as text"
+msgstr "复制为文本"
+
+#: ./templates/TroopCalculator/index.php:423
+msgid "Total health"
+msgstr "总生命"
+
+#: ./templates/TroopCalculator/index.php:427
+msgid "Total strength"
+msgstr "总攻击力"
+
+#: ./templates/TroopCalculator/index.php:431
+msgid "Stacks"
+msgstr "队列"
+
+#: ./templates/TroopCalculator/index.php:435
+msgid "Full revival"
+msgstr "全部复活"
+
+#: ./templates/TroopCalculator/index.php:436
+msgid "gold"
+msgstr "金币"
+
+#: ./templates/TroopCalculator/index.php:454
+msgid "Unit"
+msgstr "单位"
+
+#: ./templates/TroopCalculator/index.php:455
+msgid "Tier"
+msgstr "等级"
+
+#: ./templates/TroopCalculator/index.php:456
+msgid "Count"
+msgstr "数量"
+
+#: ./templates/TroopCalculator/index.php:457
+msgid "Stack health"
+msgstr "队列生命"
+
+#: ./templates/TroopCalculator/index.php:458
+msgid "Stack strength"
+msgstr "队列攻击力"
+
+#: ./templates/TroopCalculator/index.php:459
+msgid "Limit used"
+msgstr "已用上限"
+
+#: ./templates/TroopCalculator/index.php:471
+msgid "Opens a round and will be lost before it strikes"
+msgstr "开启一个回合，且会在出手前阵亡"
+
+#: ./templates/TroopCalculator/index.php:472
+msgid "sacrifice"
+msgstr "牺牲"
+
+#: ./templates/TroopCalculator/index.php:516
+msgid "Copied"
+msgstr "已复制"
+
+#: ./templates/Users/add.php:9
+msgid "Add User"
+msgstr "添加用户"
+
+#: ./templates/Users/add.php:26
+msgid "Active (Allow user to log in)"
+msgstr "启用（允许该用户登录）"
+
+#: ./templates/Users/add.php:31
+msgid "The user will be created with the role: user"
+msgstr "该用户将以此角色创建：user"
+
+#: ./templates/Users/awaiting_approval.php:29
+msgid "Registration Complete!"
+msgstr "注册完成！"
+
+#: ./templates/Users/awaiting_approval.php:32
+msgid "Awaiting Administrator Approval"
+msgstr "等待管理员审批"
+
+#: ./templates/Users/awaiting_approval.php:50
+msgid "Your Google account has been successfully registered."
+msgstr "你的 Google 账号已成功注册。"
+
+#: ./templates/Users/awaiting_approval.php:53
+msgid "For clan security and organization purposes, your access must be <strong>activated by an administrator</strong>. Please contact a clan leader or admin to grant your access."
+msgstr "为了部落的安全与管理，你的访问权限需要<strong>由管理员启用</strong>。请联系部落首领或管理员为你开通。"
+
+#: ./templates/Users/awaiting_approval.php:59
+msgid "Back to Login"
+msgstr "返回登录"
+
+#: ./templates/Users/edit.php:29
+msgid "Edit User"
+msgstr "编辑用户"
+
+#: ./templates/Users/edit.php:47
+msgid "Only administrators can change the email."
+msgstr "只有管理员才能修改邮箱。"
+
+#: ./templates/Users/edit.php:53
+msgid "Active (Allow user to log in and access the system)"
+msgstr "启用（允许该用户登录并使用系统）"
+
+#: ./templates/Users/edit.php:58
+#: ./templates/Users/view.php:42
+msgid "Google Account"
+msgstr "Google 账号"
+
+#: ./templates/Users/edit.php:61
+msgid "Linked with Google OAuth"
+msgstr "已通过 Google OAuth 绑定"
+
+#: ./templates/Users/edit.php:73
+msgid "Only administrators can change the role."
+msgstr "只有管理员才能修改角色。"
+
+#: ./templates/Users/index.php:9
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:53
+msgid "Users"
+msgstr "用户"
+
+#: ./templates/Users/index.php:51
+msgid "Linked with Google"
+msgstr "已绑定 Google"
+
+#: ./templates/Users/index.php:70
+msgid "Approve user access"
+msgstr "批准该用户的访问"
+
+#: ./templates/Users/index.php:72
+#: ./templates/Users/view.php:70
+msgid "Are you sure you want to deactivate {0}?"
+msgstr "确定要停用 {0} 吗？"
+
+#: ./templates/Users/index.php:72
+msgid "Deactivate user"
+msgstr "停用用户"
+
+#: ./templates/Users/login.php:14
+msgid "Sign in to start your session"
+msgstr "登录以开始你的会话"
+
+#: ./templates/Users/login.php:35
+msgid "Sign In"
+msgstr "登录"
+
+#: ./templates/Users/login.php:44
+msgid "OR"
+msgstr "或"
+
+#: ./templates/Users/view.php:37
+msgid "Pending / Inactive"
+msgstr "待处理 / 未启用"
+
+#: ./templates/Users/view.php:45
+msgid "Linked"
+msgstr "已绑定"
+
+#: ./templates/Users/view.php:47
+msgid "Not Linked"
+msgstr "未绑定"
+
+#: ./templates/Users/view.php:68
+msgid "Approve User"
+msgstr "批准用户"
+
+#: ./templates/Users/view.php:70
+msgid "Deactivate User"
+msgstr "停用用户"
+
+#: ./templates/Users/view.php:87
+msgid "Related Members"
+msgstr "关联成员"
+
+#: ./templates/Users/view.php:100
+msgid "Members record not found!"
+msgstr "未找到成员记录！"
+
+#: ./templates/Users/view.php:121
+msgid "Related Roles"
+msgstr "关联角色"
+
+#: ./templates/Users/view.php:141
+msgid "Roles record not found!"
+msgstr "未找到角色记录！"
+
+#: ./templates/element/event_banner.php:32
+msgid "Event running: {0}"
+msgstr "进行中的活动：{0}"
+
+#: ./templates/element/event_banner.php:33
+msgid "Event #{0} - {1} - ends {2} UTC"
+msgstr "活动 #{0} - {1} - 于 {2} UTC 结束"
+
+#: ./templates/element/event_banner.php:39
+msgid "No event is running. Click to see past events."
+msgstr "当前没有活动在进行。点击查看往期活动。"
+
+#: ./templates/element/event_row.php:84
+msgid "Open event"
+msgstr "打开活动"
+
+#: ./templates/layout/error.php:36
+msgid "Back"
+msgstr "返回"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:44
+msgid "Tools"
+msgstr "工具"
+
+#: ./templates/plugin/CakeLte/element/header/leftmenu.php:67
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:108
+msgid "Bank"
+msgstr "银行"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:32
+msgid "Admin"
+msgstr "管理"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:41
+msgid "List"
+msgstr "列表"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:44
+msgid "Update"
+msgstr "更新"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:47
+msgid "Names Mapping"
+msgstr "名称映射"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:101
+msgid "Summary last cycles"
+msgstr "最近周期汇总"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:158
+msgid "Login"
+msgstr "登录"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:182
+msgid "{0} pending approval(s)"
+msgstr "{0} 项待审批"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:185
+msgid "Member since {0}"
+msgstr "自 {0} 起成为成员"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:194
+msgid "Logout"
+msgstr "退出登录"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:200
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:260
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:297
+msgid "Change Password"
+msgstr "修改密码"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:268
+msgid "Current Password"
+msgstr "当前密码"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:276
+msgid "New Password"
+msgstr "新密码"
+
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:286
+msgid "Confirm New Password"
+msgstr "确认新密码"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:4
+msgid "MAIN"
+msgstr "主菜单"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:8
+msgid "Start Pages"
+msgstr "起始页面"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:12
+msgid "Active Page"
+msgstr "启用的页面"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:16
+msgid "Inactive Page"
+msgstr "停用的页面"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:22
+msgid "Simple Link"
+msgstr "普通链接"
+
+#: ./templates/plugin/CakeLte/element/sidebar/menu.php:23
+msgid "New"
+msgstr "新增"
+
+#: ./src/Controller/ConfigController.php:171
+msgid "The maintenance entries were removed from the crontab."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:177
+msgid "Scheduled: {0} Brazil time ({1} UTC)."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:242
+msgid "The settings were saved, but the crontab could not be rewritten: {0}"
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:254
+msgid "The schedule in the crontab was written by hand and this page cannot rewrite it, so the backup line was not added. Copy the block at the bottom of this page into the crontab."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:261
+msgid "The nightly database backup is turned off."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:266
+msgid "The database is backed up every day at {0} UTC to {1}, keeping {2} day(s)."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:277
+msgid "Nothing is scheduled yet, so no backup will be taken. Install the schedule above."
+msgstr ""
+
+#: ./src/Controller/ConfigController.php:278
+msgid "The crontab cannot be reached from here, so nothing will take the backup until the block at the bottom of this page is installed by hand."
+msgstr ""
+
+#: ./src/Controller/TroopCalculatorController.php:304
+msgid "From my best guardsmen"
+msgstr ""
+
+#: ./src/Controller/TroopCalculatorController.php:306
+msgid "Tier {0}"
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:330
+msgid "The database connection does not name a database to back up."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:338
+msgid "The application is not on MySQL or MariaDB, so mysqldump cannot back it up."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:362
+msgid "mysqldump was not found on this server, so no backup can be taken."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:449
+msgid "PHP on this server cannot run shell commands, so mysqldump cannot be called."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:454
+msgid "PHP on this server has exec() disabled, so mysqldump cannot be called."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:539
+msgid "The backup folder cannot contain line breaks."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:548
+msgid "The backup folder has to be a full path, such as {0}, because cron does not start in the site directory."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:558
+msgid "The backup folder path is too long (255 characters at most)."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:585
+msgid "The retention period has to be a whole number of days."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:591
+msgid "The retention period has to be between {0} and {1} days."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:720
+msgid "mysqldump failed: {0}"
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:722
+msgid "it exited with code {0}."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:730
+msgid "The dump file was not created or came out empty, so it was deleted."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:760
+msgid "The dump was written but could not be compressed."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:780
+msgid "The dump was written but could not be compressed: {0}"
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:803
+msgid "A temporary file for the database credentials could not be created."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:864
+msgid "The backup folder {0} could not be created."
+msgstr ""
+
+#: ./src/Service/DatabaseBackupService.php:868
+msgid "The backup folder {0} cannot be written to."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:219
+msgid "The crontab was saved but the maintenance entries are not in it. Please add them by hand."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:403
+msgid "\"{0}\" is not a valid time of day."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:412
+msgid "Choose at least one time of day for the maintenance to run."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:417
+msgid "The maintenance cannot be scheduled more than {0} times a day."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:563
+msgid "This server runs Windows, which has no crontab. Use Task Scheduler with the command shown below."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:569
+msgid "PHP on this server cannot run shell commands, so the crontab cannot be reached from here."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:574
+msgid "PHP on this server has exec() disabled, so the crontab cannot be reached from here."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:578
+msgid "The crontab command is not installed on this server."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:607
+msgid "The crontab could not be read: {0}"
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:625
+msgid "A temporary file for the new crontab could not be created."
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:638
+msgid "The crontab could not be written: {0}"
+msgstr ""
+
+#: ./src/Service/MaintenanceScheduleService.php:640
+msgid "the crontab command failed."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:28
+#: ./templates/Config/maintenance.php:32
+#: ./templates/Config/maintenance.php:49
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:148
+msgid "Maintenance"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:52
+msgid "The scheduled tasks: archiving finished cycles, recording finished events, purging old chests and backing up the database"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:58
+msgid "Check again"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:68
+msgid "Current status"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:70
+msgid "Read from the crontab of the user the web server runs as, every time this page is opened."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:78
+msgid "The crontab cannot be checked from here"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:80
+msgid "The entry can still be installed by hand: copy the block at the bottom of this page."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:87
+msgid "The crontab could not be read"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:97
+msgid "The maintenance is in the crontab and runs {0} time(s) a day."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:102
+msgid "The database backup is in there too."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:111
+msgid "Not scheduled"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:113
+msgid "Nothing is running the maintenance. Finished cycles are not being archived and old chests are not being purged. Install it below."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:125
+msgid "Brazil time"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:126
+msgid "UTC"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:142
+msgid "The lines in the crontab:"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:150
+msgid "Last cron output written {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:152
+msgid "The cron log has never been written, so the task has probably never run here."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:157
+msgid "Brazil is {0} right now; {1} is written to the crontab as {2} UTC."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:167
+msgid "The server clock is {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:174
+msgid "The entries declare CRON_TZ=UTC, so this does not change when they run."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:183
+msgid "Entries added by hand"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:185
+msgid "These call the maintenance but were not installed from this page, so saving here will not change or remove them. Delete them with <code>crontab -e</code> if you do not want the task running twice."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:198
+msgid "Schedule"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:200
+msgid "Pick the times on the Brazil clock. They are converted to UTC before being written, so the schedule holds whatever timezone the server keeps."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:206
+msgid "How many times a day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:211
+msgid "{0} times a day (suggested)"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:212
+msgid "Once a day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:212
+msgid "{0} times a day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:217
+msgid "Twice a day is the suggestion: {0} and {1} Brazil time, quiet hours either side of the clan's active evening. Changing this fills in suggested times, which you can then edit."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:230
+msgid "Run {0}"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:240
+msgid "Save schedule"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:240
+msgid "Install in crontab"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:245
+msgid "Remove from crontab"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:252
+msgid "Remove the maintenance from the crontab? Nothing will archive cycles, purge old chests or back up the database until it is installed again."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:266
+msgid "Database backup"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:268
+msgid "A gzipped mysqldump of the whole database, taken every day at {0} UTC — the game reset — so each dump holds one cycle day exactly as the game closed it. The time is fixed for that reason; the folder and how long dumps are kept are yours to choose."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:281
+msgid "Not backing up"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:283
+msgid "Nothing is dumping the database. Turn it on below."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:291
+msgid "Turned on, but not in the crontab"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:293
+msgid "The backup is turned on but nothing is calling it. Save the schedule above, or install the block by hand."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:302
+msgid "Backing up daily"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:304
+msgid "Every day at {0} UTC ({1} Brazil time), keeping {2} day(s) of dumps."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:318
+msgid "Saving to"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:321
+msgid "(configured as {0})"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:324
+msgid "— created on the first run."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:326
+msgid "— this folder cannot be written to."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:332
+msgid "{0} dump(s) there, {1} in all. Newest: {2}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:339
+msgid "No dumps in that folder yet."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:341
+msgid "The folder is not there yet, so there are no dumps."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:346
+msgid "Every step is appended to {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:349
+msgid "Cron last wrote its own log {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:357
+msgid "This installation is not on MySQL or MariaDB, so mysqldump cannot back it up."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:362
+msgid "The command may still work from a real shell, where cron runs it."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:365
+msgid "mysqldump found at {0}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:368
+msgid "mysqldump was not found on this server. Install the MySQL/MariaDB client tools, or no backup can be taken."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:380
+msgid "Back the database up every day"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:386
+msgid "Folder to save to"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:390
+msgid "A full path, because cron does not start in the site directory. {0} is the home directory of the user the site runs as, so the default {1} needs nothing set up. The folder is created if it is not there."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:399
+msgid "Keep dumps for"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:405
+msgid "days"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:409
+msgid "Anything older is deleted after each backup, so the folder holds this many days and no more. Between {0} and {1} days; the old script kept {2}."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:421
+msgid "Save backup settings"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:431
+msgid "Install it by hand"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:433
+msgid "For the times shown in the form above. Run <code>crontab -e</code> on the server and paste this at the end of the file."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:441
+#: ./templates/Config/maintenance.php:530
+msgid "Copy"
+msgstr ""
+
+#: ./templates/Config/maintenance.php:444
+msgid "This block is what the buttons above write. Saving the schedule here rewrites everything between the two marker comments and leaves the rest of the crontab alone."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:451
+msgid "You can also run the task yourself at any time: {0} from the application directory, or add {1} to see what it would do without touching the database."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:457
+msgid "The backup is the same: {0} takes one now, and {1} takes one even while the nightly backup is turned off."
+msgstr ""
+
+#: ./templates/Config/maintenance.php:492
+msgid "= {0} UTC"
+msgstr ""
+
+#: ./templates/TroopCalculator/index.php:348
+msgid "Mercenary tier"
+msgstr ""
+
+#: ./templates/TroopCalculator/index.php:354
+msgid "Only one band is for hire at a time, and it follows your best guardsmen. Set it here if the game offers you a different one."
+msgstr ""

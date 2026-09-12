@@ -30,6 +30,7 @@ use Cake\ORM\Entity;
  * @property int $revival_silver
  * @property bool $is_mercenary
  * @property string|null $guardsmen_tiers
+ * @property int|null $merc_tier
  * @property bool $is_temporary
  * @property float $double_damage_chance
  * @property float $player_battle_multiplier
@@ -70,6 +71,7 @@ class Troop extends Entity
         'revival_silver' => true,
         'is_mercenary' => true,
         'guardsmen_tiers' => true,
+        'merc_tier' => true,
         'is_temporary' => true,
         'double_damage_chance' => true,
         'player_battle_multiplier' => true,
@@ -123,23 +125,23 @@ class Troop extends Entity
     }
 
     /**
-     * Whether a player whose best guardsmen are at $tier can hire this unit.
+     * Whether this unit belongs to a given mercenary band.
      *
-     * Mercenaries are offered per guardsman tier: a tier 9 player is shown the
-     * tier 6-9 roster and none of the lower ones. Units that carry no tier list
-     * are not gated at all.
+     * Mercenaries come in bands -- 5, 6, 7 and 9 -- and the band on offer
+     * follows the player's best guardsmen. Only one band is available at a
+     * time, so a unit from any other band is simply not for hire. Anything that
+     * is not a mercenary is never gated this way.
      *
-     * @param int|null $tier The player's highest guardsman tier.
+     * @param int|null $tier The band the player can hire from.
      * @return bool
      */
-    public function isAvailableAtGuardsmenTier(?int $tier): bool
+    public function isInMercTier(?int $tier): bool
     {
-        $tiers = $this->guardsmen_tier_list;
-        if ($tiers === []) {
+        if (!$this->is_mercenary) {
             return true;
         }
 
-        return $tier !== null && in_array($tier, $tiers, true);
+        return $tier !== null && $this->merc_tier === $tier;
     }
 
     /**

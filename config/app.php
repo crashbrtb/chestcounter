@@ -68,6 +68,32 @@ return [
     ],
 
     /*
+     * Internationalization.
+     *
+     * - languages - The locales the site is translated into, mapped to the
+     *   label shown in the language switcher. Order matters: the first entry
+     *   is the fallback used when the browser asks for nothing we speak.
+     *   A locale listed here needs a matching catalogue in
+     *   `resources/locales/<locale>/default.po` (en_US is the source language,
+     *   so it needs none).
+     */
+    'I18n' => [
+        'languages' => [
+            'en_US' => 'English',
+            'pt_BR' => 'Português',
+            'es_ES' => 'Español',
+            'fr_FR' => 'Français',
+            'de_DE' => 'Deutsch',
+            'it_IT' => 'Italiano',
+            'tr_TR' => 'Türkçe',
+            'ru_RU' => 'Русский',
+            'zh_CN' => '简体中文',
+            'ja_JP' => '日本語',
+            'ko_KR' => '한국어',
+        ],
+    ],
+
+    /*
      * Security and encryption configuration
      *
      * - salt - A random string used in security hashing methods.
@@ -87,7 +113,14 @@ return [
      * enable timestamping regardless of debug value.
      */
     'Asset' => [
-        //'timestamp' => true,
+        /*
+         * 'force' rather than true: the stylesheets carry the site theme, so a
+         * browser holding a cached copy of an older one renders a half-applied
+         * theme (dark page, light form controls) rather than simply looking
+         * out of date. Production is exactly where that must not happen, and
+         * `true` would only bust caches while debug is on.
+         */
+        'timestamp' => 'force',
         // 'cacheTime' => '+1 year'
     ],
 

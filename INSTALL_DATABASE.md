@@ -108,7 +108,7 @@ This tells CakePHP that the `InitialSchema` migration has already been applied (
 
 ## 📝 Database Structure
 
-### Tables (16 tables):
+### Tables (19 tables):
 
 | Table | Description |
 |-------|-------------|
@@ -125,7 +125,10 @@ This tells CakePHP that the `InitialSchema` migration has already been applied (
 | `bank_transactions` | Bank transactions |
 | `bank_approval_logs` | Bank approval logs |
 | `errors` | Error log |
-| `events` | Events |
+| `events` | Tournament events: window, criteria, prize and banner |
+| `event_chests` | Chest types counted by a custom-chest event |
+| `event_standings` | Frozen results, recorded when an event closes |
+| `event_assets` | Default banner artwork for the scoreboard |
 | `incomplete_chests` | Incomplete chests |
 | `troops` | Troop types and their attributes |
 

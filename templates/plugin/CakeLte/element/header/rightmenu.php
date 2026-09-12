@@ -115,6 +115,41 @@ if ($isAdmin):
         </li>
         <?php endif; ?>
         
+        <li class="dropdown-submenu dropdown-hover">
+            <a id="eventsAdminDropdownMenuLink" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">
+                <?= __('Events') ?>
+            </a>
+            <ul aria-labelledby="eventsAdminDropdownMenuLink" class="dropdown-menu border-0 shadow">
+                <li>
+                    <?= $this->Html->link(__('Manage Events'), ['controller' => 'Events', 'action' => 'manage'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link(__('Event Banners'), ['controller' => 'Events', 'action' => 'settings'], ['class' => 'dropdown-item']) ?>
+                </li>
+            </ul>
+        </li>
+
+        <?= $this->Html->link(
+            __('Branding'),
+            ['controller' => 'Config', 'action' => 'branding'],
+            ['class' => 'dropdown-item']
+        ) ?>
+
+        <?= $this->Html->link(
+            __('Theme'),
+            ['controller' => 'Config', 'action' => 'theme'],
+            ['class' => 'dropdown-item']
+        ) ?>
+
+        <?= $this->Html->link(
+            __('Maintenance'),
+            ['controller' => 'Config', 'action' => 'maintenance'],
+            ['class' => 'dropdown-item']
+        ) ?>
+
         <?= $this->Html->link('Configs', ['controller' => 'Config', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
 
     </ul>
@@ -193,13 +228,29 @@ endif;
     <?php endif; ?>
 <?php endif; ?>
 
+<?php
+// The switcher is driven by config so adding a locale is a one-line change.
+$languages = (array)\Cake\Core\Configure::read('I18n.languages', []);
+$currentLocale = \Cake\I18n\I18n::getLocale();
+$currentLabel = $languages[$currentLocale] ?? strtoupper(strtok($currentLocale, '_'));
+?>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="langDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <i class="fas fa-language nav-icon"></i> <span class="d-none d-md-inline"></span>
+        <i class="fas fa-language nav-icon"></i> <span class="d-none d-md-inline"><?= h($currentLabel) ?></span>
     </a>
-    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown">
-        <?= $this->Html->link('English', ['controller' => 'App', 'action' => 'changeLanguage', 'en_US'], ['class' => 'dropdown-item']) ?>
-        <?= $this->Html->link('Português', ['controller' => 'App', 'action' => 'changeLanguage', 'pt_BR'], ['class' => 'dropdown-item']) ?>
+    <!-- Eleven languages overflow a short viewport, so the list scrolls. -->
+    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="langDropdown"
+         style="max-height: 70vh; overflow-y: auto;">
+        <?php foreach ($languages as $locale => $label): ?>
+            <?= $this->Html->link(
+                $label,
+                ['controller' => 'Locale', 'action' => 'change', $locale],
+                [
+                    'class' => 'dropdown-item' . ($locale === $currentLocale ? ' active' : ''),
+                    'hreflang' => str_replace('_', '-', $locale),
+                ]
+            ) ?>
+        <?php endforeach; ?>
     </div>
 </li>
 

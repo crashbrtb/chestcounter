@@ -767,11 +767,76 @@ function runMigrationsNative(array $dbConfig): void
             PRIMARY KEY (`id`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
 
+        // Tournament events. `starts_at` / `ends_at` are UTC, like every other
+        // instant in this application.
         'events' => "CREATE TABLE IF NOT EXISTS `events` (
             `id` int(11) NOT NULL AUTO_INCREMENT,
-            `start_date` timestamp NOT NULL,
-            `end_date` timestamp NOT NULL,
-            PRIMARY KEY (`id`)
+            `event_number` int(10) unsigned NOT NULL COMMENT 'Sequential identifier shown to players',
+            `name` varchar(120) NOT NULL,
+            `description` text DEFAULT NULL,
+            `criteria` varchar(32) NOT NULL COMMENT 'chest_count | chest_score | epic_monster | custom_chests',
+            `custom_metric` varchar(16) NOT NULL DEFAULT 'score',
+            `starts_at` datetime NOT NULL COMMENT 'UTC',
+            `ends_at` datetime NOT NULL COMMENT 'UTC',
+            `prize` text NOT NULL,
+            `contact_player` varchar(120) NOT NULL,
+            `banner_mime` varchar(60) DEFAULT NULL,
+            `banner_image` mediumblob DEFAULT NULL,
+            `status` varchar(20) NOT NULL DEFAULT 'scheduled' COMMENT 'scheduled | cancelled',
+            `finalized_at` datetime DEFAULT NULL,
+            `created_by` int(11) DEFAULT NULL,
+            `created` datetime DEFAULT NULL,
+            `modified` datetime DEFAULT NULL,
+            PRIMARY KEY (`id`),
+            UNIQUE KEY `events_number_unique` (`event_number`),
+            KEY `events_window` (`starts_at`,`ends_at`),
+            KEY `events_status` (`status`)
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
+
+        // Chest types counted by a "custom chests" event.
+        'event_chests' => "CREATE TABLE IF NOT EXISTS `event_chests` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `event_id` int(11) NOT NULL,
+            `standard_chest_id` int(11) NOT NULL,
+            `source` varchar(50) NOT NULL,
+            PRIMARY KEY (`id`),
+            UNIQUE KEY `event_chests_unique` (`event_id`,`standard_chest_id`),
+            KEY `event_chests_event` (`event_id`),
+            CONSTRAINT `event_chests_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`)
+                ON DELETE CASCADE ON UPDATE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
+
+        // Frozen results. Kept because collected_chests is purged on a retention
+        // schedule, so an old event has no rows left to recompute from.
+        'event_standings' => "CREATE TABLE IF NOT EXISTS `event_standings` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `event_id` int(11) NOT NULL,
+            `position` int(11) NOT NULL,
+            `player` varchar(50) NOT NULL,
+            `points` bigint(20) NOT NULL DEFAULT 0,
+            `chest_count` int(11) NOT NULL DEFAULT 0,
+            `chest_score` bigint(20) NOT NULL DEFAULT 0,
+            `participation` decimal(6,2) NOT NULL DEFAULT 0.00,
+            `created` datetime DEFAULT NULL,
+            PRIMARY KEY (`id`),
+            UNIQUE KEY `event_standings_unique` (`event_id`,`player`),
+            KEY `event_standings_order` (`event_id`,`position`),
+            CONSTRAINT `event_standings_ibfk_1` FOREIGN KEY (`event_id`) REFERENCES `events` (`id`)
+                ON DELETE CASCADE ON UPDATE CASCADE
+        ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
+
+        // Default banner artwork for the scoreboard. Seeded by the CreateEvents
+        // migration from config/data/event_banner_defaults.php.
+        'event_assets' => "CREATE TABLE IF NOT EXISTS `event_assets` (
+            `id` int(11) NOT NULL AUTO_INCREMENT,
+            `slug` varchar(40) NOT NULL COMMENT 'event-live | no-event',
+            `label` varchar(160) NOT NULL,
+            `mime` varchar(60) NOT NULL DEFAULT 'image/png',
+            `image` mediumblob NOT NULL,
+            `created` datetime DEFAULT NULL,
+            `modified` datetime DEFAULT NULL,
+            PRIMARY KEY (`id`),
+            UNIQUE KEY `event_assets_slug_unique` (`slug`)
         ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci",
 
         'incomplete_chests' => "CREATE TABLE IF NOT EXISTS `incomplete_chests` (

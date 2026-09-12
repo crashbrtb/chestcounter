@@ -1,0 +1,332 @@
+/**
+ * Site themes.
+ *
+ * Loaded after theme-score.css, which declares the whole token set on :root and
+ * uses nothing but those tokens for its surfaces and neutral text. A theme is
+ * therefore a palette and nothing else: each block below redefines the same
+ * names on the <html data-theme="..."> element, and every page, card, table and
+ * form in the application follows without knowing a theme exists.
+ *
+ * Two rules worth keeping to when adding a fifth:
+ *
+ *   - The `--*-dark` tokens are used as TEXT on their matching `--*-light`
+ *     backgrounds. On a dark theme they have to become the light end of the
+ *     ramp and `--*-light` the dark one, or the badges go unreadable.
+ *   - AdminLTE ships its own colours for dropdowns, modals and the like. The
+ *     shared block near the bottom re-points those at the tokens for the themes
+ *     whose surfaces are darker than the text.
+ */
+
+/* ==========================================================================
+   Morning Light — the default
+   --------------------------------------------------------------------------
+   Declared on :root in theme-score.css rather than repeated here, so that a
+   page which somehow renders without a data-theme attribute still gets it.
+   ========================================================================== */
+
+/* ==========================================================================
+   Deepest Dark
+   --------------------------------------------------------------------------
+   Near-black, cold, high contrast. The accent is pushed lighter than the
+   default indigo because a mid-tone indigo disappears against these surfaces.
+   ========================================================================== */
+[data-theme="deepest-dark"] {
+    --bg: #0b0e14;
+    --card: #141a24;
+    --text: #dbe2ec;
+    --text-dark: #f3f7fc;
+    --muted: #8b96a6;
+    --line: #242e3c;
+    --line-subtle: #1a222d;
+
+    --surface: #11161f;
+    --surface-raised: #1a212c;
+    --surface-sunken: #0f141c;
+    --surface-hover: #1d2532;
+
+    --text-soft: #bcc6d4;
+    --text-muted-strong: #a3aebd;
+    --text-faint: #626c7b;
+
+    --input-bg: #0f141c;
+    --input-border: #2d3746;
+    --link: #8ab4ff;
+    --epic: #f472b6;
+    --epic-border: #5c2545;
+    --epic-text: #fbcfe8;
+
+    --accent: #7c8cff;
+    --accent-hover: #97a4ff;
+    --accent-light: #1b2140;
+    --accent-border: #363f6e;
+    --accent-dark: #c6cdff;
+
+    --success: #34d399;
+    --success-light: #0d2b22;
+    --success-border: #1d5040;
+    --success-dark: #7ff0c4;
+
+    --warning: #fbbf24;
+    --warning-light: #33260c;
+    --warning-border: #5e471b;
+    --warning-dark: #ffd97a;
+
+    --danger: #f87171;
+    --danger-light: #331617;
+    --danger-border: #602729;
+    --danger-dark: #ffb3b3;
+
+    --info: #38bdf8;
+    --info-light: #0a2533;
+    --info-border: #17455a;
+    --info-dark: #93dcfd;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.5);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.55), 0 2px 4px -1px rgba(0, 0, 0, 0.4);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.6);
+    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.45);
+}
+
+/* ==========================================================================
+   Wildflowers
+   --------------------------------------------------------------------------
+   A meadow in summer: warm paper, poppy pink, and the greens and ambers of the
+   flowers next to it carried through the semantic colours.
+   ========================================================================== */
+[data-theme="wildflowers"] {
+    --bg: #fdf6e9;
+    --card: #fffdf8;
+    --text: #423727;
+    --text-dark: #2a2118;
+    --muted: #8b7a61;
+    --line: #e9dcc4;
+    --line-subtle: #f4ebd9;
+
+    --surface: #fffdf8;
+    --surface-raised: #fbf2e1;
+    --surface-sunken: #f7ecd7;
+    --surface-hover: #fdeef0;
+
+    --text-soft: #5c4d39;
+    --text-muted-strong: #6f5e47;
+    --text-faint: #a8977c;
+
+    --input-bg: #fffdf8;
+    --input-border: #ddcdae;
+    --link: #2c7a52;
+    --epic: #db2777;
+    --epic-border: #f6c2da;
+    --epic-text: #8a1244;
+
+    --accent: #c4457f;
+    --accent-hover: #a83769;
+    --accent-light: #fde9f2;
+    --accent-border: #f3bfd8;
+    --accent-dark: #8a2a56;
+
+    --success: #4f9d61;
+    --success-light: #eaf7ec;
+    --success-border: #b7e0bf;
+    --success-dark: #2d6b3c;
+
+    --warning: #e0982f;
+    --warning-light: #fdf3e0;
+    --warning-border: #f5d9a6;
+    --warning-dark: #8c5a12;
+
+    --danger: #d9534f;
+    --danger-light: #fdedec;
+    --danger-border: #f5c2c0;
+    --danger-dark: #93302d;
+
+    --info: #4a86c9;
+    --info-light: #eaf2fb;
+    --info-border: #bcd6ee;
+    --info-dark: #2a5687;
+
+    --shadow-sm: 0 1px 2px 0 rgba(92, 77, 57, 0.07);
+    --shadow-md: 0 4px 6px -1px rgba(92, 77, 57, 0.11), 0 2px 4px -1px rgba(92, 77, 57, 0.06);
+    --shadow-lg: 0 10px 30px rgba(92, 77, 57, 0.1);
+    --shadow-card: 0 8px 24px rgba(92, 77, 57, 0.09);
+}
+
+/* ==========================================================================
+   Twilight
+   --------------------------------------------------------------------------
+   The grey half hour after sunset: slate surfaces, a dusky violet accent, and
+   the last of the horizon kept for links. Dimmer than Morning Light, but
+   nowhere near as black as Deepest Dark.
+   ========================================================================== */
+[data-theme="twilight"] {
+    --bg: #262b33;
+    --card: #2f353f;
+    --text: #d4d9e1;
+    --text-dark: #eff2f6;
+    --muted: #959daa;
+    --line: #3e4653;
+    --line-subtle: #353c47;
+
+    --surface: #2b313a;
+    --surface-raised: #353c47;
+    --surface-sunken: #272d36;
+    --surface-hover: #3a414e;
+
+    --text-soft: #b6bdc8;
+    --text-muted-strong: #a1a9b6;
+    --text-faint: #737c89;
+
+    --input-bg: #272d36;
+    --input-border: #464f5e;
+    --link: #e0a06a;
+    --epic: #e987b8;
+    --epic-border: #5a3b4e;
+    --epic-text: #f7cfe2;
+
+    --accent: #a885d8;
+    --accent-hover: #bb9ee6;
+    --accent-light: #332b45;
+    --accent-border: #4f4069;
+    --accent-dark: #dcc8f2;
+
+    --success: #5fbf94;
+    --success-light: #1e3630;
+    --success-border: #33574b;
+    --success-dark: #9fe4c4;
+
+    --warning: #e0a557;
+    --warning-light: #3a2f1e;
+    --warning-border: #5b4a2d;
+    --warning-dark: #f4cf96;
+
+    --danger: #e07b7b;
+    --danger-light: #3a2526;
+    --danger-border: #5c3b3c;
+    --danger-dark: #f4b5b5;
+
+    --info: #63aed8;
+    --info-light: #1e3240;
+    --info-border: #345365;
+    --info-dark: #a5d6ee;
+
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.28);
+    --shadow-lg: 0 10px 30px rgba(0, 0, 0, 0.42);
+    --shadow-card: 0 8px 24px rgba(0, 0, 0, 0.32);
+}
+
+/* ==========================================================================
+   AdminLTE and Bootstrap components, on the themes with dark surfaces
+   --------------------------------------------------------------------------
+   These ship their own hardcoded light colours and never consult our tokens,
+   so on a dark theme they would stay white. Everything below re-points them at
+   the tokens; nothing here picks a colour of its own.
+   ========================================================================== */
+[data-theme="deepest-dark"] body,
+[data-theme="twilight"] body {
+    color-scheme: dark;
+}
+
+[data-theme="deepest-dark"] .card,
+[data-theme="twilight"] .card,
+[data-theme="deepest-dark"] .modal-content,
+[data-theme="twilight"] .modal-content,
+[data-theme="deepest-dark"] .dropdown-menu,
+[data-theme="twilight"] .dropdown-menu,
+[data-theme="deepest-dark"] .list-group-item,
+[data-theme="twilight"] .list-group-item {
+    background-color: var(--card) !important;
+    border-color: var(--line) !important;
+    color: var(--text) !important;
+}
+
+[data-theme="deepest-dark"] .dropdown-item,
+[data-theme="twilight"] .dropdown-item {
+    color: var(--text) !important;
+}
+
+[data-theme="deepest-dark"] .dropdown-item:hover,
+[data-theme="twilight"] .dropdown-item:hover,
+[data-theme="deepest-dark"] .dropdown-item:focus,
+[data-theme="twilight"] .dropdown-item:focus {
+    background-color: var(--accent-light) !important;
+    color: var(--accent-dark) !important;
+}
+
+[data-theme="deepest-dark"] .dropdown-divider,
+[data-theme="twilight"] .dropdown-divider {
+    border-top-color: var(--line) !important;
+}
+
+/* The navbar is painted by AdminLTE's navbar-white/navbar-light pair, which
+   both set a light background and dark link colours. */
+[data-theme="deepest-dark"] .main-header.navbar,
+[data-theme="twilight"] .main-header.navbar,
+[data-theme="deepest-dark"] .navbar-white,
+[data-theme="twilight"] .navbar-white {
+    background-color: var(--surface) !important;
+}
+
+[data-theme="deepest-dark"] .navbar-light .navbar-nav .nav-link,
+[data-theme="twilight"] .navbar-light .navbar-nav .nav-link,
+[data-theme="deepest-dark"] .main-header.navbar .navbar-brand,
+[data-theme="twilight"] .main-header.navbar .navbar-brand {
+    color: var(--text-soft) !important;
+}
+
+[data-theme="deepest-dark"] .navbar-light .navbar-toggler-icon,
+[data-theme="twilight"] .navbar-light .navbar-toggler-icon {
+    /* The default icon is a dark glyph baked into a data URI, invisible here. */
+    filter: invert(1) opacity(0.8);
+}
+
+[data-theme="deepest-dark"] .table,
+[data-theme="twilight"] .table,
+[data-theme="deepest-dark"] .table td,
+[data-theme="twilight"] .table td {
+    color: var(--text);
+}
+
+[data-theme="deepest-dark"] .table-striped tbody tr:nth-of-type(odd),
+[data-theme="twilight"] .table-striped tbody tr:nth-of-type(odd) {
+    background-color: var(--surface-sunken);
+}
+
+[data-theme="deepest-dark"] .form-control::placeholder,
+[data-theme="twilight"] .form-control::placeholder {
+    color: var(--text-faint);
+}
+
+[data-theme="deepest-dark"] .custom-select,
+[data-theme="twilight"] .custom-select,
+[data-theme="deepest-dark"] .custom-file-label,
+[data-theme="twilight"] .custom-file-label,
+[data-theme="deepest-dark"] .input-group-text,
+[data-theme="twilight"] .input-group-text {
+    background-color: var(--input-bg) !important;
+    border-color: var(--input-border) !important;
+    color: var(--text) !important;
+}
+
+[data-theme="deepest-dark"] .close,
+[data-theme="twilight"] .close,
+[data-theme="deepest-dark"] .modal-header,
+[data-theme="twilight"] .modal-header,
+[data-theme="deepest-dark"] .modal-footer,
+[data-theme="twilight"] .modal-footer {
+    color: var(--text);
+    border-color: var(--line);
+}
+
+[data-theme="deepest-dark"] .content-wrapper,
+[data-theme="twilight"] .content-wrapper,
+[data-theme="deepest-dark"] .login-page,
+[data-theme="twilight"] .login-page {
+    background-color: var(--bg) !important;
+}
+
+[data-theme="deepest-dark"] .login-logo,
+[data-theme="twilight"] .login-logo,
+[data-theme="deepest-dark"] .login-box-msg,
+[data-theme="twilight"] .login-box-msg {
+    color: var(--text-dark);
+}

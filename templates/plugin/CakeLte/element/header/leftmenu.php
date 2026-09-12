@@ -8,6 +8,36 @@
     </div>
 </li>
 
+<?php
+// A live event gets a marker on the menu itself: players should not have to open
+// the menu to find out that something is running.
+try {
+    $runningEventCount = \Cake\ORM\TableRegistry::getTableLocator()->get('Events')->find('running')->count();
+} catch (\Throwable $e) {
+    $runningEventCount = 0;
+}
+?>
+<li class="nav-item dropdown">
+    <a class="nav-link dropdown-toggle" href="#" id="eventsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <?= __('Events') ?>
+        <?php if ($runningEventCount > 0): ?>
+            <span class="badge badge-success"><?= $runningEventCount ?></span>
+        <?php endif; ?>
+    </a>
+    <div class="dropdown-menu" aria-labelledby="eventsDropdown">
+        <?= $this->Html->link(
+            '<i class="fas fa-trophy mr-2 text-warning"></i>' . __('Current Event'),
+            ['controller' => 'Events', 'action' => 'index'],
+            ['class' => 'dropdown-item', 'escape' => false]
+        ) ?>
+        <?= $this->Html->link(
+            '<i class="fas fa-history mr-2 text-muted"></i>' . __('Event History'),
+            ['controller' => 'Events', 'action' => 'history'],
+            ['class' => 'dropdown-item', 'escape' => false]
+        ) ?>
+    </div>
+</li>
+
 <?php if ($this->request->getAttribute('identity') !== null): ?>
 <li class="nav-item dropdown">
     <a class="nav-link dropdown-toggle" href="#" id="toolsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

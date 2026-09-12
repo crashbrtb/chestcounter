@@ -1,0 +1,232 @@
+/*
+ * Troop calculator - compact level picker.
+ *
+ * The kill order offers up to nine levels per class and each class has to stay
+ * on a single line, so a row of checkboxes is far too wide. The checkbox is
+ * kept for the form and for keyboard use but hidden from sight, and its label
+ * is drawn as a small toggle pill that fills in when selected.
+ */
+
+.tier-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    margin-bottom: 0.3rem;
+}
+
+.tier-row:last-child {
+    margin-bottom: 0;
+}
+
+.tier-row-label {
+    flex: 0 0 auto;
+    min-width: 6.75rem;
+    padding-right: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--muted, #6c757d);
+    white-space: nowrap;
+}
+
+.tier-pills {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    /* A very narrow viewport scrolls the pills sideways rather than wrapping
+       the row, which is the whole point of this layout. */
+    overflow-x: auto;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.tier-pills::-webkit-scrollbar {
+    height: 0;
+}
+
+.tier-pill-input {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.tier-pill {
+    flex: 0 0 auto;
+    min-width: 2.15rem;
+    margin: 0 0.2rem 0 0;
+    padding: 0.12rem 0.3rem;
+    border: 1px solid var(--input-border, #ced4da);
+    border-radius: 0.2rem;
+    background-color: var(--input-bg, #fff);
+    color: var(--text, #495057);
+    font-size: 0.75rem;
+    font-weight: 600;
+    line-height: 1.35;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background-color 0.12s ease, border-color 0.12s ease, color 0.12s ease;
+}
+
+.tier-pill:hover {
+    border-color: #007bff;
+    color: #007bff;
+}
+
+.tier-pill-input:checked + .tier-pill {
+    background-color: #007bff;
+    border-color: #0062cc;
+    color: #fff;
+}
+
+.tier-pill-input:checked + .tier-pill:hover {
+    background-color: #0069d9;
+    color: #fff;
+}
+
+.tier-pill-input:focus + .tier-pill {
+    box-shadow: 0 0 0 0.15rem rgba(0, 123, 255, 0.4);
+}
+
+/*
+ * Bonus grids. Three columns of a label and two number inputs; on a phone the
+ * label has to give way so the inputs stay wide enough to read a value in.
+ */
+
+.bonus-table th[scope="row"] {
+    width: 40%;
+    padding-left: 0;
+}
+
+.bonus-table td,
+.bonus-table th {
+    padding: 0.3rem 0.25rem;
+    vertical-align: middle;
+}
+
+.bonus-table td:last-child,
+.bonus-table th:last-child {
+    padding-right: 0;
+}
+
+.bonus-table input[type="number"] {
+    min-width: 4rem;
+}
+
+/*
+ * Phones. AdminLTE's default card padding eats a third of a narrow screen, and
+ * the results tables are far too wide to fit however they are laid out, so they
+ * scroll sideways instead of squashing.
+ */
+@media (max-width: 575.98px) {
+    .troop-calculator .card-body {
+        padding: 0.75rem;
+    }
+
+    .troop-calculator .card-header {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .troop-calculator .card-title {
+        font-size: 1rem;
+    }
+
+    .tier-row-label {
+        min-width: 5.5rem;
+        font-size: 0.7rem;
+    }
+
+    .bonus-table th[scope="row"] {
+        width: 38%;
+        font-size: 0.78rem;
+    }
+
+    .bonus-table input[type="number"] {
+        min-width: 3.25rem;
+    }
+
+    /* A stack table has seven columns; let it scroll rather than wrap every
+       unit name onto three lines. */
+    .plan-table {
+        white-space: nowrap;
+    }
+
+    .troop-calculator .form-text {
+        font-size: 0.72rem;
+    }
+}
+
+/*
+ * Unit portraits in the planned march. Not every unit in the catalogue has art,
+ * so the fallback is a tier badge tinted by combat category rather than an
+ * empty box: it still tells you what the unit is.
+ */
+
+.troop-cell {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.troop-icon {
+    flex: 0 0 auto;
+    width: 28px;
+    height: 28px;
+    border-radius: 0.25rem;
+    background-color: var(--surface-sunken, #e9ecef);
+    object-fit: cover;
+}
+
+.troop-icon-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.62rem;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    background-color: #868e96;
+    letter-spacing: -0.02em;
+}
+
+.troop-icon--melee {
+    background-color: #b5423a;
+}
+
+.troop-icon--mounted {
+    background-color: #c07a1e;
+}
+
+.troop-icon--ranged {
+    background-color: #3d7a46;
+}
+
+.troop-icon--flying {
+    background-color: #35618f;
+}
+
+.troop-icon--siege {
+    background-color: #5c5148;
+}
+
+.troop-icon--epic_monster_hunter {
+    background-color: #6f4a8e;
+}
+
+.troop-name {
+    white-space: nowrap;
+}
+
+/* The action buttons sit side by side until there is no room for them. */
+@media (max-width: 400px) {
+    .calc-actions .btn {
+        display: block;
+        width: 100%;
+    }
+
+    .calc-actions .btn + .btn {
+        margin: 0.5rem 0 0 0;
+    }
+}

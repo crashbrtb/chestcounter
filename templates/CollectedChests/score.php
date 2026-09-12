@@ -238,18 +238,11 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
 ?>
 
 <style>
+    /* No token declarations here. This element sits below <html data-theme>,
+       so redeclaring --bg and friends on it would override whichever theme is
+       active, for the whole page. The tokens come from theme-score.css and are
+       overridden only by themes.css. */
     .score-new-page {
-        --bg: #f5f7fb;
-        --card: #ffffff;
-        --text: #1f2937;
-        --muted: #6b7280;
-        --line: #e5e7eb;
-        --accent: #4f46e5;
-        --accent-hover: #4338ca;
-        --accent-light: #eef2ff;
-        --success: #10b981;
-        --warning: #f59e0b;
-        --danger: #ef4444;
         background: var(--bg);
         padding: 20px;
         border-radius: 16px;
@@ -303,7 +296,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         padding: 7px 12px;
         border-radius: 8px;
         border: 1px solid var(--line);
-        background: #fff;
+        background: var(--input-bg);
         font-size: 0.9rem;
         color: var(--text);
         font-weight: 500;
@@ -312,7 +305,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     .filter-form button {
         padding: 7px 16px;
         border-radius: 8px;
-        background: #fff;
+        background: var(--input-bg);
         border: 1px solid var(--line);
         color: var(--text);
         font-weight: 600;
@@ -322,7 +315,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .filter-form button:hover {
-        background: #f3f4f6;
+        background: var(--surface-sunken);
     }
 
     /* Action Toggle: View All */
@@ -350,7 +343,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .btn-view-all-toggle.active {
-        background: #1f2937;
+        background: var(--text-dark);
         box-shadow: 0 4px 14px rgba(31, 41, 55, 0.3);
     }
 
@@ -367,9 +360,9 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         display: inline-flex;
         align-items: center;
         gap: 8px;
-        background: #ffffff;
-        border: 1px solid #c7d2fe;
-        color: #3730a3;
+        background: var(--surface);
+        border: 1px solid var(--accent-border);
+        color: var(--accent-dark);
         border-radius: 999px;
         padding: 8px 16px;
         font-weight: 600;
@@ -378,17 +371,17 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .goal-pill i {
-        color: #6366f1;
+        color: var(--accent);
     }
 
     .goal-pill.epic {
-        border-color: #fbcfe8;
-        color: #9d174d;
+        border-color: var(--epic-border);
+        color: var(--epic-text);
         box-shadow: 0 2px 8px rgba(244, 63, 94, 0.08);
     }
 
     .goal-pill.epic i {
-        color: #ec4899;
+        color: var(--epic);
     }
 
     /* Tables Container */
@@ -410,7 +403,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     .score-card-header {
         padding: 16px 22px;
         border-bottom: 1px solid var(--line);
-        background: #fcfcff;
+        background: var(--surface-raised);
         display: flex;
         flex-wrap: wrap;
         align-items: center;
@@ -452,7 +445,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         left: 10px;
         top: 50%;
         transform: translateY(-50%);
-        color: #9ca3af;
+        color: var(--text-faint);
         font-size: 0.85rem;
     }
 
@@ -471,15 +464,15 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     .custom-score-table th,
     .custom-score-table td {
         padding: 12px 14px;
-        border-bottom: 1px solid #f1f3f7;
+        border-bottom: 1px solid var(--line-subtle);
         text-align: center;
         white-space: nowrap;
         font-size: 0.94rem;
     }
 
     .custom-score-table th {
-        background: #f8fafc;
-        color: #374151;
+        background: var(--surface-sunken);
+        color: var(--text-soft);
         font-size: 0.88rem;
         font-weight: 700;
         position: sticky;
@@ -498,15 +491,15 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .custom-score-table tbody tr:hover {
-        background: #f8fbff;
+        background: var(--surface-hover);
     }
 
     .top-rank {
         min-width: 28px;
         height: 28px;
         border-radius: 999px;
-        background: #e0e7ff;
-        color: #3730a3;
+        background: var(--accent-light);
+        color: var(--accent-dark);
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -528,7 +521,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .player-link {
-        color: #1d4ed8;
+        color: var(--link);
         text-decoration: none;
         font-weight: 600;
         transition: color 0.15s;
@@ -541,7 +534,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .player-link:hover {
-        color: #1e40af;
+        color: var(--link);
         text-decoration: underline;
     }
 
@@ -559,31 +552,31 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         gap: 3px;
         padding: 2px 7px;
         border-radius: 6px;
-        background: #f1f5f9;
-        color: #334155;
+        background: var(--surface-sunken);
+        color: var(--text-soft);
         font-size: 0.72rem;
         font-weight: 500;
         cursor: pointer;
         transition: all 0.15s;
         white-space: nowrap;
         text-decoration: none;
-        border: 1px solid #e2e8f0;
+        border: 1px solid var(--line);
     }
 
     .m-chip i {
-        color: #dc2626;
+        color: var(--danger);
         font-size: 0.68rem;
     }
 
     .m-chip strong {
-        color: #b91c1c;
+        color: var(--danger-dark);
         font-weight: 700;
     }
 
     .m-chip:hover {
-        background: #fee2e2;
-        border-color: #fca5a5;
-        color: #991b1b;
+        background: var(--danger-light);
+        border-color: var(--danger-border);
+        color: var(--danger-dark);
         transform: translateY(-1px);
     }
 
@@ -591,7 +584,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     .monster-view-switcher {
         display: inline-flex;
         align-items: center;
-        background: #f1f5f9;
+        background: var(--surface-sunken);
         padding: 3px;
         border-radius: 8px;
         gap: 3px;
@@ -604,7 +597,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         border-radius: 6px;
         font-size: 0.78rem;
         font-weight: 600;
-        color: #64748b;
+        color: var(--muted);
         cursor: pointer;
         display: inline-flex;
         align-items: center;
@@ -613,8 +606,8 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .btn-m-switch.active {
-        background: #ffffff;
-        color: #1e293b;
+        background: var(--surface);
+        color: var(--text-dark);
         box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
     }
 
@@ -622,9 +615,9 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     .mobile-scroll-hint {
         display: none;
         padding: 6px 12px;
-        background: #f8fafc;
-        border-bottom: 1px solid #e2e8f0;
-        color: #64748b;
+        background: var(--surface-sunken);
+        border-bottom: 1px solid var(--line);
+        color: var(--muted);
         font-size: 0.76rem;
         text-align: center;
     }
@@ -656,8 +649,8 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         gap: 5px;
         padding: 3px 10px;
         border-radius: 999px;
-        background: #fee2e2;
-        color: #991b1b !important;
+        background: var(--danger-light);
+        color: var(--danger-dark) !important;
         font-weight: 700;
         font-size: 0.88rem;
         text-decoration: none;
@@ -665,7 +658,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .interactive-monster-link:hover {
-        background: #fecaca;
+        background: var(--danger-border);
         transform: translateY(-1px);
         text-decoration: underline;
     }
@@ -702,7 +695,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        background: #fff;
+        background: var(--card);
         border-radius: 16px;
         box-shadow: 0 20px 60px rgba(17, 24, 39, 0.2);
         z-index: 9999;
@@ -718,15 +711,15 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         align-items: center;
         justify-content: space-between;
         padding: 16px 20px;
-        border-bottom: 1px solid #e5e7eb;
-        background: #f8fafc;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface-sunken);
     }
 
     .em-modal-head h3 {
         margin: 0;
         font-size: 1.05rem;
         font-weight: 700;
-        color: #1f2937;
+        color: var(--text-dark);
         display: flex;
         align-items: center;
         gap: 8px;
@@ -736,7 +729,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
         background: none;
         border: none;
         font-size: 1.4rem;
-        color: #6b7280;
+        color: var(--muted);
         cursor: pointer;
         padding: 4px 8px;
         border-radius: 8px;
@@ -744,8 +737,8 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .em-modal-close:hover {
-        background: #fee2e2;
-        color: #dc2626;
+        background: var(--danger-light);
+        color: var(--danger-dark);
     }
 
     .em-modal-body {
@@ -760,13 +753,13 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     }
 
     .em-detail-table th {
-        background: #eef2ff;
-        color: #3730a3;
+        background: var(--accent-light);
+        color: var(--accent-dark);
         font-weight: 700;
         font-size: 0.86rem;
         padding: 8px 10px;
         text-align: left;
-        border-bottom: 2px solid #c7d2fe;
+        border-bottom: 2px solid var(--accent-border);
     }
 
     .em-detail-table th:last-child {
@@ -776,22 +769,22 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
     .em-detail-table td {
         padding: 8px 10px;
         font-size: 0.86rem;
-        color: #374151;
-        border-bottom: 1px solid #f3f4f6;
+        color: var(--text-soft);
+        border-bottom: 1px solid var(--line-subtle);
     }
 
     .em-detail-table td:last-child {
         text-align: center;
         font-weight: 700;
-        color: #4f46e5;
+        color: var(--accent);
     }
 
     .em-detail-table tbody tr:hover {
-        background: #f8fafc;
+        background: var(--surface-hover);
     }
 
     .em-no-data {
-        color: #9ca3af;
+        color: var(--text-faint);
         font-style: italic;
         text-align: center;
         padding: 28px;
@@ -1102,10 +1095,10 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
             position: sticky;
             left: 0;
             z-index: 3;
-            background: #f8fafc;
+            background: var(--surface-sunken);
         }
         #detailedTable tbody td:nth-child(1) {
-            background: #ffffff;
+            background: var(--card);
         }
 
         #detailedTable th:nth-child(2),
@@ -1113,11 +1106,11 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
             position: sticky;
             left: 42px;
             z-index: 3;
-            background: #f8fafc;
+            background: var(--surface-sunken);
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.06);
         }
         #detailedTable tbody td:nth-child(2) {
-            background: #ffffff;
+            background: var(--card);
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.06);
         }
 
@@ -1202,6 +1195,7 @@ $scoreColor = function ($scoreValue, $targetValue) use ($transitionStart, $start
             <i class="fas fa-gem"></i>
             <span><?= __('Epic Chest Goal: {0} points', $this->Number->format($minimumEpicChestScore ?? 0)) ?></span>
         </div>
+        <?= $this->element('event_banner') ?>
     </div>
 
     <!-- SECTION 1: TWO SEPARATE TABLES (SCORE SUMMARY & MONSTER CHESTS) -->

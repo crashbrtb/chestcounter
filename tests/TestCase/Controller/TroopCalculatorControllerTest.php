@@ -71,6 +71,129 @@ class TroopCalculatorControllerTest extends TestCase
     }
 
     /**
+     * The levels are offered one class per row, in the order G, S, M, E, with
+     * no class sharing a row with another.
+     *
+     * @return void
+     * @uses \App\Controller\TroopCalculatorController::index()
+     */
+    public function testLevelsAreOfferedOneClassPerRow(): void
+    {
+        $this->get('/calculator');
+        $this->assertResponseOk();
+
+        $body = (string)$this->_response->getBody();
+        $section = $this->levelsSection($body);
+
+        // Each row opens with its class label, and the rows run G, S, M, E.
+        $labels = [];
+        foreach (['Guardsmen', 'Specialists', 'Monsters', 'Engineer corps'] as $label) {
+            $position = strpos($section, $label);
+            $this->assertNotFalse($position, sprintf('the %s row is missing', $label));
+            $labels[$label] = $position;
+        }
+        $this->assertSame(
+            ['Guardsmen', 'Specialists', 'Monsters', 'Engineer corps'],
+            array_keys($labels),
+            'the rows are not in G, S, M, E order',
+        );
+        $previous = -1;
+        foreach ($labels as $label => $position) {
+            $this->assertGreaterThan($previous, $position, sprintf('%s is out of order', $label));
+            $previous = $position;
+        }
+
+        // Split the section on the labels: each slice may only hold its own
+        // class prefix, which is what "one class per row" means.
+        $expected = ['Guardsmen' => 'G', 'Specialists' => 'S', 'Monsters' => 'M', 'Engineer corps' => 'E'];
+        $bounds = array_values($labels);
+        $index = 0;
+        foreach ($expected as $label => $prefix) {
+            $start = $bounds[$index];
+            $end = $bounds[$index + 1] ?? strlen($section);
+            $slice = substr($section, $start, $end - $start);
+
+            preg_match_all('/name="groups\[\]"[^>]*value="([GSME])\d"/', $slice, $matches);
+            $this->assertNotEmpty($matches[1], sprintf('the %s row has no levels', $label));
+            $this->assertSame(
+                [$prefix],
+                array_values(array_unique($matches[1])),
+                sprintf('the %s row mixes in other classes', $label),
+            );
+            $index++;
+        }
+    }
+
+    /**
+     * The category order starts on melee, ranged, mounted, flying.
+     *
+     * @return void
+     * @uses \App\Controller\TroopCalculatorController::index()
+     */
+    public function testCategoryOrderDefaultsToMeleeRangedMountedFlying(): void
+    {
+        $this->get('/calculator');
+        $this->assertResponseOk();
+
+        $body = (string)$this->_response->getBody();
+        preg_match_all(
+            '/<select name="category_order\[(\d)\]".*?<\/select>/s',
+            $body,
+            $selects,
+            PREG_SET_ORDER,
+        );
+
+        $this->assertCount(4, $selects, 'there should be one select per category');
+
+        $chosen = [];
+        foreach ($selects as $select) {
+            preg_match('/<option value="([a-z]+)" selected="selected">/', $select[0], $option);
+            $chosen[(int)$select[1]] = $option[1] ?? null;
+        }
+        ksort($chosen);
+
+        $this->assertSame(['melee', 'ranged', 'mounted', 'flying'], array_values($chosen));
+    }
+
+    /**
+     * Every bonus input keeps the name the solver reads it back from.
+     *
+     * @return void
+     * @uses \App\Controller\TroopCalculatorController::index()
+     */
+    public function testBonusInputsKeepTheirFieldNames(): void
+    {
+        $this->get('/calculator');
+        $this->assertResponseOk();
+
+        foreach (['class' => 'guardsman', 'category' => 'melee', 'type' => 'beast'] as $grid => $row) {
+            foreach (['health', 'strength'] as $stat) {
+                $this->assertResponseContains(
+                    sprintf('name="%s_%s[%s]"', $stat, $grid, $row),
+                    sprintf('the %s %s input lost its name', $grid, $stat),
+                );
+            }
+        }
+    }
+
+    /**
+     * The markup between the "Levels you are bringing" label and the order
+     * preset that follows it.
+     *
+     * @param string $body Rendered page.
+     * @return string
+     */
+    private function levelsSection(string $body): string
+    {
+        $start = strpos($body, 'Levels you are bringing');
+        $this->assertNotFalse($start, 'the levels picker is missing');
+
+        $end = strpos($body, 'Order within each level', $start);
+
+        return $end === false ? substr($body, $start) : substr($body, $start, $end - $start);
+    }
+
+    /**
      * A submitted form comes back with a planned march.
      *
      * @return void
@@ -98,7 +221,54 @@ class TroopCalculatorControllerTest extends TestCase
         $this->assertResponseContains('Kraken II');
         $this->assertResponseContains('Overlord');
         // Scouts never take part in the kill order.
-        $this->assertResponseNotContains('Trailseeker VII');
+        $this->assertResponseNotContains('Panoptic II');
+    }
+
+    /**
+     * Units with art get their portrait beside the name.
+     *
+     * @return void
+     * @uses \App\Controller\TroopCalculatorController::index()
+     */
+    public function testPlannedUnitsShowTheirPortrait(): void
+    {
+        $this->post('/calculator', [
+            'leadership_cap' => '200000',
+            'groups' => ['G9'],
+            'order_preset' => 'specialists_first',
+            'health_class' => ['guardsman' => 1000],
+            'strength_class' => ['guardsman' => 2000],
+        ]);
+
+        $this->assertResponseOk();
+        // Asset.timestamp appends a cache-busting query string, so match the
+        // path rather than the whole attribute.
+        $this->assertResponseContains('src="/img/troops/purifier-ii.png');
+        $this->assertResponseContains('class="troop-icon"');
+    }
+
+    /**
+     * A unit the catalogue has no art for falls back to a tier badge rather
+     * than a blank space, so no information is lost.
+     *
+     * @return void
+     * @uses \App\Controller\TroopCalculatorController::index()
+     */
+    public function testUnitsWithoutArtFallBackToATierBadge(): void
+    {
+        $this->post('/calculator', [
+            'leadership_cap' => '100000',
+            'groups' => ['E1'],
+            'order_preset' => 'specialists_first',
+            'health_class' => ['engineer' => 800],
+        ]);
+
+        $this->assertResponseOk();
+        $this->assertResponseContains('Unportrayed Engine');
+        $this->assertResponseNotContains('src="/img/troops/fixture-no-portrait.png"');
+        $this->assertResponseContains('troop-icon-fallback troop-icon--siege');
+        // The badge still names the class and level.
+        $this->assertResponseContains('>E1</span>');
     }
 
     /**

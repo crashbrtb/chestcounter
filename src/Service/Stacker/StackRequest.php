@@ -30,9 +30,13 @@ class StackRequest
     /**
      * Default order the categories die in within one level.
      *
+     * Melee first and flying last, with ranged ahead of mounted: mounted units
+     * carry a higher chance of double damage, so they are worth keeping alive a
+     * round longer than the ranged ones beside them.
+     *
      * @var list<string>
      */
-    public const DEFAULT_CATEGORY_ORDER = ['melee', 'mounted', 'ranged', 'flying'];
+    public const DEFAULT_CATEGORY_ORDER = ['melee', 'ranged', 'mounted', 'flying'];
 
     /**
      * @param int $leadershipCap Leadership available for guardsmen, specialists
@@ -56,6 +60,9 @@ class StackRequest
      * @param float $sectionGap Fraction of the previous section's lowest stack
      *   health that the next section's highest stack may reach. 0.95 leaves a
      *   5% gap between army, monsters and mercenaries.
+     * @param int|null $mercTier Which mercenary band to hire from. Null works
+     *   it out from the best guardsmen in the kill order; tier 6 and above are
+     *   all offered band 9.
      */
     public function __construct(
         public readonly int $leadershipCap = 0,
@@ -68,6 +75,7 @@ class StackRequest
         public readonly int $enemyStackCount = 4,
         public readonly bool $enforceStrikeOrder = true,
         public readonly float $sectionGap = 0.95,
+        public readonly ?int $mercTier = null,
     ) {
     }
 
@@ -100,6 +108,7 @@ class StackRequest
             enemyStackCount: max(0, (int)($data['enemy_stack_count'] ?? 4)),
             enforceStrikeOrder: (bool)($data['enforce_strike_order'] ?? true),
             sectionGap: $gap > 0 && $gap <= 1 ? $gap : 0.95,
+            mercTier: ($data['merc_tier'] ?? '') !== '' ? (int)$data['merc_tier'] : null,
         );
     }
 }

@@ -1,4 +1,5 @@
 <?php
+use App\Service\BrandingService;
 use Cake\ORM\TableRegistry;
 
 /**
@@ -22,6 +23,19 @@ $readConfig = function (string $param, string $default = ''): string {
     return $row->value ?? $default;
 };
 
+/**
+ * The navbar renders the logo through the Branding helper, but `app-logo` is
+ * part of the theme's published configuration and plugin elements may read it,
+ * so it is kept pointing at whatever branding is actually selected.
+ */
+$logo = (function (): string {
+    try {
+        return (new BrandingService())->logoUrl();
+    } catch (\Throwable $e) {
+        return BrandingService::urlFor(BrandingService::DEFAULT_SLUG) . 'logo.png';
+    }
+})();
+
 $kingdomNumber = $readConfig('kingdom_number');
 $clanAcronym = $readConfig('clan_acronym');
 $clanName = $readConfig('clan_name', 'ChestCounter');
@@ -29,7 +43,7 @@ $clanName = $readConfig('clan_name', 'ChestCounter');
 return [
     'CakeLte' => [
         'app-name' => '<b>' . $kingdomNumber . ' </b> ' . $clanAcronym . ' <b>' . $clanName . '</b>',
-        'app-logo' => 'CakeLte.logo.png',
+        'app-logo' => $logo,
         'small-text' => true,
         'dark-mode' => false,
         'layout-boxed' => false,

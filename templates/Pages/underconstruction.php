@@ -28,7 +28,7 @@ use Cake\Http\Exception\NotFoundException;
     <title>Page Under Construction</title>
     <style>
         body {
-            background: #f8fafc;
+            background: var(--bg, #f8fafc);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -38,7 +38,7 @@ use Cake\Http\Exception\NotFoundException;
             font-family: 'Segoe UI', Arial, sans-serif;
         }
         .container {
-            background: #fff;
+            background: var(--card, #fff);
             border-radius: 16px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.08);
             padding: 40px 32px;
@@ -50,11 +50,11 @@ use Cake\Http\Exception\NotFoundException;
             margin-bottom: 16px;
         }
         h1 {
-            color: #1e293b;
+            color: var(--text-dark, #1e293b);
             margin-bottom: 8px;
         }
         p {
-            color: #64748b;
+            color: var(--muted, #64748b);
             font-size: 18px;
         }
     </style>
