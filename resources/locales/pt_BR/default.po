@@ -4490,3 +4490,130 @@ msgstr "Configurações"
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr "A Calculadora de Tropas está desativada no momento."
+
+#: ./templates/IncompleteChests/index.php:12
+#: ./templates/IncompleteChests/index.php:33
+#: ./templates/plugin/CakeLte/element/header/rightmenu.php:93
+msgid "Incomplete Chests"
+msgstr "Baús Incompletos"
+
+#: ./templates/IncompleteChests/index.php:19
+msgid "Pending"
+msgstr "Pendente"
+
+#: ./templates/IncompleteChests/index.php:20
+msgid "Corrected"
+msgstr "Corrigido"
+
+#: ./templates/IncompleteChests/index.php:21
+msgid "Not recoverable"
+msgstr "Não recuperável"
+
+#: ./templates/IncompleteChests/index.php:24
+msgid "Pending ({0})"
+msgstr "Pendentes ({0})"
+
+#: ./templates/IncompleteChests/index.php:25
+msgid "Corrected ({0})"
+msgstr "Corrigidos ({0})"
+
+#: ./templates/IncompleteChests/index.php:26
+msgid "Not recoverable ({0})"
+msgstr "Não recuperáveis ({0})"
+
+#: ./templates/IncompleteChests/index.php:44
+msgid "Chests the collector opened but could not read. The screenshot of each one was kept so it can be filled in by hand — the chest itself is no longer in the game."
+msgstr "Baús que o coletor abriu mas não conseguiu ler. A captura de tela de cada um foi guardada para que possa ser preenchido manualmente — o baú em si não está mais no jogo."
+
+#: ./templates/IncompleteChests/index.php:54
+msgid "Select all"
+msgstr "Selecionar todos"
+
+#: ./templates/IncompleteChests/index.php:57
+msgid "Deselect all"
+msgstr "Desmarcar todos"
+
+#: ./templates/IncompleteChests/index.php:60
+msgid "chests selected"
+msgstr "baús selecionados"
+
+#: ./templates/IncompleteChests/index.php:66
+msgid "Mark selected as not recoverable"
+msgstr "Marcar selecionados como não recuperável"
+
+#: ./templates/IncompleteChests/index.php:70
+msgid "Mark all {0} pending as not recoverable"
+msgstr "Marcar todos os {0} pendentes como não recuperável"
+
+#: ./templates/IncompleteChests/index.php:80
+msgid "Collected at"
+msgstr "Coletado em"
+
+#: ./templates/IncompleteChests/index.php:81
+#: ./templates/IncompleteChests/view.php:94
+msgid "Chest"
+msgstr "Baú"
+
+#: ./templates/IncompleteChests/index.php:82
+#: ./templates/IncompleteChests/view.php:108
+msgid "Player"
+msgstr "Jogador"
+
+#: ./templates/IncompleteChests/index.php:83
+#: ./templates/IncompleteChests/view.php:122
+msgid "Source"
+msgstr "Origem"
+
+#: ./templates/IncompleteChests/index.php:84
+msgid "Status"
+msgstr "Status"
+
+#: ./templates/IncompleteChests/index.php:86
+msgid "Reviewed at"
+msgstr "Revisado em"
+
+#: ./templates/IncompleteChests/index.php:117
+#: ./templates/IncompleteChests/index.php:121
+#: ./templates/IncompleteChests/index.php:124
+msgid "not read"
+msgstr "não lido"
+
+#: ./templates/IncompleteChests/index.php:143
+msgid "Review"
+msgstr "Revisar"
+
+#: ./templates/IncompleteChests/index.php:153
+msgid "Nothing here — every chest was read."
+msgstr "Nada aqui — todos os baús foram lidos."
+
+#: ./templates/IncompleteChests/index.php:218
+msgid "Please select at least one chest."
+msgstr "Por favor, selecione pelo menos um baú."
+
+#: ./templates/IncompleteChests/index.php:221
+msgid "Are you sure you want to mark the selected chests as not recoverable?"
+msgstr "Tem certeza de que deseja marcar os baús selecionados como não recuperável?"
+
+#: ./templates/IncompleteChests/index.php:225
+msgid "Are you sure you want to mark ALL {0} pending chests as not recoverable? This action will update all pending chests across all pages."
+msgstr "Tem certeza de que deseja marcar TODOS os {0} baús pendentes como não recuperável? Esta ação atualizará todos os baús pendentes de todas as páginas."
+
+#: ./src/Controller/IncompleteChestsController.php:285
+msgid "{0} pending chest(s) marked as not recoverable."
+msgstr "{0} baú(s) pendente(s) marcado(s) como não recuperável."
+
+#: ./src/Controller/IncompleteChestsController.php:287
+msgid "No pending chests were found to update."
+msgstr "Nenhum baú pendente foi encontrado para atualizar."
+
+#: ./src/Controller/IncompleteChestsController.php:297
+msgid "No chests selected."
+msgstr "Nenhum baú selecionado."
+
+#: ./src/Controller/IncompleteChestsController.php:316
+msgid "{0} chest(s) marked as not recoverable."
+msgstr "{0} baú(s) marcado(s) como não recuperável."
+
+#: ./src/Controller/IncompleteChestsController.php:318
+msgid "No pending chests were updated."
+msgstr "Nenhum baú pendente foi atualizado."
