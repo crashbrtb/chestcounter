@@ -364,6 +364,23 @@ class MaintenanceScheduleServiceTest extends TestCase
     }
 
     /**
+     * Test shell argument escaping.
+     *
+     * @return void
+     */
+    public function testEscapeArg(): void
+    {
+        $path = '/home/storage/5/60/a8/counter1/public_html';
+        $escaped = MaintenanceScheduleService::escapeArg($path);
+        $this->assertNotEmpty($escaped);
+        $this->assertStringContainsString($path, $escaped);
+
+        $complex = "path with spaces/and 'single' quotes";
+        $escapedComplex = MaintenanceScheduleService::escapeArg($complex);
+        $this->assertNotEmpty($escapedComplex);
+    }
+
+    /**
      * Call a protected method on the service under test.
      *
      * @param string $method The method name.

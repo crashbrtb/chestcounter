@@ -508,11 +508,35 @@ class MaintenanceScheduleService
     {
         return sprintf(
             'cd %s && %s bin/cake.php %s >> %s 2>&1',
-            escapeshellarg(rtrim(ROOT, '/\\')),
-            escapeshellarg($this->phpBinary()),
+            self::escapeArg(rtrim(ROOT, '/\\')),
+            self::escapeArg($this->phpBinary()),
             $command ?? self::COMMAND,
-            escapeshellarg($logPath ?? $this->logPath())
+            self::escapeArg($logPath ?? $this->logPath())
         );
+    }
+
+    /**
+     * Escape an argument for safe use in a shell command line.
+     *
+     * Fallback when escapeshellarg() is disabled in php.ini (e.g. shared hosting).
+     *
+     * @param string $arg The argument to escape.
+     * @return string
+     */
+    public static function escapeArg(string $arg): string
+    {
+        if (function_exists('escapeshellarg')) {
+            $disabled = array_map('trim', explode(',', (string)ini_get('disable_functions')));
+            if (!in_array('escapeshellarg', $disabled, true)) {
+                return escapeshellarg($arg);
+            }
+        }
+
+        if (DIRECTORY_SEPARATOR === '\\') {
+            return '"' . str_replace(['"', '%'], ' ', $arg) . '"';
+        }
+
+        return "'" . str_replace("'", "'\\''", $arg) . "'";
     }
 
     /**
@@ -616,7 +640,7 @@ class MaintenanceScheduleService
 
         try {
             file_put_contents($file, implode("\n", $lines) . "\n");
-            $result = $this->shell('crontab ' . escapeshellarg($file));
+            $result = $this->shell('crontab ' . self::escapeArg($file));
         } finally {
             @unlink($file);
         }
