@@ -13,20 +13,44 @@ $this->Breadcrumbs->add([
 ]);
 ?>
 
-<div class="card card-primary card-outline">
-    <div class="card-header d-flex flex-column flex-md-row">
-        <h2 class="card-title">
-            <!-- -->
-        </h2>
-        <div class="d-flex ml-auto">
-            <?= $this->Paginator->limitControl([], null, [
-                'label' => false,
-                'class' => 'form-control form-control-sm',
-                'templates' => ['inputContainer' => '{{content}}']
-            ]); ?>
-            <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm ml-2']) ?>
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-users-cog text-primary mr-2"></i><?= __('Users') ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Manage registered user accounts, permissions, and clan member associations') ?>
+            </p>
+        </div>
+        <div class="toolbar-actions">
+            <?= $this->Html->link(
+                '<i class="fas fa-user-plus mr-1"></i> ' . __('New User'),
+                ['action' => 'add'],
+                ['class' => 'btn btn-primary btn-sm', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fas fa-shield-alt mr-1"></i> ' . __('Roles'),
+                ['controller' => 'Roles', 'action' => 'index'],
+                ['class' => 'btn btn-default btn-sm', 'escape' => false]
+            ) ?>
         </div>
     </div>
+
+    <div class="card card-primary card-outline">
+        <div class="card-header d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+            <h3 class="card-title font-weight-bold mb-2 mb-md-0">
+                <i class="fas fa-id-card text-primary mr-2"></i><?= __('System Users') ?>
+            </h3>
+            <div class="d-flex align-items-center">
+                <span class="mr-2 small text-muted"><?= __('Show:') ?></span>
+                <?= $this->Paginator->limitControl([], null, [
+                    'label' => false,
+                    'class' => 'form-control form-control-sm',
+                    'templates' => ['inputContainer' => '{{content}}']
+                ]); ?>
+            </div>
+        </div>
     <!-- /.card-header -->
     <div class="card-body table-responsive p-0">
         <table class="table table-hover text-nowrap">
@@ -36,6 +60,7 @@ $this->Breadcrumbs->add([
                     <th><?= $this->Paginator->sort('name') ?></th>
                     <th><?= $this->Paginator->sort('email') ?></th>
                     <th><?= $this->Paginator->sort('active', __('Status')) ?></th>
+                    <th><?= __('Role') ?></th>
                     <th><?= $this->Paginator->sort('member_id', 'Member') ?></th>
                     <th><?= $this->Paginator->sort('created') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
@@ -57,6 +82,30 @@ $this->Breadcrumbs->add([
                                 <span class="badge badge-success"><i class="fas fa-check-circle mr-1"></i> <?= __('Active') ?></span>
                             <?php else: ?>
                                 <span class="badge badge-warning text-dark"><i class="fas fa-clock mr-1"></i> <?= __('Pending') ?></span>
+                            <?php endif; ?>
+                        </td>
+                        <td>
+                            <?php if (!empty($user->roles)) : ?>
+                                <?php foreach ($user->roles as $role) : ?>
+                                    <?php
+                                    $roleName = strtolower((string)$role->name);
+                                    $badgeClass = match ($roleName) {
+                                        'admin' => 'badge-danger',
+                                        'bankers' => 'badge-info',
+                                        default => 'badge-secondary',
+                                    };
+                                    $iconClass = match ($roleName) {
+                                        'admin' => 'fas fa-user-shield',
+                                        'bankers' => 'fas fa-piggy-bank',
+                                        default => 'fas fa-user',
+                                    };
+                                    ?>
+                                    <span class="badge <?= $badgeClass ?> mr-1">
+                                        <i class="<?= $iconClass ?> mr-1"></i><?= h($role->name) ?>
+                                    </span>
+                                <?php endforeach; ?>
+                            <?php else : ?>
+                                <span class="text-muted">-</span>
                             <?php endif; ?>
                         </td>
                         <td>
@@ -94,4 +143,5 @@ $this->Breadcrumbs->add([
         </ul>
     </div>
     <!-- /.card-footer -->
+    </div>
 </div>

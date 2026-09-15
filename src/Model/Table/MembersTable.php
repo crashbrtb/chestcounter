@@ -7,6 +7,8 @@ use Cake\ORM\Query\SelectQuery;
 use Cake\ORM\RulesChecker;
 use Cake\ORM\Table;
 use Cake\Validation\Validator;
+use Cake\I18n\FrozenTime;
+use Cake\ORM\TableRegistry;
 
 /**
  * Members Model
@@ -114,9 +116,146 @@ class MembersTable extends Table
             ->integer('user_id')
             ->allowEmptyString('user_id');
 
+        // Id do jogador dentro do jogo. E ele, e nao o nome, que liga o membro ao
+        // ranking importado: dois jogadores do clan podem ter o mesmo nome.
+        $validator
+            ->nonNegativeInteger('game_player_id')
+            ->allowEmptyString('game_player_id');
+
+        $validator
+            ->boolean('administrative_account')
+            ->allowEmptyString('administrative_account');
+
         // created_at e modified_at são gerenciados pelo TimestampBehavior
         // não precisam de validação explícita aqui, a menos que haja regras muito específicas.
 
         return $validator;
+    }
+
+    /**
+     * Application rules.
+     *
+     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
+     * @return \Cake\ORM\RulesChecker
+     */
+    public function buildRules(RulesChecker $rules): RulesChecker
+    {
+        $rules->add($rules->isUnique(['game_player_id'], ['allowMultipleNulls' => true]), [
+            'errorField' => 'game_player_id',
+            'message' => __('Another member already has this game player id.'),
+        ]);
+
+        return $rules;
+    }
+
+    /**
+     * Sincroniza players da tabela collected_chests com a tabela members
+     * e atualiza o status active baseado na última atividade (3 semanas).
+     *
+     * @param bool $isDryRun Se verdadeiro, não grava no banco de dados.
+     * @return array{playersCount: int, samplePlayerNames: array, newMembersCount: int, updatedMembersCount: int, errors: array}
+     */
+    public function updateFromCollectedChests(bool $isDryRun = false): array
+    {
+        $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
+
+        // Buscar todos os players únicos da tabela collected_chests
+        $allPlayers = $collectedChestsTable->find()
+            ->select(['player'])
+            ->distinct(['player'])
+            ->where(['player IS NOT' => null, 'player !=' => ''])
+            ->toArray();
+
+        $playersCount = count($allPlayers);
+        $samplePlayers = array_slice($allPlayers, 0, 3);
+        $samplePlayerNames = [];
+        foreach ($samplePlayers as $player) {
+            $samplePlayerNames[] = $player->player;
+        }
+
+        $newMembersCount = 0;
+        $updatedMembersCount = 0;
+        $errorMessages = [];
+        $threeWeeksAgo = FrozenTime::now()->subWeeks(3);
+
+        // Depois que um torneio do jogo enviou a lista do clan, ela e a fonte da
+        // verdade para ativo/inativo (MemberRosterService). A atividade de baus
+        // continua criando membros novos, mas nao liga nem desliga ninguem.
+        $rosterManaged = (new \App\Service\MemberRosterService())->rosterManaged();
+
+        // Indexar membros existentes por player para otimizar busca
+        $existingMembers = $this->find()
+            ->all()
+            ->indexBy('player')
+            ->toArray();
+
+        foreach ($allPlayers as $playerData) {
+            $playerName = trim((string)$playerData->player);
+            if ($playerName === '') {
+                continue;
+            }
+
+            // Buscar a última atividade deste player específico
+            $lastActivity = $collectedChestsTable->find()
+                ->select(['collected_at'])
+                ->where(['player' => $playerName])
+                ->order(['collected_at' => 'DESC'])
+                ->first();
+
+            if (!$lastActivity || !$lastActivity->collected_at) {
+                continue;
+            }
+
+            $lastCollectedAt = $lastActivity->collected_at;
+            $isActive = $lastCollectedAt >= $threeWeeksAgo ? 1 : 0;
+
+            if (isset($existingMembers[$playerName])) {
+                $existingMember = $existingMembers[$playerName];
+                if (!$rosterManaged && (int)$existingMember->active !== $isActive) {
+                    $existingMember->active = $isActive;
+
+                    if (!$isDryRun) {
+                        if ($this->save($existingMember)) {
+                            $updatedMembersCount++;
+                        }
+                    } else {
+                        $updatedMembersCount++;
+                    }
+                }
+            } else {
+                $newMember = $this->newEmptyEntity();
+                $newMember = $this->patchEntity($newMember, [
+                    'player' => $playerName,
+                    'active' => $rosterManaged ? 0 : $isActive,
+                    'power' => 0,
+                    'guards' => 0,
+                    'specialists' => 0,
+                    'monsters' => 0,
+                    'engineers' => 0,
+                ]);
+
+                if (!$isDryRun) {
+                    if ($this->save($newMember)) {
+                        $newMembersCount++;
+                        $existingMembers[$playerName] = $newMember;
+                    } else {
+                        $errors = $newMember->getErrors();
+                        if (!empty($errors)) {
+                            $errorMessages[] = __('Error saving member {0}: {1}', $playerName, json_encode($errors));
+                        }
+                    }
+                } else {
+                    $newMembersCount++;
+                }
+            }
+        }
+
+        return [
+            'playersCount' => $playersCount,
+            'samplePlayerNames' => $samplePlayerNames,
+            'newMembersCount' => $newMembersCount,
+            'updatedMembersCount' => $updatedMembersCount,
+            'errors' => $errorMessages,
+        ];
     }
 }

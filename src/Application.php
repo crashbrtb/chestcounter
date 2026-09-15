@@ -117,6 +117,11 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                         return true;
                     }
                     $params = (array)$request->getAttribute('params', []);
+                    // The uploader API carries no session cookie to forge: it is
+                    // authenticated by a bearer token on every request instead.
+                    if (($params['prefix'] ?? null) === 'Api') {
+                        return true;
+                    }
                     $controller = strtolower($params['controller'] ?? '');
                     $action = strtolower($params['action'] ?? '');
                     if ($controller === 'users' && in_array($action, ['googlelogin', 'google_login', 'google-login'], true)) {

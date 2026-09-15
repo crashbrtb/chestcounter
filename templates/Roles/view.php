@@ -3,106 +3,152 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Role $role
  */
-?>
 
-<?php
-$this->assign('title', __('Role'));
+$this->assign('title', __('Role: {0}', $role->name));
 $this->Breadcrumbs->add([
     ['title' => __('Home'), 'url' => '/'],
     ['title' => __('List Roles'), 'url' => ['action' => 'index']],
-    ['title' => __('View')],
+    ['title' => h($role->name)],
 ]);
 ?>
 
-<div class="view card card-primary card-outline">
-    <div class="card-header d-sm-flex">
-        <h2 class="card-title"><?= h($role->name) ?></h2>
-    </div>
-    <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
-            <tr>
-                <th><?= __('Name') ?></th>
-                <td><?= h($role->name) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Description') ?></th>
-                <td><?= h($role->description) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Alias') ?></th>
-                <td><?= h($role->alias) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Id') ?></th>
-                <td><?= $this->Number->format($role->id) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Created') ?></th>
-                <td><?= h($role->created) ?></td>
-            </tr>
-            <tr>
-                <th><?= __('Modified') ?></th>
-                <td><?= h($role->modified) ?></td>
-            </tr>
-        </table>
-    </div>
-    <div class="card-footer d-flex">
-        <div class="mr-auto">
-            <?= $this->Form->postLink(
-                __('Delete'),
-                ['action' => 'delete', $role->id],
-                ['confirm' => __('Are you sure you want to delete # {0}?', $role->id), 'class' => 'btn btn-danger']
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-shield-alt text-primary mr-2"></i><?= h($role->name) ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Role details and assigned system users') ?>
+            </p>
+        </div>
+        <div class="toolbar-actions">
+            <?= $this->Html->link(
+                '<i class="fas fa-edit mr-1"></i> ' . __('Edit'),
+                ['action' => 'edit', $role->id],
+                ['class' => 'btn btn-primary btn-sm', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fas fa-list mr-1"></i> ' . __('List Roles'),
+                ['action' => 'index'],
+                ['class' => 'btn btn-default btn-sm', 'escape' => false]
             ) ?>
         </div>
-        <div class="ml-auto">
-            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $role->id], ['class' => 'btn btn-secondary']) ?>
-            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
-        </div>
     </div>
-</div>
 
-<div class="related related-user view card">
-    <div class="card-header d-flex">
-        <h3 class="card-title"><?= __('Related Users') ?></h3>
-        <div class="ml-auto">
-            <?= $this->Html->link(__('New User'), ['controller' => 'Users', 'action' => 'add', '?' => ['role_id' => $role->id]], ['class' => 'btn btn-primary btn-sm']) ?>
-            <?= $this->Html->link(__('List Users'), ['controller' => 'Users', 'action' => 'index'], ['class' => 'btn btn-primary btn-sm']) ?>
+    <div class="card card-primary card-outline mb-4">
+        <div class="card-header d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+            <h3 class="card-title font-weight-bold mb-2 mb-md-0">
+                <i class="fas fa-info-circle text-primary mr-2"></i><?= __('Role Information') ?>
+                <span class="text-muted small ml-1">#<?= $this->Number->format($role->id) ?></span>
+            </h3>
         </div>
-    </div>
-    <div class="card-body table-responsive p-0">
-        <table class="table table-hover text-nowrap">
-            <tr>
-                <th><?= __('Id') ?></th>
-                <th><?= __('Name') ?></th>
-                <th><?= __('Email') ?></th>
-                <th><?= __('Password') ?></th>
-                <th><?= __('Created') ?></th>
-                <th><?= __('Modified') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
-            <?php if (empty($role->users)) : ?>
-                <tr>
-                    <td colspan="7" class="text-muted">
-                        <?= __('Users record not found!') ?>
-                    </td>
-                </tr>
-            <?php else : ?>
-                <?php foreach ($role->users as $user) : ?>
+
+        <div class="card-body p-0 table-responsive">
+            <table class="table table-hover mb-0">
+                <tbody>
                     <tr>
-                        <td><?= h($user->id) ?></td>
-                        <td><?= h($user->name) ?></td>
-                        <td><?= h($user->email) ?></td>
-                        <td><?= h($user->password) ?></td>
-                        <td><?= h($user->created) ?></td>
-                        <td><?= h($user->modified) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['controller' => 'Users', 'action' => 'view', $user->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
-                            <?= $this->Html->link(__('Edit'), ['controller' => 'Users', 'action' => 'edit', $user->id], ['class' => 'btn btn-xs btn-outline-primary']) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['controller' => 'Users', 'action' => 'delete', $user->id], ['class' => 'btn btn-xs btn-outline-danger', 'confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                        <th style="width: 250px;" class="bg-light"><?= __('Name') ?></th>
+                        <td>
+                            <span class="badge badge-info font-weight-bold px-2 py-1">
+                                <i class="fas fa-shield-alt mr-1"></i><?= h($role->name) ?>
+                            </span>
                         </td>
                     </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </table>
+                    <tr>
+                        <th class="bg-light"><?= __('Alias') ?></th>
+                        <td><code><?= h($role->alias) ?></code></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light"><?= __('Description') ?></th>
+                        <td><?= h($role->description) ?></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light"><?= __('Created') ?></th>
+                        <td><?= !empty($role->created) ? h($role->created->format('d/m/Y H:i:s')) : '-' ?></td>
+                    </tr>
+                    <tr>
+                        <th class="bg-light"><?= __('Modified') ?></th>
+                        <td><?= !empty($role->modified) ? h($role->modified->format('d/m/Y H:i:s')) : '-' ?></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="card-footer d-flex flex-column flex-sm-row align-items-center justify-content-between">
+            <div class="mb-2 mb-sm-0">
+                <?= $this->Form->postLink(
+                    '<i class="fas fa-trash-alt mr-1"></i> ' . __('Delete'),
+                    ['action' => 'delete', $role->id],
+                    [
+                        'confirm' => __('Are you sure you want to delete # {0}?', $role->id),
+                        'class' => 'btn btn-danger',
+                        'escape' => false,
+                    ]
+                ) ?>
+            </div>
+            <div class="d-flex" style="gap: 8px;">
+                <?= $this->Html->link(
+                    '<i class="fas fa-arrow-left mr-1"></i> ' . __('Back to List'),
+                    ['action' => 'index'],
+                    ['class' => 'btn btn-default', 'escape' => false]
+                ) ?>
+                <?= $this->Html->link(
+                    '<i class="fas fa-edit mr-1"></i> ' . __('Edit'),
+                    ['action' => 'edit', $role->id],
+                    ['class' => 'btn btn-primary', 'escape' => false]
+                ) ?>
+            </div>
+        </div>
+    </div>
+
+    <!-- Usuários com esta Role -->
+    <div class="card card-outline card-secondary">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h3 class="card-title font-weight-bold">
+                <i class="fas fa-users text-secondary mr-2"></i><?= __('Users Assigned to this Role') ?>
+            </h3>
+        </div>
+        <div class="card-body p-0 table-responsive">
+            <table class="table table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th><?= __('Name') ?></th>
+                        <th><?= __('Email') ?></th>
+                        <th><?= __('Status') ?></th>
+                        <th class="actions text-right"><?= __('Actions') ?></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (empty($role->users)): ?>
+                        <tr>
+                            <td colspan="4" class="text-center text-muted py-3">
+                                <?= __('No users currently assigned to this role.') ?>
+                            </td>
+                        </tr>
+                    <?php else: ?>
+                        <?php foreach ($role->users as $user): ?>
+                            <tr>
+                                <td class="font-weight-bold"><?= h($user->name) ?></td>
+                                <td><?= h($user->email) ?></td>
+                                <td>
+                                    <?= $user->active
+                                        ? '<span class="badge badge-success">' . __('Active') . '</span>'
+                                        : '<span class="badge badge-secondary">' . __('Pending') . '</span>'
+                                    ?>
+                                </td>
+                                <td class="actions text-right">
+                                    <?= $this->Html->link(
+                                        '<i class="fas fa-eye mr-1"></i> ' . __('View User'),
+                                        ['controller' => 'Users', 'action' => 'view', $user->id],
+                                        ['class' => 'btn btn-xs btn-outline-primary', 'escape' => false]
+                                    ) ?>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

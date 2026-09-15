@@ -4490,3 +4490,816 @@ msgstr "設定"
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr "部隊計算機は現在無効になっています。"
+
+#. Game tournaments: imported rankings, reward split, API tokens
+msgid "Game tournament (imported score)"
+msgstr "ゲーム内トーナメント（スコアを取り込み）"
+
+msgid "The ranking is read from the game by the EventUploader and the rewards below are split among the players."
+msgstr "ランキングは EventUploader がゲームから読み取り、下の報酬をプレイヤーで分配します。"
+
+msgid "Points"
+msgstr "ポイント"
+
+msgid "Proportional to the points"
+msgstr "ポイントに比例"
+
+msgid "Equal parts"
+msgstr "均等に分配"
+
+msgid "Give the leftover to the best placed"
+msgstr "余りは上位者へ"
+
+msgid "Keep the leftover with the clan"
+msgstr "余りはクランに残す"
+
+msgid "{0} x {1} ({2})"
+msgstr "{0} x {1}（{2}）"
+
+msgid "Add at least one reward to split among the players."
+msgstr "プレイヤーで分配する報酬を少なくとも1つ追加してください。"
+
+msgid "Say what is being handed out."
+msgstr "配布する内容を入力してください。"
+
+msgid "The quantity must be a whole number."
+msgstr "数量は整数で入力してください。"
+
+msgid "The quantity must be at least 1."
+msgstr "数量は1以上にしてください。"
+
+msgid "Choose how the reward is split."
+msgstr "報酬の分配方法を選んでください。"
+
+msgid "Give the token a name, such as the computer it will be used on."
+msgstr "トークンに名前を付けてください（使用するPC名など）。"
+
+msgid "Another member already has this game player id."
+msgstr "このゲーム内プレイヤーIDは別のメンバーが使用しています。"
+
+msgid "The ranking must have at least one player."
+msgstr "ランキングには少なくとも1人のプレイヤーが必要です。"
+
+msgid "A clan ranking has at most {0} players; {1} were sent."
+msgstr "クランのランキングは最大 {0} 人です。{1} 人分が送信されました。"
+
+msgid "Line {0} is not a player."
+msgstr "{0} 行目はプレイヤーではありません。"
+
+msgid "Line {0}: the position must be a whole number from 1."
+msgstr "{0} 行目：順位は1以上の整数にしてください。"
+
+msgid "Line {0}: position {1} appears twice."
+msgstr "{0} 行目：順位 {1} が重複しています。"
+
+msgid "Line {0}: the name must have 1 to {1} characters."
+msgstr "{0} 行目：名前は1〜{1}文字にしてください。"
+
+msgid "Line {0}: the points must be a whole number of 0 or more."
+msgstr "{0} 行目：ポイントは0以上の整数にしてください。"
+
+msgid "Line {0}: the player id must be a positive whole number."
+msgstr "{0} 行目：プレイヤーIDは正の整数にしてください。"
+
+msgid "Line {0}: player id {1} appears twice."
+msgstr "{0} 行目：プレイヤーID {1} が重複しています。"
+
+msgid "Unknown capture method."
+msgstr "不明な取得方法です。"
+
+msgid "The tournament date is not a valid date."
+msgstr "トーナメントの日付が正しくありません。"
+
+msgid "{0} player(s) are not linked to a member: {1}. They still receive their share; link them to keep the history together."
+msgstr "{0} 人のプレイヤーがメンバーに紐付いていません：{1}。取り分は受け取れますが、履歴をまとめるために紐付けてください。"
+
+msgid "{0} player(s) were linked by name. Confirm them: when the result is published their game id is saved on the member."
+msgstr "{0} 人のプレイヤーが名前で紐付けられました。確認してください。結果を公開するとゲームIDがメンバーに保存されます。"
+
+msgid "The positions are not 1 to {0} without gaps: a part of the ranking may be missing."
+msgstr "順位が1〜{0}まで連続していません。ランキングの一部が欠けている可能性があります。"
+
+msgid "Points are not in descending order at: {0}. Check for a reading error."
+msgstr "次の箇所でポイントが降順になっていません：{0}。読み取りミスがないか確認してください。"
+
+msgid "Different players share a name: {0}. They are told apart by their game id."
+msgstr "別々のプレイヤーが同じ名前です：{0}。ゲームIDで区別されます。"
+
+msgid "Points were corrected by hand for {0} player(s)."
+msgstr "{0} 人のプレイヤーのポイントを手動で修正しました。"
+
+msgid "This event has no reward to split. Add one before publishing."
+msgstr "このイベントには分配する報酬がありません。公開前に追加してください。"
+
+msgid "Only a draft can be changed. Unpublish the result first."
+msgstr "変更できるのは下書きだけです。先に結果の公開を取り消してください。"
+
+msgid "This ranking is not a draft of this event."
+msgstr "このランキングはこのイベントの下書きではありません。"
+
+msgid "Event #{0} does not take an imported ranking."
+msgstr "イベント #{0} は取り込みランキングを受け付けません。"
+
+msgid "The result of event #{0} is already published. Unpublish it to send a new ranking."
+msgstr "イベント #{0} の結果はすでに公開されています。新しいランキングを送るには公開を取り消してください。"
+
+msgid "Nobody qualifies for \"{0}\": check the eligible players and the minimum points."
+msgstr "「{0}」の対象者がいません。対象プレイヤーと最低ポイントを確認してください。"
+
+msgid "This event has no published result yet."
+msgstr "このイベントの結果はまだ公開されていません。"
+
+msgid "Only game tournaments have a ranking to review."
+msgstr "確認するランキングがあるのはゲーム内トーナメントだけです。"
+
+msgid "There is no draft ranking to change."
+msgstr "変更できるランキングの下書きがありません。"
+
+msgid "The result of event #{0} was published: {1} player(s)."
+msgstr "イベント #{0} の結果を公開しました：{1} 人。"
+
+msgid "{0} change(s) saved. The shares below are recalculated."
+msgstr "{0} 件の変更を保存しました。下の取り分は再計算されています。"
+
+msgid "administrative"
+msgstr "管理用"
+
+msgid "This event has no published result."
+msgstr "このイベントに公開された結果はありません。"
+
+msgid "The result of event #{0} is a draft again and no longer public."
+msgstr "イベント #{0} の結果は下書きに戻り、非公開になりました。"
+
+msgid "Event #{0} was created from #{1}. Check the name and the date."
+msgstr "#{1} をもとにイベント #{0} を作成しました。名前と日付を確認してください。"
+
+msgid "The event could not be duplicated: {0}"
+msgstr "イベントを複製できませんでした：{0}"
+
+msgid "Choose the ranking CSV file to upload."
+msgstr "アップロードするランキングのCSVファイルを選んでください。"
+
+msgid "The file is too large for a ranking of at most {0} players."
+msgstr "最大 {0} 人のランキングとしてはファイルが大きすぎます。"
+
+msgid "The ranking was not accepted: {0}"
+msgstr "ランキングは受け付けられませんでした：{0}"
+
+msgid "Ranking with {0} player(s) received. Review it below."
+msgstr "{0} 人分のランキングを受け取りました。下で確認してください。"
+
+msgid "This ranking is the same as the current draft; nothing changed."
+msgstr "このランキングは現在の下書きと同じです。変更はありません。"
+
+msgid "Send the API token in the Authorization header: Bearer <token>."
+msgstr "API トークンを Authorization ヘッダーで送信してください：Bearer <token>。"
+
+msgid "This API token is invalid, expired or revoked."
+msgstr "この API トークンは無効、期限切れ、または取り消されています。"
+
+msgid "Only an active administrator can use the uploader."
+msgstr "アップローダーを使えるのは有効な管理者だけです。"
+
+msgid "Event not found."
+msgstr "イベントが見つかりません。"
+
+msgid "Send the ranking as a JSON body."
+msgstr "ランキングは JSON 本文で送信してください。"
+
+msgid "The ranking was not accepted."
+msgstr "ランキングは受け付けられませんでした。"
+
+msgid "The token could not be created. Please, try again."
+msgstr "トークンを作成できませんでした。もう一度お試しください。"
+
+msgid "The token \"{0}\" was revoked."
+msgstr "トークン「{0}」を取り消しました。"
+
+msgid "{0} is now an administrative account and will not receive tournament rewards."
+msgstr "{0} は管理用アカウントになり、トーナメント報酬を受け取りません。"
+
+msgid "{0} will receive tournament rewards again."
+msgstr "{0} は再びトーナメント報酬を受け取ります。"
+
+msgid "Item"
+msgstr "アイテム"
+
+msgid "e.g. Artifact pieces"
+msgstr "例：アーティファクトの欠片"
+
+msgid "Split"
+msgstr "分配"
+
+msgid "Minimum points"
+msgstr "最低ポイント"
+
+msgid "Leftover units"
+msgstr "余り"
+
+msgid "Remove"
+msgstr "削除"
+
+msgid "Game tournament: enter the day it was played in the game. Past dates are accepted, and nothing is counted from chests."
+msgstr "ゲーム内トーナメント：ゲームで開催された日を入力してください。過去の日付も入力でき、宝箱は集計されません。"
+
+msgid "Rewards to split"
+msgstr "分配する報酬"
+
+msgid "What the clan received for this tournament and how it is divided. Proportional gives each player a part matching their share of the points; equal gives everybody the same. Administrative accounts never take part, and players below the minimum points are left out."
+msgstr "このトーナメントでクランが受け取ったものと、その分け方です。比例はポイントの割合に応じて各プレイヤーに配分し、均等は全員に同じだけ配ります。管理用アカウントは対象外で、最低ポイント未満のプレイヤーも除外されます。"
+
+msgid "Add another reward"
+msgstr "報酬を追加"
+
+msgid "Optional: filled in from the rewards when left empty."
+msgstr "任意：空欄の場合は報酬から自動で入力されます。"
+
+msgid "Review result - Event #{0}"
+msgstr "結果の確認 - イベント #{0}"
+
+msgid "game id"
+msgstr "ゲームID"
+
+msgid "by name"
+msgstr "名前で"
+
+msgid "name correction"
+msgstr "名前の修正"
+
+msgid "by hand"
+msgstr "手動"
+
+msgid "not linked"
+msgstr "未紐付け"
+
+msgid "EventUploader (game data)"
+msgstr "EventUploader（ゲームデータ）"
+
+msgid "EventUploader (screen reading)"
+msgstr "EventUploader（画面読み取り）"
+
+msgid "CSV file"
+msgstr "CSVファイル"
+
+msgid "Draft"
+msgstr "下書き"
+
+msgid "Published"
+msgstr "公開済み"
+
+msgid "Replaced"
+msgstr "置き換え済み"
+
+msgid "Review result"
+msgstr "結果を確認"
+
+msgid "Published page"
+msgstr "公開ページ"
+
+msgid "Unpublish"
+msgstr "公開を取り消す"
+
+msgid "Take the result of event #{0} down? Players will stop seeing it until it is published again."
+msgstr "イベント #{0} の結果を取り下げますか？再公開するまでプレイヤーには表示されません。"
+
+msgid "Edit event"
+msgstr "イベントを編集"
+
+msgid "min. {0} pts"
+msgstr "最低 {0} pt"
+
+msgid "{0} handed out to {1} player(s)"
+msgstr "{0} を {1} 人に配分"
+
+msgid "{0} left over"
+msgstr "余り {0}"
+
+msgid "No reward yet. Edit the event to add what will be split."
+msgstr "報酬がまだありません。イベントを編集して分配する報酬を追加してください。"
+
+msgid "Ranking"
+msgstr "ランキング"
+
+msgid "No ranking has been received yet."
+msgstr "ランキングはまだ届いていません。"
+
+msgid "Received {0} UTC from {1}"
+msgstr "{0} UTC に {1} から受信"
+
+msgid "In the game: {0}"
+msgstr "ゲーム内：{0}"
+
+msgid "Send a ranking"
+msgstr "ランキングを送信"
+
+msgid "The EventUploader sends it straight from the game. Without it, upload the ranking.csv the discovery tool exports."
+msgstr "EventUploader がゲームから直接送信します。使わない場合は、調査ツールが書き出した ranking.csv をアップロードしてください。"
+
+msgid "Replace with this file"
+msgstr "このファイルで置き換える"
+
+msgid "Upload CSV"
+msgstr "CSVをアップロード"
+
+msgid "Tokens for the EventUploader"
+msgstr "EventUploader 用トークン"
+
+msgid "{0} taking part in the prize"
+msgstr "{0} 人が報酬の対象"
+
+msgid "Administrative accounts"
+msgstr "管理用アカウント"
+
+msgid "never receive a prize"
+msgstr "報酬は受け取りません"
+
+msgid "Not linked"
+msgstr "未紐付け"
+
+msgid "players without a member"
+msgstr "メンバー未設定のプレイヤー"
+
+msgid "Points in the split"
+msgstr "分配対象のポイント"
+
+msgid "of {0} in the ranking"
+msgstr "ランキング全体 {0} 中"
+
+msgid "Ranking and shares"
+msgstr "ランキングと取り分"
+
+msgid "Player in the game"
+msgstr "ゲーム内のプレイヤー"
+
+msgid "Takes part in the prize"
+msgstr "報酬の対象"
+
+msgid "- not linked -"
+msgstr "- 未紐付け -"
+
+msgid "Value received from the game"
+msgstr "ゲームから受け取った値"
+
+msgid "was {0}"
+msgstr "元は {0}"
+
+msgid "Total handed out"
+msgstr "配分合計"
+
+msgid "of {0}"
+msgstr "/ {0}"
+
+msgid "Change the member, the prize checkbox or the points, then recalculate to see the new shares."
+msgstr "メンバー、報酬のチェック、ポイントを変更してから再計算すると、新しい取り分が表示されます。"
+
+msgid "Save and recalculate"
+msgstr "保存して再計算"
+
+msgid "Publish this result? Players will see the ranking and what each one receives."
+msgstr "この結果を公開しますか？プレイヤーにランキングと各自の取り分が表示されます。"
+
+msgid "Publish result"
+msgstr "結果を公開"
+
+msgid "Rankings received"
+msgstr "受信したランキング"
+
+msgid "When (UTC)"
+msgstr "日時（UTC）"
+
+msgid "Sent by"
+msgstr "送信者"
+
+msgid "Tournament Result"
+msgstr "トーナメント結果"
+
+msgid "Ranking read from the game and the rewards each player receives"
+msgstr "ゲームから読み取ったランキングと各プレイヤーの報酬"
+
+msgid "Published {0} UTC"
+msgstr "{0} UTC に公開"
+
+msgid "{0} points"
+msgstr "{0} ポイント"
+
+msgid "{0} receive a reward"
+msgstr "{0} 人が報酬を受け取り"
+
+msgid "Clan Total"
+msgstr "クラン合計"
+
+msgid "points in the tournament"
+msgstr "トーナメントのポイント"
+
+msgid "Rewards"
+msgstr "報酬"
+
+msgid "Who hands out the rewards"
+msgstr "報酬を配る人"
+
+msgid "Rewards are delivered in the game. Look for this player if yours has not arrived."
+msgstr "報酬はゲーム内で配られます。届いていない場合はこのプレイヤーに連絡してください。"
+
+msgid "No reward"
+msgstr "報酬なし"
+
+msgid "Awaiting result"
+msgstr "結果待ち"
+
+msgid "API Tokens"
+msgstr "API トークン"
+
+msgid "New Game Tournament"
+msgstr "新しいゲーム内トーナメント"
+
+msgid "Duplicate"
+msgstr "複製"
+
+msgid "Tokens the EventUploader uses to send tournament rankings to this site"
+msgstr "EventUploader がこのサイトへトーナメントのランキングを送るためのトークン"
+
+msgid "Token \"{0}\" created"
+msgstr "トークン「{0}」を作成しました"
+
+msgid "Copy it now and paste it in the EventUploader, together with the site address. It will not be shown again: if it is lost, revoke it and create another."
+msgstr "今すぐコピーし、サイトのアドレスと一緒に EventUploader に貼り付けてください。再表示はされません。紛失した場合は取り消して新しく作成してください。"
+
+msgid "Site address: {0}"
+msgstr "サイトのアドレス：{0}"
+
+msgid "New token"
+msgstr "新しいトークン"
+
+msgid "Create one per computer the EventUploader runs on. The token belongs to you and can only send rankings; it cannot read or change anything else."
+msgstr "EventUploader を使うPCごとに1つ作成してください。トークンはあなたに紐付き、ランキングの送信しかできません。それ以外の読み取りや変更はできません。"
+
+msgid "e.g. Clan leader PC"
+msgstr "例：クランリーダーのPC"
+
+msgid "Create token"
+msgstr "トークンを作成"
+
+msgid "Tokens"
+msgstr "トークン"
+
+msgid "Owner"
+msgstr "所有者"
+
+msgid "Starts with"
+msgstr "先頭"
+
+msgid "Created (UTC)"
+msgstr "作成日時（UTC）"
+
+msgid "Last used (UTC)"
+msgstr "最終使用（UTC）"
+
+msgid "never"
+msgstr "未使用"
+
+msgid "Revoked"
+msgstr "取り消し済み"
+
+msgid "Expired"
+msgstr "期限切れ"
+
+msgid "Revoke"
+msgstr "取り消す"
+
+msgid "Revoke the token \"{0}\"? The EventUploader using it stops working at once."
+msgstr "トークン「{0}」を取り消しますか？これを使う EventUploader はすぐに動かなくなります。"
+
+msgid "No token has been created yet."
+msgstr "トークンはまだ作成されていません。"
+
+msgid "Tournament rewards"
+msgstr "トーナメント報酬"
+
+msgid "Administrative"
+msgstr "管理用"
+
+msgid "Receives"
+msgstr "受け取る"
+
+msgid "Mark as a player who receives rewards"
+msgstr "報酬を受け取るプレイヤーにする"
+
+msgid "Mark as an administrative account"
+msgstr "管理用アカウントにする"
+
+msgid "Game player id"
+msgstr "ゲーム内プレイヤーID"
+
+msgid "Filled in automatically by the first published tournament"
+msgstr "最初に公開したトーナメントで自動入力されます"
+
+msgid "Administrative account (takes part in rankings but never receives tournament rewards)"
+msgstr "管理用アカウント（ランキングには載りますが、トーナメント報酬は受け取りません）"
+
+#. Game tournaments registered by the EventUploader, event types
+msgid "This game tournament result is already registered."
+msgstr "このゲーム内トーナメントの結果はすでに登録されています。"
+
+msgid "The tournament result id is missing or invalid."
+msgstr "トーナメント結果のIDがないか、正しくありません。"
+
+msgid "The tournament type is missing or invalid."
+msgstr "トーナメントの種類がないか、正しくありません。"
+
+msgid "The tournament name has more than {0} characters."
+msgstr "トーナメント名が {0} 文字を超えています。"
+
+msgid "The tournament cannot end in the future."
+msgstr "トーナメントの終了日時を未来にすることはできません。"
+
+msgid "Game tournament {0}"
+msgstr "ゲーム内トーナメント {0}"
+
+msgid "Event type"
+msgstr "イベントの種類"
+
+msgid "Game event"
+msgstr "ゲーム内イベント"
+
+msgid "A tournament played in the game. It is registered after it ends, so past dates are accepted, and the EventUploader usually creates it together with the ranking."
+msgstr "ゲーム内で行われたトーナメントです。終了後に登録するため過去の日付も入力でき、通常は EventUploader がランキングと一緒に作成します。"
+
+msgid "Clan event"
+msgstr "クランイベント"
+
+msgid "An internal challenge to push crypts and epic monsters. It is counted from the chests collected inside its window, which starts in the future."
+msgstr "クリプトやエピックモンスターを促すためのクラン内の企画です。期間中に集めた宝箱で集計し、期間は未来から始まります。"
+
+msgid "When it was played"
+msgstr "開催日時"
+
+msgid "The day and time the tournament ended in the game, in UTC. Past dates are accepted and nothing is counted from chests."
+msgstr "ゲーム内でトーナメントが終了した日時（UTC）です。過去の日付も入力でき、宝箱は集計されません。"
+
+#. Tournament catalogue, event dates, tournament mapper
+msgid "The image must be a PNG, JPEG, WebP or GIF of at most {0} KB."
+msgstr "画像は {0} KB 以下の PNG、JPEG、WebP、GIF のいずれかにしてください。"
+
+msgid "Tournament \"{0}\" saved."
+msgstr "トーナメント「{0}」を保存しました。"
+
+msgid "The tournament could not be saved. Please check the fields below."
+msgstr "トーナメントを保存できませんでした。下の項目を確認してください。"
+
+msgid "Tournament Catalogue"
+msgstr "トーナメント一覧"
+
+msgid "read from the Journal"
+msgstr "Journal から読み取り"
+
+msgid "typed in the uploader"
+msgstr "アップローダーで入力"
+
+msgid "set by hand"
+msgstr "手動で設定"
+
+msgid "The game's tournaments. Names and ids are filled in by the tournament mapper; the image and the duration are set here."
+msgstr "ゲームのトーナメント一覧です。名前と ID はトーナメントマッパーが入力し、画像と期間はここで設定します。"
+
+msgid "Image"
+msgstr "画像"
+
+msgid "Tournament"
+msgstr "トーナメント"
+
+msgid "Game id"
+msgstr "ゲーム ID"
+
+msgid "Duration"
+msgstr "期間"
+
+msgid "Last seen (UTC)"
+msgstr "最終確認 (UTC)"
+
+msgid "Name not mapped yet"
+msgstr "名前はまだマッピングされていません"
+
+msgid "{0} day(s)"
+msgstr "{0} 日"
+
+msgid "not set (1 day)"
+msgstr "未設定（1 日）"
+
+msgid "The catalogue is empty. Run the tournament mapper, or send a tournament with the EventUploader."
+msgstr "一覧は空です。トーナメントマッパーを実行するか、EventUploader でトーナメントを送信してください。"
+
+msgid "Edit Tournament"
+msgstr "トーナメントを編集"
+
+msgid "Game id {0}"
+msgstr "ゲーム ID {0}"
+
+msgid "As it appears in the game"
+msgstr "ゲーム内の表記どおり"
+
+msgid "Filled in by the tournament mapper. A name changed here is kept: the mapper will not overwrite it."
+msgstr "トーナメントマッパーが入力します。ここで変更した名前は保持され、マッパーに上書きされません。"
+
+msgid "Duration (days)"
+msgstr "期間（日）"
+
+msgid "How long the tournament runs. A new event starts this many days before the end the game reports; one day when empty."
+msgstr "トーナメントの開催期間です。新しいイベントは、ゲームが示す終了日時のこの日数前に開始します。空欄の場合は 1 日です。"
+
+msgid "PNG, JPEG, WebP or GIF, up to 1 MB."
+msgstr "PNG、JPEG、WebP、GIF（最大 1 MB）。"
+
+msgid "Remove the image"
+msgstr "画像を削除"
+
+msgid "Latest events of this tournament"
+msgstr "このトーナメントの最近のイベント"
+
+msgid "Send at least one tournament."
+msgstr "少なくとも 1 件のトーナメントを送信してください。"
+
+msgid "Send at most {0} tournaments at a time."
+msgstr "一度に送信できるトーナメントは最大 {0} 件です。"
+
+msgid "Line {0} is not a tournament."
+msgstr "{0} 行目はトーナメントではありません。"
+
+msgid "The tournaments were not accepted."
+msgstr "トーナメントは受け付けられませんでした。"
+
+msgid "The dates of event #{0} were saved."
+msgstr "イベント #{0} の日時を保存しました。"
+
+msgid "The dates were not saved: {0}"
+msgstr "日時を保存できませんでした: {0}"
+
+msgid "Lasts {0} day(s) in the catalogue"
+msgstr "一覧上の期間は {0} 日"
+
+msgid "No duration in the catalogue: one day assumed"
+msgstr "一覧に期間がないため 1 日とみなします"
+
+msgid "Edit in the catalogue"
+msgstr "一覧で編集"
+
+msgid "Save dates"
+msgstr "日時を保存"
+
+msgid "The duration must be a whole number of days."
+msgstr "期間は日数（整数）で入力してください。"
+
+msgid "The duration must be between {0} and {1} days."
+msgstr "期間は {0}〜{1} 日の範囲で入力してください。"
+
+msgid "Monitoring"
+msgstr "監視"
+
+msgid "Running, last run had problems"
+msgstr "稼働中（前回の実行に問題あり）"
+
+msgid "Stopped"
+msgstr "停止"
+
+msgid "Stuck"
+msgstr "停止したまま"
+
+msgid "Never ran"
+msgstr "未実行"
+
+msgid "Not watched"
+msgstr "監視対象外"
+
+msgid "running"
+msgstr "実行中"
+
+msgid "success"
+msgstr "成功"
+
+msgid "partial"
+msgstr "一部失敗"
+
+msgid "failed"
+msgstr "失敗"
+
+msgid "cancelled"
+msgstr "キャンセル"
+
+msgid "Chest collector"
+msgstr "宝箱コレクター"
+
+msgid "Daily maintenance"
+msgstr "日次メンテナンス"
+
+msgid "Tournament upload"
+msgstr "トーナメント送信"
+
+msgid "{0} min"
+msgstr "{0} 分"
+
+msgid "{0} h {1} min"
+msgstr "{0} 時間 {1} 分"
+
+msgid "{0} d {1} h"
+msgstr "{0} 日 {1} 時間"
+
+msgid "Whether the chest collector, the maintenance, the database backup and the tournament uploads are running"
+msgstr "宝箱コレクター、メンテナンス、データベースのバックアップ、トーナメント送信が動いているかどうか"
+
+msgid "A job is running when it had a good run within its limit. A run that found no chests still counts: this watches the process, not the data."
+msgstr "制限時間内に正常な実行があれば、そのジョブは稼働中です。宝箱が見つからなかった実行も数に入ります。監視するのはデータではなくプロセスです。"
+
+msgid "Last good run {0} ago (limit {1})."
+msgstr "最後の正常な実行は {0} 前（制限 {1}）。"
+
+msgid "No good run on record (limit {0})."
+msgstr "正常な実行の記録なし（制限 {0}）。"
+
+msgid "Last run: {0} on {1}, started {2} UTC."
+msgstr "最後の実行：{0}（{1}）、開始 {2} UTC。"
+
+msgid "Limits"
+msgstr "制限"
+
+msgid "How long each job may go without a good run before the monitor raises the alarm. Leave room for one missed run: a collector scheduled every hour does well with 180 minutes."
+msgstr "モニターが警告を出すまでに、各ジョブが正常な実行なしでいられる時間です。1 回の実行漏れ分の余裕を持たせてください。1 時間ごとに実行するコレクターなら 180 分が適当です。"
+
+msgid "Job"
+msgstr "ジョブ"
+
+msgid "Watched"
+msgstr "監視"
+
+msgid "Limit (minutes)"
+msgstr "制限（分）"
+
+msgid "Save limits"
+msgstr "制限を保存"
+
+msgid "Recent runs"
+msgstr "最近の実行"
+
+msgid "The last 50 runs, newest first. History older than {0} days is deleted by the daily maintenance."
+msgstr "最新 50 件の実行（新しい順）。{0} 日より古い履歴は日次メンテナンスで削除されます。"
+
+msgid "No run recorded yet."
+msgstr "まだ実行記録はありません。"
+
+msgid "Started (UTC)"
+msgstr "開始（UTC）"
+
+msgid "Took"
+msgstr "所要時間"
+
+msgid "Host"
+msgstr "ホスト"
+
+msgid "{0} s"
+msgstr "{0} 秒"
+
+msgid "External monitor"
+msgstr "外部モニター"
+
+msgid "The alarm has to come from outside the server: if the server goes down, nothing on it can send one. A Google Apps Script reads the address below and e-mails you when a job stops or comes back."
+msgstr "警告はサーバーの外から出す必要があります。サーバーが落ちると、その上のものは何も通知できません。Google Apps Script が下のアドレスを読み取り、ジョブが止まったときや復旧したときにメールを送ります。"
+
+msgid "Address"
+msgstr "アドレス"
+
+msgid "Key, sent in the {0} header:"
+msgstr "{0} ヘッダーで送るキー："
+
+msgid "No key yet: the address answers 503 until one is created."
+msgstr "キーがまだありません。作成されるまで、このアドレスは 503 を返します。"
+
+msgid "The key only reads this status. It cannot change anything on the site."
+msgstr "このキーはこの状態を読むだけで、サイト上の何も変更できません。"
+
+msgid "Create a new key"
+msgstr "新しいキーを作成"
+
+msgid "Create key"
+msgstr "キーを作成"
+
+msgid "Create a new key? The monitor stops working until you paste the new one in it."
+msgstr "新しいキーを作成しますか？新しいキーを貼り付けるまでモニターは動作しません。"
+
+msgid "The script, ready to paste into a new project at script.google.com:"
+msgstr "script.google.com の新しいプロジェクトにそのまま貼り付けられるスクリプト："
+
+msgid "A new monitoring key was created. Update it in the monitor: the old one no longer works."
+msgstr "新しい監視キーを作成しました。モニター側で更新してください。古いキーはもう使えません。"
+
+msgid "\"{0}\" was not saved: {1}"
+msgstr "「{0}」は保存されませんでした：{1}"
+
+msgid "Monitoring limits saved."
+msgstr "監視の制限を保存しました。"
+
+msgid "No monitoring key is set. Create one under Admin > Monitoring."
+msgstr "監視キーが設定されていません。Admin > 監視 で作成してください。"
+
+msgid "Send the monitoring key in the X-Monitor-Key header."
+msgstr "監視キーを X-Monitor-Key ヘッダーで送ってください。"
+
+msgid "Between {0} and {1} minutes."
+msgstr "{0} 分から {1} 分の間で指定してください。"

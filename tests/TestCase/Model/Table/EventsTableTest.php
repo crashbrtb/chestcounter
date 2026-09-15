@@ -25,6 +25,7 @@ class EventsTableTest extends TestCase
      */
     protected array $fixtures = [
         'app.StandardChests',
+        'app.EventRewards',
     ];
 
     /**
@@ -272,5 +273,67 @@ class EventsTableTest extends TestCase
 
         $event->set('status', Event::STATUS_CANCELLED);
         $this->assertSame(Event::STATE_CANCELLED, $event->state);
+    }
+
+    /**
+     * A game tournament is registered after it was played: past dates are
+     * accepted, the prize text is written from the rewards, and at least one
+     * reward is required.
+     *
+     * @return void
+     */
+    public function testGameTournamentRules(): void
+    {
+        $data = $this->formData([
+            'criteria' => Event::CRITERIA_IMPORTED,
+            'starts_at' => '2026-01-10T00:00',
+            'ends_at' => '2026-01-10T23:59',
+            'prize' => '',
+        ]);
+
+        $withoutRewards = $this->Events->newEntity($data);
+        $this->assertFalse($this->Events->save($withoutRewards));
+        $this->assertArrayHasKey('event_rewards', $withoutRewards->getErrors());
+
+        $event = $this->Events->newEntity($data + ['event_rewards' => [
+            ['item_name' => 'Coins', 'quantity' => '2.000', 'rule' => 'equal'],
+        ]]);
+        $this->Events->saveOrFail($event);
+
+        $this->assertSame(2000, $event->event_rewards[0]->quantity);
+        $this->assertSame(1, $event->event_rewards[0]->min_points);
+        $this->assertStringContainsString('Coins', $event->prize);
+        $this->assertSame(Event::STATE_AWAITING, $event->state);
+
+        // Switching the event to another criteria drops its rewards.
+        $event = $this->Events->patchEntity($event, $this->formData(), ['associated' => ['EventRewards']]);
+        $this->assertSame([], $event->event_rewards);
+    }
+
+    /**
+     * Tournaments never show up as running or upcoming, and appear in the past
+     * list only once published.
+     *
+     * @return void
+     */
+    public function testFindersOnlyListPublishedTournaments(): void
+    {
+        $tournament = $this->Events->newEntity($this->formData([
+            'criteria' => Event::CRITERIA_IMPORTED,
+            'starts_at' => DateTime::now()->subHours(1)->format('Y-m-d\TH:i'),
+            'ends_at' => DateTime::now()->addHours(5)->format('Y-m-d\TH:i'),
+            'event_rewards' => [['item_name' => 'Coins', 'quantity' => 10, 'rule' => 'equal']],
+        ]));
+        $this->Events->saveOrFail($tournament);
+
+        $this->assertSame(0, $this->Events->find('running')->count());
+        $this->assertSame(0, $this->Events->find('past')->count());
+        $this->assertSame([$tournament->id], $this->Events->find('awaitingImport')->all()->extract('id')->toList());
+
+        $this->Events->updateAll(['published_at' => DateTime::now()], ['id' => $tournament->id]);
+
+        $this->assertSame([$tournament->id], $this->Events->find('past')->all()->extract('id')->toList());
+        $this->assertSame(0, $this->Events->find('awaitingImport')->count());
+        $this->assertSame(Event::STATE_FINISHED, $this->Events->get($tournament->id)->state);
     }
 }

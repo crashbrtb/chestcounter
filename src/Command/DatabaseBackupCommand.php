@@ -3,12 +3,15 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\Model\Entity\JobRun;
 use App\Service\DatabaseBackupService;
+use App\Service\JobRunRecorder;
 use App\Service\Maintenance\BackupException;
 use Cake\Command\Command;
 use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
 use Cake\Console\ConsoleOptionParser;
+use Throwable;
 
 /**
  * DatabaseBackup command.
@@ -80,16 +83,33 @@ class DatabaseBackupCommand extends Command
         $io->out(sprintf('Retention: %d day(s)', $backup->retentionDays()));
         $io->hr();
 
+        // A dry run proves nothing about the backup, so it leaves no heartbeat
+        // that could hide a real one missing.
+        $recorder = new JobRunRecorder();
+        $run = $isDryRun ? null : $recorder->start(JobRunRecorder::JOB_DATABASE_BACKUP);
+
         try {
             $result = $backup->run(function (string $line) use ($io): void {
                 $io->out($line);
             }, $isDryRun);
         } catch (BackupException $e) {
+            $recorder->finish($run, JobRun::STATUS_FAILED, ['message' => $e->getMessage()]);
             $io->hr();
             $io->error($e->getMessage());
 
             return static::CODE_ERROR;
+        } catch (Throwable $e) {
+            $recorder->finish($run, JobRun::STATUS_FAILED, ['message' => $e->getMessage()]);
+
+            throw $e;
         }
+
+        $recorder->finish($run, JobRun::STATUS_SUCCESS, [
+            'file' => basename((string)$result['file']),
+            'bytes' => (int)$result['bytes'],
+            'kept' => (int)$result['kept'],
+            'removed' => count($result['removed']),
+        ]);
 
         $io->hr();
 

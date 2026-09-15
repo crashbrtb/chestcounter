@@ -96,6 +96,13 @@ class EventScoringService
      */
     public function finalize(Event $event): int
     {
+        // A game tournament's standings come from its published ranking
+        // (EventImportService::publish). Recomputing them from chests would
+        // wipe that result and write nothing in its place.
+        if ($event->criteria === Event::CRITERIA_IMPORTED) {
+            return 0;
+        }
+
         $standings = $this->standings($event);
         $eventStandings = $this->fetchTable('EventStandings');
 
@@ -175,6 +182,12 @@ class EventScoringService
      */
     private function collect(Event $event): array
     {
+        // A game tournament is not scored from chests at all: its ranking is
+        // uploaded and published through EventImportService.
+        if ($event->criteria === Event::CRITERIA_IMPORTED) {
+            return [];
+        }
+
         $collectedChests = $this->fetchTable('CollectedChests');
 
         $query = $collectedChests->find()

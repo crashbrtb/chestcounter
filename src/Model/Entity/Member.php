@@ -17,6 +17,8 @@ use Cake\ORM\Entity;
  * @property int $engineers
  * @property int $active
  * @property int|null $user_id
+ * @property int|null $game_player_id
+ * @property bool $administrative_account
  * @property \Cake\I18n\DateTime $created_at
  * @property \Cake\I18n\DateTime $modified_at
  *
@@ -44,5 +46,7 @@ class Member extends Entity
         'created_at' => true,
         'modified_at' => true,
         'user_id' => true,
+        'game_player_id' => true,
+        'administrative_account' => true,
     ];
 }

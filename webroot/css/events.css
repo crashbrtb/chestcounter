@@ -994,3 +994,145 @@
         display: none;
     }
 }
+
+/* ==========================================================================
+   Game tournaments: reward lines, review and published result
+   ========================================================================== */
+
+.event-state.state-awaiting {
+    background: var(--warning-light, #fffbeb);
+    color: var(--warning-dark, #92400e);
+    border: 1px solid var(--warning-border, #fde68a);
+}
+
+.event-history-item.state-awaiting { border-left-color: var(--warning, #f59e0b); }
+
+.reward-line {
+    display: grid;
+    grid-template-columns: minmax(180px, 2fr) minmax(90px, 1fr) minmax(150px, 1.3fr) minmax(90px, 1fr) minmax(190px, 1.6fr) auto;
+    gap: 10px;
+    align-items: end;
+    padding: 12px;
+    margin-bottom: 10px;
+    border: 1px solid var(--line, #e5e7eb);
+    border-radius: var(--radius-sm, 6px);
+    background: var(--surface-sunken, #f9fafb);
+}
+
+.reward-line .form-group {
+    margin-bottom: 0;
+}
+
+.reward-line label {
+    font-size: 0.75rem;
+    margin-bottom: 2px;
+}
+
+.reward-line .reward-remove {
+    margin-bottom: 2px;
+}
+
+.reward-line .reward-errors {
+    grid-column: 1 / -1;
+}
+
+.review-reward-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.review-reward-list li + li {
+    margin-top: 8px;
+}
+
+.review-table tbody td {
+    vertical-align: middle;
+}
+
+.review-table select.form-control-sm,
+.review-table input.form-control-sm {
+    min-width: 0;
+}
+
+.event-table tbody tr.is-excluded td {
+    opacity: 0.6;
+}
+
+.review-amount {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    font-weight: 700;
+}
+
+.review-amount.is-zero {
+    color: var(--text-muted, #9ca3af);
+    font-weight: 400;
+}
+
+.review-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+    padding: 14px 18px;
+}
+
+.review-actions > span {
+    margin-right: auto;
+}
+
+@media (max-width: 992px) {
+    .reward-line {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* Tournament catalogue */
+
+.tournament-thumb {
+    width: 48px;
+    height: 48px;
+    object-fit: contain;
+    border-radius: var(--radius-sm, 6px);
+    background: var(--surface-sunken, #f3f4f6);
+    border: 1px solid var(--line, #e5e7eb);
+}
+
+.tournament-thumb.is-empty {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted, #9ca3af);
+}
+
+.tournament-thumb.is-large {
+    width: 96px;
+    height: 96px;
+}
+
+.review-dates {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 18px;
+}
+
+.review-tournament {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 240px;
+}
+
+.review-dates-form {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 12px;
+}
+
+.review-dates-form .form-group {
+    margin-bottom: 0;
+}

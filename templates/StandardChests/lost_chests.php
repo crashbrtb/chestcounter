@@ -17,6 +17,25 @@ $totalLostTypes = count($lostChests);
 $totalLostChestsCount = array_sum(array_column($lostChests, 'total_count'));
 ?>
 
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-question-circle text-warning mr-2"></i><?= __('Lost Chests') ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Review unregistered chests found in collection records and promote them to Standard Chests') ?>
+            </p>
+        </div>
+        <div class="toolbar-actions">
+            <?= $this->Html->link(
+                '<i class="fas fa-arrow-left mr-1"></i> ' . __('Back to Standard Chests'),
+                ['action' => 'index'],
+                ['class' => 'btn btn-default btn-sm', 'escape' => false]
+            ) ?>
+        </div>
+    </div>
+
 <div class="row mb-3">
     <div class="col-12 col-sm-6 col-md-4">
         <div class="info-box shadow-sm">
@@ -303,3 +322,4 @@ function submitSingleRow(index) {
     }
 }
 </script>
+</div>

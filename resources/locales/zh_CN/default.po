@@ -4490,3 +4490,816 @@ msgstr "配置"
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr "部队计算器当前已禁用。"
+
+#. Game tournaments: imported rankings, reward split, API tokens
+msgid "Game tournament (imported score)"
+msgstr "游戏锦标赛（导入分数）"
+
+msgid "The ranking is read from the game by the EventUploader and the rewards below are split among the players."
+msgstr "排名由 EventUploader 从游戏中读取，下方的奖励将在玩家之间分配。"
+
+msgid "Points"
+msgstr "积分"
+
+msgid "Proportional to the points"
+msgstr "按积分比例"
+
+msgid "Equal parts"
+msgstr "平均分配"
+
+msgid "Give the leftover to the best placed"
+msgstr "余数给排名靠前者"
+
+msgid "Keep the leftover with the clan"
+msgstr "余数留给公会"
+
+msgid "{0} x {1} ({2})"
+msgstr "{0} x {1}（{2}）"
+
+msgid "Add at least one reward to split among the players."
+msgstr "请至少添加一项要分配给玩家的奖励。"
+
+msgid "Say what is being handed out."
+msgstr "请说明要发放的物品。"
+
+msgid "The quantity must be a whole number."
+msgstr "数量必须是整数。"
+
+msgid "The quantity must be at least 1."
+msgstr "数量至少为 1。"
+
+msgid "Choose how the reward is split."
+msgstr "请选择奖励的分配方式。"
+
+msgid "Give the token a name, such as the computer it will be used on."
+msgstr "请为令牌命名，例如使用它的电脑。"
+
+msgid "Another member already has this game player id."
+msgstr "另一名成员已使用此游戏玩家 ID。"
+
+msgid "The ranking must have at least one player."
+msgstr "排名中至少要有一名玩家。"
+
+msgid "A clan ranking has at most {0} players; {1} were sent."
+msgstr "公会排名最多 {0} 名玩家；本次发送了 {1} 名。"
+
+msgid "Line {0} is not a player."
+msgstr "第 {0} 行不是玩家。"
+
+msgid "Line {0}: the position must be a whole number from 1."
+msgstr "第 {0} 行：名次必须是从 1 开始的整数。"
+
+msgid "Line {0}: position {1} appears twice."
+msgstr "第 {0} 行：名次 {1} 出现了两次。"
+
+msgid "Line {0}: the name must have 1 to {1} characters."
+msgstr "第 {0} 行：名称长度必须为 1 到 {1} 个字符。"
+
+msgid "Line {0}: the points must be a whole number of 0 or more."
+msgstr "第 {0} 行：积分必须是大于或等于 0 的整数。"
+
+msgid "Line {0}: the player id must be a positive whole number."
+msgstr "第 {0} 行：玩家 ID 必须是正整数。"
+
+msgid "Line {0}: player id {1} appears twice."
+msgstr "第 {0} 行：玩家 ID {1} 出现了两次。"
+
+msgid "Unknown capture method."
+msgstr "未知的采集方式。"
+
+msgid "The tournament date is not a valid date."
+msgstr "锦标赛日期无效。"
+
+msgid "{0} player(s) are not linked to a member: {1}. They still receive their share; link them to keep the history together."
+msgstr "有 {0} 名玩家未关联成员：{1}。他们仍会获得各自的份额；请关联以保持历史记录完整。"
+
+msgid "{0} player(s) were linked by name. Confirm them: when the result is published their game id is saved on the member."
+msgstr "有 {0} 名玩家是按名称关联的。请确认：发布结果时，其游戏 ID 会保存到成员资料中。"
+
+msgid "The positions are not 1 to {0} without gaps: a part of the ranking may be missing."
+msgstr "名次不是从 1 到 {0} 连续排列：可能缺少部分排名。"
+
+msgid "Points are not in descending order at: {0}. Check for a reading error."
+msgstr "以下位置的积分不是降序：{0}。请检查是否读取有误。"
+
+msgid "Different players share a name: {0}. They are told apart by their game id."
+msgstr "不同玩家同名：{0}。系统按游戏 ID 区分他们。"
+
+msgid "Points were corrected by hand for {0} player(s)."
+msgstr "已手动修正 {0} 名玩家的积分。"
+
+msgid "This event has no reward to split. Add one before publishing."
+msgstr "此活动没有可分配的奖励。请在发布前添加。"
+
+msgid "Only a draft can be changed. Unpublish the result first."
+msgstr "只能修改草稿。请先取消发布结果。"
+
+msgid "This ranking is not a draft of this event."
+msgstr "此排名不是该活动的草稿。"
+
+msgid "Event #{0} does not take an imported ranking."
+msgstr "活动 #{0} 不接受导入的排名。"
+
+msgid "The result of event #{0} is already published. Unpublish it to send a new ranking."
+msgstr "活动 #{0} 的结果已发布。请取消发布后再发送新排名。"
+
+msgid "Nobody qualifies for \"{0}\": check the eligible players and the minimum points."
+msgstr "没有人符合“{0}”的条件：请检查参与分配的玩家和最低积分。"
+
+msgid "This event has no published result yet."
+msgstr "此活动尚未发布结果。"
+
+msgid "Only game tournaments have a ranking to review."
+msgstr "只有游戏锦标赛才有需要审核的排名。"
+
+msgid "There is no draft ranking to change."
+msgstr "没有可修改的排名草稿。"
+
+msgid "The result of event #{0} was published: {1} player(s)."
+msgstr "活动 #{0} 的结果已发布：{1} 名玩家。"
+
+msgid "{0} change(s) saved. The shares below are recalculated."
+msgstr "已保存 {0} 项更改。下方份额已重新计算。"
+
+msgid "administrative"
+msgstr "管理账号"
+
+msgid "This event has no published result."
+msgstr "此活动没有已发布的结果。"
+
+msgid "The result of event #{0} is a draft again and no longer public."
+msgstr "活动 #{0} 的结果已变回草稿，不再公开。"
+
+msgid "Event #{0} was created from #{1}. Check the name and the date."
+msgstr "已根据 #{1} 创建活动 #{0}。请检查名称和日期。"
+
+msgid "The event could not be duplicated: {0}"
+msgstr "无法复制活动：{0}"
+
+msgid "Choose the ranking CSV file to upload."
+msgstr "请选择要上传的排名 CSV 文件。"
+
+msgid "The file is too large for a ranking of at most {0} players."
+msgstr "文件过大，排名最多只能有 {0} 名玩家。"
+
+msgid "The ranking was not accepted: {0}"
+msgstr "排名未被接受：{0}"
+
+msgid "Ranking with {0} player(s) received. Review it below."
+msgstr "已收到包含 {0} 名玩家的排名。请在下方审核。"
+
+msgid "This ranking is the same as the current draft; nothing changed."
+msgstr "此排名与当前草稿相同，没有任何变化。"
+
+msgid "Send the API token in the Authorization header: Bearer <token>."
+msgstr "请在 Authorization 请求头中发送 API 令牌：Bearer <token>。"
+
+msgid "This API token is invalid, expired or revoked."
+msgstr "此 API 令牌无效、已过期或已被撤销。"
+
+msgid "Only an active administrator can use the uploader."
+msgstr "只有活跃的管理员才能使用上传工具。"
+
+msgid "Event not found."
+msgstr "未找到活动。"
+
+msgid "Send the ranking as a JSON body."
+msgstr "请以 JSON 请求体发送排名。"
+
+msgid "The ranking was not accepted."
+msgstr "排名未被接受。"
+
+msgid "The token could not be created. Please, try again."
+msgstr "无法创建令牌，请重试。"
+
+msgid "The token \"{0}\" was revoked."
+msgstr "令牌“{0}”已撤销。"
+
+msgid "{0} is now an administrative account and will not receive tournament rewards."
+msgstr "{0} 现在是管理账号，不会获得锦标赛奖励。"
+
+msgid "{0} will receive tournament rewards again."
+msgstr "{0} 将重新获得锦标赛奖励。"
+
+msgid "Item"
+msgstr "物品"
+
+msgid "e.g. Artifact pieces"
+msgstr "例如：神器碎片"
+
+msgid "Split"
+msgstr "分配方式"
+
+msgid "Minimum points"
+msgstr "最低积分"
+
+msgid "Leftover units"
+msgstr "剩余数量"
+
+msgid "Remove"
+msgstr "移除"
+
+msgid "Game tournament: enter the day it was played in the game. Past dates are accepted, and nothing is counted from chests."
+msgstr "游戏锦标赛：请填写它在游戏中举行的日期。可以填写过去的日期，且不会统计宝箱。"
+
+msgid "Rewards to split"
+msgstr "待分配的奖励"
+
+msgid "What the clan received for this tournament and how it is divided. Proportional gives each player a part matching their share of the points; equal gives everybody the same. Administrative accounts never take part, and players below the minimum points are left out."
+msgstr "公会通过本次锦标赛获得的奖励及其分配方式。按比例：每位玩家按积分占比获得相应份额；平均：所有人获得相同份额。管理账号从不参与，低于最低积分的玩家不参与分配。"
+
+msgid "Add another reward"
+msgstr "添加其他奖励"
+
+msgid "Optional: filled in from the rewards when left empty."
+msgstr "可选：留空时将根据奖励自动填写。"
+
+msgid "Review result - Event #{0}"
+msgstr "审核结果 - 活动 #{0}"
+
+msgid "game id"
+msgstr "游戏 ID"
+
+msgid "by name"
+msgstr "按名称"
+
+msgid "name correction"
+msgstr "名称更正"
+
+msgid "by hand"
+msgstr "手动"
+
+msgid "not linked"
+msgstr "未关联"
+
+msgid "EventUploader (game data)"
+msgstr "EventUploader（游戏数据）"
+
+msgid "EventUploader (screen reading)"
+msgstr "EventUploader（屏幕识别）"
+
+msgid "CSV file"
+msgstr "CSV 文件"
+
+msgid "Draft"
+msgstr "草稿"
+
+msgid "Published"
+msgstr "已发布"
+
+msgid "Replaced"
+msgstr "已替换"
+
+msgid "Review result"
+msgstr "审核结果"
+
+msgid "Published page"
+msgstr "已发布页面"
+
+msgid "Unpublish"
+msgstr "取消发布"
+
+msgid "Take the result of event #{0} down? Players will stop seeing it until it is published again."
+msgstr "要撤下活动 #{0} 的结果吗？在重新发布之前，玩家将无法看到。"
+
+msgid "Edit event"
+msgstr "编辑活动"
+
+msgid "min. {0} pts"
+msgstr "最低 {0} 分"
+
+msgid "{0} handed out to {1} player(s)"
+msgstr "已发放 {0}，共 {1} 名玩家"
+
+msgid "{0} left over"
+msgstr "剩余 {0}"
+
+msgid "No reward yet. Edit the event to add what will be split."
+msgstr "尚无奖励。请编辑活动添加要分配的奖励。"
+
+msgid "Ranking"
+msgstr "排名"
+
+msgid "No ranking has been received yet."
+msgstr "尚未收到排名。"
+
+msgid "Received {0} UTC from {1}"
+msgstr "{0} UTC 收到，来自 {1}"
+
+msgid "In the game: {0}"
+msgstr "游戏中：{0}"
+
+msgid "Send a ranking"
+msgstr "发送排名"
+
+msgid "The EventUploader sends it straight from the game. Without it, upload the ranking.csv the discovery tool exports."
+msgstr "EventUploader 会直接从游戏发送。若未使用，请上传探测工具导出的 ranking.csv。"
+
+msgid "Replace with this file"
+msgstr "用此文件替换"
+
+msgid "Upload CSV"
+msgstr "上传 CSV"
+
+msgid "Tokens for the EventUploader"
+msgstr "EventUploader 令牌"
+
+msgid "{0} taking part in the prize"
+msgstr "{0} 人参与奖励分配"
+
+msgid "Administrative accounts"
+msgstr "管理账号"
+
+msgid "never receive a prize"
+msgstr "从不获得奖励"
+
+msgid "Not linked"
+msgstr "未关联"
+
+msgid "players without a member"
+msgstr "未关联成员的玩家"
+
+msgid "Points in the split"
+msgstr "参与分配的积分"
+
+msgid "of {0} in the ranking"
+msgstr "排名总计 {0}"
+
+msgid "Ranking and shares"
+msgstr "排名与份额"
+
+msgid "Player in the game"
+msgstr "游戏中的玩家"
+
+msgid "Takes part in the prize"
+msgstr "参与奖励分配"
+
+msgid "- not linked -"
+msgstr "- 未关联 -"
+
+msgid "Value received from the game"
+msgstr "从游戏收到的数值"
+
+msgid "was {0}"
+msgstr "原为 {0}"
+
+msgid "Total handed out"
+msgstr "发放总计"
+
+msgid "of {0}"
+msgstr "共 {0}"
+
+msgid "Change the member, the prize checkbox or the points, then recalculate to see the new shares."
+msgstr "修改成员、奖励勾选框或积分后，重新计算即可查看新的份额。"
+
+msgid "Save and recalculate"
+msgstr "保存并重新计算"
+
+msgid "Publish this result? Players will see the ranking and what each one receives."
+msgstr "发布此结果？玩家将看到排名以及每人获得的奖励。"
+
+msgid "Publish result"
+msgstr "发布结果"
+
+msgid "Rankings received"
+msgstr "已收到的排名"
+
+msgid "When (UTC)"
+msgstr "时间（UTC）"
+
+msgid "Sent by"
+msgstr "发送者"
+
+msgid "Tournament Result"
+msgstr "锦标赛结果"
+
+msgid "Ranking read from the game and the rewards each player receives"
+msgstr "从游戏读取的排名及每位玩家获得的奖励"
+
+msgid "Published {0} UTC"
+msgstr "发布于 {0} UTC"
+
+msgid "{0} points"
+msgstr "{0} 积分"
+
+msgid "{0} receive a reward"
+msgstr "{0} 人获得奖励"
+
+msgid "Clan Total"
+msgstr "公会总计"
+
+msgid "points in the tournament"
+msgstr "锦标赛总积分"
+
+msgid "Rewards"
+msgstr "奖励"
+
+msgid "Who hands out the rewards"
+msgstr "奖励发放人"
+
+msgid "Rewards are delivered in the game. Look for this player if yours has not arrived."
+msgstr "奖励在游戏内发放。如果你的奖励没有到账，请联系此玩家。"
+
+msgid "No reward"
+msgstr "无奖励"
+
+msgid "Awaiting result"
+msgstr "等待结果"
+
+msgid "API Tokens"
+msgstr "API 令牌"
+
+msgid "New Game Tournament"
+msgstr "新建游戏锦标赛"
+
+msgid "Duplicate"
+msgstr "复制"
+
+msgid "Tokens the EventUploader uses to send tournament rankings to this site"
+msgstr "EventUploader 向本站发送锦标赛排名时使用的令牌"
+
+msgid "Token \"{0}\" created"
+msgstr "令牌“{0}”已创建"
+
+msgid "Copy it now and paste it in the EventUploader, together with the site address. It will not be shown again: if it is lost, revoke it and create another."
+msgstr "请立即复制，并与站点地址一起粘贴到 EventUploader 中。它不会再次显示：如果丢失，请撤销后重新创建。"
+
+msgid "Site address: {0}"
+msgstr "站点地址：{0}"
+
+msgid "New token"
+msgstr "新建令牌"
+
+msgid "Create one per computer the EventUploader runs on. The token belongs to you and can only send rankings; it cannot read or change anything else."
+msgstr "请为每台运行 EventUploader 的电脑各创建一个。令牌归你所有，只能发送排名，无法读取或更改其他任何内容。"
+
+msgid "e.g. Clan leader PC"
+msgstr "例如：会长的电脑"
+
+msgid "Create token"
+msgstr "创建令牌"
+
+msgid "Tokens"
+msgstr "令牌"
+
+msgid "Owner"
+msgstr "所有者"
+
+msgid "Starts with"
+msgstr "开头"
+
+msgid "Created (UTC)"
+msgstr "创建时间（UTC）"
+
+msgid "Last used (UTC)"
+msgstr "最后使用（UTC）"
+
+msgid "never"
+msgstr "从未"
+
+msgid "Revoked"
+msgstr "已撤销"
+
+msgid "Expired"
+msgstr "已过期"
+
+msgid "Revoke"
+msgstr "撤销"
+
+msgid "Revoke the token \"{0}\"? The EventUploader using it stops working at once."
+msgstr "撤销令牌“{0}”？使用它的 EventUploader 将立即停止工作。"
+
+msgid "No token has been created yet."
+msgstr "尚未创建任何令牌。"
+
+msgid "Tournament rewards"
+msgstr "锦标赛奖励"
+
+msgid "Administrative"
+msgstr "管理账号"
+
+msgid "Receives"
+msgstr "可获得"
+
+msgid "Mark as a player who receives rewards"
+msgstr "标记为可获得奖励的玩家"
+
+msgid "Mark as an administrative account"
+msgstr "标记为管理账号"
+
+msgid "Game player id"
+msgstr "游戏玩家 ID"
+
+msgid "Filled in automatically by the first published tournament"
+msgstr "首次发布锦标赛时自动填写"
+
+msgid "Administrative account (takes part in rankings but never receives tournament rewards)"
+msgstr "管理账号（会出现在排名中，但从不获得锦标赛奖励）"
+
+#. Game tournaments registered by the EventUploader, event types
+msgid "This game tournament result is already registered."
+msgstr "该游戏锦标赛结果已登记。"
+
+msgid "The tournament result id is missing or invalid."
+msgstr "锦标赛结果 ID 缺失或无效。"
+
+msgid "The tournament type is missing or invalid."
+msgstr "锦标赛类型缺失或无效。"
+
+msgid "The tournament name has more than {0} characters."
+msgstr "锦标赛名称超过 {0} 个字符。"
+
+msgid "The tournament cannot end in the future."
+msgstr "锦标赛的结束时间不能在未来。"
+
+msgid "Game tournament {0}"
+msgstr "游戏锦标赛 {0}"
+
+msgid "Event type"
+msgstr "活动类型"
+
+msgid "Game event"
+msgstr "游戏活动"
+
+msgid "A tournament played in the game. It is registered after it ends, so past dates are accepted, and the EventUploader usually creates it together with the ranking."
+msgstr "在游戏中进行的锦标赛。结束后才登记，因此可以填写过去的日期；通常由 EventUploader 连同排名一起创建。"
+
+msgid "Clan event"
+msgstr "公会活动"
+
+msgid "An internal challenge to push crypts and epic monsters. It is counted from the chests collected inside its window, which starts in the future."
+msgstr "公会内部挑战，用于激励打地穴和史诗怪物。按活动期间收集的宝箱计算，活动期间必须从未来开始。"
+
+msgid "When it was played"
+msgstr "举行时间"
+
+msgid "The day and time the tournament ended in the game, in UTC. Past dates are accepted and nothing is counted from chests."
+msgstr "锦标赛在游戏中结束的日期和时间（UTC）。可以填写过去的日期，且不会统计宝箱。"
+
+#. Tournament catalogue, event dates, tournament mapper
+msgid "The image must be a PNG, JPEG, WebP or GIF of at most {0} KB."
+msgstr "图片必须是 PNG、JPEG、WebP 或 GIF，且不超过 {0} KB。"
+
+msgid "Tournament \"{0}\" saved."
+msgstr "锦标赛“{0}”已保存。"
+
+msgid "The tournament could not be saved. Please check the fields below."
+msgstr "无法保存锦标赛，请检查下方字段。"
+
+msgid "Tournament Catalogue"
+msgstr "锦标赛目录"
+
+msgid "read from the Journal"
+msgstr "从 Journal 读取"
+
+msgid "typed in the uploader"
+msgstr "在上传工具中输入"
+
+msgid "set by hand"
+msgstr "手动设置"
+
+msgid "The game's tournaments. Names and ids are filled in by the tournament mapper; the image and the duration are set here."
+msgstr "游戏中的锦标赛。名称和 id 由锦标赛映射工具填写；图片和持续时间在此设置。"
+
+msgid "Image"
+msgstr "图片"
+
+msgid "Tournament"
+msgstr "锦标赛"
+
+msgid "Game id"
+msgstr "游戏 id"
+
+msgid "Duration"
+msgstr "持续时间"
+
+msgid "Last seen (UTC)"
+msgstr "最后出现 (UTC)"
+
+msgid "Name not mapped yet"
+msgstr "名称尚未映射"
+
+msgid "{0} day(s)"
+msgstr "{0} 天"
+
+msgid "not set (1 day)"
+msgstr "未设置（1 天）"
+
+msgid "The catalogue is empty. Run the tournament mapper, or send a tournament with the EventUploader."
+msgstr "目录为空。请运行锦标赛映射工具，或用 EventUploader 发送一个锦标赛。"
+
+msgid "Edit Tournament"
+msgstr "编辑锦标赛"
+
+msgid "Game id {0}"
+msgstr "游戏 id {0}"
+
+msgid "As it appears in the game"
+msgstr "与游戏中显示一致"
+
+msgid "Filled in by the tournament mapper. A name changed here is kept: the mapper will not overwrite it."
+msgstr "由锦标赛映射工具填写。在此修改的名称会被保留，映射工具不会覆盖它。"
+
+msgid "Duration (days)"
+msgstr "持续时间（天）"
+
+msgid "How long the tournament runs. A new event starts this many days before the end the game reports; one day when empty."
+msgstr "锦标赛持续的时间。新活动的开始时间为游戏报告的结束时间往前推这么多天；为空时按一天计算。"
+
+msgid "PNG, JPEG, WebP or GIF, up to 1 MB."
+msgstr "PNG、JPEG、WebP 或 GIF，最大 1 MB。"
+
+msgid "Remove the image"
+msgstr "移除图片"
+
+msgid "Latest events of this tournament"
+msgstr "该锦标赛的最近活动"
+
+msgid "Send at least one tournament."
+msgstr "请至少发送一个锦标赛。"
+
+msgid "Send at most {0} tournaments at a time."
+msgstr "每次最多发送 {0} 个锦标赛。"
+
+msgid "Line {0} is not a tournament."
+msgstr "第 {0} 行不是锦标赛。"
+
+msgid "The tournaments were not accepted."
+msgstr "锦标赛未被接受。"
+
+msgid "The dates of event #{0} were saved."
+msgstr "活动 #{0} 的日期已保存。"
+
+msgid "The dates were not saved: {0}"
+msgstr "日期未保存：{0}"
+
+msgid "Lasts {0} day(s) in the catalogue"
+msgstr "目录中持续 {0} 天"
+
+msgid "No duration in the catalogue: one day assumed"
+msgstr "目录中没有持续时间：按一天计算"
+
+msgid "Edit in the catalogue"
+msgstr "在目录中编辑"
+
+msgid "Save dates"
+msgstr "保存日期"
+
+msgid "The duration must be a whole number of days."
+msgstr "持续时间必须是整数天。"
+
+msgid "The duration must be between {0} and {1} days."
+msgstr "持续时间必须在 {0} 到 {1} 天之间。"
+
+msgid "Monitoring"
+msgstr "监控"
+
+msgid "Running, last run had problems"
+msgstr "运行中，上次运行有问题"
+
+msgid "Stopped"
+msgstr "已停止"
+
+msgid "Stuck"
+msgstr "卡住"
+
+msgid "Never ran"
+msgstr "从未运行"
+
+msgid "Not watched"
+msgstr "未监控"
+
+msgid "running"
+msgstr "运行中"
+
+msgid "success"
+msgstr "成功"
+
+msgid "partial"
+msgstr "部分完成"
+
+msgid "failed"
+msgstr "失败"
+
+msgid "cancelled"
+msgstr "已取消"
+
+msgid "Chest collector"
+msgstr "宝箱收集器"
+
+msgid "Daily maintenance"
+msgstr "每日维护"
+
+msgid "Tournament upload"
+msgstr "锦标赛上传"
+
+msgid "{0} min"
+msgstr "{0} 分钟"
+
+msgid "{0} h {1} min"
+msgstr "{0} 小时 {1} 分钟"
+
+msgid "{0} d {1} h"
+msgstr "{0} 天 {1} 小时"
+
+msgid "Whether the chest collector, the maintenance, the database backup and the tournament uploads are running"
+msgstr "宝箱收集器、维护、数据库备份和锦标赛上传是否正常运行"
+
+msgid "A job is running when it had a good run within its limit. A run that found no chests still counts: this watches the process, not the data."
+msgstr "任务在其时限内有一次成功运行即视为正常。没有找到宝箱的运行同样算数：这里监控的是进程，而不是数据。"
+
+msgid "Last good run {0} ago (limit {1})."
+msgstr "上次成功运行在 {0} 前（时限 {1}）。"
+
+msgid "No good run on record (limit {0})."
+msgstr "没有成功运行的记录（时限 {0}）。"
+
+msgid "Last run: {0} on {1}, started {2} UTC."
+msgstr "上次运行：{0}，位于 {1}，开始于 {2} UTC。"
+
+msgid "Limits"
+msgstr "时限"
+
+msgid "How long each job may go without a good run before the monitor raises the alarm. Leave room for one missed run: a collector scheduled every hour does well with 180 minutes."
+msgstr "每个任务在监控器发出警报前可以多长时间没有成功运行。请为一次错过的运行留出余量：每小时运行一次的收集器设为 180 分钟比较合适。"
+
+msgid "Job"
+msgstr "任务"
+
+msgid "Watched"
+msgstr "监控中"
+
+msgid "Limit (minutes)"
+msgstr "时限（分钟）"
+
+msgid "Save limits"
+msgstr "保存时限"
+
+msgid "Recent runs"
+msgstr "最近运行"
+
+msgid "The last 50 runs, newest first. History older than {0} days is deleted by the daily maintenance."
+msgstr "最近 50 次运行，最新的在前。超过 {0} 天的历史记录会被每日维护删除。"
+
+msgid "No run recorded yet."
+msgstr "尚无运行记录。"
+
+msgid "Started (UTC)"
+msgstr "开始（UTC）"
+
+msgid "Took"
+msgstr "耗时"
+
+msgid "Host"
+msgstr "主机"
+
+msgid "{0} s"
+msgstr "{0} 秒"
+
+msgid "External monitor"
+msgstr "外部监控"
+
+msgid "The alarm has to come from outside the server: if the server goes down, nothing on it can send one. A Google Apps Script reads the address below and e-mails you when a job stops or comes back."
+msgstr "警报必须来自服务器之外：服务器宕机时，它上面的任何东西都无法发出警报。Google Apps Script 会读取下面的地址，并在任务停止或恢复时给你发送电子邮件。"
+
+msgid "Address"
+msgstr "地址"
+
+msgid "Key, sent in the {0} header:"
+msgstr "密钥，通过 {0} 请求头发送："
+
+msgid "No key yet: the address answers 503 until one is created."
+msgstr "尚无密钥：在创建密钥之前，该地址返回 503。"
+
+msgid "The key only reads this status. It cannot change anything on the site."
+msgstr "该密钥只能读取此状态，无法修改网站上的任何内容。"
+
+msgid "Create a new key"
+msgstr "创建新密钥"
+
+msgid "Create key"
+msgstr "创建密钥"
+
+msgid "Create a new key? The monitor stops working until you paste the new one in it."
+msgstr "创建新密钥？在你把新密钥粘贴进监控器之前，监控器将停止工作。"
+
+msgid "The script, ready to paste into a new project at script.google.com:"
+msgstr "脚本，可直接粘贴到 script.google.com 的新项目中："
+
+msgid "A new monitoring key was created. Update it in the monitor: the old one no longer works."
+msgstr "已创建新的监控密钥。请在监控器中更新：旧密钥已失效。"
+
+msgid "\"{0}\" was not saved: {1}"
+msgstr "“{0}”未保存：{1}"
+
+msgid "Monitoring limits saved."
+msgstr "监控时限已保存。"
+
+msgid "No monitoring key is set. Create one under Admin > Monitoring."
+msgstr "尚未设置监控密钥。请在 Admin > 监控 中创建。"
+
+msgid "Send the monitoring key in the X-Monitor-Key header."
+msgstr "请在 X-Monitor-Key 请求头中发送监控密钥。"
+
+msgid "Between {0} and {1} minutes."
+msgstr "介于 {0} 到 {1} 分钟之间。"

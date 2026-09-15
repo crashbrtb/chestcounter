@@ -150,7 +150,8 @@ Both steps are required — migrations only create empty tables.
 # 1. Create all tables, indexes and foreign keys
 php bin/cake.php migrations migrate
 
-# 2. Insert roles, configuration parameters and standard chest types
+# 2. Insert roles, configuration parameters, standard chest types and the
+#    tournament catalogue this clan already mapped
 php bin/cake.php migrations seed
 ```
 
@@ -164,6 +165,7 @@ SHOW TABLES;
 SELECT COUNT(*) FROM roles; -- Should return 3
 SELECT COUNT(*) FROM config; -- Should return 21
 SELECT COUNT(*) FROM standard_chests; -- Should return 96
+SELECT COUNT(*) FROM game_tournaments; -- Tournament catalogue, grows over time
 ```
 
 If `config` does not return 21, the application will fail to render its pages
@@ -310,6 +312,42 @@ php bin/cake.php database_backup --force
 > **Note:** this needs the `mysqldump` client tool installed on the server. The
 > page says so plainly when it cannot find it.
 
+#### Monitoring the Jobs
+
+Every job the site depends on writes a heartbeat to the `job_runs` table: one
+row per run, opened as `running` and closed as `success`, `partial`, `failed` or
+`cancelled`, with a short summary.
+
+| Job | Written by | Watched by default |
+| --- | --- | --- |
+| `collector` | the chest collector (newchestcounter), straight into MySQL | yes, 180 min |
+| `daily_maintenance` | `daily_maintenance` | yes, 780 min |
+| `database_backup` | `database_backup` | yes, 1500 min |
+| `tournament_import` | the EventUploader API | no (uploads are manual) |
+
+A job is **down** when it has had no good run within its limit, or when its last
+run never closed. A run that found no chests is still a good run: this watches
+the process, not the data, so a quiet day no longer raises a false alarm. A job
+whose last run failed or was partial, but which is still inside its limit, is a
+**warning**.
+
+`daily_maintenance` now exits with an error when one of its steps fails, and
+records which one; before, it reported success whatever happened.
+
+**Admin > Monitoring** shows every job's state, the last 50 runs, lets you set
+each limit, and holds the read-only key for the external monitor:
+
+```bash
+curl -H "X-Monitor-Key: <key>" https://your-domain.com/api/v1/health.json
+```
+
+The answer is always `200` with the right key (`401` without it), with `ok`
+false when any job is down. The alarm has to come from outside the server,
+because a server that is down cannot send one: the Monitoring page carries a
+Google Apps Script, with your address filled in, that checks every 30 minutes
+and e-mails you only when a job stops or comes back. It replaces reading the
+"Last chest update" line off the score page.
+
 ---
 
 ### 11. Final Checks
@@ -388,7 +426,8 @@ skipped.
 # Apply any migration that is still pending
 php bin/cake.php migrations migrate
 
-# Insert new roles, config parameters and standard chests
+# Insert new roles, config parameters, standard chests and any tournament
+# added to the catalogue since this file was last generated
 php bin/cake.php migrations seed
 ```
 
@@ -539,6 +578,139 @@ Two things the test suite will hold you to, in
 **whole** token set (a missing token silently inherits the light default, which
 on a dark theme means one white panel in the middle of the page), and every
 text-on-surface pair has to meet **WCAG AA contrast**.
+
+---
+
+## 🎮 Game Tournaments
+
+The Events menu holds two kinds of event:
+
+| Kind | What it is | Dates |
+|---|---|---|
+| **Game event** | A tournament played in the game, almost daily. Its ranking is read from the game and its prize split among the players. | Registered **after** it ends: past dates are accepted. |
+| **Clan event** | An internal challenge (crypts, epic monsters) counted from collected chests. | Its window must start in the future. |
+
+### Everyday flow
+
+1. In the **EventUploader** desktop tool, connect to the game, open the Journal
+   and "Show details" on the tournament result, and click **Send to site**.
+2. The site registers the tournament by itself: the game's result id makes a
+   second send reach the same event, the name comes from the **tournament
+   catalogue** and the rewards from the last event of the same type. The event
+   ends when the game says it ended and starts the catalogue's **duration**
+   earlier (one day when the catalogue has none); both dates can be changed on
+   the review page ("When it was played").
+3. **Review** (Admin › Events): players are linked to members by the game's
+   player id (names are not unique: a clan can have two "Lion"s), then by name.
+   Untick anyone who should not share, correct points, recalculate, and
+   **publish**. The first time a tournament type appears, add its rewards
+   first: publishing is refused without them.
+
+Rewards are split in whole units that always add up to the quantity:
+*proportional* to each player's share of the points (largest remainder
+method), or in *equal parts*, with leftover units going to the best placed or
+staying with the clan. Players below the *minimum points* are left out, and
+members marked as **administrative accounts** (Admin › Members, "Tournament
+rewards" column) appear in rankings but never receive a reward nor count
+towards the split.
+
+### Tournament catalogue
+
+`config/data/game_tournament_defaults.php` ships the names, durations and
+images this clan's mapper already found, seeded into `game_tournaments` by
+`GameTournamentsSeed` (part of `php bin/cake.php migrations seed`) so a fresh
+install starts with a populated catalogue. Seeding is per `game_type` and
+skips any type already in the table, so it never overwrites a name or image
+an administrator changed, and mapping a new tournament type does not require
+regenerating the file — it is only there to save a fresh install the trip
+through the mapper for types this clan already knows. To refresh it after
+mapping new types, dump `game_tournaments` (id, timestamps and `last_variant`
+excluded) into that array format, base64-encoding `image`.
+
+The game never sends a tournament's name, only its type (`1024` in `1024:1`;
+the number after the colon changes from one run to the next). **Admin ›
+Tournament Catalogue** keeps one entry per type: the name, the image shown on
+the event page and the duration in days. Names and ids are filled in by the
+**tournament mapper** of the EventUploader (`MapearTorneios.bat`), which walks
+the Journal, opens every `Your Clanmates' results in <name>` card and pairs the
+title it reads with the type the game sends for that ranking. A name edited by
+hand on the site is never overwritten by the mapper; a name typed in the
+uploader does not overwrite one read from the Journal.
+
+### Members from the ranking
+
+A tournament ranking lists the whole clan, including players with 0 points, so
+it is the source of truth for the members table. Every ranking sent through the
+API (with game player ids, at least 5) updates it before being stored:
+
+- a player in the ranking is **active**; their power and game id are stored,
+  a new player becomes a new member and a renamed one is followed by id;
+- a member missing from the ranking becomes **inactive**;
+- a ranking older than the last one applied changes nothing, so re-sending an
+  old tournament does not bring back players who left.
+
+Once a ranking has been applied, collecting chests no longer switches members
+on or off (new players found in chests are created inactive until a ranking
+lists them).
+
+A game event can also be created by hand (Admin › Events › New Game
+Tournament) and a ranking uploaded as CSV on its review page.
+
+### Uploader API
+
+Personal tokens are created under **Admin › Events › API Tokens** and shown
+once; only their sha256 is stored. Only active administrators' tokens work.
+
+| Method | Path | Purpose |
+|---|---|---|
+| `GET` | `/api/v1/me` | Check the token |
+| `POST` | `/api/v1/tournaments` | Register a tournament (if new) and send its ranking |
+| `GET` | `/api/v1/tournaments/known` | The catalogue: type, name, duration and the last rewards |
+| `POST` | `/api/v1/tournament-catalog` | Name (and image) of tournament types, from the mapper |
+| `GET` | `/api/v1/events/awaiting` | Hand-made game events waiting for a ranking |
+| `POST` | `/api/v1/events/{id}/imports` | Send a ranking to a hand-made game event |
+
+Send the token as `Authorization: Bearer cct_...`. Hosts that run PHP as
+FastCGI may drop that header; send `X-Api-Token: cct_...` too (the uploader
+sends both), or add this line to `webroot/.htaccess` right after
+`RewriteEngine On`:
+
+```apache
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+```
+
+`POST /api/v1/tournaments` body:
+
+```json
+{
+  "result_uid": "eede1d1c-3f13-481a-819d-51fdcebb1e54",
+  "tournament_key": "1024:1",
+  "name": "Rise of the Ancients",
+  "ended_at": "2026-09-12T17:00:26Z",
+  "capture_method": "packet",
+  "client_version": "1.0.0",
+  "rows": [
+    {"position": 1, "name": "Naughtius Maximus", "points": 1703103642, "player_id": 300647954111}
+  ]
+}
+```
+
+Rows may also carry `power`. `name` may be omitted for a type the catalogue
+knows. The answer also reports `starts_at`, `ends_at` and what changed in the
+members table (`members`).
+
+`POST /api/v1/tournament-catalog` body (at most 200 entries; `image` is an
+optional base64 PNG/JPEG/WebP/GIF up to 512 KB, kept only when the entry has
+no image yet):
+
+```json
+{"entries": [{"tournament_key": "1024:1", "name": "Rise of the Ancients", "ended_at": "2026-09-12T17:00:26Z", "image": "iVBORw0..."}]}
+```
+
+Answers are JSON. `POST /api/v1/tournaments` returns `201` new event or
+new draft, `200` identical to what is already there, `401` bad token, `403` not
+an administrator, `409` result already published, `422` invalid data (with the
+reason per field or line). The answer includes `review_url`.
 
 ---
 

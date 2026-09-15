@@ -4490,3 +4490,816 @@ msgstr "Конфигурации"
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr "Калькулятор войск в настоящее время отключен."
+
+#. Game tournaments: imported rankings, reward split, API tokens
+msgid "Game tournament (imported score)"
+msgstr "Турнир в игре (импортированные очки)"
+
+msgid "The ranking is read from the game by the EventUploader and the rewards below are split among the players."
+msgstr "Рейтинг считывается из игры программой EventUploader, а награды ниже делятся между игроками."
+
+msgid "Points"
+msgstr "Очки"
+
+msgid "Proportional to the points"
+msgstr "Пропорционально очкам"
+
+msgid "Equal parts"
+msgstr "Поровну"
+
+msgid "Give the leftover to the best placed"
+msgstr "Остаток — лучшим по месту"
+
+msgid "Keep the leftover with the clan"
+msgstr "Остаток оставить клану"
+
+msgid "{0} x {1} ({2})"
+msgstr "{0} x {1} ({2})"
+
+msgid "Add at least one reward to split among the players."
+msgstr "Добавьте хотя бы одну награду для распределения между игроками."
+
+msgid "Say what is being handed out."
+msgstr "Укажите, что выдаётся."
+
+msgid "The quantity must be a whole number."
+msgstr "Количество должно быть целым числом."
+
+msgid "The quantity must be at least 1."
+msgstr "Количество должно быть не меньше 1."
+
+msgid "Choose how the reward is split."
+msgstr "Выберите способ распределения награды."
+
+msgid "Give the token a name, such as the computer it will be used on."
+msgstr "Дайте токену имя, например компьютер, на котором он будет использоваться."
+
+msgid "Another member already has this game player id."
+msgstr "Этот игровой ID игрока уже есть у другого участника."
+
+msgid "The ranking must have at least one player."
+msgstr "В рейтинге должен быть хотя бы один игрок."
+
+msgid "A clan ranking has at most {0} players; {1} were sent."
+msgstr "В рейтинге клана не более {0} игроков; отправлено {1}."
+
+msgid "Line {0} is not a player."
+msgstr "Строка {0} не является игроком."
+
+msgid "Line {0}: the position must be a whole number from 1."
+msgstr "Строка {0}: позиция должна быть целым числом от 1."
+
+msgid "Line {0}: position {1} appears twice."
+msgstr "Строка {0}: позиция {1} встречается дважды."
+
+msgid "Line {0}: the name must have 1 to {1} characters."
+msgstr "Строка {0}: имя должно содержать от 1 до {1} символов."
+
+msgid "Line {0}: the points must be a whole number of 0 or more."
+msgstr "Строка {0}: очки должны быть целым числом не меньше 0."
+
+msgid "Line {0}: the player id must be a positive whole number."
+msgstr "Строка {0}: ID игрока должен быть положительным целым числом."
+
+msgid "Line {0}: player id {1} appears twice."
+msgstr "Строка {0}: ID игрока {1} встречается дважды."
+
+msgid "Unknown capture method."
+msgstr "Неизвестный способ получения данных."
+
+msgid "The tournament date is not a valid date."
+msgstr "Дата турнира указана неверно."
+
+msgid "{0} player(s) are not linked to a member: {1}. They still receive their share; link them to keep the history together."
+msgstr "{0} игрок(ов) не связаны с участником: {1}. Свою долю они всё равно получат; свяжите их, чтобы история не разделялась."
+
+msgid "{0} player(s) were linked by name. Confirm them: when the result is published their game id is saved on the member."
+msgstr "{0} игрок(ов) связаны по имени. Проверьте: при публикации их игровой ID сохранится у участника."
+
+msgid "The positions are not 1 to {0} without gaps: a part of the ranking may be missing."
+msgstr "Позиции идут не от 1 до {0} без пропусков: возможно, часть рейтинга отсутствует."
+
+msgid "Points are not in descending order at: {0}. Check for a reading error."
+msgstr "Очки идут не по убыванию на: {0}. Проверьте, нет ли ошибки чтения."
+
+msgid "Different players share a name: {0}. They are told apart by their game id."
+msgstr "У разных игроков одинаковое имя: {0}. Их различают по игровому ID."
+
+msgid "Points were corrected by hand for {0} player(s)."
+msgstr "Очки исправлены вручную у {0} игрок(ов)."
+
+msgid "This event has no reward to split. Add one before publishing."
+msgstr "У этого события нет награды для распределения. Добавьте её перед публикацией."
+
+msgid "Only a draft can be changed. Unpublish the result first."
+msgstr "Изменить можно только черновик. Сначала снимите результат с публикации."
+
+msgid "This ranking is not a draft of this event."
+msgstr "Этот рейтинг не является черновиком данного события."
+
+msgid "Event #{0} does not take an imported ranking."
+msgstr "Событие #{0} не принимает импортированный рейтинг."
+
+msgid "The result of event #{0} is already published. Unpublish it to send a new ranking."
+msgstr "Результат события #{0} уже опубликован. Снимите его с публикации, чтобы отправить новый рейтинг."
+
+msgid "Nobody qualifies for \"{0}\": check the eligible players and the minimum points."
+msgstr "Никто не подходит для «{0}»: проверьте участвующих игроков и минимум очков."
+
+msgid "This event has no published result yet."
+msgstr "У этого события ещё нет опубликованного результата."
+
+msgid "Only game tournaments have a ranking to review."
+msgstr "Рейтинг для проверки есть только у турниров из игры."
+
+msgid "There is no draft ranking to change."
+msgstr "Нет черновика рейтинга для изменения."
+
+msgid "The result of event #{0} was published: {1} player(s)."
+msgstr "Результат события #{0} опубликован: {1} игрок(ов)."
+
+msgid "{0} change(s) saved. The shares below are recalculated."
+msgstr "Сохранено изменений: {0}. Доли ниже пересчитаны."
+
+msgid "administrative"
+msgstr "служебный"
+
+msgid "This event has no published result."
+msgstr "У этого события нет опубликованного результата."
+
+msgid "The result of event #{0} is a draft again and no longer public."
+msgstr "Результат события #{0} снова черновик и больше не опубликован."
+
+msgid "Event #{0} was created from #{1}. Check the name and the date."
+msgstr "Событие #{0} создано на основе #{1}. Проверьте название и дату."
+
+msgid "The event could not be duplicated: {0}"
+msgstr "Не удалось скопировать событие: {0}"
+
+msgid "Choose the ranking CSV file to upload."
+msgstr "Выберите CSV-файл рейтинга для загрузки."
+
+msgid "The file is too large for a ranking of at most {0} players."
+msgstr "Файл слишком велик для рейтинга максимум из {0} игроков."
+
+msgid "The ranking was not accepted: {0}"
+msgstr "Рейтинг не принят: {0}"
+
+msgid "Ranking with {0} player(s) received. Review it below."
+msgstr "Получен рейтинг из {0} игрок(ов). Проверьте его ниже."
+
+msgid "This ranking is the same as the current draft; nothing changed."
+msgstr "Этот рейтинг совпадает с текущим черновиком; ничего не изменилось."
+
+msgid "Send the API token in the Authorization header: Bearer <token>."
+msgstr "Передайте API-токен в заголовке Authorization: Bearer <token>."
+
+msgid "This API token is invalid, expired or revoked."
+msgstr "Этот API-токен недействителен, истёк или отозван."
+
+msgid "Only an active administrator can use the uploader."
+msgstr "Загрузчиком может пользоваться только активный администратор."
+
+msgid "Event not found."
+msgstr "Событие не найдено."
+
+msgid "Send the ranking as a JSON body."
+msgstr "Отправьте рейтинг в теле запроса в формате JSON."
+
+msgid "The ranking was not accepted."
+msgstr "Рейтинг не принят."
+
+msgid "The token could not be created. Please, try again."
+msgstr "Не удалось создать токен. Попробуйте ещё раз."
+
+msgid "The token \"{0}\" was revoked."
+msgstr "Токен «{0}» отозван."
+
+msgid "{0} is now an administrative account and will not receive tournament rewards."
+msgstr "{0} теперь служебный аккаунт и не будет получать награды турниров."
+
+msgid "{0} will receive tournament rewards again."
+msgstr "{0} снова будет получать награды турниров."
+
+msgid "Item"
+msgstr "Предмет"
+
+msgid "e.g. Artifact pieces"
+msgstr "напр. Части артефакта"
+
+msgid "Split"
+msgstr "Распределение"
+
+msgid "Minimum points"
+msgstr "Минимум очков"
+
+msgid "Leftover units"
+msgstr "Остаток"
+
+msgid "Remove"
+msgstr "Удалить"
+
+msgid "Game tournament: enter the day it was played in the game. Past dates are accepted, and nothing is counted from chests."
+msgstr "Турнир из игры: укажите день, когда он прошёл в игре. Прошедшие даты допускаются, сундуки не учитываются."
+
+msgid "Rewards to split"
+msgstr "Награды для распределения"
+
+msgid "What the clan received for this tournament and how it is divided. Proportional gives each player a part matching their share of the points; equal gives everybody the same. Administrative accounts never take part, and players below the minimum points are left out."
+msgstr "Что клан получил за этот турнир и как это делится. Пропорционально — каждый получает часть по своей доле очков; поровну — всем одинаково. Служебные аккаунты не участвуют, игроки ниже минимума очков исключаются."
+
+msgid "Add another reward"
+msgstr "Добавить ещё награду"
+
+msgid "Optional: filled in from the rewards when left empty."
+msgstr "Необязательно: если оставить пустым, заполнится по наградам."
+
+msgid "Review result - Event #{0}"
+msgstr "Проверка результата - Событие #{0}"
+
+msgid "game id"
+msgstr "игровой ID"
+
+msgid "by name"
+msgstr "по имени"
+
+msgid "name correction"
+msgstr "исправление имени"
+
+msgid "by hand"
+msgstr "вручную"
+
+msgid "not linked"
+msgstr "не связан"
+
+msgid "EventUploader (game data)"
+msgstr "EventUploader (данные игры)"
+
+msgid "EventUploader (screen reading)"
+msgstr "EventUploader (чтение экрана)"
+
+msgid "CSV file"
+msgstr "CSV-файл"
+
+msgid "Draft"
+msgstr "Черновик"
+
+msgid "Published"
+msgstr "Опубликован"
+
+msgid "Replaced"
+msgstr "Заменён"
+
+msgid "Review result"
+msgstr "Проверить результат"
+
+msgid "Published page"
+msgstr "Опубликованная страница"
+
+msgid "Unpublish"
+msgstr "Снять с публикации"
+
+msgid "Take the result of event #{0} down? Players will stop seeing it until it is published again."
+msgstr "Снять результат события #{0}? Игроки не увидят его, пока он не будет опубликован снова."
+
+msgid "Edit event"
+msgstr "Изменить событие"
+
+msgid "min. {0} pts"
+msgstr "мин. {0} очк."
+
+msgid "{0} handed out to {1} player(s)"
+msgstr "{0} выдано {1} игрок(ам)"
+
+msgid "{0} left over"
+msgstr "остаток {0}"
+
+msgid "No reward yet. Edit the event to add what will be split."
+msgstr "Наград пока нет. Измените событие, чтобы добавить то, что будет распределено."
+
+msgid "Ranking"
+msgstr "Рейтинг"
+
+msgid "No ranking has been received yet."
+msgstr "Рейтинг ещё не получен."
+
+msgid "Received {0} UTC from {1}"
+msgstr "Получен {0} UTC от {1}"
+
+msgid "In the game: {0}"
+msgstr "В игре: {0}"
+
+msgid "Send a ranking"
+msgstr "Отправить рейтинг"
+
+msgid "The EventUploader sends it straight from the game. Without it, upload the ranking.csv the discovery tool exports."
+msgstr "EventUploader отправляет его прямо из игры. Без него загрузите ranking.csv, который экспортирует инструмент поиска."
+
+msgid "Replace with this file"
+msgstr "Заменить этим файлом"
+
+msgid "Upload CSV"
+msgstr "Загрузить CSV"
+
+msgid "Tokens for the EventUploader"
+msgstr "Токены для EventUploader"
+
+msgid "{0} taking part in the prize"
+msgstr "{0} участвуют в распределении"
+
+msgid "Administrative accounts"
+msgstr "Служебные аккаунты"
+
+msgid "never receive a prize"
+msgstr "никогда не получают награду"
+
+msgid "Not linked"
+msgstr "Не связаны"
+
+msgid "players without a member"
+msgstr "игроки без участника"
+
+msgid "Points in the split"
+msgstr "Очки в распределении"
+
+msgid "of {0} in the ranking"
+msgstr "из {0} в рейтинге"
+
+msgid "Ranking and shares"
+msgstr "Рейтинг и доли"
+
+msgid "Player in the game"
+msgstr "Игрок в игре"
+
+msgid "Takes part in the prize"
+msgstr "Участвует в распределении"
+
+msgid "- not linked -"
+msgstr "- не связан -"
+
+msgid "Value received from the game"
+msgstr "Значение из игры"
+
+msgid "was {0}"
+msgstr "было {0}"
+
+msgid "Total handed out"
+msgstr "Всего выдано"
+
+msgid "of {0}"
+msgstr "из {0}"
+
+msgid "Change the member, the prize checkbox or the points, then recalculate to see the new shares."
+msgstr "Измените участника, отметку награды или очки, затем пересчитайте, чтобы увидеть новые доли."
+
+msgid "Save and recalculate"
+msgstr "Сохранить и пересчитать"
+
+msgid "Publish this result? Players will see the ranking and what each one receives."
+msgstr "Опубликовать результат? Игроки увидят рейтинг и то, что получает каждый."
+
+msgid "Publish result"
+msgstr "Опубликовать результат"
+
+msgid "Rankings received"
+msgstr "Полученные рейтинги"
+
+msgid "When (UTC)"
+msgstr "Когда (UTC)"
+
+msgid "Sent by"
+msgstr "Отправил"
+
+msgid "Tournament Result"
+msgstr "Результат турнира"
+
+msgid "Ranking read from the game and the rewards each player receives"
+msgstr "Рейтинг из игры и награды каждого игрока"
+
+msgid "Published {0} UTC"
+msgstr "Опубликовано {0} UTC"
+
+msgid "{0} points"
+msgstr "{0} очков"
+
+msgid "{0} receive a reward"
+msgstr "{0} получают награду"
+
+msgid "Clan Total"
+msgstr "Итого по клану"
+
+msgid "points in the tournament"
+msgstr "очков в турнире"
+
+msgid "Rewards"
+msgstr "Награды"
+
+msgid "Who hands out the rewards"
+msgstr "Кто выдаёт награды"
+
+msgid "Rewards are delivered in the game. Look for this player if yours has not arrived."
+msgstr "Награды выдаются в игре. Обратитесь к этому игроку, если ваша не пришла."
+
+msgid "No reward"
+msgstr "Без награды"
+
+msgid "Awaiting result"
+msgstr "Ожидает результата"
+
+msgid "API Tokens"
+msgstr "API-токены"
+
+msgid "New Game Tournament"
+msgstr "Новый турнир из игры"
+
+msgid "Duplicate"
+msgstr "Копировать"
+
+msgid "Tokens the EventUploader uses to send tournament rankings to this site"
+msgstr "Токены, с помощью которых EventUploader отправляет рейтинги турниров на этот сайт"
+
+msgid "Token \"{0}\" created"
+msgstr "Токен «{0}» создан"
+
+msgid "Copy it now and paste it in the EventUploader, together with the site address. It will not be shown again: if it is lost, revoke it and create another."
+msgstr "Скопируйте его сейчас и вставьте в EventUploader вместе с адресом сайта. Он больше не будет показан: если потеряете, отзовите его и создайте новый."
+
+msgid "Site address: {0}"
+msgstr "Адрес сайта: {0}"
+
+msgid "New token"
+msgstr "Новый токен"
+
+msgid "Create one per computer the EventUploader runs on. The token belongs to you and can only send rankings; it cannot read or change anything else."
+msgstr "Создайте по одному на каждый компьютер, где работает EventUploader. Токен принадлежит вам и может только отправлять рейтинги; больше ничего читать или менять он не может."
+
+msgid "e.g. Clan leader PC"
+msgstr "напр. ПК лидера клана"
+
+msgid "Create token"
+msgstr "Создать токен"
+
+msgid "Tokens"
+msgstr "Токены"
+
+msgid "Owner"
+msgstr "Владелец"
+
+msgid "Starts with"
+msgstr "Начинается с"
+
+msgid "Created (UTC)"
+msgstr "Создан (UTC)"
+
+msgid "Last used (UTC)"
+msgstr "Последнее использование (UTC)"
+
+msgid "never"
+msgstr "никогда"
+
+msgid "Revoked"
+msgstr "Отозван"
+
+msgid "Expired"
+msgstr "Истёк"
+
+msgid "Revoke"
+msgstr "Отозвать"
+
+msgid "Revoke the token \"{0}\"? The EventUploader using it stops working at once."
+msgstr "Отозвать токен «{0}»? EventUploader, использующий его, сразу перестанет работать."
+
+msgid "No token has been created yet."
+msgstr "Токены ещё не созданы."
+
+msgid "Tournament rewards"
+msgstr "Награды турниров"
+
+msgid "Administrative"
+msgstr "Служебный"
+
+msgid "Receives"
+msgstr "Получает"
+
+msgid "Mark as a player who receives rewards"
+msgstr "Отметить как игрока, получающего награды"
+
+msgid "Mark as an administrative account"
+msgstr "Отметить как служебный аккаунт"
+
+msgid "Game player id"
+msgstr "ID игрока в игре"
+
+msgid "Filled in automatically by the first published tournament"
+msgstr "Заполняется автоматически при первом опубликованном турнире"
+
+msgid "Administrative account (takes part in rankings but never receives tournament rewards)"
+msgstr "Служебный аккаунт (есть в рейтингах, но никогда не получает награды турниров)"
+
+#. Game tournaments registered by the EventUploader, event types
+msgid "This game tournament result is already registered."
+msgstr "Этот результат турнира из игры уже зарегистрирован."
+
+msgid "The tournament result id is missing or invalid."
+msgstr "ID результата турнира отсутствует или неверен."
+
+msgid "The tournament type is missing or invalid."
+msgstr "Тип турнира отсутствует или неверен."
+
+msgid "The tournament name has more than {0} characters."
+msgstr "Название турнира длиннее {0} символов."
+
+msgid "The tournament cannot end in the future."
+msgstr "Турнир не может заканчиваться в будущем."
+
+msgid "Game tournament {0}"
+msgstr "Турнир из игры {0}"
+
+msgid "Event type"
+msgstr "Тип события"
+
+msgid "Game event"
+msgstr "Событие из игры"
+
+msgid "A tournament played in the game. It is registered after it ends, so past dates are accepted, and the EventUploader usually creates it together with the ranking."
+msgstr "Турнир, сыгранный в игре. Он регистрируется после окончания, поэтому прошедшие даты допускаются; обычно EventUploader создаёт его вместе с рейтингом."
+
+msgid "Clan event"
+msgstr "Событие клана"
+
+msgid "An internal challenge to push crypts and epic monsters. It is counted from the chests collected inside its window, which starts in the future."
+msgstr "Внутреннее состязание, чтобы подтолкнуть к склепам и эпическим монстрам. Считается по сундукам, собранным в его период, который начинается в будущем."
+
+msgid "When it was played"
+msgstr "Когда проходил"
+
+msgid "The day and time the tournament ended in the game, in UTC. Past dates are accepted and nothing is counted from chests."
+msgstr "День и время окончания турнира в игре, по UTC. Прошедшие даты допускаются, сундуки не учитываются."
+
+#. Tournament catalogue, event dates, tournament mapper
+msgid "The image must be a PNG, JPEG, WebP or GIF of at most {0} KB."
+msgstr "Изображение должно быть в формате PNG, JPEG, WebP или GIF и не больше {0} КБ."
+
+msgid "Tournament \"{0}\" saved."
+msgstr "Турнир «{0}» сохранён."
+
+msgid "The tournament could not be saved. Please check the fields below."
+msgstr "Не удалось сохранить турнир. Проверьте поля ниже."
+
+msgid "Tournament Catalogue"
+msgstr "Каталог турниров"
+
+msgid "read from the Journal"
+msgstr "прочитано из Journal"
+
+msgid "typed in the uploader"
+msgstr "введено в загрузчике"
+
+msgid "set by hand"
+msgstr "задано вручную"
+
+msgid "The game's tournaments. Names and ids are filled in by the tournament mapper; the image and the duration are set here."
+msgstr "Турниры игры. Названия и id заполняет картограф турниров; изображение и длительность задаются здесь."
+
+msgid "Image"
+msgstr "Изображение"
+
+msgid "Tournament"
+msgstr "Турнир"
+
+msgid "Game id"
+msgstr "Id в игре"
+
+msgid "Duration"
+msgstr "Длительность"
+
+msgid "Last seen (UTC)"
+msgstr "Последний раз (UTC)"
+
+msgid "Name not mapped yet"
+msgstr "Название ещё не сопоставлено"
+
+msgid "{0} day(s)"
+msgstr "{0} дн."
+
+msgid "not set (1 day)"
+msgstr "не задана (1 день)"
+
+msgid "The catalogue is empty. Run the tournament mapper, or send a tournament with the EventUploader."
+msgstr "Каталог пуст. Запустите картограф турниров или отправьте турнир через EventUploader."
+
+msgid "Edit Tournament"
+msgstr "Изменить турнир"
+
+msgid "Game id {0}"
+msgstr "Id в игре {0}"
+
+msgid "As it appears in the game"
+msgstr "Как в игре"
+
+msgid "Filled in by the tournament mapper. A name changed here is kept: the mapper will not overwrite it."
+msgstr "Заполняется картографом турниров. Изменённое здесь название сохраняется: картограф его не перезапишет."
+
+msgid "Duration (days)"
+msgstr "Длительность (дни)"
+
+msgid "How long the tournament runs. A new event starts this many days before the end the game reports; one day when empty."
+msgstr "Сколько длится турнир. Новое событие начинается за столько дней до окончания, указанного игрой; если пусто — один день."
+
+msgid "PNG, JPEG, WebP or GIF, up to 1 MB."
+msgstr "PNG, JPEG, WebP или GIF, до 1 МБ."
+
+msgid "Remove the image"
+msgstr "Удалить изображение"
+
+msgid "Latest events of this tournament"
+msgstr "Последние события этого турнира"
+
+msgid "Send at least one tournament."
+msgstr "Отправьте хотя бы один турнир."
+
+msgid "Send at most {0} tournaments at a time."
+msgstr "Отправляйте не более {0} турниров за раз."
+
+msgid "Line {0} is not a tournament."
+msgstr "Строка {0} не является турниром."
+
+msgid "The tournaments were not accepted."
+msgstr "Турниры не приняты."
+
+msgid "The dates of event #{0} were saved."
+msgstr "Даты события №{0} сохранены."
+
+msgid "The dates were not saved: {0}"
+msgstr "Даты не сохранены: {0}"
+
+msgid "Lasts {0} day(s) in the catalogue"
+msgstr "Длится {0} дн. по каталогу"
+
+msgid "No duration in the catalogue: one day assumed"
+msgstr "В каталоге нет длительности: принят один день"
+
+msgid "Edit in the catalogue"
+msgstr "Изменить в каталоге"
+
+msgid "Save dates"
+msgstr "Сохранить даты"
+
+msgid "The duration must be a whole number of days."
+msgstr "Длительность должна быть целым числом дней."
+
+msgid "The duration must be between {0} and {1} days."
+msgstr "Длительность должна быть от {0} до {1} дней."
+
+msgid "Monitoring"
+msgstr "Мониторинг"
+
+msgid "Running, last run had problems"
+msgstr "Работает, у последнего запуска были проблемы"
+
+msgid "Stopped"
+msgstr "Остановлен"
+
+msgid "Stuck"
+msgstr "Завис"
+
+msgid "Never ran"
+msgstr "Ни разу не запускался"
+
+msgid "Not watched"
+msgstr "Не отслеживается"
+
+msgid "running"
+msgstr "выполняется"
+
+msgid "success"
+msgstr "успешно"
+
+msgid "partial"
+msgstr "частично"
+
+msgid "failed"
+msgstr "ошибка"
+
+msgid "cancelled"
+msgstr "отменён"
+
+msgid "Chest collector"
+msgstr "Сборщик сундуков"
+
+msgid "Daily maintenance"
+msgstr "Ежедневное обслуживание"
+
+msgid "Tournament upload"
+msgstr "Отправка турниров"
+
+msgid "{0} min"
+msgstr "{0} мин"
+
+msgid "{0} h {1} min"
+msgstr "{0} ч {1} мин"
+
+msgid "{0} d {1} h"
+msgstr "{0} д {1} ч"
+
+msgid "Whether the chest collector, the maintenance, the database backup and the tournament uploads are running"
+msgstr "Работают ли сборщик сундуков, обслуживание, резервное копирование базы и отправка турниров"
+
+msgid "A job is running when it had a good run within its limit. A run that found no chests still counts: this watches the process, not the data."
+msgstr "Задача работает, если у неё был удачный запуск в пределах лимита. Запуск, который не нашёл сундуков, тоже считается: отслеживается процесс, а не данные."
+
+msgid "Last good run {0} ago (limit {1})."
+msgstr "Последний удачный запуск {0} назад (лимит {1})."
+
+msgid "No good run on record (limit {0})."
+msgstr "Удачных запусков нет (лимит {0})."
+
+msgid "Last run: {0} on {1}, started {2} UTC."
+msgstr "Последний запуск: {0} на {1}, начат {2} UTC."
+
+msgid "Limits"
+msgstr "Лимиты"
+
+msgid "How long each job may go without a good run before the monitor raises the alarm. Leave room for one missed run: a collector scheduled every hour does well with 180 minutes."
+msgstr "Сколько каждая задача может обходиться без удачного запуска, прежде чем монитор поднимет тревогу. Оставьте запас на один пропущенный запуск: для сборщика, запускаемого каждый час, подойдут 180 минут."
+
+msgid "Job"
+msgstr "Задача"
+
+msgid "Watched"
+msgstr "Отслеживается"
+
+msgid "Limit (minutes)"
+msgstr "Лимит (минуты)"
+
+msgid "Save limits"
+msgstr "Сохранить лимиты"
+
+msgid "Recent runs"
+msgstr "Последние запуски"
+
+msgid "The last 50 runs, newest first. History older than {0} days is deleted by the daily maintenance."
+msgstr "Последние 50 запусков, сначала новые. История старше {0} дней удаляется ежедневным обслуживанием."
+
+msgid "No run recorded yet."
+msgstr "Запусков пока нет."
+
+msgid "Started (UTC)"
+msgstr "Начало (UTC)"
+
+msgid "Took"
+msgstr "Длительность"
+
+msgid "Host"
+msgstr "Компьютер"
+
+msgid "{0} s"
+msgstr "{0} с"
+
+msgid "External monitor"
+msgstr "Внешний монитор"
+
+msgid "The alarm has to come from outside the server: if the server goes down, nothing on it can send one. A Google Apps Script reads the address below and e-mails you when a job stops or comes back."
+msgstr "Тревога должна приходить извне сервера: если сервер упадёт, ничто на нём не сможет её отправить. Google Apps Script читает адрес ниже и присылает письмо, когда задача останавливается или возобновляется."
+
+msgid "Address"
+msgstr "Адрес"
+
+msgid "Key, sent in the {0} header:"
+msgstr "Ключ, отправляемый в заголовке {0}:"
+
+msgid "No key yet: the address answers 503 until one is created."
+msgstr "Ключа ещё нет: адрес отвечает 503, пока ключ не создан."
+
+msgid "The key only reads this status. It cannot change anything on the site."
+msgstr "Ключ только читает этот статус. Он ничего не может изменить на сайте."
+
+msgid "Create a new key"
+msgstr "Создать новый ключ"
+
+msgid "Create key"
+msgstr "Создать ключ"
+
+msgid "Create a new key? The monitor stops working until you paste the new one in it."
+msgstr "Создать новый ключ? Монитор перестанет работать, пока вы не вставите в него новый."
+
+msgid "The script, ready to paste into a new project at script.google.com:"
+msgstr "Скрипт, готовый для вставки в новый проект на script.google.com:"
+
+msgid "A new monitoring key was created. Update it in the monitor: the old one no longer works."
+msgstr "Создан новый ключ мониторинга. Обновите его в мониторе: старый больше не работает."
+
+msgid "\"{0}\" was not saved: {1}"
+msgstr "«{0}» не сохранено: {1}"
+
+msgid "Monitoring limits saved."
+msgstr "Лимиты мониторинга сохранены."
+
+msgid "No monitoring key is set. Create one under Admin > Monitoring."
+msgstr "Ключ мониторинга не задан. Создайте его в Admin > Мониторинг."
+
+msgid "Send the monitoring key in the X-Monitor-Key header."
+msgstr "Отправьте ключ мониторинга в заголовке X-Monitor-Key."
+
+msgid "Between {0} and {1} minutes."
+msgstr "От {0} до {1} минут."

@@ -4,7 +4,10 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\Model\Entity\Event;
+use App\Model\Entity\JobRun;
+use App\Model\Table\JobRunsTable;
 use App\Service\EventScoringService;
+use App\Service\JobRunRecorder;
 use Cake\Command\Command;
 use Cake\Console\Arguments;
 use Cake\Console\ConsoleIo;
@@ -22,12 +25,25 @@ use Throwable;
  *
  * Orchestrates daily automated maintenance tasks:
  * 1. Process pending/unprocessed completed cycle summaries.
- * 2. Purge old collected chests based on retention configuration.
- * 3. Record the results of events whose window has closed.
+ * 2. Update members from collected chests (activity & new players).
+ * 3. Purge old collected chests based on retention configuration.
+ * 4. Record the results of events whose window has closed.
+ * 5. Delete monitoring history past its retention.
+ *
+ * Every run writes its heartbeat to `job_runs`. A step that fails no longer
+ * passes for success: the run is recorded as partial or failed and the command
+ * exits with an error, so both the cron log and the health check show it.
  */
 class DailyMaintenanceCommand extends Command
 {
     use LocatorAwareTrait;
+
+    /**
+     * What went wrong during the current run, for its heartbeat.
+     *
+     * @var list<string>
+     */
+    protected array $problems = [];
 
     /**
      * Hook method for defining this command's option parser.
@@ -39,7 +55,7 @@ class DailyMaintenanceCommand extends Command
     {
         $parser = parent::buildOptionParser($parser);
 
-        $parser->setDescription('Runs daily automated maintenance tasks (cycle summaries processing and old data purge).')
+        $parser->setDescription('Runs daily automated maintenance tasks (cycle summaries, members update, purge, and events).')
             ->addOption('dry-run', [
                 'boolean' => true,
                 'help' => 'Perform a dry run without modifying the database.',
@@ -47,6 +63,10 @@ class DailyMaintenanceCommand extends Command
             ->addOption('skip-summaries', [
                 'boolean' => true,
                 'help' => 'Skip cycle summaries processing step.',
+            ])
+            ->addOption('skip-members', [
+                'boolean' => true,
+                'help' => 'Skip members update step.',
             ])
             ->addOption('skip-purge', [
                 'boolean' => true,
@@ -71,42 +91,135 @@ class DailyMaintenanceCommand extends Command
     {
         $io->out('<info>Starting Daily Maintenance Task...</info>');
         $isDryRun = (bool)$args->getOption('dry-run');
+        $this->problems = [];
 
         if ($isDryRun) {
             $io->warning('Running in DRY-RUN mode. No changes will be saved to database.');
         }
 
-        // 1. Process Cycle Summaries
-        if (!$args->getOption('skip-summaries')) {
+        // A dry run proves nothing about the schedule, so it leaves no heartbeat.
+        $recorder = new JobRunRecorder();
+        $run = $isDryRun ? null : $recorder->start(JobRunRecorder::JOB_DAILY_MAINTENANCE);
+
+        // [option that skips it, what it does, what the skip message calls it, the step]
+        $steps = [
+            'summaries' => ['skip-summaries', 'Processing pending cycle summaries...', 'cycle summaries processing',
+                fn (): bool => $this->runProcessCycleSummaries($io, $isDryRun)],
+            'members' => ['skip-members', 'Updating members from collected chests...', 'members update',
+                fn (): bool => $this->runUpdateMembers($io, $isDryRun)],
+            'purge' => ['skip-purge', 'Purging old collected chests...', 'old chests purge',
+                fn (): bool => $this->runPurgeCollectedChests($io, $isDryRun)],
+            'events' => ['skip-events', 'Recording results for events that have ended...', 'event results recording',
+                fn (): bool => $this->runFinalizeEndedEvents($io, $isDryRun)],
+            'job_runs' => [null, 'Purging old monitoring history...', null,
+                fn (): bool => $this->runPurgeJobRuns($io, $isDryRun)],
+        ];
+
+        $results = [];
+        $number = 0;
+        foreach ($steps as $key => [$skipOption, $title, $skipName, $step]) {
+            $number++;
+            $label = sprintf('[Task %d/%d]', $number, count($steps));
+
+            if ($skipOption !== null && $args->getOption($skipOption)) {
+                $io->out(sprintf('%s Skipped %s (--%s specified).', $label, $skipName, $skipOption));
+                $results[$key] = 'skipped';
+                continue;
+            }
+
             $io->hr();
-            $io->out('<info>[Task 1/3] Processing pending cycle summaries...</info>');
-            $this->runProcessCycleSummaries($io, $isDryRun);
-        } else {
-            $io->out('[Task 1/3] Skipped cycle summaries processing (--skip-summaries specified).');
+            $io->out(sprintf('<info>%s %s</info>', $label, $title));
+
+            // One step that breaks must not keep the others from running.
+            try {
+                $results[$key] = $step() ? 'ok' : 'failed';
+            } catch (Throwable $e) {
+                $this->problem($io, sprintf('%s: %s', $key, $e->getMessage()));
+                $results[$key] = 'failed';
+            }
         }
 
-        // 2. Purge Old Collected Chests
-        if (!$args->getOption('skip-purge')) {
-            $io->hr();
-            $io->out('<info>[Task 2/3] Purging old collected chests...</info>');
-            $this->runPurgeCollectedChests($io, $isDryRun);
-        } else {
-            $io->out('[Task 2/3] Skipped old chests purge (--skip-purge specified).');
-        }
+        $failed = count(array_keys($results, 'failed', true));
+        $ran = $failed + count(array_keys($results, 'ok', true));
 
-        // 3. Record the results of events that have ended
-        if (!$args->getOption('skip-events')) {
-            $io->hr();
-            $io->out('<info>[Task 3/3] Recording results for events that have ended...</info>');
-            $this->runFinalizeEndedEvents($io, $isDryRun);
+        if ($failed === 0) {
+            $status = JobRun::STATUS_SUCCESS;
         } else {
-            $io->out('[Task 3/3] Skipped event results recording (--skip-events specified).');
+            $status = $failed < $ran ? JobRun::STATUS_PARTIAL : JobRun::STATUS_FAILED;
         }
+        $recorder->finish($run, $status, [
+            'steps' => $results,
+            'problems' => array_slice($this->problems, 0, 10),
+        ]);
 
         $io->hr();
+        if ($failed > 0) {
+            $io->error(sprintf('Daily Maintenance finished with %d failed step(s).', $failed));
+
+            return static::CODE_ERROR;
+        }
         $io->success('Daily Maintenance completed successfully.');
 
         return static::CODE_SUCCESS;
+    }
+
+    /**
+     * Report a problem on the console and keep it for the run's summary.
+     *
+     * @param \Cake\Console\ConsoleIo $io Console io.
+     * @param string $message What went wrong.
+     * @return void
+     */
+    protected function problem(ConsoleIo $io, string $message): void
+    {
+        $io->error($message);
+        $this->problems[] = $message;
+    }
+
+    /**
+     * Synchronizes players from collected chests into the members table
+     * and updates active status based on recent activity (last 3 weeks).
+     *
+     * @param \Cake\Console\ConsoleIo $io Console io.
+     * @param bool $isDryRun Whether to report without writing.
+     * @return bool Whether the step went through without errors.
+     */
+    protected function runUpdateMembers(ConsoleIo $io, bool $isDryRun): bool
+    {
+        try {
+            /** @var \App\Model\Table\MembersTable $membersTable */
+            $membersTable = $this->fetchTable('Members');
+        } catch (Throwable $e) {
+            $io->warning('Members module is not available; skipping. (' . $e->getMessage() . ')');
+
+            return true;
+        }
+
+        $result = $membersTable->updateFromCollectedChests($isDryRun);
+
+        if ($isDryRun) {
+            $io->out(sprintf(
+                '[DRY-RUN] Found %d player(s). Would add %d new member(s) and update %d member(s).',
+                $result['playersCount'],
+                $result['newMembersCount'],
+                $result['updatedMembersCount']
+            ));
+
+            return true;
+        }
+
+        $io->success(sprintf(
+            'Members updated: %d new member(s) added, %d member(s) updated (%d players evaluated).',
+            $result['newMembersCount'],
+            $result['updatedMembersCount'],
+            $result['playersCount']
+        ));
+
+        foreach ((array)($result['errors'] ?? []) as $error) {
+            $this->problem($io, 'members: ' . $error);
+        }
+
+        return empty($result['errors']);
     }
 
     /**
@@ -122,16 +235,16 @@ class DailyMaintenanceCommand extends Command
      *
      * @param \Cake\Console\ConsoleIo $io Console io.
      * @param bool $isDryRun Whether to report without writing.
-     * @return void
+     * @return bool Whether the step went through without errors.
      */
-    protected function runFinalizeEndedEvents(ConsoleIo $io, bool $isDryRun): void
+    protected function runFinalizeEndedEvents(ConsoleIo $io, bool $isDryRun): bool
     {
         try {
             $events = $this->fetchTable('Events');
         } catch (Throwable $e) {
             $io->warning('Events module is not installed; skipping. (' . $e->getMessage() . ')');
 
-            return;
+            return true;
         }
 
         $pending = $events->find('withoutBanner')
@@ -139,6 +252,9 @@ class DailyMaintenanceCommand extends Command
                 'Events.ends_at <' => CakeDateTime::now(),
                 'Events.finalized_at IS' => null,
                 'Events.status !=' => Event::STATUS_CANCELLED,
+                // A game tournament's result is its reviewed ranking, published by
+                // an administrator; there are no chests to compute it from.
+                'Events.criteria !=' => Event::CRITERIA_IMPORTED,
             ])
             ->orderBy(['Events.ends_at' => 'ASC'])
             ->all();
@@ -146,7 +262,7 @@ class DailyMaintenanceCommand extends Command
         if ($pending->isEmpty()) {
             $io->out('No event is waiting to be recorded.');
 
-            return;
+            return true;
         }
 
         $service = new EventScoringService();
@@ -172,6 +288,8 @@ class DailyMaintenanceCommand extends Command
                 $recorded
             ));
         }
+
+        return true;
     }
 
     /**
@@ -179,9 +297,9 @@ class DailyMaintenanceCommand extends Command
      *
      * @param \Cake\Console\ConsoleIo $io
      * @param bool $isDryRun
-     * @return void
+     * @return bool Whether the step went through without errors.
      */
-    protected function runProcessCycleSummaries(ConsoleIo $io, bool $isDryRun): void
+    protected function runProcessCycleSummaries(ConsoleIo $io, bool $isDryRun): bool
     {
         $configsTable = $this->fetchTable('Config');
         $playerCycleSummariesTable = $this->fetchTable('PlayerCycleSummaries');
@@ -192,8 +310,9 @@ class DailyMaintenanceCommand extends Command
 
         if (!($referenceDayConfig && $everyHowManyDaysConfig && $minimumChestScoreConfig &&
               !empty($referenceDayConfig->value) && is_numeric($everyHowManyDaysConfig->value) && is_numeric($minimumChestScoreConfig->value))) {
-            $io->error('Configuration parameters for cycle processing (reference_day, every_how_many_days, minimum_chest_score) are missing or invalid.');
-            return;
+            $this->problem($io, 'Configuration parameters for cycle processing (reference_day, every_how_many_days, minimum_chest_score) are missing or invalid.');
+
+            return false;
         }
 
         $referenceDay = new FrozenTime($referenceDayConfig->value);
@@ -207,6 +326,7 @@ class DailyMaintenanceCommand extends Command
         // Check completed cycles starting from cycle 0 up to currentCycleOffset - 1
         $processedCountAll = 0;
         $unprocessedFound = 0;
+        $failed = false;
 
         for ($offset = 0; $offset < $currentCycleOffset; $offset++) {
             $cycleStart = $referenceDay->addDays($offset * $cycleDuration);
@@ -240,13 +360,16 @@ class DailyMaintenanceCommand extends Command
                 $processedCountAll += $result['processed'];
             }
             if ($result['errors'] > 0) {
-                $io->error(sprintf(' Encounted %d errors processing cycle %s.', $result['errors'], $cycleStart->format('Y-m-d')));
+                $this->problem($io, sprintf('Encountered %d errors processing cycle %s.', $result['errors'], $cycleStart->format('Y-m-d')));
+                $failed = true;
             }
         }
 
         if ($unprocessedFound === 0) {
             $io->out('No pending cycles to process. All completed cycles have summaries recorded.');
         }
+
+        return !$failed;
     }
 
     /**
@@ -254,9 +377,9 @@ class DailyMaintenanceCommand extends Command
      *
      * @param \Cake\Console\ConsoleIo $io
      * @param bool $isDryRun
-     * @return void
+     * @return bool Whether the step went through without errors.
      */
-    protected function runPurgeCollectedChests(ConsoleIo $io, bool $isDryRun): void
+    protected function runPurgeCollectedChests(ConsoleIo $io, bool $isDryRun): bool
     {
         $configTable = $this->fetchTable('Config');
         $collectedChestsTable = $this->fetchTable('CollectedChests');
@@ -269,7 +392,8 @@ class DailyMaintenanceCommand extends Command
 
         if ($retentionDays <= 0) {
             $io->out('Automatic purge is disabled in configuration (collected_chests_retention_days = 0).');
-            return;
+
+            return true;
         }
 
         $cutoffDate = (new DateTime())
@@ -284,15 +408,51 @@ class DailyMaintenanceCommand extends Command
 
         if ($chestsToPurgeCount === 0) {
             $io->out('No old collected chests found to purge.');
-            return;
+
+            return true;
         }
 
         if ($isDryRun) {
             $io->out(sprintf(' [DRY-RUN] Would purge %d old chest record(s).', $chestsToPurgeCount));
-            return;
+
+            return true;
         }
 
         $count = $collectedChestsTable->deleteAll(['collected_at <' => $cutoffDate]);
         $io->success(sprintf('Successfully purged %d old collected chest record(s).', $count));
+
+        return true;
+    }
+
+    /**
+     * Delete monitoring history past its retention, keeping the last good run
+     * of every job.
+     *
+     * @param \Cake\Console\ConsoleIo $io Console io.
+     * @param bool $isDryRun Whether to report without writing.
+     * @return bool Whether the step went through without errors.
+     */
+    protected function runPurgeJobRuns(ConsoleIo $io, bool $isDryRun): bool
+    {
+        /** @var \App\Model\Table\JobRunsTable $jobRuns */
+        $jobRuns = $this->fetchTable('JobRuns');
+
+        if ($isDryRun) {
+            $io->out(sprintf(
+                ' [DRY-RUN] Would delete monitoring history older than %d days.',
+                JobRunsTable::RETENTION_DAYS
+            ));
+
+            return true;
+        }
+
+        $count = $jobRuns->purgeOlderThan();
+        $io->out(sprintf(
+            'Deleted %d monitoring record(s) older than %d days.',
+            $count,
+            JobRunsTable::RETENTION_DAYS
+        ));
+
+        return true;
     }
 }

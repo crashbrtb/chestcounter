@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model\Table;
 
 use App\Model\Entity\Event;
+use App\Model\Entity\EventReward;
 use ArrayObject;
 use Cake\Datasource\EntityInterface;
 use Cake\Event\EventInterface;
@@ -19,6 +20,8 @@ use Throwable;
  *
  * @property \App\Model\Table\EventChestsTable&\Cake\ORM\Association\HasMany $EventChests
  * @property \App\Model\Table\EventStandingsTable&\Cake\ORM\Association\HasMany $EventStandings
+ * @property \App\Model\Table\EventRewardsTable&\Cake\ORM\Association\HasMany $EventRewards
+ * @property \App\Model\Table\EventImportsTable&\Cake\ORM\Association\HasMany $EventImports
  * @method \App\Model\Entity\Event newEmptyEntity()
  * @method \App\Model\Entity\Event newEntity(array $data, array $options = [])
  * @method \App\Model\Entity\Event get(mixed $primaryKey, array|string $finder = 'all', \Psr\SimpleCache\CacheInterface|string|null $cache = null, \Closure|string|null $cacheKey = null, mixed ...$args)
@@ -37,7 +40,8 @@ class EventsTable extends Table
     public const LIST_FIELDS = [
         'id', 'event_number', 'name', 'description', 'criteria', 'custom_metric',
         'starts_at', 'ends_at', 'prize', 'contact_player', 'banner_mime',
-        'status', 'finalized_at', 'created_by', 'created', 'modified',
+        'status', 'finalized_at', 'published_at', 'game_result_uid', 'game_tournament_key', 'game_tournament_id',
+        'created_by', 'created', 'modified',
     ];
 
     /**
@@ -66,6 +70,22 @@ class EventsTable extends Table
             'foreignKey' => 'event_id',
             'dependent' => true,
             'sort' => ['EventStandings.position' => 'ASC'],
+        ]);
+
+        $this->hasMany('EventRewards', [
+            'foreignKey' => 'event_id',
+            'dependent' => true,
+            'saveStrategy' => 'replace',
+            'sort' => ['EventRewards.sort' => 'ASC', 'EventRewards.id' => 'ASC'],
+        ]);
+
+        $this->hasMany('EventImports', [
+            'foreignKey' => 'event_id',
+            'dependent' => true,
+        ]);
+
+        $this->belongsTo('GameTournaments', [
+            'foreignKey' => 'game_tournament_id',
         ]);
     }
 
@@ -97,6 +117,9 @@ class EventsTable extends Table
         return $query->find('withoutBanner')
             ->where([
                 'Events.status !=' => Event::STATUS_CANCELLED,
+                // A game tournament is announced by its published result, never
+                // as a running event on the scoreboard banner.
+                'Events.criteria !=' => Event::CRITERIA_IMPORTED,
                 'Events.starts_at <=' => $now,
                 'Events.ends_at >=' => $now,
             ])
@@ -114,6 +137,7 @@ class EventsTable extends Table
         return $query->find('withoutBanner')
             ->where([
                 'Events.status !=' => Event::STATUS_CANCELLED,
+                'Events.criteria !=' => Event::CRITERIA_IMPORTED,
                 'Events.starts_at >' => DateTime::now(),
             ])
             ->orderBy(['Events.starts_at' => 'ASC']);
@@ -123,6 +147,9 @@ class EventsTable extends Table
      * Events whose window has closed, plus cancelled ones: everything the
      * history page shows, most recent first.
      *
+     * Game tournaments only appear once their result is published: until an
+     * administrator has reviewed the uploaded ranking there is nothing to show.
+     *
      * @param \Cake\ORM\Query\SelectQuery $query The query.
      * @return \Cake\ORM\Query\SelectQuery
      */
@@ -131,11 +158,39 @@ class EventsTable extends Table
         return $query->find('withoutBanner')
             ->where([
                 'OR' => [
-                    'Events.ends_at <' => DateTime::now(),
-                    'Events.status' => Event::STATUS_CANCELLED,
+                    [
+                        'Events.criteria !=' => Event::CRITERIA_IMPORTED,
+                        'OR' => [
+                            'Events.ends_at <' => DateTime::now(),
+                            'Events.status' => Event::STATUS_CANCELLED,
+                        ],
+                    ],
+                    [
+                        'Events.criteria' => Event::CRITERIA_IMPORTED,
+                        'Events.published_at IS NOT' => null,
+                        'Events.status !=' => Event::STATUS_CANCELLED,
+                    ],
                 ],
             ])
             ->orderBy(['Events.ends_at' => 'DESC']);
+    }
+
+    /**
+     * Game tournaments still waiting for their ranking to be uploaded or
+     * published, newest first. This is the list the EventUploader offers.
+     *
+     * @param \Cake\ORM\Query\SelectQuery $query The query.
+     * @return \Cake\ORM\Query\SelectQuery
+     */
+    public function findAwaitingImport(SelectQuery $query): SelectQuery
+    {
+        return $query->find('withoutBanner')
+            ->where([
+                'Events.criteria' => Event::CRITERIA_IMPORTED,
+                'Events.published_at IS' => null,
+                'Events.status !=' => Event::STATUS_CANCELLED,
+            ])
+            ->orderBy(['Events.starts_at' => 'DESC', 'Events.id' => 'DESC']);
     }
 
     /**
@@ -191,6 +246,52 @@ class EventsTable extends Table
             $data['event_chests'] = [];
             $data['custom_metric'] = Event::METRIC_SCORE;
         }
+
+        // Rewards, likewise, belong to game tournaments only.
+        if (isset($data['criteria'])) {
+            $data['event_rewards'] = $data['criteria'] === Event::CRITERIA_IMPORTED
+                ? $this->normalizeRewards($data['event_rewards'] ?? [])
+                : [];
+        }
+    }
+
+    /**
+     * Reward lines as the form posts them, minus the blank rows the form keeps
+     * for adding more, numbered in the order they were entered.
+     *
+     * @param mixed $rows Posted rows.
+     * @return list<array<string, mixed>>
+     */
+    private function normalizeRewards(mixed $rows): array
+    {
+        $out = [];
+        foreach ((array)$rows as $row) {
+            if (!is_array($row)) {
+                continue;
+            }
+            $name = trim((string)($row['item_name'] ?? ''));
+            $quantity = trim((string)($row['quantity'] ?? ''));
+            if ($name === '' && $quantity === '') {
+                continue;
+            }
+            // Thousands separators are how people type big numbers; the
+            // quantity is a whole number either way.
+            $minPoints = trim((string)($row['min_points'] ?? ''));
+            $clean = [
+                'item_name' => $name,
+                'quantity' => str_replace(['.', ',', ' '], '', $quantity),
+                'rule' => $row['rule'] ?? EventReward::RULE_PROPORTIONAL,
+                'min_points' => $minPoints === '' ? 1 : str_replace(['.', ',', ' '], '', $minPoints),
+                'remainder' => $row['remainder'] ?? EventReward::REMAINDER_TOP_RANKED,
+                'sort' => count($out),
+            ];
+            if (!empty($row['id'])) {
+                $clean['id'] = (int)$row['id'];
+            }
+            $out[] = $clean;
+        }
+
+        return $out;
     }
 
     /**
@@ -230,10 +331,13 @@ class EventsTable extends Table
             ->requirePresence('ends_at', 'create')
             ->notEmptyDateTime('ends_at', __('Choose when the event ends (UTC).'));
 
+        // A game tournament describes its prize with reward lines; the text is
+        // filled in from them when left empty.
+        $notImported = fn (array $context): bool => ($context['data']['criteria'] ?? null) !== Event::CRITERIA_IMPORTED;
         $validator
             ->scalar('prize')
-            ->requirePresence('prize', 'create')
-            ->notEmptyString('prize', __('Describe the prize the players are competing for.'));
+            ->requirePresence('prize', fn (array $context): bool => $context['newRecord'] && $notImported($context))
+            ->notEmptyString('prize', __('Describe the prize the players are competing for.'), $notImported);
 
         $validator
             ->scalar('contact_player')
@@ -261,7 +365,15 @@ class EventsTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add(
+        // These rules are about what is being saved. RulesChecker::add() would
+        // run them on delete too, where the event is loaded without its chests
+        // or rewards, and every such event would become impossible to delete.
+        $onSave = function (callable $rule, string $name, array $options) use ($rules): void {
+            $rules->addCreate($rule, $name, $options);
+            $rules->addUpdate($rule, $name, $options);
+        };
+
+        $onSave(
             function (EntityInterface $entity) {
                 if (!$entity->get('starts_at') || !$entity->get('ends_at')) {
                     return true;
@@ -276,7 +388,7 @@ class EventsTable extends Table
             ]
         );
 
-        $rules->add(
+        $onSave(
             function (EntityInterface $entity) {
                 if (!$entity->get('starts_at')) {
                     return true;
@@ -285,6 +397,11 @@ class EventsTable extends Table
                 // Only a start date being *set* to the past is rejected. Leaving an
                 // already-running event's start where it is has to keep working.
                 if (!$entity->isNew() && !$entity->isDirty('starts_at')) {
+                    return true;
+                }
+
+                // A game tournament is registered after it was played.
+                if ($entity->get('criteria') === Event::CRITERIA_IMPORTED) {
                     return true;
                 }
 
@@ -299,9 +416,12 @@ class EventsTable extends Table
             ]
         );
 
-        $rules->add(
+        $onSave(
             function (EntityInterface $entity) {
                 if (!$entity->get('ends_at') || !$entity->isDirty('ends_at')) {
+                    return true;
+                }
+                if ($entity->get('criteria') === Event::CRITERIA_IMPORTED) {
                     return true;
                 }
 
@@ -314,7 +434,7 @@ class EventsTable extends Table
             ]
         );
 
-        $rules->add(
+        $onSave(
             function (EntityInterface $entity) {
                 if ($entity->get('criteria') !== Event::CRITERIA_CUSTOM_CHESTS) {
                     return true;
@@ -328,6 +448,29 @@ class EventsTable extends Table
                 'message' => __('Pick at least one chest for a custom chest event.'),
             ]
         );
+
+        $onSave(
+            function (EntityInterface $entity, array $options) {
+                // The uploader may register a tournament of a new type before
+                // anyone has said what it pays; publishing is refused until the
+                // rewards are there, so only the form insists on them up front.
+                if ($entity->get('criteria') !== Event::CRITERIA_IMPORTED || !empty($options['allowNoRewards'])) {
+                    return true;
+                }
+
+                return !empty($entity->get('event_rewards'));
+            },
+            'rewardsGiven',
+            [
+                'errorField' => 'event_rewards',
+                'message' => __('Add at least one reward to split among the players.'),
+            ]
+        );
+
+        $rules->add($rules->isUnique(['game_result_uid'], ['allowMultipleNulls' => true]), 'uniqueGameResult', [
+            'errorField' => 'game_result_uid',
+            'message' => __('This game tournament result is already registered.'),
+        ]);
 
         $rules->add($rules->isUnique(['event_number']), 'uniqueNumber', [
             'errorField' => 'event_number',
@@ -352,6 +495,16 @@ class EventsTable extends Table
     {
         if ($entity->isNew() && !$entity->get('event_number')) {
             $entity->set('event_number', $this->nextEventNumber());
+        }
+
+        if ($entity->get('criteria') === Event::CRITERIA_IMPORTED && trim((string)$entity->get('prize')) === '') {
+            $lines = [];
+            foreach ((array)$entity->get('event_rewards') as $reward) {
+                if ($reward instanceof EventReward) {
+                    $lines[] = $reward->summary();
+                }
+            }
+            $entity->set('prize', implode("\n", $lines));
         }
     }
 

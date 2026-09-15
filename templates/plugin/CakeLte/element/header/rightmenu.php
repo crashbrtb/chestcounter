@@ -127,6 +127,15 @@ if ($isAdmin):
                     <?= $this->Html->link(__('New Event'), ['controller' => 'Events', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
                 </li>
                 <li>
+                    <?= $this->Html->link(__('New Game Tournament'), ['controller' => 'Events', 'action' => 'add', '?' => ['type' => 'imported']], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link(__('Tournament Catalogue'), ['controller' => 'GameTournaments', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
+                    <?= $this->Html->link(__('API Tokens'), ['controller' => 'ApiTokens', 'action' => 'index'], ['class' => 'dropdown-item']) ?>
+                </li>
+                <li>
                     <?= $this->Html->link(__('Event Banners'), ['controller' => 'Events', 'action' => 'settings'], ['class' => 'dropdown-item']) ?>
                 </li>
             </ul>
@@ -147,6 +156,12 @@ if ($isAdmin):
         <?= $this->Html->link(
             __('Maintenance'),
             ['controller' => 'Config', 'action' => 'maintenance'],
+            ['class' => 'dropdown-item']
+        ) ?>
+
+        <?= $this->Html->link(
+            __('Monitoring'),
+            ['controller' => 'Monitoring', 'action' => 'index'],
             ['class' => 'dropdown-item']
         ) ?>
 

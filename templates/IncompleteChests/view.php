@@ -24,6 +24,26 @@ $labels = [
 $label = $labels[$incompleteChest->status] ?? $labels['pending'];
 ?>
 
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-search-plus text-primary mr-2"></i><?= __('Review Incomplete Chest') ?>
+                <span class="text-muted small ml-1">#<?= $this->Number->format($incompleteChest->id) ?></span>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Manually identify and register collected chest from screenshot') ?>
+            </p>
+        </div>
+        <div class="toolbar-actions">
+            <?= $this->Html->link(
+                '<i class="fas fa-arrow-left mr-1"></i> ' . __('Back to Queue'),
+                ['action' => 'index'],
+                ['class' => 'btn btn-default btn-sm', 'escape' => false]
+            ) ?>
+        </div>
+    </div>
+
 <div class="row">
     <div class="col-md-7">
         <div class="card card-primary card-outline">
@@ -189,4 +209,5 @@ $label = $labels[$incompleteChest->status] ?? $labels['pending'];
             </div>
         <?php endif; ?>
     </div>
+</div>
 </div>

@@ -22,19 +22,45 @@ $currentLimit = (string)$this->request->getQuery('limit', '');
 $this->Paginator->options(['url' => ['?' => $activeFilters]]);
 ?>
 
-<div class="card card-primary card-outline">
-    <div class="card-header d-flex flex-column flex-md-row">
-        <h2 class="card-title">
-            <i class="fas fa-filter mr-1 text-muted"></i>
-            <?= __('Filters') ?>
-            <?php if ($hasFilters) : ?>
-                <span class="badge badge-primary ml-1"><?= count($activeFilters) ?></span>
-            <?php endif; ?>
-        </h2>
-        <div class="d-flex ml-auto">
-            <?= $this->Html->link(__('New Standard Chest'), ['action' => 'add'], ['class' => 'btn btn-primary btn-sm']) ?>
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-boxes text-primary mr-2"></i><?= __('Standard Chests') ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Catalogue of game chests, score values, and monster classifications') ?>
+            </p>
+        </div>
+        <div class="toolbar-actions">
+            <?= $this->Html->link(
+                '<i class="fas fa-plus mr-1"></i> ' . __('New Standard Chest'),
+                ['action' => 'add'],
+                ['class' => 'btn btn-primary btn-sm', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fas fa-question-circle mr-1"></i> ' . __('Lost Chests'),
+                ['action' => 'lostChests'],
+                ['class' => 'btn btn-outline-warning btn-sm', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fas fa-bullseye mr-1"></i> ' . __('Goals & Weights'),
+                ['action' => 'weights'],
+                ['class' => 'btn btn-default btn-sm', 'escape' => false]
+            ) ?>
         </div>
     </div>
+
+    <div class="card card-primary card-outline">
+        <div class="card-header d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+            <h3 class="card-title font-weight-bold mb-2 mb-md-0">
+                <i class="fas fa-filter mr-1 text-muted"></i>
+                <?= __('Filters & Search') ?>
+                <?php if ($hasFilters) : ?>
+                    <span class="badge badge-primary ml-1"><?= count($activeFilters) ?></span>
+                <?php endif; ?>
+            </h3>
+        </div>
     <!-- /.card-header -->
     <div class="card-body pb-2">
         <?= $this->Form->create(null, ['type' => 'get', 'url' => ['action' => 'index'], 'valueSources' => ['query']]) ?>
@@ -169,4 +195,5 @@ $this->Paginator->options(['url' => ['?' => $activeFilters]]);
         </ul>
     </div>
     <!-- /.card-footer -->
+    </div>
 </div>

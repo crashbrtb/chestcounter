@@ -28,11 +28,30 @@ $filters = [
 $pendingCount = (int)($counts['pending'] ?? 0);
 ?>
 
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-box-open text-warning mr-2"></i><?= __('Incomplete Chests') ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Review and manually transcribe unopened or unread chests captured by collectors') ?>
+            </p>
+        </div>
+        <div class="toolbar-actions">
+            <?= $this->Html->link(
+                '<i class="fas fa-boxes mr-1"></i> ' . __('Standard Chests'),
+                ['controller' => 'StandardChests', 'action' => 'index'],
+                ['class' => 'btn btn-default btn-sm', 'escape' => false]
+            ) ?>
+        </div>
+    </div>
+
 <div class="card card-primary card-outline shadow-sm">
     <div class="card-header d-flex flex-wrap align-items-center justify-content-between">
         <h3 class="card-title font-weight-bold mb-0">
-            <i class="fas fa-box-open text-warning mr-2"></i>
-            <?= __('Incomplete Chests') ?>
+            <i class="fas fa-filter text-primary mr-2"></i>
+            <?= __('Status Filters') ?>
         </h3>
         <div class="d-flex align-items-center my-1 flex-wrap">
             <div class="btn-group btn-group-sm">
@@ -254,3 +273,4 @@ function markAllPending() {
     }
 }
 </script>
+</div>
