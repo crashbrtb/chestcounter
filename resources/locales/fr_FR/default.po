@@ -4490,3 +4490,816 @@ msgstr "Configurations"
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr "Le calculateur de troupes est actuellement désactivé."
+
+#. Game tournaments: imported rankings, reward split, API tokens
+msgid "Game tournament (imported score)"
+msgstr "Tournoi du jeu (score importé)"
+
+msgid "The ranking is read from the game by the EventUploader and the rewards below are split among the players."
+msgstr "Le classement est lu dans le jeu par l’EventUploader et les récompenses ci-dessous sont partagées entre les joueurs."
+
+msgid "Points"
+msgstr "Points"
+
+msgid "Proportional to the points"
+msgstr "Proportionnel aux points"
+
+msgid "Equal parts"
+msgstr "Parts égales"
+
+msgid "Give the leftover to the best placed"
+msgstr "Donner le reste aux mieux classés"
+
+msgid "Keep the leftover with the clan"
+msgstr "Garder le reste pour le clan"
+
+msgid "{0} x {1} ({2})"
+msgstr "{0} x {1} ({2})"
+
+msgid "Add at least one reward to split among the players."
+msgstr "Ajoutez au moins une récompense à partager entre les joueurs."
+
+msgid "Say what is being handed out."
+msgstr "Indiquez ce qui est distribué."
+
+msgid "The quantity must be a whole number."
+msgstr "La quantité doit être un nombre entier."
+
+msgid "The quantity must be at least 1."
+msgstr "La quantité doit être d’au moins 1."
+
+msgid "Choose how the reward is split."
+msgstr "Choisissez comment la récompense est partagée."
+
+msgid "Give the token a name, such as the computer it will be used on."
+msgstr "Donnez un nom au jeton, par exemple l’ordinateur sur lequel il sera utilisé."
+
+msgid "Another member already has this game player id."
+msgstr "Un autre membre a déjà cet identifiant de joueur du jeu."
+
+msgid "The ranking must have at least one player."
+msgstr "Le classement doit contenir au moins un joueur."
+
+msgid "A clan ranking has at most {0} players; {1} were sent."
+msgstr "Un classement de clan compte au plus {0} joueurs ; {1} ont été envoyés."
+
+msgid "Line {0} is not a player."
+msgstr "La ligne {0} n’est pas un joueur."
+
+msgid "Line {0}: the position must be a whole number from 1."
+msgstr "Ligne {0} : la position doit être un nombre entier à partir de 1."
+
+msgid "Line {0}: position {1} appears twice."
+msgstr "Ligne {0} : la position {1} apparaît deux fois."
+
+msgid "Line {0}: the name must have 1 to {1} characters."
+msgstr "Ligne {0} : le nom doit comporter de 1 à {1} caractères."
+
+msgid "Line {0}: the points must be a whole number of 0 or more."
+msgstr "Ligne {0} : les points doivent être un nombre entier supérieur ou égal à 0."
+
+msgid "Line {0}: the player id must be a positive whole number."
+msgstr "Ligne {0} : l’identifiant du joueur doit être un nombre entier positif."
+
+msgid "Line {0}: player id {1} appears twice."
+msgstr "Ligne {0} : l’identifiant de joueur {1} apparaît deux fois."
+
+msgid "Unknown capture method."
+msgstr "Méthode de capture inconnue."
+
+msgid "The tournament date is not a valid date."
+msgstr "La date du tournoi n’est pas valide."
+
+msgid "{0} player(s) are not linked to a member: {1}. They still receive their share; link them to keep the history together."
+msgstr "{0} joueur(s) ne sont liés à aucun membre : {1}. Ils reçoivent quand même leur part ; liez-les pour garder l’historique groupé."
+
+msgid "{0} player(s) were linked by name. Confirm them: when the result is published their game id is saved on the member."
+msgstr "{0} joueur(s) ont été liés par leur nom. Vérifiez-les : à la publication, leur identifiant du jeu est enregistré sur le membre."
+
+msgid "The positions are not 1 to {0} without gaps: a part of the ranking may be missing."
+msgstr "Les positions ne vont pas de 1 à {0} sans trou : une partie du classement manque peut-être."
+
+msgid "Points are not in descending order at: {0}. Check for a reading error."
+msgstr "Les points ne sont pas dans l’ordre décroissant à : {0}. Vérifiez s’il y a une erreur de lecture."
+
+msgid "Different players share a name: {0}. They are told apart by their game id."
+msgstr "Des joueurs différents portent le même nom : {0}. Ils sont distingués par leur identifiant du jeu."
+
+msgid "Points were corrected by hand for {0} player(s)."
+msgstr "Les points ont été corrigés à la main pour {0} joueur(s)."
+
+msgid "This event has no reward to split. Add one before publishing."
+msgstr "Cet événement n’a aucune récompense à partager. Ajoutez-en une avant de publier."
+
+msgid "Only a draft can be changed. Unpublish the result first."
+msgstr "Seul un brouillon peut être modifié. Dépubliez d’abord le résultat."
+
+msgid "This ranking is not a draft of this event."
+msgstr "Ce classement n’est pas un brouillon de cet événement."
+
+msgid "Event #{0} does not take an imported ranking."
+msgstr "L’événement #{0} n’accepte pas de classement importé."
+
+msgid "The result of event #{0} is already published. Unpublish it to send a new ranking."
+msgstr "Le résultat de l’événement #{0} est déjà publié. Dépubliez-le pour envoyer un nouveau classement."
+
+msgid "Nobody qualifies for \"{0}\": check the eligible players and the minimum points."
+msgstr "Personne n’est éligible pour « {0} » : vérifiez les joueurs participants et le minimum de points."
+
+msgid "This event has no published result yet."
+msgstr "Cet événement n’a pas encore de résultat publié."
+
+msgid "Only game tournaments have a ranking to review."
+msgstr "Seuls les tournois du jeu ont un classement à vérifier."
+
+msgid "There is no draft ranking to change."
+msgstr "Il n’y a aucun brouillon de classement à modifier."
+
+msgid "The result of event #{0} was published: {1} player(s)."
+msgstr "Le résultat de l’événement #{0} a été publié : {1} joueur(s)."
+
+msgid "{0} change(s) saved. The shares below are recalculated."
+msgstr "{0} modification(s) enregistrée(s). Les parts ci-dessous sont recalculées."
+
+msgid "administrative"
+msgstr "administratif"
+
+msgid "This event has no published result."
+msgstr "Cet événement n’a pas de résultat publié."
+
+msgid "The result of event #{0} is a draft again and no longer public."
+msgstr "Le résultat de l’événement #{0} est redevenu un brouillon et n’est plus public."
+
+msgid "Event #{0} was created from #{1}. Check the name and the date."
+msgstr "L’événement #{0} a été créé à partir du #{1}. Vérifiez le nom et la date."
+
+msgid "The event could not be duplicated: {0}"
+msgstr "L’événement n’a pas pu être dupliqué : {0}"
+
+msgid "Choose the ranking CSV file to upload."
+msgstr "Choisissez le fichier CSV du classement à envoyer."
+
+msgid "The file is too large for a ranking of at most {0} players."
+msgstr "Le fichier est trop volumineux pour un classement d’au plus {0} joueurs."
+
+msgid "The ranking was not accepted: {0}"
+msgstr "Le classement n’a pas été accepté : {0}"
+
+msgid "Ranking with {0} player(s) received. Review it below."
+msgstr "Classement de {0} joueur(s) reçu. Vérifiez-le ci-dessous."
+
+msgid "This ranking is the same as the current draft; nothing changed."
+msgstr "Ce classement est identique au brouillon actuel ; rien n’a changé."
+
+msgid "Send the API token in the Authorization header: Bearer <token>."
+msgstr "Envoyez le jeton d’API dans l’en-tête Authorization : Bearer <token>."
+
+msgid "This API token is invalid, expired or revoked."
+msgstr "Ce jeton d’API est invalide, expiré ou révoqué."
+
+msgid "Only an active administrator can use the uploader."
+msgstr "Seul un administrateur actif peut utiliser l’uploader."
+
+msgid "Event not found."
+msgstr "Événement introuvable."
+
+msgid "Send the ranking as a JSON body."
+msgstr "Envoyez le classement dans un corps JSON."
+
+msgid "The ranking was not accepted."
+msgstr "Le classement n’a pas été accepté."
+
+msgid "The token could not be created. Please, try again."
+msgstr "Le jeton n’a pas pu être créé. Veuillez réessayer."
+
+msgid "The token \"{0}\" was revoked."
+msgstr "Le jeton « {0} » a été révoqué."
+
+msgid "{0} is now an administrative account and will not receive tournament rewards."
+msgstr "{0} est maintenant un compte administratif et ne recevra pas de récompenses de tournoi."
+
+msgid "{0} will receive tournament rewards again."
+msgstr "{0} recevra de nouveau les récompenses de tournoi."
+
+msgid "Item"
+msgstr "Objet"
+
+msgid "e.g. Artifact pieces"
+msgstr "ex. : Fragments d’artefact"
+
+msgid "Split"
+msgstr "Partage"
+
+msgid "Minimum points"
+msgstr "Points minimum"
+
+msgid "Leftover units"
+msgstr "Unités restantes"
+
+msgid "Remove"
+msgstr "Retirer"
+
+msgid "Game tournament: enter the day it was played in the game. Past dates are accepted, and nothing is counted from chests."
+msgstr "Tournoi du jeu : indiquez le jour où il s’est déroulé dans le jeu. Les dates passées sont acceptées et rien n’est compté à partir des coffres."
+
+msgid "Rewards to split"
+msgstr "Récompenses à partager"
+
+msgid "What the clan received for this tournament and how it is divided. Proportional gives each player a part matching their share of the points; equal gives everybody the same. Administrative accounts never take part, and players below the minimum points are left out."
+msgstr "Ce que le clan a reçu pour ce tournoi et comment c’est partagé. Proportionnel donne à chaque joueur une part égale à sa part des points ; égal donne la même chose à tous. Les comptes administratifs ne participent jamais et les joueurs sous le minimum de points sont exclus."
+
+msgid "Add another reward"
+msgstr "Ajouter une autre récompense"
+
+msgid "Optional: filled in from the rewards when left empty."
+msgstr "Facultatif : rempli à partir des récompenses s’il est laissé vide."
+
+msgid "Review result - Event #{0}"
+msgstr "Vérifier le résultat - Événement #{0}"
+
+msgid "game id"
+msgstr "id du jeu"
+
+msgid "by name"
+msgstr "par le nom"
+
+msgid "name correction"
+msgstr "correction de nom"
+
+msgid "by hand"
+msgstr "à la main"
+
+msgid "not linked"
+msgstr "non lié"
+
+msgid "EventUploader (game data)"
+msgstr "EventUploader (données du jeu)"
+
+msgid "EventUploader (screen reading)"
+msgstr "EventUploader (lecture d’écran)"
+
+msgid "CSV file"
+msgstr "Fichier CSV"
+
+msgid "Draft"
+msgstr "Brouillon"
+
+msgid "Published"
+msgstr "Publié"
+
+msgid "Replaced"
+msgstr "Remplacé"
+
+msgid "Review result"
+msgstr "Vérifier le résultat"
+
+msgid "Published page"
+msgstr "Page publiée"
+
+msgid "Unpublish"
+msgstr "Dépublier"
+
+msgid "Take the result of event #{0} down? Players will stop seeing it until it is published again."
+msgstr "Retirer le résultat de l’événement #{0} ? Les joueurs ne le verront plus jusqu’à sa nouvelle publication."
+
+msgid "Edit event"
+msgstr "Modifier l’événement"
+
+msgid "min. {0} pts"
+msgstr "min. {0} pts"
+
+msgid "{0} handed out to {1} player(s)"
+msgstr "{0} distribués à {1} joueur(s)"
+
+msgid "{0} left over"
+msgstr "{0} restant(s)"
+
+msgid "No reward yet. Edit the event to add what will be split."
+msgstr "Aucune récompense pour l’instant. Modifiez l’événement pour ajouter ce qui sera partagé."
+
+msgid "Ranking"
+msgstr "Classement"
+
+msgid "No ranking has been received yet."
+msgstr "Aucun classement n’a encore été reçu."
+
+msgid "Received {0} UTC from {1}"
+msgstr "Reçu le {0} UTC de {1}"
+
+msgid "In the game: {0}"
+msgstr "Dans le jeu : {0}"
+
+msgid "Send a ranking"
+msgstr "Envoyer un classement"
+
+msgid "The EventUploader sends it straight from the game. Without it, upload the ranking.csv the discovery tool exports."
+msgstr "L’EventUploader l’envoie directement depuis le jeu. Sans lui, envoyez le ranking.csv exporté par l’outil de découverte."
+
+msgid "Replace with this file"
+msgstr "Remplacer par ce fichier"
+
+msgid "Upload CSV"
+msgstr "Envoyer le CSV"
+
+msgid "Tokens for the EventUploader"
+msgstr "Jetons pour l’EventUploader"
+
+msgid "{0} taking part in the prize"
+msgstr "{0} participant à la récompense"
+
+msgid "Administrative accounts"
+msgstr "Comptes administratifs"
+
+msgid "never receive a prize"
+msgstr "ne reçoivent jamais de récompense"
+
+msgid "Not linked"
+msgstr "Non liés"
+
+msgid "players without a member"
+msgstr "joueurs sans membre"
+
+msgid "Points in the split"
+msgstr "Points pris en compte"
+
+msgid "of {0} in the ranking"
+msgstr "sur {0} au classement"
+
+msgid "Ranking and shares"
+msgstr "Classement et parts"
+
+msgid "Player in the game"
+msgstr "Joueur dans le jeu"
+
+msgid "Takes part in the prize"
+msgstr "Participe à la récompense"
+
+msgid "- not linked -"
+msgstr "- non lié -"
+
+msgid "Value received from the game"
+msgstr "Valeur reçue du jeu"
+
+msgid "was {0}"
+msgstr "était {0}"
+
+msgid "Total handed out"
+msgstr "Total distribué"
+
+msgid "of {0}"
+msgstr "sur {0}"
+
+msgid "Change the member, the prize checkbox or the points, then recalculate to see the new shares."
+msgstr "Modifiez le membre, la case de récompense ou les points, puis recalculez pour voir les nouvelles parts."
+
+msgid "Save and recalculate"
+msgstr "Enregistrer et recalculer"
+
+msgid "Publish this result? Players will see the ranking and what each one receives."
+msgstr "Publier ce résultat ? Les joueurs verront le classement et ce que chacun reçoit."
+
+msgid "Publish result"
+msgstr "Publier le résultat"
+
+msgid "Rankings received"
+msgstr "Classements reçus"
+
+msgid "When (UTC)"
+msgstr "Quand (UTC)"
+
+msgid "Sent by"
+msgstr "Envoyé par"
+
+msgid "Tournament Result"
+msgstr "Résultat du tournoi"
+
+msgid "Ranking read from the game and the rewards each player receives"
+msgstr "Classement lu dans le jeu et récompenses reçues par chaque joueur"
+
+msgid "Published {0} UTC"
+msgstr "Publié le {0} UTC"
+
+msgid "{0} points"
+msgstr "{0} points"
+
+msgid "{0} receive a reward"
+msgstr "{0} reçoivent une récompense"
+
+msgid "Clan Total"
+msgstr "Total du clan"
+
+msgid "points in the tournament"
+msgstr "points dans le tournoi"
+
+msgid "Rewards"
+msgstr "Récompenses"
+
+msgid "Who hands out the rewards"
+msgstr "Qui distribue les récompenses"
+
+msgid "Rewards are delivered in the game. Look for this player if yours has not arrived."
+msgstr "Les récompenses sont remises dans le jeu. Contactez ce joueur si la vôtre n’est pas arrivée."
+
+msgid "No reward"
+msgstr "Sans récompense"
+
+msgid "Awaiting result"
+msgstr "Résultat en attente"
+
+msgid "API Tokens"
+msgstr "Jetons d’API"
+
+msgid "New Game Tournament"
+msgstr "Nouveau tournoi du jeu"
+
+msgid "Duplicate"
+msgstr "Dupliquer"
+
+msgid "Tokens the EventUploader uses to send tournament rankings to this site"
+msgstr "Jetons utilisés par l’EventUploader pour envoyer les classements des tournois à ce site"
+
+msgid "Token \"{0}\" created"
+msgstr "Jeton « {0} » créé"
+
+msgid "Copy it now and paste it in the EventUploader, together with the site address. It will not be shown again: if it is lost, revoke it and create another."
+msgstr "Copiez-le maintenant et collez-le dans l’EventUploader avec l’adresse du site. Il ne sera plus affiché : s’il est perdu, révoquez-le et créez-en un autre."
+
+msgid "Site address: {0}"
+msgstr "Adresse du site : {0}"
+
+msgid "New token"
+msgstr "Nouveau jeton"
+
+msgid "Create one per computer the EventUploader runs on. The token belongs to you and can only send rankings; it cannot read or change anything else."
+msgstr "Créez-en un par ordinateur sur lequel tourne l’EventUploader. Le jeton vous appartient et peut seulement envoyer des classements ; il ne peut rien lire ni modifier d’autre."
+
+msgid "e.g. Clan leader PC"
+msgstr "ex. : PC du chef de clan"
+
+msgid "Create token"
+msgstr "Créer le jeton"
+
+msgid "Tokens"
+msgstr "Jetons"
+
+msgid "Owner"
+msgstr "Propriétaire"
+
+msgid "Starts with"
+msgstr "Commence par"
+
+msgid "Created (UTC)"
+msgstr "Créé (UTC)"
+
+msgid "Last used (UTC)"
+msgstr "Dernière utilisation (UTC)"
+
+msgid "never"
+msgstr "jamais"
+
+msgid "Revoked"
+msgstr "Révoqué"
+
+msgid "Expired"
+msgstr "Expiré"
+
+msgid "Revoke"
+msgstr "Révoquer"
+
+msgid "Revoke the token \"{0}\"? The EventUploader using it stops working at once."
+msgstr "Révoquer le jeton « {0} » ? L’EventUploader qui l’utilise cessera immédiatement de fonctionner."
+
+msgid "No token has been created yet."
+msgstr "Aucun jeton n’a encore été créé."
+
+msgid "Tournament rewards"
+msgstr "Récompenses de tournoi"
+
+msgid "Administrative"
+msgstr "Administratif"
+
+msgid "Receives"
+msgstr "Reçoit"
+
+msgid "Mark as a player who receives rewards"
+msgstr "Marquer comme joueur qui reçoit des récompenses"
+
+msgid "Mark as an administrative account"
+msgstr "Marquer comme compte administratif"
+
+msgid "Game player id"
+msgstr "Identifiant du joueur dans le jeu"
+
+msgid "Filled in automatically by the first published tournament"
+msgstr "Rempli automatiquement par le premier tournoi publié"
+
+msgid "Administrative account (takes part in rankings but never receives tournament rewards)"
+msgstr "Compte administratif (figure dans les classements mais ne reçoit jamais de récompenses de tournoi)"
+
+#. Game tournaments registered by the EventUploader, event types
+msgid "This game tournament result is already registered."
+msgstr "Ce résultat de tournoi du jeu est déjà enregistré."
+
+msgid "The tournament result id is missing or invalid."
+msgstr "L’identifiant du résultat du tournoi est absent ou invalide."
+
+msgid "The tournament type is missing or invalid."
+msgstr "Le type de tournoi est absent ou invalide."
+
+msgid "The tournament name has more than {0} characters."
+msgstr "Le nom du tournoi dépasse {0} caractères."
+
+msgid "The tournament cannot end in the future."
+msgstr "Le tournoi ne peut pas se terminer dans le futur."
+
+msgid "Game tournament {0}"
+msgstr "Tournoi du jeu {0}"
+
+msgid "Event type"
+msgstr "Type d’événement"
+
+msgid "Game event"
+msgstr "Événement du jeu"
+
+msgid "A tournament played in the game. It is registered after it ends, so past dates are accepted, and the EventUploader usually creates it together with the ranking."
+msgstr "Un tournoi joué dans le jeu. Il est enregistré après sa fin, donc les dates passées sont acceptées, et l’EventUploader le crée généralement avec le classement."
+
+msgid "Clan event"
+msgstr "Événement du clan"
+
+msgid "An internal challenge to push crypts and epic monsters. It is counted from the chests collected inside its window, which starts in the future."
+msgstr "Un défi interne pour encourager les cryptes et les monstres épiques. Il est compté à partir des coffres collectés pendant sa période, qui commence dans le futur."
+
+msgid "When it was played"
+msgstr "Quand il a été joué"
+
+msgid "The day and time the tournament ended in the game, in UTC. Past dates are accepted and nothing is counted from chests."
+msgstr "Le jour et l’heure de fin du tournoi dans le jeu, en UTC. Les dates passées sont acceptées et rien n’est compté à partir des coffres."
+
+#. Tournament catalogue, event dates, tournament mapper
+msgid "The image must be a PNG, JPEG, WebP or GIF of at most {0} KB."
+msgstr "L'image doit être au format PNG, JPEG, WebP ou GIF et ne pas dépasser {0} Ko."
+
+msgid "Tournament \"{0}\" saved."
+msgstr "Tournoi « {0} » enregistré."
+
+msgid "The tournament could not be saved. Please check the fields below."
+msgstr "Le tournoi n'a pas pu être enregistré. Vérifiez les champs ci-dessous."
+
+msgid "Tournament Catalogue"
+msgstr "Catalogue des tournois"
+
+msgid "read from the Journal"
+msgstr "lu dans le Journal"
+
+msgid "typed in the uploader"
+msgstr "saisi dans l'uploader"
+
+msgid "set by hand"
+msgstr "défini à la main"
+
+msgid "The game's tournaments. Names and ids are filled in by the tournament mapper; the image and the duration are set here."
+msgstr "Les tournois du jeu. Les noms et les identifiants sont remplis par le cartographe de tournois ; l'image et la durée se définissent ici."
+
+msgid "Image"
+msgstr "Image"
+
+msgid "Tournament"
+msgstr "Tournoi"
+
+msgid "Game id"
+msgstr "Id dans le jeu"
+
+msgid "Duration"
+msgstr "Durée"
+
+msgid "Last seen (UTC)"
+msgstr "Vu pour la dernière fois (UTC)"
+
+msgid "Name not mapped yet"
+msgstr "Nom pas encore cartographié"
+
+msgid "{0} day(s)"
+msgstr "{0} jour(s)"
+
+msgid "not set (1 day)"
+msgstr "non définie (1 jour)"
+
+msgid "The catalogue is empty. Run the tournament mapper, or send a tournament with the EventUploader."
+msgstr "Le catalogue est vide. Lancez le cartographe de tournois ou envoyez un tournoi avec l'EventUploader."
+
+msgid "Edit Tournament"
+msgstr "Modifier le tournoi"
+
+msgid "Game id {0}"
+msgstr "Id dans le jeu {0}"
+
+msgid "As it appears in the game"
+msgstr "Tel qu'il apparaît dans le jeu"
+
+msgid "Filled in by the tournament mapper. A name changed here is kept: the mapper will not overwrite it."
+msgstr "Rempli par le cartographe de tournois. Un nom modifié ici est conservé : le cartographe ne l'écrase pas."
+
+msgid "Duration (days)"
+msgstr "Durée (jours)"
+
+msgid "How long the tournament runs. A new event starts this many days before the end the game reports; one day when empty."
+msgstr "Durée du tournoi. Un nouvel événement commence ce nombre de jours avant la fin indiquée par le jeu ; un jour si vide."
+
+msgid "PNG, JPEG, WebP or GIF, up to 1 MB."
+msgstr "PNG, JPEG, WebP ou GIF, jusqu'à 1 Mo."
+
+msgid "Remove the image"
+msgstr "Supprimer l'image"
+
+msgid "Latest events of this tournament"
+msgstr "Derniers événements de ce tournoi"
+
+msgid "Send at least one tournament."
+msgstr "Envoyez au moins un tournoi."
+
+msgid "Send at most {0} tournaments at a time."
+msgstr "Envoyez au plus {0} tournois à la fois."
+
+msgid "Line {0} is not a tournament."
+msgstr "La ligne {0} n'est pas un tournoi."
+
+msgid "The tournaments were not accepted."
+msgstr "Les tournois n'ont pas été acceptés."
+
+msgid "The dates of event #{0} were saved."
+msgstr "Les dates de l'événement n°{0} ont été enregistrées."
+
+msgid "The dates were not saved: {0}"
+msgstr "Les dates n'ont pas été enregistrées : {0}"
+
+msgid "Lasts {0} day(s) in the catalogue"
+msgstr "Dure {0} jour(s) dans le catalogue"
+
+msgid "No duration in the catalogue: one day assumed"
+msgstr "Pas de durée dans le catalogue : un jour par défaut"
+
+msgid "Edit in the catalogue"
+msgstr "Modifier dans le catalogue"
+
+msgid "Save dates"
+msgstr "Enregistrer les dates"
+
+msgid "The duration must be a whole number of days."
+msgstr "La durée doit être un nombre entier de jours."
+
+msgid "The duration must be between {0} and {1} days."
+msgstr "La durée doit être comprise entre {0} et {1} jours."
+
+msgid "Monitoring"
+msgstr "Surveillance"
+
+msgid "Running, last run had problems"
+msgstr "En marche, la dernière exécution a eu des problèmes"
+
+msgid "Stopped"
+msgstr "Arrêté"
+
+msgid "Stuck"
+msgstr "Bloqué"
+
+msgid "Never ran"
+msgstr "Jamais exécuté"
+
+msgid "Not watched"
+msgstr "Non surveillé"
+
+msgid "running"
+msgstr "en cours"
+
+msgid "success"
+msgstr "succès"
+
+msgid "partial"
+msgstr "partielle"
+
+msgid "failed"
+msgstr "échec"
+
+msgid "cancelled"
+msgstr "annulée"
+
+msgid "Chest collector"
+msgstr "Collecteur de coffres"
+
+msgid "Daily maintenance"
+msgstr "Maintenance quotidienne"
+
+msgid "Tournament upload"
+msgstr "Envoi des tournois"
+
+msgid "{0} min"
+msgstr "{0} min"
+
+msgid "{0} h {1} min"
+msgstr "{0} h {1} min"
+
+msgid "{0} d {1} h"
+msgstr "{0} j {1} h"
+
+msgid "Whether the chest collector, the maintenance, the database backup and the tournament uploads are running"
+msgstr "Si le collecteur de coffres, la maintenance, la sauvegarde de la base et les envois de tournois fonctionnent"
+
+msgid "A job is running when it had a good run within its limit. A run that found no chests still counts: this watches the process, not the data."
+msgstr "Une tâche fonctionne quand elle a eu une bonne exécution dans sa limite. Une exécution qui n'a trouvé aucun coffre compte aussi : on surveille le processus, pas les données."
+
+msgid "Last good run {0} ago (limit {1})."
+msgstr "Dernière bonne exécution il y a {0} (limite {1})."
+
+msgid "No good run on record (limit {0})."
+msgstr "Aucune bonne exécution enregistrée (limite {0})."
+
+msgid "Last run: {0} on {1}, started {2} UTC."
+msgstr "Dernière exécution : {0} sur {1}, démarrée {2} UTC."
+
+msgid "Limits"
+msgstr "Limites"
+
+msgid "How long each job may go without a good run before the monitor raises the alarm. Leave room for one missed run: a collector scheduled every hour does well with 180 minutes."
+msgstr "Combien de temps chaque tâche peut rester sans bonne exécution avant que le moniteur donne l'alarme. Laissez de la marge pour une exécution manquée : pour un collecteur programmé toutes les heures, 180 minutes conviennent."
+
+msgid "Job"
+msgstr "Tâche"
+
+msgid "Watched"
+msgstr "Surveillée"
+
+msgid "Limit (minutes)"
+msgstr "Limite (minutes)"
+
+msgid "Save limits"
+msgstr "Enregistrer les limites"
+
+msgid "Recent runs"
+msgstr "Exécutions récentes"
+
+msgid "The last 50 runs, newest first. History older than {0} days is deleted by the daily maintenance."
+msgstr "Les 50 dernières exécutions, les plus récentes d'abord. L'historique de plus de {0} jours est supprimé par la maintenance quotidienne."
+
+msgid "No run recorded yet."
+msgstr "Aucune exécution enregistrée pour l'instant."
+
+msgid "Started (UTC)"
+msgstr "Début (UTC)"
+
+msgid "Took"
+msgstr "Durée"
+
+msgid "Host"
+msgstr "Machine"
+
+msgid "{0} s"
+msgstr "{0} s"
+
+msgid "External monitor"
+msgstr "Moniteur externe"
+
+msgid "The alarm has to come from outside the server: if the server goes down, nothing on it can send one. A Google Apps Script reads the address below and e-mails you when a job stops or comes back."
+msgstr "L'alarme doit venir de l'extérieur du serveur : si le serveur tombe, rien sur lui ne peut l'envoyer. Un Google Apps Script lit l'adresse ci-dessous et vous envoie un e-mail quand une tâche s'arrête ou reprend."
+
+msgid "Address"
+msgstr "Adresse"
+
+msgid "Key, sent in the {0} header:"
+msgstr "Clé, envoyée dans l'en-tête {0} :"
+
+msgid "No key yet: the address answers 503 until one is created."
+msgstr "Pas encore de clé : l'adresse répond 503 tant qu'aucune n'est créée."
+
+msgid "The key only reads this status. It cannot change anything on the site."
+msgstr "La clé ne fait que lire cet état. Elle ne peut rien modifier sur le site."
+
+msgid "Create a new key"
+msgstr "Créer une nouvelle clé"
+
+msgid "Create key"
+msgstr "Créer une clé"
+
+msgid "Create a new key? The monitor stops working until you paste the new one in it."
+msgstr "Créer une nouvelle clé ? Le moniteur cesse de fonctionner jusqu'à ce que vous y colliez la nouvelle."
+
+msgid "The script, ready to paste into a new project at script.google.com:"
+msgstr "Le script, prêt à coller dans un nouveau projet sur script.google.com :"
+
+msgid "A new monitoring key was created. Update it in the monitor: the old one no longer works."
+msgstr "Une nouvelle clé de surveillance a été créée. Mettez-la à jour dans le moniteur : l'ancienne ne fonctionne plus."
+
+msgid "\"{0}\" was not saved: {1}"
+msgstr "« {0} » n'a pas été enregistré : {1}"
+
+msgid "Monitoring limits saved."
+msgstr "Limites de surveillance enregistrées."
+
+msgid "No monitoring key is set. Create one under Admin > Monitoring."
+msgstr "Aucune clé de surveillance définie. Créez-en une dans Admin > Surveillance."
+
+msgid "Send the monitoring key in the X-Monitor-Key header."
+msgstr "Envoyez la clé de surveillance dans l'en-tête X-Monitor-Key."
+
+msgid "Between {0} and {1} minutes."
+msgstr "Entre {0} et {1} minutes."

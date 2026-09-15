@@ -3,9 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\StandardChest $standardChest
  */
-?>
 
-<?php
 $this->assign('title', __('Add Standard Chest'));
 $this->Breadcrumbs->add([
     ['title' => __('Home'), 'url' => '/'],
@@ -14,35 +12,144 @@ $this->Breadcrumbs->add([
 ]);
 ?>
 
-<div class="card card-primary card-outline">
-    <?= $this->Form->create($standardChest, ['valueSources' => ['query', 'context']]) ?>
-    <div class="card-body">
-        <?php
-            echo $this->Form->control('source', ['label' => 'Source']);
-            echo $this->Form->control('alias', [
-                'label' => __('Alias') . ' <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="' . __('Optional friendly name shown in reports instead of the source') . '"></i>',
-                'escape' => false,
-                'required' => false,
-            ]);
-            echo $this->Form->control('score', ['label' => 'Score']);
-        ?>
-        <div class="form-group">
-            <label for="monster">Epic Monster</label>
-            <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="1 = Epic Monsters chest 0 = Regular chest"></i>
-            <?= $this->Form->checkbox('monster', ['id' => 'monster', 'class' => 'form-check-input', 'required' => false]) ?>
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-plus-circle text-primary mr-2"></i><?= __('Add Standard Chest') ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Register a new chest definition, point valuation, and monster categorization') ?>
+            </p>
         </div>
-        <?php
-            echo $this->Form->control('qty_chest', [
-                'label' => 'Chests Qty <i class="fas fa-question-circle" data-toggle="tooltip" data-placement="top" title="If the chest type is epic monsters, inform the amount of chests earned by killing a monster"></i>',
-                'escape' => false,
-            ]);
-        ?>
-    </div>
-    <div class="card-footer d-flex">
-        <div class="ml-auto">
-            <?= $this->Form->button(__('Save'), ['class' => 'btn btn-primary']) ?>
-            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], ['class' => 'btn btn-default']) ?>
+        <div class="toolbar-actions">
+            <?= $this->Html->link(
+                '<i class="fas fa-list mr-1"></i> ' . __('List Standard Chests'),
+                ['action' => 'index'],
+                ['class' => 'btn btn-default btn-sm', 'escape' => false]
+            ) ?>
         </div>
     </div>
-    <?= $this->Form->end() ?>
+
+    <div class="card card-primary card-outline">
+        <div class="card-header">
+            <h3 class="card-title font-weight-bold">
+                <i class="fas fa-box text-primary mr-2"></i><?= __('Chest Specification') ?>
+            </h3>
+        </div>
+
+        <?= $this->Form->create($standardChest, ['valueSources' => ['query', 'context']]) ?>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <!-- Source Name -->
+                    <div class="form-group">
+                        <label for="source" class="font-weight-bold"><?= __('Source Name') ?> <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-tag"></i></span>
+                            </div>
+                            <?= $this->Form->control('source', [
+                                'label' => false,
+                                'class' => 'form-control',
+                                'required' => true,
+                                'placeholder' => __('e.g. Chest of the Serpent'),
+                                'templates' => ['inputContainer' => '{{content}}'],
+                            ]) ?>
+                        </div>
+                        <small class="form-text text-muted">
+                            <?= __('The raw name of the chest as scanned by OCR or reported by the game.') ?>
+                        </small>
+                    </div>
+
+                    <!-- Friendly Alias -->
+                    <div class="form-group">
+                        <label for="alias" class="font-weight-bold"><?= __('Friendly Alias') ?></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-font"></i></span>
+                            </div>
+                            <?= $this->Form->control('alias', [
+                                'label' => false,
+                                'class' => 'form-control',
+                                'required' => false,
+                                'placeholder' => __('Optional friendly name for reports...'),
+                                'templates' => ['inputContainer' => '{{content}}'],
+                            ]) ?>
+                        </div>
+                        <small class="form-text text-muted">
+                            <?= __('Optional friendly name shown in reports instead of the raw source.') ?>
+                        </small>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <!-- Score -->
+                    <div class="form-group">
+                        <label for="score" class="font-weight-bold"><?= __('Score / Points') ?> <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fas fa-star text-warning"></i></span>
+                            </div>
+                            <?= $this->Form->control('score', [
+                                'label' => false,
+                                'type' => 'number',
+                                'class' => 'form-control',
+                                'required' => true,
+                                'min' => 0,
+                                'placeholder' => '0',
+                                'templates' => ['inputContainer' => '{{content}}'],
+                            ]) ?>
+                        </div>
+                        <small class="form-text text-muted">
+                            <?= __('Points awarded for collecting this chest.') ?>
+                        </small>
+                    </div>
+
+                    <!-- Monster classification & Qty -->
+                    <div class="form-group p-3 rounded bg-light border">
+                        <label class="font-weight-bold d-block mb-2"><?= __('Epic Monster Classification') ?></label>
+                        <?= $this->Form->control('monster', [
+                            'type' => 'checkbox',
+                            'custom' => true,
+                            'label' => __('Epic Monster Chest (Drop from killing an Epic Monster)'),
+                        ]) ?>
+
+                        <div class="mt-3">
+                            <label for="qty-chest" class="font-weight-bold"><?= __('Chests Quantity per Monster') ?></label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text"><i class="fas fa-layer-group"></i></span>
+                                </div>
+                                <?= $this->Form->control('qty_chest', [
+                                    'label' => false,
+                                    'type' => 'number',
+                                    'class' => 'form-control',
+                                    'placeholder' => '1',
+                                    'min' => 1,
+                                    'templates' => ['inputContainer' => '{{content}}'],
+                                ]) ?>
+                            </div>
+                            <small class="form-text text-muted">
+                                <?= __('If chest type is Epic Monster, inform how many chests are earned by killing one monster.') ?>
+                            </small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-end" style="gap: 8px;">
+            <?= $this->Html->link(
+                '<i class="fas fa-times mr-1"></i> ' . __('Cancel'),
+                ['action' => 'index'],
+                ['class' => 'btn btn-default', 'escape' => false]
+            ) ?>
+            <?= $this->Form->button(
+                '<i class="fas fa-save mr-1"></i> ' . __('Save Chest'),
+                ['class' => 'btn btn-primary', 'escapeTitle' => false]
+            ) ?>
+        </div>
+        <?= $this->Form->end() ?>
+    </div>
 </div>

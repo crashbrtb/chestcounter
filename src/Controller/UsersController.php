@@ -32,7 +32,7 @@ class UsersController extends AppController
     public function index()
     {
         $this->requireAdmin();
-        $query = $this->Users->find()->contain(['Members']);
+        $query = $this->Users->find()->contain(['Members', 'Roles']);
         $users = $this->paginate($query);
 
         $this->set(compact('users'));

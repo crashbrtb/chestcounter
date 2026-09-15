@@ -4490,3 +4490,816 @@ msgstr "Yapılandırmalar"
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr "Birlik Hesaplayıcı şu anda devre dışı."
+
+#. Game tournaments: imported rankings, reward split, API tokens
+msgid "Game tournament (imported score)"
+msgstr "Oyun turnuvası (içe aktarılan puan)"
+
+msgid "The ranking is read from the game by the EventUploader and the rewards below are split among the players."
+msgstr "Sıralama EventUploader ile oyundan okunur ve aşağıdaki ödüller oyuncular arasında paylaştırılır."
+
+msgid "Points"
+msgstr "Puan"
+
+msgid "Proportional to the points"
+msgstr "Puanla orantılı"
+
+msgid "Equal parts"
+msgstr "Eşit paylar"
+
+msgid "Give the leftover to the best placed"
+msgstr "Artanı en iyi sıralananlara ver"
+
+msgid "Keep the leftover with the clan"
+msgstr "Artanı klanda tut"
+
+msgid "{0} x {1} ({2})"
+msgstr "{0} x {1} ({2})"
+
+msgid "Add at least one reward to split among the players."
+msgstr "Oyuncular arasında paylaştırmak için en az bir ödül ekleyin."
+
+msgid "Say what is being handed out."
+msgstr "Neyin dağıtılacağını belirtin."
+
+msgid "The quantity must be a whole number."
+msgstr "Miktar tam sayı olmalıdır."
+
+msgid "The quantity must be at least 1."
+msgstr "Miktar en az 1 olmalıdır."
+
+msgid "Choose how the reward is split."
+msgstr "Ödülün nasıl paylaştırılacağını seçin."
+
+msgid "Give the token a name, such as the computer it will be used on."
+msgstr "Tokena, kullanılacağı bilgisayar gibi bir ad verin."
+
+msgid "Another member already has this game player id."
+msgstr "Bu oyun oyuncu kimliği başka bir üyede zaten var."
+
+msgid "The ranking must have at least one player."
+msgstr "Sıralamada en az bir oyuncu olmalıdır."
+
+msgid "A clan ranking has at most {0} players; {1} were sent."
+msgstr "Bir klan sıralamasında en fazla {0} oyuncu olur; {1} gönderildi."
+
+msgid "Line {0} is not a player."
+msgstr "{0}. satır bir oyuncu değil."
+
+msgid "Line {0}: the position must be a whole number from 1."
+msgstr "{0}. satır: sıra 1’den başlayan bir tam sayı olmalıdır."
+
+msgid "Line {0}: position {1} appears twice."
+msgstr "{0}. satır: {1}. sıra iki kez geçiyor."
+
+msgid "Line {0}: the name must have 1 to {1} characters."
+msgstr "{0}. satır: ad 1 ile {1} karakter arasında olmalıdır."
+
+msgid "Line {0}: the points must be a whole number of 0 or more."
+msgstr "{0}. satır: puan 0 veya daha büyük bir tam sayı olmalıdır."
+
+msgid "Line {0}: the player id must be a positive whole number."
+msgstr "{0}. satır: oyuncu kimliği pozitif bir tam sayı olmalıdır."
+
+msgid "Line {0}: player id {1} appears twice."
+msgstr "{0}. satır: {1} oyuncu kimliği iki kez geçiyor."
+
+msgid "Unknown capture method."
+msgstr "Bilinmeyen yakalama yöntemi."
+
+msgid "The tournament date is not a valid date."
+msgstr "Turnuva tarihi geçerli değil."
+
+msgid "{0} player(s) are not linked to a member: {1}. They still receive their share; link them to keep the history together."
+msgstr "{0} oyuncu bir üyeye bağlı değil: {1}. Paylarını yine de alırlar; geçmişin bir arada kalması için onları bağlayın."
+
+msgid "{0} player(s) were linked by name. Confirm them: when the result is published their game id is saved on the member."
+msgstr "{0} oyuncu adına göre bağlandı. Kontrol edin: sonuç yayımlandığında oyun kimlikleri üyeye kaydedilir."
+
+msgid "The positions are not 1 to {0} without gaps: a part of the ranking may be missing."
+msgstr "Sıralar 1’den {0}’a boşluksuz gitmiyor: sıralamanın bir kısmı eksik olabilir."
+
+msgid "Points are not in descending order at: {0}. Check for a reading error."
+msgstr "Puanlar şu noktada azalan sırada değil: {0}. Okuma hatası olup olmadığını kontrol edin."
+
+msgid "Different players share a name: {0}. They are told apart by their game id."
+msgstr "Farklı oyuncular aynı adı taşıyor: {0}. Oyun kimlikleriyle ayırt edilirler."
+
+msgid "Points were corrected by hand for {0} player(s)."
+msgstr "{0} oyuncunun puanı elle düzeltildi."
+
+msgid "This event has no reward to split. Add one before publishing."
+msgstr "Bu etkinlikte paylaştırılacak ödül yok. Yayımlamadan önce bir ödül ekleyin."
+
+msgid "Only a draft can be changed. Unpublish the result first."
+msgstr "Yalnızca taslak değiştirilebilir. Önce sonucun yayımını kaldırın."
+
+msgid "This ranking is not a draft of this event."
+msgstr "Bu sıralama bu etkinliğin taslağı değil."
+
+msgid "Event #{0} does not take an imported ranking."
+msgstr "#{0} numaralı etkinlik içe aktarılan sıralama kabul etmiyor."
+
+msgid "The result of event #{0} is already published. Unpublish it to send a new ranking."
+msgstr "#{0} numaralı etkinliğin sonucu zaten yayımlandı. Yeni sıralama göndermek için yayımı kaldırın."
+
+msgid "Nobody qualifies for \"{0}\": check the eligible players and the minimum points."
+msgstr "“{0}” için kimse uygun değil: katılan oyuncuları ve minimum puanı kontrol edin."
+
+msgid "This event has no published result yet."
+msgstr "Bu etkinliğin henüz yayımlanmış bir sonucu yok."
+
+msgid "Only game tournaments have a ranking to review."
+msgstr "Yalnızca oyun turnuvalarının incelenecek sıralaması vardır."
+
+msgid "There is no draft ranking to change."
+msgstr "Değiştirilecek taslak sıralama yok."
+
+msgid "The result of event #{0} was published: {1} player(s)."
+msgstr "#{0} numaralı etkinliğin sonucu yayımlandı: {1} oyuncu."
+
+msgid "{0} change(s) saved. The shares below are recalculated."
+msgstr "{0} değişiklik kaydedildi. Aşağıdaki paylar yeniden hesaplandı."
+
+msgid "administrative"
+msgstr "yönetim"
+
+msgid "This event has no published result."
+msgstr "Bu etkinliğin yayımlanmış sonucu yok."
+
+msgid "The result of event #{0} is a draft again and no longer public."
+msgstr "#{0} numaralı etkinliğin sonucu yeniden taslak oldu ve artık herkese açık değil."
+
+msgid "Event #{0} was created from #{1}. Check the name and the date."
+msgstr "#{0} numaralı etkinlik #{1} numaralıdan oluşturuldu. Adı ve tarihi kontrol edin."
+
+msgid "The event could not be duplicated: {0}"
+msgstr "Etkinlik çoğaltılamadı: {0}"
+
+msgid "Choose the ranking CSV file to upload."
+msgstr "Yüklenecek sıralama CSV dosyasını seçin."
+
+msgid "The file is too large for a ranking of at most {0} players."
+msgstr "Dosya en fazla {0} oyunculuk bir sıralama için çok büyük."
+
+msgid "The ranking was not accepted: {0}"
+msgstr "Sıralama kabul edilmedi: {0}"
+
+msgid "Ranking with {0} player(s) received. Review it below."
+msgstr "{0} oyunculu sıralama alındı. Aşağıdan inceleyin."
+
+msgid "This ranking is the same as the current draft; nothing changed."
+msgstr "Bu sıralama mevcut taslakla aynı; hiçbir şey değişmedi."
+
+msgid "Send the API token in the Authorization header: Bearer <token>."
+msgstr "API tokenını Authorization başlığında gönderin: Bearer <token>."
+
+msgid "This API token is invalid, expired or revoked."
+msgstr "Bu API tokenı geçersiz, süresi dolmuş veya iptal edilmiş."
+
+msgid "Only an active administrator can use the uploader."
+msgstr "Yükleyiciyi yalnızca aktif bir yönetici kullanabilir."
+
+msgid "Event not found."
+msgstr "Etkinlik bulunamadı."
+
+msgid "Send the ranking as a JSON body."
+msgstr "Sıralamayı JSON gövdesi olarak gönderin."
+
+msgid "The ranking was not accepted."
+msgstr "Sıralama kabul edilmedi."
+
+msgid "The token could not be created. Please, try again."
+msgstr "Token oluşturulamadı. Lütfen tekrar deneyin."
+
+msgid "The token \"{0}\" was revoked."
+msgstr "“{0}” tokenı iptal edildi."
+
+msgid "{0} is now an administrative account and will not receive tournament rewards."
+msgstr "{0} artık bir yönetim hesabı ve turnuva ödülü almayacak."
+
+msgid "{0} will receive tournament rewards again."
+msgstr "{0} yeniden turnuva ödülleri alacak."
+
+msgid "Item"
+msgstr "Eşya"
+
+msgid "e.g. Artifact pieces"
+msgstr "örn. Eser parçaları"
+
+msgid "Split"
+msgstr "Paylaşım"
+
+msgid "Minimum points"
+msgstr "Minimum puan"
+
+msgid "Leftover units"
+msgstr "Artan birimler"
+
+msgid "Remove"
+msgstr "Kaldır"
+
+msgid "Game tournament: enter the day it was played in the game. Past dates are accepted, and nothing is counted from chests."
+msgstr "Oyun turnuvası: oyunda oynandığı günü girin. Geçmiş tarihler kabul edilir ve sandıklardan hiçbir şey sayılmaz."
+
+msgid "Rewards to split"
+msgstr "Paylaştırılacak ödüller"
+
+msgid "What the clan received for this tournament and how it is divided. Proportional gives each player a part matching their share of the points; equal gives everybody the same. Administrative accounts never take part, and players below the minimum points are left out."
+msgstr "Klanın bu turnuva için aldıkları ve nasıl paylaştırılacağı. Orantılı, her oyuncuya puan payına göre bir parça verir; eşit, herkese aynısını verir. Yönetim hesapları asla katılmaz ve minimum puanın altındaki oyuncular dışarıda kalır."
+
+msgid "Add another reward"
+msgstr "Başka bir ödül ekle"
+
+msgid "Optional: filled in from the rewards when left empty."
+msgstr "İsteğe bağlı: boş bırakılırsa ödüllerden doldurulur."
+
+msgid "Review result - Event #{0}"
+msgstr "Sonucu incele - Etkinlik #{0}"
+
+msgid "game id"
+msgstr "oyun kimliği"
+
+msgid "by name"
+msgstr "ada göre"
+
+msgid "name correction"
+msgstr "ad düzeltmesi"
+
+msgid "by hand"
+msgstr "elle"
+
+msgid "not linked"
+msgstr "bağlı değil"
+
+msgid "EventUploader (game data)"
+msgstr "EventUploader (oyun verisi)"
+
+msgid "EventUploader (screen reading)"
+msgstr "EventUploader (ekran okuma)"
+
+msgid "CSV file"
+msgstr "CSV dosyası"
+
+msgid "Draft"
+msgstr "Taslak"
+
+msgid "Published"
+msgstr "Yayımlandı"
+
+msgid "Replaced"
+msgstr "Değiştirildi"
+
+msgid "Review result"
+msgstr "Sonucu incele"
+
+msgid "Published page"
+msgstr "Yayımlanan sayfa"
+
+msgid "Unpublish"
+msgstr "Yayımdan kaldır"
+
+msgid "Take the result of event #{0} down? Players will stop seeing it until it is published again."
+msgstr "#{0} numaralı etkinliğin sonucu kaldırılsın mı? Oyuncular yeniden yayımlanana kadar göremez."
+
+msgid "Edit event"
+msgstr "Etkinliği düzenle"
+
+msgid "min. {0} pts"
+msgstr "min. {0} puan"
+
+msgid "{0} handed out to {1} player(s)"
+msgstr "{0}, {1} oyuncuya dağıtıldı"
+
+msgid "{0} left over"
+msgstr "{0} arttı"
+
+msgid "No reward yet. Edit the event to add what will be split."
+msgstr "Henüz ödül yok. Paylaştırılacak şeyi eklemek için etkinliği düzenleyin."
+
+msgid "Ranking"
+msgstr "Sıralama"
+
+msgid "No ranking has been received yet."
+msgstr "Henüz sıralama alınmadı."
+
+msgid "Received {0} UTC from {1}"
+msgstr "{0} UTC tarihinde {1} tarafından alındı"
+
+msgid "In the game: {0}"
+msgstr "Oyunda: {0}"
+
+msgid "Send a ranking"
+msgstr "Sıralama gönder"
+
+msgid "The EventUploader sends it straight from the game. Without it, upload the ranking.csv the discovery tool exports."
+msgstr "EventUploader bunu doğrudan oyundan gönderir. O yoksa keşif aracının dışa aktardığı ranking.csv dosyasını yükleyin."
+
+msgid "Replace with this file"
+msgstr "Bu dosyayla değiştir"
+
+msgid "Upload CSV"
+msgstr "CSV yükle"
+
+msgid "Tokens for the EventUploader"
+msgstr "EventUploader tokenları"
+
+msgid "{0} taking part in the prize"
+msgstr "{0} ödüle katılıyor"
+
+msgid "Administrative accounts"
+msgstr "Yönetim hesapları"
+
+msgid "never receive a prize"
+msgstr "asla ödül almaz"
+
+msgid "Not linked"
+msgstr "Bağlı değil"
+
+msgid "players without a member"
+msgstr "üyesi olmayan oyuncular"
+
+msgid "Points in the split"
+msgstr "Paylaşımdaki puan"
+
+msgid "of {0} in the ranking"
+msgstr "sıralamadaki {0} puandan"
+
+msgid "Ranking and shares"
+msgstr "Sıralama ve paylar"
+
+msgid "Player in the game"
+msgstr "Oyundaki oyuncu"
+
+msgid "Takes part in the prize"
+msgstr "Ödüle katılır"
+
+msgid "- not linked -"
+msgstr "- bağlı değil -"
+
+msgid "Value received from the game"
+msgstr "Oyundan alınan değer"
+
+msgid "was {0}"
+msgstr "önceki {0}"
+
+msgid "Total handed out"
+msgstr "Toplam dağıtılan"
+
+msgid "of {0}"
+msgstr "{0} içinden"
+
+msgid "Change the member, the prize checkbox or the points, then recalculate to see the new shares."
+msgstr "Üyeyi, ödül kutusunu veya puanı değiştirin, sonra yeni payları görmek için yeniden hesaplayın."
+
+msgid "Save and recalculate"
+msgstr "Kaydet ve yeniden hesapla"
+
+msgid "Publish this result? Players will see the ranking and what each one receives."
+msgstr "Bu sonuç yayımlansın mı? Oyuncular sıralamayı ve her birinin ne alacağını görecek."
+
+msgid "Publish result"
+msgstr "Sonucu yayımla"
+
+msgid "Rankings received"
+msgstr "Alınan sıralamalar"
+
+msgid "When (UTC)"
+msgstr "Ne zaman (UTC)"
+
+msgid "Sent by"
+msgstr "Gönderen"
+
+msgid "Tournament Result"
+msgstr "Turnuva Sonucu"
+
+msgid "Ranking read from the game and the rewards each player receives"
+msgstr "Oyundan okunan sıralama ve her oyuncunun aldığı ödüller"
+
+msgid "Published {0} UTC"
+msgstr "{0} UTC tarihinde yayımlandı"
+
+msgid "{0} points"
+msgstr "{0} puan"
+
+msgid "{0} receive a reward"
+msgstr "{0} oyuncu ödül alıyor"
+
+msgid "Clan Total"
+msgstr "Klan Toplamı"
+
+msgid "points in the tournament"
+msgstr "turnuvadaki puan"
+
+msgid "Rewards"
+msgstr "Ödüller"
+
+msgid "Who hands out the rewards"
+msgstr "Ödülleri kim dağıtıyor"
+
+msgid "Rewards are delivered in the game. Look for this player if yours has not arrived."
+msgstr "Ödüller oyunda teslim edilir. Sizinki gelmediyse bu oyuncuya ulaşın."
+
+msgid "No reward"
+msgstr "Ödül yok"
+
+msgid "Awaiting result"
+msgstr "Sonuç bekleniyor"
+
+msgid "API Tokens"
+msgstr "API Tokenları"
+
+msgid "New Game Tournament"
+msgstr "Yeni Oyun Turnuvası"
+
+msgid "Duplicate"
+msgstr "Çoğalt"
+
+msgid "Tokens the EventUploader uses to send tournament rankings to this site"
+msgstr "EventUploader’ın turnuva sıralamalarını bu siteye göndermek için kullandığı tokenlar"
+
+msgid "Token \"{0}\" created"
+msgstr "“{0}” tokenı oluşturuldu"
+
+msgid "Copy it now and paste it in the EventUploader, together with the site address. It will not be shown again: if it is lost, revoke it and create another."
+msgstr "Şimdi kopyalayın ve site adresiyle birlikte EventUploader’a yapıştırın. Bir daha gösterilmeyecek: kaybolursa iptal edip yenisini oluşturun."
+
+msgid "Site address: {0}"
+msgstr "Site adresi: {0}"
+
+msgid "New token"
+msgstr "Yeni token"
+
+msgid "Create one per computer the EventUploader runs on. The token belongs to you and can only send rankings; it cannot read or change anything else."
+msgstr "EventUploader’ın çalıştığı her bilgisayar için bir tane oluşturun. Token size aittir ve yalnızca sıralama gönderebilir; başka hiçbir şeyi okuyamaz veya değiştiremez."
+
+msgid "e.g. Clan leader PC"
+msgstr "örn. Klan lideri bilgisayarı"
+
+msgid "Create token"
+msgstr "Token oluştur"
+
+msgid "Tokens"
+msgstr "Tokenlar"
+
+msgid "Owner"
+msgstr "Sahibi"
+
+msgid "Starts with"
+msgstr "Şununla başlar"
+
+msgid "Created (UTC)"
+msgstr "Oluşturulma (UTC)"
+
+msgid "Last used (UTC)"
+msgstr "Son kullanım (UTC)"
+
+msgid "never"
+msgstr "hiç"
+
+msgid "Revoked"
+msgstr "İptal edildi"
+
+msgid "Expired"
+msgstr "Süresi doldu"
+
+msgid "Revoke"
+msgstr "İptal et"
+
+msgid "Revoke the token \"{0}\"? The EventUploader using it stops working at once."
+msgstr "“{0}” tokenı iptal edilsin mi? Onu kullanan EventUploader hemen çalışmayı bırakır."
+
+msgid "No token has been created yet."
+msgstr "Henüz token oluşturulmadı."
+
+msgid "Tournament rewards"
+msgstr "Turnuva ödülleri"
+
+msgid "Administrative"
+msgstr "Yönetim"
+
+msgid "Receives"
+msgstr "Alır"
+
+msgid "Mark as a player who receives rewards"
+msgstr "Ödül alan oyuncu olarak işaretle"
+
+msgid "Mark as an administrative account"
+msgstr "Yönetim hesabı olarak işaretle"
+
+msgid "Game player id"
+msgstr "Oyundaki oyuncu kimliği"
+
+msgid "Filled in automatically by the first published tournament"
+msgstr "Yayımlanan ilk turnuvada otomatik doldurulur"
+
+msgid "Administrative account (takes part in rankings but never receives tournament rewards)"
+msgstr "Yönetim hesabı (sıralamalarda yer alır ama asla turnuva ödülü almaz)"
+
+#. Game tournaments registered by the EventUploader, event types
+msgid "This game tournament result is already registered."
+msgstr "Bu oyun turnuvası sonucu zaten kayıtlı."
+
+msgid "The tournament result id is missing or invalid."
+msgstr "Turnuva sonucu kimliği eksik veya geçersiz."
+
+msgid "The tournament type is missing or invalid."
+msgstr "Turnuva türü eksik veya geçersiz."
+
+msgid "The tournament name has more than {0} characters."
+msgstr "Turnuva adı {0} karakterden uzun."
+
+msgid "The tournament cannot end in the future."
+msgstr "Turnuva gelecekte bitemez."
+
+msgid "Game tournament {0}"
+msgstr "Oyun turnuvası {0}"
+
+msgid "Event type"
+msgstr "Etkinlik türü"
+
+msgid "Game event"
+msgstr "Oyun etkinliği"
+
+msgid "A tournament played in the game. It is registered after it ends, so past dates are accepted, and the EventUploader usually creates it together with the ranking."
+msgstr "Oyunda oynanan bir turnuva. Bittikten sonra kaydedilir, bu yüzden geçmiş tarihler kabul edilir; genellikle EventUploader onu sıralamayla birlikte oluşturur."
+
+msgid "Clan event"
+msgstr "Klan etkinliği"
+
+msgid "An internal challenge to push crypts and epic monsters. It is counted from the chests collected inside its window, which starts in the future."
+msgstr "Mezarlar ve epik canavarlar için iç bir yarışma. Gelecekte başlayan süresi içinde toplanan sandıklara göre sayılır."
+
+msgid "When it was played"
+msgstr "Ne zaman oynandı"
+
+msgid "The day and time the tournament ended in the game, in UTC. Past dates are accepted and nothing is counted from chests."
+msgstr "Turnuvanın oyunda bittiği gün ve saat (UTC). Geçmiş tarihler kabul edilir ve sandıklardan hiçbir şey sayılmaz."
+
+#. Tournament catalogue, event dates, tournament mapper
+msgid "The image must be a PNG, JPEG, WebP or GIF of at most {0} KB."
+msgstr "Görsel en fazla {0} KB boyutunda PNG, JPEG, WebP veya GIF olmalıdır."
+
+msgid "Tournament \"{0}\" saved."
+msgstr "\"{0}\" turnuvası kaydedildi."
+
+msgid "The tournament could not be saved. Please check the fields below."
+msgstr "Turnuva kaydedilemedi. Lütfen aşağıdaki alanları kontrol edin."
+
+msgid "Tournament Catalogue"
+msgstr "Turnuva Kataloğu"
+
+msgid "read from the Journal"
+msgstr "Journal'dan okundu"
+
+msgid "typed in the uploader"
+msgstr "uploader'da yazıldı"
+
+msgid "set by hand"
+msgstr "elle belirlendi"
+
+msgid "The game's tournaments. Names and ids are filled in by the tournament mapper; the image and the duration are set here."
+msgstr "Oyunun turnuvaları. Adlar ve kimlikler turnuva eşleyici tarafından doldurulur; görsel ve süre burada ayarlanır."
+
+msgid "Image"
+msgstr "Görsel"
+
+msgid "Tournament"
+msgstr "Turnuva"
+
+msgid "Game id"
+msgstr "Oyun kimliği"
+
+msgid "Duration"
+msgstr "Süre"
+
+msgid "Last seen (UTC)"
+msgstr "Son görülme (UTC)"
+
+msgid "Name not mapped yet"
+msgstr "Ad henüz eşlenmedi"
+
+msgid "{0} day(s)"
+msgstr "{0} gün"
+
+msgid "not set (1 day)"
+msgstr "ayarlanmadı (1 gün)"
+
+msgid "The catalogue is empty. Run the tournament mapper, or send a tournament with the EventUploader."
+msgstr "Katalog boş. Turnuva eşleyiciyi çalıştırın veya EventUploader ile bir turnuva gönderin."
+
+msgid "Edit Tournament"
+msgstr "Turnuvayı Düzenle"
+
+msgid "Game id {0}"
+msgstr "Oyun kimliği {0}"
+
+msgid "As it appears in the game"
+msgstr "Oyunda göründüğü gibi"
+
+msgid "Filled in by the tournament mapper. A name changed here is kept: the mapper will not overwrite it."
+msgstr "Turnuva eşleyici tarafından doldurulur. Burada değiştirilen ad korunur: eşleyici onun üzerine yazmaz."
+
+msgid "Duration (days)"
+msgstr "Süre (gün)"
+
+msgid "How long the tournament runs. A new event starts this many days before the end the game reports; one day when empty."
+msgstr "Turnuvanın ne kadar sürdüğü. Yeni bir etkinlik, oyunun bildirdiği bitişten bu kadar gün önce başlar; boşsa bir gün."
+
+msgid "PNG, JPEG, WebP or GIF, up to 1 MB."
+msgstr "PNG, JPEG, WebP veya GIF, en fazla 1 MB."
+
+msgid "Remove the image"
+msgstr "Görseli kaldır"
+
+msgid "Latest events of this tournament"
+msgstr "Bu turnuvanın son etkinlikleri"
+
+msgid "Send at least one tournament."
+msgstr "En az bir turnuva gönderin."
+
+msgid "Send at most {0} tournaments at a time."
+msgstr "Tek seferde en fazla {0} turnuva gönderin."
+
+msgid "Line {0} is not a tournament."
+msgstr "{0}. satır bir turnuva değil."
+
+msgid "The tournaments were not accepted."
+msgstr "Turnuvalar kabul edilmedi."
+
+msgid "The dates of event #{0} were saved."
+msgstr "#{0} numaralı etkinliğin tarihleri kaydedildi."
+
+msgid "The dates were not saved: {0}"
+msgstr "Tarihler kaydedilmedi: {0}"
+
+msgid "Lasts {0} day(s) in the catalogue"
+msgstr "Katalogda {0} gün sürüyor"
+
+msgid "No duration in the catalogue: one day assumed"
+msgstr "Katalogda süre yok: bir gün varsayıldı"
+
+msgid "Edit in the catalogue"
+msgstr "Katalogda düzenle"
+
+msgid "Save dates"
+msgstr "Tarihleri kaydet"
+
+msgid "The duration must be a whole number of days."
+msgstr "Süre tam sayı gün olmalıdır."
+
+msgid "The duration must be between {0} and {1} days."
+msgstr "Süre {0} ile {1} gün arasında olmalıdır."
+
+msgid "Monitoring"
+msgstr "İzleme"
+
+msgid "Running, last run had problems"
+msgstr "Çalışıyor, son çalıştırmada sorun oldu"
+
+msgid "Stopped"
+msgstr "Durdu"
+
+msgid "Stuck"
+msgstr "Takıldı"
+
+msgid "Never ran"
+msgstr "Hiç çalışmadı"
+
+msgid "Not watched"
+msgstr "İzlenmiyor"
+
+msgid "running"
+msgstr "çalışıyor"
+
+msgid "success"
+msgstr "başarılı"
+
+msgid "partial"
+msgstr "kısmi"
+
+msgid "failed"
+msgstr "başarısız"
+
+msgid "cancelled"
+msgstr "iptal edildi"
+
+msgid "Chest collector"
+msgstr "Sandık toplayıcı"
+
+msgid "Daily maintenance"
+msgstr "Günlük bakım"
+
+msgid "Tournament upload"
+msgstr "Turnuva gönderimi"
+
+msgid "{0} min"
+msgstr "{0} dk"
+
+msgid "{0} h {1} min"
+msgstr "{0} sa {1} dk"
+
+msgid "{0} d {1} h"
+msgstr "{0} g {1} sa"
+
+msgid "Whether the chest collector, the maintenance, the database backup and the tournament uploads are running"
+msgstr "Sandık toplayıcının, bakımın, veritabanı yedeğinin ve turnuva gönderimlerinin çalışıp çalışmadığı"
+
+msgid "A job is running when it had a good run within its limit. A run that found no chests still counts: this watches the process, not the data."
+msgstr "Bir görev, sınırı içinde başarılı bir çalıştırması olduğunda çalışıyor sayılır. Hiç sandık bulamayan bir çalıştırma da sayılır: burada veriler değil süreç izlenir."
+
+msgid "Last good run {0} ago (limit {1})."
+msgstr "Son başarılı çalıştırma {0} önce (sınır {1})."
+
+msgid "No good run on record (limit {0})."
+msgstr "Kayıtlı başarılı çalıştırma yok (sınır {0})."
+
+msgid "Last run: {0} on {1}, started {2} UTC."
+msgstr "Son çalıştırma: {1} üzerinde {0}, başlangıç {2} UTC."
+
+msgid "Limits"
+msgstr "Sınırlar"
+
+msgid "How long each job may go without a good run before the monitor raises the alarm. Leave room for one missed run: a collector scheduled every hour does well with 180 minutes."
+msgstr "İzleyici alarm vermeden önce her görevin başarılı çalıştırma olmadan ne kadar kalabileceği. Bir kaçırılan çalıştırma için pay bırakın: saatte bir planlanan bir toplayıcı için 180 dakika uygundur."
+
+msgid "Job"
+msgstr "Görev"
+
+msgid "Watched"
+msgstr "İzleniyor"
+
+msgid "Limit (minutes)"
+msgstr "Sınır (dakika)"
+
+msgid "Save limits"
+msgstr "Sınırları kaydet"
+
+msgid "Recent runs"
+msgstr "Son çalıştırmalar"
+
+msgid "The last 50 runs, newest first. History older than {0} days is deleted by the daily maintenance."
+msgstr "Son 50 çalıştırma, en yenisi önce. {0} günden eski geçmiş günlük bakım tarafından silinir."
+
+msgid "No run recorded yet."
+msgstr "Henüz kayıtlı çalıştırma yok."
+
+msgid "Started (UTC)"
+msgstr "Başlangıç (UTC)"
+
+msgid "Took"
+msgstr "Süre"
+
+msgid "Host"
+msgstr "Bilgisayar"
+
+msgid "{0} s"
+msgstr "{0} sn"
+
+msgid "External monitor"
+msgstr "Harici izleyici"
+
+msgid "The alarm has to come from outside the server: if the server goes down, nothing on it can send one. A Google Apps Script reads the address below and e-mails you when a job stops or comes back."
+msgstr "Alarm sunucunun dışından gelmelidir: sunucu çökerse üzerindeki hiçbir şey alarm gönderemez. Bir Google Apps Script aşağıdaki adresi okur ve bir görev durduğunda ya da yeniden çalıştığında size e-posta gönderir."
+
+msgid "Address"
+msgstr "Adres"
+
+msgid "Key, sent in the {0} header:"
+msgstr "{0} başlığında gönderilen anahtar:"
+
+msgid "No key yet: the address answers 503 until one is created."
+msgstr "Henüz anahtar yok: bir anahtar oluşturulana kadar adres 503 yanıtı verir."
+
+msgid "The key only reads this status. It cannot change anything on the site."
+msgstr "Anahtar yalnızca bu durumu okur. Sitede hiçbir şeyi değiştiremez."
+
+msgid "Create a new key"
+msgstr "Yeni anahtar oluştur"
+
+msgid "Create key"
+msgstr "Anahtar oluştur"
+
+msgid "Create a new key? The monitor stops working until you paste the new one in it."
+msgstr "Yeni anahtar oluşturulsun mu? Yenisini yapıştırana kadar izleyici çalışmaz."
+
+msgid "The script, ready to paste into a new project at script.google.com:"
+msgstr "script.google.com'da yeni bir projeye yapıştırılmaya hazır betik:"
+
+msgid "A new monitoring key was created. Update it in the monitor: the old one no longer works."
+msgstr "Yeni bir izleme anahtarı oluşturuldu. İzleyicide güncelleyin: eskisi artık çalışmıyor."
+
+msgid "\"{0}\" was not saved: {1}"
+msgstr "\"{0}\" kaydedilmedi: {1}"
+
+msgid "Monitoring limits saved."
+msgstr "İzleme sınırları kaydedildi."
+
+msgid "No monitoring key is set. Create one under Admin > Monitoring."
+msgstr "İzleme anahtarı ayarlanmamış. Admin > İzleme bölümünden bir tane oluşturun."
+
+msgid "Send the monitoring key in the X-Monitor-Key header."
+msgstr "İzleme anahtarını X-Monitor-Key başlığında gönderin."
+
+msgid "Between {0} and {1} minutes."
+msgstr "{0} ile {1} dakika arasında."

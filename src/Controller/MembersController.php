@@ -37,7 +37,7 @@ class MembersController extends AppController
     public function view($id = null)
     {
         $this->requireAdmin();
-        $member = $this->Members->get($id, contain: []);
+        $member = $this->Members->get($id, contain: ['Users']);
         $this->set(compact('member'));
     }
 
@@ -59,7 +59,8 @@ class MembersController extends AppController
             }
             $this->Flash->error(__('The member could not be saved. Please, try again.'));
         }
-        $this->set(compact('member'));
+        $users = $this->Members->Users->find('list', keyField: 'id', valueField: 'name')->order(['name' => 'ASC'])->toArray();
+        $this->set(compact('member', 'users'));
     }
 
     /**
@@ -72,7 +73,7 @@ class MembersController extends AppController
     public function edit($id = null)
     {
         $this->requireAdmin();
-        $member = $this->Members->get($id, contain: []);
+        $member = $this->Members->get($id, contain: ['Users']);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $member = $this->Members->patchEntity($member, $this->request->getData());
             if ($this->Members->save($member)) {
@@ -82,7 +83,8 @@ class MembersController extends AppController
             }
             $this->Flash->error(__('The member could not be saved. Please, try again.'));
         }
-        $this->set(compact('member'));
+        $users = $this->Members->Users->find('list', keyField: 'id', valueField: 'name')->order(['name' => 'ASC'])->toArray();
+        $this->set(compact('member', 'users'));
     }
 
     /**
@@ -116,96 +118,50 @@ class MembersController extends AppController
     public function updateFromCollectedChests()
     {
         $this->requireAdmin();
-        $collectedChestsTable = TableRegistry::getTableLocator()->get('CollectedChests');
-        
-        // Buscar todos os players únicos da tabela collectedchests
-        $allPlayers = $collectedChestsTable->find()
-            ->select(['player'])
-            ->distinct(['player'])
-            ->toArray();
+        $result = $this->Members->updateFromCollectedChests();
 
-        // Debug: verificar quantos players foram encontrados
-        $playersCount = count($allPlayers);
-        
-        // Debug: mostrar alguns nomes de players para verificar
-        $samplePlayers = array_slice($allPlayers, 0, 3);
-        $samplePlayerNames = [];
-        foreach ($samplePlayers as $player) {
-            $samplePlayerNames[] = $player->player;
-        }
-        
-        $newMembersCount = 0;
-        $updatedMembersCount = 0;
-        $threeWeeksAgo = FrozenTime::now()->subWeeks(3);
-
-        foreach ($allPlayers as $playerData) {
-            $playerName = $playerData->player;
-            
-            // Buscar a última atividade deste player específico
-            $lastActivity = $collectedChestsTable->find()
-                ->select(['collected_at'])
-                ->where(['player' => $playerName])
-                ->order(['collected_at' => 'DESC'])
-                ->first();
-            
-            if (!$lastActivity) {
-                continue; // Pular se não encontrar atividade
-            }
-            
-            $lastCollectedAt = $lastActivity->collected_at;
-            
-            // Verificar se o membro já existe
-            $existingMember = $this->Members->find()
-                ->where(['player' => $playerName])
-                ->first();
-
-            if ($existingMember) {
-                // Membro existe - verificar se precisa atualizar o status active
-                $isActive = $lastCollectedAt >= $threeWeeksAgo ? 1 : 0;
-                
-                if ($existingMember->active != $isActive) {
-                    $existingMember->active = $isActive;
-                    
-                    if ($this->Members->save($existingMember)) {
-                        $updatedMembersCount++;
-                    }
-                }
-            } else {
-                // Membro não existe - criar novo registro
-                $newMember = $this->Members->newEmptyEntity();
-                $isActive = $lastCollectedAt >= $threeWeeksAgo ? 1 : 0;
-                
-                $newMember = $this->Members->patchEntity($newMember, [
-                    'player' => $playerName,
-                    'active' => $isActive,
-                    'power' => 0,
-                    'guards' => 0,
-                    'specialists' => 0,
-                    'monsters' => 0,
-                    'engineers' => 0
-                ]);
-
-                if ($this->Members->save($newMember)) {
-                    $newMembersCount++;
-                } else {
-                    // Debug: mostrar erros de validação se houver
-                    $errors = $newMember->getErrors();
-                    if (!empty($errors)) {
-                        $this->Flash->error(__('Error saving member {0}: {1}', $playerName, json_encode($errors)));
-                    }
-                }
+        if (!empty($result['errors'])) {
+            foreach ($result['errors'] as $errorMsg) {
+                $this->Flash->error($errorMsg);
             }
         }
 
-        // Mensagem de feedback com informações de debug
         $message = __('Update completed. Found {0} players (samples: {1}). {2} new members added, {3} members updated.', 
-                     $playersCount,
-                     implode(', ', $samplePlayerNames),
-                     $newMembersCount, 
-                     $updatedMembersCount);
+            $result['playersCount'],
+            implode(', ', $result['samplePlayerNames']),
+            $result['newMembersCount'], 
+            $result['updatedMembersCount']
+        );
         
         $this->Flash->success($message);
-        
+
         return $this->redirect(['action' => 'index']);
+    }
+
+    /**
+     * Marca ou desmarca a conta como administrativa.
+     *
+     * Contas administrativas aparecem nos rankings dos torneios importados, mas
+     * nunca recebem premio nem entram na soma de pontos da divisao.
+     *
+     * @param string|null $id Member id.
+     * @return \Cake\Http\Response
+     */
+    public function toggleAdministrative($id = null)
+    {
+        $this->requireAdmin();
+        $this->request->allowMethod(['post']);
+
+        $member = $this->Members->get($id);
+        $member->administrative_account = !$member->administrative_account;
+        if ($this->Members->save($member)) {
+            $this->Flash->success($member->administrative_account
+                ? __('{0} is now an administrative account and will not receive tournament rewards.', $member->player)
+                : __('{0} will receive tournament rewards again.', $member->player));
+        } else {
+            $this->Flash->error(__('The member could not be saved. Please, try again.'));
+        }
+
+        return $this->redirect($this->referer(['action' => 'index'], true));
     }
 }

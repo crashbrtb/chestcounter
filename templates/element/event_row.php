@@ -21,12 +21,14 @@ $stateLabels = [
     Event::STATE_SCHEDULED => __('Scheduled'),
     Event::STATE_FINISHED => __('Finished'),
     Event::STATE_CANCELLED => __('Cancelled'),
+    Event::STATE_AWAITING => __('Awaiting result'),
 ];
 $stateIcons = [
     Event::STATE_RUNNING => 'fa-play-circle',
     Event::STATE_SCHEDULED => 'fa-hourglass-start',
     Event::STATE_FINISHED => 'fa-flag-checkered',
     Event::STATE_CANCELLED => 'fa-ban',
+    Event::STATE_AWAITING => 'fa-hourglass-half',
 ];
 
 // A running event has a leader, not a winner: only a closed one is announced
@@ -50,9 +52,13 @@ if ($event->finalized_at !== null && $state !== Event::STATE_RUNNING) {
             </span>
             <span>
                 <i class="fas fa-calendar"></i>
-                <?= h($event->starts_at->format('d/m/Y H:i')) ?>
-                &rarr;
-                <?= h($event->ends_at->format('d/m/Y H:i')) ?> UTC
+                <?php if ($event->is_imported): ?>
+                    <?= h($event->starts_at->format('d/m/Y')) ?>
+                <?php else: ?>
+                    <?= h($event->starts_at->format('d/m/Y H:i')) ?>
+                    &rarr;
+                    <?= h($event->ends_at->format('d/m/Y H:i')) ?> UTC
+                <?php endif; ?>
             </span>
             <span>
                 <i class="fas fa-gift"></i>

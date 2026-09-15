@@ -112,6 +112,18 @@ $short = function (float $number): string {
 };
 ?>
 
+<div class="content-page-wrap">
+    <div class="score-toolbar">
+        <div class="score-title-group">
+            <h1 class="score-title">
+                <i class="fas fa-calculator text-primary mr-2"></i><?= __('Troop Calculator') ?>
+            </h1>
+            <p class="cycle-subtitle">
+                <?= __('Optimize army formations, march capacities, leadership, and troop compositions') ?>
+            </p>
+        </div>
+    </div>
+
 <div class="troop-calculator">
 
 <?= $this->Form->create(null, ['url' => ['action' => 'index'], 'id' => 'calc-form']) ?>
@@ -533,5 +545,6 @@ $short = function (float $number): string {
     </script>
 <?php endif; ?>
 
+</div>
 </div>
 

@@ -4498,3 +4498,816 @@ msgstr ""
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr ""
+
+#. Game tournaments: imported rankings, reward split, API tokens
+msgid "Game tournament (imported score)"
+msgstr ""
+
+msgid "The ranking is read from the game by the EventUploader and the rewards below are split among the players."
+msgstr ""
+
+msgid "Points"
+msgstr ""
+
+msgid "Proportional to the points"
+msgstr ""
+
+msgid "Equal parts"
+msgstr ""
+
+msgid "Give the leftover to the best placed"
+msgstr ""
+
+msgid "Keep the leftover with the clan"
+msgstr ""
+
+msgid "{0} x {1} ({2})"
+msgstr ""
+
+msgid "Add at least one reward to split among the players."
+msgstr ""
+
+msgid "Say what is being handed out."
+msgstr ""
+
+msgid "The quantity must be a whole number."
+msgstr ""
+
+msgid "The quantity must be at least 1."
+msgstr ""
+
+msgid "Choose how the reward is split."
+msgstr ""
+
+msgid "Give the token a name, such as the computer it will be used on."
+msgstr ""
+
+msgid "Another member already has this game player id."
+msgstr ""
+
+msgid "The ranking must have at least one player."
+msgstr ""
+
+msgid "A clan ranking has at most {0} players; {1} were sent."
+msgstr ""
+
+msgid "Line {0} is not a player."
+msgstr ""
+
+msgid "Line {0}: the position must be a whole number from 1."
+msgstr ""
+
+msgid "Line {0}: position {1} appears twice."
+msgstr ""
+
+msgid "Line {0}: the name must have 1 to {1} characters."
+msgstr ""
+
+msgid "Line {0}: the points must be a whole number of 0 or more."
+msgstr ""
+
+msgid "Line {0}: the player id must be a positive whole number."
+msgstr ""
+
+msgid "Line {0}: player id {1} appears twice."
+msgstr ""
+
+msgid "Unknown capture method."
+msgstr ""
+
+msgid "The tournament date is not a valid date."
+msgstr ""
+
+msgid "{0} player(s) are not linked to a member: {1}. They still receive their share; link them to keep the history together."
+msgstr ""
+
+msgid "{0} player(s) were linked by name. Confirm them: when the result is published their game id is saved on the member."
+msgstr ""
+
+msgid "The positions are not 1 to {0} without gaps: a part of the ranking may be missing."
+msgstr ""
+
+msgid "Points are not in descending order at: {0}. Check for a reading error."
+msgstr ""
+
+msgid "Different players share a name: {0}. They are told apart by their game id."
+msgstr ""
+
+msgid "Points were corrected by hand for {0} player(s)."
+msgstr ""
+
+msgid "This event has no reward to split. Add one before publishing."
+msgstr ""
+
+msgid "Only a draft can be changed. Unpublish the result first."
+msgstr ""
+
+msgid "This ranking is not a draft of this event."
+msgstr ""
+
+msgid "Event #{0} does not take an imported ranking."
+msgstr ""
+
+msgid "The result of event #{0} is already published. Unpublish it to send a new ranking."
+msgstr ""
+
+msgid "Nobody qualifies for \"{0}\": check the eligible players and the minimum points."
+msgstr ""
+
+msgid "This event has no published result yet."
+msgstr ""
+
+msgid "Only game tournaments have a ranking to review."
+msgstr ""
+
+msgid "There is no draft ranking to change."
+msgstr ""
+
+msgid "The result of event #{0} was published: {1} player(s)."
+msgstr ""
+
+msgid "{0} change(s) saved. The shares below are recalculated."
+msgstr ""
+
+msgid "administrative"
+msgstr ""
+
+msgid "This event has no published result."
+msgstr ""
+
+msgid "The result of event #{0} is a draft again and no longer public."
+msgstr ""
+
+msgid "Event #{0} was created from #{1}. Check the name and the date."
+msgstr ""
+
+msgid "The event could not be duplicated: {0}"
+msgstr ""
+
+msgid "Choose the ranking CSV file to upload."
+msgstr ""
+
+msgid "The file is too large for a ranking of at most {0} players."
+msgstr ""
+
+msgid "The ranking was not accepted: {0}"
+msgstr ""
+
+msgid "Ranking with {0} player(s) received. Review it below."
+msgstr ""
+
+msgid "This ranking is the same as the current draft; nothing changed."
+msgstr ""
+
+msgid "Send the API token in the Authorization header: Bearer <token>."
+msgstr ""
+
+msgid "This API token is invalid, expired or revoked."
+msgstr ""
+
+msgid "Only an active administrator can use the uploader."
+msgstr ""
+
+msgid "Event not found."
+msgstr ""
+
+msgid "Send the ranking as a JSON body."
+msgstr ""
+
+msgid "The ranking was not accepted."
+msgstr ""
+
+msgid "The token could not be created. Please, try again."
+msgstr ""
+
+msgid "The token \"{0}\" was revoked."
+msgstr ""
+
+msgid "{0} is now an administrative account and will not receive tournament rewards."
+msgstr ""
+
+msgid "{0} will receive tournament rewards again."
+msgstr ""
+
+msgid "Item"
+msgstr ""
+
+msgid "e.g. Artifact pieces"
+msgstr ""
+
+msgid "Split"
+msgstr ""
+
+msgid "Minimum points"
+msgstr ""
+
+msgid "Leftover units"
+msgstr ""
+
+msgid "Remove"
+msgstr ""
+
+msgid "Game tournament: enter the day it was played in the game. Past dates are accepted, and nothing is counted from chests."
+msgstr ""
+
+msgid "Rewards to split"
+msgstr ""
+
+msgid "What the clan received for this tournament and how it is divided. Proportional gives each player a part matching their share of the points; equal gives everybody the same. Administrative accounts never take part, and players below the minimum points are left out."
+msgstr ""
+
+msgid "Add another reward"
+msgstr ""
+
+msgid "Optional: filled in from the rewards when left empty."
+msgstr ""
+
+msgid "Review result - Event #{0}"
+msgstr ""
+
+msgid "game id"
+msgstr ""
+
+msgid "by name"
+msgstr ""
+
+msgid "name correction"
+msgstr ""
+
+msgid "by hand"
+msgstr ""
+
+msgid "not linked"
+msgstr ""
+
+msgid "EventUploader (game data)"
+msgstr ""
+
+msgid "EventUploader (screen reading)"
+msgstr ""
+
+msgid "CSV file"
+msgstr ""
+
+msgid "Draft"
+msgstr ""
+
+msgid "Published"
+msgstr ""
+
+msgid "Replaced"
+msgstr ""
+
+msgid "Review result"
+msgstr ""
+
+msgid "Published page"
+msgstr ""
+
+msgid "Unpublish"
+msgstr ""
+
+msgid "Take the result of event #{0} down? Players will stop seeing it until it is published again."
+msgstr ""
+
+msgid "Edit event"
+msgstr ""
+
+msgid "min. {0} pts"
+msgstr ""
+
+msgid "{0} handed out to {1} player(s)"
+msgstr ""
+
+msgid "{0} left over"
+msgstr ""
+
+msgid "No reward yet. Edit the event to add what will be split."
+msgstr ""
+
+msgid "Ranking"
+msgstr ""
+
+msgid "No ranking has been received yet."
+msgstr ""
+
+msgid "Received {0} UTC from {1}"
+msgstr ""
+
+msgid "In the game: {0}"
+msgstr ""
+
+msgid "Send a ranking"
+msgstr ""
+
+msgid "The EventUploader sends it straight from the game. Without it, upload the ranking.csv the discovery tool exports."
+msgstr ""
+
+msgid "Replace with this file"
+msgstr ""
+
+msgid "Upload CSV"
+msgstr ""
+
+msgid "Tokens for the EventUploader"
+msgstr ""
+
+msgid "{0} taking part in the prize"
+msgstr ""
+
+msgid "Administrative accounts"
+msgstr ""
+
+msgid "never receive a prize"
+msgstr ""
+
+msgid "Not linked"
+msgstr ""
+
+msgid "players without a member"
+msgstr ""
+
+msgid "Points in the split"
+msgstr ""
+
+msgid "of {0} in the ranking"
+msgstr ""
+
+msgid "Ranking and shares"
+msgstr ""
+
+msgid "Player in the game"
+msgstr ""
+
+msgid "Takes part in the prize"
+msgstr ""
+
+msgid "- not linked -"
+msgstr ""
+
+msgid "Value received from the game"
+msgstr ""
+
+msgid "was {0}"
+msgstr ""
+
+msgid "Total handed out"
+msgstr ""
+
+msgid "of {0}"
+msgstr ""
+
+msgid "Change the member, the prize checkbox or the points, then recalculate to see the new shares."
+msgstr ""
+
+msgid "Save and recalculate"
+msgstr ""
+
+msgid "Publish this result? Players will see the ranking and what each one receives."
+msgstr ""
+
+msgid "Publish result"
+msgstr ""
+
+msgid "Rankings received"
+msgstr ""
+
+msgid "When (UTC)"
+msgstr ""
+
+msgid "Sent by"
+msgstr ""
+
+msgid "Tournament Result"
+msgstr ""
+
+msgid "Ranking read from the game and the rewards each player receives"
+msgstr ""
+
+msgid "Published {0} UTC"
+msgstr ""
+
+msgid "{0} points"
+msgstr ""
+
+msgid "{0} receive a reward"
+msgstr ""
+
+msgid "Clan Total"
+msgstr ""
+
+msgid "points in the tournament"
+msgstr ""
+
+msgid "Rewards"
+msgstr ""
+
+msgid "Who hands out the rewards"
+msgstr ""
+
+msgid "Rewards are delivered in the game. Look for this player if yours has not arrived."
+msgstr ""
+
+msgid "No reward"
+msgstr ""
+
+msgid "Awaiting result"
+msgstr ""
+
+msgid "API Tokens"
+msgstr ""
+
+msgid "New Game Tournament"
+msgstr ""
+
+msgid "Duplicate"
+msgstr ""
+
+msgid "Tokens the EventUploader uses to send tournament rankings to this site"
+msgstr ""
+
+msgid "Token \"{0}\" created"
+msgstr ""
+
+msgid "Copy it now and paste it in the EventUploader, together with the site address. It will not be shown again: if it is lost, revoke it and create another."
+msgstr ""
+
+msgid "Site address: {0}"
+msgstr ""
+
+msgid "New token"
+msgstr ""
+
+msgid "Create one per computer the EventUploader runs on. The token belongs to you and can only send rankings; it cannot read or change anything else."
+msgstr ""
+
+msgid "e.g. Clan leader PC"
+msgstr ""
+
+msgid "Create token"
+msgstr ""
+
+msgid "Tokens"
+msgstr ""
+
+msgid "Owner"
+msgstr ""
+
+msgid "Starts with"
+msgstr ""
+
+msgid "Created (UTC)"
+msgstr ""
+
+msgid "Last used (UTC)"
+msgstr ""
+
+msgid "never"
+msgstr ""
+
+msgid "Revoked"
+msgstr ""
+
+msgid "Expired"
+msgstr ""
+
+msgid "Revoke"
+msgstr ""
+
+msgid "Revoke the token \"{0}\"? The EventUploader using it stops working at once."
+msgstr ""
+
+msgid "No token has been created yet."
+msgstr ""
+
+msgid "Tournament rewards"
+msgstr ""
+
+msgid "Administrative"
+msgstr ""
+
+msgid "Receives"
+msgstr ""
+
+msgid "Mark as a player who receives rewards"
+msgstr ""
+
+msgid "Mark as an administrative account"
+msgstr ""
+
+msgid "Game player id"
+msgstr ""
+
+msgid "Filled in automatically by the first published tournament"
+msgstr ""
+
+msgid "Administrative account (takes part in rankings but never receives tournament rewards)"
+msgstr ""
+
+#. Game tournaments registered by the EventUploader, event types
+msgid "This game tournament result is already registered."
+msgstr ""
+
+msgid "The tournament result id is missing or invalid."
+msgstr ""
+
+msgid "The tournament type is missing or invalid."
+msgstr ""
+
+msgid "The tournament name has more than {0} characters."
+msgstr ""
+
+msgid "The tournament cannot end in the future."
+msgstr ""
+
+msgid "Game tournament {0}"
+msgstr ""
+
+msgid "Event type"
+msgstr ""
+
+msgid "Game event"
+msgstr ""
+
+msgid "A tournament played in the game. It is registered after it ends, so past dates are accepted, and the EventUploader usually creates it together with the ranking."
+msgstr ""
+
+msgid "Clan event"
+msgstr ""
+
+msgid "An internal challenge to push crypts and epic monsters. It is counted from the chests collected inside its window, which starts in the future."
+msgstr ""
+
+msgid "When it was played"
+msgstr ""
+
+msgid "The day and time the tournament ended in the game, in UTC. Past dates are accepted and nothing is counted from chests."
+msgstr ""
+
+#. Tournament catalogue, event dates, tournament mapper
+msgid "The image must be a PNG, JPEG, WebP or GIF of at most {0} KB."
+msgstr ""
+
+msgid "Tournament \"{0}\" saved."
+msgstr ""
+
+msgid "The tournament could not be saved. Please check the fields below."
+msgstr ""
+
+msgid "Tournament Catalogue"
+msgstr ""
+
+msgid "read from the Journal"
+msgstr ""
+
+msgid "typed in the uploader"
+msgstr ""
+
+msgid "set by hand"
+msgstr ""
+
+msgid "The game's tournaments. Names and ids are filled in by the tournament mapper; the image and the duration are set here."
+msgstr ""
+
+msgid "Image"
+msgstr ""
+
+msgid "Tournament"
+msgstr ""
+
+msgid "Game id"
+msgstr ""
+
+msgid "Duration"
+msgstr ""
+
+msgid "Last seen (UTC)"
+msgstr ""
+
+msgid "Name not mapped yet"
+msgstr ""
+
+msgid "{0} day(s)"
+msgstr ""
+
+msgid "not set (1 day)"
+msgstr ""
+
+msgid "The catalogue is empty. Run the tournament mapper, or send a tournament with the EventUploader."
+msgstr ""
+
+msgid "Edit Tournament"
+msgstr ""
+
+msgid "Game id {0}"
+msgstr ""
+
+msgid "As it appears in the game"
+msgstr ""
+
+msgid "Filled in by the tournament mapper. A name changed here is kept: the mapper will not overwrite it."
+msgstr ""
+
+msgid "Duration (days)"
+msgstr ""
+
+msgid "How long the tournament runs. A new event starts this many days before the end the game reports; one day when empty."
+msgstr ""
+
+msgid "PNG, JPEG, WebP or GIF, up to 1 MB."
+msgstr ""
+
+msgid "Remove the image"
+msgstr ""
+
+msgid "Latest events of this tournament"
+msgstr ""
+
+msgid "Send at least one tournament."
+msgstr ""
+
+msgid "Send at most {0} tournaments at a time."
+msgstr ""
+
+msgid "Line {0} is not a tournament."
+msgstr ""
+
+msgid "The tournaments were not accepted."
+msgstr ""
+
+msgid "The dates of event #{0} were saved."
+msgstr ""
+
+msgid "The dates were not saved: {0}"
+msgstr ""
+
+msgid "Lasts {0} day(s) in the catalogue"
+msgstr ""
+
+msgid "No duration in the catalogue: one day assumed"
+msgstr ""
+
+msgid "Edit in the catalogue"
+msgstr ""
+
+msgid "Save dates"
+msgstr ""
+
+msgid "The duration must be a whole number of days."
+msgstr ""
+
+msgid "The duration must be between {0} and {1} days."
+msgstr ""
+
+msgid "Monitoring"
+msgstr ""
+
+msgid "Running, last run had problems"
+msgstr ""
+
+msgid "Stopped"
+msgstr ""
+
+msgid "Stuck"
+msgstr ""
+
+msgid "Never ran"
+msgstr ""
+
+msgid "Not watched"
+msgstr ""
+
+msgid "running"
+msgstr ""
+
+msgid "success"
+msgstr ""
+
+msgid "partial"
+msgstr ""
+
+msgid "failed"
+msgstr ""
+
+msgid "cancelled"
+msgstr ""
+
+msgid "Chest collector"
+msgstr ""
+
+msgid "Daily maintenance"
+msgstr ""
+
+msgid "Tournament upload"
+msgstr ""
+
+msgid "{0} min"
+msgstr ""
+
+msgid "{0} h {1} min"
+msgstr ""
+
+msgid "{0} d {1} h"
+msgstr ""
+
+msgid "Whether the chest collector, the maintenance, the database backup and the tournament uploads are running"
+msgstr ""
+
+msgid "A job is running when it had a good run within its limit. A run that found no chests still counts: this watches the process, not the data."
+msgstr ""
+
+msgid "Last good run {0} ago (limit {1})."
+msgstr ""
+
+msgid "No good run on record (limit {0})."
+msgstr ""
+
+msgid "Last run: {0} on {1}, started {2} UTC."
+msgstr ""
+
+msgid "Limits"
+msgstr ""
+
+msgid "How long each job may go without a good run before the monitor raises the alarm. Leave room for one missed run: a collector scheduled every hour does well with 180 minutes."
+msgstr ""
+
+msgid "Job"
+msgstr ""
+
+msgid "Watched"
+msgstr ""
+
+msgid "Limit (minutes)"
+msgstr ""
+
+msgid "Save limits"
+msgstr ""
+
+msgid "Recent runs"
+msgstr ""
+
+msgid "The last 50 runs, newest first. History older than {0} days is deleted by the daily maintenance."
+msgstr ""
+
+msgid "No run recorded yet."
+msgstr ""
+
+msgid "Started (UTC)"
+msgstr ""
+
+msgid "Took"
+msgstr ""
+
+msgid "Host"
+msgstr ""
+
+msgid "{0} s"
+msgstr ""
+
+msgid "External monitor"
+msgstr ""
+
+msgid "The alarm has to come from outside the server: if the server goes down, nothing on it can send one. A Google Apps Script reads the address below and e-mails you when a job stops or comes back."
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Key, sent in the {0} header:"
+msgstr ""
+
+msgid "No key yet: the address answers 503 until one is created."
+msgstr ""
+
+msgid "The key only reads this status. It cannot change anything on the site."
+msgstr ""
+
+msgid "Create a new key"
+msgstr ""
+
+msgid "Create key"
+msgstr ""
+
+msgid "Create a new key? The monitor stops working until you paste the new one in it."
+msgstr ""
+
+msgid "The script, ready to paste into a new project at script.google.com:"
+msgstr ""
+
+msgid "A new monitoring key was created. Update it in the monitor: the old one no longer works."
+msgstr ""
+
+msgid "\"{0}\" was not saved: {1}"
+msgstr ""
+
+msgid "Monitoring limits saved."
+msgstr ""
+
+msgid "No monitoring key is set. Create one under Admin > Monitoring."
+msgstr ""
+
+msgid "Send the monitoring key in the X-Monitor-Key header."
+msgstr ""
+
+msgid "Between {0} and {1} minutes."
+msgstr ""

@@ -40,6 +40,11 @@ class EventStandingsTable extends Table
             'foreignKey' => 'event_id',
             'joinType' => 'INNER',
         ]);
+
+        $this->hasMany('EventRewardAllocations', [
+            'foreignKey' => 'event_standing_id',
+            'dependent' => true,
+        ]);
     }
 
     /**

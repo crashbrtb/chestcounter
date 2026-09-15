@@ -4490,3 +4490,816 @@ msgstr "설정"
 #: ./src/Controller/TroopCalculatorController.php:47
 msgid "Troop Calculator is currently disabled."
 msgstr "부대 계산기가 현재 비활성화되어 있습니다。"
+
+#. Game tournaments: imported rankings, reward split, API tokens
+msgid "Game tournament (imported score)"
+msgstr "게임 토너먼트 (가져온 점수)"
+
+msgid "The ranking is read from the game by the EventUploader and the rewards below are split among the players."
+msgstr "순위는 EventUploader가 게임에서 읽어 오며, 아래 보상은 플레이어들에게 나누어집니다."
+
+msgid "Points"
+msgstr "포인트"
+
+msgid "Proportional to the points"
+msgstr "포인트에 비례"
+
+msgid "Equal parts"
+msgstr "균등 분배"
+
+msgid "Give the leftover to the best placed"
+msgstr "남는 수량은 상위 순위에게"
+
+msgid "Keep the leftover with the clan"
+msgstr "남는 수량은 클랜에 보관"
+
+msgid "{0} x {1} ({2})"
+msgstr "{0} x {1} ({2})"
+
+msgid "Add at least one reward to split among the players."
+msgstr "플레이어에게 나눌 보상을 하나 이상 추가하세요."
+
+msgid "Say what is being handed out."
+msgstr "무엇을 지급하는지 입력하세요."
+
+msgid "The quantity must be a whole number."
+msgstr "수량은 정수여야 합니다."
+
+msgid "The quantity must be at least 1."
+msgstr "수량은 1 이상이어야 합니다."
+
+msgid "Choose how the reward is split."
+msgstr "보상 분배 방식을 선택하세요."
+
+msgid "Give the token a name, such as the computer it will be used on."
+msgstr "토큰 이름을 지정하세요. 예: 사용할 컴퓨터 이름."
+
+msgid "Another member already has this game player id."
+msgstr "다른 멤버가 이미 이 게임 플레이어 ID를 사용 중입니다."
+
+msgid "The ranking must have at least one player."
+msgstr "순위에는 최소 한 명의 플레이어가 있어야 합니다."
+
+msgid "A clan ranking has at most {0} players; {1} were sent."
+msgstr "클랜 순위는 최대 {0}명입니다. {1}명이 전송되었습니다."
+
+msgid "Line {0} is not a player."
+msgstr "{0}행은 플레이어가 아닙니다."
+
+msgid "Line {0}: the position must be a whole number from 1."
+msgstr "{0}행: 순위는 1 이상의 정수여야 합니다."
+
+msgid "Line {0}: position {1} appears twice."
+msgstr "{0}행: 순위 {1}이(가) 두 번 나옵니다."
+
+msgid "Line {0}: the name must have 1 to {1} characters."
+msgstr "{0}행: 이름은 1~{1}자여야 합니다."
+
+msgid "Line {0}: the points must be a whole number of 0 or more."
+msgstr "{0}행: 포인트는 0 이상의 정수여야 합니다."
+
+msgid "Line {0}: the player id must be a positive whole number."
+msgstr "{0}행: 플레이어 ID는 양의 정수여야 합니다."
+
+msgid "Line {0}: player id {1} appears twice."
+msgstr "{0}행: 플레이어 ID {1}이(가) 두 번 나옵니다."
+
+msgid "Unknown capture method."
+msgstr "알 수 없는 수집 방식입니다."
+
+msgid "The tournament date is not a valid date."
+msgstr "토너먼트 날짜가 올바르지 않습니다."
+
+msgid "{0} player(s) are not linked to a member: {1}. They still receive their share; link them to keep the history together."
+msgstr "{0}명의 플레이어가 멤버와 연결되지 않았습니다: {1}. 몫은 그대로 받지만, 기록을 함께 유지하려면 연결하세요."
+
+msgid "{0} player(s) were linked by name. Confirm them: when the result is published their game id is saved on the member."
+msgstr "{0}명의 플레이어가 이름으로 연결되었습니다. 확인하세요. 결과를 게시하면 게임 ID가 멤버에 저장됩니다."
+
+msgid "The positions are not 1 to {0} without gaps: a part of the ranking may be missing."
+msgstr "순위가 1부터 {0}까지 빠짐없이 이어지지 않습니다. 순위 일부가 누락되었을 수 있습니다."
+
+msgid "Points are not in descending order at: {0}. Check for a reading error."
+msgstr "다음 위치에서 포인트가 내림차순이 아닙니다: {0}. 읽기 오류가 없는지 확인하세요."
+
+msgid "Different players share a name: {0}. They are told apart by their game id."
+msgstr "서로 다른 플레이어가 같은 이름을 사용합니다: {0}. 게임 ID로 구분합니다."
+
+msgid "Points were corrected by hand for {0} player(s)."
+msgstr "{0}명의 플레이어 포인트가 수동으로 수정되었습니다."
+
+msgid "This event has no reward to split. Add one before publishing."
+msgstr "이 이벤트에는 나눌 보상이 없습니다. 게시하기 전에 추가하세요."
+
+msgid "Only a draft can be changed. Unpublish the result first."
+msgstr "초안만 수정할 수 있습니다. 먼저 결과 게시를 취소하세요."
+
+msgid "This ranking is not a draft of this event."
+msgstr "이 순위는 이 이벤트의 초안이 아닙니다."
+
+msgid "Event #{0} does not take an imported ranking."
+msgstr "이벤트 #{0}은(는) 가져온 순위를 받지 않습니다."
+
+msgid "The result of event #{0} is already published. Unpublish it to send a new ranking."
+msgstr "이벤트 #{0}의 결과가 이미 게시되었습니다. 새 순위를 보내려면 게시를 취소하세요."
+
+msgid "Nobody qualifies for \"{0}\": check the eligible players and the minimum points."
+msgstr "“{0}”을(를) 받을 대상이 없습니다. 참여 플레이어와 최소 포인트를 확인하세요."
+
+msgid "This event has no published result yet."
+msgstr "이 이벤트에는 아직 게시된 결과가 없습니다."
+
+msgid "Only game tournaments have a ranking to review."
+msgstr "검토할 순위는 게임 토너먼트에만 있습니다."
+
+msgid "There is no draft ranking to change."
+msgstr "수정할 순위 초안이 없습니다."
+
+msgid "The result of event #{0} was published: {1} player(s)."
+msgstr "이벤트 #{0}의 결과가 게시되었습니다: 플레이어 {1}명."
+
+msgid "{0} change(s) saved. The shares below are recalculated."
+msgstr "{0}개의 변경 사항을 저장했습니다. 아래 몫이 다시 계산되었습니다."
+
+msgid "administrative"
+msgstr "관리용"
+
+msgid "This event has no published result."
+msgstr "이 이벤트에는 게시된 결과가 없습니다."
+
+msgid "The result of event #{0} is a draft again and no longer public."
+msgstr "이벤트 #{0}의 결과가 다시 초안이 되어 더 이상 공개되지 않습니다."
+
+msgid "Event #{0} was created from #{1}. Check the name and the date."
+msgstr "#{1}을(를) 바탕으로 이벤트 #{0}을(를) 만들었습니다. 이름과 날짜를 확인하세요."
+
+msgid "The event could not be duplicated: {0}"
+msgstr "이벤트를 복제할 수 없습니다: {0}"
+
+msgid "Choose the ranking CSV file to upload."
+msgstr "업로드할 순위 CSV 파일을 선택하세요."
+
+msgid "The file is too large for a ranking of at most {0} players."
+msgstr "최대 {0}명 순위에 비해 파일이 너무 큽니다."
+
+msgid "The ranking was not accepted: {0}"
+msgstr "순위가 접수되지 않았습니다: {0}"
+
+msgid "Ranking with {0} player(s) received. Review it below."
+msgstr "플레이어 {0}명의 순위를 받았습니다. 아래에서 검토하세요."
+
+msgid "This ranking is the same as the current draft; nothing changed."
+msgstr "이 순위는 현재 초안과 같아 변경된 것이 없습니다."
+
+msgid "Send the API token in the Authorization header: Bearer <token>."
+msgstr "Authorization 헤더로 API 토큰을 보내세요: Bearer <token>."
+
+msgid "This API token is invalid, expired or revoked."
+msgstr "이 API 토큰은 유효하지 않거나 만료되었거나 폐기되었습니다."
+
+msgid "Only an active administrator can use the uploader."
+msgstr "활성 관리자만 업로더를 사용할 수 있습니다."
+
+msgid "Event not found."
+msgstr "이벤트를 찾을 수 없습니다."
+
+msgid "Send the ranking as a JSON body."
+msgstr "순위를 JSON 본문으로 보내세요."
+
+msgid "The ranking was not accepted."
+msgstr "순위가 접수되지 않았습니다."
+
+msgid "The token could not be created. Please, try again."
+msgstr "토큰을 만들 수 없습니다. 다시 시도하세요."
+
+msgid "The token \"{0}\" was revoked."
+msgstr "토큰 “{0}”이(가) 폐기되었습니다."
+
+msgid "{0} is now an administrative account and will not receive tournament rewards."
+msgstr "{0}은(는) 이제 관리용 계정이며 토너먼트 보상을 받지 않습니다."
+
+msgid "{0} will receive tournament rewards again."
+msgstr "{0}은(는) 다시 토너먼트 보상을 받습니다."
+
+msgid "Item"
+msgstr "아이템"
+
+msgid "e.g. Artifact pieces"
+msgstr "예: 유물 조각"
+
+msgid "Split"
+msgstr "분배"
+
+msgid "Minimum points"
+msgstr "최소 포인트"
+
+msgid "Leftover units"
+msgstr "남는 수량"
+
+msgid "Remove"
+msgstr "삭제"
+
+msgid "Game tournament: enter the day it was played in the game. Past dates are accepted, and nothing is counted from chests."
+msgstr "게임 토너먼트: 게임에서 진행된 날짜를 입력하세요. 지난 날짜도 입력할 수 있으며 상자는 집계되지 않습니다."
+
+msgid "Rewards to split"
+msgstr "나눌 보상"
+
+msgid "What the clan received for this tournament and how it is divided. Proportional gives each player a part matching their share of the points; equal gives everybody the same. Administrative accounts never take part, and players below the minimum points are left out."
+msgstr "이번 토너먼트로 클랜이 받은 것과 분배 방법입니다. 비례는 각 플레이어의 포인트 비중만큼 나누고, 균등은 모두에게 똑같이 나눕니다. 관리용 계정은 참여하지 않으며 최소 포인트 미만인 플레이어는 제외됩니다."
+
+msgid "Add another reward"
+msgstr "보상 추가"
+
+msgid "Optional: filled in from the rewards when left empty."
+msgstr "선택 사항: 비워 두면 보상 내용으로 채워집니다."
+
+msgid "Review result - Event #{0}"
+msgstr "결과 검토 - 이벤트 #{0}"
+
+msgid "game id"
+msgstr "게임 ID"
+
+msgid "by name"
+msgstr "이름으로"
+
+msgid "name correction"
+msgstr "이름 수정"
+
+msgid "by hand"
+msgstr "수동"
+
+msgid "not linked"
+msgstr "연결 안 됨"
+
+msgid "EventUploader (game data)"
+msgstr "EventUploader (게임 데이터)"
+
+msgid "EventUploader (screen reading)"
+msgstr "EventUploader (화면 인식)"
+
+msgid "CSV file"
+msgstr "CSV 파일"
+
+msgid "Draft"
+msgstr "초안"
+
+msgid "Published"
+msgstr "게시됨"
+
+msgid "Replaced"
+msgstr "대체됨"
+
+msgid "Review result"
+msgstr "결과 검토"
+
+msgid "Published page"
+msgstr "게시된 페이지"
+
+msgid "Unpublish"
+msgstr "게시 취소"
+
+msgid "Take the result of event #{0} down? Players will stop seeing it until it is published again."
+msgstr "이벤트 #{0}의 결과를 내리시겠습니까? 다시 게시할 때까지 플레이어에게 보이지 않습니다."
+
+msgid "Edit event"
+msgstr "이벤트 편집"
+
+msgid "min. {0} pts"
+msgstr "최소 {0}점"
+
+msgid "{0} handed out to {1} player(s)"
+msgstr "{0}을(를) 플레이어 {1}명에게 지급"
+
+msgid "{0} left over"
+msgstr "{0} 남음"
+
+msgid "No reward yet. Edit the event to add what will be split."
+msgstr "아직 보상이 없습니다. 이벤트를 편집해 나눌 보상을 추가하세요."
+
+msgid "Ranking"
+msgstr "순위"
+
+msgid "No ranking has been received yet."
+msgstr "아직 받은 순위가 없습니다."
+
+msgid "Received {0} UTC from {1}"
+msgstr "{0} UTC에 {1}에게서 받음"
+
+msgid "In the game: {0}"
+msgstr "게임 내: {0}"
+
+msgid "Send a ranking"
+msgstr "순위 보내기"
+
+msgid "The EventUploader sends it straight from the game. Without it, upload the ranking.csv the discovery tool exports."
+msgstr "EventUploader가 게임에서 바로 보냅니다. 없으면 탐색 도구가 내보낸 ranking.csv를 업로드하세요."
+
+msgid "Replace with this file"
+msgstr "이 파일로 교체"
+
+msgid "Upload CSV"
+msgstr "CSV 업로드"
+
+msgid "Tokens for the EventUploader"
+msgstr "EventUploader 토큰"
+
+msgid "{0} taking part in the prize"
+msgstr "{0}명이 보상 대상"
+
+msgid "Administrative accounts"
+msgstr "관리용 계정"
+
+msgid "never receive a prize"
+msgstr "보상을 받지 않음"
+
+msgid "Not linked"
+msgstr "연결 안 됨"
+
+msgid "players without a member"
+msgstr "멤버가 없는 플레이어"
+
+msgid "Points in the split"
+msgstr "분배 대상 포인트"
+
+msgid "of {0} in the ranking"
+msgstr "순위 전체 {0} 중"
+
+msgid "Ranking and shares"
+msgstr "순위와 몫"
+
+msgid "Player in the game"
+msgstr "게임 내 플레이어"
+
+msgid "Takes part in the prize"
+msgstr "보상 대상"
+
+msgid "- not linked -"
+msgstr "- 연결 안 됨 -"
+
+msgid "Value received from the game"
+msgstr "게임에서 받은 값"
+
+msgid "was {0}"
+msgstr "원래 {0}"
+
+msgid "Total handed out"
+msgstr "총 지급량"
+
+msgid "of {0}"
+msgstr "/ {0}"
+
+msgid "Change the member, the prize checkbox or the points, then recalculate to see the new shares."
+msgstr "멤버, 보상 체크 또는 포인트를 바꾼 뒤 다시 계산하면 새 몫을 볼 수 있습니다."
+
+msgid "Save and recalculate"
+msgstr "저장 후 다시 계산"
+
+msgid "Publish this result? Players will see the ranking and what each one receives."
+msgstr "이 결과를 게시하시겠습니까? 플레이어가 순위와 각자 받는 보상을 보게 됩니다."
+
+msgid "Publish result"
+msgstr "결과 게시"
+
+msgid "Rankings received"
+msgstr "받은 순위"
+
+msgid "When (UTC)"
+msgstr "시각 (UTC)"
+
+msgid "Sent by"
+msgstr "보낸 사람"
+
+msgid "Tournament Result"
+msgstr "토너먼트 결과"
+
+msgid "Ranking read from the game and the rewards each player receives"
+msgstr "게임에서 읽어 온 순위와 플레이어별 보상"
+
+msgid "Published {0} UTC"
+msgstr "{0} UTC에 게시됨"
+
+msgid "{0} points"
+msgstr "{0} 포인트"
+
+msgid "{0} receive a reward"
+msgstr "{0}명이 보상 받음"
+
+msgid "Clan Total"
+msgstr "클랜 합계"
+
+msgid "points in the tournament"
+msgstr "토너먼트 포인트"
+
+msgid "Rewards"
+msgstr "보상"
+
+msgid "Who hands out the rewards"
+msgstr "보상 지급 담당"
+
+msgid "Rewards are delivered in the game. Look for this player if yours has not arrived."
+msgstr "보상은 게임 안에서 지급됩니다. 받지 못했다면 이 플레이어를 찾아가세요."
+
+msgid "No reward"
+msgstr "보상 없음"
+
+msgid "Awaiting result"
+msgstr "결과 대기 중"
+
+msgid "API Tokens"
+msgstr "API 토큰"
+
+msgid "New Game Tournament"
+msgstr "새 게임 토너먼트"
+
+msgid "Duplicate"
+msgstr "복제"
+
+msgid "Tokens the EventUploader uses to send tournament rankings to this site"
+msgstr "EventUploader가 이 사이트로 토너먼트 순위를 보낼 때 쓰는 토큰"
+
+msgid "Token \"{0}\" created"
+msgstr "토큰 “{0}” 생성됨"
+
+msgid "Copy it now and paste it in the EventUploader, together with the site address. It will not be shown again: if it is lost, revoke it and create another."
+msgstr "지금 복사해서 사이트 주소와 함께 EventUploader에 붙여 넣으세요. 다시 표시되지 않습니다. 잃어버리면 폐기하고 새로 만드세요."
+
+msgid "Site address: {0}"
+msgstr "사이트 주소: {0}"
+
+msgid "New token"
+msgstr "새 토큰"
+
+msgid "Create one per computer the EventUploader runs on. The token belongs to you and can only send rankings; it cannot read or change anything else."
+msgstr "EventUploader를 실행하는 컴퓨터마다 하나씩 만드세요. 토큰은 본인 소유이며 순위 전송만 할 수 있고 다른 것은 읽거나 바꿀 수 없습니다."
+
+msgid "e.g. Clan leader PC"
+msgstr "예: 클랜장 PC"
+
+msgid "Create token"
+msgstr "토큰 만들기"
+
+msgid "Tokens"
+msgstr "토큰"
+
+msgid "Owner"
+msgstr "소유자"
+
+msgid "Starts with"
+msgstr "시작 문자"
+
+msgid "Created (UTC)"
+msgstr "생성 (UTC)"
+
+msgid "Last used (UTC)"
+msgstr "마지막 사용 (UTC)"
+
+msgid "never"
+msgstr "사용 안 함"
+
+msgid "Revoked"
+msgstr "폐기됨"
+
+msgid "Expired"
+msgstr "만료됨"
+
+msgid "Revoke"
+msgstr "폐기"
+
+msgid "Revoke the token \"{0}\"? The EventUploader using it stops working at once."
+msgstr "토큰 “{0}”을(를) 폐기하시겠습니까? 이 토큰을 쓰는 EventUploader는 즉시 작동을 멈춥니다."
+
+msgid "No token has been created yet."
+msgstr "아직 만든 토큰이 없습니다."
+
+msgid "Tournament rewards"
+msgstr "토너먼트 보상"
+
+msgid "Administrative"
+msgstr "관리용"
+
+msgid "Receives"
+msgstr "받음"
+
+msgid "Mark as a player who receives rewards"
+msgstr "보상을 받는 플레이어로 표시"
+
+msgid "Mark as an administrative account"
+msgstr "관리용 계정으로 표시"
+
+msgid "Game player id"
+msgstr "게임 플레이어 ID"
+
+msgid "Filled in automatically by the first published tournament"
+msgstr "첫 번째로 게시된 토너먼트에서 자동으로 채워집니다"
+
+msgid "Administrative account (takes part in rankings but never receives tournament rewards)"
+msgstr "관리용 계정 (순위에는 표시되지만 토너먼트 보상은 받지 않음)"
+
+#. Game tournaments registered by the EventUploader, event types
+msgid "This game tournament result is already registered."
+msgstr "이 게임 토너먼트 결과는 이미 등록되어 있습니다."
+
+msgid "The tournament result id is missing or invalid."
+msgstr "토너먼트 결과 ID가 없거나 올바르지 않습니다."
+
+msgid "The tournament type is missing or invalid."
+msgstr "토너먼트 유형이 없거나 올바르지 않습니다."
+
+msgid "The tournament name has more than {0} characters."
+msgstr "토너먼트 이름이 {0}자를 넘습니다."
+
+msgid "The tournament cannot end in the future."
+msgstr "토너먼트 종료 시각은 미래일 수 없습니다."
+
+msgid "Game tournament {0}"
+msgstr "게임 토너먼트 {0}"
+
+msgid "Event type"
+msgstr "이벤트 유형"
+
+msgid "Game event"
+msgstr "게임 이벤트"
+
+msgid "A tournament played in the game. It is registered after it ends, so past dates are accepted, and the EventUploader usually creates it together with the ranking."
+msgstr "게임에서 진행된 토너먼트입니다. 끝난 뒤에 등록하므로 지난 날짜도 입력할 수 있으며, 보통 EventUploader가 순위와 함께 만듭니다."
+
+msgid "Clan event"
+msgstr "클랜 이벤트"
+
+msgid "An internal challenge to push crypts and epic monsters. It is counted from the chests collected inside its window, which starts in the future."
+msgstr "지하실과 에픽 몬스터를 독려하는 클랜 내부 도전입니다. 기간 안에 모은 상자로 집계하며, 기간은 미래에 시작해야 합니다."
+
+msgid "When it was played"
+msgstr "진행 시각"
+
+msgid "The day and time the tournament ended in the game, in UTC. Past dates are accepted and nothing is counted from chests."
+msgstr "게임에서 토너먼트가 끝난 날짜와 시각(UTC)입니다. 지난 날짜도 입력할 수 있으며 상자는 집계되지 않습니다."
+
+#. Tournament catalogue, event dates, tournament mapper
+msgid "The image must be a PNG, JPEG, WebP or GIF of at most {0} KB."
+msgstr "이미지는 {0}KB 이하의 PNG, JPEG, WebP 또는 GIF여야 합니다."
+
+msgid "Tournament \"{0}\" saved."
+msgstr "토너먼트 \"{0}\"을(를) 저장했습니다."
+
+msgid "The tournament could not be saved. Please check the fields below."
+msgstr "토너먼트를 저장할 수 없습니다. 아래 항목을 확인하세요."
+
+msgid "Tournament Catalogue"
+msgstr "토너먼트 카탈로그"
+
+msgid "read from the Journal"
+msgstr "Journal에서 읽음"
+
+msgid "typed in the uploader"
+msgstr "업로더에서 입력함"
+
+msgid "set by hand"
+msgstr "직접 설정함"
+
+msgid "The game's tournaments. Names and ids are filled in by the tournament mapper; the image and the duration are set here."
+msgstr "게임의 토너먼트입니다. 이름과 id는 토너먼트 매퍼가 채우고, 이미지와 기간은 여기에서 설정합니다."
+
+msgid "Image"
+msgstr "이미지"
+
+msgid "Tournament"
+msgstr "토너먼트"
+
+msgid "Game id"
+msgstr "게임 id"
+
+msgid "Duration"
+msgstr "기간"
+
+msgid "Last seen (UTC)"
+msgstr "마지막 확인 (UTC)"
+
+msgid "Name not mapped yet"
+msgstr "이름이 아직 매핑되지 않음"
+
+msgid "{0} day(s)"
+msgstr "{0}일"
+
+msgid "not set (1 day)"
+msgstr "설정 안 됨 (1일)"
+
+msgid "The catalogue is empty. Run the tournament mapper, or send a tournament with the EventUploader."
+msgstr "카탈로그가 비어 있습니다. 토너먼트 매퍼를 실행하거나 EventUploader로 토너먼트를 보내세요."
+
+msgid "Edit Tournament"
+msgstr "토너먼트 편집"
+
+msgid "Game id {0}"
+msgstr "게임 id {0}"
+
+msgid "As it appears in the game"
+msgstr "게임에 표시되는 그대로"
+
+msgid "Filled in by the tournament mapper. A name changed here is kept: the mapper will not overwrite it."
+msgstr "토너먼트 매퍼가 채웁니다. 여기에서 바꾼 이름은 유지되며 매퍼가 덮어쓰지 않습니다."
+
+msgid "Duration (days)"
+msgstr "기간 (일)"
+
+msgid "How long the tournament runs. A new event starts this many days before the end the game reports; one day when empty."
+msgstr "토너먼트 진행 기간입니다. 새 이벤트는 게임이 알려 준 종료 시각보다 이 일수만큼 앞서 시작하며, 비어 있으면 1일입니다."
+
+msgid "PNG, JPEG, WebP or GIF, up to 1 MB."
+msgstr "PNG, JPEG, WebP 또는 GIF, 최대 1MB."
+
+msgid "Remove the image"
+msgstr "이미지 삭제"
+
+msgid "Latest events of this tournament"
+msgstr "이 토너먼트의 최근 이벤트"
+
+msgid "Send at least one tournament."
+msgstr "토너먼트를 하나 이상 보내세요."
+
+msgid "Send at most {0} tournaments at a time."
+msgstr "한 번에 최대 {0}개의 토너먼트를 보내세요."
+
+msgid "Line {0} is not a tournament."
+msgstr "{0}번째 줄은 토너먼트가 아닙니다."
+
+msgid "The tournaments were not accepted."
+msgstr "토너먼트가 받아들여지지 않았습니다."
+
+msgid "The dates of event #{0} were saved."
+msgstr "이벤트 #{0}의 날짜를 저장했습니다."
+
+msgid "The dates were not saved: {0}"
+msgstr "날짜를 저장하지 못했습니다: {0}"
+
+msgid "Lasts {0} day(s) in the catalogue"
+msgstr "카탈로그 기준 {0}일 진행"
+
+msgid "No duration in the catalogue: one day assumed"
+msgstr "카탈로그에 기간이 없어 1일로 간주합니다"
+
+msgid "Edit in the catalogue"
+msgstr "카탈로그에서 편집"
+
+msgid "Save dates"
+msgstr "날짜 저장"
+
+msgid "The duration must be a whole number of days."
+msgstr "기간은 정수 일수여야 합니다."
+
+msgid "The duration must be between {0} and {1} days."
+msgstr "기간은 {0}일에서 {1}일 사이여야 합니다."
+
+msgid "Monitoring"
+msgstr "모니터링"
+
+msgid "Running, last run had problems"
+msgstr "실행 중, 마지막 실행에 문제가 있었음"
+
+msgid "Stopped"
+msgstr "중지됨"
+
+msgid "Stuck"
+msgstr "멈춤"
+
+msgid "Never ran"
+msgstr "실행된 적 없음"
+
+msgid "Not watched"
+msgstr "감시 안 함"
+
+msgid "running"
+msgstr "실행 중"
+
+msgid "success"
+msgstr "성공"
+
+msgid "partial"
+msgstr "부분 성공"
+
+msgid "failed"
+msgstr "실패"
+
+msgid "cancelled"
+msgstr "취소됨"
+
+msgid "Chest collector"
+msgstr "상자 수집기"
+
+msgid "Daily maintenance"
+msgstr "일일 유지보수"
+
+msgid "Tournament upload"
+msgstr "토너먼트 업로드"
+
+msgid "{0} min"
+msgstr "{0}분"
+
+msgid "{0} h {1} min"
+msgstr "{0}시간 {1}분"
+
+msgid "{0} d {1} h"
+msgstr "{0}일 {1}시간"
+
+msgid "Whether the chest collector, the maintenance, the database backup and the tournament uploads are running"
+msgstr "상자 수집기, 유지보수, 데이터베이스 백업, 토너먼트 업로드가 동작하는지 여부"
+
+msgid "A job is running when it had a good run within its limit. A run that found no chests still counts: this watches the process, not the data."
+msgstr "제한 시간 안에 정상 실행이 있었으면 작업이 동작 중인 것입니다. 상자를 찾지 못한 실행도 포함됩니다. 데이터가 아니라 프로세스를 감시합니다."
+
+msgid "Last good run {0} ago (limit {1})."
+msgstr "마지막 정상 실행: {0} 전 (제한 {1})."
+
+msgid "No good run on record (limit {0})."
+msgstr "정상 실행 기록 없음 (제한 {0})."
+
+msgid "Last run: {0} on {1}, started {2} UTC."
+msgstr "마지막 실행: {1}에서 {0}, {2} UTC에 시작."
+
+msgid "Limits"
+msgstr "제한"
+
+msgid "How long each job may go without a good run before the monitor raises the alarm. Leave room for one missed run: a collector scheduled every hour does well with 180 minutes."
+msgstr "모니터가 경보를 보내기 전까지 각 작업이 정상 실행 없이 지낼 수 있는 시간입니다. 한 번 놓친 실행만큼 여유를 두세요. 매시간 실행되는 수집기라면 180분이 적당합니다."
+
+msgid "Job"
+msgstr "작업"
+
+msgid "Watched"
+msgstr "감시"
+
+msgid "Limit (minutes)"
+msgstr "제한 (분)"
+
+msgid "Save limits"
+msgstr "제한 저장"
+
+msgid "Recent runs"
+msgstr "최근 실행"
+
+msgid "The last 50 runs, newest first. History older than {0} days is deleted by the daily maintenance."
+msgstr "최근 50개 실행, 최신순. {0}일보다 오래된 기록은 일일 유지보수가 삭제합니다."
+
+msgid "No run recorded yet."
+msgstr "아직 실행 기록이 없습니다."
+
+msgid "Started (UTC)"
+msgstr "시작 (UTC)"
+
+msgid "Took"
+msgstr "소요 시간"
+
+msgid "Host"
+msgstr "호스트"
+
+msgid "{0} s"
+msgstr "{0}초"
+
+msgid "External monitor"
+msgstr "외부 모니터"
+
+msgid "The alarm has to come from outside the server: if the server goes down, nothing on it can send one. A Google Apps Script reads the address below and e-mails you when a job stops or comes back."
+msgstr "경보는 서버 밖에서 와야 합니다. 서버가 다운되면 서버 안의 어떤 것도 경보를 보낼 수 없습니다. Google Apps Script가 아래 주소를 읽고, 작업이 멈추거나 다시 동작하면 이메일을 보냅니다."
+
+msgid "Address"
+msgstr "주소"
+
+msgid "Key, sent in the {0} header:"
+msgstr "{0} 헤더로 보내는 키:"
+
+msgid "No key yet: the address answers 503 until one is created."
+msgstr "아직 키가 없습니다. 키를 만들기 전까지 이 주소는 503을 반환합니다."
+
+msgid "The key only reads this status. It cannot change anything on the site."
+msgstr "이 키는 이 상태를 읽기만 하며 사이트의 어떤 것도 바꿀 수 없습니다."
+
+msgid "Create a new key"
+msgstr "새 키 만들기"
+
+msgid "Create key"
+msgstr "키 만들기"
+
+msgid "Create a new key? The monitor stops working until you paste the new one in it."
+msgstr "새 키를 만들까요? 새 키를 붙여넣기 전까지 모니터가 동작하지 않습니다."
+
+msgid "The script, ready to paste into a new project at script.google.com:"
+msgstr "script.google.com의 새 프로젝트에 바로 붙여넣을 수 있는 스크립트:"
+
+msgid "A new monitoring key was created. Update it in the monitor: the old one no longer works."
+msgstr "새 모니터링 키를 만들었습니다. 모니터에서 업데이트하세요. 이전 키는 더 이상 동작하지 않습니다."
+
+msgid "\"{0}\" was not saved: {1}"
+msgstr "\"{0}\"을(를) 저장하지 못했습니다: {1}"
+
+msgid "Monitoring limits saved."
+msgstr "모니터링 제한을 저장했습니다."
+
+msgid "No monitoring key is set. Create one under Admin > Monitoring."
+msgstr "모니터링 키가 설정되지 않았습니다. Admin > 모니터링에서 만드세요."
+
+msgid "Send the monitoring key in the X-Monitor-Key header."
+msgstr "모니터링 키를 X-Monitor-Key 헤더로 보내세요."
+
+msgid "Between {0} and {1} minutes."
+msgstr "{0}분에서 {1}분 사이여야 합니다."

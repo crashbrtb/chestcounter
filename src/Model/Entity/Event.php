@@ -23,13 +23,20 @@ use Cake\ORM\Entity;
  * @property resource|string|null $banner_image
  * @property string $status
  * @property \Cake\I18n\DateTime|null $finalized_at
+ * @property \Cake\I18n\DateTime|null $published_at
+ * @property string|null $game_result_uid
+ * @property string|null $game_tournament_key
+ * @property int|null $game_tournament_id
+ * @property \App\Model\Entity\GameTournament|null $game_tournament
  * @property int|null $created_by
  * @property \Cake\I18n\DateTime|null $created
  * @property \Cake\I18n\DateTime|null $modified
  * @property array<\App\Model\Entity\EventChest> $event_chests
  * @property array<\App\Model\Entity\EventStanding> $event_standings
+ * @property array<\App\Model\Entity\EventReward> $event_rewards
  * @property string $state
  * @property bool $is_running
+ * @property bool $is_imported
  * @property bool $has_custom_banner
  */
 class Event extends Entity
@@ -38,6 +45,12 @@ class Event extends Entity
     public const CRITERIA_CHEST_SCORE = 'chest_score';
     public const CRITERIA_EPIC_MONSTER = 'epic_monster';
     public const CRITERIA_CUSTOM_CHESTS = 'custom_chests';
+    /**
+     * A tournament played in the game. Its ranking is not computed from chests:
+     * it is uploaded by the EventUploader, reviewed, and published with every
+     * player's share of the rewards.
+     */
+    public const CRITERIA_IMPORTED = 'imported';
 
     public const METRIC_SCORE = 'score';
     public const METRIC_COUNT = 'count';
@@ -53,6 +66,8 @@ class Event extends Entity
     public const STATE_RUNNING = 'running';
     public const STATE_FINISHED = 'finished';
     public const STATE_CANCELLED = 'cancelled';
+    /** Imported event whose result has not been published yet. */
+    public const STATE_AWAITING = 'awaiting';
 
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -77,6 +92,7 @@ class Event extends Entity
         'finalized_at' => true,
         'created_by' => true,
         'event_chests' => true,
+        'event_rewards' => true,
     ];
 
     /**
@@ -90,7 +106,7 @@ class Event extends Entity
     /**
      * @var list<string>
      */
-    protected array $_virtual = ['state', 'is_running', 'has_custom_banner'];
+    protected array $_virtual = ['state', 'is_running', 'is_imported', 'has_custom_banner'];
 
     /**
      * Human-readable labels for each criteria value.
@@ -104,6 +120,7 @@ class Event extends Entity
             self::CRITERIA_CHEST_SCORE => __('Chest score'),
             self::CRITERIA_EPIC_MONSTER => __('Number of epic monster chests'),
             self::CRITERIA_CUSTOM_CHESTS => __('Custom chests'),
+            self::CRITERIA_IMPORTED => __('Game tournament (imported score)'),
         ];
     }
 
@@ -119,6 +136,7 @@ class Event extends Entity
             self::CRITERIA_CHEST_SCORE => __('Chests are worth the score configured for their type.'),
             self::CRITERIA_EPIC_MONSTER => __('Only chests from epic monsters count, one point each.'),
             self::CRITERIA_CUSTOM_CHESTS => __('Only the chest types you pick below count.'),
+            self::CRITERIA_IMPORTED => __('The ranking is read from the game by the EventUploader and the rewards below are split among the players.'),
         ];
     }
 
@@ -141,6 +159,7 @@ class Event extends Entity
     public function pointsLabel(): string
     {
         return match (true) {
+            $this->criteria === self::CRITERIA_IMPORTED => __('Points'),
             $this->criteria === self::CRITERIA_CHEST_COUNT => __('Chests'),
             $this->criteria === self::CRITERIA_EPIC_MONSTER => __('Epic Chests'),
             $this->criteria === self::CRITERIA_CUSTOM_CHESTS
@@ -158,6 +177,13 @@ class Event extends Entity
     {
         if ($this->status === self::STATUS_CANCELLED) {
             return self::STATE_CANCELLED;
+        }
+
+        // An imported tournament already happened in the game: its dates say
+        // when, not whether it is running. What matters is whether the result
+        // has been published.
+        if ($this->criteria === self::CRITERIA_IMPORTED) {
+            return $this->published_at !== null ? self::STATE_FINISHED : self::STATE_AWAITING;
         }
 
         $now = DateTime::now();
@@ -178,6 +204,14 @@ class Event extends Entity
     protected function _getIsRunning(): bool
     {
         return $this->state === self::STATE_RUNNING;
+    }
+
+    /**
+     * @return bool
+     */
+    protected function _getIsImported(): bool
+    {
+        return $this->criteria === self::CRITERIA_IMPORTED;
     }
 
     /**

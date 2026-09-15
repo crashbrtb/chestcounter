@@ -55,6 +55,28 @@ return function (RouteBuilder $routes): void {
     $routes->connect('/main', ['controller' => 'CollectedChests', 'action' => 'score']);
     $routes->connect('/main/score', ['controller' => 'CollectedChests', 'action' => 'score']);
 
+    // API used by the EventUploader desktop tool. Authenticated with a personal
+    // token (Authorization: Bearer ...), never with the session, and exempt from
+    // CSRF for that reason: see Application::middleware().
+    $routes->scope('/api/v1', ['prefix' => 'Api'], function (RouteBuilder $builder): void {
+        $builder->setExtensions(['json']);
+        $builder->connect('/me', ['controller' => 'Uploader', 'action' => 'me']);
+        $builder->connect('/events/awaiting', ['controller' => 'Uploader', 'action' => 'awaiting']);
+        // The uploader's everyday call: registers the tournament if it is new
+        // and attaches the ranking as a draft.
+        $builder->connect('/tournaments', ['controller' => 'Uploader', 'action' => 'tournament']);
+        $builder->connect('/tournaments/known', ['controller' => 'Uploader', 'action' => 'known']);
+        // The tournament mapper reports the names it reads off the Journal.
+        $builder->connect('/tournament-catalog', ['controller' => 'Uploader', 'action' => 'catalog']);
+        $builder->connect(
+            '/events/{id}/imports',
+            ['controller' => 'Uploader', 'action' => 'import'],
+            ['pass' => ['id'], 'id' => '\d+']
+        );
+        // Job heartbeats for the external monitor, behind its own read-only key.
+        $builder->connect('/health', ['controller' => 'Health', 'action' => 'index']);
+    });
+
     $routes->scope('/', function (RouteBuilder $builder): void {
         /*
          * Here, we are connecting '/' (base path) to a controller called 'Pages',

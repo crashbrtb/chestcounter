@@ -5,13 +5,18 @@ namespace App\Controller;
 
 use App\Model\Entity\Event;
 use App\Model\Entity\EventAsset;
+use App\Model\Entity\EventImport;
+use App\Model\Entity\EventReward;
 use App\Model\Table\EventAssetsTable;
+use App\Service\EventImportService;
 use App\Service\EventScoringService;
+use DomainException;
 use Cake\Http\Exception\BadRequestException;
 use Cake\Http\Exception\NotFoundException;
 use Cake\Http\Response;
 use Cake\I18n\DateTime;
 use Cake\ORM\TableRegistry;
+use Cake\Utility\Hash;
 use Psr\Http\Message\UploadedFileInterface;
 
 /**
@@ -89,8 +94,12 @@ class EventsController extends AppController
     {
         $event = $this->Events->find('withoutBanner')
             ->where(['Events.id' => $id])
-            ->contain(['EventChests' => ['StandardChests']])
+            ->contain(['EventChests' => ['StandardChests'], 'EventRewards', 'GameTournaments' => ['fields' => ['id', 'game_type', 'name', 'duration_days', 'image_mime', 'modified']]])
             ->firstOrFail();
+
+        if ($event->is_imported) {
+            return $this->viewImported($event);
+        }
 
         $results = (new EventScoringService())->resultsFor($event);
 
@@ -204,7 +213,9 @@ class EventsController extends AppController
         $this->requireAdmin();
 
         $event = $this->Events->newEmptyEntity();
-        $event->set('criteria', Event::CRITERIA_CHEST_SCORE);
+        $event->set('criteria', $this->request->getQuery('type') === Event::CRITERIA_IMPORTED
+            ? Event::CRITERIA_IMPORTED
+            : Event::CRITERIA_CHEST_SCORE);
         $event->set('custom_metric', Event::METRIC_SCORE);
 
         if ($this->request->is('post')) {
@@ -230,7 +241,7 @@ class EventsController extends AppController
     {
         $this->requireAdmin();
 
-        $event = $this->Events->get($id, contain: ['EventChests']);
+        $event = $this->Events->get($id, contain: ['EventChests', 'EventRewards']);
 
         if ($this->request->is(['patch', 'post', 'put'])) {
             $saved = $this->save($event);
@@ -262,6 +273,12 @@ class EventsController extends AppController
         $this->request->allowMethod(['post', 'put']);
 
         $event = $this->Events->get($id);
+
+        if ($event->is_imported) {
+            // A game tournament's result comes from its reviewed ranking, not
+            // from collected chests.
+            return $this->redirect(['action' => 'review', $event->id]);
+        }
 
         // Only a closed window can be recorded. While an event is still running
         // its dashboard is live and any snapshot would be out of date the moment
@@ -433,7 +450,7 @@ class EventsController extends AppController
         }
 
         $event = $this->Events->patchEntity($event, $data, [
-            'associated' => ['EventChests'],
+            'associated' => ['EventChests', 'EventRewards'],
         ]);
 
         if ($this->Events->save($event)) {
@@ -441,7 +458,9 @@ class EventsController extends AppController
                 ? __('Event #{0} was created.', $event->event_number)
                 : __('Event #{0} was saved.', $event->event_number));
 
-            return $this->redirect(['action' => 'view', $event->id]);
+            // A game tournament has nothing to show until its ranking arrives:
+            // its review page is where the administrator goes next.
+            return $this->redirect(['action' => $event->is_imported ? 'review' : 'view', $event->id]);
         }
 
         $this->Flash->error(__('The event could not be saved. Please check the fields below.'));
@@ -576,5 +595,267 @@ class EventsController extends AppController
         $this->set(compact('event', 'scoredChests', 'selectedChestIds'));
         $this->set('criteriaOptions', Event::criteriaOptions());
         $this->set('criteriaHints', Event::criteriaHints());
+        $this->set('ruleOptions', EventReward::ruleOptions());
+        $this->set('remainderOptions', EventReward::remainderOptions());
+    }
+
+    /**
+     * A game tournament's page: its published result with every player's share.
+     *
+     * Until the result is published the page does not exist for players, only
+     * for administrators, who are sent to the review instead.
+     *
+     * @param \App\Model\Entity\Event $event The event, rewards loaded.
+     * @return \Cake\Http\Response|null
+     */
+    private function viewImported(Event $event): ?Response
+    {
+        if ($event->published_at === null) {
+            if ($this->isAdmin()) {
+                return $this->redirect(['action' => 'review', $event->id]);
+            }
+            throw new NotFoundException(__('This event has no published result yet.'));
+        }
+
+        $result = (new EventImportService())->publishedResult($event);
+        $isAdmin = $this->isAdmin();
+
+        $this->set('cakelte_theme', [
+            'sidebar' => ['enable' => false],
+            'navbar' => ['enable' => true],
+        ]);
+        $this->set(compact('event', 'result', 'isAdmin'));
+
+        return $this->render('view_imported');
+    }
+
+    /**
+     * Review a game tournament's uploaded ranking, and publish it.
+     *
+     * GET shows the current draft (or the published import) with each player's
+     * share of every reward. POST does one of:
+     * - `intent=upload`: take a CSV ranking (the discovery tool's ranking.csv)
+     * - `intent=save`: store the corrections made in the table
+     * - `intent=publish`: store them and publish the result
+     *
+     * @param string|null $id Event id.
+     * @return \Cake\Http\Response|null|void
+     */
+    public function review(?string $id = null)
+    {
+        $this->requireAdmin();
+
+        $event = $this->Events->find('withoutBanner')
+            ->where(['Events.id' => $id])
+            ->contain(['EventRewards', 'GameTournaments' => ['fields' => ['id', 'game_type', 'name', 'duration_days', 'image_mime', 'modified']]])
+            ->firstOrFail();
+
+        if (!$event->is_imported) {
+            $this->Flash->warning(__('Only game tournaments have a ranking to review.'));
+
+            return $this->redirect(['action' => 'view', $event->id]);
+        }
+
+        $service = new EventImportService();
+        $imports = $this->fetchTable('EventImports');
+
+        if ($this->request->is(['post', 'put'])) {
+            $intent = (string)$this->request->getData('intent');
+
+            if ($intent === 'upload') {
+                $this->uploadCsv($service, $event);
+
+                return $this->redirect(['action' => 'review', $event->id]);
+            }
+
+            if ($intent === 'dates') {
+                $this->saveDates($event);
+
+                return $this->redirect(['action' => 'review', $event->id]);
+            }
+
+            $import = $imports->current($event->id);
+            if ($import === null || $import->status !== EventImport::STATUS_DRAFT) {
+                $this->Flash->warning(__('There is no draft ranking to change.'));
+
+                return $this->redirect(['action' => 'review', $event->id]);
+            }
+
+            try {
+                $changed = $service->applyReview($import, (array)$this->request->getData('rows'));
+                if ($intent === 'publish') {
+                    $recorded = $service->publish($event, $imports->current($event->id));
+                    $this->Flash->success(__('The result of event #{0} was published: {1} player(s).', $event->event_number, $recorded));
+
+                    return $this->redirect(['action' => 'view', $event->id]);
+                }
+                $this->Flash->success(__('{0} change(s) saved. The shares below are recalculated.', $changed));
+            } catch (DomainException $e) {
+                $this->Flash->error($e->getMessage());
+            }
+
+            return $this->redirect(['action' => 'review', $event->id]);
+        }
+
+        $import = $imports->current($event->id);
+        $preview = $import !== null ? $service->preview($event, $import) : null;
+
+        $history = $imports->find()
+            ->where(['EventImports.event_id' => $event->id])
+            ->contain(['Users'])
+            ->orderBy(['EventImports.id' => 'DESC'])
+            ->limit(10)
+            ->all()
+            ->toList();
+
+        $members = [];
+        foreach ($this->fetchTable('Members')->find()->select(['id', 'player', 'administrative_account'])->orderBy(['player' => 'ASC'])->all() as $member) {
+            $members[$member->id] = $member->player . ($member->administrative_account ? ' (' . __('administrative') . ')' : '');
+        }
+
+        $this->set(compact('event', 'import', 'preview', 'history', 'members'));
+    }
+
+    /**
+     * Take a published result down so the ranking can be corrected.
+     *
+     * @param string|null $id Event id.
+     * @return \Cake\Http\Response
+     */
+    public function unpublish(?string $id = null): Response
+    {
+        $this->requireAdmin();
+        $this->request->allowMethod(['post']);
+
+        $event = $this->Events->get($id);
+        if (!$event->is_imported || $event->published_at === null) {
+            $this->Flash->warning(__('This event has no published result.'));
+
+            return $this->redirect(['action' => 'manage']);
+        }
+
+        (new EventImportService())->unpublish($event);
+        $this->Flash->success(__('The result of event #{0} is a draft again and no longer public.', $event->event_number));
+
+        return $this->redirect(['action' => 'review', $event->id]);
+    }
+
+    /**
+     * Start a new event from an existing one: same rules, same rewards, dated
+     * today. Tournaments repeat every day with the same prizes.
+     *
+     * @param string|null $id Event id.
+     * @return \Cake\Http\Response
+     */
+    public function duplicate(?string $id = null): Response
+    {
+        $this->requireAdmin();
+        $this->request->allowMethod(['post']);
+
+        $source = $this->Events->get($id, contain: ['EventRewards', 'EventChests']);
+
+        $today = DateTime::now()->setTime(0, 0);
+        $isImported = $source->is_imported;
+        $data = [
+            'name' => $source->name,
+            'description' => $source->description,
+            'criteria' => $source->criteria,
+            'custom_metric' => $source->custom_metric,
+            'prize' => $isImported ? '' : $source->prize,
+            'contact_player' => $source->contact_player,
+            // A chest event has to start in the future; a tournament is dated
+            // the day it is played.
+            'starts_at' => $isImported ? $today : DateTime::now()->addHours(1),
+            'ends_at' => $isImported ? $today->setTime(23, 59) : DateTime::now()->addHours(1)->addSeconds(
+                $source->ends_at->getTimestamp() - $source->starts_at->getTimestamp()
+            ),
+            'event_chests' => array_map(fn ($c) => ['standard_chest_id' => $c->standard_chest_id, 'source' => $c->source], (array)$source->event_chests),
+            'event_rewards' => array_map(fn (EventReward $r) => [
+                'item_name' => $r->item_name,
+                'quantity' => $r->quantity,
+                'rule' => $r->rule,
+                'min_points' => $r->min_points,
+                'remainder' => $r->remainder,
+            ], (array)$source->event_rewards),
+        ];
+
+        $copy = $this->Events->newEntity($data, ['associated' => ['EventChests', 'EventRewards']]);
+        $copy->set('created_by', $this->currentUserId());
+
+        if ($this->Events->save($copy, ['associated' => ['EventChests', 'EventRewards']])) {
+            $this->Flash->success(__('Event #{0} was created from #{1}. Check the name and the date.', $copy->event_number, $source->event_number));
+
+            return $this->redirect(['action' => 'edit', $copy->id]);
+        }
+
+        $this->Flash->error(__(
+            'The event could not be duplicated: {0}',
+            implode(' ', array_values(Hash::flatten($copy->getErrors())))
+        ));
+
+        return $this->redirect(['action' => 'manage']);
+    }
+
+    /**
+     * Change when a game tournament ran. The game only reports the end; the
+     * start is estimated from the catalogue's duration and corrected here.
+     *
+     * @param \App\Model\Entity\Event $event The event.
+     * @return void
+     */
+    private function saveDates(Event $event): void
+    {
+        $data = [
+            'starts_at' => (string)$this->request->getData('starts_at'),
+            'ends_at' => (string)$this->request->getData('ends_at'),
+        ];
+        $events = $this->Events;
+        $entity = $events->patchEntity($events->get($event->id), $data, ['fields' => ['starts_at', 'ends_at']]);
+
+        if ($events->save($entity, ['allowNoRewards' => true])) {
+            $this->Flash->success(__('The dates of event #{0} were saved.', $event->event_number));
+
+            return;
+        }
+
+        $this->Flash->error(__('The dates were not saved: {0}', implode(' ', array_values(Hash::flatten($entity->getErrors())))));
+    }
+
+    /**
+     * Store a CSV ranking as the event's draft.
+     *
+     * @param \App\Service\EventImportService $service Import service.
+     * @param \App\Model\Entity\Event $event The event.
+     * @return void
+     */
+    private function uploadCsv(EventImportService $service, Event $event): void
+    {
+        $file = $this->request->getData('ranking_file');
+        if (!$file instanceof UploadedFileInterface || $file->getError() !== UPLOAD_ERR_OK) {
+            $this->Flash->error(__('Choose the ranking CSV file to upload.'));
+
+            return;
+        }
+        if (($file->getSize() ?? 0) > 1048576) {
+            $this->Flash->error(__('The file is too large for a ranking of at most {0} players.', EventImportService::MAX_ROWS));
+
+            return;
+        }
+
+        $checked = $service->validate($service->parseCsv((string)$file->getStream()));
+        if ($checked['errors']) {
+            $this->Flash->error(__('The ranking was not accepted: {0}', implode(' ', array_slice($checked['errors'], 0, 5))));
+
+            return;
+        }
+
+        try {
+            $result = $service->import($event, $checked['payload'], $this->currentUserId());
+            $this->Flash->success($result['created']
+                ? __('Ranking with {0} player(s) received. Review it below.', count($checked['payload']['rows']))
+                : __('This ranking is the same as the current draft; nothing changed.'));
+        } catch (DomainException $e) {
+            $this->Flash->error($e->getMessage());
+        }
     }
 }

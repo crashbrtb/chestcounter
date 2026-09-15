@@ -19,8 +19,13 @@ use Cake\ORM\Entity;
  * @property int $chest_count
  * @property int $chest_score
  * @property float $participation
+ * @property int|null $member_id
+ * @property int|null $game_player_id
+ * @property int|null $power
+ * @property bool $eligible
  * @property \Cake\I18n\DateTime|null $created
  * @property \App\Model\Entity\Event $event
+ * @property array<\App\Model\Entity\EventRewardAllocation> $event_reward_allocations
  */
 class EventStanding extends Entity
 {
@@ -35,5 +40,9 @@ class EventStanding extends Entity
         'chest_count' => true,
         'chest_score' => true,
         'participation' => true,
+        'member_id' => true,
+        'game_player_id' => true,
+        'power' => true,
+        'eligible' => true,
     ];
 }

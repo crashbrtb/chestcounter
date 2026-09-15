@@ -22,12 +22,14 @@ $stateLabels = [
     Event::STATE_SCHEDULED => __('Starts soon'),
     Event::STATE_FINISHED => __('Finished'),
     Event::STATE_CANCELLED => __('Cancelled'),
+    Event::STATE_AWAITING => __('Awaiting result'),
 ];
 $stateIcons = [
     Event::STATE_RUNNING => 'fa-play-circle',
     Event::STATE_SCHEDULED => 'fa-hourglass-start',
     Event::STATE_FINISHED => 'fa-flag-checkered',
     Event::STATE_CANCELLED => 'fa-ban',
+    Event::STATE_AWAITING => 'fa-hourglass-half',
 ];
 
 $bannerUrl = $event->has_custom_banner

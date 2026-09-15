@@ -17,12 +17,14 @@ $stateLabels = [
     Event::STATE_SCHEDULED => __('Scheduled'),
     Event::STATE_FINISHED => __('Finished'),
     Event::STATE_CANCELLED => __('Cancelled'),
+    Event::STATE_AWAITING => __('Awaiting result'),
 ];
 $stateIcons = [
     Event::STATE_RUNNING => 'fa-play-circle',
     Event::STATE_SCHEDULED => 'fa-hourglass-start',
     Event::STATE_FINISHED => 'fa-flag-checkered',
     Event::STATE_CANCELLED => 'fa-ban',
+    Event::STATE_AWAITING => 'fa-hourglass-half',
 ];
 ?>
 <div class="content-page-wrap">
@@ -37,6 +39,21 @@ $stateIcons = [
                 '<i class="fas fa-image mr-1"></i>' . __('Event Banners'),
                 ['action' => 'settings'],
                 ['class' => 'btn btn-outline-primary btn-sm', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fas fa-book mr-1"></i>' . __('Tournament Catalogue'),
+                ['controller' => 'GameTournaments', 'action' => 'index'],
+                ['class' => 'btn btn-outline-primary btn-sm', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fas fa-key mr-1"></i>' . __('API Tokens'),
+                ['controller' => 'ApiTokens', 'action' => 'index'],
+                ['class' => 'btn btn-outline-primary btn-sm', 'escape' => false]
+            ) ?>
+            <?= $this->Html->link(
+                '<i class="fas fa-gamepad mr-1"></i>' . __('New Game Tournament'),
+                ['action' => 'add', '?' => ['type' => Event::CRITERIA_IMPORTED]],
+                ['class' => 'btn btn-primary btn-sm', 'escape' => false]
             ) ?>
             <?= $this->Html->link(
                 '<i class="fas fa-plus mr-1"></i>' . __('New Event'),
@@ -81,8 +98,12 @@ $stateIcons = [
                                 </td>
                                 <td style="font-size: 0.82rem;"><?= h($event->criteriaLabel()) ?></td>
                                 <td style="font-size: 0.8rem;">
-                                    <?= h($event->starts_at->format('d/m/Y H:i')) ?><br>
-                                    <span class="text-muted"><?= h($event->ends_at->format('d/m/Y H:i')) ?></span>
+                                    <?php if ($event->is_imported): ?>
+                                        <?= h($event->starts_at->format('d/m/Y')) ?>
+                                    <?php else: ?>
+                                        <?= h($event->starts_at->format('d/m/Y H:i')) ?><br>
+                                        <span class="text-muted"><?= h($event->ends_at->format('d/m/Y H:i')) ?></span>
+                                    <?php endif; ?>
                                 </td>
                                 <td>
                                     <span class="event-state state-<?= h($state) ?>">
@@ -97,7 +118,29 @@ $stateIcons = [
                                             ['class' => 'btn btn-outline-primary btn-xs', 'escape' => false, 'title' => __('Edit')]
                                         ) ?>
 
-                                        <?php if ($state === Event::STATE_FINISHED || $state === Event::STATE_CANCELLED): ?>
+                                        <?php if ($event->is_imported): ?>
+                                            <?= $this->Html->link(
+                                                '<i class="fas fa-clipboard-check"></i>',
+                                                ['action' => 'review', $event->id],
+                                                [
+                                                    'class' => 'btn btn-xs ' . ($state === Event::STATE_AWAITING ? 'btn-success' : 'btn-outline-primary'),
+                                                    'escape' => false,
+                                                    'title' => __('Review result'),
+                                                ]
+                                            ) ?>
+                                        <?php endif; ?>
+
+                                        <?= $this->Form->postLink(
+                                            '<i class="fas fa-copy"></i>',
+                                            ['action' => 'duplicate', $event->id],
+                                            [
+                                                'class' => 'btn btn-outline-primary btn-xs',
+                                                'escape' => false,
+                                                'title' => __('Duplicate'),
+                                            ]
+                                        ) ?>
+
+                                        <?php if (!$event->is_imported && ($state === Event::STATE_FINISHED || $state === Event::STATE_CANCELLED)): ?>
                                             <?= $this->Form->postLink(
                                                 '<i class="fas fa-lock"></i>',
                                                 ['action' => 'finalize', $event->id],
